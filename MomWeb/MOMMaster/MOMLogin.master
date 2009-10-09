@@ -1,0 +1,71 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MOMLogin.master.cs" Inherits="MOMMaster_MOMLogin" %>
+<%@ Register Src="~/MOMUserControls/MOMHeader.ascx" TagName="momHeader" TagPrefix="mh" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Momburbia moms Connecting</title>
+    <link href="../css/MomStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    <div class="momBrowserSpace">
+        <table style="width: 1000px; padding-bottom:0.5pt;" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="momHeaderStyle" cellspacing="0">
+                        <tr>
+                            <td>
+                                <table style="width: 300px">
+                                    <tr style="font-weight: bold;">
+                                        <td>
+                                            Home
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>                         
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle">
+                    <mh:momHeader ID="momHead" runat="server"></mh:momHeader>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <asp:ContentPlaceHolder ID="momLoginPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>                   
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1000px;">
+                <hr />
+                Momburbia &copy; 2009    
+                </td>
+            </tr>
+        </table>        
+    </div>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+    </form>
+    <script type="text/javascript">
+    
+        with(Sys.WebForms.PageRequestManager.getInstance()) 
+        {
+            add_endRequest(onEndRequest);
+        }
+        
+        function onEndRequest(sender, args)
+        {
+            $get('momHeaderBanner').src = $get('momHeaderBanner').src;
+        }
+    
+    </script>
+</body>
+</html>

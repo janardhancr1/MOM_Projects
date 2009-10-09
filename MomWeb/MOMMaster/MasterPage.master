@@ -1,0 +1,126 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Src="~/MOMUserControls/MOMToolBox.ascx" TagPrefix="mtb" TagName="MOMToolBox" %>
+<%@ Register Src="~/MOMUserControls/MOMHeader.ascx" TagName="momHeader" TagPrefix="mh" %>
+<%@ Register Src="~/MOMUserControls/MOMHead.ascx" TagPrefix="mhl" TagName="momHead" %>
+<%@ Register Src="~/MOMUserControls/MOMMainMenu.ascx" TagPrefix="mmm" TagName="momMenu" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Momburbia moms Connecting</title>
+    <link href="../css/MomStyle.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="../js/MomJS.js"></script>
+    <script language="javascript" src="../js/jquery-1.3.2.js"></script>
+    
+    <SCRIPT language="JavaScript">
+    <!--
+    function silentErrorHandler() {return true;}
+    window.onerror=silentErrorHandler;
+    //-->
+    </SCRIPT>
+    
+</head>
+<script>preLoadImages();</script>
+<body>
+    <form id="momFrmMain" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/js/MomJS.js" />
+        </Scripts>
+        <Services>
+            <asp:ServiceReference Path="~/MOMWebService/MOMWebService.asmx" />
+        </Services>
+    </asp:ScriptManager>
+    <asp:ScriptManagerProxy runat="server"></asp:ScriptManagerProxy>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    <div class="momBrowserSpace">
+        <table style="width: 1000px; padding-bottom:0.5pt;" cellspacing="0">
+            <tr>
+                <td>
+                    <mhl:momHead ID="momTop" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle">
+                    <mh:momHeader ID="momHead" runat="server"></mh:momHeader>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <mmm:momMenu ID="momMailMenu" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 1000px;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td style="width: 150px" valign="top">
+                                <asp:contentplaceholder id="momLeft" runat="server">
+                                </asp:contentplaceholder>
+                            </td>
+                            <td style="width: 1px; background-color: Pink;">
+                            </td>
+                            <td style="width: 548px" valign="top">
+                                <asp:contentplaceholder id="momCenter" runat="server">
+                                </asp:contentplaceholder>
+                            </td>
+                            <td style="width: 1px; background-color: Pink;"></td>
+                            <td style="width: 300px" valign="top">
+                                <table cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td style="font-size: 8pt; color: lightgrey; height: 10px;">
+                                            Advertisement
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <iframe id="momRightBanner" src="../MOMBanners/MOMRightBanner.htm" frameborder="0" scrolling="no" width="300" height="250"></iframe>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:contentplaceholder id="momRight" runat="server">
+                                            </asp:contentplaceholder>
+                                        </td>
+                                    </tr>
+                                </table>                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1000px;">
+                <div class="styleLine"></div>
+                Momburbia &copy; 2009    
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1000px; height: 25px;">                    
+                </td>
+            </tr>
+        </table>        
+    </div>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+    <mtb:MOMToolBox ID="momToolBox" runat="server"></mtb:MOMToolBox>
+    </form>
+    <script type="text/javascript">
+    
+        with(Sys.WebForms.PageRequestManager.getInstance()) 
+        {
+            add_endRequest(onEndRequest);
+        }
+        
+        function onEndRequest(sender, args)
+        {
+            $get('momHeaderBanner').src = $get('momHeaderBanner').src;
+            $get('momRightBanner').src = $get('momRightBanner').src;
+        }
+    
+    </script>
+</body>
+</html>

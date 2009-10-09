@@ -1,0 +1,72 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MOMNotificationMaster.master.cs" Inherits="MOMMaster_MOMNotificationMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Momburbia moms Connecting</title>
+    <link href="../css/MomStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <div class="momBrowserSpace">
+        <table style="width: 1000px; padding-bottom:0.5pt;" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="momHeaderStyle" cellspacing="0">
+                        <tr>
+                            <td>
+                            </td>                         
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle">
+                    <table style="width: 1000px; height: 105px;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td style="width: 272px;">
+                                <img src="../images/logo.gif" width="272" height="90" />
+                            </td>
+                            <td style="width: 728px;" valign="middle">
+                                <iframe id="momHeaderBanner" src="../MOMBanners/MOMHeaderBanner.htm" frameborder="0" scrolling="no" width="728" height="92"></iframe>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    Thank you for registering. Please click on the link that is sent to your email to activate the account.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Content to be updated later...
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1000px;">
+                <div class="styleLine"></div>
+                Momburbia &copy; 2009    
+                </td>
+            </tr>
+        </table>        
+    </div>
+    </form>
+    <script type="text/javascript">
+    
+        with(Sys.WebForms.PageRequestManager.getInstance()) 
+        {
+            add_endRequest(onEndRequest);
+        }
+        
+        function onEndRequest(sender, args)
+        {
+            $get('momHeaderBanner').src = $get('momHeaderBanner').src;
+        }
+    
+    </script>
+</body>
+</html>

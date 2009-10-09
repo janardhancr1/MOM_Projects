@@ -1,0 +1,396 @@
+﻿body 
+{
+	margin: 0;
+}
+
+.momBrowserSpace
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 1000px;
+	margin: -1px auto 0 auto;
+}
+
+.momHeaderStyle
+{
+	height: 30px;
+	background-color: #aa3464;
+	width: 1000px;
+	padding: 0;
+	margin: 0;
+	color: White;
+}
+.momQuestionTextBox
+{
+	height: 20px;
+	width: 400px;
+	font-size: 12pt;
+	vertical-align: middle;
+}
+
+table
+{
+	padding: 0;
+	margin: 0;
+	border-spacing: 0;
+}
+
+td
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	vertical-align: top;
+}
+
+.momLink
+{
+	color: White;
+	text-decoration: none;
+}
+a
+{	
+	color: #aa3464;
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+
+img
+{
+	border: 0;
+}
+input.tbStyleShare
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 480px;
+}
+input.tbStyle
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 160px;
+}
+input.tbSignIn
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 200px;
+}
+.TextIndicator_Strength1
+{
+     background-color:Gray;
+     color:White;
+     font-family:Arial;
+     font-size:x-small;
+     font-style:italic;
+     padding: 2px 3px 2px 3px;
+     font-weight:bold;
+}
+.TextIndicator_Strength2
+{
+     background-color:Gray;
+     color:Yellow;
+     font-family:Arial;
+     font-size:x-small;
+     font-style:italic;
+     padding: 2px 3px 2px 3px;
+     font-weight:bold;
+}
+.TextIndicator_Strength3
+{
+     background-color:Gray;
+     color: #FFCAAF;
+     font-family:Arial;
+     font-size:x-small;
+     font-style:italic;
+     padding: 2px 3px 2px 3px;
+     font-weight:bold;
+}
+.TextIndicator_Strength4
+{
+     background-color:Gray;
+     color:Aqua;
+     font-family:Arial;
+     font-size:x-small;
+     font-style:italic;
+     padding: 2px 3px 2px 3px;
+     font-weight:bold;
+}
+.TextIndicator_Strength5
+{
+     background-color:Gray;
+     color: #93FF9E;
+     font-family:Arial;
+     font-size:x-small;
+     font-style:italic;
+     padding: 2px 3px 2px 3px;
+     font-weight:bold;
+}
+.passInfoStyle
+{
+	font-size: x-small;
+}
+.calendarClass
+{
+	text-align: right;
+}
+.btnStyle
+{ 
+	background:#aad300; 
+	height:22px; 
+	border:1px solid #6d8524;
+	font-family: Tahoma;
+	font-size: 10pt;
+	width: 90px; 
+	color:#ffffff; 
+	text-decoration:none; 
+	font-weight:normal;
+}
+textarea
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+}
+select
+{
+	font-family: Tahoma;
+	font-size: 10pt;
+}
+/******************************/
+/**Styling information specific to individual content pages**/
+
+/* Accordion */
+.accordionHeader
+{
+    color: White;
+    background-color: #aa3464;
+	font-family: Tahoma;
+	font-size: 10pt;
+	font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.accordionLink
+{
+	color: White;
+}
+
+#master_content .accordionHeader a
+{
+	color: #FFFFFF;
+	background: none;
+	text-decoration: none;
+}
+
+#master_content .accordionHeader a:hover
+{
+	background: none;
+	text-decoration: underline;
+}
+
+.accordionHeaderSelected
+{
+    color: white;
+    background-color: Olive;
+	font-family: Tahoma;
+	font-size: 10pt;
+	font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#master_content .accordionHeaderSelected a
+{
+	color: White;
+	background: none;
+	text-decoration: none;
+}
+
+#master_content .accordionHeaderSelected a:hover
+{
+	background: none;
+	text-decoration: underline;
+}
+
+.accordionContent
+{
+    border-top: none;
+    padding: 5px;
+    padding-top: 10px;
+}
+.gridPaging
+{
+	border: 0px;
+	width: 100%;
+}
+.roundedPanel
+{	
+	background-color: LightPink;
+	color: Green;
+	font-weight:bold;
+	text-align: center;
+}
+hr
+{
+}
+.momShareMenu em
+{
+	background: url(images/hover.png) no-repeat;
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	top: -85px;
+	left: -15px;
+	text-align: center;
+	padding: 20px 12px 10px;
+	font-style: normal;
+	z-index: 2;
+	display: none;
+}
+
+.momShareMenu a
+{
+	font-weight: bold;
+}
+.commentStyle
+{
+	background: pink;
+}
+.pinkHeader
+{
+	font-family: Tahoma;
+	font-size: larger;
+	font-weight: bolder;
+	color: White;
+	background-color: #aa3464;
+}
+
+.grayHeader
+{
+	font-family: Tahoma;
+	font-size: larger;
+	font-weight: bolder;
+	color: Gray;
+}
+.commentStyle
+{
+	font-family: Tahoma;
+	font-size: 8pt;
+	vertical-align: top;
+	background-color: MistyRose;
+}
+.popupMenu 
+{
+	position:absolute;
+	visibility:hidden;
+	background-color: White;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	font-weight: normal;
+}
+
+.popupMenuDiv
+{
+	font-weight: normal;
+	font-size: 8pt;
+	height: 30px;
+}
+.popupHover 
+{
+	background-repeat:repeat-x;
+	background-position:left top;
+}
+small
+{
+	font-size: 8pt;
+	font-weight: normal;
+	color: Black;
+}
+.momSpacer5px
+{
+	height: 5px;
+}
+.momSpacer10px
+{
+	height: 5px;
+}
+.momInfo
+{
+	font-size: 10pt;
+	color:#aa3464;
+	font-weight: bold;
+}
+.styleLine
+{
+	width: 100%;
+	height: 1.5px;
+	background-color: MistyRose;
+}
+.modalBackground 
+{
+	background-color:Gray;
+	filter:alpha(opacity=0);
+	opacity:0.7;
+}
+.rcp_welcome_div
+{
+	border: 1px solid #e2c822;
+	padding: 10px;
+	background: #fff9d7 none repeat scroll 0% 0%;
+	overflow: hidden;
+	text-align: left;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 96%;
+	float: left;
+	direction:ltr;
+}
+.rcp_welcome_div h1
+{
+	font-size:14px;
+}
+
+.rcp_welcome_div h2
+{
+	font-size:13px;
+}
+
+.rcp_welcome_div a {
+color:#3B5998;
+cursor:pointer;
+outline-style:none;
+text-decoration:none;
+}
+
+/* Rating */
+.ratingStar {
+    font-size: 0pt;
+    width: 13px;
+    height: 12px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.filledRatingStar {
+    background-image: url(../images/FilledStar.png);
+
+}
+
+.emptyRatingStar {
+    background-image: url(../images/EmptyStar.png);
+}
+
+.savedRatingStar {
+    background-image: url(../images/SavedStar.png);
+}
+/* End Rating */
