@@ -187,5 +187,56 @@ namespace DALMomburbia
                 base.CloseConnection();
             }
         }
+
+        public void GetUserByName(out bool isSuccess, out string appMessage, out string sysMessage, string displayName)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "dbo.SP_MOM_USR_GET_BY_NAME";
+                momCommand.Parameters.Add("@DISPLAY_NAME", SqlDbType.NVarChar).Value = displayName;
+
+                SqlDataAdapter adaper = new SqlDataAdapter();
+                adaper.SelectCommand = momCommand;
+
+                MOMDataset.MOM_USRDataTable momUserTable = new MOMDataset.MOM_USRDataTable();
+                adaper.Fill(momUserTable);
+                int rowsAffected = momUserTable.Rows.Count;
+
+                if (rowsAffected == 1)
+                {
+                    _MOM_USRRow = (MOMDataset.MOM_USRRow)momUserTable.Rows[0];
+                }
+                else
+                {
+                    throw new MOMException("User Unknown");
+                }
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
     }
 }

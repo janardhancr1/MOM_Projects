@@ -394,3 +394,13 @@ text-decoration:none;
     background-image: url(../images/SavedStar.png);
 }
 /* End Rating */
+
+.msgRead
+{
+	background-color:White;
+}
+
+.msgUnread
+{
+	background-color:LightGray;
+}

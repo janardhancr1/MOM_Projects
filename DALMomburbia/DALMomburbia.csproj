@@ -61,12 +61,12 @@
     <Compile Include="MOMFriend.cs" />
     <Compile Include="MOMGroup.cs" />
     <Compile Include="MOMIPTracker.cs" />
+    <Compile Include="MOMMail.cs" />
     <Compile Include="MOMNotifications.cs" />
     <Compile Include="MOMProfile.cs" />
     <Compile Include="MOMQuestions.cs" />
     <Compile Include="MOMRecipe.cs" />
     <Compile Include="MOMRecipeComments.cs" />
-    <Compile Include="MOMRecipeViews.cs" />
     <Compile Include="MOMUsers.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

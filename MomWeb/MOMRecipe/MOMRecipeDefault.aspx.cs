@@ -30,20 +30,13 @@ public partial class MOMRecipe_MOMRecipeDefault : System.Web.UI.Page
                 int momRecipeID = Int32.Parse(MOMHelper.Decrypt(Request.QueryString["mrcpid"]));
                 momRcpIDHide.Text = Request.QueryString["mrcpid"];
 
-                MOMRecipeViews momRcpViews = new MOMRecipeViews();
-                MOMDataset.MOM_RCP_VIEWRow momRcpViewRow = momRcpViews.MOM_RCP_VIEWDataTable.NewMOM_RCP_VIEWRow();
-
-                momRcpViewRow.MOM_RCP_ID = Int32.Parse(MOMHelper.Decrypt(momRcpIDHide.Text));
-                momRcpViewRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
-
-                momRcpViews.MOM_RCP_VIEWRow = momRcpViewRow;
-                momRcpViews.AddMOM_RCP_VIEWRow(out isSuccess, out appMessage, out sysMessage);
-
                 MOMRecipe momRecipe = new MOMRecipe();
                 MOMDataset.MOM_RCPRow momRcpRow = momRecipe.MOM_RCPDataTable.NewMOM_RCPRow();
                 momRcpRow.ID = momRecipeID;
                 momRecipe.MOM_RCPRow = momRcpRow;
-                
+
+                momRecipe.AddMOM_RCP_VIEWS(out isSuccess, out appMessage, out sysMessage);
+
                 momRecipe.GetMOM_RCPBy_ID(out isSuccess, out appMessage, out sysMessage);
 
                 if (isSuccess)

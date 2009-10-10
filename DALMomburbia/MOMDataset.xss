@@ -31,6 +31,7 @@
     <Shape ID="DesignTable:MOM_FRG" ZOrder="24" X="387" Y="3" Height="147" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="143" />
     <Shape ID="DesignTable:MOM_FAV_RCP" ZOrder="22" X="763" Y="591" Height="95" Width="154" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="91" />
     <Shape ID="DesignTable:MOM_RCP_SEARCH" ZOrder="3" X="912" Y="5" Height="231" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="227" />
+    <Shape ID="DesignTable:MOM_MAIL" ZOrder="1" X="930" Y="242" Height="181" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

@@ -52,5 +52,25 @@ namespace DALMomburbia
             SmtpMail.SmtpServer = ConfigurationManager.AppSettings["momSMTP"];
             SmtpMail.Send(momMail);
         }
+
+        public void SendMOMMails(List<string> toEmailAddress, string subject, string msgBody, MOMDataset.MOM_USRRow momUserRow)
+        {
+            foreach (string toEmail in toEmailAddress)
+            {
+                momMail.To = toEmail;
+                momMail.From = momUserRow.DISPLAY_NAME + "@MOM <" + momUserRow.EMAIL_ADDR + ">";
+                momMail.Subject = subject;
+                momMail.BodyFormat = MailFormat.Html;
+                momMail.Body = msgBody;
+                momMail.Fields["http://schemas.microsoft.com/cdo/configuration/sendusing"] = 2;
+                momMail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpserver"] = "mail.momburbia.com";// ConfigurationManager.AppSettings["momSMTP"];
+                momMail.Fields["http://schemas.microsoft.com/cdo/configuration/sendusername"] = "admin@momburbia.com";// ConfigurationManager.AppSettings["momAdmimEmail"];
+                momMail.Fields["http://schemas.microsoft.com/cdo/configuration/sendpassword"] = "MOM_SYSTEM";// ConfigurationManager.AppSettings["momAdminPassword"];
+                momMail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpauthenticate"] = 1;
+
+                SmtpMail.SmtpServer = ConfigurationManager.AppSettings["momSMTP"];
+                SmtpMail.Send(momMail);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
     CodeFile="MOMCompose.aspx.cs" Inherits="MOMMail_MOMCompose" %>
 
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKEditor" %>
+<%@ Register Src="~/MOMUserControls/MOMPopUpControl.ascx" TagName="momPopup" TagPrefix="popUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
@@ -33,12 +34,15 @@
                         <tr>
                             <td>
                                 <div class="momInfo">
-                                    To</div>
+                                    To :&nbsp;<small>(required)</small></div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="momMailTo" runat="server" Width="300px"></asp:TextBox></td>
+                                <asp:TextBox ID="momMailTo" runat="server" Width="300px" ValidationGroup="ComposeMessage"></asp:TextBox>
+                                <br />
+                                (To enter multiple recipients separate username by comma - username 1, username
+                                2, etc upto 25 recipients)</td>
                         </tr>
                         <tr>
                             <td>
@@ -47,12 +51,12 @@
                         <tr>
                             <td>
                                 <div class="momInfo">
-                                    Subject</div>
+                                    Subject : &nbsp;<small>(required)</small></div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="momMailSubject" runat="server" Width="300px"></asp:TextBox></td>
+                                <asp:TextBox ID="momMailSubject" runat="server" Width="300px" MaxLength="100"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>
@@ -61,7 +65,7 @@
                         <tr>
                             <td>
                                 <div class="momInfo">
-                                    Message</div>
+                                    Message : &nbsp;<small>(required)</small></div>
                             </td>
                         </tr>
                         <tr>
@@ -83,6 +87,7 @@
                         </tr>
                     </table>
                 </fieldset>
+                <popUp:momPopup ID="momPopup" runat="server" />
             </td>
         </tr>
     </table>

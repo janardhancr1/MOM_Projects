@@ -2,9 +2,11 @@
 <xs:schema id="MOMDataset" targetNamespace="http://tempuri.org/MOMDataset.xsd" xmlns:mstns="http://tempuri.org/MOMDataset.xsd" xmlns="http://tempuri.org/MOMDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MomburbiaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="MomburbiaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DALMomburbia.Properties.Settings.GlobalReference.Default.MomburbiaConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MomburbiaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="MomburbiaConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DALMomburbia.Properties.Settings.GlobalReference.Default.MomburbiaConnectionString1" Provider="System.Data.SqlClient">
           </Connection>
         </Connections>
         <Tables>
@@ -592,6 +594,10 @@
               <xs:element name="ALLOW" msprop:Generator_UserColumnName="ALLOW" msprop:Generator_ColumnVarNameInTable="columnALLOW" msprop:Generator_ColumnPropNameInRow="ALLOW" msprop:Generator_ColumnPropNameInTable="ALLOWColumn" type="xs:boolean" minOccurs="0" />
               <xs:element name="MOM_USR_ID" msprop:Generator_UserColumnName="MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnMOM_USR_ID" msprop:Generator_ColumnPropNameInRow="MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="MOM_USR_IDColumn" type="xs:long" minOccurs="0" />
               <xs:element name="TIME" msprop:Generator_UserColumnName="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" type="xs:dateTime" />
+              <xs:element name="VIEWS" msprop:Generator_UserColumnName="VIEWS" msprop:Generator_ColumnVarNameInTable="columnVIEWS" msprop:Generator_ColumnPropNameInRow="VIEWS" msprop:Generator_ColumnPropNameInTable="VIEWSColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RATING" msprop:Generator_UserColumnName="RATING" msprop:Generator_ColumnVarNameInTable="columnRATING" msprop:Generator_ColumnPropNameInRow="RATING" msprop:Generator_ColumnPropNameInTable="RATINGColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBMITTEDBY" msprop:Generator_UserColumnName="SUBMITTEDBY" msprop:Generator_ColumnVarNameInTable="columnSUBMITTEDBY" msprop:Generator_ColumnPropNameInRow="SUBMITTEDBY" msprop:Generator_ColumnPropNameInTable="SUBMITTEDBYColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="COMMENTS" msprop:Generator_UserColumnName="COMMENTS" msprop:Generator_ColumnVarNameInTable="columnCOMMENTS" msprop:Generator_ColumnPropNameInRow="COMMENTS" msprop:Generator_ColumnPropNameInTable="COMMENTSColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -689,6 +695,38 @@
               <xs:element name="RATING" msprop:Generator_UserColumnName="RATING" msprop:Generator_ColumnVarNameInTable="columnRATING" msprop:Generator_ColumnPropNameInRow="RATING" msprop:Generator_ColumnPropNameInTable="RATINGColumn" type="xs:string" minOccurs="0" />
               <xs:element name="RATINGS" msprop:Generator_UserColumnName="RATINGS" msprop:Generator_ColumnVarNameInTable="columnRATINGS" msprop:Generator_ColumnPropNameInRow="RATINGS" msprop:Generator_ColumnPropNameInTable="RATINGSColumn" type="xs:string" minOccurs="0" />
               <xs:element name="RATINGPHOTO" msprop:Generator_UserColumnName="RATINGPHOTO" msprop:Generator_ColumnVarNameInTable="columnRATINGPHOTO" msprop:Generator_ColumnPropNameInRow="RATINGPHOTO" msprop:Generator_ColumnPropNameInTable="RATINGPHOTOColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MOM_MAIL" msprop:Generator_UserTableName="MOM_MAIL" msprop:Generator_RowDeletedName="MOM_MAILRowDeleted" msprop:Generator_RowChangedName="MOM_MAILRowChanged" msprop:Generator_RowClassName="MOM_MAILRow" msprop:Generator_RowChangingName="MOM_MAILRowChanging" msprop:Generator_RowEvArgName="MOM_MAILRowChangeEvent" msprop:Generator_RowEvHandlerName="MOM_MAILRowChangeEventHandler" msprop:Generator_TableClassName="MOM_MAILDataTable" msprop:Generator_TableVarName="tableMOM_MAIL" msprop:Generator_RowDeletingName="MOM_MAILRowDeleting" msprop:Generator_TablePropName="MOM_MAIL">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:long" />
+              <xs:element name="MOM_USR_ID" msprop:Generator_UserColumnName="MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnMOM_USR_ID" msprop:Generator_ColumnPropNameInRow="MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="MOM_USR_IDColumn" type="xs:long" />
+              <xs:element name="MOM_TO_EMAIL" msprop:Generator_UserColumnName="MOM_TO_EMAIL" msprop:Generator_ColumnVarNameInTable="columnMOM_TO_EMAIL" msprop:Generator_ColumnPropNameInRow="MOM_TO_EMAIL" msprop:Generator_ColumnPropNameInTable="MOM_TO_EMAILColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MOM_SUBJECT" msprop:Generator_UserColumnName="MOM_SUBJECT" msprop:Generator_ColumnVarNameInTable="columnMOM_SUBJECT" msprop:Generator_ColumnPropNameInRow="MOM_SUBJECT" msprop:Generator_ColumnPropNameInTable="MOM_SUBJECTColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MOM_BODY" msprop:Generator_UserColumnName="MOM_BODY" msprop:Generator_ColumnVarNameInTable="columnMOM_BODY" msprop:Generator_ColumnPropNameInRow="MOM_BODY" msprop:Generator_ColumnPropNameInTable="MOM_BODYColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MOM_READ" msprop:Generator_UserColumnName="MOM_READ" msprop:Generator_ColumnVarNameInTable="columnMOM_READ" msprop:Generator_ColumnPropNameInRow="MOM_READ" msprop:Generator_ColumnPropNameInTable="MOM_READColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TIME" msprop:Generator_UserColumnName="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" type="xs:dateTime" />
+              <xs:element name="DISPLAY_NAME" msprop:Generator_UserColumnName="DISPLAY_NAME" msprop:Generator_ColumnPropNameInRow="DISPLAY_NAME" msprop:Generator_ColumnVarNameInTable="columnDISPLAY_NAME" msprop:Generator_ColumnPropNameInTable="DISPLAY_NAMEColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

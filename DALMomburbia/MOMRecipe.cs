@@ -23,19 +23,6 @@ namespace DALMomburbia
             set { _MOM_RCPRow = value; }
         }
 
-        MOMDataset.MOM_RCP_SEARCHDataTable _MOM_RCP_SEARCHDataTable = new MOMDataset.MOM_RCP_SEARCHDataTable();
-        public MOMDataset.MOM_RCP_SEARCHDataTable MOM_RCP_SEARCHDataTable
-        {
-            get { return _MOM_RCP_SEARCHDataTable; }
-        }
-
-        MOMDataset.MOM_RCP_SEARCHRow _MOM_RCP_SEARCHRow;
-        public MOMDataset.MOM_RCP_SEARCHRow MOM_RCP_SEARCHRow
-        {
-            get { return _MOM_RCP_SEARCHRow; }
-            set { _MOM_RCP_SEARCHRow = value; }
-        }
-
         public void AddMOM_RCPRow(out bool isSuccess, out string appMessage, out string sysMessage)
         {
             isSuccess = true;
@@ -196,12 +183,50 @@ namespace DALMomburbia
 
                 MOMDataset momDataSet = new MOMDataset();
 
-                adapter.TableMappings.Add("Table", momDataSet.MOM_RCP_SEARCH.TableName);
+                adapter.TableMappings.Add("Table", momDataSet.MOM_RCP.TableName);
 
                 adapter.Fill(momDataSet);
 
-                _MOM_RCP_SEARCHDataTable = momDataSet.MOM_RCP_SEARCH;
+                _MOM_RCPDataTable = momDataSet.MOM_RCP;
 
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
+
+        public void AddMOM_RCP_VIEWS(out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "DBO.SP_MOM_RCP_VIEW";
+
+                momCommand.Parameters.Add("@MOM_RCP_ID", SqlDbType.Int).Value = _MOM_RCPRow.ID;
+
+                int rowsAffected = momCommand.ExecuteNonQuery();
             }
             catch (MOMException X)
             {

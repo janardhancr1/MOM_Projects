@@ -47,10 +47,10 @@ public partial class MOMRecipe_MOMRecipeSearch : System.Web.UI.Page
             
             if (isSuccess)
             {
-                if (momRecipe.MOM_RCP_SEARCHDataTable.Count > 0)
+                if (momRecipe.MOM_RCPDataTable.Count > 0)
                 {
                     momRcpRpt.Visible = true;
-                    momRcpRpt.DataSource = momRecipe.MOM_RCP_SEARCHDataTable.DefaultView;
+                    momRcpRpt.DataSource = momRecipe.MOM_RCPDataTable.DefaultView;
                     momRcpRpt.DataBind();
                     NoDateTable.Visible = false;
                 }
