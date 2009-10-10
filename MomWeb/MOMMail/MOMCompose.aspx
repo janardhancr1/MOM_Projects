@@ -4,27 +4,18 @@
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKEditor" %>
 <%@ Register Src="~/MOMUserControls/MOMPopUpControl.ascx" TagName="momPopup" TagPrefix="popUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
+    <div class="tabs">
+        <center>
+            <div class="left_tabs">
+                <ul class="toggle_tabs" id="toggle_tabs_unused">
+                    <li class="first "><a href="MOMInbox.aspx" onclick="return true;">Inbox</a></li>
+                    <li><a href="MOMSent.aspx" onclick="return true;">Sent Messages</a></li>
+                    <li class="last "><a href="MOMCompose.aspx" class="selected" onclick="return true;">Compose Message</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
     <table width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-            <td align="center">
-                <table width="95%" cellpadding="3">
-                    <tr>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMInbox.aspx">Inbox</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMSent.aspx">Sent Messages</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMMailNotification.aspx">Notifications</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMCompose.aspx">Compose Message</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
         <tr>
             <td>
                 <br />

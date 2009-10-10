@@ -3,33 +3,21 @@
 
 <%@ Register Src="~/MOMUserControls/MOMPopUpControl.ascx" TagName="momPopup" TagPrefix="popUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
+    <div class="tabs">
+        <center>
+            <div class="left_tabs">
+                <ul class="toggle_tabs" id="toggle_tabs_unused">
+                    <li class="first "><a href="MOMRecipesHome.aspx" onclick="return true;">Home</a></li>
+                    <li><a href="MOMRecipeSearch.aspx" onclick="return true;">Search</a></li>
+                    <li><a href="MOMRecipeExplore.aspx" onclick="return true;">Explore Tags</a></li>
+                    <li><a href="MOMRecipeRecent.aspx" onclick="return true;">Most Recent</a></li>
+                    <li><a href="MOMRecipeTopRated.aspx" onclick="return true;">Top Rated</a></li>
+                    <li class="last "><a href="MOMRecipeAdd.aspx" class="selected" onclick="return true;">Add a Recipe</a></li>
+                </ul>
+            </div>
+        </center>
+    </div>
     <table width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-            <td align="center">
-                <table width="95%" cellpadding="3">
-                    <tr>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipesHome.aspx">Home</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipeSearch.aspx">Search</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipeExplore.aspx">Explore Tags</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipeRecent.aspx">Most Recent</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipeTopRated.aspx">Top Rated</a>
-                        </td>
-                        <td style="background-color: MistyRose;">
-                            <a href="MOMRecipeAdd.aspx">Add a Recipe</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
         <tr>
             <td>
                 <table width="100%">

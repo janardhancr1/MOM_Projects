@@ -11,6 +11,7 @@
 <head id="Head1" runat="server">
     <title>Momburbia moms Connecting</title>
     <link href="../css/MomStyle.css" rel="stylesheet" type="text/css" />
+    <link href="../css/MomRecipe.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="../js/MomJS.js"></script>
     <SCRIPT language="JavaScript">
     <!--
