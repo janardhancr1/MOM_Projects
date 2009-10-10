@@ -102,7 +102,7 @@ public partial class _Default : System.Web.UI.Page
                     link = @"http://" + link;
 
                 string[] getDomain = link.Split('/');
-                string htmlValue = "<a target=\"_blank\" href=\"" + link + "\">" +
+                string htmlValue = "<a target=\"_blank\" href=\"" + MOMHelper.BreakText(link, 70) + "\">" +
                     getDomain[2] + "</a>";
 
                 momFrgRow.TYPE_SHARE = htmlValue;
