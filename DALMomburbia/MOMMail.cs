@@ -199,5 +199,97 @@ namespace DALMomburbia
 
             return affectedRows;
         }
+
+
+        public int GetMOM_MAIL_BY_ID(out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            int affectedRows = 0;
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "dbo.SP_MOM_MAIL_GET_BY_ID";
+
+                momCommand.Parameters.Add("@MAIL_ID", SqlDbType.NVarChar).Value = _MOM_MAILRow.ID;
+
+                MOMDataset momData = new MOMDataset();
+                momData.Clear();
+                momData.EnforceConstraints = false;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.TableMappings.Add("Table", momData.MOM_MAIL.TableName);
+                adapter.SelectCommand = momCommand;
+                adapter.Fill(momData);
+
+                _MOM_MAILRow = momData.MOM_MAIL[0];
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+
+            return affectedRows;
+        }
+
+        public int SetMOM_MAIL_MARK_READ(out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            int affectedRows = 0;
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "dbo.SP_MOM_MAIL_MARK_READ";
+
+                momCommand.Parameters.Add("@MAIL_ID", SqlDbType.NVarChar).Value = _MOM_MAILRow.ID;
+                momCommand.Parameters.Add("@MOM_READ", SqlDbType.NVarChar).Value = _MOM_MAILRow.MOM_READ;
+
+                affectedRows = momCommand.ExecuteNonQuery();
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+
+            return affectedRows;
+        }
     }
 }

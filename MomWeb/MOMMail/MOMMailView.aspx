@@ -26,24 +26,25 @@
         <tr>
             <td>
                 <br />
+                <asp:TextBox ID="momMailIDHide" runat="server" Visible="false"></asp:TextBox>
                 <fieldset>
                     <legend class="grayHeader">Message</legend>
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td>
-                                From :
+                                <strong>From :</strong>
                                 <asp:Label ID="momMailFrom" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Sent :
+                                <strong>Sent :</strong>
                                 <asp:Label ID="momMailSent" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Subject :
+                                <strong>Subject :</strong>
                                 <asp:Label ID="momMailSubject" runat="server"></asp:Label>
                             </td>
                         </tr>
@@ -53,12 +54,19 @@
                         </tr>
                         <tr>
                             <td>
-                                Messge:</td>
+                                <strong>Messge : </strong></td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="momMailBody" runat="server"></asp:Label>
+                                <asp:Label ID="momMailBody" runat="server" Height="200px"></asp:Label>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><asp:Button ID="momMailReply" runat="server" Text="Reply" CssClass="btnStyle" OnClick="momMailReply_Click" />
+                                <asp:Button ID="momMailDelete" runat="server" Text="Delete" CssClass="btnStyle" OnClick="momMailDelete_Click" /></td>
                         </tr>
                     </table>
                 </fieldset>

@@ -22,6 +22,34 @@ public partial class MOMMail_MOMCompose : System.Web.UI.Page
     {
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
+
+        if (!IsPostBack)
+        {
+            if (Request.QueryString["mmailid"] != null)
+            {
+                try
+                {
+                    int momMailID = Int32.Parse(MOMHelper.Decrypt(Request.QueryString["mmailid"]));
+
+                    MOMMail momMail = new MOMMail();
+                    MOMDataset.MOM_MAILRow momMailRow = momMail.MOM_MAILDataTable.NewMOM_MAILRow();
+                    momMailRow.ID = momMailID;
+                    momMail.MOM_MAILRow = momMailRow;
+
+                    momMail.GetMOM_MAIL_BY_ID(out isSuccess, out appMessage, out sysMessage);
+
+                    if (isSuccess)
+                    {
+                        momMailTo.Text = MOMHelper.HTMLEncode(momMail.MOM_MAILRow.DISPLAY_NAME);
+                        momMailSubject.Text = MOMHelper.HTMLEncode(momMail.MOM_MAILRow.MOM_SUBJECT);
+                        momMailBody.Value = MOMHelper.HTMLEncode(momMail.MOM_MAILRow.MOM_BODY);
+                    }
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 
     protected void momMailSend_Click(object sender, EventArgs e)
