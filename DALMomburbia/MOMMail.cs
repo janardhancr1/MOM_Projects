@@ -260,9 +260,9 @@ namespace DALMomburbia
             try
             {
                 SqlCommand momCommand = base.GetMOMCommand();
-                momCommand.CommandText = "dbo.SP_MOM_MAIL_MARK_READ";
+                momCommand.CommandText = "dbo.SP_MOM_MAIL_READ";
 
-                momCommand.Parameters.Add("@MAIL_ID", SqlDbType.NVarChar).Value = _MOM_MAILRow.ID;
+                momCommand.Parameters.Add("@ID", SqlDbType.NVarChar).Value = _MOM_MAILRow.ID;
                 momCommand.Parameters.Add("@MOM_READ", SqlDbType.NVarChar).Value = _MOM_MAILRow.MOM_READ;
 
                 affectedRows = momCommand.ExecuteNonQuery();
