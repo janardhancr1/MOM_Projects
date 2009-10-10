@@ -27,10 +27,46 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80"></asp:TextBox>
-                            <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender" runat="server"
-                            TargetControlID="momShare" WatermarkText="What's on your mind?">
-                            </cc1:TextBoxWatermarkExtender>                            
+                            <div>
+                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80"></asp:TextBox>
+                                <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender" runat="server"
+                                TargetControlID="momShare" WatermarkText="What's on your mind?">
+                                </cc1:TextBoxWatermarkExtender>                            
+                            </div>
+                            <div class="momSpacer5px"></div>
+                            <div id="momShareLinkPanel" style="text-align: center; display: none;">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <table style="width: 95%; background-color: White; text-align: left;" cellpadding="5"> 
+                                                <tr>
+                                                    <td>
+                                                        Link
+                                                    </td>
+                                                    <td align="right">
+                                                        <a href="javascript:hideSubPanel('momShareLinkPanel');">X</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="styleLine"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <asp:TextBox ID="momShareLink" runat="server" style="width: 400px;"></asp:TextBox>
+                                                        <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server"
+                                                        TargetControlID="momShareLink" WatermarkText="http://">
+                                                        </cc1:TextBoxWatermarkExtender> 
+                                                        <asp:HiddenField ID="momShareLinkStatus" runat="server" Value="F"></asp:HiddenField>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="momSpacer5px"></div>
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +83,7 @@
                                         <a title="Vidoes"><img src="../images/home_icon4.gif" width="22px" height="20px"/></a>
                                     </td>
                                     <td>
-                                        <img src="../images/home_icon9.gif" width="22px" height="20px"/>
+                                        <img src="../images/home_icon9.gif" width="22px" height="20px" onclick="showSubPanel('momShareLinkPanel');"/>
                                     </td>
                                     <td style="width: 400px; text-align: right;">
                                         <asp:Button ID="momPublish" Text="Share" runat="server" CssClass="btnStyle" OnClick="momPublish_Click" />
@@ -82,6 +118,9 @@
                                                     <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "SHARE").ToString()), 50)%>
                                                     </div>
                                                     <div>
+                                                        <small>
+                                                            <%# DataBinder.Eval(Container.DataItem, "TYPE_SHARE").ToString() %>
+                                                        </small>
                                                     </div>
                                                 </td>
                                                 <td rowspan="3" style="width:95px; vertical-align: top;">

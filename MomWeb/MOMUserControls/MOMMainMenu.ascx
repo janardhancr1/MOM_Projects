@@ -32,7 +32,7 @@
             </a>
         </td>
         <td align="center" style="width: 112px;">
-            <a href="../MOMShareLink/MOMShareLink.aspx">
+            <a href="../MOMHome/MOMHome.aspx?mF=S">
                 <img src="../images/home_icon9.gif" width="27px" height="25px" />
             </a>
         </td>
@@ -65,7 +65,7 @@
             </a>
         </td>
         <td align="center">
-            <a href="../MOMShareLink/MOMShareLink.aspx">
+            <a href="../MOMHome/MOMHome.aspx?mF=S">
             Share Links
             </a>
         </td>

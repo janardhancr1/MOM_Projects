@@ -11,7 +11,6 @@ using System.Web.UI.HtmlControls;
 using BOMomburbia;
 using DALMomburbia;
 using System.Data.SqlClient;
-using System.Data;
 
 public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
 {
@@ -24,7 +23,6 @@ public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
 
-        //Response.BufferOutput = true;
         if (!IsPostBack)
         {
             try
@@ -34,52 +32,15 @@ public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
                 MOMFridge momFrg = new MOMFridge();
                 MOMDataset.MOM_FRGRow frgRow = momFrg.MOM_FRGDataTable.NewMOM_FRGRow();
                 frgRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
-                frgRow.TYPE_SHARE = "S";
-
-                //int momFrgId = 0;
-
-                //if (Session["momFridge"] != null)
-                //{
-                //    if (((MOMDataset.MOM_FRG_SHAREDDataTable)Session["momFridge"]).Rows.Count > 0)
-                //        momFrgId = ((MOMDataset.MOM_FRG_SHAREDDataTable)Session["momFridge"])[0].ID;
-                //}
-
-                //int counts = ((MOMDataset.MOM_FRG_SHAREDDataTable)Session["momFridge"]).Rows.Count;
+                frgRow.TYPE = "S";
 
                 momFrg.MOM_FRGRow = frgRow;
                 momFrg.GetMOM_FRGDataTableByMOM_USR_ID(out isSuccess, out appMessage, out sysMessage);
 
                 if (isSuccess)
                 {
-                    //if (Session["momFridge"] == null)
-                    //{
                     Session.Add("momFridge", momFrg.MOM_FRG_SHAREDDataTable);
                     Session.Add("momFridgeComments", momFrg.MOM_FRG_CMNT_SHAREDDataTable);
-                    //}
-                    //else
-                    //{
-                    //    MOMDataset.MOM_FRG_SHAREDDataTable momFrgShared = (MOMDataset.MOM_FRG_SHAREDDataTable)Session["momFridge"];
-                    //    for (int pos = momFrg.MOM_FRG_SHAREDDataTable.Rows.Count - 1; pos >= 0; pos--)
-                    //    {
-                    //        MOMDataset.MOM_FRG_SHAREDRow myRow = momFrgShared.NewMOM_FRG_SHAREDRow();
-
-                    //        myRow.ID = momFrg.MOM_FRG_SHAREDDataTable[pos].ID;
-                    //        myRow.MOM_USR_ID = momFrg.MOM_FRG_SHAREDDataTable[pos].MOM_USR_ID;
-                    //        myRow.PICTURE = momFrg.MOM_FRG_SHAREDDataTable[pos].PICTURE;
-                    //        myRow.SHARE = momFrg.MOM_FRG_SHAREDDataTable[pos].SHARE;
-                    //        myRow.TIME = momFrg.MOM_FRG_SHAREDDataTable[pos].TIME;
-                    //        myRow.DISPLAY_NAME = momFrg.MOM_FRG_SHAREDDataTable[pos].DISPLAY_NAME;
-
-                    //        momFrgShared.Rows.InsertAt(
-                    //            (DataRow)myRow, 0);
-                    //    }
-                    //    Session["momFridge"] = momFrgShared;
-
-                    //    for (int pos = momFrg.MOM_FRG_CMNT_SHAREDDataTable.Rows.Count - 1; pos >= 0; pos--)
-                    //    {
-                    //        ((MOMDataset.MOM_FRG_CMNT_SHAREDDataTable)Session["momFridgeComments"]).ImportRow(momFrg.MOM_FRG_CMNT_SHAREDDataTable[pos]);
-                    //    }
-                    //}
                 }
                 else
                 {
@@ -121,6 +82,17 @@ public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
 
             momFrgRow.MOM_USR_ID = momUserRow.ID;
             momFrgRow.SHARE = momShare.Text;
+            momFrgRow.TYPE = "D";
+
+            if (momShareLinkStatus.Value.Equals("T"))
+            {
+                momFrgRow.TYPE = "S";
+
+                if (momShareLink.Text.Trim().Length == 0)
+                    throw new MOMException("No URL was provided");
+
+                momFrgRow.TYPE_SHARE = Server.UrlEncode(momShareLink.Text);
+            }
             momFrg.MOM_FRGRow = momFrgRow;
             momFrg.AddMOM_FRGRow(out isSuccess, out appMessage, out sysMessage);
 
@@ -132,6 +104,13 @@ public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
             momFrgSharedRow.SHARE = momShare.Text;
             momFrgSharedRow.MOM_USR_ID = momUserRow.ID;
             momFrgSharedRow.ID = momFrg.MOM_FRGRow.ID;
+
+            if (!momFrg.MOM_FRGRow.IsTYPENull())
+                momFrgSharedRow.TYPE = momFrg.MOM_FRGRow.TYPE;
+
+            if (!momFrg.MOM_FRGRow.IsTYPE_SHARENull())
+                momFrgSharedRow.TYPE_SHARE = momFrg.MOM_FRGRow.TYPE_SHARE;
+
             //momFrgSharedRow.TIME = momFrg.MOM_FRGRow.TIME;
             momFrgSharedRow.TIME = "0  minutes ago";
             momFrgShared.Rows.InsertAt((DataRow)momFrgSharedRow, 0);
@@ -155,6 +134,8 @@ public partial class MOMShareLink_MOMShareLink : System.Web.UI.Page
         }
         finally
         {
+            momShareLink.Text = string.Empty;
+            momShareLinkStatus.Value = "F";
             BindMOM_FRG_SHAREDData();
         }
     }

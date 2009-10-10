@@ -143,3 +143,21 @@ function onHideComplete()
 {
     parentDiv.style.display = "none";
 }
+
+function showSubPanel(arg)
+{
+    var div = document.getElementById(arg);
+    div.style.display = "block";
+    
+    if(arg=="momShareLinkPanel")
+        document.getElementById("ctl00_momCenter_momShareLinkStatus").value = "T";
+}
+
+function hideSubPanel(arg)
+{
+    var div = document.getElementById(arg);
+    div.style.display = "none";
+    
+    if(arg=="momShareLinkPanel")
+        document.getElementById("ctl00_momCenter_momShareLinkStatus").value = "F";
+}

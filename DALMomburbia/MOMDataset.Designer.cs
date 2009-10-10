@@ -3867,6 +3867,10 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnHIDE;
             
+            private global::System.Data.DataColumn columnTYPE_SHARE;
+            
+            private global::System.Data.DataColumn columnTYPE;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_FRG_SHAREDDataTable() {
                 this.TableName = "MOM_FRG_SHARED";
@@ -3947,6 +3951,20 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TYPE_SHAREColumn {
+                get {
+                    return this.columnTYPE_SHARE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TYPEColumn {
+                get {
+                    return this.columnTYPE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3975,7 +3993,7 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_FRG_SHAREDRow AddMOM_FRG_SHAREDRow(int ID, long MOM_USR_ID, string SHARE, string TIME, string DISPLAY_NAME, string PICTURE, bool HIDE) {
+            public MOM_FRG_SHAREDRow AddMOM_FRG_SHAREDRow(int ID, long MOM_USR_ID, string SHARE, string TIME, string DISPLAY_NAME, string PICTURE, bool HIDE, string TYPE_SHARE, string TYPE) {
                 MOM_FRG_SHAREDRow rowMOM_FRG_SHAREDRow = ((MOM_FRG_SHAREDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -3984,7 +4002,9 @@ namespace DALMomburbia {
                         TIME,
                         DISPLAY_NAME,
                         PICTURE,
-                        HIDE};
+                        HIDE,
+                        TYPE_SHARE,
+                        TYPE};
                 rowMOM_FRG_SHAREDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMOM_FRG_SHAREDRow);
                 return rowMOM_FRG_SHAREDRow;
@@ -4016,6 +4036,8 @@ namespace DALMomburbia {
                 this.columnDISPLAY_NAME = base.Columns["DISPLAY_NAME"];
                 this.columnPICTURE = base.Columns["PICTURE"];
                 this.columnHIDE = base.Columns["HIDE"];
+                this.columnTYPE_SHARE = base.Columns["TYPE_SHARE"];
+                this.columnTYPE = base.Columns["TYPE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4034,6 +4056,10 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnPICTURE);
                 this.columnHIDE = new global::System.Data.DataColumn("HIDE", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHIDE);
+                this.columnTYPE_SHARE = new global::System.Data.DataColumn("TYPE_SHARE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTYPE_SHARE);
+                this.columnTYPE = new global::System.Data.DataColumn("TYPE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTYPE);
                 this.columnID.AllowDBNull = false;
                 this.columnSHARE.MaxLength = 255;
                 this.columnTIME.MaxLength = 255;
@@ -10729,6 +10755,36 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TYPE_SHARE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_FRG_SHARED.TYPE_SHAREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE_SHARE\' in table \'MOM_FRG_SHARED\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_FRG_SHARED.TYPE_SHAREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TYPE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_FRG_SHARED.TYPEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE\' in table \'MOM_FRG_SHARED\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_FRG_SHARED.TYPEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsMOM_USR_IDNull() {
                 return this.IsNull(this.tableMOM_FRG_SHARED.MOM_USR_IDColumn);
             }
@@ -10776,6 +10832,26 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetHIDENull() {
                 this[this.tableMOM_FRG_SHARED.HIDEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTYPE_SHARENull() {
+                return this.IsNull(this.tableMOM_FRG_SHARED.TYPE_SHAREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTYPE_SHARENull() {
+                this[this.tableMOM_FRG_SHARED.TYPE_SHAREColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTYPENull() {
+                return this.IsNull(this.tableMOM_FRG_SHARED.TYPEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTYPENull() {
+                this[this.tableMOM_FRG_SHARED.TYPEColumn] = global::System.Convert.DBNull;
             }
         }
         

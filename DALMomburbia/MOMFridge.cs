@@ -63,8 +63,8 @@ namespace DALMomburbia
 
                 momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_FRGRow.MOM_USR_ID;
 
-                if (!this.MOM_FRGRow.IsTYPE_SHARENull())
-                    momCommand.Parameters.Add("@TYPE_SHARE", SqlDbType.Char).Value = _MOM_FRGRow.TYPE_SHARE;
+                if (!this.MOM_FRGRow.IsTYPENull())
+                    momCommand.Parameters.Add("@TYPE", SqlDbType.Char).Value = _MOM_FRGRow.TYPE;
 
                 //momCommand.Parameters.Add("@MOM_FRG_ID", SqlDbType.Int).Value = momFrgId;
                 SqlDataAdapter adapter = new SqlDataAdapter();
