@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using BOMomburbia;
 using DALMomburbia;
 
-public partial class MOMRecipe_MOMRecipeTopRated : System.Web.UI.Page
+public partial class MOMRecipe_MOMRecipeTagSearch : System.Web.UI.Page
 {
     bool isSuccess;
     string appMessage;
@@ -27,7 +27,11 @@ public partial class MOMRecipe_MOMRecipeTopRated : System.Web.UI.Page
             try
             {
                 MOMRecipe momRecipe = new MOMRecipe();
-                momRecipe.GetMOM_RCP_TopRated(out isSuccess, out appMessage, out sysMessage);
+                MOMDataset.MOM_RCPRow momRcpRow = momRecipe.MOM_RCPDataTable.NewMOM_RCPRow();
+                momRcpRow.TAGS = MOMHelper.Decrypt(Request.QueryString["tag"]);
+
+                momRecipe.MOM_RCPRow = momRcpRow;
+                momRecipe.GetMOM_RCP_BYTag(out isSuccess, out appMessage, out sysMessage);
 
                 if (isSuccess)
                 {

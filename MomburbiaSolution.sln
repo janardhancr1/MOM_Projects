@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "E:\...\MomWeb\", "MomWeb\", "{B078EA98-D37C-484D-8E1A-7E9597FDE46E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "E:\...\MomWeb\", "MomWeb", "{B078EA98-D37C-484D-8E1A-7E9597FDE46E}"
 	ProjectSection(WebsiteProperties) = preProject
 		ProjectReferences = "{7BE8165A-B08B-46D6-9FB6-5C75B0589854}|BOMomburbia.dll;{7CE14A51-52D5-478A-8B19-2005940BAF3B}|DALMomburbia.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/MomWeb"
@@ -18,7 +18,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "E:\...\MomWeb\", "MomWeb\",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "2229"
+		VWDPort = "53642"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

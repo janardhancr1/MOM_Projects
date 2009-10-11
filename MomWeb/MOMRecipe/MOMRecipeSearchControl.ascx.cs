@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using BOMomburbia;
 using DALMomburbia;
 
 public partial class MOMRecipe_MOMRecipeSearchControl : System.Web.UI.UserControl
@@ -18,106 +19,79 @@ public partial class MOMRecipe_MOMRecipeSearchControl : System.Web.UI.UserContro
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (((MOMRecipe_MOMRecipeSearch)(this.Page)).SearchResults)
-        //{
-        //    try
-        //    {
-        //        MOMRecipe momRecipe = new MOMRecipe();
-        //        MOMDataset.MOM_RCPRow momRcpRow = momRecipe.MOM_RCPDataTable.NewMOM_RCPRow();
+        try
+        {
+            MOMRecipe momRecipe = new MOMRecipe();
+            MOMDataset.MOM_RCPRow momRcpRow = momRecipe.MOM_RCPDataTable.NewMOM_RCPRow();
 
-        //        momRcpRow.NAME = ((MOMRecipe_MOMRecipeSearch)(this.Page)).KeyWord;
-        //        momRcpRow.DIFFICULTY = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Difficulty;
-        //        momRcpRow.VEGE = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Vege;
-        //        momRcpRow.VEGAN = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Vegan;
-        //        momRcpRow.DAIRY = ((MOMRecipe_MOMRecipeSearch)(this.Page)).DairyFree;
-        //        momRcpRow.GLUTEN = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Gluten;
-        //        momRcpRow.NUT = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Nut;
-        //        momRcpRow.PHOTO = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Photo;
-        //        momRcpRow.INGREDIENTS = ((MOMRecipe_MOMRecipeSearch)(this.Page)).Ingredients;
+            momRcpRow.NAME = searchRow.NAME;
+            momRcpRow.DIFFICULTY = searchRow.DIFFICULTY;
+            momRcpRow.INGREDIENTS = searchRow.INGREDIENTS;
+            momRcpRow.VEGE = searchRow.VEGE;
+            momRcpRow.VEGAN = searchRow.VEGAN;
+            momRcpRow.DAIRY = searchRow.DAIRY;
+            momRcpRow.GLUTEN = searchRow.GLUTEN;
+            momRcpRow.NUT = searchRow.NUT;
+            momRcpRow.PHOTO = searchRow.PHOTO;
 
-        //        momRecipe.MOM_RCPRow = momRcpRow;
-        //        momRecipe.GetMOM_RCPs(out isSuccess, out appMessage, out sysMessage);
+            momRecipe.MOM_RCPRow = momRcpRow;
+            momRecipe.GetMOM_RCPs(out isSuccess, out appMessage, out sysMessage);
 
-        //        if (isSuccess)
-        //        {
-        //            momRcpRpt.DataSource = momRecipe.MOM_RCP_SEARCHDataTable.DefaultView;
-        //            momRcpRpt.DataBind();
-        //        }
-        //    }
-        //    catch
-        //    {
-        //    }
-        //}
+            if (isSuccess)
+            {
+                if (momRecipe.MOM_RCPDataTable.Count > 0)
+                {
+                    momRcpRpt.Visible = true;
+                    momRcpRpt.DataSource = momRecipe.MOM_RCPDataTable.DefaultView;
+                    momRcpRpt.DataBind();
+                    NoDateTable.Visible = false;
+                }
+                else
+                {
+                    momRcpRpt.Visible = false;
+                    NoDateTable.Visible = true;
+                }
+            }
+            else
+            {
+                momRcpRpt.Visible = false;
+                NoDateTable.Visible = true;
+            }
+        }
+        catch
+        {
+        }
     }
 
-    private bool searchResults;
-    public bool SearchResults
+    protected bool ShowRating(string rating)
     {
-        get { return searchResults; }
-        set { searchResults = value; }
+        int cnt = Convert.ToInt32(rating);
+        return cnt == 0 ? false : true;
     }
 
-    private string keyWord;
-    public string KeyWord
+    protected string GetRatings(string rating)
     {
-        get { return keyWord; }
-        set { keyWord = value; }
+        int cnt = Convert.ToInt32(rating);
+        return cnt == 0 ? MOMHelper.HTMLEncode("No Rating") : MOMHelper.HTMLEncode(cnt + " Ratings");
     }
 
-    private string difficulty;
-    public string Difficulty
+    protected string GetViews(string viewCont)
     {
-        get { return difficulty; }
-        set { difficulty = value; }
+        int cnt = Convert.ToInt32(viewCont);
+        return cnt == 0 ? MOMHelper.HTMLEncode("No Views") : MOMHelper.HTMLEncode(cnt + " Views");
     }
 
-    private bool vege;
-    public bool Vege
+    protected string GetComments(string commentCount)
     {
-        get { return vege; }
-        set { vege = value; }
+        int cnt = Convert.ToInt32(commentCount);
+        return cnt == 0 ? MOMHelper.HTMLEncode("No Comments") : MOMHelper.HTMLEncode(cnt + " Comments");
     }
 
-    private bool vegan;
-    public bool Vegan
+    private MOMDataset.MOM_RCPRow searchRow;
+    public MOMDataset.MOM_RCPRow SearchRow
     {
-        get { return vegan; }
-        set { vegan = value; }
-    }
-
-    private bool dairyFree;
-    public bool DairyFree
-    {
-        get { return dairyFree; }
-        set { dairyFree = value; }
-    }
-
-    private bool gluten;
-    public bool Gluten
-    {
-        get { return gluten; }
-        set { gluten = value; }
-    }
-
-    private bool nut;
-    public bool Nut
-    {
-        get { return nut; }
-        set { nut = value; }
-    }
-
-    private string photo;
-    public string Photo
-    {
-        get { return photo; }
-        set { photo = value; }
-    }
-
-    private string ingredients;
-    public string Ingredients
-    {
-        get { return ingredients; }
-        set { ingredients = value; }
+        get { return searchRow; }
+        set { searchRow = value; }
     }
     
 }

@@ -67,6 +67,7 @@
     <Compile Include="MOMQuestions.cs" />
     <Compile Include="MOMRecipe.cs" />
     <Compile Include="MOMRecipeComments.cs" />
+    <Compile Include="MOMTags.cs" />
     <Compile Include="MOMUsers.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

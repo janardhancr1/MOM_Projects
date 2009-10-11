@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using App_Code.TagView;
 using BOMomburbia;
 using DALMomburbia;
 
@@ -17,5 +18,16 @@ public partial class MOMRecipe_MOMRecipeExplore : System.Web.UI.Page
     {
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
+
+        PopulateTagControl(TagCtl);
     }
+
+    virtual protected void PopulateTagControl(PopularTagCtl tagCtl)
+    {
+        // set popular tags data and render method
+        tagCtl.Data = TagData.Get(MOMHelper.MOM_RECIPE_NAMESPACE, 100, false);
+        tagCtl.Display = "list";
+
+    }
+
 }

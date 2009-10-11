@@ -12,6 +12,8 @@ namespace BOMomburbia
 {
     public class MOMHelper
     {
+        public const string MOM_RECIPE_NAMESPACE = "MOM_RECIPE";
+
         static string encodingText = "momBurbia";
 
         public static bool ValidateEmailAddress(string emailAddr)

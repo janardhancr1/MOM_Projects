@@ -1,12 +1,14 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="MOMRecipeSearchControl.ascx.cs"
     Inherits="MOMRecipe_MOMRecipeSearchControl" %>
+    
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Repeater ID="momRcpRpt" runat="server">
     <HeaderTemplate>
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr bgcolor="gray">
-                <th width="30%">
+                <th width="20%">
                     &nbsp;</th>
-                <th width="30%" align="left">
+                <th width="40%" align="left">
                     Recipe</th>
                 <th width="20%" align="left">
                     Cooking Time</th>
@@ -43,27 +45,33 @@
                     <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "COOKINGTIME").ToString()) %>
                 </div>
             </td>
-            <td>
-                <div>
-                <center>
-                <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "RATINGPHOTO").ToString())%>
+            <td align="center">
+                <cc1:Rating ID="Rating1" runat="server" ReadOnly="true" CurrentRating='<%# DataBinder.Eval(Container.DataItem, "RATING") %>'
+                    MaxRating="5" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar"
+                    FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" Style="padding-left: 30%;
+                    padding-top: 5%" Visible='<%# ShowRating(DataBinder.Eval(Container.DataItem, "RATING").ToString()) %>'>
+                </cc1:Rating>
                 <br />
-                <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "RATINGS").ToString()) %>
-                </center>
-                </div>
-                <div>
-                    <center>
-                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "VIEWS").ToString()) %> views<br />
-                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "COMMENTS").ToString()) %> comments
-                    </center>
-                </div>
+                <%# GetRatings(DataBinder.Eval(Container.DataItem, "RATING").ToString()) %>
+                <br />
+                <%# GetViews(DataBinder.Eval(Container.DataItem, "VIEWS").ToString()) %>
+                <br />
+                <%# GetComments(DataBinder.Eval(Container.DataItem, "COMMENTS").ToString()) %>
             </td>
         </tr>
         <tr>
-            <td colspan="4"><hr /></td>
+            <td colspan="4">
+                <hr />
+            </td>
         </tr>
     </ItemTemplate>
     <FooterTemplate>
         </table>
     </FooterTemplate>
 </asp:Repeater>
+<table width="100%" id="NoDateTable" runat="server" visible="false">
+    <tr>
+        <td>
+            <font color="red">No Recipes found..</font></td>
+    </tr>
+</table>

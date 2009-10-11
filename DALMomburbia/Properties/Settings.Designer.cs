@@ -37,10 +37,21 @@ namespace DALMomburbia.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=INSPIRON;Initial Catalog=Momburbia;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=INSPIRON;Initial Catalog=Momburbia;Persist Security Info=True;User ID" +
+            "=sa;Password=sa123")]
         public string MomburbiaConnectionString1 {
             get {
                 return ((string)(this["MomburbiaConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=INSPIRON;Initial Catalog=Momburbia;Integrated Security=True")]
+        public string MomburbiaConnectionString2 {
+            get {
+                return ((string)(this["MomburbiaConnectionString2"]));
             }
         }
     }

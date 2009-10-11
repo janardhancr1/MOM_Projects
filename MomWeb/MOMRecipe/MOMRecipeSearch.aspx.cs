@@ -39,12 +39,12 @@ public partial class MOMRecipe_MOMRecipeSearch : System.Web.UI.Page
             if (momRcpVegan.Checked) momRcpRow.VEGAN = true;
             if (momRcpDairy.Checked) momRcpRow.DAIRY = true;
             if (momRcpGluten.Checked) momRcpRow.GLUTEN = true;
-            if (momRcpNut.Checked) momRcpRow.NUT  = true;
-            if (momRcpPhoto.Checked) momRcpRow.PHOTO  = "True";
+            if (momRcpNut.Checked) momRcpRow.NUT = true;
+            if (momRcpPhoto.Checked) momRcpRow.PHOTO = "True";
 
             momRecipe.MOM_RCPRow = momRcpRow;
             momRecipe.GetMOM_RCPs(out isSuccess, out appMessage, out sysMessage);
-            
+
             if (isSuccess)
             {
                 if (momRecipe.MOM_RCPDataTable.Count > 0)
@@ -57,13 +57,13 @@ public partial class MOMRecipe_MOMRecipeSearch : System.Web.UI.Page
                 else
                 {
                     momRcpRpt.Visible = false;
-                    NoDateTable.Visible = true;   
+                    NoDateTable.Visible = true;
                 }
             }
             else
             {
                 momRcpRpt.Visible = false;
-                NoDateTable.Visible = true;    
+                NoDateTable.Visible = true;
             }
         }
         catch

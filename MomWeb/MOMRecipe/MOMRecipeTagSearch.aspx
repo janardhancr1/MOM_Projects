@@ -1,17 +1,18 @@
 <%@ Page Language="C#" MasterPageFile="~/MOMMaster/MOMTransAd.master" AutoEventWireup="true"
-    CodeFile="MOMRecipeTopRated.aspx.cs" Inherits="MOMRecipe_MOMRecipeTopRated" %>
+    CodeFile="MOMRecipeTagSearch.aspx.cs" Inherits="MOMRecipe_MOMRecipeTagSearch" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="Server">
     <div class="tabs">
         <center>
             <div class="left_tabs">
                 <ul class="toggle_tabs" id="toggle_tabs_unused">
                     <li class="first "><a href="MOMRecipesHome.aspx" onclick="return true;">Home</a></li>
                     <li><a href="MOMRecipeSearch.aspx" onclick="return true;">Search</a></li>
-                    <li><a href="MOMRecipeExplore.aspx" onclick="return true;">Explore Tags</a></li>
+                    <li><a href="MOMRecipeExplore.aspx" class="selected" onclick="return true;">Explore
+                        Tags</a></li>
                     <li><a href="MOMRecipeRecent.aspx" onclick="return true;">Most Recent</a></li>
-                    <li><a href="MOMRecipeTopRated.aspx" class="selected" onclick="return true;">Top Rated</a></li>
+                    <li><a href="MOMRecipeTopRated.aspx" onclick="return true;">Top Rated</a></li>
                     <li class="last "><a href="MOMRecipeAdd.aspx" onclick="return true;">Add a Recipe</a></li>
                 </ul>
             </div>
@@ -102,7 +103,7 @@
         </tr>
     </table>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="momRight" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="momRight" runat="Server">
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td>

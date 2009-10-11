@@ -7,6 +7,10 @@ namespace DALMomburbia
 {
     partial class MOMDataset
     {
+        partial class MOM_TAGSDataTable
+        {
+        }
+    
         partial class MOM_RCP_RTDataTable
         {
         }

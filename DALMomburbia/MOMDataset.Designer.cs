@@ -77,6 +77,8 @@ namespace DALMomburbia {
         
         private MOM_MAILDataTable tableMOM_MAIL;
         
+        private MOM_TAGSDataTable tableMOM_TAGS;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -180,6 +182,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_MAIL"] != null)) {
                     base.Tables.Add(new MOM_MAILDataTable(ds.Tables["MOM_MAIL"]));
+                }
+                if ((ds.Tables["MOM_TAGS"] != null)) {
+                    base.Tables.Add(new MOM_TAGSDataTable(ds.Tables["MOM_TAGS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -434,6 +439,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_TAGSDataTable MOM_TAGS {
+            get {
+                return this.tableMOM_TAGS;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -569,6 +583,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_MAIL"] != null)) {
                     base.Tables.Add(new MOM_MAILDataTable(ds.Tables["MOM_MAIL"]));
+                }
+                if ((ds.Tables["MOM_TAGS"] != null)) {
+                    base.Tables.Add(new MOM_TAGSDataTable(ds.Tables["MOM_TAGS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -756,6 +773,12 @@ namespace DALMomburbia {
                     this.tableMOM_MAIL.InitVars();
                 }
             }
+            this.tableMOM_TAGS = ((MOM_TAGSDataTable)(base.Tables["MOM_TAGS"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_TAGS != null)) {
+                    this.tableMOM_TAGS.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -817,6 +840,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_RCP_SEARCH);
             this.tableMOM_MAIL = new MOM_MAILDataTable();
             base.Tables.Add(this.tableMOM_MAIL);
+            this.tableMOM_TAGS = new MOM_TAGSDataTable();
+            base.Tables.Add(this.tableMOM_TAGS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -950,6 +975,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_TAGS() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1053,6 +1083,8 @@ namespace DALMomburbia {
         public delegate void MOM_RCP_SEARCHRowChangeEventHandler(object sender, MOM_RCP_SEARCHRowChangeEvent e);
         
         public delegate void MOM_MAILRowChangeEventHandler(object sender, MOM_MAILRowChangeEvent e);
+        
+        public delegate void MOM_TAGSRowChangeEventHandler(object sender, MOM_TAGSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7029,7 +7061,7 @@ namespace DALMomburbia {
                         long MOM_USR_ID, 
                         System.DateTime TIME, 
                         string VIEWS, 
-                        string RATING, 
+                        int RATING, 
                         string SUBMITTEDBY, 
                         string COMMENTS) {
                 MOM_RCPRow rowMOM_RCPRow = ((MOM_RCPRow)(this.NewRow()));
@@ -7148,7 +7180,7 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnTIME);
                 this.columnVIEWS = new global::System.Data.DataColumn("VIEWS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVIEWS);
-                this.columnRATING = new global::System.Data.DataColumn("RATING", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnRATING = new global::System.Data.DataColumn("RATING", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRATING);
                 this.columnSUBMITTEDBY = new global::System.Data.DataColumn("SUBMITTEDBY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSUBMITTEDBY);
@@ -9380,6 +9412,307 @@ namespace DALMomburbia {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "MOM_MAILDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_TAGSDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnTAG;
+            
+            private global::System.Data.DataColumn columnNAMESPACE;
+            
+            private global::System.Data.DataColumn columnMOM_ID;
+            
+            private global::System.Data.DataColumn columnTAGS;
+            
+            private global::System.Data.DataColumn columnTAG_COUNT;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSDataTable() {
+                this.TableName = "MOM_TAGS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_TAGSDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_TAGSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TAGColumn {
+                get {
+                    return this.columnTAG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NAMESPACEColumn {
+                get {
+                    return this.columnNAMESPACE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_IDColumn {
+                get {
+                    return this.columnMOM_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TAGSColumn {
+                get {
+                    return this.columnTAGS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TAG_COUNTColumn {
+                get {
+                    return this.columnTAG_COUNT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSRow this[int index] {
+                get {
+                    return ((MOM_TAGSRow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_TAGSRowChangeEventHandler MOM_TAGSRowChanging;
+            
+            public event MOM_TAGSRowChangeEventHandler MOM_TAGSRowChanged;
+            
+            public event MOM_TAGSRowChangeEventHandler MOM_TAGSRowDeleting;
+            
+            public event MOM_TAGSRowChangeEventHandler MOM_TAGSRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_TAGSRow(MOM_TAGSRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSRow AddMOM_TAGSRow(string TAG, string NAMESPACE, int MOM_ID, string TAGS, string TAG_COUNT) {
+                MOM_TAGSRow rowMOM_TAGSRow = ((MOM_TAGSRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        TAG,
+                        NAMESPACE,
+                        MOM_ID,
+                        TAGS,
+                        TAG_COUNT};
+                rowMOM_TAGSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_TAGSRow);
+                return rowMOM_TAGSRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_TAGSDataTable cln = ((MOM_TAGSDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_TAGSDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnTAG = base.Columns["TAG"];
+                this.columnNAMESPACE = base.Columns["NAMESPACE"];
+                this.columnMOM_ID = base.Columns["MOM_ID"];
+                this.columnTAGS = base.Columns["TAGS"];
+                this.columnTAG_COUNT = base.Columns["TAG_COUNT"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnTAG = new global::System.Data.DataColumn("TAG", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTAG);
+                this.columnNAMESPACE = new global::System.Data.DataColumn("NAMESPACE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNAMESPACE);
+                this.columnMOM_ID = new global::System.Data.DataColumn("MOM_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_ID);
+                this.columnTAGS = new global::System.Data.DataColumn("TAGS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTAGS);
+                this.columnTAG_COUNT = new global::System.Data.DataColumn("TAG_COUNT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTAG_COUNT);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnTAG.AllowDBNull = false;
+                this.columnTAG.MaxLength = 100;
+                this.columnNAMESPACE.AllowDBNull = false;
+                this.columnNAMESPACE.MaxLength = 50;
+                this.columnMOM_ID.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSRow NewMOM_TAGSRow() {
+                return ((MOM_TAGSRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_TAGSRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_TAGSRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_TAGSRowChanged != null)) {
+                    this.MOM_TAGSRowChanged(this, new MOM_TAGSRowChangeEvent(((MOM_TAGSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_TAGSRowChanging != null)) {
+                    this.MOM_TAGSRowChanging(this, new MOM_TAGSRowChangeEvent(((MOM_TAGSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_TAGSRowDeleted != null)) {
+                    this.MOM_TAGSRowDeleted(this, new MOM_TAGSRowChangeEvent(((MOM_TAGSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_TAGSRowDeleting != null)) {
+                    this.MOM_TAGSRowDeleting(this, new MOM_TAGSRowChangeEvent(((MOM_TAGSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_TAGSRow(MOM_TAGSRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_TAGSDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -13060,10 +13393,10 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string RATING {
+            public int RATING {
                 get {
                     try {
-                        return ((string)(this[this.tableMOM_RCP.RATINGColumn]));
+                        return ((int)(this[this.tableMOM_RCP.RATINGColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'RATING\' in table \'MOM_RCP\' is DBNull.", e);
@@ -14176,6 +14509,111 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_TAGSRow : global::System.Data.DataRow {
+            
+            private MOM_TAGSDataTable tableMOM_TAGS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_TAGSRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_TAGS = ((MOM_TAGSDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableMOM_TAGS.IDColumn]));
+                }
+                set {
+                    this[this.tableMOM_TAGS.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TAG {
+                get {
+                    return ((string)(this[this.tableMOM_TAGS.TAGColumn]));
+                }
+                set {
+                    this[this.tableMOM_TAGS.TAGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string NAMESPACE {
+                get {
+                    return ((string)(this[this.tableMOM_TAGS.NAMESPACEColumn]));
+                }
+                set {
+                    this[this.tableMOM_TAGS.NAMESPACEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int MOM_ID {
+                get {
+                    return ((int)(this[this.tableMOM_TAGS.MOM_IDColumn]));
+                }
+                set {
+                    this[this.tableMOM_TAGS.MOM_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TAGS {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_TAGS.TAGSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TAGS\' in table \'MOM_TAGS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_TAGS.TAGSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TAG_COUNT {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_TAGS.TAG_COUNTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TAG_COUNT\' in table \'MOM_TAGS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_TAGS.TAG_COUNTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTAGSNull() {
+                return this.IsNull(this.tableMOM_TAGS.TAGSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTAGSNull() {
+                this[this.tableMOM_TAGS.TAGSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTAG_COUNTNull() {
+                return this.IsNull(this.tableMOM_TAGS.TAG_COUNTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTAG_COUNTNull() {
+                this[this.tableMOM_TAGS.TAG_COUNTColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -14968,6 +15406,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_MAILRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_TAGSRowChangeEvent : global::System.EventArgs {
+            
+            private MOM_TAGSRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSRowChangeEvent(MOM_TAGSRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_TAGSRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -49,8 +49,10 @@ public partial class MOMRecipe_MOMRecipeDefault : System.Web.UI.Page
                     momRcpPrepTM.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.PREP_TM);
                     momRcpCookTM.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.COOK_TM);
                     momRcpServTO.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.SERVE_TO);
-                    momRcpTags.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.TAGS);
+                    momRcpTags.Text = MOMHelper.HTMLEncode(momRecipe.MOM_TAGSRow.TAGS);
                     momRcpPhoto.ImageUrl = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.PHOTO);
+
+                    Rating2.CurrentRating = momRecipe.MOM_RCPRow.RATING;
 
                     MOMRecipeComments momRecipeComments = new MOMRecipeComments();
                     MOMDataset.MOM_RCP_CMTRow momRcpCMTRow = momRecipeComments.MOM_RCP_CMTDataTable.NewMOM_RCP_CMTRow();
@@ -118,6 +120,37 @@ public partial class MOMRecipe_MOMRecipeDefault : System.Web.UI.Page
     protected void Rating_Changed(object sender, RatingEventArgs e)
     {
         //e.CallbackResult = "Update done. Value = " + e.Value + " Tag = " + e.Tag;
+        try
+        {
+            MOMRecipe momRecipe = new MOMRecipe();
+            MOMDataset.MOM_RCPRow momRcpRow = momRecipe.MOM_RCPDataTable.NewMOM_RCPRow();
+            momRcpRow.ID = Int32.Parse(MOMHelper.Decrypt(momRcpIDHide.Text));
+            momRcpRow.RATING = Int32.Parse(e.Value);
+            momRecipe.MOM_RCPRow = momRcpRow;
+
+            momRecipe.AddMOM_RCP_RATING(out isSuccess, out appMessage, out sysMessage);
+
+            if (isSuccess)
+            {
+                RedirectToMOMRecipes();
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
     }
 
     private void RedirectToMOMRecipes()

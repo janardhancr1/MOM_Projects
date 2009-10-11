@@ -3,7 +3,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
-<div class="tabs">
+    <div class="tabs">
         <center>
             <div class="left_tabs">
                 <ul class="toggle_tabs" id="toggle_tabs_unused">
@@ -21,7 +21,6 @@
         <tr>
             <td>
                 <asp:Label ID="momQString" runat="server"></asp:Label>
-                <br />
                 <br />
                 <fieldset>
                     <center>
@@ -127,17 +126,17 @@
                                 </div>
                             </td>
                             <td align="center">
-                                <cc1:Rating ID="Rating1" runat="server" ReadOnly="true" CurrentRating="2" MaxRating="5"
-                                    StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" FilledStarCssClass="filledRatingStar"
-                                    EmptyStarCssClass="emptyRatingStar" Style="padding-left: 30%; padding-top: 5%">
+                                <cc1:Rating ID="Rating1" runat="server" ReadOnly="true" CurrentRating='<%# DataBinder.Eval(Container.DataItem, "RATING") %>'
+                                    MaxRating="5" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar"
+                                    FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" Style="padding-left: 30%;
+                                    padding-top: 5%" Visible='<%# RecipeBase.ShowRating(DataBinder.Eval(Container.DataItem, "RATING").ToString()) %>'>
                                 </cc1:Rating>
                                 <br />
-                                <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "RATINGS").ToString()) %>
+                                <%# RecipeBase.GetRatings(DataBinder.Eval(Container.DataItem, "RATING").ToString())%>
                                 <br />
-                                <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "VIEWS").ToString()) %>
-                                views<br />
-                                <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "COMMENTS").ToString()) %>
-                                comments
+                                <%# RecipeBase.GetViews(DataBinder.Eval(Container.DataItem, "VIEWS").ToString())%>
+                                <br />
+                                <%# RecipeBase.GetComments(DataBinder.Eval(Container.DataItem, "COMMENTS").ToString())%>
                             </td>
                         </tr>
                         <tr>

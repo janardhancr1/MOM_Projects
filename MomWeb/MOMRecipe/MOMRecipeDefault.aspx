@@ -53,16 +53,27 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <div>
                                 <div class="momInfo" style="float: left;">
                                     Rate this Recipe: &nbsp;
                                 </div>
-                                <cc1:Rating ID="Rating1" runat="server" CurrentRating="2" MaxRating="5" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar"
-                                    FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" Style="float: left;" OnChanged="Rating_Changed">
+                                <cc1:Rating ID="Rating1" runat="server" CurrentRating="0" MaxRating="5" StarCssClass="ratingStar"
+                                    WaitingStarCssClass="savedRatingStar" FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar"
+                                    Style="float: left;" OnChanged="Rating_Changed">
                                 </cc1:Rating>
                             </div>
-                            
+                        </td>
+                        <td>
+                            <div>
+                                <div class="momInfo" style="float: left;">
+                                    Current Rating: &nbsp;
+                                </div>
+                                <cc1:Rating ID="Rating2" ReadOnly="true" runat="server" CurrentRating="0" MaxRating="5"
+                                    StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" FilledStarCssClass="filledRatingStar"
+                                    EmptyStarCssClass="emptyRatingStar" Style="float: left;">
+                                </cc1:Rating>
+                            </div>
                         </td>
                     </tr>
                     <tr>
