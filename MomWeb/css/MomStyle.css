@@ -139,15 +139,15 @@ input.tbSignIn
 }
 .btnStyle
 { 
-	background:#aad300; 
+	background: White; 
 	height:22px; 
-	border:1px solid #6d8524;
+	border:1px solid #aa3464;
 	font-family: Tahoma;
-	font-size: 10pt;
+	font-size: 8pt;
 	width: 90px; 
-	color:#ffffff; 
+	color:#aa3464; 
 	text-decoration:none; 
-	font-weight:normal;
+	font-weight: bold;
 }
 textarea
 {

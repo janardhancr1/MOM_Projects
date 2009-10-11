@@ -8,7 +8,7 @@
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
-                <mf:momFridge ID="momFridge" runat="server" />
+                
             </td>
         </tr>
     </table>
@@ -28,9 +28,9 @@
                     <tr>
                         <td>
                             <div>
-                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80"></asp:TextBox>
+                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80" style="color:#aa3464;"></asp:TextBox>
                                 <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender" runat="server"
-                                TargetControlID="momShare" WatermarkText="What's on your mind?">
+                                TargetControlID="momShare" WatermarkText="You've got hands full so type anything!!!">
                                 </cc1:TextBoxWatermarkExtender>                            
                             </div>
                             <div class="momSpacer5px"></div>
