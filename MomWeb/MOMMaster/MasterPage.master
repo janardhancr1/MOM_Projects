@@ -39,18 +39,18 @@
     <div class="momBrowserSpace">
         <table style="width: 1000px; padding-bottom:0.5pt;" cellspacing="0">
             <tr>
-                <td>
+                <td style="vertical-align: middle;">
                     <mhl:momHead ID="momTop" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td valign="middle">
+                <td style="vertical-align: middle;">
                     <mh:momHeader ID="momHead" runat="server"></mh:momHeader>
                 </td>
             </tr>
             <tr>
-                <td align="center">
-                    <mmm:momMenu ID="momMailMenu" runat="server" />
+                <td style="vertical-align: middle; text-align: center;">
+                    <mmm:momMenu ID="momMainMenu" runat="server" />
                 </td>
             </tr>
             <tr>
@@ -61,7 +61,7 @@
                                 <asp:contentplaceholder id="momLeft" runat="server">
                                 </asp:contentplaceholder>
                             </td>
-                            <td style="width: 1px; background-color: Pink;">
+                            <td style="width: 1px; background-color: #aa3464;">
                             </td>
                             <td style="width: 548px" valign="top">
                                 <asp:contentplaceholder id="momCenter" runat="server">
