@@ -30,6 +30,12 @@ namespace DALMomburbia
             set { _MOM_USR_BLGDataTable = value; }
         }
 
+        private DataSet _MOM_BLG_MOM_BLG_CMTDataSet = new DataSet();
+        public DataSet MOM_BLG_MOM_BLG_CMTDataSet
+        {
+            get { return _MOM_BLG_MOM_BLG_CMTDataSet; }
+        }
+
         public MOMBlogs()
         {
         }
@@ -118,5 +124,45 @@ namespace DALMomburbia
             }
         }
 
+        public void GetMOM_BLGAndMOM_BLG_CMTByMOM_BLG_ID(int momBlogId, out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "dbo.SP_MOM_BLG_MOM_BLG_CMT_GET_BY_MOM_BLG_ID";
+                momCommand.Parameters.Add("@MOM_BLG_ID", SqlDbType.Int).Value = momBlogId;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = momCommand;
+
+                adapter.Fill(_MOM_BLG_MOM_BLG_CMTDataSet);
+
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
     }
 }

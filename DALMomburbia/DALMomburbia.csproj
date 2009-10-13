@@ -45,6 +45,7 @@
     <Compile Include="DALMOMBase.cs" />
     <Compile Include="MOMAnswers.cs" />
     <Compile Include="MOMBase.cs" />
+    <Compile Include="MOMBlogComment.cs" />
     <Compile Include="MOMBlogs.cs" />
     <Compile Include="MOMCategories.cs" />
     <Compile Include="MOMDataset.cs">
