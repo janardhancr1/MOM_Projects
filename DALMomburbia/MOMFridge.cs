@@ -42,6 +42,13 @@ namespace DALMomburbia
             get { return _MOM_FRG_CMNT_SHAREDRow; }
         }
 
+        MOMDataset _MOM_Dataset = new MOMDataset();
+        public MOMDataset MOM_Dataset
+        {
+            get { return _MOM_Dataset; ;}
+        }
+
+
         public MOMFridge()
             : base()
         {
@@ -69,14 +76,14 @@ namespace DALMomburbia
                 //momCommand.Parameters.Add("@MOM_FRG_ID", SqlDbType.Int).Value = momFrgId;
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
-                MOMDataset momData = new MOMDataset();
-                adapter.TableMappings.Add("Table", momData.MOM_FRG_SHARED.TableName);
-                adapter.TableMappings.Add("Table1", momData.MOM_FRG_CMNT_SHARED.TableName);
+                adapter.TableMappings.Add("Table", _MOM_Dataset.MOM_FRG_SHARED.TableName);
+                adapter.TableMappings.Add("Table1", _MOM_Dataset.MOM_FRG_CMNT_SHARED.TableName);
+                adapter.TableMappings.Add("Table2", _MOM_Dataset.MOM_RCP.TableName);
                 adapter.SelectCommand = momCommand;
-                adapter.Fill(momData);
+                adapter.Fill(_MOM_Dataset);
 
-                _MOM_FRG_SHAREDDataTable = momData.MOM_FRG_SHARED;
-                _MOM_FRG_CMNT_SHAREDDataTable = momData.MOM_FRG_CMNT_SHARED;
+                _MOM_FRG_SHAREDDataTable = _MOM_Dataset.MOM_FRG_SHARED;
+                _MOM_FRG_CMNT_SHAREDDataTable = _MOM_Dataset.MOM_FRG_CMNT_SHARED;
             }
             catch (MOMException X)
             {

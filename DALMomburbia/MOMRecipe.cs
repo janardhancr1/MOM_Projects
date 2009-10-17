@@ -129,7 +129,9 @@ namespace DALMomburbia
                 adapter.Fill(momData);
 
                 _MOM_RCPRow = momData.MOM_RCP[0];
-                _MOM_TAGSRow = momData.MOM_TAGS[0];
+
+                if(momData.MOM_TAGS.Rows.Count > 0)
+                    _MOM_TAGSRow = momData.MOM_TAGS[0];
             }
             catch (MOMException X)
             {

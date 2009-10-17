@@ -44,8 +44,11 @@ public partial class _Default : System.Web.UI.Page
 
                 if (isSuccess)
                 {
-                        Session.Add("momFridge", momFrg.MOM_FRG_SHAREDDataTable);
-                        Session.Add("momFridgeComments", momFrg.MOM_FRG_CMNT_SHAREDDataTable);
+                    Session.Add("momFridge", momFrg.MOM_FRG_SHAREDDataTable);
+                    Session.Add("momFridgeComments", momFrg.MOM_FRG_CMNT_SHAREDDataTable);
+                    momRecipeRecent.DataSource = momFrg.MOM_Dataset.MOM_RCP.DefaultView;
+                    momRecipeRecent.DataBind();
+                    BindMOM_FRG_SHAREDData();
                 }
                 else
                 {
@@ -60,10 +63,6 @@ public partial class _Default : System.Web.UI.Page
             }
             catch (Exception X)
             {
-            }
-            finally
-            {
-                BindMOM_FRG_SHAREDData();
             }
         }
     }

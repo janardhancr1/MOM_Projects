@@ -49,7 +49,10 @@ public partial class MOMRecipe_MOMRecipeDefault : System.Web.UI.Page
                     momRcpPrepTM.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.PREP_TM);
                     momRcpCookTM.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.COOK_TM);
                     momRcpServTO.Text = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.SERVE_TO);
-                    momRcpTags.Text = MOMHelper.HTMLEncode(momRecipe.MOM_TAGSRow.TAGS);
+
+                    if(momRecipe.MOM_TAGSRow != null)
+                        momRcpTags.Text = MOMHelper.HTMLEncode(momRecipe.MOM_TAGSRow.TAGS);
+
                     momRcpPhoto.ImageUrl = MOMHelper.HTMLEncode(momRecipe.MOM_RCPRow.PHOTO);
 
                     Rating2.CurrentRating = momRecipe.MOM_RCPRow.RATING;
@@ -72,7 +75,7 @@ public partial class MOMRecipe_MOMRecipeDefault : System.Web.UI.Page
                     }
                 }
             }
-            catch
+            catch(Exception X)
             { }
         }
     }

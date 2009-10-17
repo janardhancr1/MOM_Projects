@@ -8,7 +8,37 @@
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
-                
+                <div>
+                    <table width="100%" cellpadding="5">
+                        <tr>
+                            <td class="momInfo">
+                                Recent Recipe Posts
+                            </td>
+                        </tr>
+                        <asp:Repeater ID="momRecipeRecent" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <small>
+                                            <a style="color: Black;" href="../MOMRecipe/MOMRecipeDefault.aspx?mrcpid=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString()), 20) %>
+                                            </a>
+                                        </small>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>                        
+                        </asp:Repeater>
+                        <tr>
+                            <td class="momInfo">
+                                <a href="../MOMRecipe/MOMRecipesHome.aspx">
+                                    Go to Recipe Box...
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                </div>
             </td>
         </tr>
     </table>

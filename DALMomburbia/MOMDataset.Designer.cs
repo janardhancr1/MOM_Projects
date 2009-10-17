@@ -7229,13 +7229,9 @@ namespace DALMomburbia {
                 this.columnPREP_TM.MaxLength = 100;
                 this.columnCOOK_TM.MaxLength = 100;
                 this.columnSERVE_TO.MaxLength = 100;
-                this.columnDIFFICULTY.AllowDBNull = false;
                 this.columnDIFFICULTY.MaxLength = 100;
-                this.columnINGREDIENTS.AllowDBNull = false;
                 this.columnINGREDIENTS.MaxLength = 2147483647;
-                this.columnMETHOD.AllowDBNull = false;
                 this.columnMETHOD.MaxLength = 2147483647;
-                this.columnTIME.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13551,7 +13547,12 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string DIFFICULTY {
                 get {
-                    return ((string)(this[this.tableMOM_RCP.DIFFICULTYColumn]));
+                    try {
+                        return ((string)(this[this.tableMOM_RCP.DIFFICULTYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DIFFICULTY\' in table \'MOM_RCP\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableMOM_RCP.DIFFICULTYColumn] = value;
@@ -13561,7 +13562,12 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string INGREDIENTS {
                 get {
-                    return ((string)(this[this.tableMOM_RCP.INGREDIENTSColumn]));
+                    try {
+                        return ((string)(this[this.tableMOM_RCP.INGREDIENTSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'INGREDIENTS\' in table \'MOM_RCP\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableMOM_RCP.INGREDIENTSColumn] = value;
@@ -13571,7 +13577,12 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string METHOD {
                 get {
-                    return ((string)(this[this.tableMOM_RCP.METHODColumn]));
+                    try {
+                        return ((string)(this[this.tableMOM_RCP.METHODColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'METHOD\' in table \'MOM_RCP\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableMOM_RCP.METHODColumn] = value;
@@ -13686,7 +13697,12 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public System.DateTime TIME {
                 get {
-                    return ((global::System.DateTime)(this[this.tableMOM_RCP.TIMEColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMOM_RCP.TIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIME\' in table \'MOM_RCP\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableMOM_RCP.TIMEColumn] = value;
@@ -13814,6 +13830,36 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDIFFICULTYNull() {
+                return this.IsNull(this.tableMOM_RCP.DIFFICULTYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDIFFICULTYNull() {
+                this[this.tableMOM_RCP.DIFFICULTYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsINGREDIENTSNull() {
+                return this.IsNull(this.tableMOM_RCP.INGREDIENTSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetINGREDIENTSNull() {
+                this[this.tableMOM_RCP.INGREDIENTSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMETHODNull() {
+                return this.IsNull(this.tableMOM_RCP.METHODColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMETHODNull() {
+                this[this.tableMOM_RCP.METHODColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVEGENull() {
                 return this.IsNull(this.tableMOM_RCP.VEGEColumn);
             }
@@ -13881,6 +13927,16 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetMOM_USR_IDNull() {
                 this[this.tableMOM_RCP.MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTIMENull() {
+                return this.IsNull(this.tableMOM_RCP.TIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTIMENull() {
+                this[this.tableMOM_RCP.TIMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
