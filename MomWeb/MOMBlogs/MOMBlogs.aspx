@@ -6,7 +6,7 @@
     <table width="100%" cellpadding="3" cellspacing="0">
         <tr>
             <td colspan="2">
-                <div class="grayHeader"><a href="MOMCreateBlog.aspx">Create Blog</a></div>
+                <div><a href="MOMCreateBlog.aspx" class="grayHeader">Create Blog</a></div>
             </td>
         </tr>
         <tr>
