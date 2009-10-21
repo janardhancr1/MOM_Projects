@@ -79,6 +79,7 @@ namespace DALMomburbia
                 adapter.TableMappings.Add("Table", _MOM_Dataset.MOM_FRG_SHARED.TableName);
                 adapter.TableMappings.Add("Table1", _MOM_Dataset.MOM_FRG_CMNT_SHARED.TableName);
                 adapter.TableMappings.Add("Table2", _MOM_Dataset.MOM_RCP.TableName);
+                adapter.TableMappings.Add("Table3", _MOM_Dataset.MOM_USR.TableName);
                 adapter.SelectCommand = momCommand;
                 adapter.Fill(_MOM_Dataset);
 

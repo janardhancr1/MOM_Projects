@@ -8,10 +8,28 @@
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
+                <div class="momSpacer10px"></div>
                 <div>
-                    <table width="100%" cellpadding="5">
+                    <table width="98%" cellpadding="5">
+                        <tr>
+                            <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
+                                Recent Group Posts
+                            </td>
+                        </tr>
                         <tr>
                             <td class="momInfo">
+                                <a href="../MOMRecipe/MOMRecipesHome.aspx">
+                                    Go to my groups...
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                   
+                </div>
+                <div class="momSpacer10px"></div>
+                <div>
+                    <table width="98%" cellpadding="5">
+                        <tr>
+                            <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
                                 Recent Recipe Posts
                             </td>
                         </tr>
@@ -36,8 +54,6 @@
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div>
                 </div>
             </td>
         </tr>
@@ -103,7 +119,7 @@
                         <td>
                             <table cellpadding="1" class="momShareMenu">
                                 <tr>
-                                    <td>
+                                    <td class="momInfo">
                                         Attach
                                     </td>
                                     <td>
@@ -231,9 +247,87 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="momRight" runat="server">
-    <table cellpadding="0" cellspacing="0" width="100%">
+    <div class="momSpacer10px"></div>
+    <table cellpadding="5" cellspacing="0" width="100%" style="background-color: mistyrose;">
         <tr>
             <td>
+                <div>
+                    <table cellpadding="3">
+                        <tr>
+                            <td colspan="2" style="font-weight: bold;">
+                                Invite Your Friends
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="../images/m.gif" />
+                            </td>
+                            <td>
+                                <div class="momInfo">
+                                    <a href="../MOMFriends/MOMFriendsInvite.aspx">Connect With More Friends</a>
+                                </div>
+                                <div class="momSpacer10px"></div>
+                                <div>
+                                    <small>
+                                        Share the Momburbia experience with more of your friends. Use our simple invite tools to start connecting.
+                                    </small>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="styleLine"></div>
+                <div class="momSpacer10px"></div>
+                <div>
+                    <table width="100%">
+                        <tr>
+                            <td style="width: 80%;font-weight: bold;">
+                                People You May Know
+                            </td>
+                            <td style="width: 20%;" align="right">
+                                <a href="">See All</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="momSpacer10px"></div>
+                            </td>
+                        </tr>
+                        <asp:Repeater ID="momKnownFriends" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td colspan="2">
+                                        <table width="100%" cellpadding="3">
+                                            <tr>
+                                                <td style="width: 10%;">
+                                                    <a href="MOMHome.aspx?<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                        <img height="40" width="40" src="<%# DataBinder.Eval(Container.DataItem, "PICTURE") %>" />
+                                                    </a>
+                                                </td>
+                                                <td style="width: 70%;">
+                                                    <div class="momInfo">
+                                                        <a href="MOMHome.aspx?<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                            <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "FULL_NAME").ToString()), 30) %>
+                                                        </a>
+                                                    </div>
+                                                    <div class="momSpacer5px"></div>
+                                                    <div>
+                                                        Add as Friend
+                                                    </div>
+                                                </td>
+                                                <td align="right">
+                                                    <img src="../images/icon13.gif" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="styleLine"></div>
+                                        <div class="momSpacer10px"></div>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </table>
+                </div>
             </td>
         </tr>
     </table>
