@@ -1,15 +1,15 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MOMMaster/MasterPage.master" AutoEventWireup="true" CodeFile="MOMHome.aspx.cs" Inherits="_Default" %>
+<%@ Page Language="C#" MasterPageFile="~/MOMMaster/MasterPage.master" AutoEventWireup="true" CodeFile="MOMGroup.aspx.cs" Inherits="MOMGroups_MOMGroup" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register TagPrefix="mf" TagName="momFridge" Src="~/MOMUserControls/MOMFridgeMenu.ascx" %>
 <%@ Register TagPrefix="mp" TagName="momPopup" Src="~/MOMUserControls/MOMPopUpControl.ascx" %>
 
-<asp:Content ContentPlaceHolderID="momLeft" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="momLeft" runat="server">
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
                 <div class="momSpacer10px"></div>
-                <div>
+                <%--<div>
                     <table width="98%" cellpadding="5">
                         <tr>
                             <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
@@ -24,9 +24,9 @@
                             </td>
                         </tr>
                     </table>                   
-                </div>
+                </div>--%>
                 <div class="momSpacer10px"></div>
-                <div>
+                <%--<div>
                     <table width="98%" cellpadding="5">
                         <tr>
                             <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
@@ -54,13 +54,14 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div>--%>
             </td>
         </tr>
     </table>
+    <asp:Label ID="momGroupUserId" runat="server" Visible="false"></asp:Label>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="momCenter" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="momCenter" runat="server">
     <table width="100%" cellpadding="2" cellspacing="0">
         <tr>
             <td>
@@ -246,8 +247,8 @@
     <mp:momPopup ID="momPopupExtender" runat="server" />
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="momRight" runat="server">
-    <div class="momSpacer10px"></div>
+<asp:Content ID="Content3" ContentPlaceHolderID="momRight" runat="server">
+    <%--<div class="momSpacer10px"></div>
     <table cellpadding="5" cellspacing="0" width="100%" style="background-color: mistyrose;">
         <tr>
             <td>
@@ -300,13 +301,13 @@
                                         <table width="100%" cellpadding="3">
                                             <tr>
                                                 <td style="width: 10%;">
-                                                    <a href="MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                    <a href="../MOMHome/MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
                                                         <img height="40" width="40" src="<%# DataBinder.Eval(Container.DataItem, "PICTURE") %>" />
                                                     </a>
                                                 </td>
                                                 <td style="width: 70%;">
                                                     <div class="momInfo">
-                                                        <a href="MOMHome.aspx?<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                        <a href="../MOMHome/MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
                                                             <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "FULL_NAME").ToString()), 30) %>
                                                         </a>
                                                     </div>
@@ -330,5 +331,5 @@
                 </div>
             </td>
         </tr>
-    </table>
+    </table>--%>
 </asp:Content>

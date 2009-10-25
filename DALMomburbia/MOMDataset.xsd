@@ -84,6 +84,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="PICTURE_STATUS" msprop:Generator_UserColumnName="PICTURE_STATUS" msprop:Generator_ColumnPropNameInRow="PICTURE_STATUS" msprop:Generator_ColumnVarNameInTable="columnPICTURE_STATUS" msprop:Generator_ColumnPropNameInTable="PICTURE_STATUSColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TYPE" msprop:Generator_UserColumnName="TYPE" msprop:Generator_ColumnVarNameInTable="columnTYPE" msprop:Generator_ColumnPropNameInRow="TYPE" msprop:Generator_ColumnPropNameInTable="TYPEColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -416,6 +417,7 @@
               <xs:element name="BLOCKED_TIME" msprop:Generator_UserColumnName="BLOCKED_TIME" msprop:Generator_ColumnPropNameInRow="BLOCKED_TIME" msprop:Generator_ColumnVarNameInTable="columnBLOCKED_TIME" msprop:Generator_ColumnPropNameInTable="BLOCKED_TIMEColumn" type="xs:dateTime" minOccurs="0" />
               <xs:element name="MOM_USR_ID" msprop:Generator_UserColumnName="MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnMOM_USR_ID" msprop:Generator_ColumnPropNameInRow="MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="MOM_USR_IDColumn" type="xs:long" minOccurs="0" />
               <xs:element name="MEMBERS" msprop:Generator_UserColumnName="MEMBERS" msprop:Generator_ColumnVarNameInTable="columnMEMBERS" msprop:Generator_ColumnPropNameInRow="MEMBERS" msprop:Generator_ColumnPropNameInTable="MEMBERSColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GRP_MOM_USR_ID" msprop:Generator_UserColumnName="GRP_MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnGRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInRow="GRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="GRP_MOM_USR_IDColumn" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -441,6 +443,7 @@
               <xs:element name="MOM_GRP_MEMBERS" msprop:Generator_UserColumnName="MOM_GRP_MEMBERS" msprop:Generator_ColumnPropNameInRow="MOM_GRP_MEMBERS" msprop:Generator_ColumnVarNameInTable="columnMOM_GRP_MEMBERS" msprop:Generator_ColumnPropNameInTable="MOM_GRP_MEMBERSColumn" type="xs:int" minOccurs="0" />
               <xs:element name="MEMBERS" msprop:Generator_UserColumnName="MEMBERS" msprop:Generator_ColumnVarNameInTable="columnMEMBERS" msprop:Generator_ColumnPropNameInRow="MEMBERS" msprop:Generator_ColumnPropNameInTable="MEMBERSColumn" type="xs:int" minOccurs="0" />
               <xs:element name="DESCRIPTION" msprop:Generator_UserColumnName="DESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GRP_MOM_USR_ID" msprop:Generator_UserColumnName="GRP_MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnGRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInRow="GRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="GRP_MOM_USR_IDColumn" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -665,6 +668,8 @@
               </xs:element>
               <xs:element name="TIME" msprop:Generator_UserColumnName="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" type="xs:dateTime" minOccurs="0" />
               <xs:element name="HIDE" msprop:Generator_UserColumnName="HIDE" msprop:Generator_ColumnVarNameInTable="columnHIDE" msprop:Generator_ColumnPropNameInRow="HIDE" msprop:Generator_ColumnPropNameInTable="HIDEColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FRIDGE_OPTION" msprop:Generator_UserColumnName="FRIDGE_OPTION" msprop:Generator_ColumnPropNameInRow="FRIDGE_OPTION" msprop:Generator_ColumnVarNameInTable="columnFRIDGE_OPTION" msprop:Generator_ColumnPropNameInTable="FRIDGE_OPTIONColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GRP_MOM_USR_ID" msprop:Generator_UserColumnName="GRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInRow="GRP_MOM_USR_ID" msprop:Generator_ColumnVarNameInTable="columnGRP_MOM_USR_ID" msprop:Generator_ColumnPropNameInTable="GRP_MOM_USR_IDColumn" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

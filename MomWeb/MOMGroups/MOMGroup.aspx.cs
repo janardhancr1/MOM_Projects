@@ -1,17 +1,18 @@
 using System;
 using System.Data;
 using System.Configuration;
+using System.Collections;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using DALMomburbia;
 using BOMomburbia;
+using DALMomburbia;
 using System.Data.SqlClient;
 
-public partial class _Default : System.Web.UI.Page 
+public partial class MOMGroups_MOMGroup : System.Web.UI.Page
 {
     bool isSuccess;
     string appMessage;
@@ -24,34 +25,33 @@ public partial class _Default : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            if (Request.QueryString["mGi"] != null)
+                momGroupUserId.Text = Request.QueryString["mGi"];
+            else
+                Response.Redirect("../MOMHome/MOMHome.aspx");
+
             try
             {
                 momUserName.Text = MOMHelper.HTMLEncode(((MOMDataset.MOM_USRRow)Session["momUser"]).FULL_NAME);
 
                 MOMFridge momFrg = new MOMFridge();
                 MOMDataset.MOM_FRGRow frgRow = momFrg.MOM_FRGDataTable.NewMOM_FRGRow();
-                frgRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
-
-                if (Request.QueryString["mF"] != null)
-                {
-                    string filter = Request.QueryString["mF"];
-                    if (filter == "S")
-                        frgRow.TYPE = filter;
-                }
+                frgRow.MOM_USR_ID = int.Parse(MOMHelper.Decrypt(momGroupUserId.Text));
+                frgRow.TYPE = "G";
 
                 momFrg.MOM_FRGRow = frgRow;
-                momFrg.GetMOM_FRGDataTableByMOM_USR_ID(out isSuccess, out appMessage, out sysMessage);
+                momFrg.GetMOM_FRGDataTableByGRP_MOM_USR_ID(out isSuccess, out appMessage, out sysMessage);
 
                 if (isSuccess)
                 {
                     Session.Add("momFridge", momFrg.MOM_FRG_SHAREDDataTable);
                     Session.Add("momFridgeComments", momFrg.MOM_FRG_CMNT_SHAREDDataTable);
 
-                    momRecipeRecent.DataSource = momFrg.MOM_Dataset.MOM_RCP.DefaultView;
-                    momRecipeRecent.DataBind();
+                    //momRecipeRecent.DataSource = momFrg.MOM_Dataset.MOM_RCP.DefaultView;
+                    //momRecipeRecent.DataBind();
 
-                    momKnownFriends.DataSource = momFrg.MOM_Dataset.MOM_USR.DefaultView;
-                    momKnownFriends.DataBind();
+                    //momKnownFriends.DataSource = momFrg.MOM_Dataset.MOM_USR.DefaultView;
+                    //momKnownFriends.DataBind();
 
                     BindMOM_FRG_SHAREDData();
                 }
@@ -71,6 +71,7 @@ public partial class _Default : System.Web.UI.Page
             }
         }
     }
+
     private void BindMOM_FRG_SHAREDData()
     {
         momFridgeShared.DataSource = ((MOMDataset.MOM_FRG_SHAREDDataTable)Session["momFridge"]).DefaultView;
@@ -91,8 +92,9 @@ public partial class _Default : System.Web.UI.Page
 
             momFrgRow.MOM_USR_ID = momUserRow.ID;
             momFrgRow.SHARE = momShare.Text;
-            momFrgRow.TYPE = "D";
-            momFrgRow.FRIDGE_OPTION = 1;
+            momFrgRow.TYPE = "G";
+            momFrgRow.FRIDGE_OPTION = 2;
+            momFrgRow.GRP_MOM_USR_ID = int.Parse(MOMHelper.Decrypt(momGroupUserId.Text));
 
             if (momShareLinkStatus.Value.Equals("T"))
             {
@@ -124,10 +126,10 @@ public partial class _Default : System.Web.UI.Page
             momFrgSharedRow.MOM_USR_ID = momUserRow.ID;
             momFrgSharedRow.ID = momFrg.MOM_FRGRow.ID;
 
-            if(!momFrg.MOM_FRGRow.IsTYPENull())
+            if (!momFrg.MOM_FRGRow.IsTYPENull())
                 momFrgSharedRow.TYPE = momFrg.MOM_FRGRow.TYPE;
 
-            if(!momFrg.MOM_FRGRow.IsTYPE_SHARENull())
+            if (!momFrg.MOM_FRGRow.IsTYPE_SHARENull())
                 momFrgSharedRow.TYPE_SHARE = momFrg.MOM_FRGRow.TYPE_SHARE;
 
             //momFrgSharedRow.TIME = momFrg.MOM_FRGRow.TIME;

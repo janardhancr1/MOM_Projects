@@ -12,7 +12,7 @@
                 <div style="border: 1px solid pink; width: 335px;">
                     <table width="100%">
                         <tr>
-                            <td class="grayHeader">Recently joined by your friends</td>
+                            <td class="grayHeader" style="height: 25px;">Recently joined by your friends</td>
                         </tr>
                         <tr>
                             <td><div class="styleLine"></div></td>
@@ -28,7 +28,9 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "MOM_GRP_NAME").ToString())%>
+                                                    <a href="MOMGroup.aspx?mGi=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "GRP_MOM_USR_ID").ToString()) %>">
+                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "MOM_GRP_NAME").ToString())%>
+                                                    </a>
                                                 </div>
                                                 <div class="momSpacer5px"></div>
                                                 <div>
@@ -65,7 +67,7 @@
                 <div style="border: 1px solid pink;  width: 335px;">
                     <table width="100%">
                         <tr>
-                            <td class="grayHeader">Your recently updated groups</td>
+                            <td class="grayHeader" style="height: 25px;">Your recently updated groups</td>
                         </tr>
                         <tr>
                             <td><div class="styleLine"></div></td>
@@ -81,7 +83,9 @@
                                                 </td>
                                                 <td>
                                                     <div>
+                                                        <a href="MOMGroup.aspx?mGi=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "GRP_MOM_USR_ID").ToString()) %>">
                                                         <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString()) %>
+                                                        </a>
                                                     </div>
                                                     <div class="momSpacer5px"></div>
                                                     <div>

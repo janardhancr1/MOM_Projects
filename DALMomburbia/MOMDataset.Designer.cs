@@ -1158,6 +1158,8 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnPICTURE_STATUS;
             
+            private global::System.Data.DataColumn columnTYPE;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_USRDataTable() {
                 this.TableName = "MOM_USR";
@@ -1301,6 +1303,13 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TYPEColumn {
+                get {
+                    return this.columnTYPE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1329,7 +1338,23 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_USRRow AddMOM_USRRow(string EMAIL_ADDR, string PASSWORD, string FIRST_NAME, string LAST_NAME, string FULL_NAME, string SEX, System.DateTime DOB, string DISPLAY_NAME, bool NEWLETTER, System.DateTime TIME, System.DateTime LAST_LOGIN_DATE, bool ACTIVE, bool BLOCKED, string PICTURE, bool PICTURE_STATUS) {
+            public MOM_USRRow AddMOM_USRRow(
+                        string EMAIL_ADDR, 
+                        string PASSWORD, 
+                        string FIRST_NAME, 
+                        string LAST_NAME, 
+                        string FULL_NAME, 
+                        string SEX, 
+                        System.DateTime DOB, 
+                        string DISPLAY_NAME, 
+                        bool NEWLETTER, 
+                        System.DateTime TIME, 
+                        System.DateTime LAST_LOGIN_DATE, 
+                        bool ACTIVE, 
+                        bool BLOCKED, 
+                        string PICTURE, 
+                        bool PICTURE_STATUS, 
+                        string TYPE) {
                 MOM_USRRow rowMOM_USRRow = ((MOM_USRRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1347,7 +1372,8 @@ namespace DALMomburbia {
                         ACTIVE,
                         BLOCKED,
                         PICTURE,
-                        PICTURE_STATUS};
+                        PICTURE_STATUS,
+                        TYPE};
                 rowMOM_USRRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMOM_USRRow);
                 return rowMOM_USRRow;
@@ -1388,6 +1414,7 @@ namespace DALMomburbia {
                 this.columnBLOCKED = base.Columns["BLOCKED"];
                 this.columnPICTURE = base.Columns["PICTURE"];
                 this.columnPICTURE_STATUS = base.Columns["PICTURE_STATUS"];
+                this.columnTYPE = base.Columns["TYPE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1424,6 +1451,8 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnPICTURE);
                 this.columnPICTURE_STATUS = new global::System.Data.DataColumn("PICTURE_STATUS", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPICTURE_STATUS);
+                this.columnTYPE = new global::System.Data.DataColumn("TYPE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTYPE);
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
@@ -5153,6 +5182,8 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnMEMBERS;
             
+            private global::System.Data.DataColumn columnGRP_MOM_USR_ID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_GRPDataTable() {
                 this.TableName = "MOM_GRP";
@@ -5282,6 +5313,13 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GRP_MOM_USR_IDColumn {
+                get {
+                    return this.columnGRP_MOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5310,7 +5348,7 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_GRPRow AddMOM_GRPRow(string NAME, string DESCRIPTION, string TYPE, string RECENT_NEWS, string OFFICE, string EMAIL_ADDR, string STREET, string CITY, System.DateTime TIME, bool BLOCKED, System.DateTime BLOCKED_TIME, long MOM_USR_ID, int MEMBERS) {
+            public MOM_GRPRow AddMOM_GRPRow(string NAME, string DESCRIPTION, string TYPE, string RECENT_NEWS, string OFFICE, string EMAIL_ADDR, string STREET, string CITY, System.DateTime TIME, bool BLOCKED, System.DateTime BLOCKED_TIME, long MOM_USR_ID, int MEMBERS, long GRP_MOM_USR_ID) {
                 MOM_GRPRow rowMOM_GRPRow = ((MOM_GRPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -5326,7 +5364,8 @@ namespace DALMomburbia {
                         BLOCKED,
                         BLOCKED_TIME,
                         MOM_USR_ID,
-                        MEMBERS};
+                        MEMBERS,
+                        GRP_MOM_USR_ID};
                 rowMOM_GRPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMOM_GRPRow);
                 return rowMOM_GRPRow;
@@ -5365,6 +5404,7 @@ namespace DALMomburbia {
                 this.columnBLOCKED_TIME = base.Columns["BLOCKED_TIME"];
                 this.columnMOM_USR_ID = base.Columns["MOM_USR_ID"];
                 this.columnMEMBERS = base.Columns["MEMBERS"];
+                this.columnGRP_MOM_USR_ID = base.Columns["GRP_MOM_USR_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5397,6 +5437,8 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnMOM_USR_ID);
                 this.columnMEMBERS = new global::System.Data.DataColumn("MEMBERS", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMEMBERS);
+                this.columnGRP_MOM_USR_ID = new global::System.Data.DataColumn("GRP_MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGRP_MOM_USR_ID);
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
@@ -5547,6 +5589,8 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnDESCRIPTION;
             
+            private global::System.Data.DataColumn columnGRP_MOM_USR_ID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_GRP_USRDataTable() {
                 this.TableName = "MOM_GRP_USR";
@@ -5627,6 +5671,13 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GRP_MOM_USR_IDColumn {
+                get {
+                    return this.columnGRP_MOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5655,7 +5706,7 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_GRP_USRRow AddMOM_GRP_USRRow(int MOM_GRP_ID, string MOM_GRP_NAME, long MOM_USR_ID, string MOM_USR_NAME, int MOM_GRP_MEMBERS, int MEMBERS, string DESCRIPTION) {
+            public MOM_GRP_USRRow AddMOM_GRP_USRRow(int MOM_GRP_ID, string MOM_GRP_NAME, long MOM_USR_ID, string MOM_USR_NAME, int MOM_GRP_MEMBERS, int MEMBERS, string DESCRIPTION, long GRP_MOM_USR_ID) {
                 MOM_GRP_USRRow rowMOM_GRP_USRRow = ((MOM_GRP_USRRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MOM_GRP_ID,
@@ -5664,7 +5715,8 @@ namespace DALMomburbia {
                         MOM_USR_NAME,
                         MOM_GRP_MEMBERS,
                         MEMBERS,
-                        DESCRIPTION};
+                        DESCRIPTION,
+                        GRP_MOM_USR_ID};
                 rowMOM_GRP_USRRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMOM_GRP_USRRow);
                 return rowMOM_GRP_USRRow;
@@ -5696,6 +5748,7 @@ namespace DALMomburbia {
                 this.columnMOM_GRP_MEMBERS = base.Columns["MOM_GRP_MEMBERS"];
                 this.columnMEMBERS = base.Columns["MEMBERS"];
                 this.columnDESCRIPTION = base.Columns["DESCRIPTION"];
+                this.columnGRP_MOM_USR_ID = base.Columns["GRP_MOM_USR_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5714,6 +5767,8 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnMEMBERS);
                 this.columnDESCRIPTION = new global::System.Data.DataColumn("DESCRIPTION", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDESCRIPTION);
+                this.columnGRP_MOM_USR_ID = new global::System.Data.DataColumn("GRP_MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGRP_MOM_USR_ID);
                 this.columnMOM_GRP_ID.AllowDBNull = false;
                 this.columnMOM_GRP_NAME.MaxLength = 255;
                 this.columnMOM_USR_ID.AllowDBNull = false;
@@ -8219,6 +8274,10 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnHIDE;
             
+            private global::System.Data.DataColumn columnFRIDGE_OPTION;
+            
+            private global::System.Data.DataColumn columnGRP_MOM_USR_ID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_FRGDataTable() {
                 this.TableName = "MOM_FRG";
@@ -8299,6 +8358,20 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FRIDGE_OPTIONColumn {
+                get {
+                    return this.columnFRIDGE_OPTION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GRP_MOM_USR_IDColumn {
+                get {
+                    return this.columnGRP_MOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8327,7 +8400,7 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_FRGRow AddMOM_FRGRow(long MOM_USR_ID, string SHARE, string TYPE, string TYPE_SHARE, System.DateTime TIME, bool HIDE) {
+            public MOM_FRGRow AddMOM_FRGRow(long MOM_USR_ID, string SHARE, string TYPE, string TYPE_SHARE, System.DateTime TIME, bool HIDE, int FRIDGE_OPTION, long GRP_MOM_USR_ID) {
                 MOM_FRGRow rowMOM_FRGRow = ((MOM_FRGRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -8336,7 +8409,9 @@ namespace DALMomburbia {
                         TYPE,
                         TYPE_SHARE,
                         TIME,
-                        HIDE};
+                        HIDE,
+                        FRIDGE_OPTION,
+                        GRP_MOM_USR_ID};
                 rowMOM_FRGRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMOM_FRGRow);
                 return rowMOM_FRGRow;
@@ -8368,6 +8443,8 @@ namespace DALMomburbia {
                 this.columnTYPE_SHARE = base.Columns["TYPE_SHARE"];
                 this.columnTIME = base.Columns["TIME"];
                 this.columnHIDE = base.Columns["HIDE"];
+                this.columnFRIDGE_OPTION = base.Columns["FRIDGE_OPTION"];
+                this.columnGRP_MOM_USR_ID = base.Columns["GRP_MOM_USR_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8386,6 +8463,10 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnTIME);
                 this.columnHIDE = new global::System.Data.DataColumn("HIDE", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHIDE);
+                this.columnFRIDGE_OPTION = new global::System.Data.DataColumn("FRIDGE_OPTION", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFRIDGE_OPTION);
+                this.columnGRP_MOM_USR_ID = new global::System.Data.DataColumn("GRP_MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGRP_MOM_USR_ID);
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
@@ -10315,6 +10396,21 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TYPE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_USR.TYPEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE\' in table \'MOM_USR\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR.TYPEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsEMAIL_ADDRNull() {
                 return this.IsNull(this.tableMOM_USR.EMAIL_ADDRColumn);
             }
@@ -10462,6 +10558,16 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPICTURE_STATUSNull() {
                 this[this.tableMOM_USR.PICTURE_STATUSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTYPENull() {
+                return this.IsNull(this.tableMOM_USR.TYPEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTYPENull() {
+                this[this.tableMOM_USR.TYPEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12500,6 +12606,21 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long GRP_MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_GRP.GRP_MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GRP_MOM_USR_ID\' in table \'MOM_GRP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP.GRP_MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsNAMENull() {
                 return this.IsNull(this.tableMOM_GRP.NAMEColumn);
             }
@@ -12628,6 +12749,16 @@ namespace DALMomburbia {
             public void SetMEMBERSNull() {
                 this[this.tableMOM_GRP.MEMBERSColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGRP_MOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_GRP.GRP_MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGRP_MOM_USR_IDNull() {
+                this[this.tableMOM_GRP.GRP_MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -12740,6 +12871,21 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long GRP_MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_GRP_USR.GRP_MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GRP_MOM_USR_ID\' in table \'MOM_GRP_USR\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_USR.GRP_MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsMOM_GRP_NAMENull() {
                 return this.IsNull(this.tableMOM_GRP_USR.MOM_GRP_NAMEColumn);
             }
@@ -12787,6 +12933,16 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetDESCRIPTIONNull() {
                 this[this.tableMOM_GRP_USR.DESCRIPTIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGRP_MOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_GRP_USR.GRP_MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGRP_MOM_USR_IDNull() {
+                this[this.tableMOM_GRP_USR.GRP_MOM_USR_IDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14280,6 +14436,36 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int FRIDGE_OPTION {
+                get {
+                    try {
+                        return ((int)(this[this.tableMOM_FRG.FRIDGE_OPTIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FRIDGE_OPTION\' in table \'MOM_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_FRG.FRIDGE_OPTIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long GRP_MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_FRG.GRP_MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GRP_MOM_USR_ID\' in table \'MOM_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_FRG.GRP_MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsMOM_USR_IDNull() {
                 return this.IsNull(this.tableMOM_FRG.MOM_USR_IDColumn);
             }
@@ -14337,6 +14523,26 @@ namespace DALMomburbia {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetHIDENull() {
                 this[this.tableMOM_FRG.HIDEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFRIDGE_OPTIONNull() {
+                return this.IsNull(this.tableMOM_FRG.FRIDGE_OPTIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFRIDGE_OPTIONNull() {
+                this[this.tableMOM_FRG.FRIDGE_OPTIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGRP_MOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_FRG.GRP_MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGRP_MOM_USR_IDNull() {
+                this[this.tableMOM_FRG.GRP_MOM_USR_IDColumn] = global::System.Convert.DBNull;
             }
         }
         
