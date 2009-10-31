@@ -48,7 +48,6 @@ namespace DALMomburbia
             get { return _MOM_Dataset; ;}
         }
 
-
         public MOMFridge()
             : base()
         {
@@ -80,6 +79,7 @@ namespace DALMomburbia
                 adapter.TableMappings.Add("Table1", _MOM_Dataset.MOM_FRG_CMNT_SHARED.TableName);
                 adapter.TableMappings.Add("Table2", _MOM_Dataset.MOM_RCP.TableName);
                 adapter.TableMappings.Add("Table3", _MOM_Dataset.MOM_USR.TableName);
+                adapter.TableMappings.Add("Table4", _MOM_Dataset.MOM_GRP_FRG.TableName);
                 adapter.SelectCommand = momCommand;
                 adapter.Fill(_MOM_Dataset);
 
@@ -131,8 +131,9 @@ namespace DALMomburbia
                 //momCommand.Parameters.Add("@MOM_FRG_ID", SqlDbType.Int).Value = momFrgId;
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
-                adapter.TableMappings.Add("Table", _MOM_Dataset.MOM_FRG_SHARED.TableName);
-                adapter.TableMappings.Add("Table1", _MOM_Dataset.MOM_FRG_CMNT_SHARED.TableName);
+                adapter.TableMappings.Add("Table", _MOM_Dataset.MOM_GRP.TableName);
+                adapter.TableMappings.Add("Table1", _MOM_Dataset.MOM_FRG_SHARED.TableName);
+                adapter.TableMappings.Add("Table2", _MOM_Dataset.MOM_FRG_CMNT_SHARED.TableName);
                 //adapter.TableMappings.Add("Table2", _MOM_Dataset.MOM_RCP.TableName);
                 //adapter.TableMappings.Add("Table3", _MOM_Dataset.MOM_USR.TableName);
                 adapter.SelectCommand = momCommand;

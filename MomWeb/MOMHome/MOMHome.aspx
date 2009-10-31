@@ -16,9 +16,26 @@
                                 Recent Group Posts
                             </td>
                         </tr>
+                        <asp:Repeater ID="momGroupsRecent" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <small>
+                                            <a href="../MOMHome/MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "DISPLAY_NAME").ToString()), 20)%>
+                                            </a>
+                                            - 
+                                            <a style="color: Black;" href="../MOMGroups/MOMGroup.aspx?mGi=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "GRP_MOM_USR_ID").ToString()) %>">
+                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "SHARE").ToString()), 20)%>
+                                            </a>
+                                        </small>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>                        
+                        </asp:Repeater>
                         <tr>
                             <td class="momInfo">
-                                <a href="../MOMRecipe/MOMRecipesHome.aspx">
+                                <a href="../MOMGroups/MOMGroups.aspx">
                                     Go to my groups...
                                 </a>
                             </td>

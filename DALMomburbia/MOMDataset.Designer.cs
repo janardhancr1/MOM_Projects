@@ -81,6 +81,8 @@ namespace DALMomburbia {
         
         private MOM_BLG_CMTDataTable tableMOM_BLG_CMT;
         
+        private MOM_GRP_FRGDataTable tableMOM_GRP_FRG;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -190,6 +192,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_BLG_CMT"] != null)) {
                     base.Tables.Add(new MOM_BLG_CMTDataTable(ds.Tables["MOM_BLG_CMT"]));
+                }
+                if ((ds.Tables["MOM_GRP_FRG"] != null)) {
+                    base.Tables.Add(new MOM_GRP_FRGDataTable(ds.Tables["MOM_GRP_FRG"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -462,6 +467,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_GRP_FRGDataTable MOM_GRP_FRG {
+            get {
+                return this.tableMOM_GRP_FRG;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -603,6 +617,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_BLG_CMT"] != null)) {
                     base.Tables.Add(new MOM_BLG_CMTDataTable(ds.Tables["MOM_BLG_CMT"]));
+                }
+                if ((ds.Tables["MOM_GRP_FRG"] != null)) {
+                    base.Tables.Add(new MOM_GRP_FRGDataTable(ds.Tables["MOM_GRP_FRG"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -802,6 +819,12 @@ namespace DALMomburbia {
                     this.tableMOM_BLG_CMT.InitVars();
                 }
             }
+            this.tableMOM_GRP_FRG = ((MOM_GRP_FRGDataTable)(base.Tables["MOM_GRP_FRG"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_GRP_FRG != null)) {
+                    this.tableMOM_GRP_FRG.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -867,6 +890,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_TAGS);
             this.tableMOM_BLG_CMT = new MOM_BLG_CMTDataTable();
             base.Tables.Add(this.tableMOM_BLG_CMT);
+            this.tableMOM_GRP_FRG = new MOM_GRP_FRGDataTable();
+            base.Tables.Add(this.tableMOM_GRP_FRG);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1010,6 +1035,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_GRP_FRG() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1117,6 +1147,8 @@ namespace DALMomburbia {
         public delegate void MOM_TAGSRowChangeEventHandler(object sender, MOM_TAGSRowChangeEvent e);
         
         public delegate void MOM_BLG_CMTRowChangeEventHandler(object sender, MOM_BLG_CMTRowChangeEvent e);
+        
+        public delegate void MOM_GRP_FRGRowChangeEventHandler(object sender, MOM_GRP_FRGRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -10147,6 +10179,286 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_GRP_FRGDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnDISPLAY_NAME;
+            
+            private global::System.Data.DataColumn columnSHARE;
+            
+            private global::System.Data.DataColumn columnGRP_MOM_USR_ID;
+            
+            private global::System.Data.DataColumn columnMOM_GRP_NAME;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGDataTable() {
+                this.TableName = "MOM_GRP_FRG";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_GRP_FRGDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_GRP_FRGDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DISPLAY_NAMEColumn {
+                get {
+                    return this.columnDISPLAY_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SHAREColumn {
+                get {
+                    return this.columnSHARE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn GRP_MOM_USR_IDColumn {
+                get {
+                    return this.columnGRP_MOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_GRP_NAMEColumn {
+                get {
+                    return this.columnMOM_GRP_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGRow this[int index] {
+                get {
+                    return ((MOM_GRP_FRGRow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_GRP_FRGRowChangeEventHandler MOM_GRP_FRGRowChanging;
+            
+            public event MOM_GRP_FRGRowChangeEventHandler MOM_GRP_FRGRowChanged;
+            
+            public event MOM_GRP_FRGRowChangeEventHandler MOM_GRP_FRGRowDeleting;
+            
+            public event MOM_GRP_FRGRowChangeEventHandler MOM_GRP_FRGRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_GRP_FRGRow(MOM_GRP_FRGRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGRow AddMOM_GRP_FRGRow(long ID, string DISPLAY_NAME, string SHARE, long GRP_MOM_USR_ID, string MOM_GRP_NAME) {
+                MOM_GRP_FRGRow rowMOM_GRP_FRGRow = ((MOM_GRP_FRGRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        DISPLAY_NAME,
+                        SHARE,
+                        GRP_MOM_USR_ID,
+                        MOM_GRP_NAME};
+                rowMOM_GRP_FRGRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_GRP_FRGRow);
+                return rowMOM_GRP_FRGRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_GRP_FRGDataTable cln = ((MOM_GRP_FRGDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_GRP_FRGDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnDISPLAY_NAME = base.Columns["DISPLAY_NAME"];
+                this.columnSHARE = base.Columns["SHARE"];
+                this.columnGRP_MOM_USR_ID = base.Columns["GRP_MOM_USR_ID"];
+                this.columnMOM_GRP_NAME = base.Columns["MOM_GRP_NAME"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnDISPLAY_NAME = new global::System.Data.DataColumn("DISPLAY_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDISPLAY_NAME);
+                this.columnSHARE = new global::System.Data.DataColumn("SHARE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSHARE);
+                this.columnGRP_MOM_USR_ID = new global::System.Data.DataColumn("GRP_MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGRP_MOM_USR_ID);
+                this.columnMOM_GRP_NAME = new global::System.Data.DataColumn("MOM_GRP_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_GRP_NAME);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGRow NewMOM_GRP_FRGRow() {
+                return ((MOM_GRP_FRGRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_GRP_FRGRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_GRP_FRGRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_GRP_FRGRowChanged != null)) {
+                    this.MOM_GRP_FRGRowChanged(this, new MOM_GRP_FRGRowChangeEvent(((MOM_GRP_FRGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_GRP_FRGRowChanging != null)) {
+                    this.MOM_GRP_FRGRowChanging(this, new MOM_GRP_FRGRowChangeEvent(((MOM_GRP_FRGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_GRP_FRGRowDeleted != null)) {
+                    this.MOM_GRP_FRGRowDeleted(this, new MOM_GRP_FRGRowChangeEvent(((MOM_GRP_FRGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_GRP_FRGRowDeleting != null)) {
+                    this.MOM_GRP_FRGRowDeleting(this, new MOM_GRP_FRGRowChangeEvent(((MOM_GRP_FRGRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_GRP_FRGRow(MOM_GRP_FRGRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_GRP_FRGDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -15317,6 +15629,146 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_GRP_FRGRow : global::System.Data.DataRow {
+            
+            private MOM_GRP_FRGDataTable tableMOM_GRP_FRG;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_GRP_FRGRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_GRP_FRG = ((MOM_GRP_FRGDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_GRP_FRG.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'MOM_GRP_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_FRG.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DISPLAY_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_GRP_FRG.DISPLAY_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DISPLAY_NAME\' in table \'MOM_GRP_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_FRG.DISPLAY_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string SHARE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_GRP_FRG.SHAREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SHARE\' in table \'MOM_GRP_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_FRG.SHAREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long GRP_MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_GRP_FRG.GRP_MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GRP_MOM_USR_ID\' in table \'MOM_GRP_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_FRG.GRP_MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_GRP_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_GRP_FRG.MOM_GRP_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_GRP_NAME\' in table \'MOM_GRP_FRG\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_GRP_FRG.MOM_GRP_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableMOM_GRP_FRG.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIDNull() {
+                this[this.tableMOM_GRP_FRG.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDISPLAY_NAMENull() {
+                return this.IsNull(this.tableMOM_GRP_FRG.DISPLAY_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDISPLAY_NAMENull() {
+                this[this.tableMOM_GRP_FRG.DISPLAY_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSHARENull() {
+                return this.IsNull(this.tableMOM_GRP_FRG.SHAREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSHARENull() {
+                this[this.tableMOM_GRP_FRG.SHAREColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsGRP_MOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_GRP_FRG.GRP_MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetGRP_MOM_USR_IDNull() {
+                this[this.tableMOM_GRP_FRG.GRP_MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_GRP_NAMENull() {
+                return this.IsNull(this.tableMOM_GRP_FRG.MOM_GRP_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_GRP_NAMENull() {
+                this[this.tableMOM_GRP_FRG.MOM_GRP_NAMEColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -16171,6 +16623,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_BLG_CMTRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_GRP_FRGRowChangeEvent : global::System.EventArgs {
+            
+            private MOM_GRP_FRGRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGRowChangeEvent(MOM_GRP_FRGRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_GRP_FRGRow Row {
                 get {
                     return this.eventRow;
                 }

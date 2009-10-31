@@ -53,6 +53,9 @@ public partial class _Default : System.Web.UI.Page
                     momKnownFriends.DataSource = momFrg.MOM_Dataset.MOM_USR.DefaultView;
                     momKnownFriends.DataBind();
 
+                    momGroupsRecent.DataSource = momFrg.MOM_Dataset.MOM_GRP_FRG.DefaultView;
+                    momGroupsRecent.DataBind();
+
                     BindMOM_FRG_SHAREDData();
                 }
                 else
