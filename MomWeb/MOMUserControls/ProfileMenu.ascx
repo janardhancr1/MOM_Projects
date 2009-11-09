@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="ProfileMenu.ascx.cs" Inherits="UserControls_ProfileMenu" %>
-
 <table width="100%" cellpadding="0" cellspacing="0" align="center">
+
     <script type="text/javascript">
     
         var uploadWindow;
@@ -24,9 +24,11 @@
             }
         }
     </script>
+
     <tr>
         <td align="center">
-            <img ID="momUserImage" runat="server" src="../images/q_silhouette.gif" width="100" height="100" />
+            <img id="momUserImage" runat="server" src="../images/q_silhouette.gif" width="100"
+                height="100" />
         </td>
     </tr>
     <tr style="height: 20px;">
@@ -36,7 +38,8 @@
     </tr>
     <tr style="height: 20px;">
         <td align="center">
-            Edit My Profile
+            <a href="../MOMProfile/MOMProfile.aspx?q=edit" id="EditLink" runat="server">Edit My
+                Profile</a>
         </td>
     </tr>
 </table>

@@ -18,4 +18,10 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
     }
+
+    protected void ChangeMenu(object sender, EventArgs e)
+    {
+        string s = ((HtmlAnchor)sender).Name;
+        MultiView1.ActiveViewIndex = Int32.Parse(s);
+    }
 }

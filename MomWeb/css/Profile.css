@@ -1,0 +1,162 @@
+﻿.almtoolbox
+{
+	padding-bottom: 5px;
+	min-width: 650px;
+	border: none;
+	clear: both;
+}
+
+.almtopnav
+{
+	padding: 0;
+	clear: both;
+	border-bottom: 6px solid #e2e6ea;
+}
+
+.almtopnav ul
+{
+	float: left; /* hide from macie5\*/
+	float: none; /* resume */
+	margin: 0;
+	padding: 4px 0 0 5px;
+	list-style: none;
+	height: 20px;
+}
+
+.almtopnav li
+{
+	float: left;
+	background-color: #abd;
+	margin-left: 5px;
+	padding: 0px;
+	height: 20px;
+	padding: 0px;
+}
+
+li.selectedtab
+{
+	/* hide from macie5\*/
+	display: block; /* resume */
+	background-color: #e2e6ea;
+	font-weight: bold;
+}
+
+.almtopnav ul li a
+{
+	float: left;
+	display: block;
+	padding: 3px 6px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333 !important;
+}
+
+.almtopnav a.homeon
+{
+	padding-left: 20px; /*background-image: url( "../images/home.gif" );*/
+	background-repeat: no-repeat;
+	background-position: 2px;
+}
+
+.almtopnav a.homeoff
+{
+	padding-left: 20px; /*background-image: url( "../images/homeOff.gif" );*/
+	background-repeat: no-repeat;
+	background-position: 2px;
+}
+
+.almtopnav ul li a.selectedtab
+{
+	float: none;
+	display: inline;
+}
+
+.almtopnav li a:hover
+{
+	background: #caedff;
+	text-decoration: none;
+}
+
+.almtopnav ul li.selectedtab a:hover
+{
+	background: #e2e6ea;
+}
+
+.almtopnav a.homeon:hover
+{
+	/*background: #e2e6ea url( "../images/home.gif" ) no-repeat 2px !important;*/
+	padding-left: 20px;
+}
+
+.almtopnav a.homeoff:hover
+{
+	/*background: #caedff url( "../images/home.gif" ) 2px no-repeat;*/
+	padding-left: 20px;
+}
+
+.almtopnav a.unselected:hover
+{
+	color: #333 !important;
+}
+
+.almtopnav a.almtopnav_button
+{
+	margin: 1px 3px 0 1px;
+	width: 11px;
+	height: 11px;
+	padding: 0px;
+}
+
+.almtopnav ul span.tab_current_text
+{
+	padding: 3px 6px 3px 3px !important;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac - fix top tabs for consistency on IE-Win \*/
+* html .almtopnav a.almtopnav_button
+{
+	margin-right: 0;
+}
+/* End IE hack */
+
+table.avatarChooserTable
+{
+	width: 460px;
+	text-align: center;
+	margin: 0 auto;
+}
+.avatarListItem
+{
+	display: block;
+}
+#avatarChooser
+{
+	padding: 10px;
+}
+#avatarChooser td
+{
+	padding: 5px;
+	width: 75px;
+}
+#currentAvatar
+{
+	display: block;
+	border: 1px solid #CCC;
+}
+#avatarUploadFrame
+{
+	width: 95%;
+	border: 0px;
+	height: 95px;
+	margin: 0px 0px 0px 10px;
+	padding: 0px 0px 0px 0px;
+}
+.unselected
+{
+	border: 1px solid transparent;
+}
+.selected
+{
+	border: 1px solid #CCC;
+	background: #fff;
+}
