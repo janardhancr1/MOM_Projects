@@ -186,92 +186,72 @@
                                                                     <tr>
                                                                         <td align="center" id="avatar_0" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(0); return(false);">
-                                                                                <img id="avatarImg_0" src="../images/profile/avatar_0_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_0" src="../images/profile/avatar_0_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_1" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(1); return(false);">
-                                                                                <img id="avatarImg_1" src="../images/profile/avatar_1_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_1" src="../images/profile/avatar_1_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_2" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(2); return(false);">
-                                                                                <img id="avatarImg_2" src="../images/profile/avatar_2_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_2" src="../images/profile/avatar_2_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_3" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(3); return(false);">
-                                                                                <img id="avatarImg_3" src="../images/profile/avatar_3_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_3" src="../images/profile/avatar_3_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_4" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(4); return(false);">
-                                                                                <img id="avatarImg_4" src="../images/profile/avatar_4_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_4" src="../images/profile/avatar_4_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_5" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(5); return(false);">
-                                                                                <img id="avatarImg_5" src="../images/profile/avatar_5_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_5" src="../images/profile/avatar_5_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_6" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(6); return(false);">
-                                                                                <img id="avatarImg_6" src="../images/profile/avatar_6_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_6" src="../images/profile/avatar_6_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_7" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(7); return(false);">
-                                                                                <img id="avatarImg_7" src="../images/profile/avatar_7_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_7" src="../images/profile/avatar_7_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_8" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(8); return(false);">
-                                                                                <img id="avatarImg_8" src="../images/profile/avatar_8_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_8" src="../images/profile/avatar_8_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_9" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(9); return(false);">
-                                                                                <img id="avatarImg_9" src="../images/profile/avatar_9_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_9" src="../images/profile/avatar_9_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_10" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(10); return(false);">
-                                                                                <img id="avatarImg_10" src="../images/profile/avatar_10_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_10" src="../images/profile/avatar_10_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_11" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(11); return(false);">
-                                                                                <img id="avatarImg_11" src="../images/profile/avatar_11_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_11" src="../images/profile/avatar_11_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_12" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(12); return(false);">
-                                                                                <img id="avatarImg_12" src="../images/profile/avatar_12_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_12" src="../images/profile/avatar_12_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_13" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(13); return(false);">
-                                                                                <img id="avatarImg_13" src="../images/profile/avatar_13_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_13" src="../images/profile/avatar_13_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_14" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(14); return(false);">
-                                                                                <img id="avatarImg_14" src="../images/profile/avatar_14_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_14" src="../images/profile/avatar_14_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_15" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(15); return(false);">
-                                                                                <img id="avatarImg_15" src="../images/profile/avatar_15_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_15" src="../images/profile/avatar_15_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_16" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(16); return(false);">
-                                                                                <img id="avatarImg_16" src="../images/profile/avatar_16_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_16" src="../images/profile/avatar_16_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_17" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(17); return(false);">
-                                                                                <img id="avatarImg_17" src="../images/profile/avatar_17_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_17" src="../images/profile/avatar_17_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_18" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(18); return(false);">
-                                                                                <img id="avatarImg_18" src="../images/profile/avatar_18_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_18" src="../images/profile/avatar_18_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_19" class="unselected">
                                                                             <a class="avatarListItem" href="#" onclick="selectAvatar(19); return(false);">
-                                                                                <img id="avatarImg_19" src="../images/profile/avatar_19_md.jpg"
-                                                                                    alt="avatar" /></a></td>
+                                                                                <img id="avatarImg_19" src="../images/profile/avatar_19_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -284,7 +264,61 @@
                                                     <a href="" class="accordionLink">Kids</a></Header>
                                                 <Content>
                                                     <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                        <h5>
+                                                            Add/Edit Kids</h5>
+                                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                                            <tr bgcolor="gray">
+                                                                <th width="40%" align="left">
+                                                                    Name</th>
+                                                                <th width="20%" align="left">
+                                                                    BirthDay</th>
+                                                                <th width="20%" align="left">
+                                                                    Gender</th>
+                                                                <th width="20%">
+                                                                    Edit/Delete</th>
+                                                            </tr>
+                                                        </table>
+                                                        <asp:Repeater ID="momProKids" runat="server">
+                                                            <HeaderTemplate>
+                                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                                    <tr bgcolor="gray">
+                                                                        <th width="40%" align="left">
+                                                                            Name</th>
+                                                                        <th width="20%" align="left">
+                                                                            BirthDay</th>
+                                                                        <th width="20%" align="left">
+                                                                            Gender</th>
+                                                                        <th width="20%">
+                                                                            Edit/Delete</th>
+                                                                    </tr>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString())%>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "BIRTHDAY").ToString()) %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "GENDER").ToString()) %>
+                                                                    </td>
+                                                                    <td align="center">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <hr />
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                        <br />
+                                                        <input type="button" value="Add Child" class="btnStyle" />
+                                                    </p>
                                                 </Content>
                                             </cc1:AccordionPane>
                                             <cc1:AccordionPane ID="momInterests" runat="server">
