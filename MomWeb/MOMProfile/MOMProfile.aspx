@@ -326,7 +326,12 @@
                                                     <a href="" class="accordionLink">Interests</a></Header>
                                                 <Content>
                                                     <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                        <div>
+                                                            Add your interests here:</div>
+                                                        <div>
+                                                            <textarea id="momUserInterests" runat="server" cols="80" rows="5"></textarea>
+                                                        </div>
+                                                    </p>
                                                 </Content>
                                             </cc1:AccordionPane>
                                             <cc1:AccordionPane ID="momFavorites" runat="server">
@@ -334,7 +339,34 @@
                                                     <a href="" class="accordionLink">Favorites</a></Header>
                                                 <Content>
                                                     <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                        A few of your favorite things</p>
+                                                    <div>
+                                                        <div>
+                                                            Favorite Celebs:</div>
+                                                        <div>
+                                                            <textarea id="Textarea1" runat="server" cols="80" rows="2"></textarea>
+                                                        </div>
+                                                        <div>
+                                                            Favorite Movies:</div>
+                                                        <div>
+                                                            <textarea id="Textarea2" runat="server" cols="80" rows="2"></textarea>
+                                                        </div>
+                                                        <div>
+                                                            Favorite TV Shows:</div>
+                                                        <div>
+                                                            <textarea id="Textarea3" runat="server" cols="80" rows="2"></textarea>
+                                                        </div>
+                                                        <div>
+                                                            Favorite Books:</div>
+                                                        <div>
+                                                            <textarea id="Textarea4" runat="server" cols="80" rows="2"></textarea>
+                                                        </div>
+                                                        <div>
+                                                            Favorite Music:</div>
+                                                        <div>
+                                                            <textarea id="Textarea5" runat="server" cols="80" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
                                                 </Content>
                                             </cc1:AccordionPane>
                                             <cc1:AccordionPane ID="momEducation" runat="server">
@@ -342,7 +374,64 @@
                                                     <a href="" class="accordionLink">Education</a></Header>
                                                 <Content>
                                                     <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                        <h5>
+                                                            Add/Edit Schools</h5>
+                                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                                            <tr bgcolor="gray">
+                                                                <th width="40%" align="left">
+                                                                    Name</th>
+                                                                <th width="15%" align="left">
+                                                                    Type</th>
+                                                                <th width="15%" align="left">
+                                                                    Start</th>
+                                                                <th width="2015%" align="left">
+                                                                    End</th>
+                                                                <th width="15%">
+                                                                    Edit/Delete</th>
+                                                            </tr>
+                                                        </table>
+                                                        <asp:Repeater ID="Repeater1" runat="server">
+                                                            <HeaderTemplate>
+                                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                                    <tr bgcolor="gray">
+                                                                        <th width="40%" align="left">
+                                                                            Name</th>
+                                                                        <th width="15%" align="left">
+                                                                            Type</th>
+                                                                        <th width="15%" align="left">
+                                                                            Start</th>
+                                                                        <th width="2015%" align="left">
+                                                                            End</th>
+                                                                        <th width="15%">
+                                                                            Edit/Delete</th>
+                                                                    </tr>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString())%>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "BIRTHDAY").ToString()) %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "GENDER").ToString()) %>
+                                                                    </td>
+                                                                    <td align="center">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <hr />
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                        <br />
+                                                        <input type="button" value="Add a School" class="btnStyle" /></p>
                                                 </Content>
                                             </cc1:AccordionPane>
                                             <cc1:AccordionPane ID="momPrivacySettings" runat="server">
