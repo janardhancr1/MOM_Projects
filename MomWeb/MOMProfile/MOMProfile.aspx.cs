@@ -13,15 +13,33 @@ using BOMomburbia;
 
 public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 {
+    bool isSuccess;
+    string appMessage;
+    string sysMessage;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
+
+        MOMUsers momUsers = new MOMUsers();
+        momUsers.GetUserByName(out isSuccess, out appMessage, out sysMessage, ((MOMDataset.MOM_USRRow)Session["momUser"]).DISPLAY_NAME);
+        if (isSuccess)
+        {
+            momFirstName.Text = momUsers.MOM_USRRow.FIRST_NAME;
+            momLastName.Text = momUsers.MOM_USRRow.LAST_NAME;
+            momEmail.Text = momUsers.MOM_USRRow.EMAIL_ADDR;
+        }
     }
 
     protected void ChangeMenu(object sender, EventArgs e)
     {
         string s = ((HtmlAnchor)sender).Name;
         MultiView1.ActiveViewIndex = Int32.Parse(s);
+    }
+
+    protected void AddChild_Click(object sender, EventArgs e)
+    {
+        
     }
 }

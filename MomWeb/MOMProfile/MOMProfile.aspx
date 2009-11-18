@@ -317,7 +317,8 @@
                                                             </FooterTemplate>
                                                         </asp:Repeater>
                                                         <br />
-                                                        <input type="button" value="Add Child" class="btnStyle" />
+                                                        <asp:Button ID="AddChildButton" runat="server" Text="Add Child" CssClass="btnStyle"
+                                                            OnClick="AddChild_Click" />
                                                     </p>
                                                 </Content>
                                             </cc1:AccordionPane>
@@ -438,8 +439,97 @@
                                                 <Header>
                                                     <a href="" class="accordionLink">Privacy & Settings</a></Header>
                                                 <Content>
-                                                    <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                    <div>
+                                                        <fieldset>
+                                                            <div class="formOption">
+                                                                <label>Your name:</label>
+                                                                <asp:DropDownList ID="NameSearch" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">Searchable</asp:ListItem>
+                                                                    <asp:ListItem Value="">Not Searchable</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your birthday and age:</label>
+                                                                <asp:DropDownList ID="DropDownList1" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your interests:</label>
+                                                                <asp:DropDownList ID="DropDownList2" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your education and schools:</label>
+                                                                <asp:DropDownList ID="DropDownList3" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your kids' names and gender:</label>
+                                                                <asp:DropDownList ID="DropDownList4" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your kids' birthdays and ages:</label>
+                                                                <asp:DropDownList ID="DropDownList5" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                               <label>Your kids' photos:</label>
+                                                                <asp:DropDownList ID="DropDownList6" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your Kids' "About" statements:</label>
+                                                                <asp:DropDownList ID="DropDownList7" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your kids' interests and challenges:</label>
+                                                                <asp:DropDownList ID="DropDownList8" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Your last logged-in date and current logged-in status</label>
+                                                                <asp:DropDownList ID="DropDownList9" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">All</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
+                                                                    <asp:ListItem Value="">Private</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                            <div class="formOption">
+                                                                <label>Who is allowed to see your profile page.</label>
+                                                                <asp:DropDownList ID="DropDownList10" runat="server" Width="153px">
+                                                                    <asp:ListItem Value="">Everyone</asp:ListItem>
+                                                                    <asp:ListItem Value="">MOM Members Only</asp:ListItem>
+                                                                    <asp:ListItem Value="">Friends Only</asp:ListItem>
+                                                                </asp:DropDownList></div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
                                                 </Content>
                                             </cc1:AccordionPane>
                                             <cc1:AccordionPane ID="momBlockedUsers" runat="server">

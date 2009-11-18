@@ -160,3 +160,16 @@ table.avatarChooserTable
 	border: 1px solid #CCC;
 	background: #fff;
 }
+
+.formOption
+{
+	border-bottom: none;
+	padding: 4px 0 0;
+}
+
+.formOption label
+{
+	width: 300px;
+	height: auto;
+	clear: both;
+}
