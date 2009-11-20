@@ -29,6 +29,10 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
             momFirstName.Text = momUsers.MOM_USRRow.FIRST_NAME;
             momLastName.Text = momUsers.MOM_USRRow.LAST_NAME;
             momEmail.Text = momUsers.MOM_USRRow.EMAIL_ADDR;
+            momZipCode.Text = momUsers.MOM_USRRow.ZIP;
+            momLocation.Text = momUsers.MOM_USRRow.LOCATION;
+            momCountry.SelectedValue = momUsers.MOM_USRRow.COUNTRY;
+            momDisplayName.Text = momUsers.MOM_USRRow.DISPLAY_NAME;
         }
     }
 
