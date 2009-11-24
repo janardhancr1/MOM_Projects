@@ -264,22 +264,10 @@
                                                     <a href="" class="accordionLink">Kids</a></Header>
                                                 <Content>
                                                     <p>
-                                                        <h5>
-                                                            Add/Edit Kids</h5>
-                                                        <table width="100%" cellpadding="0" cellspacing="0">
-                                                            <tr bgcolor="gray">
-                                                                <th width="40%" align="left">
-                                                                    Name</th>
-                                                                <th width="20%" align="left">
-                                                                    BirthDay</th>
-                                                                <th width="20%" align="left">
-                                                                    Gender</th>
-                                                                <th width="20%">
-                                                                    Edit/Delete</th>
-                                                            </tr>
-                                                        </table>
-                                                        <asp:Repeater ID="momProKids" runat="server">
-                                                            <HeaderTemplate>
+                                                        <asp:GridView ID="momKidsGrid" runat="server" AutoGenerateColumns="False" Width="100%"
+                                                            AllowPaging="False" AllowSorting="False" BorderWidth="0" Visible="false" PageSize="20">
+                                                            <HeaderStyle CssClass="nav_header" HorizontalAlign="Left" />
+                                                            <EmptyDataTemplate>
                                                                 <table width="100%" cellpadding="0" cellspacing="0">
                                                                     <tr bgcolor="gray">
                                                                         <th width="40%" align="left">
@@ -291,31 +279,14 @@
                                                                         <th width="20%">
                                                                             Edit/Delete</th>
                                                                     </tr>
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <tr>
-                                                                    <td>
-                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString())%>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "BIRTHDAY").ToString()) %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%# BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "GENDER").ToString()) %>
-                                                                    </td>
-                                                                    <td align="center">
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="4">
-                                                                        <hr />
-                                                                    </td>
-                                                                </tr>
-                                                            </ItemTemplate>
-                                                            <FooterTemplate>
                                                                 </table>
-                                                            </FooterTemplate>
-                                                        </asp:Repeater>
+                                                            </EmptyDataTemplate>
+                                                            <Columns>
+                                                                <asp:BoundField DataField="KID_FIRST_NAME" HeaderText="Name" />
+                                                                <asp:BoundField DataField="KID_GENDER" HeaderText="Gender" />
+                                                                <asp:BoundField DataField="KID_DOB" HeaderText="Birthday" />
+                                                            </Columns>
+                                                        </asp:GridView>
                                                         <br />
                                                         <asp:Button ID="AddChildButton" runat="server" Text="Add Child" CssClass="btnStyle"
                                                             OnClick="AddChild_Click" />
@@ -442,14 +413,16 @@
                                                     <div>
                                                         <fieldset>
                                                             <div class="formOption">
-                                                                <label>Your name:</label>
+                                                                <label>
+                                                                    Your name:</label>
                                                                 <asp:DropDownList ID="NameSearch" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">Searchable</asp:ListItem>
                                                                     <asp:ListItem Value="">Not Searchable</asp:ListItem>
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your birthday and age:</label>
+                                                                <label>
+                                                                    Your birthday and age:</label>
                                                                 <asp:DropDownList ID="DropDownList1" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -457,7 +430,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your interests:</label>
+                                                                <label>
+                                                                    Your interests:</label>
                                                                 <asp:DropDownList ID="DropDownList2" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -465,7 +439,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your education and schools:</label>
+                                                                <label>
+                                                                    Your education and schools:</label>
                                                                 <asp:DropDownList ID="DropDownList3" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -473,7 +448,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your kids' names and gender:</label>
+                                                                <label>
+                                                                    Your kids' names and gender:</label>
                                                                 <asp:DropDownList ID="DropDownList4" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -481,7 +457,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your kids' birthdays and ages:</label>
+                                                                <label>
+                                                                    Your kids' birthdays and ages:</label>
                                                                 <asp:DropDownList ID="DropDownList5" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -489,7 +466,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                               <label>Your kids' photos:</label>
+                                                                <label>
+                                                                    Your kids' photos:</label>
                                                                 <asp:DropDownList ID="DropDownList6" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -497,7 +475,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your Kids' "About" statements:</label>
+                                                                <label>
+                                                                    Your Kids' "About" statements:</label>
                                                                 <asp:DropDownList ID="DropDownList7" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -505,7 +484,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your kids' interests and challenges:</label>
+                                                                <label>
+                                                                    Your kids' interests and challenges:</label>
                                                                 <asp:DropDownList ID="DropDownList8" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -513,7 +493,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Your last logged-in date and current logged-in status</label>
+                                                                <label>
+                                                                    Your last logged-in date and current logged-in status</label>
                                                                 <asp:DropDownList ID="DropDownList9" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">All</asp:ListItem>
                                                                     <asp:ListItem Value="">Friends</asp:ListItem>
@@ -521,7 +502,8 @@
                                                                 </asp:DropDownList></div>
                                                             <br />
                                                             <div class="formOption">
-                                                                <label>Who is allowed to see your profile page.</label>
+                                                                <label>
+                                                                    Who is allowed to see your profile page.</label>
                                                                 <asp:DropDownList ID="DropDownList10" runat="server" Width="153px">
                                                                     <asp:ListItem Value="">Everyone</asp:ListItem>
                                                                     <asp:ListItem Value="">MOM Members Only</asp:ListItem>

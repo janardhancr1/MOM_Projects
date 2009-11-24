@@ -34,6 +34,16 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
             momCountry.SelectedValue = momUsers.MOM_USRRow.COUNTRY;
             momDisplayName.Text = momUsers.MOM_USRRow.DISPLAY_NAME;
         }
+
+        MOMKids momKids = new MOMKids();
+        MOMDataset.MOM_KIDSRow kidsRow = momKids.MOM_KIDSDataTable.NewMOM_KIDSRow();
+        kidsRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow) Session["momUser"]).ID;
+        momKids.GetMOM_KidsBy_UsrID(out isSuccess, out appMessage, out sysMessage);
+        if(isSuccess)
+        {
+            momKidsGrid.DataSource = momKids.MOM_KIDSDataTable;
+            momKidsGrid.DataBind();
+        }
     }
 
     protected void ChangeMenu(object sender, EventArgs e)

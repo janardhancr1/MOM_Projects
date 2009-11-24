@@ -62,6 +62,7 @@
     <Compile Include="MOMFriend.cs" />
     <Compile Include="MOMGroup.cs" />
     <Compile Include="MOMIPTracker.cs" />
+    <Compile Include="MOMKids.cs" />
     <Compile Include="MOMMail.cs" />
     <Compile Include="MOMNotifications.cs" />
     <Compile Include="MOMProfile.cs" />
