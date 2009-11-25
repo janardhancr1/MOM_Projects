@@ -46,6 +46,7 @@
     <Compile Include="BOMOMBase.cs" />
     <Compile Include="MOMException.cs" />
     <Compile Include="MOMHelper.cs" />
+    <Compile Include="NoDataTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

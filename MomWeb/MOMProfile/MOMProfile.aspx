@@ -47,7 +47,7 @@
                                     <cc1:Accordion ID="momProfileAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader"
                                         HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent"
                                         FadeTransitions="true" FramesPerSecond="40" TransitionDuration="250" AutoSize="None"
-                                        RequireOpenedPane="false" SuppressHeaderPostbacks="true">
+                                        RequireOpenedPane="false" SuppressHeaderPostbacks="true" OnLoad="Kids_Load">
                                         <Panes>
                                             <cc1:AccordionPane ID="accordionLink" runat="server">
                                                 <Header>
@@ -259,7 +259,7 @@
                                                     </table>
                                                 </Content>
                                             </cc1:AccordionPane>
-                                            <cc1:AccordionPane ID="momKids" runat="server">
+                                            <cc1:AccordionPane ID="momKidsPane" runat="server">
                                                 <Header>
                                                     <a href="" class="accordionLink">Kids</a></Header>
                                                 <Content>

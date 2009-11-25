@@ -38,9 +38,18 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         MOMKids momKids = new MOMKids();
         MOMDataset.MOM_KIDSRow kidsRow = momKids.MOM_KIDSDataTable.NewMOM_KIDSRow();
         kidsRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow) Session["momUser"]).ID;
+        momKids.MOM_KIDSRow = kidsRow;
         momKids.GetMOM_KidsBy_UsrID(out isSuccess, out appMessage, out sysMessage);
         if(isSuccess)
         {
+            AjaxControlToolkit.AccordionPane kidsPane = momProfileAccordion.Panes[2];
+            GridView gv = new GridView();
+            gv.ID = "TestGd";
+            gv.EmptyDataTemplate = new NoDataTemplate("No Data found");
+            gv.DataSource = momKids.MOM_KIDSDataTable;
+            gv.DataBind();
+            kidsPane.ContentContainer.Controls.Add(gv);
+
             momKidsGrid.DataSource = momKids.MOM_KIDSDataTable;
             momKidsGrid.DataBind();
         }
@@ -50,6 +59,11 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
     {
         string s = ((HtmlAnchor)sender).Name;
         MultiView1.ActiveViewIndex = Int32.Parse(s);
+    }
+
+    protected void Kids_Load(object sender, EventArgs e)
+    {
+        string s = momProfileAccordion.SelectedIndex.ToString();
     }
 
     protected void AddChild_Click(object sender, EventArgs e)

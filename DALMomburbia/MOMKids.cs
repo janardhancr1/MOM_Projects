@@ -42,6 +42,7 @@ namespace DALMomburbia
                 adapter.SelectCommand = momCommand;
                 adapter.Fill(momData);
 
+                _MOM_KIDSDataTable = momData.MOM_KIDS;
             }
             catch (MOMException X)
             {
