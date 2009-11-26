@@ -81,9 +81,9 @@ namespace DALMomburbia
                 momCommand.Parameters.Add("@MOM_SCH_NAME", SqlDbType.VarChar).Value = _MOM_USR_EDURow.MOM_SCH_NAME;
                 momCommand.Parameters.Add("@MOM_SCH_TYPE", SqlDbType.VarChar).Value = _MOM_USR_EDURow.MOM_SCH_TYPE;
                 if (!_MOM_USR_EDURow.IsMOM_SCH_STNull())
-                    momCommand.Parameters.Add("@MOM_SCH_ST", SqlDbType.Text).Value = _MOM_USR_EDURow.MOM_SCH_ST;
+                    momCommand.Parameters.Add("@MOM_SCH_ST", SqlDbType.Int).Value = _MOM_USR_EDURow.MOM_SCH_ST;
                 if (!_MOM_USR_EDURow.IsMOM_SCH_EDNull())
-                    momCommand.Parameters.Add("@MOM_SCH_ED", SqlDbType.Text).Value = _MOM_USR_EDURow.MOM_SCH_ED;
+                    momCommand.Parameters.Add("@MOM_SCH_ED", SqlDbType.Int).Value = _MOM_USR_EDURow.MOM_SCH_ED;
                 momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_USR_EDURow.MOM_USR_ID;
 
                 int affectedRows = momCommand.ExecuteNonQuery();

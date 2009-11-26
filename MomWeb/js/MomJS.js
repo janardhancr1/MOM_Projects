@@ -103,6 +103,45 @@ function showHideCancel(args, ele, type)
     }
 }
 
+function addInterest(value,elementId)
+{
+    eInterests=document.getElementById(elementId);
+    value=Trim(value.toLowerCase());
+    current=eInterests.value;
+    if(current.indexOf(value)==-1)
+    {
+        if(current.length>1)
+        {
+            current+=", ";current+=value;
+        }
+        else
+        {
+            current=value;
+         }
+    }
+    //eInterests.value=current.replaceAll(',,',', ').replaceAll(', ,',', ').replaceAll(',  ,',', ');
+    eInterests.value=current;
+    return(false);
+}
+
+
+// Trim function in javascript 
+function Trim(str)
+{
+    while (str.substring(0,1) == ' ') // check for white spaces from beginning
+    {
+        str = str.substring(1, str.length);
+    }
+    while (str.substring(str.length-1, str.length) == ' ') // check white space from end
+    {
+        str = str.substring(0,str.length-1);
+    }
+   
+    return str;
+}
+
+
+
 function showInfo(arg)
 {
     alert(arg);

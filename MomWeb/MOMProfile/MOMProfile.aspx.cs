@@ -46,6 +46,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 }
 
                 ShowKids();
+                ShowSchools();
 
                 break;
             case 0:
@@ -63,7 +64,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         try
         {
             if (momKidFirstName.Text.Trim().Length < 2 || momKidFirstName.Text.Trim().Length > 50)
-                throw new MOMException("First Name can have minimum 3 and maximum 100 characters");
+                throw new MOMException("First Name can have minimum 2 and maximum 100 characters");
 
             if (momKidGender.SelectedValue.Length < 2)
                 throw new MOMException("Gender should be selected");
@@ -104,6 +105,62 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         {
             momPopup.Show(X.Message);
         }
+    }
+
+    protected void SchSave_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (momSchName.Text.Trim().Length < 2 || momSchName.Text.Trim().Length > 50)
+                throw new MOMException("School Name can have minimum 2 and maximum 100 characters");
+
+            if (momSchType.SelectedValue.Length < 2)
+                throw new MOMException("School type should be selected");
+
+            MOMUserEducation momSchools = new MOMUserEducation();
+            MOMDataset.MOM_USR_EDURow momSchoolRow = momSchools.MOM_USR_EDUDataTable.NewMOM_USR_EDURow();
+            momSchoolRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+            momSchoolRow.MOM_SCH_NAME = momSchName.Text;
+            momSchoolRow.MOM_SCH_TYPE = momSchType.SelectedValue;
+            if (momSchSt.SelectedValue.Trim().Length > 0)
+                momSchoolRow.MOM_SCH_ST = Convert.ToInt32(momSchSt.SelectedValue);
+            if (momSchEd.SelectedValue.Trim().Length > 0)
+                momSchoolRow.MOM_SCH_ED = Convert.ToInt32(momSchEd.SelectedValue);
+
+            momSchools.MOM_USR_EDURow = momSchoolRow;
+            momSchools.AddMOM_USR_EDURow(out isSuccess, out appMessage, out sysMessage);
+
+            if (isSuccess)
+            {
+                ShowSchools();
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
+    }
+
+    protected void IntSave_Click(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void FavSave_Click(object sender, EventArgs e)
+    {
+        
     }
 
     private void ShowKids()
@@ -167,6 +224,80 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 row.Cells.Add(cell);
 
                 momKidsTable.Rows.Add(row);
+            }
+        }
+    }
+
+    private void ShowSchools()
+    {
+        MOMUserEducation momSchools = new MOMUserEducation();
+        MOMDataset.MOM_USR_EDURow momSchoolRow = momSchools.MOM_USR_EDUDataTable.NewMOM_USR_EDURow();
+        momSchoolRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+
+        momEduTable.Rows.Clear();
+
+        HtmlTableRow row = null;
+        HtmlTableCell cell = null;
+
+        row = new HtmlTableRow();
+        row.BgColor = "Gray";
+
+        cell = new HtmlTableCell();
+        cell.Width = "40%";
+        cell.InnerHtml = "Name";
+        row.Cells.Add(cell);
+
+        cell = new HtmlTableCell();
+        cell.Width = "15%";
+        cell.InnerHtml = "Type";
+        row.Cells.Add(cell);
+
+        cell = new HtmlTableCell();
+        cell.Width = "15%";
+        cell.InnerHtml = "Start";
+        row.Cells.Add(cell);
+
+        cell = new HtmlTableCell();
+        cell.Width = "15%";
+        cell.InnerHtml = "End";
+        row.Cells.Add(cell);
+
+        cell = new HtmlTableCell();
+        cell.Width = "15%";
+        cell.InnerHtml = "Edit/Delete";
+        row.Cells.Add(cell);
+
+        momEduTable.Rows.Add(row);
+
+        momSchools.MOM_USR_EDURow = momSchoolRow;
+        momSchools.GetMOM_Usr_EDU(out isSuccess, out appMessage, out sysMessage);
+        if (isSuccess)
+        {
+            foreach (MOMDataset.MOM_USR_EDURow school in momSchools.MOM_USR_EDUDataTable)
+            {
+                row = new HtmlTableRow();
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = school.MOM_SCH_NAME;
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = school.MOM_SCH_TYPE;
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = school.MOM_SCH_ST.ToString();
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = school.MOM_SCH_ED.ToString();
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = "&nbsp;";
+                row.Cells.Add(cell);
+
+                momEduTable.Rows.Add(row);
             }
         }
     }
