@@ -7,22 +7,22 @@ using BOMomburbia;
 
 namespace DALMomburbia
 {
-    public class MOMKids : MOMBase
+    public class MOMUserEducation : MOMBase
     {
-        MOMDataset.MOM_KIDSDataTable _MOM_KIDSDataTable = new MOMDataset.MOM_KIDSDataTable();
-        public MOMDataset.MOM_KIDSDataTable MOM_KIDSDataTable
+        MOMDataset.MOM_USR_EDUDataTable _MOM_USR_EDUDataTable = new MOMDataset.MOM_USR_EDUDataTable();
+        public MOMDataset.MOM_USR_EDUDataTable MOM_USR_EDUDataTable
         {
-            get { return _MOM_KIDSDataTable; }
+            get { return _MOM_USR_EDUDataTable; }
         }
 
-        MOMDataset.MOM_KIDSRow _MOM_KIDSRow;
-        public MOMDataset.MOM_KIDSRow MOM_KIDSRow
+        MOMDataset.MOM_USR_EDURow _MOM_USR_EDURow;
+        public MOMDataset.MOM_USR_EDURow MOM_USR_EDURow
         {
-            get { return _MOM_KIDSRow; }
-            set { _MOM_KIDSRow = value; }
+            get { return _MOM_USR_EDURow; }
+            set { _MOM_USR_EDURow = value; }
         }
 
-        public void GetMOM_KidsBy_UsrID(out bool isSuccess, out string appMessage, out string sysMessage)
+        public void GetMOM_Usr_EDU(out bool isSuccess, out string appMessage, out string sysMessage)
         {
             isSuccess = true;
             appMessage = "Success";
@@ -31,18 +31,18 @@ namespace DALMomburbia
             try
             {
                 SqlCommand momCommand = base.GetMOMCommand();
-                momCommand.CommandText = "dbo.SP_MOM_KIDS_BY_USR_ID";
-                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.Int).Value = _MOM_KIDSRow.MOM_USR_ID;
+                momCommand.CommandText = "dbo.SP_GET_MOM_USR_EDU";
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.Int).Value = _MOM_USR_EDURow.MOM_USR_ID;
 
                 MOMDataset momData = new MOMDataset();
                 momData.Clear();
                 momData.EnforceConstraints = false;
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.TableMappings.Add("Table", momData.MOM_KIDS.TableName);
+                adapter.TableMappings.Add("Table", momData.MOM_USR_EDU.TableName);
                 adapter.SelectCommand = momCommand;
                 adapter.Fill(momData);
 
-                _MOM_KIDSDataTable = momData.MOM_KIDS;
+                _MOM_USR_EDUDataTable = momData.MOM_USR_EDU;
             }
             catch (MOMException X)
             {
@@ -67,7 +67,7 @@ namespace DALMomburbia
             }
         }
 
-        public void AddMOM_KidsRow(out bool isSuccess, out string appMessage, out string sysMessage)
+        public void AddMOM_USR_EDURow(out bool isSuccess, out string appMessage, out string sysMessage)
         {
             isSuccess = true;
             appMessage = "Success";
@@ -76,16 +76,15 @@ namespace DALMomburbia
             try
             {
                 SqlCommand momCommand = base.GetMOMCommand();
-                momCommand.CommandText = "dbo.SP_MOM_KIDS_ADD";
+                momCommand.CommandText = "dbo.SP_MOM_USR_EDU_ADD";
 
-                momCommand.Parameters.Add("@KID_FIRST_NAME", SqlDbType.VarChar).Value = _MOM_KIDSRow.KID_FIRST_NAME;
-                momCommand.Parameters.Add("@KID_GENDER", SqlDbType.VarChar).Value = _MOM_KIDSRow.KID_GENDER;
-                momCommand.Parameters.Add("@KID_DOB", SqlDbType.VarChar).Value = _MOM_KIDSRow.KID_DOB;
-                if (!_MOM_KIDSRow.IsKID_ABOUTNull())
-                    momCommand.Parameters.Add("@KID_ABOUT", SqlDbType.Text).Value = _MOM_KIDSRow.KID_ABOUT;
-                if (!_MOM_KIDSRow.IsKID_PHOTONull())
-                    momCommand.Parameters.Add("@KID_PHOTO", SqlDbType.Text).Value = _MOM_KIDSRow.KID_PHOTO;
-                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_KIDSRow.MOM_USR_ID;
+                momCommand.Parameters.Add("@MOM_SCH_NAME", SqlDbType.VarChar).Value = _MOM_USR_EDURow.MOM_SCH_NAME;
+                momCommand.Parameters.Add("@MOM_SCH_TYPE", SqlDbType.VarChar).Value = _MOM_USR_EDURow.MOM_SCH_TYPE;
+                if (!_MOM_USR_EDURow.IsMOM_SCH_STNull())
+                    momCommand.Parameters.Add("@MOM_SCH_ST", SqlDbType.Text).Value = _MOM_USR_EDURow.MOM_SCH_ST;
+                if (!_MOM_USR_EDURow.IsMOM_SCH_EDNull())
+                    momCommand.Parameters.Add("@MOM_SCH_ED", SqlDbType.Text).Value = _MOM_USR_EDURow.MOM_SCH_ED;
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_USR_EDURow.MOM_USR_ID;
 
                 int affectedRows = momCommand.ExecuteNonQuery();
             }

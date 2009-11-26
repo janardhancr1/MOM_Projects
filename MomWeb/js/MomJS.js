@@ -84,6 +84,25 @@ function momShareInfo()
 function silentErrorHandler() {return true;}
 window.onerror=silentErrorHandler;
 
+function showHideCancel(args, ele, type)
+{
+    var objFeed = document.getElementById(args);
+    
+    if(ele.value == "Cancel")
+    {
+        objFeed.style.display = 'none';
+        if(type == 1)
+            ele.value = "Add Child";
+        else
+            ele.value = "Add a School";
+    }
+    else
+    {
+        objFeed.style.display = 'block';
+        ele.value = "Cancel";
+    }
+}
+
 function showInfo(arg)
 {
     alert(arg);
