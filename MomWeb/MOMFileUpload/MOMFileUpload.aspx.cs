@@ -14,6 +14,10 @@ using System.Drawing;
 
 public partial class MOMFileUpload_MOMFileUpload : System.Web.UI.Page
 {
+    bool isSuccess;
+    string appMessage;
+    string sysMessage;
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -37,6 +41,13 @@ public partial class MOMFileUpload_MOMFileUpload : System.Web.UI.Page
 
                 newImage.Save(newfilePath);
 
+                ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE = "../MOMUserImages/" + fileName;
+
+                MOMUsers momUser = new MOMUsers();
+                momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
+                    ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
+                    ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
+
                 string script = "<script language=javascript>window.top.close();</script>";
                 if (!Page.IsStartupScriptRegistered("clientScript"))
                 {
@@ -46,6 +57,7 @@ public partial class MOMFileUpload_MOMFileUpload : System.Web.UI.Page
         }
         catch (Exception X)
         {
+            failedInfo.Text = X.Message;
         }
         finally
         {

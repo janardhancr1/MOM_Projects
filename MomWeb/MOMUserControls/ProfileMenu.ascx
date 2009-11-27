@@ -15,7 +15,7 @@
         {
             if(!uploadWindow || !uploadWindow.closed)
             {
-                setTimeout("listenWindows()", 4000);
+                setTimeout("listenWindows()", 2000);
             } 
             else
             {

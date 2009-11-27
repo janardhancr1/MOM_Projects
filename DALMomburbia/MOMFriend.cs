@@ -63,5 +63,44 @@ namespace DALMomburbia
                 base.CloseConnection();
             }
         }
+
+        public void AddMOM_FRNDByMOM_USR_ID(long momUserId, long momFriendId, 
+            out bool isSuccess, 
+            out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "dbo.SP_MOM_FRND_ADD_BY_MOM_USR_ID";
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = momUserId;
+                momCommand.Parameters.Add("@FRND_MOM_USR_ID", SqlDbType.BigInt).Value = momFriendId;
+                momCommand.ExecuteNonQuery();
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
     }
 }

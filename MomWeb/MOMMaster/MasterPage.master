@@ -64,6 +64,8 @@
                             </td>
                             <td style="width: 1px; background-color: #aa3464;">
                             </td>
+                            <%--<td style="width: 1px;">
+                            </td>--%>
                             <td style="width: 548px" valign="top">
                                 <asp:contentplaceholder id="momCenter" runat="server">
                                 </asp:contentplaceholder>

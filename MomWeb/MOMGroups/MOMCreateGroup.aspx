@@ -31,16 +31,16 @@
                             <td>
                                 <asp:DropDownList ID="momGroupType" runat="server">
                                  <asp:ListItem  Value="0">Select Category:</asp:ListItem>
-                                 <asp:ListItem  Value="1">Business</asp:ListItem>
-                                 <asp:ListItem  Value="2">Common Interest</asp:ListItem>
-                                 <asp:ListItem  Value="4">Entertainment</asp:ListItem>
-                                 <asp:ListItem  Value="5">Geography</asp:ListItem>
-                                 <asp:ListItem  Value="6">Internet</asp:ListItem>
-                                 <asp:ListItem  Value="7">Just for Fun</asp:ListItem>
-                                 <asp:ListItem  Value="8">Music</asp:ListItem>
-                                 <asp:ListItem  Value="9">Organizations</asp:ListItem>
-                                 <asp:ListItem  Value="10">Sports</asp:ListItem>
-                                 <asp:ListItem  Value="11">Student Groups</asp:ListItem>                                
+                                 <asp:ListItem  Value="Business">Business</asp:ListItem>
+                                 <asp:ListItem  Value="Common Interest">Common Interest</asp:ListItem>
+                                 <asp:ListItem  Value="Entertainment">Entertainment</asp:ListItem>
+                                 <asp:ListItem  Value="Geography">Geography</asp:ListItem>
+                                 <asp:ListItem  Value="Internet">Internet</asp:ListItem>
+                                 <asp:ListItem  Value="Just for Fun">Just for Fun</asp:ListItem>
+                                 <asp:ListItem  Value="Music">Music</asp:ListItem>
+                                 <asp:ListItem  Value="Organizations">Organizations</asp:ListItem>
+                                 <asp:ListItem  Value="Sports">Sports</asp:ListItem>
+                                 <asp:ListItem  Value="Student Groups">Student Groups</asp:ListItem>                                
                                  </asp:DropDownList>
                             </td>
                         </tr>

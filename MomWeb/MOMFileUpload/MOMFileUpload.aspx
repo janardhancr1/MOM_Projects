@@ -71,6 +71,11 @@
                             </asp:UpdateProgress>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="failedInfo" runat="server"></asp:Label>
+                        </td>
+                    </tr>
                 </table>
             </ContentTemplate>
         </asp:UpdatePanel>

@@ -219,3 +219,14 @@ function hideSubPanel(arg)
     if(arg=="momShareLinkPanel")
         document.getElementById("ctl00_momCenter_momShareLinkStatus").value = "F";
 }
+
+function addFriend(arg)
+{
+    alert(arg);
+    MOMWebService.AddFRND_MOM_USR_IDByMOM_USR_ID(arg, onFriendAddComplete, onError, onTimeout);  
+}
+
+function onFriendAddComplete()
+{
+    alert("Request has been sent for adding you as friend");
+}

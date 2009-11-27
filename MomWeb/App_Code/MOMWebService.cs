@@ -66,6 +66,20 @@ public class MOMWebService : System.Web.Services.WebService
     }
 
     [WebMethod(EnableSession = true)]
+    public void AddFRND_MOM_USR_IDByMOM_USR_ID(string momFriendUserId)
+    {
+        if (Session["momUser"] == null)
+            throw new Exception("Your session has expired. Please relogin...");
+
+        MOMFriend friend = new MOMFriend();
+        friend.AddMOM_FRNDByMOM_USR_ID(((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
+            long.Parse(MOMHelper.Decrypt(momFriendUserId)), out isSuccess, out appMessage, out sysMessage);
+
+        if (!isSuccess)
+            throw new MOMException(appMessage);
+    }
+
+    [WebMethod(EnableSession = true)]
     public string AddMOM_FRG_CMNTByMOM_FRG_ID(string momFrgId, string momShareInfo)
     {
         string retValue = string.Empty;

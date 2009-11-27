@@ -47,6 +47,8 @@ public partial class MOMGroups_MOMGroup : System.Web.UI.Page
                     Session.Add("momFridge", momFrg.MOM_FRG_SHAREDDataTable);
                     Session.Add("momFridgeComments", momFrg.MOM_FRG_CMNT_SHAREDDataTable);
                     momUserName.Text = momFrg.MOM_Dataset.MOM_GRP[0].NAME;
+                    momGroupCategory.Text = MOMHelper.HTMLEncode(momFrg.MOM_Dataset.MOM_GRP[0].TYPE);
+                    momGroupDesc.Text = MOMHelper.BreakText(MOMHelper.HTMLEncode(momFrg.MOM_Dataset.MOM_GRP[0].DESCRIPTION), 25);
 
                     //momRecipeRecent.DataSource = momFrg.MOM_Dataset.MOM_RCP.DefaultView;
                     //momRecipeRecent.DataBind();

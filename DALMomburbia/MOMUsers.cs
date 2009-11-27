@@ -238,5 +238,46 @@ namespace DALMomburbia
                 base.CloseConnection();
             }
         }
+
+        public void UpdatePicture(out bool isSuccess, out string appMessage, out string sysMessage, 
+            long momUserId, string picture)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "DBO.SP_MOM_USR_PIC_UPD_BY_MOM_USR_ID";
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = momUserId;
+                momCommand.Parameters.Add("@PICTURE", SqlDbType.VarChar).Value = picture;
+
+                SqlDataAdapter adaper = new SqlDataAdapter();
+                adaper.SelectCommand = momCommand;
+                momCommand.ExecuteNonQuery();
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
     }
 }

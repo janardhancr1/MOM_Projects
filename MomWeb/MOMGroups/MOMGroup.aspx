@@ -9,22 +9,30 @@
         <tr>
             <td>
                 <div class="momSpacer10px"></div>
-                <%--<div>
+                <div>
                     <table width="98%" cellpadding="5">
                         <tr>
                             <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
-                                Recent Group Posts
+                                Information
                             </td>
                         </tr>
                         <tr>
-                            <td class="momInfo">
-                                <a href="../MOMRecipe/MOMRecipesHome.aspx">
-                                    Go to my groups...
-                                </a>
+                            <td>
+                                Category: <asp:Label ID="momGroupCategory" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Description:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="momGroupDesc" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>                   
-                </div>--%>
+                </div>
                 <div class="momSpacer10px"></div>
                 <%--<div>
                     <table width="98%" cellpadding="5">
@@ -75,7 +83,7 @@
                     <tr>
                         <td>
                             <div>
-                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80" style="color:#aa3464;"></asp:TextBox>
+                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80" style="color:#aa3464; width: 500px;"></asp:TextBox>
                                 <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender" runat="server"
                                 TargetControlID="momShare" WatermarkText="You've got hands full so type anything!!!">
                                 </cc1:TextBoxWatermarkExtender>                            

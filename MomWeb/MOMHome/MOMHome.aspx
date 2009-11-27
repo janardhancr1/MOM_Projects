@@ -5,7 +5,7 @@
 <%@ Register TagPrefix="mp" TagName="momPopup" Src="~/MOMUserControls/MOMPopUpControl.ascx" %>
 
 <asp:Content ContentPlaceHolderID="momLeft" runat="server">
-    <table cellpadding="0" cellspacing="0" width="100%">
+    <table cellpadding="0" cellspacing="0" width="100%" style="width: 150px;">
         <tr>
             <td>
                 <div class="momSpacer10px"></div>
@@ -78,7 +78,7 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="momCenter" runat="server">
-    <table width="100%" cellpadding="2" cellspacing="0">
+    <table style="width: 548px" cellpadding="2" cellspacing="0">
         <tr>
             <td>
                 <asp:Label ID="momUserName" runat="server" CssClass="grayHeader"></asp:Label>
@@ -91,7 +91,8 @@
                     <tr>
                         <td>
                             <div>
-                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80" style="color:#aa3464;"></asp:TextBox>
+                                <asp:TextBox ID="momShare" runat="server" TextMode="multiLine" Rows="2" Columns="80" style="color:#aa3464; width: 500px;">
+                                </asp:TextBox>
                                 <cc1:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender" runat="server"
                                 TargetControlID="momShare" WatermarkText="You've got hands full so type anything!!!">
                                 </cc1:TextBoxWatermarkExtender>                            
@@ -329,7 +330,9 @@
                                                     </div>
                                                     <div class="momSpacer5px"></div>
                                                     <div>
-                                                        Add as Friend
+                                                        <a href="javascript:addFriend('<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>');">
+                                                            Add as Friend
+                                                        </a>
                                                     </div>
                                                 </td>
                                                 <td align="right">
