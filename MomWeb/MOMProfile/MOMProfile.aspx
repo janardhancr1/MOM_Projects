@@ -578,28 +578,29 @@
                                                         <div>
                                                             Favorite Celebs:</div>
                                                         <div>
-                                                            <textarea id="Textarea1" runat="server" cols="80" rows="2"></textarea>
+                                                            <textarea id="momUsrFavCeleb" runat="server" cols="80" rows="2"></textarea>
                                                         </div>
                                                         <div>
                                                             Favorite Movies:</div>
                                                         <div>
-                                                            <textarea id="Textarea2" runat="server" cols="80" rows="2"></textarea>
+                                                            <textarea id="momUsrFavMov" runat="server" cols="80" rows="2"></textarea>
                                                         </div>
                                                         <div>
                                                             Favorite TV Shows:</div>
                                                         <div>
-                                                            <textarea id="Textarea3" runat="server" cols="80" rows="2"></textarea>
+                                                            <textarea id="momUsrFavTv" runat="server" cols="80" rows="2"></textarea>
                                                         </div>
                                                         <div>
                                                             Favorite Books:</div>
                                                         <div>
-                                                            <textarea id="Textarea4" runat="server" cols="80" rows="2"></textarea>
+                                                            <textarea id="momUsrFavBook" runat="server" cols="80" rows="2"></textarea>
                                                         </div>
                                                         <div>
                                                             Favorite Music:</div>
                                                         <div>
-                                                            <textarea id="Textarea5" runat="server" cols="80" rows="2"></textarea>
+                                                            <textarea id="momUsrFavMusic" runat="server" cols="80" rows="2"></textarea>
                                                         </div>
+                                                        <br />
                                                         <asp:Button ID="FaveSaveButton" runat="server" CssClass="btnStyle" Text="Save" OnClick="FavSave_Click" />
                                                     </div>
                                                 </Content>

@@ -22,7 +22,6 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
     {
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
-
     }
 
     protected void ChangeMenu(object sender, EventArgs e)
@@ -43,10 +42,14 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                     momLocation.Text = momUsers.MOM_USRRow.LOCATION;
                     momCountry.SelectedValue = momUsers.MOM_USRRow.COUNTRY;
                     momDisplayName.Text = momUsers.MOM_USRRow.DISPLAY_NAME;
+
+                    if (momUsers.MOM_USRRow.INTEREST != null)
+                        momUserInterests.Value = momUsers.MOM_USRRow.INTEREST;
                 }
 
                 ShowKids();
                 ShowSchools();
+                ShowFavorites();
 
                 break;
             case 0:
@@ -155,12 +158,72 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
     protected void IntSave_Click(object sender, EventArgs e)
     {
-        
+        MOMUsers user = new MOMUsers();
+        try
+        {
+            user.UpdateInterest(out isSuccess, out appMessage, out sysMessage, momUserInterests.Value, ((MOMDataset.MOM_USRRow)Session["momUser"]).ID);
+
+            if (isSuccess)
+            {
+                momPopup.Show("Saved.");
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
     }
 
     protected void FavSave_Click(object sender, EventArgs e)
     {
-        
+        try
+        {
+            MOMUserFavorites userFavorites = new MOMUserFavorites();
+            MOMDataset.MOM_USR_FAVRow usrFavRow = userFavorites.MOM_USR_FAVDataTable.NewMOM_USR_FAVRow();
+            usrFavRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+
+            if (momUsrFavCeleb.Value.Trim().Length > 0) usrFavRow.MOM_FAV_CELEB = momUsrFavCeleb.Value;
+            if (momUsrFavMov.Value.Trim().Length > 0) usrFavRow.MOM_FAV_MOV = momUsrFavMov.Value;
+            if (momUsrFavTv.Value.Trim().Length > 0) usrFavRow.MOM_FAV_TV = momUsrFavTv.Value;
+            if (momUsrFavBook.Value.Trim().Length > 0) usrFavRow.MOM_FAV_BOOKS = momUsrFavBook.Value;
+            if (momUsrFavMusic.Value.Trim().Length > 0) usrFavRow.MOM_FAV_MUSIC = momUsrFavMusic.Value;
+
+            userFavorites.MOM_USR_FAVRow = usrFavRow;
+            userFavorites.UpdateMOM_UserFavRow(out isSuccess, out appMessage, out sysMessage);
+
+            if (isSuccess)
+            {
+                momPopup.Show("Saved.");
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
     }
 
     private void ShowKids()
@@ -299,6 +362,33 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
                 momEduTable.Rows.Add(row);
             }
+        }
+    }
+
+    private void ShowFavorites()
+    {
+        MOMUserFavorites momUsrFavorites = new MOMUserFavorites();
+        MOMDataset.MOM_USR_FAVRow usrFavRow = momUsrFavorites.MOM_USR_FAVDataTable.NewMOM_USR_FAVRow();
+        usrFavRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+        momUsrFavorites.MOM_USR_FAVRow = usrFavRow;
+
+        momUsrFavorites.GetMOM_User_Favorites(out isSuccess, out appMessage, out sysMessage);
+        if (isSuccess)
+        {
+            if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_CELEB != null)
+                momUsrFavCeleb.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_CELEB;
+
+            if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MOV != null)
+                momUsrFavMov.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MOV;
+
+            if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_TV != null)
+                momUsrFavTv.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_TV;
+
+            if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_BOOKS != null)
+                momUsrFavBook.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_BOOKS;
+
+            if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MUSIC != null)
+                momUsrFavMusic.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MUSIC;
         }
     }
 }
