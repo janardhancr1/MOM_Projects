@@ -72,6 +72,7 @@
     <Compile Include="MOMTags.cs" />
     <Compile Include="MOMUserEducation.cs" />
     <Compile Include="MOMUserFavorites.cs" />
+    <Compile Include="MOMUserPrivacy.cs" />
     <Compile Include="MOMUsers.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

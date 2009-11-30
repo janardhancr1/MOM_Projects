@@ -4,6 +4,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register TagPrefix="pc" TagName="profileControl" Src="~/MOMUserControls/ProfileMenu.ascx" %>
 <%@ Register Src="~/MOMUserControls/MOMPopUpControl.ascx" TagName="momPopup" TagPrefix="popUp" %>
+<%@ Import Namespace="BOMomburbia" %>
 <asp:Content ContentPlaceHolderID="momLeft" ID="momLeftContent" runat="server">
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -632,213 +633,213 @@
                                                         <br />
                                                         <br />
                                                         <div id="edutable" style="display: none">
-                                                        <fieldset>
-                                                            <table width="100%" >
-                                                                <tr>
-                                                                    <td>
-                                                                        School Name</td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="momSchName" runat="server" MaxLength="50"></asp:TextBox></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        Type</td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="momSchType" runat="server">
-                                                                            <asp:ListItem Value="">Select Type</asp:ListItem>
-                                                                            <asp:ListItem Value="High School">High School</asp:ListItem>
-                                                                            <asp:ListItem Value="College">College</asp:ListItem>
-                                                                            <asp:ListItem Value="Graduate School">Graduate School</asp:ListItem>
-                                                                            <asp:ListItem Value="Post Graduate">Post Graduate</asp:ListItem>
-                                                                            <asp:ListItem Value="Trade School">Trade School</asp:ListItem>
-                                                                        </asp:DropDownList></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        Start Year</td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="momSchSt" runat="server">
-                                                                            <asp:ListItem Value="Year">Year</asp:ListItem>
-                                                                            <asp:ListItem Value="2009">2009</asp:ListItem>
-                                                                            <asp:ListItem Value="2008">2008</asp:ListItem>
-                                                                            <asp:ListItem Value="2007">2007</asp:ListItem>
-                                                                            <asp:ListItem Value="2006">2006</asp:ListItem>
-                                                                            <asp:ListItem Value="2005">2005</asp:ListItem>
-                                                                            <asp:ListItem Value="2004">2004</asp:ListItem>
-                                                                            <asp:ListItem Value="2003">2003</asp:ListItem>
-                                                                            <asp:ListItem Value="2002">2002</asp:ListItem>
-                                                                            <asp:ListItem Value="2001">2001</asp:ListItem>
-                                                                            <asp:ListItem Value="2000">2000</asp:ListItem>
-                                                                            <asp:ListItem Value="1999">1999</asp:ListItem>
-                                                                            <asp:ListItem Value="1998">1998</asp:ListItem>
-                                                                            <asp:ListItem Value="1997">1997</asp:ListItem>
-                                                                            <asp:ListItem Value="1996">1996</asp:ListItem>
-                                                                            <asp:ListItem Value="1995">1995</asp:ListItem>
-                                                                            <asp:ListItem Value="1994">1994</asp:ListItem>
-                                                                            <asp:ListItem Value="1993">1993</asp:ListItem>
-                                                                            <asp:ListItem Value="1992">1992</asp:ListItem>
-                                                                            <asp:ListItem Value="1991">1991</asp:ListItem>
-                                                                            <asp:ListItem Value="1990">1990</asp:ListItem>
-                                                                            <asp:ListItem Value="1989">1989</asp:ListItem>
-                                                                            <asp:ListItem Value="1988">1988</asp:ListItem>
-                                                                            <asp:ListItem Value="1987">1987</asp:ListItem>
-                                                                            <asp:ListItem Value="1986">1986</asp:ListItem>
-                                                                            <asp:ListItem Value="1985">1985</asp:ListItem>
-                                                                            <asp:ListItem Value="1984">1984</asp:ListItem>
-                                                                            <asp:ListItem Value="1983">1983</asp:ListItem>
-                                                                            <asp:ListItem Value="1982">1982</asp:ListItem>
-                                                                            <asp:ListItem Value="1981">1981</asp:ListItem>
-                                                                            <asp:ListItem Value="1980">1980</asp:ListItem>
-                                                                            <asp:ListItem Value="1979">1979</asp:ListItem>
-                                                                            <asp:ListItem Value="1978">1978</asp:ListItem>
-                                                                            <asp:ListItem Value="1977">1977</asp:ListItem>
-                                                                            <asp:ListItem Value="1976">1976</asp:ListItem>
-                                                                            <asp:ListItem Value="1975">1975</asp:ListItem>
-                                                                            <asp:ListItem Value="1974">1974</asp:ListItem>
-                                                                            <asp:ListItem Value="1973">1973</asp:ListItem>
-                                                                            <asp:ListItem Value="1972">1972</asp:ListItem>
-                                                                            <asp:ListItem Value="1971">1971</asp:ListItem>
-                                                                            <asp:ListItem Value="1970">1970</asp:ListItem>
-                                                                            <asp:ListItem Value="1969">1969</asp:ListItem>
-                                                                            <asp:ListItem Value="1968">1968</asp:ListItem>
-                                                                            <asp:ListItem Value="1967">1967</asp:ListItem>
-                                                                            <asp:ListItem Value="1966">1966</asp:ListItem>
-                                                                            <asp:ListItem Value="1965">1965</asp:ListItem>
-                                                                            <asp:ListItem Value="1964">1964</asp:ListItem>
-                                                                            <asp:ListItem Value="1963">1963</asp:ListItem>
-                                                                            <asp:ListItem Value="1962">1962</asp:ListItem>
-                                                                            <asp:ListItem Value="1961">1961</asp:ListItem>
-                                                                            <asp:ListItem Value="1960">1960</asp:ListItem>
-                                                                            <asp:ListItem Value="1959">1959</asp:ListItem>
-                                                                            <asp:ListItem Value="1958">1958</asp:ListItem>
-                                                                            <asp:ListItem Value="1957">1957</asp:ListItem>
-                                                                            <asp:ListItem Value="1956">1956</asp:ListItem>
-                                                                            <asp:ListItem Value="1955">1955</asp:ListItem>
-                                                                            <asp:ListItem Value="1954">1954</asp:ListItem>
-                                                                            <asp:ListItem Value="1953">1953</asp:ListItem>
-                                                                            <asp:ListItem Value="1952">1952</asp:ListItem>
-                                                                            <asp:ListItem Value="1951">1951</asp:ListItem>
-                                                                            <asp:ListItem Value="1950">1950</asp:ListItem>
-                                                                            <asp:ListItem Value="1949">1949</asp:ListItem>
-                                                                            <asp:ListItem Value="1948">1948</asp:ListItem>
-                                                                            <asp:ListItem Value="1947">1947</asp:ListItem>
-                                                                            <asp:ListItem Value="1946">1946</asp:ListItem>
-                                                                            <asp:ListItem Value="1945">1945</asp:ListItem>
-                                                                            <asp:ListItem Value="1944">1944</asp:ListItem>
-                                                                            <asp:ListItem Value="1943">1943</asp:ListItem>
-                                                                            <asp:ListItem Value="1942">1942</asp:ListItem>
-                                                                            <asp:ListItem Value="1941">1941</asp:ListItem>
-                                                                            <asp:ListItem Value="1940">1940</asp:ListItem>
-                                                                            <asp:ListItem Value="1939">1939</asp:ListItem>
-                                                                            <asp:ListItem Value="1938">1938</asp:ListItem>
-                                                                            <asp:ListItem Value="1937">1937</asp:ListItem>
-                                                                            <asp:ListItem Value="1936">1936</asp:ListItem>
-                                                                            <asp:ListItem Value="1935">1935</asp:ListItem>
-                                                                            <asp:ListItem Value="1934">1934</asp:ListItem>
-                                                                            <asp:ListItem Value="1933">1933</asp:ListItem>
-                                                                            <asp:ListItem Value="1932">1932</asp:ListItem>
-                                                                            <asp:ListItem Value="1931">1931</asp:ListItem>
-                                                                            <asp:ListItem Value="1930">1930</asp:ListItem>
-                                                                            <asp:ListItem Value="1929">1929</asp:ListItem>
-                                                                        </asp:DropDownList></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        End Year</td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="momSchEd" runat="server">
-                                                                            <asp:ListItem Value="Year">Year</asp:ListItem>
-                                                                            <asp:ListItem Value="2009">2009</asp:ListItem>
-                                                                            <asp:ListItem Value="2008">2008</asp:ListItem>
-                                                                            <asp:ListItem Value="2007">2007</asp:ListItem>
-                                                                            <asp:ListItem Value="2006">2006</asp:ListItem>
-                                                                            <asp:ListItem Value="2005">2005</asp:ListItem>
-                                                                            <asp:ListItem Value="2004">2004</asp:ListItem>
-                                                                            <asp:ListItem Value="2003">2003</asp:ListItem>
-                                                                            <asp:ListItem Value="2002">2002</asp:ListItem>
-                                                                            <asp:ListItem Value="2001">2001</asp:ListItem>
-                                                                            <asp:ListItem Value="2000">2000</asp:ListItem>
-                                                                            <asp:ListItem Value="1999">1999</asp:ListItem>
-                                                                            <asp:ListItem Value="1998">1998</asp:ListItem>
-                                                                            <asp:ListItem Value="1997">1997</asp:ListItem>
-                                                                            <asp:ListItem Value="1996">1996</asp:ListItem>
-                                                                            <asp:ListItem Value="1995">1995</asp:ListItem>
-                                                                            <asp:ListItem Value="1994">1994</asp:ListItem>
-                                                                            <asp:ListItem Value="1993">1993</asp:ListItem>
-                                                                            <asp:ListItem Value="1992">1992</asp:ListItem>
-                                                                            <asp:ListItem Value="1991">1991</asp:ListItem>
-                                                                            <asp:ListItem Value="1990">1990</asp:ListItem>
-                                                                            <asp:ListItem Value="1989">1989</asp:ListItem>
-                                                                            <asp:ListItem Value="1988">1988</asp:ListItem>
-                                                                            <asp:ListItem Value="1987">1987</asp:ListItem>
-                                                                            <asp:ListItem Value="1986">1986</asp:ListItem>
-                                                                            <asp:ListItem Value="1985">1985</asp:ListItem>
-                                                                            <asp:ListItem Value="1984">1984</asp:ListItem>
-                                                                            <asp:ListItem Value="1983">1983</asp:ListItem>
-                                                                            <asp:ListItem Value="1982">1982</asp:ListItem>
-                                                                            <asp:ListItem Value="1981">1981</asp:ListItem>
-                                                                            <asp:ListItem Value="1980">1980</asp:ListItem>
-                                                                            <asp:ListItem Value="1979">1979</asp:ListItem>
-                                                                            <asp:ListItem Value="1978">1978</asp:ListItem>
-                                                                            <asp:ListItem Value="1977">1977</asp:ListItem>
-                                                                            <asp:ListItem Value="1976">1976</asp:ListItem>
-                                                                            <asp:ListItem Value="1975">1975</asp:ListItem>
-                                                                            <asp:ListItem Value="1974">1974</asp:ListItem>
-                                                                            <asp:ListItem Value="1973">1973</asp:ListItem>
-                                                                            <asp:ListItem Value="1972">1972</asp:ListItem>
-                                                                            <asp:ListItem Value="1971">1971</asp:ListItem>
-                                                                            <asp:ListItem Value="1970">1970</asp:ListItem>
-                                                                            <asp:ListItem Value="1969">1969</asp:ListItem>
-                                                                            <asp:ListItem Value="1968">1968</asp:ListItem>
-                                                                            <asp:ListItem Value="1967">1967</asp:ListItem>
-                                                                            <asp:ListItem Value="1966">1966</asp:ListItem>
-                                                                            <asp:ListItem Value="1965">1965</asp:ListItem>
-                                                                            <asp:ListItem Value="1964">1964</asp:ListItem>
-                                                                            <asp:ListItem Value="1963">1963</asp:ListItem>
-                                                                            <asp:ListItem Value="1962">1962</asp:ListItem>
-                                                                            <asp:ListItem Value="1961">1961</asp:ListItem>
-                                                                            <asp:ListItem Value="1960">1960</asp:ListItem>
-                                                                            <asp:ListItem Value="1959">1959</asp:ListItem>
-                                                                            <asp:ListItem Value="1958">1958</asp:ListItem>
-                                                                            <asp:ListItem Value="1957">1957</asp:ListItem>
-                                                                            <asp:ListItem Value="1956">1956</asp:ListItem>
-                                                                            <asp:ListItem Value="1955">1955</asp:ListItem>
-                                                                            <asp:ListItem Value="1954">1954</asp:ListItem>
-                                                                            <asp:ListItem Value="1953">1953</asp:ListItem>
-                                                                            <asp:ListItem Value="1952">1952</asp:ListItem>
-                                                                            <asp:ListItem Value="1951">1951</asp:ListItem>
-                                                                            <asp:ListItem Value="1950">1950</asp:ListItem>
-                                                                            <asp:ListItem Value="1949">1949</asp:ListItem>
-                                                                            <asp:ListItem Value="1948">1948</asp:ListItem>
-                                                                            <asp:ListItem Value="1947">1947</asp:ListItem>
-                                                                            <asp:ListItem Value="1946">1946</asp:ListItem>
-                                                                            <asp:ListItem Value="1945">1945</asp:ListItem>
-                                                                            <asp:ListItem Value="1944">1944</asp:ListItem>
-                                                                            <asp:ListItem Value="1943">1943</asp:ListItem>
-                                                                            <asp:ListItem Value="1942">1942</asp:ListItem>
-                                                                            <asp:ListItem Value="1941">1941</asp:ListItem>
-                                                                            <asp:ListItem Value="1940">1940</asp:ListItem>
-                                                                            <asp:ListItem Value="1939">1939</asp:ListItem>
-                                                                            <asp:ListItem Value="1938">1938</asp:ListItem>
-                                                                            <asp:ListItem Value="1937">1937</asp:ListItem>
-                                                                            <asp:ListItem Value="1936">1936</asp:ListItem>
-                                                                            <asp:ListItem Value="1935">1935</asp:ListItem>
-                                                                            <asp:ListItem Value="1934">1934</asp:ListItem>
-                                                                            <asp:ListItem Value="1933">1933</asp:ListItem>
-                                                                            <asp:ListItem Value="1932">1932</asp:ListItem>
-                                                                            <asp:ListItem Value="1931">1931</asp:ListItem>
-                                                                            <asp:ListItem Value="1930">1930</asp:ListItem>
-                                                                            <asp:ListItem Value="1929">1929</asp:ListItem>
-                                                                        </asp:DropDownList></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <asp:Button ID="MomSchSave" runat="server" Text="Save" CssClass="btnStyle" OnClick="SchSave_Click" />
-                                                                        <input type="hidden" runat="server" id="momSchID" />
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </fieldset>
+                                                            <fieldset>
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            School Name</td>
+                                                                        <td>
+                                                                            <asp:TextBox ID="momSchName" runat="server" MaxLength="50"></asp:TextBox></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            Type</td>
+                                                                        <td>
+                                                                            <asp:DropDownList ID="momSchType" runat="server">
+                                                                                <asp:ListItem Value="">Select Type</asp:ListItem>
+                                                                                <asp:ListItem Value="High School">High School</asp:ListItem>
+                                                                                <asp:ListItem Value="College">College</asp:ListItem>
+                                                                                <asp:ListItem Value="Graduate School">Graduate School</asp:ListItem>
+                                                                                <asp:ListItem Value="Post Graduate">Post Graduate</asp:ListItem>
+                                                                                <asp:ListItem Value="Trade School">Trade School</asp:ListItem>
+                                                                            </asp:DropDownList></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            Start Year</td>
+                                                                        <td>
+                                                                            <asp:DropDownList ID="momSchSt" runat="server">
+                                                                                <asp:ListItem Value="Year">Year</asp:ListItem>
+                                                                                <asp:ListItem Value="2009">2009</asp:ListItem>
+                                                                                <asp:ListItem Value="2008">2008</asp:ListItem>
+                                                                                <asp:ListItem Value="2007">2007</asp:ListItem>
+                                                                                <asp:ListItem Value="2006">2006</asp:ListItem>
+                                                                                <asp:ListItem Value="2005">2005</asp:ListItem>
+                                                                                <asp:ListItem Value="2004">2004</asp:ListItem>
+                                                                                <asp:ListItem Value="2003">2003</asp:ListItem>
+                                                                                <asp:ListItem Value="2002">2002</asp:ListItem>
+                                                                                <asp:ListItem Value="2001">2001</asp:ListItem>
+                                                                                <asp:ListItem Value="2000">2000</asp:ListItem>
+                                                                                <asp:ListItem Value="1999">1999</asp:ListItem>
+                                                                                <asp:ListItem Value="1998">1998</asp:ListItem>
+                                                                                <asp:ListItem Value="1997">1997</asp:ListItem>
+                                                                                <asp:ListItem Value="1996">1996</asp:ListItem>
+                                                                                <asp:ListItem Value="1995">1995</asp:ListItem>
+                                                                                <asp:ListItem Value="1994">1994</asp:ListItem>
+                                                                                <asp:ListItem Value="1993">1993</asp:ListItem>
+                                                                                <asp:ListItem Value="1992">1992</asp:ListItem>
+                                                                                <asp:ListItem Value="1991">1991</asp:ListItem>
+                                                                                <asp:ListItem Value="1990">1990</asp:ListItem>
+                                                                                <asp:ListItem Value="1989">1989</asp:ListItem>
+                                                                                <asp:ListItem Value="1988">1988</asp:ListItem>
+                                                                                <asp:ListItem Value="1987">1987</asp:ListItem>
+                                                                                <asp:ListItem Value="1986">1986</asp:ListItem>
+                                                                                <asp:ListItem Value="1985">1985</asp:ListItem>
+                                                                                <asp:ListItem Value="1984">1984</asp:ListItem>
+                                                                                <asp:ListItem Value="1983">1983</asp:ListItem>
+                                                                                <asp:ListItem Value="1982">1982</asp:ListItem>
+                                                                                <asp:ListItem Value="1981">1981</asp:ListItem>
+                                                                                <asp:ListItem Value="1980">1980</asp:ListItem>
+                                                                                <asp:ListItem Value="1979">1979</asp:ListItem>
+                                                                                <asp:ListItem Value="1978">1978</asp:ListItem>
+                                                                                <asp:ListItem Value="1977">1977</asp:ListItem>
+                                                                                <asp:ListItem Value="1976">1976</asp:ListItem>
+                                                                                <asp:ListItem Value="1975">1975</asp:ListItem>
+                                                                                <asp:ListItem Value="1974">1974</asp:ListItem>
+                                                                                <asp:ListItem Value="1973">1973</asp:ListItem>
+                                                                                <asp:ListItem Value="1972">1972</asp:ListItem>
+                                                                                <asp:ListItem Value="1971">1971</asp:ListItem>
+                                                                                <asp:ListItem Value="1970">1970</asp:ListItem>
+                                                                                <asp:ListItem Value="1969">1969</asp:ListItem>
+                                                                                <asp:ListItem Value="1968">1968</asp:ListItem>
+                                                                                <asp:ListItem Value="1967">1967</asp:ListItem>
+                                                                                <asp:ListItem Value="1966">1966</asp:ListItem>
+                                                                                <asp:ListItem Value="1965">1965</asp:ListItem>
+                                                                                <asp:ListItem Value="1964">1964</asp:ListItem>
+                                                                                <asp:ListItem Value="1963">1963</asp:ListItem>
+                                                                                <asp:ListItem Value="1962">1962</asp:ListItem>
+                                                                                <asp:ListItem Value="1961">1961</asp:ListItem>
+                                                                                <asp:ListItem Value="1960">1960</asp:ListItem>
+                                                                                <asp:ListItem Value="1959">1959</asp:ListItem>
+                                                                                <asp:ListItem Value="1958">1958</asp:ListItem>
+                                                                                <asp:ListItem Value="1957">1957</asp:ListItem>
+                                                                                <asp:ListItem Value="1956">1956</asp:ListItem>
+                                                                                <asp:ListItem Value="1955">1955</asp:ListItem>
+                                                                                <asp:ListItem Value="1954">1954</asp:ListItem>
+                                                                                <asp:ListItem Value="1953">1953</asp:ListItem>
+                                                                                <asp:ListItem Value="1952">1952</asp:ListItem>
+                                                                                <asp:ListItem Value="1951">1951</asp:ListItem>
+                                                                                <asp:ListItem Value="1950">1950</asp:ListItem>
+                                                                                <asp:ListItem Value="1949">1949</asp:ListItem>
+                                                                                <asp:ListItem Value="1948">1948</asp:ListItem>
+                                                                                <asp:ListItem Value="1947">1947</asp:ListItem>
+                                                                                <asp:ListItem Value="1946">1946</asp:ListItem>
+                                                                                <asp:ListItem Value="1945">1945</asp:ListItem>
+                                                                                <asp:ListItem Value="1944">1944</asp:ListItem>
+                                                                                <asp:ListItem Value="1943">1943</asp:ListItem>
+                                                                                <asp:ListItem Value="1942">1942</asp:ListItem>
+                                                                                <asp:ListItem Value="1941">1941</asp:ListItem>
+                                                                                <asp:ListItem Value="1940">1940</asp:ListItem>
+                                                                                <asp:ListItem Value="1939">1939</asp:ListItem>
+                                                                                <asp:ListItem Value="1938">1938</asp:ListItem>
+                                                                                <asp:ListItem Value="1937">1937</asp:ListItem>
+                                                                                <asp:ListItem Value="1936">1936</asp:ListItem>
+                                                                                <asp:ListItem Value="1935">1935</asp:ListItem>
+                                                                                <asp:ListItem Value="1934">1934</asp:ListItem>
+                                                                                <asp:ListItem Value="1933">1933</asp:ListItem>
+                                                                                <asp:ListItem Value="1932">1932</asp:ListItem>
+                                                                                <asp:ListItem Value="1931">1931</asp:ListItem>
+                                                                                <asp:ListItem Value="1930">1930</asp:ListItem>
+                                                                                <asp:ListItem Value="1929">1929</asp:ListItem>
+                                                                            </asp:DropDownList></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            End Year</td>
+                                                                        <td>
+                                                                            <asp:DropDownList ID="momSchEd" runat="server">
+                                                                                <asp:ListItem Value="Year">Year</asp:ListItem>
+                                                                                <asp:ListItem Value="2009">2009</asp:ListItem>
+                                                                                <asp:ListItem Value="2008">2008</asp:ListItem>
+                                                                                <asp:ListItem Value="2007">2007</asp:ListItem>
+                                                                                <asp:ListItem Value="2006">2006</asp:ListItem>
+                                                                                <asp:ListItem Value="2005">2005</asp:ListItem>
+                                                                                <asp:ListItem Value="2004">2004</asp:ListItem>
+                                                                                <asp:ListItem Value="2003">2003</asp:ListItem>
+                                                                                <asp:ListItem Value="2002">2002</asp:ListItem>
+                                                                                <asp:ListItem Value="2001">2001</asp:ListItem>
+                                                                                <asp:ListItem Value="2000">2000</asp:ListItem>
+                                                                                <asp:ListItem Value="1999">1999</asp:ListItem>
+                                                                                <asp:ListItem Value="1998">1998</asp:ListItem>
+                                                                                <asp:ListItem Value="1997">1997</asp:ListItem>
+                                                                                <asp:ListItem Value="1996">1996</asp:ListItem>
+                                                                                <asp:ListItem Value="1995">1995</asp:ListItem>
+                                                                                <asp:ListItem Value="1994">1994</asp:ListItem>
+                                                                                <asp:ListItem Value="1993">1993</asp:ListItem>
+                                                                                <asp:ListItem Value="1992">1992</asp:ListItem>
+                                                                                <asp:ListItem Value="1991">1991</asp:ListItem>
+                                                                                <asp:ListItem Value="1990">1990</asp:ListItem>
+                                                                                <asp:ListItem Value="1989">1989</asp:ListItem>
+                                                                                <asp:ListItem Value="1988">1988</asp:ListItem>
+                                                                                <asp:ListItem Value="1987">1987</asp:ListItem>
+                                                                                <asp:ListItem Value="1986">1986</asp:ListItem>
+                                                                                <asp:ListItem Value="1985">1985</asp:ListItem>
+                                                                                <asp:ListItem Value="1984">1984</asp:ListItem>
+                                                                                <asp:ListItem Value="1983">1983</asp:ListItem>
+                                                                                <asp:ListItem Value="1982">1982</asp:ListItem>
+                                                                                <asp:ListItem Value="1981">1981</asp:ListItem>
+                                                                                <asp:ListItem Value="1980">1980</asp:ListItem>
+                                                                                <asp:ListItem Value="1979">1979</asp:ListItem>
+                                                                                <asp:ListItem Value="1978">1978</asp:ListItem>
+                                                                                <asp:ListItem Value="1977">1977</asp:ListItem>
+                                                                                <asp:ListItem Value="1976">1976</asp:ListItem>
+                                                                                <asp:ListItem Value="1975">1975</asp:ListItem>
+                                                                                <asp:ListItem Value="1974">1974</asp:ListItem>
+                                                                                <asp:ListItem Value="1973">1973</asp:ListItem>
+                                                                                <asp:ListItem Value="1972">1972</asp:ListItem>
+                                                                                <asp:ListItem Value="1971">1971</asp:ListItem>
+                                                                                <asp:ListItem Value="1970">1970</asp:ListItem>
+                                                                                <asp:ListItem Value="1969">1969</asp:ListItem>
+                                                                                <asp:ListItem Value="1968">1968</asp:ListItem>
+                                                                                <asp:ListItem Value="1967">1967</asp:ListItem>
+                                                                                <asp:ListItem Value="1966">1966</asp:ListItem>
+                                                                                <asp:ListItem Value="1965">1965</asp:ListItem>
+                                                                                <asp:ListItem Value="1964">1964</asp:ListItem>
+                                                                                <asp:ListItem Value="1963">1963</asp:ListItem>
+                                                                                <asp:ListItem Value="1962">1962</asp:ListItem>
+                                                                                <asp:ListItem Value="1961">1961</asp:ListItem>
+                                                                                <asp:ListItem Value="1960">1960</asp:ListItem>
+                                                                                <asp:ListItem Value="1959">1959</asp:ListItem>
+                                                                                <asp:ListItem Value="1958">1958</asp:ListItem>
+                                                                                <asp:ListItem Value="1957">1957</asp:ListItem>
+                                                                                <asp:ListItem Value="1956">1956</asp:ListItem>
+                                                                                <asp:ListItem Value="1955">1955</asp:ListItem>
+                                                                                <asp:ListItem Value="1954">1954</asp:ListItem>
+                                                                                <asp:ListItem Value="1953">1953</asp:ListItem>
+                                                                                <asp:ListItem Value="1952">1952</asp:ListItem>
+                                                                                <asp:ListItem Value="1951">1951</asp:ListItem>
+                                                                                <asp:ListItem Value="1950">1950</asp:ListItem>
+                                                                                <asp:ListItem Value="1949">1949</asp:ListItem>
+                                                                                <asp:ListItem Value="1948">1948</asp:ListItem>
+                                                                                <asp:ListItem Value="1947">1947</asp:ListItem>
+                                                                                <asp:ListItem Value="1946">1946</asp:ListItem>
+                                                                                <asp:ListItem Value="1945">1945</asp:ListItem>
+                                                                                <asp:ListItem Value="1944">1944</asp:ListItem>
+                                                                                <asp:ListItem Value="1943">1943</asp:ListItem>
+                                                                                <asp:ListItem Value="1942">1942</asp:ListItem>
+                                                                                <asp:ListItem Value="1941">1941</asp:ListItem>
+                                                                                <asp:ListItem Value="1940">1940</asp:ListItem>
+                                                                                <asp:ListItem Value="1939">1939</asp:ListItem>
+                                                                                <asp:ListItem Value="1938">1938</asp:ListItem>
+                                                                                <asp:ListItem Value="1937">1937</asp:ListItem>
+                                                                                <asp:ListItem Value="1936">1936</asp:ListItem>
+                                                                                <asp:ListItem Value="1935">1935</asp:ListItem>
+                                                                                <asp:ListItem Value="1934">1934</asp:ListItem>
+                                                                                <asp:ListItem Value="1933">1933</asp:ListItem>
+                                                                                <asp:ListItem Value="1932">1932</asp:ListItem>
+                                                                                <asp:ListItem Value="1931">1931</asp:ListItem>
+                                                                                <asp:ListItem Value="1930">1930</asp:ListItem>
+                                                                                <asp:ListItem Value="1929">1929</asp:ListItem>
+                                                                            </asp:DropDownList></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2">
+                                                                            <asp:Button ID="MomSchSave" runat="server" Text="Save" CssClass="btnStyle" OnClick="SchSave_Click" />
+                                                                            <input type="hidden" runat="server" id="momSchID" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </fieldset>
                                                         </div>
                                                     </p>
                                                 </Content>
@@ -849,105 +850,151 @@
                                                 <Content>
                                                     <div>
                                                         <fieldset>
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your name:</label>
-                                                                <asp:DropDownList ID="NameSearch" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">Searchable</asp:ListItem>
-                                                                    <asp:ListItem Value="">Not Searchable</asp:ListItem>
-                                                                </asp:DropDownList></div>
                                                             <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your birthday and age:</label>
-                                                                <asp:DropDownList ID="DropDownList1" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your name:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyName" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your birthday and age:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyDOB" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your interests:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyInterest" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your education and schools:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyEdu" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your kids' names and gender:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyKids" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your kids' birthdays and ages:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyKidsDOB" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your kids' photos:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyKidsPhoto" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your Kids' "About" statements:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyKidsAbout" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your kids' interests and challenges:</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyKidsInterest" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Your last logged-in date and current logged-in status</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyLogin" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        &nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label>
+                                                                            Who is allowed to see your profile page.</label></td>
+                                                                    <td>
+                                                                        <asp:DropDownList ID="momPrivacyProfile" runat="server" Width="153px">
+                                                                            <asp:ListItem Value="">--Select--</asp:ListItem>
+                                                                        </asp:DropDownList></td>
+                                                                </tr>
+                                                            </table>
                                                             <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your interests:</label>
-                                                                <asp:DropDownList ID="DropDownList2" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your education and schools:</label>
-                                                                <asp:DropDownList ID="DropDownList3" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your kids' names and gender:</label>
-                                                                <asp:DropDownList ID="DropDownList4" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your kids' birthdays and ages:</label>
-                                                                <asp:DropDownList ID="DropDownList5" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your kids' photos:</label>
-                                                                <asp:DropDownList ID="DropDownList6" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your Kids' "About" statements:</label>
-                                                                <asp:DropDownList ID="DropDownList7" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your kids' interests and challenges:</label>
-                                                                <asp:DropDownList ID="DropDownList8" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Your last logged-in date and current logged-in status</label>
-                                                                <asp:DropDownList ID="DropDownList9" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">All</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends</asp:ListItem>
-                                                                    <asp:ListItem Value="">Private</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <div class="formOption">
-                                                                <label>
-                                                                    Who is allowed to see your profile page.</label>
-                                                                <asp:DropDownList ID="DropDownList10" runat="server" Width="153px">
-                                                                    <asp:ListItem Value="">Everyone</asp:ListItem>
-                                                                    <asp:ListItem Value="">MOM Members Only</asp:ListItem>
-                                                                    <asp:ListItem Value="">Friends Only</asp:ListItem>
-                                                                </asp:DropDownList></div>
-                                                            <br />
-                                                            <asp:Button ID="Button1" runat="server" CssClass="btnStyle" Text="Save" OnClick="FavSave_Click" />
+                                                            <asp:Button ID="momPrivacyButton" runat="server" CssClass="btnStyle" Text="Save"
+                                                                OnClick="PrivacySave_Click" />
                                                         </fieldset>
                                                     </div>
                                                 </Content>

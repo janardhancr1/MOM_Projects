@@ -22,6 +22,52 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
     {
         if (!MOMHelper.IsSessionActive())
             Response.Redirect("../MOMIndex.aspx");
+
+        if (!IsPostBack)
+        {
+            momPrivacyName.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_NAME_SEARCHABLE));
+            momPrivacyName.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_NAME_NOT_SEARCHABLE));
+
+            momPrivacyDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyEdu.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyEdu.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyEdu.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyKids.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyKids.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyKids.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyKidsDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyKidsDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyKidsDOB.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyKidsPhoto.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyKidsPhoto.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyKidsPhoto.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyKidsAbout.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyKidsAbout.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyKidsAbout.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyKidsInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyKidsInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyKidsInterest.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyLogin.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_ALL));
+            momPrivacyLogin.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_FRIENDS));
+            momPrivacyLogin.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_TO_PRIVATE));
+
+            momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_ALL));
+            momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_FRIENDS));
+            momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_MEMBERS));
+        }
     }
 
     protected void ChangeMenu(object sender, EventArgs e)
@@ -50,6 +96,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 ShowKids();
                 ShowSchools();
                 ShowFavorites();
+                ShowPrivacy();
 
                 break;
             case 0:
@@ -202,6 +249,52 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
             userFavorites.MOM_USR_FAVRow = usrFavRow;
             userFavorites.UpdateMOM_UserFavRow(out isSuccess, out appMessage, out sysMessage);
+
+            if (isSuccess)
+            {
+                momPopup.Show("Saved.");
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
+    }
+
+    protected void PrivacySave_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            MOMUserPrivacy momUsrPrivacy = new MOMUserPrivacy();
+            MOMDataset.MOM_USR_PRIVACYRow usrPrivacyRow = momUsrPrivacy.MOM_USR_PRIVACYDataTable.NewMOM_USR_PRIVACYRow();
+            usrPrivacyRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+
+            if (momPrivacyName.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_NAME = momPrivacyName.SelectedValue;
+            if (momPrivacyDOB.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_DOB = momPrivacyDOB.SelectedValue;
+            if (momPrivacyInterest.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_INTRST = momPrivacyInterest.SelectedValue;
+            if (momPrivacyEdu.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_EDU = momPrivacyEdu.SelectedValue;
+            if (momPrivacyKids.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_KIDS = momPrivacyKids.SelectedValue;
+            if (momPrivacyKidsDOB.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_KIDS_DOB = momPrivacyKidsDOB.SelectedValue;
+            if (momPrivacyKidsPhoto.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_KIDS_PHOTO = momPrivacyKidsPhoto.SelectedValue;
+            if (momPrivacyKidsAbout.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_KIDS_ABOUT = momPrivacyKidsAbout.SelectedValue;
+            if (momPrivacyKidsInterest.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_KIDS_CHAN = momPrivacyKidsInterest.SelectedValue;
+            if (momPrivacyLogin.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_ACT = momPrivacyLogin.SelectedValue;
+            if (momPrivacyProfile.SelectedValue.Trim().Length > 0) usrPrivacyRow.MOM_SHW_TO = momPrivacyProfile.SelectedValue;
+
+            momUsrPrivacy.MOM_USR_PRIVACYRow = usrPrivacyRow;
+            momUsrPrivacy.UpdateMOM_UserPrivacyRow(out isSuccess, out appMessage, out sysMessage);
 
             if (isSuccess)
             {
@@ -389,6 +482,51 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
             if (momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MUSIC != null)
                 momUsrFavMusic.Value = momUsrFavorites.MOM_USR_FAVRow.MOM_FAV_MUSIC;
+        }
+    }
+
+    private void ShowPrivacy()
+    {
+        MOMUserPrivacy momUsrPrivacy = new MOMUserPrivacy();
+        MOMDataset.MOM_USR_PRIVACYRow usrPrivacyRow = momUsrPrivacy.MOM_USR_PRIVACYDataTable.NewMOM_USR_PRIVACYRow();
+        usrPrivacyRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+        momUsrPrivacy.MOM_USR_PRIVACYRow = usrPrivacyRow;
+
+        momUsrPrivacy.GetMOM_User_Privacy(out isSuccess, out appMessage, out sysMessage);
+        if (isSuccess)
+        {
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_NAME != null)
+                momPrivacyName.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_NAME;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_DOB != null)
+                momPrivacyDOB.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_DOB;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_INTRST != null)
+                momPrivacyInterest.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_INTRST;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_EDU != null)
+                momPrivacyEdu.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_EDU;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS != null)
+                momPrivacyKids.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_DOB != null)
+                momPrivacyKidsDOB.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_DOB;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_PHOTO != null)
+                momPrivacyKidsPhoto.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_PHOTO;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_ABOUT != null)
+                momPrivacyKidsAbout.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_ABOUT;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_CHAN != null)
+                momPrivacyKidsInterest.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_KIDS_CHAN;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_ACT != null)
+                momPrivacyLogin.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_ACT;
+
+            if (momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_TO != null)
+                momPrivacyProfile.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_TO;
         }
     }
 }

@@ -89,6 +89,8 @@ namespace DALMomburbia {
         
         private MOM_USR_FAVDataTable tableMOM_USR_FAV;
         
+        private MOM_USR_PRIVACYDataTable tableMOM_USR_PRIVACY;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -210,6 +212,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_USR_FAV"] != null)) {
                     base.Tables.Add(new MOM_USR_FAVDataTable(ds.Tables["MOM_USR_FAV"]));
+                }
+                if ((ds.Tables["MOM_USR_PRIVACY"] != null)) {
+                    base.Tables.Add(new MOM_USR_PRIVACYDataTable(ds.Tables["MOM_USR_PRIVACY"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -518,6 +523,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_USR_PRIVACYDataTable MOM_USR_PRIVACY {
+            get {
+                return this.tableMOM_USR_PRIVACY;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -671,6 +685,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_USR_FAV"] != null)) {
                     base.Tables.Add(new MOM_USR_FAVDataTable(ds.Tables["MOM_USR_FAV"]));
+                }
+                if ((ds.Tables["MOM_USR_PRIVACY"] != null)) {
+                    base.Tables.Add(new MOM_USR_PRIVACYDataTable(ds.Tables["MOM_USR_PRIVACY"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -894,6 +911,12 @@ namespace DALMomburbia {
                     this.tableMOM_USR_FAV.InitVars();
                 }
             }
+            this.tableMOM_USR_PRIVACY = ((MOM_USR_PRIVACYDataTable)(base.Tables["MOM_USR_PRIVACY"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_USR_PRIVACY != null)) {
+                    this.tableMOM_USR_PRIVACY.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -967,6 +990,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_USR_EDU);
             this.tableMOM_USR_FAV = new MOM_USR_FAVDataTable();
             base.Tables.Add(this.tableMOM_USR_FAV);
+            this.tableMOM_USR_PRIVACY = new MOM_USR_PRIVACYDataTable();
+            base.Tables.Add(this.tableMOM_USR_PRIVACY);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1130,6 +1155,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_USR_PRIVACY() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1245,6 +1275,8 @@ namespace DALMomburbia {
         public delegate void MOM_USR_EDURowChangeEventHandler(object sender, MOM_USR_EDURowChangeEvent e);
         
         public delegate void MOM_USR_FAVRowChangeEventHandler(object sender, MOM_USR_FAVRowChangeEvent e);
+        
+        public delegate void MOM_USR_PRIVACYRowChangeEventHandler(object sender, MOM_USR_PRIVACYRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -11503,6 +11535,377 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_USR_PRIVACYDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnMOM_USR_ID;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_NAME;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_DOB;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_INTRST;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_EDU;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_KIDS;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_KIDS_DOB;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_KIDS_PHOTO;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_KIDS_ABOUT;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_KIDS_CHAN;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_ACT;
+            
+            private global::System.Data.DataColumn columnMOM_SHW_TO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYDataTable() {
+                this.TableName = "MOM_USR_PRIVACY";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_USR_PRIVACYDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_USR_PRIVACYDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_USR_IDColumn {
+                get {
+                    return this.columnMOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_NAMEColumn {
+                get {
+                    return this.columnMOM_SHW_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_DOBColumn {
+                get {
+                    return this.columnMOM_SHW_DOB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_INTRSTColumn {
+                get {
+                    return this.columnMOM_SHW_INTRST;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_EDUColumn {
+                get {
+                    return this.columnMOM_SHW_EDU;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_KIDSColumn {
+                get {
+                    return this.columnMOM_SHW_KIDS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_KIDS_DOBColumn {
+                get {
+                    return this.columnMOM_SHW_KIDS_DOB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_KIDS_PHOTOColumn {
+                get {
+                    return this.columnMOM_SHW_KIDS_PHOTO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_KIDS_ABOUTColumn {
+                get {
+                    return this.columnMOM_SHW_KIDS_ABOUT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_KIDS_CHANColumn {
+                get {
+                    return this.columnMOM_SHW_KIDS_CHAN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_ACTColumn {
+                get {
+                    return this.columnMOM_SHW_ACT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_SHW_TOColumn {
+                get {
+                    return this.columnMOM_SHW_TO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYRow this[int index] {
+                get {
+                    return ((MOM_USR_PRIVACYRow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_USR_PRIVACYRowChangeEventHandler MOM_USR_PRIVACYRowChanging;
+            
+            public event MOM_USR_PRIVACYRowChangeEventHandler MOM_USR_PRIVACYRowChanged;
+            
+            public event MOM_USR_PRIVACYRowChangeEventHandler MOM_USR_PRIVACYRowDeleting;
+            
+            public event MOM_USR_PRIVACYRowChangeEventHandler MOM_USR_PRIVACYRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_USR_PRIVACYRow(MOM_USR_PRIVACYRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYRow AddMOM_USR_PRIVACYRow(long MOM_USR_ID, string MOM_SHW_NAME, string MOM_SHW_DOB, string MOM_SHW_INTRST, string MOM_SHW_EDU, string MOM_SHW_KIDS, string MOM_SHW_KIDS_DOB, string MOM_SHW_KIDS_PHOTO, string MOM_SHW_KIDS_ABOUT, string MOM_SHW_KIDS_CHAN, string MOM_SHW_ACT, string MOM_SHW_TO) {
+                MOM_USR_PRIVACYRow rowMOM_USR_PRIVACYRow = ((MOM_USR_PRIVACYRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MOM_USR_ID,
+                        MOM_SHW_NAME,
+                        MOM_SHW_DOB,
+                        MOM_SHW_INTRST,
+                        MOM_SHW_EDU,
+                        MOM_SHW_KIDS,
+                        MOM_SHW_KIDS_DOB,
+                        MOM_SHW_KIDS_PHOTO,
+                        MOM_SHW_KIDS_ABOUT,
+                        MOM_SHW_KIDS_CHAN,
+                        MOM_SHW_ACT,
+                        MOM_SHW_TO};
+                rowMOM_USR_PRIVACYRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_USR_PRIVACYRow);
+                return rowMOM_USR_PRIVACYRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_USR_PRIVACYDataTable cln = ((MOM_USR_PRIVACYDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_USR_PRIVACYDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnMOM_USR_ID = base.Columns["MOM_USR_ID"];
+                this.columnMOM_SHW_NAME = base.Columns["MOM_SHW_NAME"];
+                this.columnMOM_SHW_DOB = base.Columns["MOM_SHW_DOB"];
+                this.columnMOM_SHW_INTRST = base.Columns["MOM_SHW_INTRST"];
+                this.columnMOM_SHW_EDU = base.Columns["MOM_SHW_EDU"];
+                this.columnMOM_SHW_KIDS = base.Columns["MOM_SHW_KIDS"];
+                this.columnMOM_SHW_KIDS_DOB = base.Columns["MOM_SHW_KIDS_DOB"];
+                this.columnMOM_SHW_KIDS_PHOTO = base.Columns["MOM_SHW_KIDS_PHOTO"];
+                this.columnMOM_SHW_KIDS_ABOUT = base.Columns["MOM_SHW_KIDS_ABOUT"];
+                this.columnMOM_SHW_KIDS_CHAN = base.Columns["MOM_SHW_KIDS_CHAN"];
+                this.columnMOM_SHW_ACT = base.Columns["MOM_SHW_ACT"];
+                this.columnMOM_SHW_TO = base.Columns["MOM_SHW_TO"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnMOM_USR_ID = new global::System.Data.DataColumn("MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_USR_ID);
+                this.columnMOM_SHW_NAME = new global::System.Data.DataColumn("MOM_SHW_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_NAME);
+                this.columnMOM_SHW_DOB = new global::System.Data.DataColumn("MOM_SHW_DOB", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_DOB);
+                this.columnMOM_SHW_INTRST = new global::System.Data.DataColumn("MOM_SHW_INTRST", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_INTRST);
+                this.columnMOM_SHW_EDU = new global::System.Data.DataColumn("MOM_SHW_EDU", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_EDU);
+                this.columnMOM_SHW_KIDS = new global::System.Data.DataColumn("MOM_SHW_KIDS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_KIDS);
+                this.columnMOM_SHW_KIDS_DOB = new global::System.Data.DataColumn("MOM_SHW_KIDS_DOB", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_KIDS_DOB);
+                this.columnMOM_SHW_KIDS_PHOTO = new global::System.Data.DataColumn("MOM_SHW_KIDS_PHOTO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_KIDS_PHOTO);
+                this.columnMOM_SHW_KIDS_ABOUT = new global::System.Data.DataColumn("MOM_SHW_KIDS_ABOUT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_KIDS_ABOUT);
+                this.columnMOM_SHW_KIDS_CHAN = new global::System.Data.DataColumn("MOM_SHW_KIDS_CHAN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_KIDS_CHAN);
+                this.columnMOM_SHW_ACT = new global::System.Data.DataColumn("MOM_SHW_ACT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_ACT);
+                this.columnMOM_SHW_TO = new global::System.Data.DataColumn("MOM_SHW_TO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_SHW_TO);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYRow NewMOM_USR_PRIVACYRow() {
+                return ((MOM_USR_PRIVACYRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_USR_PRIVACYRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_USR_PRIVACYRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_USR_PRIVACYRowChanged != null)) {
+                    this.MOM_USR_PRIVACYRowChanged(this, new MOM_USR_PRIVACYRowChangeEvent(((MOM_USR_PRIVACYRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_USR_PRIVACYRowChanging != null)) {
+                    this.MOM_USR_PRIVACYRowChanging(this, new MOM_USR_PRIVACYRowChangeEvent(((MOM_USR_PRIVACYRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_USR_PRIVACYRowDeleted != null)) {
+                    this.MOM_USR_PRIVACYRowDeleted(this, new MOM_USR_PRIVACYRowChangeEvent(((MOM_USR_PRIVACYRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_USR_PRIVACYRowDeleting != null)) {
+                    this.MOM_USR_PRIVACYRowDeleting(this, new MOM_USR_PRIVACYRowChangeEvent(((MOM_USR_PRIVACYRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_USR_PRIVACYRow(MOM_USR_PRIVACYRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_USR_PRIVACYDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -17433,6 +17836,321 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_USR_PRIVACYRow : global::System.Data.DataRow {
+            
+            private MOM_USR_PRIVACYDataTable tableMOM_USR_PRIVACY;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_USR_PRIVACYRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_USR_PRIVACY = ((MOM_USR_PRIVACYDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_USR_PRIVACY.MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_USR_ID\' in table \'MOM_USR_PRIVACY\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_NAME {
+                get {
+                    if (this.IsMOM_SHW_NAMENull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_NAMEColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_DOB {
+                get {
+                    if (this.IsMOM_SHW_DOBNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_DOBColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_DOBColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_INTRST {
+                get {
+                    if (this.IsMOM_SHW_INTRSTNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_INTRSTColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_INTRSTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_EDU {
+                get {
+                    if (this.IsMOM_SHW_EDUNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_EDUColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_EDUColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_KIDS {
+                get {
+                    if (this.IsMOM_SHW_KIDSNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDSColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_KIDS_DOB {
+                get {
+                    if (this.IsMOM_SHW_KIDS_DOBNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_DOBColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_DOBColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_KIDS_PHOTO {
+                get {
+                    if (this.IsMOM_SHW_KIDS_PHOTONull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_PHOTOColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_PHOTOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_KIDS_ABOUT {
+                get {
+                    if (this.IsMOM_SHW_KIDS_ABOUTNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_ABOUTColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_ABOUTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_KIDS_CHAN {
+                get {
+                    if (this.IsMOM_SHW_KIDS_CHANNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_CHANColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_CHANColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_ACT {
+                get {
+                    if (this.IsMOM_SHW_ACTNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_ACTColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_ACTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MOM_SHW_TO {
+                get {
+                    if (this.IsMOM_SHW_TONull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableMOM_USR_PRIVACY.MOM_SHW_TOColumn]));
+                    }
+                }
+                set {
+                    this[this.tableMOM_USR_PRIVACY.MOM_SHW_TOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_USR_IDNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_NAMENull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_NAMENull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_DOBNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_DOBColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_DOBNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_DOBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_INTRSTNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_INTRSTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_INTRSTNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_INTRSTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_EDUNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_EDUColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_EDUNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_EDUColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_KIDSNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_KIDSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_KIDSNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_KIDS_DOBNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_DOBColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_KIDS_DOBNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_DOBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_KIDS_PHOTONull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_PHOTOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_KIDS_PHOTONull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_PHOTOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_KIDS_ABOUTNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_ABOUTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_KIDS_ABOUTNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_ABOUTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_KIDS_CHANNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_CHANColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_KIDS_CHANNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_KIDS_CHANColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_ACTNull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_ACTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_ACTNull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_ACTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_SHW_TONull() {
+                return this.IsNull(this.tableMOM_USR_PRIVACY.MOM_SHW_TOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_SHW_TONull() {
+                this[this.tableMOM_USR_PRIVACY.MOM_SHW_TOColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -18411,6 +19129,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_USR_FAVRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_USR_PRIVACYRowChangeEvent : global::System.EventArgs {
+            
+            private MOM_USR_PRIVACYRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYRowChangeEvent(MOM_USR_PRIVACYRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_USR_PRIVACYRow Row {
                 get {
                     return this.eventRow;
                 }

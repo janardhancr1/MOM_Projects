@@ -14,6 +14,17 @@ namespace BOMomburbia
     {
         public const string MOM_RECIPE_NAMESPACE = "MOM_RECIPE";
 
+        public const string MOM_PRIVACY_NAME_SEARCHABLE = "Searchable";
+        public const string MOM_PRIVACY_NAME_NOT_SEARCHABLE = "Not Searchable";
+
+        public const string MOM_PRIVACY_TO_ALL = "All";
+        public const string MOM_PRIVACY_TO_FRIENDS = "Friends";
+        public const string MOM_PRIVACY_TO_PRIVATE = "Private";
+
+        public const string MOM_PRIVACY_PROFILE_TO_ALL = "Everyone";
+        public const string MOM_PRIVACY_PROFILE_TO_MEMBERS = "MOM Members Only";
+        public const string MOM_PRIVACY_PROFILE_TO_FRIENDS = "Friends Only";
+        
         static string encodingText = "momBurbia";
 
         public static bool ValidateEmailAddress(string emailAddr)

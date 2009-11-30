@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Text;
 using BOMomburbia;
 
-
 namespace DALMomburbia
 {
     public class MOMUserFavorites : MOMBase
