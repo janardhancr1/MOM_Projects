@@ -12,7 +12,7 @@
                 <div>
                     <table width="98%" cellpadding="5">
                         <tr>
-                            <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
+                            <td style="background-image:url('../images/greenbg.gif');">
                                 Recent Group Posts
                             </td>
                         </tr>
@@ -20,21 +20,19 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <small>
-                                            <a href="../MOMHome/MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
-                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "DISPLAY_NAME").ToString()), 20)%>
-                                            </a>
-                                            - 
-                                            <a style="color: Black;" href="../MOMGroups/MOMGroup.aspx?mGi=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "GRP_MOM_USR_ID").ToString()) %>">
-                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "SHARE").ToString()), 20)%>
-                                            </a>
-                                        </small>
+                                        <a href="../MOMHome/MOMHome.aspx?muI=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                            <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "DISPLAY_NAME").ToString()), 20)%>
+                                        </a>
+                                        - 
+                                        <a style="color: Black;" href="../MOMGroups/MOMGroup.aspx?mGi=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "GRP_MOM_USR_ID").ToString()) %>">
+                                            <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "SHARE").ToString()), 20)%>
+                                        </a>
                                     </td>
                                 </tr>
                             </ItemTemplate>                        
                         </asp:Repeater>
                         <tr>
-                            <td class="momInfo">
+                            <td>
                                 <a href="../MOMGroups/MOMGroups.aspx">
                                     Go to my groups...
                                 </a>
@@ -46,7 +44,7 @@
                 <div>
                     <table width="98%" cellpadding="5">
                         <tr>
-                            <td class="momInfo" style="background-image:url('../images/greenbg.gif');">
+                            <td style="background-image:url('../images/greenbg.gif');">
                                 Recent Recipe Posts
                             </td>
                         </tr>
@@ -54,11 +52,9 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <small>
-                                            <a style="color: Black;" href="../MOMRecipe/MOMRecipeDefault.aspx?mrcpid=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
-                                                <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString()), 20) %>
-                                            </a>
-                                        </small>
+                                        <a style="color: Black;" href="../MOMRecipe/MOMRecipeDefault.aspx?mrcpid=<%# BOMomburbia.MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                            <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "NAME").ToString()), 20) %>
+                                        </a>
                                     </td>
                                 </tr>
                             </ItemTemplate>                        
