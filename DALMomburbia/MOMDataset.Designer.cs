@@ -91,6 +91,8 @@ namespace DALMomburbia {
         
         private MOM_USR_PRIVACYDataTable tableMOM_USR_PRIVACY;
         
+        private MOM_BLK_USRSDataTable tableMOM_BLK_USRS;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -215,6 +217,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_USR_PRIVACY"] != null)) {
                     base.Tables.Add(new MOM_USR_PRIVACYDataTable(ds.Tables["MOM_USR_PRIVACY"]));
+                }
+                if ((ds.Tables["MOM_BLK_USRS"] != null)) {
+                    base.Tables.Add(new MOM_BLK_USRSDataTable(ds.Tables["MOM_BLK_USRS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -532,6 +537,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_BLK_USRSDataTable MOM_BLK_USRS {
+            get {
+                return this.tableMOM_BLK_USRS;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -688,6 +702,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_USR_PRIVACY"] != null)) {
                     base.Tables.Add(new MOM_USR_PRIVACYDataTable(ds.Tables["MOM_USR_PRIVACY"]));
+                }
+                if ((ds.Tables["MOM_BLK_USRS"] != null)) {
+                    base.Tables.Add(new MOM_BLK_USRSDataTable(ds.Tables["MOM_BLK_USRS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -917,6 +934,12 @@ namespace DALMomburbia {
                     this.tableMOM_USR_PRIVACY.InitVars();
                 }
             }
+            this.tableMOM_BLK_USRS = ((MOM_BLK_USRSDataTable)(base.Tables["MOM_BLK_USRS"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_BLK_USRS != null)) {
+                    this.tableMOM_BLK_USRS.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -992,6 +1015,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_USR_FAV);
             this.tableMOM_USR_PRIVACY = new MOM_USR_PRIVACYDataTable();
             base.Tables.Add(this.tableMOM_USR_PRIVACY);
+            this.tableMOM_BLK_USRS = new MOM_BLK_USRSDataTable();
+            base.Tables.Add(this.tableMOM_BLK_USRS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1160,6 +1185,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_BLK_USRS() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1277,6 +1307,8 @@ namespace DALMomburbia {
         public delegate void MOM_USR_FAVRowChangeEventHandler(object sender, MOM_USR_FAVRowChangeEvent e);
         
         public delegate void MOM_USR_PRIVACYRowChangeEventHandler(object sender, MOM_USR_PRIVACYRowChangeEvent e);
+        
+        public delegate void MOM_BLK_USRSRowChangeEventHandler(object sender, MOM_BLK_USRSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -11906,6 +11938,273 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_BLK_USRSDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnMOM_BLK_USR_ID;
+            
+            private global::System.Data.DataColumn columnMOM_USR_ID;
+            
+            private global::System.Data.DataColumn columnDISPLAY_NAME;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSDataTable() {
+                this.TableName = "MOM_BLK_USRS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_BLK_USRSDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_BLK_USRSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_BLK_USR_IDColumn {
+                get {
+                    return this.columnMOM_BLK_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_USR_IDColumn {
+                get {
+                    return this.columnMOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DISPLAY_NAMEColumn {
+                get {
+                    return this.columnDISPLAY_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSRow this[int index] {
+                get {
+                    return ((MOM_BLK_USRSRow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_BLK_USRSRowChangeEventHandler MOM_BLK_USRSRowChanging;
+            
+            public event MOM_BLK_USRSRowChangeEventHandler MOM_BLK_USRSRowChanged;
+            
+            public event MOM_BLK_USRSRowChangeEventHandler MOM_BLK_USRSRowDeleting;
+            
+            public event MOM_BLK_USRSRowChangeEventHandler MOM_BLK_USRSRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_BLK_USRSRow(MOM_BLK_USRSRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSRow AddMOM_BLK_USRSRow(long ID, long MOM_BLK_USR_ID, long MOM_USR_ID, string DISPLAY_NAME) {
+                MOM_BLK_USRSRow rowMOM_BLK_USRSRow = ((MOM_BLK_USRSRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        MOM_BLK_USR_ID,
+                        MOM_USR_ID,
+                        DISPLAY_NAME};
+                rowMOM_BLK_USRSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_BLK_USRSRow);
+                return rowMOM_BLK_USRSRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_BLK_USRSDataTable cln = ((MOM_BLK_USRSDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_BLK_USRSDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnMOM_BLK_USR_ID = base.Columns["MOM_BLK_USR_ID"];
+                this.columnMOM_USR_ID = base.Columns["MOM_USR_ID"];
+                this.columnDISPLAY_NAME = base.Columns["DISPLAY_NAME"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnMOM_BLK_USR_ID = new global::System.Data.DataColumn("MOM_BLK_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_BLK_USR_ID);
+                this.columnMOM_USR_ID = new global::System.Data.DataColumn("MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_USR_ID);
+                this.columnDISPLAY_NAME = new global::System.Data.DataColumn("DISPLAY_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDISPLAY_NAME);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSRow NewMOM_BLK_USRSRow() {
+                return ((MOM_BLK_USRSRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_BLK_USRSRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_BLK_USRSRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_BLK_USRSRowChanged != null)) {
+                    this.MOM_BLK_USRSRowChanged(this, new MOM_BLK_USRSRowChangeEvent(((MOM_BLK_USRSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_BLK_USRSRowChanging != null)) {
+                    this.MOM_BLK_USRSRowChanging(this, new MOM_BLK_USRSRowChangeEvent(((MOM_BLK_USRSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_BLK_USRSRowDeleted != null)) {
+                    this.MOM_BLK_USRSRowDeleted(this, new MOM_BLK_USRSRowChangeEvent(((MOM_BLK_USRSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_BLK_USRSRowDeleting != null)) {
+                    this.MOM_BLK_USRSRowDeleting(this, new MOM_BLK_USRSRowChangeEvent(((MOM_BLK_USRSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_BLK_USRSRow(MOM_BLK_USRSRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_BLK_USRSDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -18151,6 +18450,121 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_BLK_USRSRow : global::System.Data.DataRow {
+            
+            private MOM_BLK_USRSDataTable tableMOM_BLK_USRS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_BLK_USRSRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_BLK_USRS = ((MOM_BLK_USRSDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_BLK_USRS.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'MOM_BLK_USRS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_BLK_USRS.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long MOM_BLK_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_BLK_USRS.MOM_BLK_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_BLK_USR_ID\' in table \'MOM_BLK_USRS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_BLK_USRS.MOM_BLK_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_BLK_USRS.MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_USR_ID\' in table \'MOM_BLK_USRS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_BLK_USRS.MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DISPLAY_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_BLK_USRS.DISPLAY_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DISPLAY_NAME\' in table \'MOM_BLK_USRS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_BLK_USRS.DISPLAY_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableMOM_BLK_USRS.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIDNull() {
+                this[this.tableMOM_BLK_USRS.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_BLK_USR_IDNull() {
+                return this.IsNull(this.tableMOM_BLK_USRS.MOM_BLK_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_BLK_USR_IDNull() {
+                this[this.tableMOM_BLK_USRS.MOM_BLK_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_BLK_USRS.MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_USR_IDNull() {
+                this[this.tableMOM_BLK_USRS.MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDISPLAY_NAMENull() {
+                return this.IsNull(this.tableMOM_BLK_USRS.DISPLAY_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDISPLAY_NAMENull() {
+                this[this.tableMOM_BLK_USRS.DISPLAY_NAMEColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -19160,6 +19574,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_USR_PRIVACYRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_BLK_USRSRowChangeEvent : global::System.EventArgs {
+            
+            private MOM_BLK_USRSRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSRowChangeEvent(MOM_BLK_USRSRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_BLK_USRSRow Row {
                 get {
                     return this.eventRow;
                 }

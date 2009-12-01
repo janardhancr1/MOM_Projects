@@ -46,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td align="left">
-                                    <cc1:Accordion ID="momProfileAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader"
+                                    <cc1:Accordion ID="momProfileAccordion" runat="server" HeaderCssClass="accordionHeader"
                                         HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent"
                                         FadeTransitions="true" FramesPerSecond="40" TransitionDuration="250" AutoSize="None"
                                         RequireOpenedPane="false" SuppressHeaderPostbacks="true" OnLoad="Kids_Load">
@@ -1004,7 +1004,31 @@
                                                     <a href="" class="accordionLink">Blocked Users</a></Header>
                                                 <Content>
                                                     <p>
-                                                        It also supports three AutoSize modes so it can fit in a variety of layouts.</p>
+                                                        <table width="100%" cellpadding="0" cellspacing="0" id="momBlockUsersTable" runat="server">
+                                                            <tr bgcolor="gray">
+                                                                <th width="50%" align="left">
+                                                                    Display Name</th>
+                                                                <th width="50%">
+                                                                    Delete</th>
+                                                            </tr>
+                                                        </table>
+                                                        <br />
+                                                        <fieldset>
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        User Display Name:</td>
+                                                                    <td>
+                                                                        <asp:TextBox ID="BlockUserName" runat="server" MaxLength="50"></asp:TextBox></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <asp:Button ID="BlockUserButton" runat="server" CssClass="btnStyle" Text="Block User" OnClick="Block_User_Click" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </fieldset>
+                                                    </p>
                                                 </Content>
                                             </cc1:AccordionPane>
                                         </Panes>

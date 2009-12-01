@@ -77,6 +77,8 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         switch (MultiView1.ActiveViewIndex)
         {
             case 1:
+                if (momProfileAccordion.SelectedIndex < 0)
+                    momProfileAccordion.SelectedIndex = 0;
                 MOMUsers momUsers = new MOMUsers();
                 momUsers.GetUserByName(out isSuccess, out appMessage, out sysMessage, ((MOMDataset.MOM_USRRow)Session["momUser"]).DISPLAY_NAME);
                 if (isSuccess)
@@ -97,6 +99,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 ShowSchools();
                 ShowFavorites();
                 ShowPrivacy();
+                ShowBlockedUsers();
 
                 break;
             case 0:
@@ -303,6 +306,55 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
             else
             {
                 momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
+    }
+
+    protected void Block_User_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (BlockUserName.Text.Trim().Length < 3 || BlockUserName.Text.Trim().Length > 50)
+                throw new MOMException("User Display Name can have minimum 3 and maximum 100 characters");
+
+            MOMUsers momUsers = new MOMUsers();
+            momUsers.GetUserByName(out isSuccess, out appMessage, out sysMessage, BlockUserName.Text);
+            if (isSuccess)
+            {
+                MOMBlockedUsers momBlockedUsers = new MOMBlockedUsers();
+                MOMDataset.MOM_BLK_USRSRow blockUserRow = momBlockedUsers.MOM_BLK_USRSDataTable.NewMOM_BLK_USRSRow();
+                blockUserRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+                blockUserRow.MOM_BLK_USR_ID = momUsers.MOM_USRRow.ID;
+
+                momBlockedUsers.MOM_BLK_USRSRow = blockUserRow;
+                momBlockedUsers.AddMOM_BlockedUserRow(out isSuccess, out appMessage, out sysMessage);
+
+                if (isSuccess)
+                {
+                    momPopup.Show("Saved.");
+                    BlockUserName.Text = "";
+                    ShowBlockedUsers();
+                }
+                else
+                {
+                    momPopup.Show(appMessage);
+                }
+            }
+            else
+            {
+                throw new MOMException(BlockUserName.Text + " not found.");
             }
         }
         catch (MOMException X)
@@ -529,4 +581,52 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 momPrivacyProfile.SelectedValue = momUsrPrivacy.MOM_USR_PRIVACYRow.MOM_SHW_TO;
         }
     }
+
+    private void ShowBlockedUsers()
+    {
+        MOMBlockedUsers momBlockedUsers = new MOMBlockedUsers();
+        MOMDataset.MOM_BLK_USRSRow blockUserRow = momBlockedUsers.MOM_BLK_USRSDataTable.NewMOM_BLK_USRSRow();
+        blockUserRow.MOM_USR_ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+
+        momBlockUsersTable.Rows.Clear();
+
+        HtmlTableRow row = null;
+        HtmlTableCell cell = null;
+
+        row = new HtmlTableRow();
+        row.BgColor = "Gray";
+
+        cell = new HtmlTableCell();
+        cell.Width = "50%";
+        cell.InnerHtml = "Display Name";
+        row.Cells.Add(cell);
+
+        cell = new HtmlTableCell();
+        cell.Width = "50%";
+        cell.InnerHtml = "Delete";
+        row.Cells.Add(cell);
+
+        momBlockUsersTable.Rows.Add(row);
+
+        momBlockedUsers.MOM_BLK_USRSRow = blockUserRow;
+        momBlockedUsers.GetMOM_Blocked_Users(out isSuccess, out appMessage, out sysMessage);
+        if (isSuccess)
+        {
+            foreach (MOMDataset.MOM_BLK_USRSRow user in momBlockedUsers.MOM_BLK_USRSDataTable)
+            {
+                row = new HtmlTableRow();
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = user.DISPLAY_NAME;
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.InnerHtml = "&nbsp;";
+                row.Cells.Add(cell);
+
+                momBlockUsersTable.Rows.Add(row);
+            }
+        }
+    }
+
 }
