@@ -38,7 +38,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
     <div class="momBrowserSpace">
-        <table style="width: 1000px; padding-bottom:0.5pt;" cellspacing="0">
+        <table style="width: 1000px; padding-bottom:0.5pt; background-color: White; background-image:'../images/select.gif';" cellspacing="0">
             <tr>
                 <td style="vertical-align: middle;">
                     <mhl:momHead ID="momTop" runat="server" />

@@ -60,7 +60,7 @@
                             </ItemTemplate>                        
                         </asp:Repeater>
                         <tr>
-                            <td class="momInfo">
+                            <td>
                                 <a href="../MOMRecipe/MOMRecipesHome.aspx">
                                     Go to Recipe Box...
                                 </a>

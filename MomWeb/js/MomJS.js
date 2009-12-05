@@ -222,7 +222,7 @@ function hideSubPanel(arg)
 
 function addFriend(arg)
 {
-    alert(arg);
+    //alert(arg);
     MOMWebService.AddFRND_MOM_USR_IDByMOM_USR_ID(arg, onFriendAddComplete, onError, onTimeout);  
 }
 

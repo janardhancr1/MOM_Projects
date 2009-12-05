@@ -143,7 +143,7 @@ input.tbSignIn
 	height:22px; 
 	border:1px solid #aa3464;
 	font-family: Arial;
-	font-size: 8pt;
+	font-size: 10pt;
 	width: 90px; 
 	color:#aa3464; 
 	text-decoration:none; 
@@ -309,7 +309,7 @@ hr
 }
 small
 {
-	font-size: 8pt;
+	font-size: 10pt;
 	font-weight: normal;
 	color: Black;
 }
@@ -323,7 +323,7 @@ small
 }
 .momInfo
 {
-	font-size: 8pt;
+	font-size: 10pt;
 	color:#aa3464;
 	font-weight: bold;
 }
