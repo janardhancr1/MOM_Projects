@@ -5,7 +5,7 @@
 
 .momBrowserSpace
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	width: 1000px;
 	margin: -1px auto 0 auto;
@@ -37,8 +37,8 @@ table
 
 td
 {
-	font-family: Tahoma;
-	font-size: 8pt;
+	font-family: Arial;
+	font-size: 10pt;
 	vertical-align: top;
 }
 
@@ -63,19 +63,19 @@ img
 }
 input.tbStyleShare
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	width: 480px;
 }
 input.tbStyle
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	width: 160px;
 }
 input.tbSignIn
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	width: 200px;
 }
@@ -142,7 +142,7 @@ input.tbSignIn
 	background: White; 
 	height:22px; 
 	border:1px solid #aa3464;
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 8pt;
 	width: 90px; 
 	color:#aa3464; 
@@ -151,12 +151,12 @@ input.tbSignIn
 }
 textarea
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 }
 select
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 }
 /******************************/
@@ -167,7 +167,7 @@ select
 {
     color: White;
     background-color: #aa3464;
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	font-weight: bold;
     padding: 5px;
@@ -197,7 +197,7 @@ select
 {
     color: white;
     background-color: Olive;
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 10pt;
 	font-weight: bold;
     padding: 5px;
@@ -265,7 +265,7 @@ hr
 }
 .pinkHeader
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: larger;
 	font-weight: bolder;
 	color: White;
@@ -274,14 +274,14 @@ hr
 
 .grayHeader
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: larger;
 	font-weight: bolder;
 	color: Gray;
 }
 .commentStyle
 {
-	font-family: Tahoma;
+	font-family: Arial;
 	font-size: 8pt;
 	vertical-align: top;
 	background-color: MistyRose;
