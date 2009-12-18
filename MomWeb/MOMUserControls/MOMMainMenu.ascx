@@ -7,7 +7,9 @@
         </td>
         <td style="width: 1px; background-color: White;"></td>
         <td style="vertical-align: middle; text-align: center; color: White; font-size: 10pt;width: 109px;">
-            Photos
+            <a href="../MOMPhotos/MOMPhotos.aspx" style="color: White">
+                Photos
+           </a>
         </td>
         <td style="width: 1px; background-color: White;"></td>
         <td style="vertical-align: middle; text-align: center; color: White;font-size: 10pt;width: 109px;">

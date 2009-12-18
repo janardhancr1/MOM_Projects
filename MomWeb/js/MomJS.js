@@ -230,3 +230,8 @@ function onFriendAddComplete()
 {
     alert("Request has been sent for adding you as friend");
 }
+
+function openAlbumForm()
+{
+    document.getElementById("momAlbumFrm").style.display = "block";
+}

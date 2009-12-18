@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALMOMBase.cs" />
+    <Compile Include="MOMAlbum.cs" />
     <Compile Include="MOMAnswers.cs" />
     <Compile Include="MOMBase.cs" />
     <Compile Include="MOMBlockedUsers.cs" />
