@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using BOMomburbia;
 
 namespace DALMomburbia
 {
@@ -19,6 +20,50 @@ namespace DALMomburbia
         {
             set { _MOM_ALBMRow = value; }
             get { return _MOM_ALBMRow; }
+        }
+
+        public void AddMOM_ALBMRow(out int id, out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+            id = 0;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "DBO.SP_MOM_ALBM_ADD";
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_ALBMRow.MOM_USR_ID;
+                momCommand.Parameters.Add("@TITLE", SqlDbType.NVarChar).Value = _MOM_ALBMRow.TITLE;
+                momCommand.Parameters.Add("@DESCRIPTON", SqlDbType.NVarChar).Value = _MOM_ALBMRow.DESCRIPTION;
+                momCommand.Parameters.Add("@SHARE", SqlDbType.NVarChar).Value = _MOM_ALBMRow.SHARE;
+                momCommand.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                int affectedRows = momCommand.ExecuteNonQuery();
+
+                id = (int)momCommand.Parameters["@ID"].Value;
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
         }
     }
 }
