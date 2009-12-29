@@ -95,6 +95,8 @@ namespace DALMomburbia {
         
         private MOM_ALBMDataTable tableMOM_ALBM;
         
+        private MOM_ALBM_PHTODataTable tableMOM_ALBM_PHTO;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -225,6 +227,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_ALBM"] != null)) {
                     base.Tables.Add(new MOM_ALBMDataTable(ds.Tables["MOM_ALBM"]));
+                }
+                if ((ds.Tables["MOM_ALBM_PHTO"] != null)) {
+                    base.Tables.Add(new MOM_ALBM_PHTODataTable(ds.Tables["MOM_ALBM_PHTO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -560,6 +565,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_ALBM_PHTODataTable MOM_ALBM_PHTO {
+            get {
+                return this.tableMOM_ALBM_PHTO;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -722,6 +736,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_ALBM"] != null)) {
                     base.Tables.Add(new MOM_ALBMDataTable(ds.Tables["MOM_ALBM"]));
+                }
+                if ((ds.Tables["MOM_ALBM_PHTO"] != null)) {
+                    base.Tables.Add(new MOM_ALBM_PHTODataTable(ds.Tables["MOM_ALBM_PHTO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -963,6 +980,12 @@ namespace DALMomburbia {
                     this.tableMOM_ALBM.InitVars();
                 }
             }
+            this.tableMOM_ALBM_PHTO = ((MOM_ALBM_PHTODataTable)(base.Tables["MOM_ALBM_PHTO"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_ALBM_PHTO != null)) {
+                    this.tableMOM_ALBM_PHTO.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1042,6 +1065,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_BLK_USRS);
             this.tableMOM_ALBM = new MOM_ALBMDataTable();
             base.Tables.Add(this.tableMOM_ALBM);
+            this.tableMOM_ALBM_PHTO = new MOM_ALBM_PHTODataTable();
+            base.Tables.Add(this.tableMOM_ALBM_PHTO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1220,6 +1245,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_ALBM_PHTO() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1341,6 +1371,8 @@ namespace DALMomburbia {
         public delegate void MOM_BLK_USRSRowChangeEventHandler(object sender, MOM_BLK_USRSRowChangeEvent e);
         
         public delegate void MOM_ALBMRowChangeEventHandler(object sender, MOM_ALBMRowChangeEvent e);
+        
+        public delegate void MOM_ALBM_PHTORowChangeEventHandler(object sender, MOM_ALBM_PHTORowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -12549,6 +12581,304 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_ALBM_PHTODataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnMOM_ALBM_ID;
+            
+            private global::System.Data.DataColumn columnFILE_NAME;
+            
+            private global::System.Data.DataColumn columnDESCRIPTION;
+            
+            private global::System.Data.DataColumn columnTIME;
+            
+            private global::System.Data.DataColumn columnBLOCKED;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTODataTable() {
+                this.TableName = "MOM_ALBM_PHTO";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_ALBM_PHTODataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_ALBM_PHTODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_ALBM_IDColumn {
+                get {
+                    return this.columnMOM_ALBM_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FILE_NAMEColumn {
+                get {
+                    return this.columnFILE_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DESCRIPTIONColumn {
+                get {
+                    return this.columnDESCRIPTION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TIMEColumn {
+                get {
+                    return this.columnTIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn BLOCKEDColumn {
+                get {
+                    return this.columnBLOCKED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTORow this[int index] {
+                get {
+                    return ((MOM_ALBM_PHTORow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_ALBM_PHTORowChangeEventHandler MOM_ALBM_PHTORowChanging;
+            
+            public event MOM_ALBM_PHTORowChangeEventHandler MOM_ALBM_PHTORowChanged;
+            
+            public event MOM_ALBM_PHTORowChangeEventHandler MOM_ALBM_PHTORowDeleting;
+            
+            public event MOM_ALBM_PHTORowChangeEventHandler MOM_ALBM_PHTORowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_ALBM_PHTORow(MOM_ALBM_PHTORow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTORow AddMOM_ALBM_PHTORow(int MOM_ALBM_ID, string FILE_NAME, string DESCRIPTION, System.DateTime TIME, bool BLOCKED) {
+                MOM_ALBM_PHTORow rowMOM_ALBM_PHTORow = ((MOM_ALBM_PHTORow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        MOM_ALBM_ID,
+                        FILE_NAME,
+                        DESCRIPTION,
+                        TIME,
+                        BLOCKED};
+                rowMOM_ALBM_PHTORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_ALBM_PHTORow);
+                return rowMOM_ALBM_PHTORow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_ALBM_PHTODataTable cln = ((MOM_ALBM_PHTODataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_ALBM_PHTODataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnMOM_ALBM_ID = base.Columns["MOM_ALBM_ID"];
+                this.columnFILE_NAME = base.Columns["FILE_NAME"];
+                this.columnDESCRIPTION = base.Columns["DESCRIPTION"];
+                this.columnTIME = base.Columns["TIME"];
+                this.columnBLOCKED = base.Columns["BLOCKED"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnMOM_ALBM_ID = new global::System.Data.DataColumn("MOM_ALBM_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_ALBM_ID);
+                this.columnFILE_NAME = new global::System.Data.DataColumn("FILE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFILE_NAME);
+                this.columnDESCRIPTION = new global::System.Data.DataColumn("DESCRIPTION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDESCRIPTION);
+                this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIME);
+                this.columnBLOCKED = new global::System.Data.DataColumn("BLOCKED", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBLOCKED);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnFILE_NAME.MaxLength = 50;
+                this.columnDESCRIPTION.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTORow NewMOM_ALBM_PHTORow() {
+                return ((MOM_ALBM_PHTORow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_ALBM_PHTORow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_ALBM_PHTORow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_ALBM_PHTORowChanged != null)) {
+                    this.MOM_ALBM_PHTORowChanged(this, new MOM_ALBM_PHTORowChangeEvent(((MOM_ALBM_PHTORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_ALBM_PHTORowChanging != null)) {
+                    this.MOM_ALBM_PHTORowChanging(this, new MOM_ALBM_PHTORowChangeEvent(((MOM_ALBM_PHTORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_ALBM_PHTORowDeleted != null)) {
+                    this.MOM_ALBM_PHTORowDeleted(this, new MOM_ALBM_PHTORowChangeEvent(((MOM_ALBM_PHTORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_ALBM_PHTORowDeleting != null)) {
+                    this.MOM_ALBM_PHTORowDeleting(this, new MOM_ALBM_PHTORowChangeEvent(((MOM_ALBM_PHTORow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_ALBM_PHTORow(MOM_ALBM_PHTORow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_ALBM_PHTODataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -19084,6 +19414,156 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_ALBM_PHTORow : global::System.Data.DataRow {
+            
+            private MOM_ALBM_PHTODataTable tableMOM_ALBM_PHTO;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_ALBM_PHTORow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_ALBM_PHTO = ((MOM_ALBM_PHTODataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableMOM_ALBM_PHTO.IDColumn]));
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int MOM_ALBM_ID {
+                get {
+                    try {
+                        return ((int)(this[this.tableMOM_ALBM_PHTO.MOM_ALBM_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_ALBM_ID\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.MOM_ALBM_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FILE_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FILE_NAME\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DESCRIPTION {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_ALBM_PHTO.DESCRIPTIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DESCRIPTION\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.DESCRIPTIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime TIME {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMOM_ALBM_PHTO.TIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIME\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.TIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool BLOCKED {
+                get {
+                    try {
+                        return ((bool)(this[this.tableMOM_ALBM_PHTO.BLOCKEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BLOCKED\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_ALBM_PHTO.BLOCKEDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_ALBM_IDNull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.MOM_ALBM_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_ALBM_IDNull() {
+                this[this.tableMOM_ALBM_PHTO.MOM_ALBM_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFILE_NAMENull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.FILE_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFILE_NAMENull() {
+                this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDESCRIPTIONNull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.DESCRIPTIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDESCRIPTIONNull() {
+                this[this.tableMOM_ALBM_PHTO.DESCRIPTIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTIMENull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.TIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTIMENull() {
+                this[this.tableMOM_ALBM_PHTO.TIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsBLOCKEDNull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.BLOCKEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetBLOCKEDNull() {
+                this[this.tableMOM_ALBM_PHTO.BLOCKEDColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -20155,6 +20635,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_ALBMRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_ALBM_PHTORowChangeEvent : global::System.EventArgs {
+            
+            private MOM_ALBM_PHTORow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTORowChangeEvent(MOM_ALBM_PHTORow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_ALBM_PHTORow Row {
                 get {
                     return this.eventRow;
                 }

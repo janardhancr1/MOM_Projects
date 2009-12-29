@@ -13,6 +13,11 @@ public partial class MOMPhotos_MOMPhotosUpload : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
+
+    public string GetQueryString()
+    {
+        return Request.QueryString["momAlbumId"].ToString();
+    }
+    
 }
