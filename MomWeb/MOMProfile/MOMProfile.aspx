@@ -55,7 +55,7 @@
                                                 <Header>
                                                     <a href="" class="accordionLink">Your Basics</a></Header>
                                                 <Content>
-                                                    <table width="400" cellpadding="1" cellspacing="0">
+                                                    <table width="400">
                                                         <tr>
                                                             <td align="right">
                                                                 <div class="momInfo">
@@ -86,16 +86,10 @@
                                                         <tr>
                                                             <td align="right">
                                                                 <div class="momInfo">
-                                                                    New Password:</div>
+                                                                    Password:</div>
                                                             </td>
                                                             <td align="left">
-                                                                <asp:TextBox ID="momPass" runat="server" CssClass="tbSignIn" TextMode="Password"
-                                                                    MaxLength="15"></asp:TextBox>
-                                                                <cc1:PasswordStrength ID="momPassExt" runat="server" TargetControlID="momPass" DisplayPosition="RightSide"
-                                                                    StrengthIndicatorType="Text" PrefixText="Strength:" TextStrengthDescriptions="Very Poor;Weak;Average;Strong;Excellent"
-                                                                    StrengthStyles="TextIndicator_Strength1;TextIndicator_Strength2;TextIndicator_Strength3;TextIndicator_Strength4;TextIndicator_Strength5"
-                                                                    MinimumNumericCharacters="0" MinimumSymbolCharacters="0" TextCssClass="passInfoStyle"
-                                                                    RequiresUpperAndLowerCaseCharacters="false" />
+                                                                <a href="#">Change Password</a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -156,6 +150,11 @@
                                                                 <asp:Label ID="momJoinedDate" runat="server"></asp:Label>
                                                             </td>
                                                         </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <asp:Button ID="PersonalSaveButton" runat="server" Text="Save" CssClass="btnStyle" OnClick="DetailsSave_Click" />
+                                                            </td>
+                                                        </tr>
                                                     </table>
                                                 </Content>
                                             </cc1:AccordionPane>
@@ -172,7 +171,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <asp:Button ID="UploadButton" CssClass="btnStyle" runat="server" Text="Upload" /></td>
+                                                                <asp:Button ID="UploadButton" CssClass="btnStyle" runat="server" Text="Upload" OnClick="momUpload_Click" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -281,7 +280,7 @@
                                                             </tr>
                                                         </table>
                                                         <br />
-                                                        <input type="button" value="Add Child" onclick="javascript:showHideCancel('kidstable',this,1);"
+                                                        <input type="button" id="KidsAddButton" value="Add Child" onclick="javascript:showHideCancel('kidstable',this,1);"
                                                             class="btnStyle" />
                                                         <br />
                                                         <br />
@@ -1023,7 +1022,8 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="2">
-                                                                        <asp:Button ID="BlockUserButton" runat="server" CssClass="btnStyle" Text="Block User" OnClick="Block_User_Click" />
+                                                                        <asp:Button ID="BlockUserButton" runat="server" CssClass="btnStyle" Text="Block User"
+                                                                            OnClick="Block_User_Click" />
                                                                     </td>
                                                                 </tr>
                                                             </table>

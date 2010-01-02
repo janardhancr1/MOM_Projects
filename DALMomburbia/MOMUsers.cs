@@ -320,5 +320,47 @@ namespace DALMomburbia
                 base.CloseConnection();
             }
         }
+
+        public void UpdateDetails(out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "DBO.SP_MOM_USR_BASICS_UPDATE";
+                momCommand.Parameters.Add("@COUNTRY", SqlDbType.NVarChar).Value = _MOM_USRRow.COUNTRY;
+                momCommand.Parameters.Add("@ZIP", SqlDbType.NVarChar).Value = _MOM_USRRow.ZIP;
+                momCommand.Parameters.Add("@LOCATION", SqlDbType.NVarChar).Value = _MOM_USRRow.LOCATION;
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = _MOM_USRRow.ID;
+
+                SqlDataAdapter adaper = new SqlDataAdapter();
+                adaper.SelectCommand = momCommand;
+                momCommand.ExecuteNonQuery();
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
     }
 }

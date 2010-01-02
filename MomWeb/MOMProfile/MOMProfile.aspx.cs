@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections;
+using System.Drawing;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -90,6 +91,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                     momLocation.Text = momUsers.MOM_USRRow.LOCATION;
                     momCountry.SelectedValue = momUsers.MOM_USRRow.COUNTRY;
                     momDisplayName.Text = momUsers.MOM_USRRow.DISPLAY_NAME;
+                    momJoinedDate.Text = momUsers.MOM_USRRow.TIME.ToLongDateString() + " " + momUsers.MOM_USRRow.TIME.ToLongTimeString();
 
                     if (momUsers.MOM_USRRow.INTEREST != null)
                         momUserInterests.Value = momUsers.MOM_USRRow.INTEREST;
@@ -104,6 +106,78 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 break;
             case 0:
                 break;
+        }
+    }
+
+    protected void DetailsSave_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            MOMUsers momUsers = new MOMUsers();
+            MOMDataset momDataset = new MOMDataset();
+            MOMDataset.MOM_USRRow momUserRow = momDataset.MOM_USR.NewMOM_USRRow();
+
+            momUserRow.ID = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID;
+            momUserRow.COUNTRY = momCountry.SelectedValue;
+            momUserRow.ZIP = momZipCode.Text;
+            momUserRow.LOCATION = momLocation.Text;
+
+
+            momUsers.MOM_USRRow = momUserRow;
+            momUsers.UpdateDetails(out isSuccess, out appMessage, out sysMessage);
+
+            if (isSuccess)
+            {
+                momPopup.Show("Saved.");
+            }
+            else
+            {
+                momPopup.Show(appMessage);
+            }
+        }
+        catch (MOMException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (SqlException X)
+        {
+            momPopup.Show(X.Message);
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
+        }
+    }
+
+    protected void momUpload_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (PhotoUpload.HasFile)
+            {
+                string fileName = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID.ToString() + ".jpg";
+                string serverPath = Server.MapPath("~") + "\\MOMUserImages\\" + "temp" + fileName;
+                string newfilePath = Server.MapPath("~") + "\\MOMUserImages\\" + fileName;
+                PhotoUpload.PostedFile.SaveAs(serverPath);
+
+                Bitmap originalImage = new Bitmap(serverPath);
+                Size newSize = new Size(100, 100);
+                Bitmap newImage = new Bitmap(originalImage, newSize);
+
+                newImage.Save(newfilePath);
+
+                ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE = "../MOMUserImages/" + fileName;
+
+                MOMUsers momUser = new MOMUsers();
+                momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
+                    ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
+                    ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
+
+            }
+        }
+        catch (Exception X)
+        {
+            momPopup.Show(X.Message);
         }
     }
 
@@ -411,6 +485,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         momKids.GetMOM_KidsBy_UsrID(out isSuccess, out appMessage, out sysMessage);
         if (isSuccess)
         {
+            int i = 1;
             foreach (MOMDataset.MOM_KIDSRow kidsRow in momKids.MOM_KIDSDataTable)
             {
                 row = new HtmlTableRow();
@@ -426,11 +501,12 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 cell = new HtmlTableCell();
                 cell.InnerHtml = kidsRow.KID_GENDER;
                 row.Cells.Add(cell);
-
+                
                 cell = new HtmlTableCell();
-                cell.InnerHtml = "&nbsp;";
+                cell.InnerHtml = "<img src='../images/profile/Icon_Edit.gif' onclick='javascript:showKid(" + i + ",\"" + momKidsTable.ClientID + "\");'>";
                 row.Cells.Add(cell);
 
+                i++;
                 momKidsTable.Rows.Add(row);
             }
         }

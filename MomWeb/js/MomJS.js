@@ -231,6 +231,16 @@ function onFriendAddComplete()
     alert("Request has been sent for adding you as friend");
 }
 
+function showKid(id, tname)
+{
+    //alert('in function');
+    //alert(tname);
+    var objBtn = document.getElementById('KidsAddButton');
+    var kidTable = document.getElementById(tname);
+    //alert(kidTable.rows[id].cells[0].innerText);
+    showHideCancel('kidstable',objBtn,1);
+}
+
 function openAlbumForm()
 {
     document.getElementById("momAlbumFrm").style.display = "block";
