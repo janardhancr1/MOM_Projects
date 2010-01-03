@@ -12759,7 +12759,7 @@ namespace DALMomburbia {
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
-                this.columnFILE_NAME.MaxLength = 50;
+                this.columnFILE_NAME.MaxLength = 255;
                 this.columnDESCRIPTION.MaxLength = 500;
             }
             

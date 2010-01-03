@@ -885,27 +885,27 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MOM_ALBM_PHTO" msprop:Generator_UserTableName="MOM_ALBM_PHTO" msprop:Generator_RowDeletedName="MOM_ALBM_PHTORowDeleted" msprop:Generator_RowChangedName="MOM_ALBM_PHTORowChanged" msprop:Generator_RowClassName="MOM_ALBM_PHTORow" msprop:Generator_RowChangingName="MOM_ALBM_PHTORowChanging" msprop:Generator_RowEvArgName="MOM_ALBM_PHTORowChangeEvent" msprop:Generator_RowEvHandlerName="MOM_ALBM_PHTORowChangeEventHandler" msprop:Generator_TableClassName="MOM_ALBM_PHTODataTable" msprop:Generator_TableVarName="tableMOM_ALBM_PHTO" msprop:Generator_RowDeletingName="MOM_ALBM_PHTORowDeleting" msprop:Generator_TablePropName="MOM_ALBM_PHTO">
+        <xs:element name="MOM_ALBM_PHTO" msprop:Generator_UserTableName="MOM_ALBM_PHTO" msprop:Generator_RowDeletedName="MOM_ALBM_PHTORowDeleted" msprop:Generator_TableClassName="MOM_ALBM_PHTODataTable" msprop:Generator_RowChangedName="MOM_ALBM_PHTORowChanged" msprop:Generator_RowClassName="MOM_ALBM_PHTORow" msprop:Generator_RowChangingName="MOM_ALBM_PHTORowChanging" msprop:Generator_RowEvArgName="MOM_ALBM_PHTORowChangeEvent" msprop:Generator_RowEvHandlerName="MOM_ALBM_PHTORowChangeEventHandler" msprop:Generator_TablePropName="MOM_ALBM_PHTO" msprop:Generator_TableVarName="tableMOM_ALBM_PHTO" msprop:Generator_RowDeletingName="MOM_ALBM_PHTORowDeleting">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
-              <xs:element name="MOM_ALBM_ID" msprop:Generator_UserColumnName="MOM_ALBM_ID" msprop:Generator_ColumnVarNameInTable="columnMOM_ALBM_ID" msprop:Generator_ColumnPropNameInRow="MOM_ALBM_ID" msprop:Generator_ColumnPropNameInTable="MOM_ALBM_IDColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="FILE_NAME" msprop:Generator_UserColumnName="FILE_NAME" msprop:Generator_ColumnVarNameInTable="columnFILE_NAME" msprop:Generator_ColumnPropNameInRow="FILE_NAME" msprop:Generator_ColumnPropNameInTable="FILE_NAMEColumn" minOccurs="0">
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+              <xs:element name="MOM_ALBM_ID" msprop:Generator_UserColumnName="MOM_ALBM_ID" msprop:Generator_ColumnPropNameInRow="MOM_ALBM_ID" msprop:Generator_ColumnVarNameInTable="columnMOM_ALBM_ID" msprop:Generator_ColumnPropNameInTable="MOM_ALBM_IDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="FILE_NAME" msprop:Generator_UserColumnName="FILE_NAME" msprop:Generator_ColumnPropNameInRow="FILE_NAME" msprop:Generator_ColumnVarNameInTable="columnFILE_NAME" msprop:Generator_ColumnPropNameInTable="FILE_NAMEColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DESCRIPTION" msprop:Generator_UserColumnName="DESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" minOccurs="0">
+              <xs:element name="DESCRIPTION" msprop:Generator_UserColumnName="DESCRIPTION" msprop:Generator_ColumnPropNameInRow="DESCRIPTION" msprop:Generator_ColumnVarNameInTable="columnDESCRIPTION" msprop:Generator_ColumnPropNameInTable="DESCRIPTIONColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TIME" msprop:Generator_UserColumnName="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="BLOCKED" msprop:Generator_UserColumnName="BLOCKED" msprop:Generator_ColumnVarNameInTable="columnBLOCKED" msprop:Generator_ColumnPropNameInRow="BLOCKED" msprop:Generator_ColumnPropNameInTable="BLOCKEDColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="TIME" msprop:Generator_UserColumnName="TIME" msprop:Generator_ColumnPropNameInRow="TIME" msprop:Generator_ColumnVarNameInTable="columnTIME" msprop:Generator_ColumnPropNameInTable="TIMEColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BLOCKED" msprop:Generator_UserColumnName="BLOCKED" msprop:Generator_ColumnPropNameInRow="BLOCKED" msprop:Generator_ColumnVarNameInTable="columnBLOCKED" msprop:Generator_ColumnPropNameInTable="BLOCKEDColumn" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

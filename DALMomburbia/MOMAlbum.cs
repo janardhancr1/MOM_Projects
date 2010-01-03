@@ -134,7 +134,7 @@ namespace DALMomburbia
             {
                 SqlCommand momCommand = base.GetMOMCommand();
                 momCommand.CommandText = "DBO.SP_GET_MOM_ALBM";
-                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.Int).Value = momUserId;
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.BigInt).Value = momUserId;
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = momCommand;
