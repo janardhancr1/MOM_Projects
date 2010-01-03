@@ -12398,7 +12398,7 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_ALBMRow AddMOM_ALBMRow(long MOM_USR_ID, string TITLE, string DESCRIPTION, string SHARE, System.DateTime TIME, int PHOTOS) {
+            public MOM_ALBMRow AddMOM_ALBMRow(long MOM_USR_ID, string TITLE, string DESCRIPTION, string SHARE, string TIME, int PHOTOS) {
                 MOM_ALBMRow rowMOM_ALBMRow = ((MOM_ALBMRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -12453,7 +12453,7 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnDESCRIPTION);
                 this.columnSHARE = new global::System.Data.DataColumn("SHARE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSHARE);
-                this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIME);
                 this.columnPHOTOS = new global::System.Data.DataColumn("PHOTOS", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPHOTOS);
@@ -19323,10 +19323,10 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime TIME {
+            public string TIME {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableMOM_ALBM.TIMEColumn]));
+                        return ((string)(this[this.tableMOM_ALBM.TIMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TIME\' in table \'MOM_ALBM\' is DBNull.", e);

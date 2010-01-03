@@ -35,6 +35,12 @@ namespace DALMomburbia
             get { return _MOM_ALBM_PHTORow; }
         }
 
+        DataTable _MOM_ALBM_USRDataTable = new DataTable();
+        public DataTable MOM_ALBM_USRDataTable
+        {
+            get { return _MOM_ALBM_USRDataTable; }
+        }
+
         public void AddMOM_ALBMRow(out int id, out bool isSuccess, out string appMessage, out string sysMessage)
         {
             isSuccess = true;
@@ -94,6 +100,45 @@ namespace DALMomburbia
                 momCommand.Parameters.Add("@DESCRIPTION", SqlDbType.NVarChar).Value = _MOM_ALBM_PHTORow.DESCRIPTION;
 
                 int affectedRows = momCommand.ExecuteNonQuery();
+            }
+            catch (MOMException X)
+            {
+                isSuccess = false;
+                appMessage = X.Message;
+            }
+            catch (SqlException X)
+            {
+                isSuccess = false;
+                appMessage = "Database Error!";
+                sysMessage = X.Message;
+            }
+            catch (Exception X)
+            {
+                isSuccess = false;
+                appMessage = "Application Error!";
+                sysMessage = X.Message;
+            }
+            finally
+            {
+                base.CloseConnection();
+            }
+        }
+
+        public void GetMOM_ALBMByMOM_USR_ID(long momUserId, out bool isSuccess, out string appMessage, out string sysMessage)
+        {
+            isSuccess = true;
+            appMessage = "Success";
+            sysMessage = string.Empty;
+
+            try
+            {
+                SqlCommand momCommand = base.GetMOMCommand();
+                momCommand.CommandText = "DBO.SP_GET_MOM_ALBM";
+                momCommand.Parameters.Add("@MOM_USR_ID", SqlDbType.Int).Value = momUserId;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = momCommand;
+                adapter.Fill(_MOM_ALBM_USRDataTable);
             }
             catch (MOMException X)
             {

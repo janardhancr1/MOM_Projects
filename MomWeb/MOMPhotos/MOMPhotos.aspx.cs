@@ -20,8 +20,34 @@ public partial class MOMPhotos_MOMPhotos : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!MOMHelper.IsSessionActive())
+            Response.Redirect("../MOMIndex.aspx");
 
+        if (!IsPostBack)
+            DataBindAlbums();
     }
+
+    private void DataBindAlbums()
+    {
+        try
+        {
+            MOMAlbum album = new MOMAlbum();
+            album.GetMOM_ALBMByMOM_USR_ID(((MOMDataset.MOM_USRRow)Session["momUser"]).ID, out isSuccess, out appMessage, out sysMessage);
+            momAlbumCounts.Text = album.MOM_ALBM_USRDataTable.Rows.Count.ToString();
+            momAlbumsRpt.DataSource = album.MOM_ALBM_USRDataTable.DefaultView;
+            momAlbumsRpt.DataBind();
+        }
+        catch (MOMException X)
+        {
+        }
+        catch (SqlException X)
+        {
+        }
+        catch (Exception X)
+        {
+        }
+    }
+
     protected void momAlbumSave_Click(object sender, EventArgs e)
     {
         try

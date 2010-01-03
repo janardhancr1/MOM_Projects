@@ -66,12 +66,56 @@
         </tr>
         <tr>
             <td>
+                <div class="styleLine"></div>
+                <div class="momSpacer10px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <div class="grayHeader">
-                    Albums (0)
+                    Albums (<asp:Label ID="momAlbumCounts" runat="server"></asp:Label>)
                 </div>
                 <div>
-                    <asp:Repeater ID="momAlbumsRpt">
-                    </asp:Repeater>
+                    <table width="100%">
+                        <asp:Repeater ID="momAlbumsRpt" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <div class="momSpacer10px"></div>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div style="width: 90px;">
+                                                        <img src="<%# DataBinder.Eval(Container.DataItem, "ALBM_PHOTOS").ToString()%>" height="80" width="80" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "TITLE").ToString()), 80)%> 
+                                                        ( <%# DataBinder.Eval(Container.DataItem, "PHOTOS").ToString()%> )
+                                                    </div>
+                                                    <div>
+                                                        <%# BOMomburbia.MOMHelper.BreakText(BOMomburbia.MOMHelper.HTMLEncode(DataBinder.Eval(Container.DataItem, "DESCRIPTION").ToString()), 80)%>
+                                                    </div>
+                                                    <div>
+                                                        <%# DataBinder.Eval(Container.DataItem, "TIME").ToString()%>
+                                                    </div>
+                                                    <div class="momSpacer10px"></div>
+                                                    <div>
+                                                        <a href="MOMPhotosUpload.aspx?momAlbumId=<%# MOMHelper.Encrypt(DataBinder.Eval(Container.DataItem, "ID").ToString()) %>">
+                                                            Add more photos
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="styleLine"></div>
+                                        <div class="momSpacer10px"></div>
+                                    </td>
+                                </tr>                                
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </table>
                 </div>
             </td>
         </tr>
