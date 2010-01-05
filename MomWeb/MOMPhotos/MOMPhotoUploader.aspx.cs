@@ -46,7 +46,7 @@ public partial class MOMPhotos_MOMPhotoUploader : System.Web.UI.Page
                     MOMAlbum album = new MOMAlbum();
                     MOMDataset.MOM_ALBM_PHTORow photoRow = album.MOM_ALBM_PHTODataTable.NewMOM_ALBM_PHTORow();
                     photoRow.MOM_ALBM_ID = albumId;
-                    photoRow.FILE_NAME = fileMap + fileName;
+                    photoRow.FILE_NAME = "../MOMUserImages/" + fileMap + fileName;
                     photoRow.DESCRIPTION = "Testing";
                     album.MOM_ALBM_PHTORow = photoRow;
                     album.AddMOM_ALBM_PHTORow(out isSuccess, out appMessage, out sysMessage);
@@ -71,7 +71,7 @@ public partial class MOMPhotos_MOMPhotoUploader : System.Web.UI.Page
                     MOMAlbum album = new MOMAlbum();
                     MOMDataset.MOM_ALBM_PHTORow photoRow = album.MOM_ALBM_PHTODataTable.NewMOM_ALBM_PHTORow();
                     photoRow.MOM_ALBM_ID = albumId;
-                    photoRow.FILE_NAME = fileMap + fileName;
+                    photoRow.FILE_NAME = "../MOMUserImages/" + fileMap + fileName;
                     photoRow.DESCRIPTION = "Testing";
                     album.MOM_ALBM_PHTORow = photoRow;
                     album.AddMOM_ALBM_PHTORow(out isSuccess, out appMessage, out sysMessage);
@@ -96,7 +96,7 @@ public partial class MOMPhotos_MOMPhotoUploader : System.Web.UI.Page
                     MOMAlbum album = new MOMAlbum();
                     MOMDataset.MOM_ALBM_PHTORow photoRow = album.MOM_ALBM_PHTODataTable.NewMOM_ALBM_PHTORow();
                     photoRow.MOM_ALBM_ID = albumId;
-                    photoRow.FILE_NAME = fileMap + fileName;
+                    photoRow.FILE_NAME = "../MOMUserImages/" + fileMap + fileName;
                     photoRow.DESCRIPTION = "Testing";
                     album.MOM_ALBM_PHTORow = photoRow;
                     album.AddMOM_ALBM_PHTORow(out isSuccess, out appMessage, out sysMessage);
@@ -121,7 +121,7 @@ public partial class MOMPhotos_MOMPhotoUploader : System.Web.UI.Page
                     MOMAlbum album = new MOMAlbum();
                     MOMDataset.MOM_ALBM_PHTORow photoRow = album.MOM_ALBM_PHTODataTable.NewMOM_ALBM_PHTORow();
                     photoRow.MOM_ALBM_ID = albumId;
-                    photoRow.FILE_NAME = fileMap + fileName;
+                    photoRow.FILE_NAME = "../MOMUserImages/" + fileMap + fileName;
                     photoRow.DESCRIPTION = "Testing";
                     album.MOM_ALBM_PHTORow = photoRow;
                     album.AddMOM_ALBM_PHTORow(out isSuccess, out appMessage, out sysMessage);
@@ -146,7 +146,7 @@ public partial class MOMPhotos_MOMPhotoUploader : System.Web.UI.Page
                     MOMAlbum album = new MOMAlbum();
                     MOMDataset.MOM_ALBM_PHTORow photoRow = album.MOM_ALBM_PHTODataTable.NewMOM_ALBM_PHTORow();
                     photoRow.MOM_ALBM_ID = albumId;
-                    photoRow.FILE_NAME = fileMap + fileName;
+                    photoRow.FILE_NAME = "../MOMUserImages/" + fileMap + fileName;
                     photoRow.DESCRIPTION = "Testing";
                     album.MOM_ALBM_PHTORow = photoRow;
                     album.AddMOM_ALBM_PHTORow(out isSuccess, out appMessage, out sysMessage);
