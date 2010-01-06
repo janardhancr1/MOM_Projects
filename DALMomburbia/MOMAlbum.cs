@@ -96,9 +96,7 @@ namespace DALMomburbia
                 SqlCommand momCommand = base.GetMOMCommand();
                 momCommand.CommandText = "DBO.SP_MOM_ALBM_PHTO_ADD";
                 momCommand.Parameters.Add("@MOM_ALBM_ID", SqlDbType.Int).Value = _MOM_ALBM_PHTORow.MOM_ALBM_ID;
-                //momCommand.Parameters.AddWithValue("@FILE_NAME", _MOM_ALBM_PHTORow.FILE_NAME);
-                //momCommand.Parameters.AddWithValue("@DESCRIPTION", _MOM_ALBM_PHTORow.DESCRIPTION);
-                momCommand.Parameters.Add("@FILE_NAME", SqlDbType.VarChar).Value = _MOM_ALBM_PHTORow.FILE_NAME;
+                momCommand.Parameters.Add("@FILE_NAME", SqlDbType.NVarChar).Value = _MOM_ALBM_PHTORow.FILE_NAME;
                 momCommand.Parameters.Add("@DESCRIPTION", SqlDbType.NVarChar).Value = _MOM_ALBM_PHTORow.DESCRIPTION;
 
                 int affectedRows = momCommand.ExecuteNonQuery();
