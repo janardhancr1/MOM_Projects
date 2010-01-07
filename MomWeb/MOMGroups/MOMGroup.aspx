@@ -74,6 +74,8 @@
         <tr>
             <td>
                 <asp:Label ID="momUserName" runat="server" CssClass="grayHeader"></asp:Label>
+                <input type="button" class="btnStyle" value="Join Group" 
+                onclick="joinGroup('<%=Request.QueryString["mGi"]%>');" />
             </td>
         </tr>
         <tr>
