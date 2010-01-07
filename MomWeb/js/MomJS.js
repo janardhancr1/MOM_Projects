@@ -226,6 +226,17 @@ function addFriend(arg)
     MOMWebService.AddFRND_MOM_USR_IDByMOM_USR_ID(arg, onFriendAddComplete, onError, onTimeout);  
 }
 
+function joinGroup(arg)
+{
+    //alert(arg);
+    MOMWebService.AddFRND_MOM_USR_IDByMOM_USR_ID(arg, onJoinGroupComplete, onError, onTimeout);  
+}
+
+function onJoinGroupComplete()
+{
+    alert("You have been added the Group successfully");
+}
+
 function onFriendAddComplete()
 {
     alert("Request has been sent for adding you as friend");
