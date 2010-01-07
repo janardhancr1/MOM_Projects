@@ -12592,7 +12592,7 @@ namespace DALMomburbia {
             
             private global::System.Data.DataColumn columnMOM_ALBM_ID;
             
-            private global::System.Data.DataColumn columnFILE_NAME;
+            private global::System.Data.DataColumn columnPHOTO_PATH;
             
             private global::System.Data.DataColumn columnDESCRIPTION;
             
@@ -12645,9 +12645,9 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn FILE_NAMEColumn {
+            public global::System.Data.DataColumn PHOTO_PATHColumn {
                 get {
-                    return this.columnFILE_NAME;
+                    return this.columnPHOTO_PATH;
                 }
             }
             
@@ -12701,12 +12701,12 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public MOM_ALBM_PHTORow AddMOM_ALBM_PHTORow(int MOM_ALBM_ID, string FILE_NAME, string DESCRIPTION, System.DateTime TIME, bool BLOCKED) {
+            public MOM_ALBM_PHTORow AddMOM_ALBM_PHTORow(int MOM_ALBM_ID, string PHOTO_PATH, string DESCRIPTION, System.DateTime TIME, bool BLOCKED) {
                 MOM_ALBM_PHTORow rowMOM_ALBM_PHTORow = ((MOM_ALBM_PHTORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         MOM_ALBM_ID,
-                        FILE_NAME,
+                        PHOTO_PATH,
                         DESCRIPTION,
                         TIME,
                         BLOCKED};
@@ -12736,7 +12736,7 @@ namespace DALMomburbia {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnMOM_ALBM_ID = base.Columns["MOM_ALBM_ID"];
-                this.columnFILE_NAME = base.Columns["FILE_NAME"];
+                this.columnPHOTO_PATH = base.Columns["PHOTO_PATH"];
                 this.columnDESCRIPTION = base.Columns["DESCRIPTION"];
                 this.columnTIME = base.Columns["TIME"];
                 this.columnBLOCKED = base.Columns["BLOCKED"];
@@ -12748,8 +12748,8 @@ namespace DALMomburbia {
                 base.Columns.Add(this.columnID);
                 this.columnMOM_ALBM_ID = new global::System.Data.DataColumn("MOM_ALBM_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMOM_ALBM_ID);
-                this.columnFILE_NAME = new global::System.Data.DataColumn("FILE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFILE_NAME);
+                this.columnPHOTO_PATH = new global::System.Data.DataColumn("PHOTO_PATH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPHOTO_PATH);
                 this.columnDESCRIPTION = new global::System.Data.DataColumn("DESCRIPTION", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDESCRIPTION);
                 this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -12759,7 +12759,7 @@ namespace DALMomburbia {
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
-                this.columnFILE_NAME.MaxLength = 255;
+                this.columnPHOTO_PATH.MaxLength = 255;
                 this.columnDESCRIPTION.MaxLength = 500;
             }
             
@@ -19453,17 +19453,17 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string FILE_NAME {
+            public string PHOTO_PATH {
                 get {
                     try {
-                        return ((string)(this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn]));
+                        return ((string)(this[this.tableMOM_ALBM_PHTO.PHOTO_PATHColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FILE_NAME\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PHOTO_PATH\' in table \'MOM_ALBM_PHTO\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn] = value;
+                    this[this.tableMOM_ALBM_PHTO.PHOTO_PATHColumn] = value;
                 }
             }
             
@@ -19523,13 +19523,13 @@ namespace DALMomburbia {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsFILE_NAMENull() {
-                return this.IsNull(this.tableMOM_ALBM_PHTO.FILE_NAMEColumn);
+            public bool IsPHOTO_PATHNull() {
+                return this.IsNull(this.tableMOM_ALBM_PHTO.PHOTO_PATHColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetFILE_NAMENull() {
-                this[this.tableMOM_ALBM_PHTO.FILE_NAMEColumn] = global::System.Convert.DBNull;
+            public void SetPHOTO_PATHNull() {
+                this[this.tableMOM_ALBM_PHTO.PHOTO_PATHColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
