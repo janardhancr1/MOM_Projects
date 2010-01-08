@@ -31,11 +31,11 @@
                 height="100" />
         </td>
     </tr>
-    <tr style="height: 20px;">
+   <%-- <tr style="height: 20px;">
         <td align="center">
             <a href="javascript:showUploadPopUp();">Upload a Picture</a>
         </td>
-    </tr>
+    </tr>--%>
     <tr style="height: 20px;">
         <td align="center">
             <a href="../MOMProfile/MOMProfile.aspx?q=edit" id="EditLink" runat="server">Edit My

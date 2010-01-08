@@ -63,6 +63,7 @@
                                                             </td>
                                                             <td align="left">
                                                                 <asp:TextBox ID="momFirstName" runat="server" CssClass="tbSignIn" MaxLength="50"></asp:TextBox>
+                                                                <asp:Label ID="momFirstNameLbl" runat="server" CssClass="tbSignIn" Visible="<%# showInfo() %>" ></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -72,6 +73,7 @@
                                                             </td>
                                                             <td align="left">
                                                                 <asp:TextBox ID="momLastName" runat="server" CssClass="tbSignIn" MaxLength="50"></asp:TextBox>
+                                                                <asp:Label ID="momLastNameLbl" runat="server" CssClass="tbSignIn"></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -81,9 +83,10 @@
                                                             </td>
                                                             <td align="left">
                                                                 <asp:TextBox ID="momEmail" runat="server" CssClass="tbSignIn" MaxLength="255"></asp:TextBox>
+                                                                <asp:Label ID="momEmailLbl" runat="server" CssClass="tbSignIn"></asp:Label>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr runat="server">
                                                             <td align="right">
                                                                 <div class="momInfo">
                                                                     Password:</div>
@@ -103,6 +106,7 @@
                                                                     <asp:ListItem Text="India" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="United Kingdom" Value="3"></asp:ListItem>
                                                                 </asp:DropDownList>
+                                                                <asp:Label ID="momCountryLbl" runat="server" CssClass="tbSignIn"></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -112,6 +116,7 @@
                                                             </td>
                                                             <td align="left">
                                                                 <asp:TextBox ID="momZipCode" runat="server" CssClass="tbSignIn" MaxLength="255"></asp:TextBox>
+                                                                <asp:Label ID="momZipCodeLbl" runat="server" CssClass="tbSignIn"></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -121,6 +126,7 @@
                                                             </td>
                                                             <td align="left">
                                                                 <asp:TextBox ID="momLocation" runat="server" CssClass="tbSignIn" MaxLength="255"></asp:TextBox>
+                                                                <asp:Label ID="momLocationLbl" runat="server" CssClass="tbSignIn"></asp:Label>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -171,7 +177,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <asp:Button ID="UploadButton" CssClass="btnStyle" runat="server" Text="Upload" OnClick="momUpload_Click" /></td>
+                                                                <asp:Button ID="UploadButton" CssClass="btnStyle" runat="server" Text="Upload" OnClick="momUpload_Click"/></td>
                                                         </tr>
                                                         <tr>
                                                             <td>
@@ -186,72 +192,72 @@
                                                                 <table id="avatarChooser" class="avatarChooserTable" border="0" cellspacing="0" cellpadding="0">
                                                                     <tr>
                                                                         <td align="center" id="avatar_0" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(0); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="0" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_0" src="../images/profile/avatar_0_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_1" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(1); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="1" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_1" src="../images/profile/avatar_1_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_2" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(2); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="2" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_2" src="../images/profile/avatar_2_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_3" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(3); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="3" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_3" src="../images/profile/avatar_3_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_4" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(4); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="4" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_4" src="../images/profile/avatar_4_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_5" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(5); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="5" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_5" src="../images/profile/avatar_5_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_6" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(6); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="6" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_6" src="../images/profile/avatar_6_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_7" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(7); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="7" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_7" src="../images/profile/avatar_7_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_8" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(8); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="8" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_8" src="../images/profile/avatar_8_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_9" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(9); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="9" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_9" src="../images/profile/avatar_9_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_10" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(10); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="10" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_10" src="../images/profile/avatar_10_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_11" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(11); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="11" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_11" src="../images/profile/avatar_11_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_12" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(12); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="12" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_12" src="../images/profile/avatar_12_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_13" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(13); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="13" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_13" src="../images/profile/avatar_13_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_14" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(14); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="14" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_14" src="../images/profile/avatar_14_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_15" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(15); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="15" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_15" src="../images/profile/avatar_15_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="center" id="avatar_16" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(16); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="16" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_16" src="../images/profile/avatar_16_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_17" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(17); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="17" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_17" src="../images/profile/avatar_17_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_18" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(18); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="18" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_18" src="../images/profile/avatar_18_md.jpg" alt="avatar" /></a></td>
                                                                         <td align="center" id="avatar_19" class="unselected">
-                                                                            <a class="avatarListItem" href="#" onclick="selectAvatar(19); return(false);">
+                                                                            <a class="avatarListItem" href="#" name="19" runat="server"  onserverclick="selectAvatar">
                                                                                 <img id="avatarImg_19" src="../images/profile/avatar_19_md.jpg" alt="avatar" /></a></td>
                                                                     </tr>
                                                                 </table>

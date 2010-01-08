@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections;
 using System.Drawing;
+using System.IO;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -68,6 +69,17 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
             momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_ALL));
             momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_FRIENDS));
             momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_MEMBERS));
+
+            if(Request.QueryString["q"] != null)
+            {
+                if (Request.QueryString["q"].ToUpper() == "EDIT")
+                {
+                    HtmlAnchor chgMenu = new HtmlAnchor();
+                    chgMenu.ID = "TestMenuLink";
+                    chgMenu.Name = "1";
+                    ChangeMenu(chgMenu, e);
+                }
+            }
         }
     }
 
@@ -85,6 +97,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 if (isSuccess)
                 {
                     momFirstName.Text = momUsers.MOM_USRRow.FIRST_NAME;
+                    //momFirstNameLbl.Text = momUsers.MOM_USRRow.FIRST_NAME;
                     momLastName.Text = momUsers.MOM_USRRow.LAST_NAME;
                     momEmail.Text = momUsers.MOM_USRRow.EMAIL_ADDR;
                     momZipCode.Text = momUsers.MOM_USRRow.ZIP;
@@ -179,6 +192,37 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         {
             momPopup.Show(X.Message);
         }
+    }
+
+    protected void selectAvatar(object sender, EventArgs e)
+    {
+        string s = ((HtmlAnchor)sender).Name;
+        if (s.Trim().Length > 0)
+        {
+            string newfile = Server.MapPath("~") + "/images/profile/avatar_" + s + "_md.jpg";
+            setPofileImage(newfile);
+        }
+    }
+
+    private void setPofileImage(string newFilename)
+    {
+        string fileName = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID.ToString() + ".jpg";
+        string serverPath = Server.MapPath("~") + "\\MOMUserImages\\" + "temp" + fileName;
+        string newfilePath = Server.MapPath("~") + "\\MOMUserImages\\" + fileName;
+        File.Copy(newFilename, serverPath, true);
+
+        Bitmap originalImage = new Bitmap(serverPath);
+        Size newSize = new Size(100, 100);
+        Bitmap newImage = new Bitmap(originalImage, newSize);
+
+        newImage.Save(newfilePath);
+
+        ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE = "../MOMUserImages/" + fileName;
+
+        MOMUsers momUser = new MOMUsers();
+        momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
+            ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
+            ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
     }
 
     protected void Kids_Load(object sender, EventArgs e)
@@ -501,7 +545,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 cell = new HtmlTableCell();
                 cell.InnerHtml = kidsRow.KID_GENDER;
                 row.Cells.Add(cell);
-                
+
                 cell = new HtmlTableCell();
                 cell.InnerHtml = "<img src='../images/profile/Icon_Edit.gif' onclick='javascript:showKid(" + i + ",\"" + momKidsTable.ClientID + "\");'>";
                 row.Cells.Add(cell);
@@ -703,6 +747,32 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 momBlockUsersTable.Rows.Add(row);
             }
         }
+    }
+
+    protected bool showEdit()
+    {
+        bool show = false;
+        if (Request.QueryString["q"] != null)
+        {
+            if (Request.QueryString["q"].ToUpper() == "EDIT")
+            {
+                show = true;
+            }
+        }
+        return show;
+    }
+
+    protected bool showInfo()
+    {
+        bool show = true;
+        if (Request.QueryString["q"] != null)
+        {
+            if (Request.QueryString["q"].ToUpper() == "EDIT")
+            {
+                show = false;
+            }
+        }
+        return show;
     }
 
 }
