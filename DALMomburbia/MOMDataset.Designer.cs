@@ -97,6 +97,8 @@ namespace DALMomburbia {
         
         private MOM_ALBM_PHTODataTable tableMOM_ALBM_PHTO;
         
+        private MOM_VIDDataTable tableMOM_VID;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -230,6 +232,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_ALBM_PHTO"] != null)) {
                     base.Tables.Add(new MOM_ALBM_PHTODataTable(ds.Tables["MOM_ALBM_PHTO"]));
+                }
+                if ((ds.Tables["MOM_VID"] != null)) {
+                    base.Tables.Add(new MOM_VIDDataTable(ds.Tables["MOM_VID"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -574,6 +579,15 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MOM_VIDDataTable MOM_VID {
+            get {
+                return this.tableMOM_VID;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -739,6 +753,9 @@ namespace DALMomburbia {
                 }
                 if ((ds.Tables["MOM_ALBM_PHTO"] != null)) {
                     base.Tables.Add(new MOM_ALBM_PHTODataTable(ds.Tables["MOM_ALBM_PHTO"]));
+                }
+                if ((ds.Tables["MOM_VID"] != null)) {
+                    base.Tables.Add(new MOM_VIDDataTable(ds.Tables["MOM_VID"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -986,6 +1003,12 @@ namespace DALMomburbia {
                     this.tableMOM_ALBM_PHTO.InitVars();
                 }
             }
+            this.tableMOM_VID = ((MOM_VIDDataTable)(base.Tables["MOM_VID"]));
+            if ((initTable == true)) {
+                if ((this.tableMOM_VID != null)) {
+                    this.tableMOM_VID.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1067,6 +1090,8 @@ namespace DALMomburbia {
             base.Tables.Add(this.tableMOM_ALBM);
             this.tableMOM_ALBM_PHTO = new MOM_ALBM_PHTODataTable();
             base.Tables.Add(this.tableMOM_ALBM_PHTO);
+            this.tableMOM_VID = new MOM_VIDDataTable();
+            base.Tables.Add(this.tableMOM_VID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1250,6 +1275,11 @@ namespace DALMomburbia {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeMOM_VID() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1373,6 +1403,8 @@ namespace DALMomburbia {
         public delegate void MOM_ALBMRowChangeEventHandler(object sender, MOM_ALBMRowChangeEvent e);
         
         public delegate void MOM_ALBM_PHTORowChangeEventHandler(object sender, MOM_ALBM_PHTORowChangeEvent e);
+        
+        public delegate void MOM_VIDRowChangeEventHandler(object sender, MOM_VIDRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -12879,6 +12911,332 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MOM_VIDDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnMOM_USR_ID;
+            
+            private global::System.Data.DataColumn columnTITLE;
+            
+            private global::System.Data.DataColumn columnVIDEO_PATH;
+            
+            private global::System.Data.DataColumn columnDESCRIPTION;
+            
+            private global::System.Data.DataColumn columnTIME;
+            
+            private global::System.Data.DataColumn columnBLOCKED;
+            
+            private global::System.Data.DataColumn columnSHARE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDDataTable() {
+                this.TableName = "MOM_VID";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_VIDDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected MOM_VIDDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MOM_USR_IDColumn {
+                get {
+                    return this.columnMOM_USR_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TITLEColumn {
+                get {
+                    return this.columnTITLE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn VIDEO_PATHColumn {
+                get {
+                    return this.columnVIDEO_PATH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DESCRIPTIONColumn {
+                get {
+                    return this.columnDESCRIPTION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TIMEColumn {
+                get {
+                    return this.columnTIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn BLOCKEDColumn {
+                get {
+                    return this.columnBLOCKED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SHAREColumn {
+                get {
+                    return this.columnSHARE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDRow this[int index] {
+                get {
+                    return ((MOM_VIDRow)(this.Rows[index]));
+                }
+            }
+            
+            public event MOM_VIDRowChangeEventHandler MOM_VIDRowChanging;
+            
+            public event MOM_VIDRowChangeEventHandler MOM_VIDRowChanged;
+            
+            public event MOM_VIDRowChangeEventHandler MOM_VIDRowDeleting;
+            
+            public event MOM_VIDRowChangeEventHandler MOM_VIDRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddMOM_VIDRow(MOM_VIDRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDRow AddMOM_VIDRow(long MOM_USR_ID, string TITLE, string VIDEO_PATH, string DESCRIPTION, System.DateTime TIME, bool BLOCKED, string SHARE) {
+                MOM_VIDRow rowMOM_VIDRow = ((MOM_VIDRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        MOM_USR_ID,
+                        TITLE,
+                        VIDEO_PATH,
+                        DESCRIPTION,
+                        TIME,
+                        BLOCKED,
+                        SHARE};
+                rowMOM_VIDRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMOM_VIDRow);
+                return rowMOM_VIDRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                MOM_VIDDataTable cln = ((MOM_VIDDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MOM_VIDDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnMOM_USR_ID = base.Columns["MOM_USR_ID"];
+                this.columnTITLE = base.Columns["TITLE"];
+                this.columnVIDEO_PATH = base.Columns["VIDEO_PATH"];
+                this.columnDESCRIPTION = base.Columns["DESCRIPTION"];
+                this.columnTIME = base.Columns["TIME"];
+                this.columnBLOCKED = base.Columns["BLOCKED"];
+                this.columnSHARE = base.Columns["SHARE"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnMOM_USR_ID = new global::System.Data.DataColumn("MOM_USR_ID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOM_USR_ID);
+                this.columnTITLE = new global::System.Data.DataColumn("TITLE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTITLE);
+                this.columnVIDEO_PATH = new global::System.Data.DataColumn("VIDEO_PATH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVIDEO_PATH);
+                this.columnDESCRIPTION = new global::System.Data.DataColumn("DESCRIPTION", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDESCRIPTION);
+                this.columnTIME = new global::System.Data.DataColumn("TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIME);
+                this.columnBLOCKED = new global::System.Data.DataColumn("BLOCKED", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBLOCKED);
+                this.columnSHARE = new global::System.Data.DataColumn("SHARE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSHARE);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnTITLE.MaxLength = 255;
+                this.columnVIDEO_PATH.MaxLength = 255;
+                this.columnDESCRIPTION.MaxLength = 500;
+                this.columnSHARE.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDRow NewMOM_VIDRow() {
+                return ((MOM_VIDRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MOM_VIDRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(MOM_VIDRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MOM_VIDRowChanged != null)) {
+                    this.MOM_VIDRowChanged(this, new MOM_VIDRowChangeEvent(((MOM_VIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MOM_VIDRowChanging != null)) {
+                    this.MOM_VIDRowChanging(this, new MOM_VIDRowChangeEvent(((MOM_VIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MOM_VIDRowDeleted != null)) {
+                    this.MOM_VIDRowDeleted(this, new MOM_VIDRowChangeEvent(((MOM_VIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MOM_VIDRowDeleting != null)) {
+                    this.MOM_VIDRowDeleting(this, new MOM_VIDRowChangeEvent(((MOM_VIDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveMOM_VIDRow(MOM_VIDRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MOMDataset ds = new MOMDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MOM_VIDDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -19564,6 +19922,206 @@ namespace DALMomburbia {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class MOM_VIDRow : global::System.Data.DataRow {
+            
+            private MOM_VIDDataTable tableMOM_VID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal MOM_VIDRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMOM_VID = ((MOM_VIDDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableMOM_VID.IDColumn]));
+                }
+                set {
+                    this[this.tableMOM_VID.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long MOM_USR_ID {
+                get {
+                    try {
+                        return ((long)(this[this.tableMOM_VID.MOM_USR_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MOM_USR_ID\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.MOM_USR_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TITLE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_VID.TITLEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TITLE\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.TITLEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string VIDEO_PATH {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_VID.VIDEO_PATHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VIDEO_PATH\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.VIDEO_PATHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DESCRIPTION {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_VID.DESCRIPTIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DESCRIPTION\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.DESCRIPTIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime TIME {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMOM_VID.TIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIME\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.TIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool BLOCKED {
+                get {
+                    try {
+                        return ((bool)(this[this.tableMOM_VID.BLOCKEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BLOCKED\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.BLOCKEDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string SHARE {
+                get {
+                    try {
+                        return ((string)(this[this.tableMOM_VID.SHAREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SHARE\' in table \'MOM_VID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMOM_VID.SHAREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMOM_USR_IDNull() {
+                return this.IsNull(this.tableMOM_VID.MOM_USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMOM_USR_IDNull() {
+                this[this.tableMOM_VID.MOM_USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTITLENull() {
+                return this.IsNull(this.tableMOM_VID.TITLEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTITLENull() {
+                this[this.tableMOM_VID.TITLEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsVIDEO_PATHNull() {
+                return this.IsNull(this.tableMOM_VID.VIDEO_PATHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetVIDEO_PATHNull() {
+                this[this.tableMOM_VID.VIDEO_PATHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDESCRIPTIONNull() {
+                return this.IsNull(this.tableMOM_VID.DESCRIPTIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDESCRIPTIONNull() {
+                this[this.tableMOM_VID.DESCRIPTIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTIMENull() {
+                return this.IsNull(this.tableMOM_VID.TIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTIMENull() {
+                this[this.tableMOM_VID.TIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsBLOCKEDNull() {
+                return this.IsNull(this.tableMOM_VID.BLOCKEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetBLOCKEDNull() {
+                this[this.tableMOM_VID.BLOCKEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSHARENull() {
+                return this.IsNull(this.tableMOM_VID.SHAREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSHARENull() {
+                this[this.tableMOM_VID.SHAREColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -20666,6 +21224,37 @@ namespace DALMomburbia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public MOM_ALBM_PHTORow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class MOM_VIDRowChangeEvent : global::System.EventArgs {
+            
+            private MOM_VIDRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDRowChangeEvent(MOM_VIDRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public MOM_VIDRow Row {
                 get {
                     return this.eventRow;
                 }
