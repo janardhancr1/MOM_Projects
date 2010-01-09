@@ -234,7 +234,7 @@ function joinGroup(arg)
 
 function onJoinGroupComplete()
 {
-    alert("You have been added the Group successfully");
+    alert("You have been added to the Group successfully");
 }
 
 function onFriendAddComplete()
