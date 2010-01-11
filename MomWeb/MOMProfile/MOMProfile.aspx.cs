@@ -122,6 +122,14 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         }
     }
 
+    protected void momFridgeShared_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+    }
+
+    protected void momPublish_Click(object sender, EventArgs e)
+    {
+    }
+
     protected void DetailsSave_Click(object sender, EventArgs e)
     {
         try
