@@ -559,7 +559,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 row.Cells.Add(cell);
 
                 cell = new HtmlTableCell();
-                cell.InnerHtml = kidsRow.KID_DOB.ToShortDateString();
+                cell.InnerHtml = kidsRow.KID_DOB.ToString("MM/dd/yyyy");
                 row.Cells.Add(cell);
 
                 cell = new HtmlTableCell();
@@ -568,6 +568,21 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
                 cell = new HtmlTableCell();
                 cell.InnerHtml = "<img src='../images/profile/Icon_Edit.gif' onclick='javascript:showKid(" + i + ",\"" + momKidsTable.ClientID + "\");'>";
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.Attributes.Add("style", "display:none");
+                cell.InnerHtml = kidsRow.ID.ToString();
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.Attributes.Add("style", "display:none");
+                cell.InnerHtml = kidsRow.KID_PHOTO;
+                row.Cells.Add(cell);
+
+                cell = new HtmlTableCell();
+                cell.Attributes.Add("style", "display:none");
+                cell.InnerHtml = kidsRow.KID_ABOUT;
                 row.Cells.Add(cell);
 
                 i++;

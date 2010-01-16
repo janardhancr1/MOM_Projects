@@ -244,12 +244,22 @@ function onFriendAddComplete()
 
 function showKid(id, tname)
 {
-    //alert('in function');
-    //alert(tname);
-    var objBtn = document.getElementById('KidsAddButton');
-    var kidTable = document.getElementById(tname);
-    //alert(kidTable.rows[id].cells[0].innerText);
-    showHideCancel('kidstable',objBtn,1);
+    var objFeed = document.getElementById('kidstable');
+    var ele = document.getElementById('KidsAddButton');
+    var kidTable = document.getElementById("ctl00_momCenter_momKidsTable");
+    var row = kidTable.rows[id];
+    document.getElementById('ctl00_momCenter_momKidFirstName').value = row.cells[0].innerText;
+    document.getElementById('ctl00_momCenter_momKidMonth').value = row.cells[1].innerText.substring(0,2);
+    document.getElementById('ctl00_momCenter_momKidDay').value = row.cells[1].innerText.substring(3,5);
+    document.getElementById('ctl00_momCenter_momKidYear').value = row.cells[1].innerText.substring(6,10);
+    if(row.cells[2].innerText == "Male")
+        document.getElementById('ctl00_momCenter_momKidGender_0').checked = true;
+    else
+        document.getElementById('ctl00_momCenter_momKidGender_1').checked = true;
+    document.getElementById('ctl00_momCenter_momKidPhoto').value = row.cells[5].innerText;
+    document.getElementById('ctl00_momCenter_momKidAbout').value = row.cells[6].innerText;
+    objFeed.style.display = 'block';
+    ele.value = "Cancel";
 }
 
 function openAlbumForm()
