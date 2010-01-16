@@ -24,7 +24,9 @@
         </td>
         <td style="width: 1px; background-color: White;"></td>
         <td style="vertical-align: middle; text-align: center; color: White;font-size: 10pt;width: 109px;">
+            <a href="../MOMVideos/MOMVideos.aspx" style="color: White">
             Videos
+            </a>
         </td>
         <td style="width: 1px; background-color: White;"></td>
         <td style="vertical-align: middle; text-align: center; color: White;font-size: 10pt;width: 109px;">
