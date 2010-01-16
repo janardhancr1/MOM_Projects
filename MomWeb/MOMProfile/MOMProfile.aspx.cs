@@ -100,7 +100,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
         switch (MultiView1.ActiveViewIndex)
         {
-            case 1:
+            case 2:
                 MOMUsers momUsers = new MOMUsers();
                 momUsers.GetUserByName(out isSuccess, out appMessage, out sysMessage, ((MOMDataset.MOM_USRRow)Session["momUser"]).DISPLAY_NAME);
                 if (isSuccess)
@@ -125,6 +125,8 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
                 ShowPrivacy();
                 ShowBlockedUsers();
 
+                break;
+            case 1:
                 break;
             case 0:
                 break;
