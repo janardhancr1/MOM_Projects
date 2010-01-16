@@ -70,7 +70,7 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
             momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_FRIENDS));
             momPrivacyProfile.Items.Add(new ListItem(MOMHelper.MOM_PRIVACY_PROFILE_TO_MEMBERS));
 
-            if(Request.QueryString["q"] != null)
+            if (Request.QueryString["q"] != null)
             {
                 if (Request.QueryString["q"].ToUpper() == "EDIT")
                 {
@@ -87,11 +87,20 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
     {
         string s = ((HtmlAnchor)sender).Name;
         MultiView1.ActiveViewIndex = Int32.Parse(s);
+        if (s.Equals("1"))
+        {
+            if (Request.QueryString["q"] != null)
+            {
+                if (Request.QueryString["q"].ToUpper() == "EDIT")
+                {
+                    MultiView1.ActiveViewIndex = 2;
+                }
+            }
+        }
+
         switch (MultiView1.ActiveViewIndex)
         {
             case 1:
-                if (momProfileAccordion.SelectedIndex < 0)
-                    momProfileAccordion.SelectedIndex = 0;
                 MOMUsers momUsers = new MOMUsers();
                 momUsers.GetUserByName(out isSuccess, out appMessage, out sysMessage, ((MOMDataset.MOM_USRRow)Session["momUser"]).DISPLAY_NAME);
                 if (isSuccess)
@@ -172,34 +181,34 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
 
     protected void momUpload_Click(object sender, EventArgs e)
     {
-        try
-        {
-            if (PhotoUpload.HasFile)
-            {
-                string fileName = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID.ToString() + ".jpg";
-                string serverPath = Server.MapPath("~") + "\\MOMUserImages\\" + "temp" + fileName;
-                string newfilePath = Server.MapPath("~") + "\\MOMUserImages\\" + fileName;
-                PhotoUpload.PostedFile.SaveAs(serverPath);
+        //try
+        //{
+        //    if (PhotoUpload.HasFile)
+        //    {
+        //        string fileName = ((MOMDataset.MOM_USRRow)Session["momUser"]).ID.ToString() + ".jpg";
+        //        string serverPath = Server.MapPath("~") + "\\MOMUserImages\\" + "temp" + fileName;
+        //        string newfilePath = Server.MapPath("~") + "\\MOMUserImages\\" + fileName;
+        //        PhotoUpload.PostedFile.SaveAs(serverPath);
 
-                Bitmap originalImage = new Bitmap(serverPath);
-                Size newSize = new Size(100, 100);
-                Bitmap newImage = new Bitmap(originalImage, newSize);
+        //        Bitmap originalImage = new Bitmap(serverPath);
+        //        Size newSize = new Size(100, 100);
+        //        Bitmap newImage = new Bitmap(originalImage, newSize);
 
-                newImage.Save(newfilePath);
+        //        newImage.Save(newfilePath);
 
-                ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE = "../MOMUserImages/" + fileName;
+        //        ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE = "../MOMUserImages/" + fileName;
 
-                MOMUsers momUser = new MOMUsers();
-                momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
-                    ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
-                    ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
+        //        MOMUsers momUser = new MOMUsers();
+        //        momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
+        //            ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
+        //            ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
 
-            }
-        }
-        catch (Exception X)
-        {
-            momPopup.Show(X.Message);
-        }
+        //    }
+        //}
+        //catch (Exception X)
+        //{
+        //    momPopup.Show(X.Message);
+        //}
     }
 
     protected void selectAvatar(object sender, EventArgs e)
@@ -231,11 +240,12 @@ public partial class MOMProfile_MOMProfile : System.Web.UI.Page
         momUser.UpdatePicture(out isSuccess, out appMessage, out sysMessage,
             ((MOMDataset.MOM_USRRow)Session["momUser"]).ID,
             ((MOMDataset.MOM_USRRow)Session["momUser"]).PICTURE);
+        Response.Redirect("~/MOMProfile/MOMProfile.aspx?q=edit");
     }
 
     protected void Kids_Load(object sender, EventArgs e)
     {
-        string s = momProfileAccordion.SelectedIndex.ToString();
+        //string s = momProfileAccordion.SelectedIndex.ToString();
     }
 
     protected void KidSave_Click(object sender, EventArgs e)
