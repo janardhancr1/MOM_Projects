@@ -10,7 +10,7 @@
 {
 	padding: 0;
 	clear: both;
-	border-bottom: 6px solid #e2e6ea;
+	border-bottom: 6px solid #B9D300;
 }
 
 .almtopnav ul
@@ -26,7 +26,7 @@
 .almtopnav li
 {
 	float: left;
-	background-color: #abd;
+	background-color: #FF99CC;
 	margin-left: 5px;
 	padding: 0px;
 	height: 20px;
@@ -37,7 +37,7 @@ li.selectedtab
 {
 	/* hide from macie5\*/
 	display: block; /* resume */
-	background-color: #e2e6ea;
+	background-color: #B9D300;
 	font-weight: bold;
 }
 
@@ -48,7 +48,7 @@ li.selectedtab
 	padding: 3px 6px;
 	font-weight: bold;
 	text-decoration: none;
-	color: #333 !important;
+	color: #B9D300 !important;
 }
 
 .almtopnav a.homeon
@@ -73,18 +73,18 @@ li.selectedtab
 
 .almtopnav li a:hover
 {
-	background: #caedff;
+	background: #B9D300;
 	text-decoration: none;
 }
 
 .almtopnav ul li.selectedtab a:hover
 {
-	background: #e2e6ea;
+	background: #B9D300;
 }
 
 .almtopnav a.homeon:hover
 {
-	/*background: #e2e6ea url( "../images/home.gif" ) no-repeat 2px !important;*/
+	/*background: #B9D300 url( "../images/home.gif" ) no-repeat 2px !important;*/
 	padding-left: 20px;
 }
 
@@ -96,7 +96,7 @@ li.selectedtab
 
 .almtopnav a.unselected:hover
 {
-	color: #333 !important;
+	color: #B9D300 !important;
 }
 
 .almtopnav a.almtopnav_button

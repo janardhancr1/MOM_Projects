@@ -1,4 +1,4 @@
-﻿body 
+﻿body
 {
 	margin: 0;
 }
@@ -48,7 +48,7 @@ td
 	text-decoration: none;
 }
 a
-{	
+{
 	color: #aa3464;
 	text-decoration: none;
 }
@@ -81,53 +81,53 @@ input.tbSignIn
 }
 .TextIndicator_Strength1
 {
-     background-color:Gray;
-     color:White;
-     font-family:Arial;
-     font-size:x-small;
-     font-style:italic;
-     padding: 2px 3px 2px 3px;
-     font-weight:bold;
+	background-color: Gray;
+	color: White;
+	font-family: Arial;
+	font-size: x-small;
+	font-style: italic;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
 }
 .TextIndicator_Strength2
 {
-     background-color:Gray;
-     color:Yellow;
-     font-family:Arial;
-     font-size:x-small;
-     font-style:italic;
-     padding: 2px 3px 2px 3px;
-     font-weight:bold;
+	background-color: Gray;
+	color: Yellow;
+	font-family: Arial;
+	font-size: x-small;
+	font-style: italic;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
 }
 .TextIndicator_Strength3
 {
-     background-color:Gray;
-     color: #FFCAAF;
-     font-family:Arial;
-     font-size:x-small;
-     font-style:italic;
-     padding: 2px 3px 2px 3px;
-     font-weight:bold;
+	background-color: Gray;
+	color: #FFCAAF;
+	font-family: Arial;
+	font-size: x-small;
+	font-style: italic;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
 }
 .TextIndicator_Strength4
 {
-     background-color:Gray;
-     color:Aqua;
-     font-family:Arial;
-     font-size:x-small;
-     font-style:italic;
-     padding: 2px 3px 2px 3px;
-     font-weight:bold;
+	background-color: Gray;
+	color: Aqua;
+	font-family: Arial;
+	font-size: x-small;
+	font-style: italic;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
 }
 .TextIndicator_Strength5
 {
-     background-color:Gray;
-     color: #93FF9E;
-     font-family:Arial;
-     font-size:x-small;
-     font-style:italic;
-     padding: 2px 3px 2px 3px;
-     font-weight:bold;
+	background-color: Gray;
+	color: #93FF9E;
+	font-family: Arial;
+	font-size: x-small;
+	font-style: italic;
+	padding: 2px 3px 2px 3px;
+	font-weight: bold;
 }
 .passInfoStyle
 {
@@ -138,15 +138,15 @@ input.tbSignIn
 	text-align: right;
 }
 .btnStyle
-{ 
-	background: White; 
-	height:22px; 
-	border:1px solid #aa3464;
+{
+	background: White;
+	height: 22px;
+	border: 1px solid #aa3464;
 	font-family: Arial;
 	font-size: 10pt;
-	width: 90px; 
-	color:#aa3464; 
-	text-decoration:none; 
+	width: 90px;
+	color: #aa3464;
+	text-decoration: none;
 	font-weight: bold;
 }
 textarea
@@ -164,21 +164,21 @@ select
 
 .AccordionContainer1
 {
-  position:relative;
+	position: relative;
 }
 
 
 /* Accordion */
 .accordionHeader
 {
-    color: White;
-    background-color: #aa3464;
+	color: White;
+	background-color: #aa3464;
 	font-family: Arial;
 	font-size: 10pt;
 	font-weight: bold;
-    padding: 5px;
-    margin-top: 5px;
-    cursor: pointer;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
 }
 
 .accordionLink
@@ -201,14 +201,14 @@ select
 
 .accordionHeaderSelected
 {
-    color: white;
-    background-color: Olive;
+	color: white;
+	background-color: Olive;
 	font-family: Arial;
 	font-size: 10pt;
 	font-weight: bold;
-    padding: 5px;
-    margin-top: 5px;
-    cursor: pointer;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
 }
 
 #master_content .accordionHeaderSelected a
@@ -226,12 +226,12 @@ select
 
 .accordionContent
 {
-    border-top: none;
-    padding: 5px;
-    padding-top: 10px;
-    height:0px;
-    overflow:auto;
-    display:none;
+	border-top: none;
+	padding: 5px;
+	padding-top: 10px;
+	height: 0px;
+	overflow: auto;
+	display: none;
 }
 .gridPaging
 {
@@ -239,10 +239,10 @@ select
 	width: 100%;
 }
 .roundedPanel
-{	
+{
 	background-color: MistyRose;
 	color: Green;
-	font-weight:bold;
+	font-weight: bold;
 	text-align: center;
 	width: 500px;
 }
@@ -295,10 +295,10 @@ hr
 	vertical-align: top;
 	background-color: MistyRose;
 }
-.popupMenu 
+.popupMenu
 {
-	position:absolute;
-	visibility:hidden;
+	position: absolute;
+	visibility: hidden;
 	background-color: White;
 	opacity: 1;
 	filter: alpha(opacity=100);
@@ -311,10 +311,10 @@ hr
 	font-size: 8pt;
 	height: 30px;
 }
-.popupHover 
+.popupHover
 {
-	background-repeat:repeat-x;
-	background-position:left top;
+	background-repeat: repeat-x;
+	background-position: left top;
 }
 small
 {
@@ -333,7 +333,7 @@ small
 .momInfo
 {
 	font-size: 10pt;
-	color:#aa3464;
+	color: #aa3464;
 	font-weight: bold;
 }
 .styleLine
@@ -342,11 +342,11 @@ small
 	height: 1.5px;
 	background-color: #aa3464;
 }
-.modalBackground 
+.modalBackground
 {
-	background-color:Gray;
-	filter:alpha(opacity=0);
-	opacity:0.7;
+	background-color: Gray;
+	filter: alpha(opacity=0);
+	opacity: 0.7;
 }
 .rcp_welcome_div
 {
@@ -360,57 +360,76 @@ small
 	margin-bottom: 10px;
 	width: 96%;
 	float: left;
-	direction:ltr;
+	direction: ltr;
 }
 .rcp_welcome_div h1
 {
-	font-size:14px;
+	font-size: 14px;
 }
 
 .rcp_welcome_div h2
 {
-	font-size:13px;
+	font-size: 13px;
 }
 
-.rcp_welcome_div a {
-color:#3B5998;
-cursor:pointer;
-outline-style:none;
-text-decoration:none;
+.rcp_welcome_div a
+{
+	color: #3B5998;
+	cursor: pointer;
+	outline-style: none;
+	text-decoration: none;
 }
 
 /* Rating */
-.ratingStar {
-    font-size: 0pt;
-    width: 13px;
-    height: 12px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    display: block;
-    background-repeat: no-repeat;
+.ratingStar
+{
+	font-size: 0pt;
+	width: 13px;
+	height: 12px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	display: block;
+	background-repeat: no-repeat;
 }
 
-.filledRatingStar {
-    background-image: url(../images/FilledStar.png);
-
+.filledRatingStar
+{
+	background-image: url(../images/FilledStar.png);
 }
 
-.emptyRatingStar {
-    background-image: url(../images/EmptyStar.png);
+.emptyRatingStar
+{
+	background-image: url(../images/EmptyStar.png);
 }
 
-.savedRatingStar {
-    background-image: url(../images/SavedStar.png);
+.savedRatingStar
+{
+	background-image: url(../images/SavedStar.png);
 }
 /* End Rating */
 
 .msgRead
 {
-	background-color:White;
+	background-color: White;
 }
 
 .msgUnread
 {
-	background-color:LightGray;
+	background-color: LightGray;
+}
+
+.divider
+{
+	border-bottom: 1px solid #D8DFEA;
+	margin: -4px 0 0;
+	z-index: 0;
+}
+
+.clearfix {
+display:block;
+}
+
+.section_header {
+margin:0 0 7px;
 }
