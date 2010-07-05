@@ -1,0 +1,281 @@
+{
+  "type": "module",
+  "name": "invite",
+  "version": "4.0.0",
+  "path": "application\/modules\/Invite",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Invite",
+    "description": "Invite",
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": {
+    "module-core": {
+      "type": "module",
+      "name": "core",
+      "guid": "module-core",
+      "minVersion": null,
+      "maxVersion": null
+    }
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh"
+  ],
+  "callback": {
+    "path": null,
+    "class": "Engine_Package_Installer_Module",
+    "priority": 100
+  },
+  "tests": null,
+  "structure": {
+    "application\/modules\/Invite": {
+      "type": "directory",
+      "path": "application\/modules\/Invite",
+      "structure": [
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1697,
+          "sha1": "0a6e6b12118ae7d4143a1f4b8bca56c17c6d99c9"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2336,
+          "sha1": "cf5748a8d13015dd23a00b91e78364b30fb689af"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1079,
+          "sha1": "07f1607254ad6ae84d57dc13e061f8c73abb8b08"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Signup.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2306,
+          "sha1": "982b9571cf3224252143a9be7c8ffcf85253e1c4"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/Invites.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 553,
+          "sha1": "03b2ba2bf46ba46119f3d38a28b6b1f099bccff2"
+        },
+        {
+          "path": "Model\/DbTable\/Users.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 548,
+          "sha1": "6657417b10f9bae607e25f547ead20e963621620"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/SignupController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 802,
+          "sha1": "5c7657f32036d00592b12d6aaae323a6830dd8d5"
+        },
+        {
+          "path": "controllers\/AdminController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3034,
+          "sha1": "dafe6f4b7c7f74b0266d04c0cd8bf23fe6570320"
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1337,
+          "sha1": "bdf04cab1fcc03a4933d8fe63a0227982aee9e9d"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Invite.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6444,
+          "sha1": "ec35b462f046e88c510d4eef23fb974705ab4e7e"
+        },
+        {
+          "path": "Form\/AdminSettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3293,
+          "sha1": "cc33329b8f8db1103c3bd3c63db1a85a4814c9b2"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/helpers",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin\/stats.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2563,
+          "sha1": "f0c63001f234c377770cbedefbe622d15c15bde7"
+        },
+        {
+          "path": "views\/scripts\/admin\/settings.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 632,
+          "sha1": "d545dddf2bd63ef855ac9f49062ac5db6916de56"
+        },
+        {
+          "path": "views\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 362,
+          "sha1": "a8b26ffcca40f66002fa19c187d3874f11796545"
+        },
+        {
+          "path": "views\/scripts\/index\/sent.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1578,
+          "sha1": "4ba223e3e3493770ea20585b65bfad06c2a4a4c8"
+        },
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 536,
+          "sha1": "e93e0b5aea59bb450d1d3fa4b1f56fc54993fb82"
+        }
+      ]
+    },
+    "application\/languages\/en\/invite.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/invite.csv",
+      "structure": {
+        "path": "invite.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 2846,
+        "sha1": "0635af11486d7f08c9c83a7ec763f96aab2e5823"
+      }
+    }
+  }
+}

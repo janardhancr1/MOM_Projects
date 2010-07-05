@@ -1,0 +1,55 @@
+{
+  "type": "external",
+  "name": "swfobject",
+  "version": "4.0.0",
+  "path": "externals\/swfobject",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Swfobject",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/swfobject": {
+      "type": "directory",
+      "path": "externals\/swfobject",
+      "structure": [
+        {
+          "path": "swfobject.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 10220,
+          "sha1": "5847ed101f55d51c53538a7078971e7de8fb6762"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 369,
+          "sha1": "ba8bd4cd1072a559a2dcbd92aa054c2ea6f3c06d"
+        },
+        {
+          "path": "expressInstall.swf",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 727,
+          "sha1": "1c12004633e89d6de3bbe4a190093a537bdecebe"
+        }
+      ]
+    }
+  }
+}

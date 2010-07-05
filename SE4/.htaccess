@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  # Get rid of index.php
+  RewriteCond %{REQUEST_URI} /index\.php
+  RewriteRule (.*) index.php?rewrite=2 [L,QSA]
+
+  # Rewrite all directory-looking urls
+  RewriteCond %{REQUEST_URI} /$
+  RewriteRule (.*) index.php?rewrite=1 [L,QSA]
+
+  # If the file doesn't exist, rewrite to index
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !\.[\w]+$
+  RewriteRule ^(.*)$ index.php?rewrite=1 [L,QSA]
+
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+  <IfModule mod_alias.c>
+    #Isn't working quite properly
+    #RedirectMatch 302 ^(((?!index.php).)*?)/$ $1/index.php
+  </IfModule>
+</IfModule>
+
+# sends requests /index.php/path/to/module/ to "index.php"
+# AcceptPathInfo On
+
+# @todo This may not be effective in some cases
+FileETag Size

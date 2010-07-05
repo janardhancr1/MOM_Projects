@@ -1,0 +1,103 @@
+{
+  "type": "external",
+  "name": "mootools",
+  "version": "4.0.0",
+  "path": "externals\/mootools",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Mootools",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/mootools": {
+      "type": "directory",
+      "path": "externals\/mootools",
+      "structure": [
+        {
+          "path": "mootools-1.2.4.2-more-nc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 202905,
+          "sha1": "061142b0600acc25d23f8964281e198753aee3a4"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 365,
+          "sha1": "39f4b85fdbc2b75794a2e88f4bfc77c373abc641"
+        },
+        {
+          "path": "mootools-1.2.2.2-more-yc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 96286,
+          "sha1": "bfd574c8b46ca0f0ed9724c0f64c4aed5705b1c5"
+        },
+        {
+          "path": "mootools-1.2.2-core-nc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 99061,
+          "sha1": "3c1ddf62af20a1f5c5de7a3af180b32528dc47db"
+        },
+        {
+          "path": "mootools-1.2.4.2-more-yc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 131125,
+          "sha1": "b8162825722cdb3f49922faacef9c03dea6748ba"
+        },
+        {
+          "path": "mootools-1.2.4-core-yc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 66867,
+          "sha1": "e956e4de8f223992e2d1362d78c5b5bb33e27497"
+        },
+        {
+          "path": "mootools-1.2.2.2-more-nc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 143182,
+          "sha1": "b0b30a4f01eab9fb0a764134826d3a2df0bd7588"
+        },
+        {
+          "path": "mootools-1.2.2-core-yc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 65834,
+          "sha1": "669d164e3bff6156b21084cf035979d62433df75"
+        },
+        {
+          "path": "mootools-1.2.4-core-nc.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 102991,
+          "sha1": "e5335c2a82f26e49b1324edc21e452de040d5cdc"
+        }
+      ]
+    }
+  }
+}

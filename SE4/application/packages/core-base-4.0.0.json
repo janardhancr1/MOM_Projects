@@ -1,0 +1,641 @@
+{
+  "type": "core",
+  "name": "base",
+  "version": "4.0.0",
+  "path": "\/",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Base",
+    "description": "Base",
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh"
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    ".htaccess": {
+      "type": "file",
+      "path": ".htaccess",
+      "structure": {
+        "path": ".htaccess",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 881,
+        "sha1": "f80b4259c850acef0c2b4d117607dc65ed356bc2"
+      }
+    },
+    "README.html": {
+      "type": "file",
+      "path": "README.html",
+      "structure": {
+        "path": "README.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 18700,
+        "sha1": "155ed0b896ccf84db9a17bd8a7126b968c60bbed"
+      }
+    },
+    "comet.php": {
+      "type": "file",
+      "path": "comet.php",
+      "structure": {
+        "path": "comet.php",
+        "dir": false,
+        "file": true,
+        "perms": "0755",
+        "size": 421,
+        "sha1": "c8d96ebd7c6b5c1e5c08915ff6326ac46cebf69d"
+      }
+    },
+    "index.php": {
+      "type": "file",
+      "path": "index.php",
+      "structure": {
+        "path": "index.php",
+        "dir": false,
+        "file": true,
+        "perms": "0755",
+        "size": 495,
+        "sha1": "992a56b5400ed00b175ade5807a2be350f60162b"
+      }
+    },
+    "robots.txt": {
+      "type": "file",
+      "path": "robots.txt",
+      "structure": {
+        "path": "robots.txt",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 173,
+        "sha1": "f09f8f264a7dc42e2d57dd726737c65b590b6478"
+      }
+    },
+    "xd_receiver.htm": {
+      "type": "file",
+      "path": "xd_receiver.htm",
+      "structure": {
+        "path": "xd_receiver.htm",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 360,
+        "sha1": "d4f72077e8ccc71a5def99026355deb94d04d513"
+      }
+    },
+    "application\/.htaccess": {
+      "type": "file",
+      "path": "application\/.htaccess",
+      "structure": {
+        "path": ".htaccess",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 146,
+        "sha1": "2eb94a0cf2a2b9fc2079dd23a5a1af66cffd4b1d"
+      }
+    },
+    "application\/config.php": {
+      "type": "file",
+      "path": "application\/config.php",
+      "structure": {
+        "path": "config.php",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 1821,
+        "sha1": "5785e569cdcea46a0ddcd5adf5038277df825d9e"
+      }
+    },
+    "application\/css.php": {
+      "type": "file",
+      "path": "application\/css.php",
+      "structure": {
+        "path": "css.php",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 3480,
+        "sha1": "b1b53f14716878d60e3c920e6cca1169b4b05d92"
+      }
+    },
+    "application\/index.php": {
+      "type": "file",
+      "path": "application\/index.php",
+      "structure": {
+        "path": "index.php",
+        "dir": false,
+        "file": true,
+        "perms": "0755",
+        "size": 5278,
+        "sha1": "e9381c51c5f5605b012f375bd2b05c197048efa9"
+      }
+    },
+    "application\/lite.php": {
+      "type": "file",
+      "path": "application\/lite.php",
+      "structure": {
+        "path": "lite.php",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 2095,
+        "sha1": "15fa9871bd4e19df7e4fbf0dd5fab5fa3d4113f3"
+      }
+    },
+    "application\/maintenance.html": {
+      "type": "file",
+      "path": "application\/maintenance.html",
+      "structure": {
+        "path": "maintenance.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 1424,
+        "sha1": "db972cdfa9a7fe4094f97f62befab0b1d83cfd8e"
+      }
+    },
+    "application\/mobile.php": {
+      "type": "file",
+      "path": "application\/mobile.php",
+      "structure": {
+        "path": "mobile.php",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 1148,
+        "sha1": "854b70f7ac8e3500fbf4b257f4f8aaf10f55a8b4"
+      }
+    },
+    "application\/offline.html": {
+      "type": "file",
+      "path": "application\/offline.html",
+      "structure": {
+        "path": "offline.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 374,
+        "sha1": "4df56d73ac89eb9d7db8e5047135603925a316cd"
+      }
+    },
+    "application\/languages\/index.html": {
+      "type": "file",
+      "path": "application\/languages\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "application\/libraries\/index.html": {
+      "type": "file",
+      "path": "application\/libraries\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "application\/modules\/index.html": {
+      "type": "file",
+      "path": "application\/modules\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "application\/packages\/index.html": {
+      "type": "file",
+      "path": "application\/packages\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 0,
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      }
+    },
+    "application\/plugins\/index.html": {
+      "type": "file",
+      "path": "application\/plugins\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "application\/themes\/index.html": {
+      "type": "file",
+      "path": "application\/themes\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "application\/widgets\/index.html": {
+      "type": "file",
+      "path": "application\/widgets\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "externals\/index.html": {
+      "type": "file",
+      "path": "externals\/index.html",
+      "structure": {
+        "path": "index.html",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 187,
+        "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+      }
+    },
+    "externals\/.htaccess": {
+      "type": "file",
+      "path": "externals\/.htaccess",
+      "structure": {
+        "path": ".htaccess",
+        "dir": false,
+        "file": true,
+        "perms": "0644",
+        "size": 131,
+        "sha1": "cafcf4517b72d555fb174fdaf0ab06f287e143c4"
+      }
+    },
+    "application\/settings": {
+      "type": "directory",
+      "path": "application\/settings",
+      "structure": [
+        {
+          "path": "constants.xml",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8483,
+          "sha1": "749f6e520aa276a5550abfba87246a40fa8eb22b"
+        },
+        {
+          "path": "my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 195438,
+          "sha1": "ce8381ab3efea2dfb3d1013892272d9b7c6af72b"
+        },
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        },
+        {
+          "path": "scaffold.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4739,
+          "sha1": "8101abc0815ca402590b05f477e2eeb88c2590d9"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1635,
+          "sha1": "be74fdfcc3ead067fa72718bd53b3871e0ce2e7c"
+        },
+        {
+          "path": "session.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 558,
+          "sha1": "70abdcb55dbdf5af7ae1d65a01b2faba5f509473"
+        },
+        {
+          "path": "mail.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 335,
+          "sha1": "1d54adae1d792448f3145c53a32c8d415741b809"
+        },
+        {
+          "path": "beta2-beta3.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5654,
+          "sha1": "1d11365b4d1cf6d239391ddf58f5890a5415a8dd"
+        },
+        {
+          "path": "database.sample.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 631,
+          "sha1": "6e23d3d5fdea859240c4ac92e00420dc11f8bb96"
+        },
+        {
+          "path": "repositories.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 395,
+          "sha1": "64586e33492fce48de351c61edb710342c7b4ae8"
+        },
+        {
+          "path": "beta1-beta2_classifieds.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 497,
+          "sha1": "ac6aabfa911b0147a1db88104e79200ce23ce45c"
+        },
+        {
+          "path": "beta1-beta2.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1113,
+          "sha1": "67831b2dd7bef1e392e62d56bbe1ec33bfd579d3"
+        },
+        {
+          "path": "beta3-rc1.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1008,
+          "sha1": "a0b1e5fb2e137553035e8c9606e9bfb326cbf2fb"
+        },
+        {
+          "path": "cache.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 611,
+          "sha1": "5d3312f6974ad9bdeb29f26fa4ca037017bba5d2"
+        },
+        {
+          "path": "general.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 387,
+          "sha1": "770c3ea73d419673cb0bcaaf3b758fc97a264415"
+        }
+      ]
+    },
+    "public": {
+      "type": "directory",
+      "path": "public",
+      "structure": [
+        {
+          "path": "admin",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "admin\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        },
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        },
+        {
+          "path": "temporary",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "temporary\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        },
+        {
+          "path": "user",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "user\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        }
+      ]
+    },
+    "temporary\/cache": {
+      "type": "directory",
+      "path": "temporary\/cache",
+      "structure": [
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        }
+      ]
+    },
+    "temporary\/log": {
+      "type": "directory",
+      "path": "temporary\/log",
+      "structure": [
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        },
+        {
+          "path": "scaffold",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "scaffold\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        }
+      ]
+    },
+    "temporary\/scaffold": {
+      "type": "directory",
+      "path": "temporary\/scaffold",
+      "structure": [
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        }
+      ]
+    },
+    "temporary\/session": {
+      "type": "directory",
+      "path": "temporary\/session",
+      "structure": [
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        }
+      ]
+    },
+    "temporary\/package": {
+      "type": "directory",
+      "path": "temporary\/package",
+      "structure": [
+        {
+          "path": "packages",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "packages\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        },
+        {
+          "path": "archives",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "archives\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 187,
+          "sha1": "50060ff9c1a03efb51b129d3b0ee84f0a0b4e761"
+        },
+        {
+          "path": "index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        },
+        {
+          "path": "manifests",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "manifests\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        },
+        {
+          "path": "repositories",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "repositories\/index.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 196,
+          "sha1": "455125f35129f861011dd39f5417dcf8cc9ada25"
+        }
+      ]
+    }
+  }
+}

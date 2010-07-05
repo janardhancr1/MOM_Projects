@@ -1,0 +1,10 @@
+2010-07-04T16:49:27+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index
+2010-07-04T16:49:34+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index
+2010-07-04T16:49:55+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: album.index.manage
+2010-07-04T16:50:04+00:00 DEBUG (7): Require class Authorization_Controller_Action_Helper_RequireAuth failed check for: blog.index.index
+2010-07-04T16:50:07+00:00 DEBUG (7): Require class Authorization_Controller_Action_Helper_RequireAuth failed check for: classified.index.index
+2010-07-04T16:50:10+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: chat.index.index
+2010-07-05T03:03:05+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index
+2010-07-05T03:44:23+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index
+2010-07-05T03:45:13+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index
+2010-07-05T03:57:22+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.index.index

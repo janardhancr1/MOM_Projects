@@ -1,0 +1,126 @@
+{
+  "type": "theme",
+  "name": "midnight",
+  "version": "4.0.0",
+  "path": "application\/themes\/midnight",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Midnight Theme",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "remove"
+  ],
+  "callback": {
+    "path": null,
+    "class": "Engine_Package_Installer_Theme",
+    "priority": 100
+  },
+  "tests": null,
+  "structure": {
+    "application\/themes\/midnight": {
+      "type": "directory",
+      "path": "application\/themes\/midnight",
+      "structure": [
+        {
+          "path": "images",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "images\/nophoto_event_thumb_normal.jpg",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5013,
+          "sha1": "680dc3f9f2fd193f72636d05612aa4b9ee8e3642"
+        },
+        {
+          "path": "images\/nophoto_event_thumb_profile.jpg",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5859,
+          "sha1": "321d9913df1154d78ed7230ea70f9c05606feeb9"
+        },
+        {
+          "path": "images\/nophoto_user_thumb_icon.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1411,
+          "sha1": "d738ccea1987a7c6af5627f1ca607dd6df72b86c"
+        },
+        {
+          "path": "images\/topbar_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17815,
+          "sha1": "917392d2baeae536fb3b71f715eb9e67b08255d4"
+        },
+        {
+          "path": "images\/nophoto_user_thumb_profile.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5903,
+          "sha1": "e67f604dc32b9a6c5baa5f8828044306795e2ddf"
+        },
+        {
+          "path": "images\/topbar_menu_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 254,
+          "sha1": "18da5fd9ad8e340ae8ba29b6acbabcd1918bdfed"
+        },
+        {
+          "path": "constants.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7241,
+          "sha1": "c20a8aa99705eb6642b224a1e832c7008b17cae9"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1622,
+          "sha1": "e723e8b4a00f265f7166f1e0cc5b75d85681f39c"
+        },
+        {
+          "path": "midnight_theme.jpg",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6630,
+          "sha1": "d80fb5b9b02840d9aafcd0d1289b79bb0aa45136"
+        },
+        {
+          "path": "theme.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 28548,
+          "sha1": "04b8d79400049566587b3b78c4535a2a0686910d"
+        }
+      ]
+    }
+  }
+}

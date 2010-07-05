@@ -1,0 +1,2767 @@
+{
+  "type": "external",
+  "name": "tinymce",
+  "version": "4.0.0",
+  "path": "externals\/tinymce",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Tinymce",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/tinymce": {
+      "type": "directory",
+      "path": "externals\/tinymce",
+      "structure": [
+        {
+          "path": "tiny_mce.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 177147,
+          "sha1": "7008d87af768e69f476c9917ac7e708c646cb0b3"
+        },
+        {
+          "path": "plugins",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advlink",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advlink\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advlink\/js\/advlink.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17229,
+          "sha1": "a0f61863d5496c453edebe61b7f9968531270944"
+        },
+        {
+          "path": "plugins\/advlink\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 973,
+          "sha1": "781f5d6031091905b30f803b7f538eaa8e8221ac"
+        },
+        {
+          "path": "plugins\/advlink\/link.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15080,
+          "sha1": "0307429ce97e9086935c4e51a45ff5f88c150ffa"
+        },
+        {
+          "path": "plugins\/advlink\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advlink\/css\/advlink.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 480,
+          "sha1": "d41b2cb860a614a525134ebe55ae8170f54ed7d4"
+        },
+        {
+          "path": "plugins\/advlink\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advlink\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1673,
+          "sha1": "545652f73553e7ba4c32fcf2a55f2deaac2b5db6"
+        },
+        {
+          "path": "plugins\/advlink\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1587,
+          "sha1": "dc5e021981b22f9f1fa866ae8ad66c0e40e1d951"
+        },
+        {
+          "path": "plugins\/inlinepopups",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/inlinepopups\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 10684,
+          "sha1": "c9e2e25f63de452943006c0ee71bbd0181ab082f"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/confirm.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 915,
+          "sha1": "85121ea9a90dc5cb44df5745b5b08a9a1c646348"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/corners.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 911,
+          "sha1": "1cc74db7cea0a2fc914a0bb5b76f45cffb1ca222"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/button.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 280,
+          "sha1": "f57b2142e548b45e6ff8fa22f7ae080ffce57a5f"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/buttons.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1195,
+          "sha1": "2ca71032e00cd35afc95cf17918edbe6b7e5481f"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/vertical.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 92,
+          "sha1": "739748d1371c295fbd313167762954974004d45a"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/alert.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 818,
+          "sha1": "213801ef3b49cecfd1511e1c971e431a73b81d64"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/img\/horizontal.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 769,
+          "sha1": "1facd16d9f7c602621150fab6ed8bdd62f9d52cf"
+        },
+        {
+          "path": "plugins\/inlinepopups\/skins\/clearlooks2\/window.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6625,
+          "sha1": "6469d96fe003a299b24934feadcac76e8ff8c7c0"
+        },
+        {
+          "path": "plugins\/inlinepopups\/template.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 12878,
+          "sha1": "c2c64060abccaa58c87dbaaac061fccb0149a97f"
+        },
+        {
+          "path": "plugins\/inlinepopups\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17415,
+          "sha1": "1a4aaa4d7d8e5956b3f08d5b5008d5d670d56a63"
+        },
+        {
+          "path": "plugins\/fullscreen",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/fullscreen\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3519,
+          "sha1": "8697f9957a72e5fc51399ef94ae0074897f07464"
+        },
+        {
+          "path": "plugins\/fullscreen\/fullscreen.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3485,
+          "sha1": "0ed81fb51df7badb431fbf94080afbe78de56ef4"
+        },
+        {
+          "path": "plugins\/fullscreen\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5198,
+          "sha1": "a0cf48c34f64360799b23878735b9e871711ae0e"
+        },
+        {
+          "path": "plugins\/style",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/style\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/style\/js\/props.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 30482,
+          "sha1": "601efc5ebc42519eeb45cc018ea0e9fc258ad8be"
+        },
+        {
+          "path": "plugins\/style\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 938,
+          "sha1": "6ede45a47fe5f8627f24cf2f94ab5c78aca18102"
+        },
+        {
+          "path": "plugins\/style\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/style\/css\/props.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 859,
+          "sha1": "1035210f4b39687e43bc94b0b15b98ebc975f85e"
+        },
+        {
+          "path": "plugins\/style\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/style\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1531,
+          "sha1": "b616459b53f613d3d983b5e768c62151e20e21f4"
+        },
+        {
+          "path": "plugins\/style\/props.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 27677,
+          "sha1": "666c48de7786843c015e804da8797ecd641b9866"
+        },
+        {
+          "path": "plugins\/style\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1492,
+          "sha1": "6365d90c1f590a8d57e92ee8f16b0be542aed13c"
+        },
+        {
+          "path": "plugins\/noneditable",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/noneditable\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1364,
+          "sha1": "093ef1ca5217b0e23181fef9a436f1254e6b9b5b"
+        },
+        {
+          "path": "plugins\/noneditable\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2273,
+          "sha1": "a22b5ca45aeabf2fa6d381a4daaacc550812cab5"
+        },
+        {
+          "path": "plugins\/print",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/print\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 492,
+          "sha1": "3ee07adb2817f8b0dbfc0345ff96c5f67deafed5"
+        },
+        {
+          "path": "plugins\/print\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 835,
+          "sha1": "76debd88afdc79d32cc8942d65752f99d3329fa0"
+        },
+        {
+          "path": "plugins\/pagebreak",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/pagebreak\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/pagebreak\/img\/trans.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 43,
+          "sha1": "67a69b5842050a142e050eb3b08a59e03e7fa71b"
+        },
+        {
+          "path": "plugins\/pagebreak\/img\/pagebreak.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 325,
+          "sha1": "8ed8a65809e9cba21ce066b684b1b2802acaea37"
+        },
+        {
+          "path": "plugins\/pagebreak\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1463,
+          "sha1": "0cfa0559472ab07e0f9c4b8df9e96642c6b55b01"
+        },
+        {
+          "path": "plugins\/pagebreak\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/pagebreak\/css\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 169,
+          "sha1": "c090fbd3753f7e024656876d32fe5270da3985d7"
+        },
+        {
+          "path": "plugins\/pagebreak\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2200,
+          "sha1": "fbf8dac80450da734982ce4d8eb80e0ede9e188a"
+        },
+        {
+          "path": "plugins\/visualchars",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/visualchars\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1345,
+          "sha1": "629001cf4b68793a1274a4f638e0374405ef821d"
+        },
+        {
+          "path": "plugins\/visualchars\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2061,
+          "sha1": "3099c7773920fca9670652ada235cdb6e2d200cf"
+        },
+        {
+          "path": "plugins\/autosave",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/autosave\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 711,
+          "sha1": "b359982d685bf15e82020e2cba7cdeb8ae1b44f3"
+        },
+        {
+          "path": "plugins\/autosave\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1201,
+          "sha1": "533ac112a365cb38d3615280d5c66fb895f106f3"
+        },
+        {
+          "path": "plugins\/bbcode",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/bbcode\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3224,
+          "sha1": "e7887f031b92fcde3b3d8ae4105319da869b4ebc"
+        },
+        {
+          "path": "plugins\/bbcode\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4308,
+          "sha1": "d515fef0fa811f3c385f68a8e712c7faf9c625ff"
+        },
+        {
+          "path": "plugins\/table",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/table\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/table\/js\/row.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6697,
+          "sha1": "af38624f43a3c6ba5106b2b8df9bba5ec8d85191"
+        },
+        {
+          "path": "plugins\/table\/js\/table.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 13982,
+          "sha1": "b84ae292bfe1a276f61d767f787831359a14e0b9"
+        },
+        {
+          "path": "plugins\/table\/js\/merge_cells.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 677,
+          "sha1": "42ff88e2456caa403e15a80709e6b356980017a0"
+        },
+        {
+          "path": "plugins\/table\/js\/cell.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8109,
+          "sha1": "ce9fc3e95790bdbba42d81abb41110a17bab6e5a"
+        },
+        {
+          "path": "plugins\/table\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17061,
+          "sha1": "28b0f12b3ab2bf88112292817ab2686a755fe0e5"
+        },
+        {
+          "path": "plugins\/table\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/table\/css\/row.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 306,
+          "sha1": "b714c612ec75cb3319829cfff99939888f54ed5d"
+        },
+        {
+          "path": "plugins\/table\/css\/table.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 170,
+          "sha1": "0bcca7735445051c8c64d9aa4d7cc25518b3ff4d"
+        },
+        {
+          "path": "plugins\/table\/css\/cell.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 205,
+          "sha1": "d03508654d484d3d27edb457c76f9aa6110b7aa9"
+        },
+        {
+          "path": "plugins\/table\/merge_cells.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1426,
+          "sha1": "fe66200d4a86b8aa71d0e8a65bc7df1b38d3f298"
+        },
+        {
+          "path": "plugins\/table\/table.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8691,
+          "sha1": "860455a855a2c2574c1835f3482bede5defad72f"
+        },
+        {
+          "path": "plugins\/table\/row.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6003,
+          "sha1": "9e7f4715aa3420ddcc4f283fba664787fefebe04"
+        },
+        {
+          "path": "plugins\/table\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/table\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2137,
+          "sha1": "109653036789c5ff98afc00476dc2be5a39b233a"
+        },
+        {
+          "path": "plugins\/table\/cell.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6918,
+          "sha1": "cae435d9c839178e4e29c53c963693032047da5e"
+        },
+        {
+          "path": "plugins\/table\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 32480,
+          "sha1": "25ec27e7d4ccf6f6a8c701e184a91d7ab0a6b745"
+        },
+        {
+          "path": "plugins\/xhtmlxtras",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/element_common.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7362,
+          "sha1": "cbb5cea97dd06b26993cf6197f55bf0a6c748afa"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/acronym.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 556,
+          "sha1": "195ba98ec5c1a9755965dcfaa339e74e44828b06"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/cite.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 541,
+          "sha1": "40f3cb04a4114e83997e6e0ece3225f1caec16d8"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/ins.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1750,
+          "sha1": "884d0a48bceb452cc5bfe79201b9ccf0ace0de3f"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/del.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1752,
+          "sha1": "54fb9ce6e4aa27475eb4045c72267637c8704bf0"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/abbr.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 570,
+          "sha1": "284ba8f7d1f1a6fc40d13dd2a4708db26588447b"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/js\/attributes.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3791,
+          "sha1": "6e3aeb29b159868d55da05e6a3264bac68c3bcaf"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2811,
+          "sha1": "f04cbad84e593008d198c9775e633544fc2e49a5"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/attributes.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6086,
+          "sha1": "fecd68b3df4a538c40385f6a2a78a511e518a168"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/abbr.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6161,
+          "sha1": "40ffee1a42a1d1ac1554dbacf06d7dfcf969df48"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/del.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7129,
+          "sha1": "8df9981b6333da3ab59357f7db5dbb2682ea2099"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/css\/popup.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 514,
+          "sha1": "660480388b06f146b0c8aff34d174aaea3e74679"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/css\/attributes.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 197,
+          "sha1": "736240e1ca6292456c1f18ca1dd81af556d3a7d8"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1096,
+          "sha1": "26941fa893913f8fe335ef667a8b9d8147bd977a"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/ins.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7131,
+          "sha1": "02a38cbeb9ed5a14647eec8a3bd1c553bbe650fd"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/acronym.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6173,
+          "sha1": "b1fe82c3725d79d77dff427b2f3bb5e2d95089dd"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/cite.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6161,
+          "sha1": "fc24cdae08b298c57ba65f8b528a228d3de987e0"
+        },
+        {
+          "path": "plugins\/xhtmlxtras\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4099,
+          "sha1": "8a365f38371d68ba7ac6e6bc86eb78130a601cb5"
+        },
+        {
+          "path": "plugins\/emotions",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/emotions\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/emotions\/js\/emotions.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 541,
+          "sha1": "7a80c15e15738232ecafd3e524418b5baee1c5d3"
+        },
+        {
+          "path": "plugins\/emotions\/emotions.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4485,
+          "sha1": "c652b21bf770083c8ad960515821d890ce468f99"
+        },
+        {
+          "path": "plugins\/emotions\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-cry.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 329,
+          "sha1": "e49d26bb2132650fd44438131e94756129161ac7"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-smile.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 345,
+          "sha1": "c0726e6bc8d74ca13c0c3cdb1699434d79282c4c"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-tongue-out.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 328,
+          "sha1": "2f7c418bd798060ec211349f7b89a88a5f20c2f1"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-laughing.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 344,
+          "sha1": "e23a034915c3ec5d0719beb478a8d5772f82bed4"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-yell.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 336,
+          "sha1": "7ac8d3481c307185a103e73ee59dda2654717c01"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-kiss.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 338,
+          "sha1": "c03faf64c2b9a7b2b9d1f8c63beeb9f96d52bce4"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-undecided.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 337,
+          "sha1": "db75f18c34a24ddc39850fa8cdb515241353a4bd"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-money-mouth.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 321,
+          "sha1": "aa6d158a4e1767d3b981c95bae20bf9d2d623c8b"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-surprised.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 342,
+          "sha1": "967fba36255f00a27b34b2da3f628cff31e9c687"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-sealed.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 325,
+          "sha1": "a2942a7908b70aa716aadf50d65c5ce6b9a825bc"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-frown.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 340,
+          "sha1": "33c37ae10d06d87deec51785c80f818d153c06b0"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-foot-in-mouth.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 344,
+          "sha1": "c9251c9938b5b33c63a39956c3a9bffd745268af"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-embarassed.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 331,
+          "sha1": "514fe86c52e7334abbeb8f7791e73b4352f57851"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-cool.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 354,
+          "sha1": "e0d8fff0141e190d1a9b1b17c2aa19f42ef6b1a5"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-innocent.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 336,
+          "sha1": "bfd4d17c9fb8fe0b5e2103df9e8981c3888c4c1a"
+        },
+        {
+          "path": "plugins\/emotions\/img\/smiley-wink.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 351,
+          "sha1": "82db4c36c68f752fa57946db7f2869dd27d85589"
+        },
+        {
+          "path": "plugins\/emotions\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 698,
+          "sha1": "3e1ac24dd05178ab992c1e504b358171a8bfdfe7"
+        },
+        {
+          "path": "plugins\/emotions\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/emotions\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 404,
+          "sha1": "fce45974f508de600e2dde9439e715e9197d02a2"
+        },
+        {
+          "path": "plugins\/emotions\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1160,
+          "sha1": "9ec012ebb9e0463913ff6ff5ca558a6478ba014e"
+        },
+        {
+          "path": "plugins\/compat2x",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/compat2x\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 9117,
+          "sha1": "1a5f7bdc92b7c97d2491414abd431f7e9aca896e"
+        },
+        {
+          "path": "plugins\/compat2x\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 14315,
+          "sha1": "6ea132a84ecb498830a76c83f128bb9482bd7ccb"
+        },
+        {
+          "path": "plugins\/fullpage",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/fullpage\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/fullpage\/js\/fullpage.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15576,
+          "sha1": "47a739dde99ed5d71f446c8d738053c7a0e1a76d"
+        },
+        {
+          "path": "plugins\/fullpage\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2876,
+          "sha1": "0ebbceb16d2cf3f85ab6dc0597d7bb8bb81bcedc"
+        },
+        {
+          "path": "plugins\/fullpage\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/fullpage\/css\/fullpage.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2987,
+          "sha1": "9133132dc672813a8ce469bcd40aaed0230acc8d"
+        },
+        {
+          "path": "plugins\/fullpage\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/fullpage\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2369,
+          "sha1": "abe1a22a3b7a1dec9635200bd3dc4e07fdfd8b16"
+        },
+        {
+          "path": "plugins\/fullpage\/fullpage.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 25867,
+          "sha1": "bf35335c391086a42553c0869de5376332f1f7b1"
+        },
+        {
+          "path": "plugins\/fullpage\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4245,
+          "sha1": "8e382920607fa3af348edc151e05457ce6ed6eca"
+        },
+        {
+          "path": "plugins\/preview",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/preview\/preview.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 630,
+          "sha1": "fa6ab5cf9c7bc2ac5dad63b139ea14abc9a6de40"
+        },
+        {
+          "path": "plugins\/preview\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1051,
+          "sha1": "0e49d7643bf4d49470976ba18fb669c33d62f173"
+        },
+        {
+          "path": "plugins\/preview\/example.html",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 731,
+          "sha1": "05ed48837488564d16ed2ab475fedc356a10f572"
+        },
+        {
+          "path": "plugins\/preview\/jscripts",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/preview\/jscripts\/embed.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1938,
+          "sha1": "f920b61e2ee1e6ac7b7743f57bb739e60a8210ee"
+        },
+        {
+          "path": "plugins\/preview\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1547,
+          "sha1": "bd929cef05f69063b0ed1ec69f9fee0fcfba5146"
+        },
+        {
+          "path": "plugins\/save",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/save\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1569,
+          "sha1": "be47b49499c6d7cee5817ca38f1f0c7dc9bb2221"
+        },
+        {
+          "path": "plugins\/save\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2483,
+          "sha1": "0d15e6d40639584645296a5a8942325b3d0fc82b"
+        },
+        {
+          "path": "plugins\/nonbreaking",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/nonbreaking\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 952,
+          "sha1": "87d6d1913ae569edfa585088287f411089f6d1dd"
+        },
+        {
+          "path": "plugins\/nonbreaking\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1482,
+          "sha1": "dca31e55beba06e4dadf652eedd2b305135902a6"
+        },
+        {
+          "path": "plugins\/spellchecker",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/spellchecker\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/spellchecker\/img\/wline.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 46,
+          "sha1": "723a54f0b389bd40a9b386c84e73f5f6a9e49060"
+        },
+        {
+          "path": "plugins\/spellchecker\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5735,
+          "sha1": "dfd50e325a32cd87fea2bb475f845034b48e6315"
+        },
+        {
+          "path": "plugins\/spellchecker\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/spellchecker\/css\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 98,
+          "sha1": "23e6ee2a27b9abd17e3aa81b2a592b979f50abe8"
+        },
+        {
+          "path": "plugins\/spellchecker\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8710,
+          "sha1": "55594d0300b36d0c1d174001099492d24db193fe"
+        },
+        {
+          "path": "plugins\/tabfocus",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/tabfocus\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1431,
+          "sha1": "59768d754c30bf53e81aa1cc116107436cc17253"
+        },
+        {
+          "path": "plugins\/tabfocus\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2561,
+          "sha1": "1a0e6108b34411e320ecc249b67f0cd92cbed18f"
+        },
+        {
+          "path": "plugins\/iespell",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/iespell\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 909,
+          "sha1": "1b86197b3e21cb0f341b4038bd4a281813cd4339"
+        },
+        {
+          "path": "plugins\/iespell\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1438,
+          "sha1": "5759babd57663b19a150e4e3a5c27e5f5ed646a0"
+        },
+        {
+          "path": "plugins\/advimage",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advimage\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advimage\/js\/image.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 12046,
+          "sha1": "7ef0e48fb158a6de225623d206f4bedd4167a85a"
+        },
+        {
+          "path": "plugins\/advimage\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advimage\/img\/sample.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1624,
+          "sha1": "3cb7108103a979d65a8989480bbb1c8151748534"
+        },
+        {
+          "path": "plugins\/advimage\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 788,
+          "sha1": "31636deebad7e793a5618b00d419572cada349d7"
+        },
+        {
+          "path": "plugins\/advimage\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advimage\/css\/advimage.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 672,
+          "sha1": "1d90ebb821465b6d15a594ed160782afefa46db4"
+        },
+        {
+          "path": "plugins\/advimage\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advimage\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1286,
+          "sha1": "4aa988cdc6f1060537592c91e1d5eddf31faab1f"
+        },
+        {
+          "path": "plugins\/advimage\/image.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11438,
+          "sha1": "f520620e51b5e13efb4195885b5d5b02b079105c"
+        },
+        {
+          "path": "plugins\/advimage\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1341,
+          "sha1": "99318e9a83754af44c04a57638760115c31c5ff2"
+        },
+        {
+          "path": "plugins\/insertdatetime",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/insertdatetime\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1931,
+          "sha1": "c94b35644717c9228015f3dcb0b9358c3a373553"
+        },
+        {
+          "path": "plugins\/insertdatetime\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2814,
+          "sha1": "cba70a9d1929b75f4af0ed26eb3fa126f3854855"
+        },
+        {
+          "path": "plugins\/template",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/template\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/template\/js\/template.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2778,
+          "sha1": "4a634c63e74b25d119fcb12f9017ba5c6ff0bf9d"
+        },
+        {
+          "path": "plugins\/template\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3286,
+          "sha1": "d39f49d8d6db91bc9a3d9d3f9999c1b4e28278a9"
+        },
+        {
+          "path": "plugins\/template\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/template\/css\/template.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 275,
+          "sha1": "55310fa7768f67dd6b4e7c550d82711af7ae6f1a"
+        },
+        {
+          "path": "plugins\/template\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/template\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 641,
+          "sha1": "6b79554a13af46677f18e58ba0a181d3a728df20"
+        },
+        {
+          "path": "plugins\/template\/template.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1560,
+          "sha1": "f673e16b059a4dadb11f0ae5af03a5107caa3c07"
+        },
+        {
+          "path": "plugins\/template\/blank.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 332,
+          "sha1": "6321b5caf9bba8bf63dd95ac2b312e5ab64ac8bf"
+        },
+        {
+          "path": "plugins\/template\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4924,
+          "sha1": "60e25150f97f30d1c1e88dbed74d3de806feb3e0"
+        },
+        {
+          "path": "plugins\/safari",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/safari\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6394,
+          "sha1": "40340db7b9f4dceb6362139b9b374cc28d708cbb"
+        },
+        {
+          "path": "plugins\/safari\/blank.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15,
+          "sha1": "c3e775e1d0c1e20f278eab0d86d4deccfc759ab1"
+        },
+        {
+          "path": "plugins\/safari\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 12195,
+          "sha1": "28011de1d0bf76b6ecb4e7a797a91826a1405df9"
+        },
+        {
+          "path": "plugins\/advhr",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advhr\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advhr\/js\/rule.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1322,
+          "sha1": "3c1ac63af4941d9c8f5890b40b1cff65a8899f4b"
+        },
+        {
+          "path": "plugins\/advhr\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 847,
+          "sha1": "7142fab581107323897e64aeda8572794ad1f6f4"
+        },
+        {
+          "path": "plugins\/advhr\/rule.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2719,
+          "sha1": "a64b468b2234ec649a9cf62038e5c92b368e1153"
+        },
+        {
+          "path": "plugins\/advhr\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advhr\/css\/advhr.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 240,
+          "sha1": "c2cc7114fd8b8d8628c3e059b8366abf08249f1a"
+        },
+        {
+          "path": "plugins\/advhr\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/advhr\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 90,
+          "sha1": "46ef1e7c8d4ac22c46fcebad52071d49fa82d377"
+        },
+        {
+          "path": "plugins\/advhr\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1396,
+          "sha1": "936cf70dae3f6e5c33690d37566b25b5f690cd51"
+        },
+        {
+          "path": "plugins\/searchreplace",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/searchreplace\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/searchreplace\/js\/searchreplace.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3259,
+          "sha1": "7a9a45148fbfb17c7bb344d3e42b43ba57240363"
+        },
+        {
+          "path": "plugins\/searchreplace\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1031,
+          "sha1": "18804488a5f0c535a215f8482773d6a97c872a8f"
+        },
+        {
+          "path": "plugins\/searchreplace\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/searchreplace\/css\/searchreplace.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 176,
+          "sha1": "18e6e7f45d548f91e6f5695d03f0cc165e688b27"
+        },
+        {
+          "path": "plugins\/searchreplace\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/searchreplace\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 469,
+          "sha1": "06c920ff3a687eebd46f8df42e512b09214dd066"
+        },
+        {
+          "path": "plugins\/searchreplace\/searchreplace.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4870,
+          "sha1": "403fb877984b238df4191e73e3c327520a04d86b"
+        },
+        {
+          "path": "plugins\/searchreplace\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1597,
+          "sha1": "9d48e2b57cb4e2f84374400975d9610b770632e0"
+        },
+        {
+          "path": "plugins\/example",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/example\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/example\/js\/dialog.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 609,
+          "sha1": "14862818fc86a63fb4eec43277ff4d21369e96fa"
+        },
+        {
+          "path": "plugins\/example\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/example\/img\/example.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 87,
+          "sha1": "d23a2dcf10eef74e30e27f5328e57826ed6daa5d"
+        },
+        {
+          "path": "plugins\/example\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 860,
+          "sha1": "44d6f7bcd9c0f7e706ee6ddcdf86c2806b204d22"
+        },
+        {
+          "path": "plugins\/example\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/example\/langs\/en.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 79,
+          "sha1": "c39dc46aeca092ff96a5f66faf2d73374b4af73b"
+        },
+        {
+          "path": "plugins\/example\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 82,
+          "sha1": "35a75c7b16b1860f3a76379d26f52e70e85fd1d4"
+        },
+        {
+          "path": "plugins\/example\/dialog.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 991,
+          "sha1": "a0c04a5c81b8eec0b3d143c30d6b66d4074b29ca"
+        },
+        {
+          "path": "plugins\/example\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2943,
+          "sha1": "4c9e0e604bd83576e5bdd0d778c7bce4892e68ae"
+        },
+        {
+          "path": "plugins\/layer",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/layer\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3432,
+          "sha1": "e7aee03c3eba01a5b12acc6d6be4987fcd86b941"
+        },
+        {
+          "path": "plugins\/layer\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5265,
+          "sha1": "ca68a0c5c558e0dc8d8ab404b29d8a1ab604e795"
+        },
+        {
+          "path": "plugins\/directionality",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/directionality\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1333,
+          "sha1": "2650e8da282429bd340dd65aca5d48e3689dd186"
+        },
+        {
+          "path": "plugins\/directionality\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2029,
+          "sha1": "497ebaab1cb32fe49ea9cf6b3e2acdaea59dc1d7"
+        },
+        {
+          "path": "plugins\/media",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/media\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/media\/js\/embed.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1938,
+          "sha1": "f920b61e2ee1e6ac7b7743f57bb739e60a8210ee"
+        },
+        {
+          "path": "plugins\/media\/js\/media.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 18564,
+          "sha1": "37c5fcdde0e664cf2e54fe1b72d153e64d677772"
+        },
+        {
+          "path": "plugins\/media\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/media\/img\/trans.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 43,
+          "sha1": "67a69b5842050a142e050eb3b08a59e03e7fa71b"
+        },
+        {
+          "path": "plugins\/media\/img\/flv_player.swf",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11668,
+          "sha1": "e342e319901f26978994c81ae4f102690a0d14d0"
+        },
+        {
+          "path": "plugins\/media\/img\/flash.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 241,
+          "sha1": "785257790bae6fe226d10ea995e25ea39de68fad"
+        },
+        {
+          "path": "plugins\/media\/img\/shockwave.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 387,
+          "sha1": "6d38e6cd5d2550a7ba4f19365f16daaf50a0d869"
+        },
+        {
+          "path": "plugins\/media\/img\/quicktime.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 303,
+          "sha1": "2a4b172791f7dcd5ec48c88c69dd10806ecc65a7"
+        },
+        {
+          "path": "plugins\/media\/img\/realmedia.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 439,
+          "sha1": "127aa3f90532a8b0cd5cb34fcdedb9c2d1faa48f"
+        },
+        {
+          "path": "plugins\/media\/img\/windowsmedia.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 415,
+          "sha1": "24d7807c33c70c39963ac197e7a472c2a784eded"
+        },
+        {
+          "path": "plugins\/media\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8088,
+          "sha1": "7d4be13ad3b651097c8b03e79a8a92900326f169"
+        },
+        {
+          "path": "plugins\/media\/css",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/media\/css\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 530,
+          "sha1": "b5aa9290132d026bbd24bd1acf4ebe05b76f5b35"
+        },
+        {
+          "path": "plugins\/media\/css\/media.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1271,
+          "sha1": "7ce00386f60354fea707e208fe143ddbd25ab7d0"
+        },
+        {
+          "path": "plugins\/media\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/media\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2736,
+          "sha1": "f7f8a00f819b84348c5c5b09bb0f1f0933d59618"
+        },
+        {
+          "path": "plugins\/media\/media.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 32754,
+          "sha1": "9bfa089f78497d323ad3ca823e63390d37836625"
+        },
+        {
+          "path": "plugins\/media\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11956,
+          "sha1": "73ae07d613c6722d899ad465c9447cc94e67702b"
+        },
+        {
+          "path": "plugins\/paste",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/paste\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/paste\/js\/pastetext.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 872,
+          "sha1": "75e9586c213a4f9346994bef325f11e53b470a30"
+        },
+        {
+          "path": "plugins\/paste\/js\/pasteword.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1610,
+          "sha1": "e030089bac1f68453d0179a17b0c877762b2bc41"
+        },
+        {
+          "path": "plugins\/paste\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7188,
+          "sha1": "296f8f2a7acb2eea605a7fb3beae56104ba61a99"
+        },
+        {
+          "path": "plugins\/paste\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/paste\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 228,
+          "sha1": "30680dac80c99e62dd2a2cddb0783efd65f1092d"
+        },
+        {
+          "path": "plugins\/paste\/pastetext.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1373,
+          "sha1": "c05101a27507b69bf88d26bcde9ee19bf84e97dd"
+        },
+        {
+          "path": "plugins\/paste\/pasteword.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 947,
+          "sha1": "99d87e821303fa3501240a7ea1a31b6d40517e47"
+        },
+        {
+          "path": "plugins\/paste\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17107,
+          "sha1": "f96415f449fc7dc7ea6b033540fe4ab683621955"
+        },
+        {
+          "path": "plugins\/contextmenu",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "plugins\/contextmenu\/editor_plugin.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2140,
+          "sha1": "643754781fc494b37e55614c03a97de99f85e23a"
+        },
+        {
+          "path": "plugins\/contextmenu\/editor_plugin_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3035,
+          "sha1": "53847093d3fcb3bdc8b462d763a6839e4a76368b"
+        },
+        {
+          "path": "tiny_mce_popup.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5207,
+          "sha1": "0f12c5cb4813578787511888b5ddb65d5d502413"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 361,
+          "sha1": "a5f275b52ea68c9bd903a306199f85c98dc4aadd"
+        },
+        {
+          "path": "license.txt",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 26931,
+          "sha1": "09d6448cc62e4397b0f4d7fea473f6122cfa10fb"
+        },
+        {
+          "path": "themes",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/js",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/js\/image.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6077,
+          "sha1": "a2367053229a99f623cb7d1b8035c0d7f4c6ead9"
+        },
+        {
+          "path": "themes\/advanced\/js\/color_picker.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11270,
+          "sha1": "853f699ed976eb47d3f44a97295ccb5db0f13c2c"
+        },
+        {
+          "path": "themes\/advanced\/js\/about.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2126,
+          "sha1": "12c9a24a9e50ef23587375b2248a0e0b8503a711"
+        },
+        {
+          "path": "themes\/advanced\/js\/source_editor.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1505,
+          "sha1": "e417edc348e1a89e883b0671a4b7ea5617a329b4"
+        },
+        {
+          "path": "themes\/advanced\/js\/anchor.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1066,
+          "sha1": "7beb0c292a266400b64607169778fa5b6349cbb3"
+        },
+        {
+          "path": "themes\/advanced\/js\/link.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5053,
+          "sha1": "f59f581ca8a9accc3e73465658096a09c4770c7f"
+        },
+        {
+          "path": "themes\/advanced\/js\/charmap.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 14840,
+          "sha1": "eb980ce425bb01293db1d6da2efdc69a15ee7fe3"
+        },
+        {
+          "path": "themes\/advanced\/anchor.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1115,
+          "sha1": "ce7a521fc8d3da71046eb9a3fbc4d25ee1b65b5b"
+        },
+        {
+          "path": "themes\/advanced\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/img\/colorpicker.jpg",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3189,
+          "sha1": "5ef73d441bbe52b46a9f3c6408d73fdf3c2a8345"
+        },
+        {
+          "path": "themes\/advanced\/img\/icons.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11505,
+          "sha1": "7fc7f30501eafb9abfe052914573e1bd04539d48"
+        },
+        {
+          "path": "themes\/advanced\/source_editor.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1354,
+          "sha1": "22c0928aa1f068d3523a688e42e45ad0e64461cc"
+        },
+        {
+          "path": "themes\/advanced\/about.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2988,
+          "sha1": "263a4a490919a894d1c27d9256f988588a517eed"
+        },
+        {
+          "path": "themes\/advanced\/link.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2647,
+          "sha1": "d631141e92443fc77d82e14dc68a923886ed283e"
+        },
+        {
+          "path": "themes\/advanced\/skins",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/img\/button_bg_silver.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5358,
+          "sha1": "f1ab25cc75f28fd1a4065d225e39c758e47dc85a"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/img\/button_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5859,
+          "sha1": "56ed68fa214be86957917046c2e87e9892344cc6"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/img\/button_bg_black.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3736,
+          "sha1": "349fdb6ef6d5b8101b14aa1458760179ac20c66f"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/dialog.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5616,
+          "sha1": "832cd1b5c39513cf8496c1b47d7ff8c090c2dc80"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1329,
+          "sha1": "6487ddd1594c3457e8c0c881de1f86966ad71982"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/ui.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15013,
+          "sha1": "9ef844012231bbd621b5f8ced7d6aaf56cbc55f4"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/ui_silver.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 819,
+          "sha1": "5020a95732141436ab27533a5ea9e0923e7248f3"
+        },
+        {
+          "path": "themes\/advanced\/skins\/o2k7\/ui_black.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1655,
+          "sha1": "95b68c02395f53071d1a33ee25d384858d63885f"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/menu_check.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 70,
+          "sha1": "d459eee0d6837018a3267f99dfea4b8ed8d67fb9"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/items.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 70,
+          "sha1": "60921f78c7a21f8d4aa02bf0456180bebcd29c8b"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/buttons.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3274,
+          "sha1": "6428313ac16440a49e34a4aecc70f8ea9b60dc81"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/menu_arrow.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 68,
+          "sha1": "3f45a33bd771f2da06313dc7935f86de50e4a024"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/tabs.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1326,
+          "sha1": "7dfa22dde5970b883cc1f83b900f5e102cd74a5f"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/img\/progress.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1787,
+          "sha1": "c641615e851254111e268da42d72ae684b3ce967"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/dialog.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5590,
+          "sha1": "552f61acca33a74b8d3b2fe504126721c761b4b2"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1301,
+          "sha1": "a8b64c5513c51d933732a8a7649724278d5b7170"
+        },
+        {
+          "path": "themes\/advanced\/skins\/default\/ui.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15646,
+          "sha1": "e347738d5c3f389c59013192bf3000ea855b2aa5"
+        },
+        {
+          "path": "themes\/advanced\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/advanced\/langs\/en.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1896,
+          "sha1": "b9eb4df5005106c09c71ac5e39a279d982b5de8e"
+        },
+        {
+          "path": "themes\/advanced\/langs\/en_dlg.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1724,
+          "sha1": "8d04ec14d406880cd9ff5ce3ce5047dc42e920b3"
+        },
+        {
+          "path": "themes\/advanced\/editor_template_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 33866,
+          "sha1": "fb9c691e58f1cdedf2f7de3f009d0d2b7216306f"
+        },
+        {
+          "path": "themes\/advanced\/editor_template.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 22799,
+          "sha1": "6a27194648a344a8f77ed7154fe31aba30b5329d"
+        },
+        {
+          "path": "themes\/advanced\/charmap.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2422,
+          "sha1": "b46d2292983968772e22a2a24f4cfc87b40eb23c"
+        },
+        {
+          "path": "themes\/advanced\/image.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4474,
+          "sha1": "5b3b8b06f82af1a469f3ec3b195f5febedb6627e"
+        },
+        {
+          "path": "themes\/advanced\/color_picker.htm",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2909,
+          "sha1": "0850a0f22694b00831540cd9df9f6011db36c3ce"
+        },
+        {
+          "path": "themes\/simple",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/img\/icons.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1440,
+          "sha1": "b21ef9ac351385d3810289340a6511aed4f4f8bd"
+        },
+        {
+          "path": "themes\/simple\/skins",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/skins\/o2k7",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/skins\/o2k7\/img",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/skins\/o2k7\/img\/button_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5102,
+          "sha1": "001dbd15bfab2636dcfc4f536d9612c2aaf8076c"
+        },
+        {
+          "path": "themes\/simple\/skins\/o2k7\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 461,
+          "sha1": "0fb71065c3fab8361d5f453c07a1721962118978"
+        },
+        {
+          "path": "themes\/simple\/skins\/o2k7\/ui.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2340,
+          "sha1": "25a1510179b5bb5c94c9e4a2a06e01164f37512c"
+        },
+        {
+          "path": "themes\/simple\/skins\/default",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/skins\/default\/content.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 513,
+          "sha1": "ad6eb94debef8278fdb7908dcf7acbc7201fed42"
+        },
+        {
+          "path": "themes\/simple\/skins\/default\/ui.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2105,
+          "sha1": "405fb9210d1e47fcc09497d8abab31cd37c0a783"
+        },
+        {
+          "path": "themes\/simple\/langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "themes\/simple\/langs\/en.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 321,
+          "sha1": "bda3828d9541f612fb42dce0593ea54ac40bb88f"
+        },
+        {
+          "path": "themes\/simple\/editor_template_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 3287,
+          "sha1": "59fe778fbe377c36665a49a151c2fff49611d449"
+        },
+        {
+          "path": "themes\/simple\/editor_template.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2222,
+          "sha1": "90dd8163329326a4952bb3281a2a34a853c6ee7a"
+        },
+        {
+          "path": "tiny_mce_src.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 320562,
+          "sha1": "79c928ba88f54eb378d837c0df3987f7818ebe1c"
+        },
+        {
+          "path": "langs",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "langs\/en.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4083,
+          "sha1": "53bd56b6ea7c194f23e846d9f9d1390c2370ee89"
+        },
+        {
+          "path": "utils",
+          "dir": true,
+          "file": false,
+          "perms": "0755",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "utils\/form_utils.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5473,
+          "sha1": "eb2e31a7552159224403b641f5bcbbee0fdd302d"
+        },
+        {
+          "path": "utils\/editable_selects.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2008,
+          "sha1": "ddfa20c61290acf10770b06bef3a1a06b57f3423"
+        },
+        {
+          "path": "utils\/mctabs.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1862,
+          "sha1": "a96960ee1a9f98bde127df232d1d6e75b5b76beb"
+        },
+        {
+          "path": "utils\/validate.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4983,
+          "sha1": "8c1c1fc1dff5f255109a1a881f45b24cd4deca36"
+        }
+      ]
+    }
+  }
+}

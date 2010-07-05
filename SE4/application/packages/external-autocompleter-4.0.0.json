@@ -1,0 +1,71 @@
+{
+  "type": "external",
+  "name": "autocompleter",
+  "version": "4.0.0",
+  "path": "externals\/autocompleter",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Autocompleter",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/autocompleter": {
+      "type": "directory",
+      "path": "externals\/autocompleter",
+      "structure": [
+        {
+          "path": "Autocompleter.Request.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2622,
+          "sha1": "fa8ac0058fc6d85a216e5ba172be17ba4acd43bd"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 385,
+          "sha1": "30ffcc94e6fee49ace649ab2445c41d32d32f8dd"
+        },
+        {
+          "path": "Observer.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 1521,
+          "sha1": "759e3dd2508c24ba9b65cfa9ffbe3af66cf34a78"
+        },
+        {
+          "path": "Autocompleter.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 23658,
+          "sha1": "3776a6ad965d31ee36861db356f75c26c6d4582c"
+        },
+        {
+          "path": "Autocompleter.Local.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 491,
+          "sha1": "55fd971327e153e39450d77e102499115ee034a5"
+        }
+      ]
+    }
+  }
+}

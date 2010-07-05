@@ -1,0 +1,47 @@
+{
+  "type": "external",
+  "name": "tagger",
+  "version": "4.0.0",
+  "path": "externals\/tagger",
+  "repository": null,
+  "meta": {
+    "date": "Fri, 02 Jul 2010 01:03:27 +0000",
+    "title": "Tagger",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "dependencies": null,
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/tagger": {
+      "type": "directory",
+      "path": "externals\/tagger",
+      "structure": [
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 357,
+          "sha1": "64999d0d8fe0e318393b6c59aa0de3823d145303"
+        },
+        {
+          "path": "tagger.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 12357,
+          "sha1": "e1a1b332de8a25e614e26101f53421a8692b0836"
+        }
+      ]
+    }
+  }
+}
