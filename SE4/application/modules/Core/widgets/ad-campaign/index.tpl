@@ -31,7 +31,7 @@
 
   }
 </script>
-
-<div onclick="javascript:processClick(<?php echo $this->campaign->adcampaign_id.", ".$this->ad->ad_id?>)">
+<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="vertical-align: middle;padding-left:5px" onclick="javascript:processClick(<?php echo $this->campaign->adcampaign_id.", ".$this->ad->ad_id?>)">
   <?php echo $this->ad->html_code; ?>
 </div>

@@ -19,28 +19,30 @@ DEFAULT STYLES FOR THIS THEME
   Specify the top bar wrapper width (which contains the mini menu, logo, and main menu
   by default), the footer width, and the width of left & right-side columns.
   */
-  theme_topbar_width: 100%;
-  theme_topbar_minimenu_width: 950px;
-  theme_topbar_logo_width: 950px;
-  theme_topbar_menu_width: 950px;
-  theme_footer_width: 930px;
-  theme_content_width: 950px;
+  theme_topbar_width: 1000px;
+  theme_topbar_minimenu_width: 1000px;
+  theme_topbar_logo_width: 260px;
+  theme_topbar_menu_width: 1000px;
+  theme_footer_width: 980px;
+  theme_content_width: 1000px;
   theme_content_columns_left_width: 190px;
   theme_content_columns_right_width: 190px;
   theme_body_background_color: #fff;
+  
+  theme_mom_color: #D60077;
 
   /* 
   HEADER AND FOOTER COLORS
   These values are only used to style the site-wide header and footer.
   */
-  theme_topbar_background_color: #e9f4fa;
-  theme_topbar_menu_background_color: #79b4d4;
-  theme_topbar_menu_background_color_hover: transparent;
+  theme_topbar_background_color: #fff;
+  theme_topbar_menu_background_color: #fff;
+  theme_topbar_menu_background_color_hover: #BEB8000;
   theme_topbar_menu_link_color: #fff;
   theme_topbar_menu_link_decoration: none;
   theme_topbar_menu_link_hover_color: #fff;
   theme_topbar_menu_link_hover_decoration: underline;
-  theme_topbar_menu_link_size: 1.3em;
+  theme_topbar_menu_link_size: 14px;
   theme_topbar_menu_link_background_color: transparent;
   theme_topbar_menu_link_background_color_hover: transparent;
   theme_topbar_menu_border: 1px solid #89a4b3;
@@ -57,7 +59,7 @@ DEFAULT STYLES FOR THIS THEME
   TEXT & LINKS
   These values affect the size and colors of your text and links throughout your layout.
   */
-  theme_font_family: tahoma, arial, verdana, sans-serif;
+  theme_font_family: Georgia, tahoma, arial, verdana, sans-serif;
   theme_font_size: 10pt;
   theme_font_color: #555;
   theme_font_color_light: #999;

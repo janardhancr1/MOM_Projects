@@ -14,9 +14,8 @@ html
 }
 body
 {
-  background-color: $theme_body_background_color;
-  overflow-x: hidden;
-}
+  background: url(~/application/modules/Core/externals/images/bg.gif) repeat scroll 0 0 #FFF;
+ }
 *
 {
   padding: 0;
@@ -159,33 +158,48 @@ GENERAL LAYOUT
 #global_wrapper
 {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 #global_content
 {
   width: $theme_content_width;
   margin: 0px auto 0px auto;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
   overflow: hidden;
   min-height: 500px;
+  width:996px;
 }
 #global_content_simple
 {
   display: inline-block;
 }
 
+/* Ad Campaign */
+.layout_core_ad_campaign
+{
+	float:right;
+	width:734px;
+	padding-right:2px;
+	background-color: #fff;
+	height: 109px;
+}
+
 /* Header */
 .layout_page_header
 {
-  background-color: $theme_topbar_background_color;
+  /*background-color: $theme_topbar_background_color;*/
   text-align: center;
   padding: 0px;
   clear: both;
-  border-bottom: $theme_topbar_border;
+  /*border-bottom: $theme_topbar_border;*/
   background-image: url(~/application/themes/default/images/topbar_bg.png);
   background-repeat: no-repeat;
   background-position: top center;
-  -moz-box-shadow: 0px 3px 3px #ddd;
+  /*-moz-box-shadow: 0px 3px 3px #ddd;*/
 }
 .layout_page_header .layout_main
 {
@@ -206,11 +220,12 @@ GENERAL LAYOUT
   +rounded;
   +foreground;
   width: $theme_footer_width;
-  margin: 20px auto 0px auto;
+  margin: 0px auto 10px auto;
+  background-color:#fff;
   text-align: left;
   overflow: hidden;
-  margin-top: 40px;
-  padding: 10px;
+  margin-top: 0px;
+  width:1000px;
 }
 .layout_page_footer select
 {
@@ -220,6 +235,7 @@ GENERAL LAYOUT
 {
   font-size: .8em;
   color: $theme_font_color_light;
+  padding:10px;
 }
 
 
@@ -236,24 +252,29 @@ MAIN MENU WIDGET
   background-color: $theme_topbar_menu_background_color;
   background-image: url(~/application/themes/default/images/topbar_menu_bg.png);
   background-repeat: repeat-x;
-  border: $theme_topbar_menu_border;
+  /*border: $theme_topbar_menu_border;*/
   border-left: none;
   border-right: none;
+  width:1000px;
 }
 .layout_core_menu_main ul
 {
   width: $theme_topbar_menu_width;
   margin: 0px auto 0px auto;
-  padding: 0px;
+  padding-left: 5px;
   white-space: nowrap;
   overflow: hidden;
 }
 .layout_core_menu_main li
 {
+  +rounded(4px, false, false, true, true);
   float: left;
   font-size: $theme_topbar_menu_link_size;
-  font-weight: bold;
-  margin-right: 15px;
+  background-color: $theme_mom_color;
+  /*font-weight: bold;*/
+  margin-right: 1px;
+  padding-left:10px;
+  padding-right:10px;
 }
 .layout_core_menu_main li:hover
 {
@@ -292,8 +313,9 @@ Shows the mini menu and search widget
 .layout_core_menu_mini
 {
   width: $theme_topbar_minimenu_width;
-  margin: 0px auto 0px auto;
+  margin: 0px 2px 0px auto;
   overflow: hidden;
+  background-color:#fff;
 }
 .layout_core_menu_mini > div > ul
 {
@@ -316,7 +338,7 @@ Shows the mini menu and search widget
 }
 .layout_core_menu_mini #core_menu_mini_menu
 {
-  padding: 0px 0px 5px 10px;
+  padding: 0px 2px 5px 10px;
   font-size: $theme_topbar_minimenu_link_size;
   overflow: hidden;
 }
@@ -376,10 +398,13 @@ SITE LOGO WIDGET
   width: $theme_topbar_logo_width;
   font-size: 23pt;
   font-weight: bold;
-  margin: 0px auto 10px auto;
+  margin: 0px auto 0px auto;
+  padding: 10px 2px 2px 2px;
   text-align: left;
   letter-spacing: -2px;
   overflow: hidden;
+  background-color:#fff;
+  float:left;
 }
 
 
