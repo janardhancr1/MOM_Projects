@@ -29,17 +29,16 @@ class Blog_Form_Search extends Engine_Form
       ;
     
     $this->addElement('Text', 'search', array(
-      'label' => 'Search Blogs',
+      'label' => 'Search:',
       'onchange' => 'this.form.submit();',
     ));
 
-    $this->addElement('Select', 'orderby', array(
-      'label' => 'Browse By',
+     $this->addElement('Select', 'view', array(
+      'label' => 'View:',
       'multiOptions' => array(
-        'creation_date' => 'Most Recent',
-        'view_count' => 'Most Viewed',
+        'Blog_entries' => 'Eveyones Blog Entries',
       ),
-      'onchange' => 'this.form.submit();',
+      
     ));
 
     $this->addElement('Select', 'draft', array(
@@ -62,9 +61,19 @@ class Blog_Form_Search extends Engine_Form
     ));
 
     $this->addElement('Select', 'category', array(
-      'label' => 'Category',
+      'label' => 'Category:',
       'multiOptions' => array(
         '0' => 'All Categories',
+      ),
+      'onchange' => 'this.form.submit();',
+    ));
+    
+    $this->addElement('Select', 'orderby', array(
+      'label' => 'Order:',
+      'multiOptions' => array(
+        'creation_date' => 'Date Posted',
+        'view_count' => 'Most Viewed',
+    	'View_Commented' => 'Most Commented',
       ),
       'onchange' => 'this.form.submit();',
     ));

@@ -18,22 +18,13 @@
   }
 </script>
 
-<div class="headline">
-  <h2>
-    <?php echo $this->translate('Blogs');?>
-  </h2>
-  <div class="tabs">
-    <?php
-      // Render the menu
-      echo $this->navigation()
-        ->menu()
-        ->setContainer($this->navigation)
-        ->render();
-    ?>
-  </div>
+<div class='search_box'>
+<div class='page_header'>
+	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'><?php echo $this->translate('Blogs');?>
+	<div class="page_header_small">
+		<?php echo $this->translate('Share your thoughts every day with moms');?>
+	</div>
 </div>
-
-<div class='layout_right'>
   <?php echo $this->form->render($this) ?>
   
   <?php if( $this->can_create): ?>

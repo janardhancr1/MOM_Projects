@@ -773,10 +773,15 @@ content areas.
 */
 .global_form_box
 {
-  +foreground;
+  /*+foreground;
   +rounded;
   padding: 10px;
-  width: auto;
+  width: auto;*/
+  padding: 7px 10px 7px 10px; 
+  background: #F2F2F2; 
+  border: 1px solid #BBBBBB; 
+  margin: 10px 0px 10px 0px; 
+  font-weight: bold;
 }
 .global_form_box .form-wrapper + .form-wrapper
 {
@@ -802,6 +807,33 @@ content areas.
   overflow: hidden;
 }
 
+/* NEW */
+
+div.page_header {
+	font-size: 24px;
+	color: #D60077;
+	margin-bottom: 0px;
+	padding-left: 2px;
+	font-family: Georgia, arial, verdana, serif;
+}
+div.page_header_small {
+	font-size: 18px;
+	color: #D60077;
+	margin-bottom: 0px;
+	padding-left: 2px;
+	font-family: Georgia, arial, verdana, serif;
+}
+.icon_big {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+.search_box{
+	float: left; 
+	width: 685px; 
+	padding: 0px 5px 5px 5px;
+}
+/* NEW END */
 
 
 /*

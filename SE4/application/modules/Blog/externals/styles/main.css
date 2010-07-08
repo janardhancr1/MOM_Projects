@@ -22,7 +22,10 @@ Styles the compose blog entry form.
   float: none;
 }
 
-
+.form-wrapper
+{
+	float:left;
+}
 
 
 

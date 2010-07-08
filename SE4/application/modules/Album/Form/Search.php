@@ -29,7 +29,7 @@ class Album_Form_Search extends Engine_Form
 
     parent::init();
     
-    $this->addElement('Text', 'search', array(
+    /*$this->addElement('Text', 'search', array(
       'label' => 'Search Albums:'
     ));
 
@@ -53,7 +53,24 @@ class Album_Form_Search extends Engine_Form
             'label' => 'Category',
             'multiOptions' => $categories_prepared
           ));
-    }
-
+    }*/
+    
+         $this->addElement('Select', 'view', array(
+      'label' => 'View:',
+      'multiOptions' => array(
+        'Everyones_Alubums' => 'Eveyones Alubums',
+      ),
+      'onchange' => 'this.form.submit();',
+    ));
+	
+    
+    $this->addElement('Select', 'orderby', array(
+      'label' => 'Order:',
+      'multiOptions' => array(
+        'album_datecreated' => 'Recently Created',
+    	'album_dateupdated' => 'Recently Updated',
+      ),
+      'onchange' => 'this.form.submit();',
+    ));
   }
 }
