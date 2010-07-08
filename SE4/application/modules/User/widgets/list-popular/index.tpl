@@ -11,18 +11,20 @@
  */
 ?>
 
-<ul>
+<table>
+<tr>
   <?php foreach( $this->users as $user ): ?>
-    <li>
-      <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'popularmembers_thumb')) ?>
+  	<td width="33%">
       <div class='popularmembers_info'>
         <div class='popularmembers_name'>
           <?php echo $this->htmlLink($user->getHref(), $user->getTitle()) ?>
         </div>
         <div class='popularmembers_friends'>
-          <?php echo $this->translate(array('%s friend', '%s friends', $user->member_count),$this->locale()->toNumber($user->member_count)) ?>
+          <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'popularmembers_thumb')) ?>
         </div>
       </div>
-    </li>
+     </td>
   <?php endforeach; ?>
-</ul>
+</tr>
+ </table>
+

@@ -203,6 +203,7 @@ on the main home page.
   overflow: auto;
   width: 100%;
   margin-bottom: 15px;
+  float:right;
 }
 .layout_user_list_popular > ul
 {
@@ -214,6 +215,8 @@ on the main home page.
 {
   clear: both;
   overflow: hidden;
+  display: inline;
+  list-style-type: none;
   padding: 3px 5px 3px 5px;
 }
 .layout_user_list_popular a.popularmembers_thumb
@@ -254,6 +257,7 @@ on the main home page.
   overflow: auto;
   width: 100%;
   margin-bottom: 15px;
+  float:right;
 }
 .layout_user_list_signups > ul
 {

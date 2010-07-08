@@ -21,12 +21,12 @@ DEFAULT STYLES FOR THIS THEME
   */
   theme_topbar_width: 1000px;
   theme_topbar_minimenu_width: 1000px;
-  theme_topbar_logo_width: 260px;
+  theme_topbar_logo_width: 272px;
   theme_topbar_menu_width: 1000px;
   theme_footer_width: 980px;
   theme_content_width: 1000px;
-  theme_content_columns_left_width: 190px;
-  theme_content_columns_right_width: 190px;
+  theme_content_columns_left_width: 200px;
+  theme_content_columns_right_width: 300px;
   theme_body_background_color: #fff;
   
   theme_mom_color: #D60077;
@@ -64,13 +64,13 @@ DEFAULT STYLES FOR THIS THEME
   theme_font_color: #555;
   theme_font_color_light: #999;
   theme_text_align: left;
-  theme_link_color: #5f93b4;
-  theme_link_color_hover: #4e81a1;
+  theme_link_color: #D60077;
+  theme_link_color_hover: #BEB800;
   theme_link_decoration: none;
   theme_link_decoration_hover: underline;
   theme_headline_color: #717171;
   theme_headline_size_large: 1.5em;
-  theme_headline_size_medium: 1.3em;
+  theme_headline_size_medium: 1em;
 
   /* 
   BORDER COLORS
@@ -87,7 +87,7 @@ DEFAULT STYLES FOR THIS THEME
   */
   theme_foreground_border_color: #d0e2ec;
   theme_foreground_border_color_light: #d7e8f1;
-  theme_foreground_background_color: #e9f4fa;
+  theme_foreground_background_color: #fff;
 
   /*
   INPUT FIELDS AND BUTTONS

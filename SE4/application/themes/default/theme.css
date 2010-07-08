@@ -127,6 +127,9 @@ GENERAL LAYOUT
 */
 .generic_layout_container h3
 {
+  border-bottom:1px solid #DDDDDD;
+  color:#D60077;
+  padding: 5px;
   margin-bottom: 6px;
 }
 
@@ -134,15 +137,15 @@ GENERAL LAYOUT
 {
   float: left;
   width: $theme_content_columns_left_width;
-  padding: 0px 15px 0px 0px;
+  padding: 1px;
   vertical-align: top;
-  margin-right: 5px;
+  margin-right: 0px;
 }
 
 .layout_middle
 {
   overflow: hidden;
-  padding: 0px 0px 0px 0px;
+  padding: 0px 5px 0px 5px;
   vertical-align: top;
 }
 
@@ -150,9 +153,9 @@ GENERAL LAYOUT
 {
   float: right;
   width: $theme_content_columns_right_width;
-  padding: 0px 0px 10px 15px;
+  padding: 0px;
   vertical-align: top;
-  margin-left: 5px;
+  margin-left: 0px;
 }
 
 #global_wrapper
@@ -182,10 +185,9 @@ GENERAL LAYOUT
 .layout_core_ad_campaign
 {
 	float:right;
-	width:734px;
-	padding-right:2px;
+	padding:2px;
 	background-color: #fff;
-	height: 109px;
+	height: 100%;
 }
 
 /* Header */
@@ -217,8 +219,6 @@ GENERAL LAYOUT
 }
 .layout_page_footer .layout_main
 {
-  +rounded;
-  +foreground;
   width: $theme_footer_width;
   margin: 0px auto 10px auto;
   background-color:#fff;
@@ -235,7 +235,13 @@ GENERAL LAYOUT
 {
   font-size: .8em;
   color: $theme_font_color_light;
-  padding:10px;
+  padding:4px;
+  text-align: right;
+}
+
+.layout_core_menu_footer a
+{
+  color: #BEB800;
 }
 
 
@@ -1428,4 +1434,10 @@ lists, etc. Each tag has its own remove link.
   text-decoration: none;
   padding-left: 6px;
   text-transform: uppercase;
+}
+
+.red_bar
+{
+   background:none repeat scroll 0 0 #D60077;
+   height:25px;
 }
