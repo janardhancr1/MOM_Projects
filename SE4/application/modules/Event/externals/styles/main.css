@@ -109,6 +109,7 @@ ul.events_browse .events_options
   overflow: hidden;
   width: 120px;
   padding-left: 15px;
+  padding-right: 250px;
 }
 ul.events_browse .events_options a
 {

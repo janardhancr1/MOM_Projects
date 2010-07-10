@@ -25,5 +25,12 @@
     ?>
   </div>
 </div>
-
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'><?php echo $this->translate('Edit Poll');?>
+		<div>
+			<?php echo $this->translate('Edit the details of this poll below.');?>
+		</div>
+	</div>
+</div>
 <?php echo $this->form->render($this) ?>

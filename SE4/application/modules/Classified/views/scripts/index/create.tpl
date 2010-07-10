@@ -57,7 +57,15 @@
     ?>
   </div>
 </div>
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'><?php echo $this->translate('Post Classified Listing');?>
+		<div>
+			<?php echo $this->translate('Write your new listing below, then click "Post Listing" to publish the listing on your classified.');?>
+		</div>
+	</div>
 
+</div>
 <?php if ($this->current_count >= $this->quota):?>
   <div class="tip">
     <span>

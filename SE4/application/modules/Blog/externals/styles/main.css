@@ -4,6 +4,25 @@
 
 @include "~/application/modules/Core/externals/styles/constants.css";
 
+/* NEW */
+
+.mom_div_small {
+	font-family: Georgia, "Trebuchet MS", arial, serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #D60077;
+}
+.blogs_browse_item
+{
+	border: 1px solid #CCCCCC; 
+	margin-right: 5px;
+	margin-left: 5px;
+	background: #FFFFFF;
+	
+  
+}
+
+/* END NEW */
 
 
 /*
@@ -22,14 +41,6 @@ Styles the compose blog entry form.
   float: none;
 }
 
-.form-wrapper
-{
-	float:left;
-}
-
-
-
-
 /*
 BROWSE BLOGS
 Styles the browse blogs page and the
@@ -42,7 +53,7 @@ ul.blogs_browse
 ul.blogs_browse > li
 {
   clear: both;
-  padding: 0px 0px 15px 0px;
+  padding: 5px 0px 15px 5px;
 }
 ul.blogs_browse > li + li
 {
@@ -51,7 +62,7 @@ ul.blogs_browse > li + li
 }
 ul.blogs_browse > li .blogs_browse_photo
 {
-  float: left;
+  float: right;
   overflow: hidden;
   margin-right: 8px;
 }

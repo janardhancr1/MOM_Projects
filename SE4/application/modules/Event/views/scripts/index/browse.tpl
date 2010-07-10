@@ -27,23 +27,20 @@
 </div>
 
 
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'><?php echo $this->translate('Events');?>
+		<div class='page_header_small'>
+			<?php echo $this->translate('Create, share and view events from moms everywhere!');?>
+		</div>
+	</div>
+	<br>
+	 <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
+</div>
+
 <?php if( count($this->paginator) > 0 ): ?>
 
-  <div class='layout_right'>
-    <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
-    <?php if ($this->viewer()->getIdentity()):?>
-      <div class="quicklinks">
-        <ul>
-          <li>
-            <?php echo $this->htmlLink(array('route' => 'event_general', 'action' => 'create'), $this->translate('Create New Event'), array(
-              'class' => 'buttonlink icon_event_new'
-            ));
-            ?>
-          </li>
-        </ul>
-      </div>
-    <?php endif;?>
-  </div>
+  
 
   <div class='layout_middle'>
     <ul class='events_browse'>

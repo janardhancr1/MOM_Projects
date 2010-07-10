@@ -29,21 +29,12 @@
 
 <div class='search_box'>
 <div class='page_header'>
-	<img src='./application/modules/Blog/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('Photos');?>
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('Photos');?>
 	<div class="page_header_small">
 		<?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?>
 	</div>
 </div>
   <?php echo $this->search_form->render($this) ?>
-  <div class="quicklinks">
-    <ul>
-      <li>
-        <?php echo $this->htmlLink(array('route' => 'album_general', 'action' => 'upload'), $this->translate('Add New Photos'), array(
-          'class' => 'buttonlink icon_photos_new'
-        )) ?>
-      </li>
-    </ul>
-  </div>
   <script type="text/javascript">
   //<![CDATA[
     $('sort').addEvent('change', function(){

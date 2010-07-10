@@ -25,21 +25,17 @@
     ?>
   </div>
 </div>
-
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'><?php echo $this->translate('Polls');?>
+		<div class='page_header_small'>
+			<?php echo $this->translate('Create a Poll or Tell Others What you Think');?>
+		</div>
+	</div>
+	 <?php echo $this->search_form->render($this) ?>
+</div>
 <div class='layout_right'>
-  <?php echo $this->search_form->render($this) ?>
-
-  <?php if($this->can_create):?>
-    <div class="quicklinks">
-      <ul>
-        <li>
-          <a href='<?php echo $this->url(array(), 'poll_create') ?>' class='buttonlink icon_poll_new'>
-            <?php echo $this->translate('Create New Poll') ?>
-          </a>
-        </li>
-      </ul>
-    </div>
-  <?php endif;?>
+  
 
   <script type="text/javascript">
   //<![CDATA[

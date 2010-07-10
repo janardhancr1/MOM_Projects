@@ -21,8 +21,8 @@ class Blog_Form_Edit extends Blog_Form_Create
   public function init()
   {
     parent::init();
-    $this->setTitle('Edit Blog Entry')
-      ->setDescription('Edit your entry below, then click "Post Entry" to publish the entry on your blog.');
+    $this->setTitle('')
+      ->setDescription('');
     $this->submit->setLabel('Save Changes');
   }
 }

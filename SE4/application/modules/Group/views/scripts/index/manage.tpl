@@ -26,21 +26,16 @@
   </div>
 </div>
 
-<div class='layout_right'>
-  <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
-  <?php if( $this->viewer()->getIdentity() ): ?>
-  <br />
-    <div class="quicklinks">
-      <ul>
-        <li>
-          <?php echo $this->htmlLink(array('route' => 'group_general', 'action' => 'create'), $this->translate('Create New Group'), array(
-            'class' => 'buttonlink icon_group_new'
-          )) ?>
-        </li>
-      </ul>
-    </div>
-  <?php endif; ?>
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'><?php echo $this->translate('My Groups');?>
+		<div class='mom_div_small'>
+			<?php echo $this->translate(' Find a group to join or create a new one and invite your friends. ');?>
+		</div>
+	</div>
+	 <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
 </div>
+
 
   <div class='layout_middle'>
     <?php if( count($this->paginator) > 0 ): ?>

@@ -144,7 +144,6 @@ GENERAL LAYOUT
 
 .layout_middle
 {
-  overflow: hidden;
   padding: 0px 5px 0px 5px;
   vertical-align: top;
 }
@@ -614,9 +613,9 @@ Examples: Signup form, member settings form, etc.
 .global_form > div > div
 {
   +rounded(8px);
-  border: 5px solid $theme_form_border_color;
+  border: 1px solid $theme_form_border_color;
   padding: 12px 12px 12px 12px;
-  background-color: $theme_form_background_color;
+  background-color: #FFFFFF;
 }
 /* form headline */
 .global_form div.form-wrapper-heading
@@ -782,16 +781,22 @@ content areas.
   border: 1px solid #BBBBBB; 
   margin: 10px 0px 10px 0px; 
   font-weight: bold;
+  width: 700px;
+  height: 150px;
 }
 .global_form_box .form-wrapper + .form-wrapper
 {
-  margin-top: 5px;
+  
+  float: left;	
+   padding: 7px 10px 7px 10px; 
+   margin: 10px 0px 10px 0px; 
+   font-weight: bold;
 }
 .global_form_box .form-label
 {
   padding: 0px;
   width: auto;
-  float: none;
+  float: left;
   clear: both;
   margin: 0px;
 }
@@ -805,6 +810,7 @@ content areas.
 .global_form_box .form-element
 {
   overflow: hidden;
+  clear: both;
 }
 
 /* NEW */
@@ -844,9 +850,17 @@ are usually found on browse pages.
 */
 form.filters
 {
-  +foreground;
+  /*+foreground;
   +rounded;
-  padding: 10px;
+  padding: 10px;*/
+  
+   padding: 7px 10px 7px 10px; 
+  background: #F2F2F2; 
+  border: 1px solid #BBBBBB; 
+  margin: 10px 0px 10px 0px; 
+  font-weight: bold;
+  width: 700px;
+  height: 150px;
 }
 form.filters div.form-label
 {
@@ -865,10 +879,14 @@ form.filters dt
 {
   font-size: .8em;
   padding-bottom: 2px;
+  float: left;
+  padding: 40px 5px 0px 0px;
 }
 form.filters dd
 {
   margin-bottom: 8px;
+  float: left;
+  padding: 36px 5px 0px 0px;
 }
 
 

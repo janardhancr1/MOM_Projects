@@ -25,8 +25,18 @@
     ?>
   </div>
 </div>
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'><?php echo $this->translate('Create New Poll');?>
+		<div>
+			<?php echo $this->translate('Give your new poll a title and description. If you are asking a question with this poll, you should put it in your title.
+Allowed HTML Tags: a,b,br,font,i,img');?>
+		</div>
+	</div>
+</div>
 
 <div class='global_form'>
+	<br>
   <?php echo $this->form->render($this) ?>
   <a href="javascript: void(0);" onclick="return addAnotherOption();" id="addOptionLink"><?php echo $this->translate("Add another option") ?></a>
   <script type="text/javascript">

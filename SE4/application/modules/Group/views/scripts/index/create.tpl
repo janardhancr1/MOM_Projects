@@ -25,5 +25,14 @@
     ?>
   </div>
 </div>
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Group/externals/images/group_add48.gif' border='0' class='icon_big'><?php echo $this->translate('Create New Group');?>
+		<div>
+			<?php echo $this->translate('Please give us some information about your new group. After you have created your group, you can begin inviting other users to become members. ');?>
+		</div>
+	</div>
+	<br>
+	<?php echo $this->form->render($this) ?>
+</div>
 
-<?php echo $this->form->render($this) ?>

@@ -35,8 +35,8 @@ class Classified_Form_Edit extends Classified_Form_Create
   public function init()
   {
     parent::init();
-    $this->setTitle('Edit Classified Listing')
-         ->setDescription('Edit your listing below, then click \"Save Changes\" to save your listing.');
+    //$this->setTitle('Edit Classified Listing')
+        // ->setDescription('Edit your listing below, then click \"Save Changes\" to save your listing.');
     $this->addElement('Radio', 'cover', array(
       'label' => 'Album Cover',
     ));

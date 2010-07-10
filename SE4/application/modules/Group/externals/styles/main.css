@@ -2,7 +2,12 @@
 /* $Id: main.css 6403 2010-06-17 00:29:13Z alex $ */
 @include "~/application/modules/Core/externals/styles/constants.css";
 
-
+.mom_div_small {
+	font-family: Georgia, "Trebuchet MS", arial, serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #D60077;
+}
 /*
 FEED ITEMS
 Styles items with group attachments in the feed.
@@ -83,6 +88,7 @@ ul.groups_browse .groups_options
   overflow: hidden;
   width: 120px;
   padding-left: 15px;
+  padding-right: 250px;
 }
 ul.groups_browse .groups_options a
 {

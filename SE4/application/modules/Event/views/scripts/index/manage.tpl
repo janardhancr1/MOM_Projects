@@ -27,19 +27,18 @@
 </div>
 
 <?php if( count($this->paginator) > 0 ): ?>
-
-  <div class='layout_right'>
-    <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
-    <br />
-    <div class="quicklinks">
-      <ul>
-        <li>
-          <?php echo $this->htmlLink(array('route' => 'event_general', 'action' => 'create'), $this->translate('Create New Event'), array(
-            'class' => 'buttonlink icon_event_create'
-          )) ?>
-        </li>
-      </ul>
-    </div>
+	
+	<div class='search_box'>
+		<div class='page_header'>
+			<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'><?php echo $this->translate('My Events');?>
+			<div>
+				<?php echo $this->translate('Below are all of the events that you have created or been invited to.');?>
+				
+			</div>
+		</div>
+		<br>
+  <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
+    
   </div>
 
   <div class='layout_middle'>

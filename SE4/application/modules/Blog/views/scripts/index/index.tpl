@@ -17,6 +17,20 @@
     $('filter_form').submit();
   }
 </script>
+<div class="headline">
+  <h2>
+    <?php echo $this->translate('Blogs');?>
+  </h2>
+  <div class="tabs">
+    <?php
+      // Render the menu
+      echo $this->navigation()
+        ->menu()
+        ->setContainer($this->navigation)
+        ->render();
+    ?>
+  </div>
+</div>
 
 <div class='search_box'>
 <div class='page_header'>
@@ -26,16 +40,7 @@
 	</div>
 </div>
   <?php echo $this->form->render($this) ?>
-  
-  <?php if( $this->can_create): ?>
-  <div class="quicklinks">
-    <ul>
-      <li>
-        <a href='<?php echo $this->url(array(), 'blog_create', true) ?>' class='buttonlink icon_blog_new'><?php echo $this->translate('Write New Entry');?></a>
-      </li>
-    </ul>
-  </div>
-  <?php endif; ?>
+
 </div>
 
 <div class='layout_middle'>

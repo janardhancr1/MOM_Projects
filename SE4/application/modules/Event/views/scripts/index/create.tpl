@@ -46,6 +46,14 @@ $this->headLink()
     ?>
   </div>
 </div>
-
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'><?php echo $this->translate('Create New Event');?>
+		<div>
+			<?php echo $this->translate('Please give us some information about your new event. After you have created your event, you can begin inviting other users to attend.');?>
+		</div>
+	</div>
+	
+</div>
 <?php
 echo $this->form->render();

@@ -25,6 +25,15 @@
     ?>
   </div>
 </div>
+
+<div class='search_box'>
+	<div class='page_header'>
+		<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'><?php echo $this->translate('My Polls');?>
+		<div class='mom_div_small'>
+			<?php echo $this->translate(' Create a Poll or Tell Others What you Think  ');?>
+		</div>
+	</div>
+</div>
 <div class='layout_middle'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
