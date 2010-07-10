@@ -27,13 +27,14 @@
   </div>
 </div>
 
-<div class='search_box'>
+<div class='layout_middle'>
 <div class='page_header'>
 	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('Photos');?>
 	<div class="page_header_small">
 		<?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?>
 	</div>
 </div>
+<div class='search_box'>
   <?php echo $this->search_form->render($this) ?>
   <script type="text/javascript">
   //<![CDATA[
@@ -46,8 +47,6 @@
   //]]>
   </script>
 </div>
-
-<div class='layout_middle'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
 
     <ul class="thumbs">

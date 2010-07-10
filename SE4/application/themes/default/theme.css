@@ -127,7 +127,7 @@ GENERAL LAYOUT
 */
 .generic_layout_container h3
 {
-  border-bottom:1px solid #DDDDDD;
+  border-bottom:1px solid #D60077;
   color:#D60077;
   padding: 5px;
   margin-bottom: 6px;
@@ -144,6 +144,7 @@ GENERAL LAYOUT
 
 .layout_middle
 {
+  overflow:hidden;
   padding: 0px 5px 0px 5px;
   vertical-align: top;
 }
@@ -324,12 +325,12 @@ Shows the mini menu and search widget
 }
 .layout_core_menu_mini > div > ul
 {
-  +rounded(4px, true, true, false, false);
+  /*+rounded(4px, true, true, false, false);
+  background: $theme_topbar_minimenu_background_color;
+  border: $theme_topbar_minimenu_border;*/
   float: right;
   overflow: hidden;
-  background: $theme_topbar_minimenu_background_color;
   padding: .5em;
-  border: $theme_topbar_minimenu_border;
   border-top: none;
 }
 .layout_core_menu_mini > div > ul > li
@@ -343,9 +344,10 @@ Shows the mini menu and search widget
 }
 .layout_core_menu_mini #core_menu_mini_menu
 {
-  padding: 0px 2px 5px 10px;
+  margin: 5px 0px 5px 0px;
   font-size: $theme_topbar_minimenu_link_size;
   overflow: hidden;
+  background-color: #D60077;
 }
 .layout_core_menu_mini #core_menu_mini_menu > ul > li > a
 {
@@ -772,31 +774,35 @@ content areas.
 */
 .global_form_box
 {
-  /*+foreground;
+  +foreground;
   +rounded;
   padding: 10px;
-  width: auto;*/
-  padding: 7px 10px 7px 10px; 
-  background: #F2F2F2; 
+  width: auto;
+  padding: 10px; 
+  /*background: #F2F2F2; 
   border: 1px solid #BBBBBB; 
-  margin: 10px 0px 10px 0px; 
   font-weight: bold;
-  width: 700px;
-  height: 150px;
+  width: auto;
+  height: 150px;*/
 }
+
+/*.form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}*/
 .global_form_box .form-wrapper + .form-wrapper
 {
-  
-  float: left;	
-   padding: 7px 10px 7px 10px; 
-   margin: 10px 0px 10px 0px; 
-   font-weight: bold;
+  margin-top:5px;
+  /*margin-left:10px;
+  float:left;*/
 }
 .global_form_box .form-label
 {
-  padding: 0px;
+  padding: 3px;
   width: auto;
-  float: left;
+  /*float: left;*/
   clear: both;
   margin: 0px;
 }
@@ -809,6 +815,7 @@ content areas.
 }
 .global_form_box .form-element
 {
+  /*float: left;*/
   overflow: hidden;
   clear: both;
 }
@@ -817,10 +824,11 @@ content areas.
 
 div.page_header {
 	font-size: 24px;
+	float:left;
 	color: #D60077;
-	margin-bottom: 0px;
-	padding-left: 2px;
+	padding-bottom: 5px;
 	font-family: Georgia, arial, verdana, serif;
+	width:696px;
 }
 div.page_header_small {
 	font-size: 18px;
@@ -835,9 +843,9 @@ div.page_header_small {
 	margin-bottom: 5px;
 }
 .search_box{
-	float: left; 
-	width: 685px; 
-	padding: 0px 5px 5px 5px;
+	/*float: left;*/ 
+	width: 690px; 
+	padding-bottom: 5px;
 }
 /* NEW END */
 
@@ -1184,6 +1192,7 @@ Used at the top of most browse pages. Often contains button-style tabs.
 }
 .tabs > ul li.active > a:hover
 {
+  background-color: $theme_buttontabs_background_color;
   text-decoration: none;
 }
 

@@ -51,7 +51,7 @@ class Album_Form_Search extends Engine_Form
 		
 		// category field
 		$this->addElement('Select', 'category_id', array(
-		'label' => 'Category',
+		'label' => 'Category:',
 		'multiOptions' => $categories_prepared
 		));
 	}
