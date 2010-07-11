@@ -355,12 +355,12 @@ Shows the mini menu and search widget
   color: $theme_topbar_minimenu_link_color;
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .layout_core_menu_mini #core_menu_mini_menu > ul > li > a:hover
 {
-  +rounded(3px);
-  background: $theme_topbar_minimenu_link_hover_background_color;
+  /*+rounded(3px);
+  background: $theme_topbar_minimenu_link_hover_background_color;*/
   color: $theme_topbar_minimenu_link_hover_color;
   text-decoration: $theme_topbar_minimenu_link_hover_decoration;
 }
@@ -438,7 +438,7 @@ usually above content, not within a form.
   float: left;
   margin-bottom: 15px;
   background-image: url(~/application/modules/Core/externals/images/tip.png);
-  border: 1px solid #e4dfc6;
+  border: 1px solid #D60077;
 }
 
 
@@ -1192,7 +1192,7 @@ Used at the top of most browse pages. Often contains button-style tabs.
 }
 .tabs > ul li.active > a:hover
 {
-  background-color: $theme_buttontabs_background_color;
+  background-color: $theme_buttontabs_background_color_active;
   text-decoration: none;
 }
 
@@ -1428,33 +1428,33 @@ as an alternative to regular input select boxes in some places.
   color: $theme_topbar_minimenu_link_color;
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .updates_pulldown > a
 {
   display: block;
-  +rounded(3px);
+  /*+rounded(3px);*/
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+   /*text-transform: uppercase;*/
   outline: none;
 }
 .updates_pulldown > a.new_updates
 {
-  +rounded(3px);
+  /*+rounded(3px);*/
   background: #f96262;
   color: #fff;
 }
 .updates_pulldown > a.new_updates:hover
 {
-  +rounded(3px);
+  /*+rounded(3px);*/
   background: #e45656;
   color: #fff;
 }
 .updates_pulldown > a:hover
 {
-  +rounded(3px);
-  background: #D7E7F0;
+  /*+rounded(3px);
+  background: #D7E7F0;*/
   color: $theme_topbar_minimenu_link_hover_color;
   text-decoration: $theme_topbar_minimenu_link_hover_decoration;
 }

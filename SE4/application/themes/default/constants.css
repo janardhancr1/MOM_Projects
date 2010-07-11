@@ -21,7 +21,7 @@ DEFAULT STYLES FOR THIS THEME
   */
   theme_topbar_width: 1000px;
   theme_topbar_minimenu_width: 1000px;
-  theme_topbar_logo_width: 262px;
+  theme_topbar_logo_width: 267px;
   theme_topbar_menu_width: 1000px;
   theme_footer_width: 980px;
   theme_content_width: 1000px;
@@ -48,9 +48,9 @@ DEFAULT STYLES FOR THIS THEME
   theme_topbar_menu_border: 1px solid #89a4b3;
   theme_topbar_minimenu_background_color: #fff;
   theme_topbar_minimenu_border: 2px solid #d7e7f0;
-  theme_topbar_minimenu_link_size: .7em;
+  theme_topbar_minimenu_link_size: .8em;
   theme_topbar_minimenu_link_color: #fff;
-  theme_topbar_minimenu_link_hover_color: #777;
+  theme_topbar_minimenu_link_hover_color: #BEB800;
   theme_topbar_minimenu_link_hover_decoration: none;
   theme_topbar_minimenu_link_hover_background_color: #BEB800;
   theme_topbar_border: 0px solid transparent;
@@ -112,7 +112,7 @@ DEFAULT STYLES FOR THIS THEME
   FORMS
   These colors are applied to most forms throughout the layout.
   */
-  theme_form_border_color: #ddecf3;
+  theme_form_border_color: #D60077;
   theme_form_background_color: #f4f9fb;
   theme_form_label_font_color: #777;
 
@@ -121,11 +121,11 @@ DEFAULT STYLES FOR THIS THEME
   These colors are applied to the button-style tab menus which are often shown
   on browse pages.
   */
-  theme_buttontabs_font_color: #D60077;
+  theme_buttontabs_font_color: #fff;
   theme_buttontabs_font_color_hover: #fff;
   theme_buttontabs_font_color_active: #fff;
   theme_buttontabs_background_color: #BEB800;
-  theme_buttontabs_background_color_hover: #D60077;
+  theme_buttontabs_background_color_hover: #BEB800;
   theme_buttontabs_background_color_active: #D60077;
 
   /*
