@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: index.tpl 6523 2010-06-23 01:55:52Z shaun $
@@ -30,7 +30,7 @@
   }
 </script>
 
-<h2><?php echo $this->translate("Polls Plugin") ?></h2>
+<h2><?php echo $this->translate("Recipes Plugin") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -43,7 +43,7 @@
 <?php endif; ?>
 
 <p>
-  <?php echo $this->translate("POLL_VIEWS_SCRIPTS_ADMINMANAGE_INDEX_DESCRIPTION") ?>
+  <?php echo $this->translate("RECIPE_VIEWS_SCRIPTS_ADMINMANAGE_INDEX_DESCRIPTION") ?>
 </p>
 
 <br />
@@ -64,19 +64,19 @@
     <tbody>
       <?php foreach ($this->paginator as $item): ?>
         <tr>
-          <td><input type='checkbox' class='checkbox' value="<?php echo $item->poll_id ?>"/></td>
-          <td><?php echo $item->poll_id ?></td>
+          <td><input type='checkbox' class='checkbox' value="<?php echo $item->recipe_id ?>"/></td>
+          <td><?php echo $item->recipe_id ?></td>
           <td><?php echo $item->title ?></td>
           <td><?php echo $item->getOwner()->getTitle() ?></td>
           <td><?php echo $this->locale()->toNumber($item->views) ?></td>
           <td><?php echo $item->voteCount() ?></td>
           <td><?php echo $item->creation_date ?></td>
           <td>
-            <a href="<?php echo $this->url(array('user_id' => $item->getOwner()->user_id, 'poll_id' => $item->poll_id), 'poll_view') ?>">
+            <a href="<?php echo $this->url(array('user_id' => $item->getOwner()->user_id, 'recipe_id' => $item->recipe_id), 'recipe_view') ?>">
               <?php echo $this->translate("view") ?>
             </a>
             |
-            <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'poll', 'controller' => 'admin-manage', 'action' => 'delete', 'id' => $item->poll_id), $this->translate('delete'), array(
+            <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'recipe', 'controller' => 'admin-manage', 'action' => 'delete', 'id' => $item->recipe_id), $this->translate('delete'), array(
               'class' => 'smoothbox',
             )) ?>
           </td>
@@ -106,7 +106,7 @@
 <?php else: ?>
   <div class="tip">
     <span>
-      <?php echo $this->translate("There are no polls created yet.") ?>
+      <?php echo $this->translate("There are no recipes created yet.") ?>
     </span>
   </div>
 <?php endif; ?>
