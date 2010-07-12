@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Vote.php 5849 2010-05-17 23:46:00Z steve $
@@ -12,16 +12,16 @@
 
 /**
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_Form_Index_Vote extends Engine_Form
+class Recipe_Form_Index_Vote extends Engine_Form
 {
   public function init()
   {
     $this->addElement('text', 'title', array(
-        'label' => 'Poll Title',
+        'label' => 'Recipe Title',
         'required' => true,
         'filters' => array(
           new Engine_Filter_Censor(),
@@ -41,44 +41,44 @@ class Poll_Form_Index_Vote extends Engine_Form
           new Engine_Filter_Censor(),
         ),
       ));
-    $this->addElement('submit', 'Create Poll', array(
-        'value' => 'Create Poll',
+    $this->addElement('submit', 'Create Recipe', array(
+        'value' => 'Create Recipe',
       ));
   }
 
   public function save()
   {
-    $db_polls       = Engine_Api::_()->poll()->api()->getDbtable('polls', 'poll');
-    $db_pollOptions = Engine_Api::_()->poll()->api()->getDbtable('pollOptions', 'poll');
-    $db_pollVotes   = Engine_Api::_()->poll()->api()->getDbtable('pollVotes', 'poll');
+    $db_recipes       = Engine_Api::_()->recipe()->api()->getDbtable('recipes', 'recipe');
+    $db_recipeOptions = Engine_Api::_()->recipe()->api()->getDbtable('recipeOptions', 'recipe');
+    $db_recipeVotes   = Engine_Api::_()->recipe()->api()->getDbtable('recipeVotes', 'recipe');
 
-    $db_polls->getAdapter()->beginTransaction();
-    $db_pollOptions->getAdapter()->beginTransaction();
+    $db_recipes->getAdapter()->beginTransaction();
+    $db_recipeOptions->getAdapter()->beginTransaction();
 
     try {
-      $poll = $db_polls->createRow();
-      $poll->user_id       = Engine_Api::_()->user()->getViewer()->getIdentity();
-      $poll->is_closed     = 0;
-      $poll->title         = $this->getElement('title')->getValue();
-      $poll->description   = $this->getElement('description')->getValue();
-      $poll->creation_date = date('Y-m-d H:i:s');
-      $poll->save();
+      $recipe = $db_recipes->createRow();
+      $recipe->user_id       = Engine_Api::_()->user()->getViewer()->getIdentity();
+      $recipe->is_closed     = 0;
+      $recipe->title         = $this->getElement('title')->getValue();
+      $recipe->description   = $this->getElement('description')->getValue();
+      $recipe->creation_date = date('Y-m-d H:i:s');
+      $recipe->save();
 
       foreach ($this->getElement('options')->getValue() as $option) {
         if (trim($option) != '') {
-          $row = $db_pollOptions->createRow();
-          $row->poll_id      = $poll->poll_id;
-          $row->poll_option  = $option;
+          $row = $db_recipeOptions->createRow();
+          $row->recipe_id      = $recipe->recipe_id;
+          $row->recipe_option  = $option;
           $row->save();
         }
       }
 
-      $db_polls->getAdapter()->rollBack();
-      $db_pollOptions->getAdapter()->rollBack();
+      $db_recipes->getAdapter()->rollBack();
+      $db_recipeOptions->getAdapter()->rollBack();
       #$db->commit();
     } catch (Zend_Mail_Transport_Exception $e) {
-      $db_polls->getAdapter()->rollBack();
-      $db_pollOptions->getAdapter()->rollBack();
+      $db_recipes->getAdapter()->rollBack();
+      $db_recipeOptions->getAdapter()->rollBack();
       throw $e;
     }
   }
