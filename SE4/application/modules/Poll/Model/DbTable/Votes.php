@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Votes.php 3028 2010-01-27 09:47:12Z john $
@@ -12,11 +12,11 @@
 
 /**
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_Model_DbTable_Votes extends Engine_Db_Table
+class Recipe_Model_DbTable_Votes extends Engine_Db_Table
 {
   
 }
