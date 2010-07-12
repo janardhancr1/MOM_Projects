@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_Form_Admin_Global extends Engine_Form
+class Recipe_Form_Admin_Global extends Engine_Form
 {
   public function init()
   {
@@ -25,26 +25,26 @@ class Poll_Form_Admin_Global extends Engine_Form
       ->setDescription('These settings affect all members in your community.');
 
 
-    $this->addElement('Radio', 'poll_public', array(
+    $this->addElement('Radio', 'recipe_public', array(
       'label' => 'Public Permissions',
-      'description' => 'POLL_FORM_ADMIN_GLOBAL_POLLPUBLIC_DESCRIPTION',
+      'description' => 'RECIPE_FORM_ADMIN_GLOBAL_RECIPEPUBLIC_DESCRIPTION',
       'multiOptions' => array(
-        1 => 'Yes, the public can view polls unless they are made private.',
-        0 => 'No, the public cannot view polls.'
+        1 => 'Yes, the public can view recipes unless they are made private.',
+        0 => 'No, the public cannot view recipes.'
       ),
       'value' => 1,
     ));
 
     $this->addElement('Text', 'perPage', array(
-      'label' => 'Polls Per Page',
-      'description' => 'How many polls will be shown per page? (Enter a number between 1 and 999)',
-      'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.perPage', 10),
+      'label' => 'Recipes Per Page',
+      'description' => 'How many recipes will be shown per page? (Enter a number between 1 and 999)',
+      'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10),
     ));
 
     $this->addElement('Text', 'maxOptions', array(
       'label' => 'Maximum Options',
-      'description' => 'How many possible poll answers do you want to permit?',
-      'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.maxOptions', 15),
+      'description' => 'How many possible recipe answers do you want to permit?',
+      'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.maxOptions', 15),
     ));
 
     $this->addElement('Radio', 'canChangeVote', array(
@@ -54,7 +54,7 @@ class Poll_Form_Admin_Global extends Engine_Form
         1 => 'Yes, members can change their vote.',
         0 => 'No, members cannot change their vote.',
       ),
-      'value' => (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.canChangeVote', false),
+      'value' => (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false),
     ));
 
 
@@ -71,19 +71,19 @@ class Poll_Form_Admin_Global extends Engine_Form
     $values   = $this->getValues();
     $settings = Engine_Api::_()->getApi('settings', 'core');
 
-    $settings->poll_canChangeVote = (bool) $values['canChangeVote'];
+    $settings->recipe_canChangeVote = (bool) $values['canChangeVote'];
 
     if (!is_numeric($values['perPage'])
             || 0 >= $values['perPage']
             || 999 < $values['perPage'])
       $values['perPage'] = 10;
-    $settings->poll_perPage = $values['perPage'];
+    $settings->recipe_perPage = $values['perPage'];
 
     if (!is_numeric($values['maxOptions'])
             || 0 >= $values['maxOptions']
             || 999 < $values['maxOptions'])
       $values['maxOptions'] = 15;
-    $settings->poll_maxOptions = $values['maxOptions'];
+    $settings->recipe_maxOptions = $values['maxOptions'];
     
   }
 }
