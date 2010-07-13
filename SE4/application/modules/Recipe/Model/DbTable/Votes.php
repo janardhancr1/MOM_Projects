@@ -6,7 +6,7 @@
  * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Bootstrap.php 4356 2010-03-15 21:50:40Z john $
+ * @version    $Id: Votes.php 3028 2010-01-27 09:47:12Z john $
  * @author     Steve
  */
 
@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_Bootstrap extends Engine_Application_Bootstrap_Abstract
+class Poll_Model_DbTable_Votes extends Engine_Db_Table
 {
   
 }
