@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: AdminSettingsController.php 6532 2010-06-23 22:17:37Z shaun $
@@ -12,18 +12,18 @@
 
 /**
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_AdminSettingsController extends Core_Controller_Action_Admin
+class Recipe_AdminSettingsController extends Core_Controller_Action_Admin
 {
   public function indexAction()
   {
     $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
-      ->getNavigation('poll_admin_main', array(), 'poll_admin_main_settings');
+      ->getNavigation('recipe_admin_main', array(), 'recipe_admin_main_settings');
     
-    $this->view->form = new Poll_Form_Admin_Global();
+    $this->view->form = new Recipe_Form_Admin_Global();
     if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
       $db = Engine_Db_Table::getDefaultAdapter();
       $db->beginTransaction();
@@ -41,7 +41,7 @@ class Poll_AdminSettingsController extends Core_Controller_Action_Admin
   {
     // Make navigation
     $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
-      ->getNavigation('poll_admin_main', array(), 'poll_admin_main_level');
+      ->getNavigation('recipe_admin_main', array(), 'recipe_admin_main_level');
 
     // Get level id
     if( null !== ($id = $this->_getParam('id')) ) {
@@ -57,14 +57,14 @@ class Poll_AdminSettingsController extends Core_Controller_Action_Admin
     $id = $level->level_id;
 
     // Make form
-    $this->view->form = $form = new Poll_Form_Admin_Level();
+    $this->view->form = $form = new Recipe_Form_Admin_Level();
     $form->level_id->setValue($id);
 
     $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
 
     // Check post
     if( !$this->getRequest()->isPost() ) {
-      $form->populate($permissionsTable->getAllowed('poll', $id, array_keys($form->getValues())));
+      $form->populate($permissionsTable->getAllowed('recipe', $id, array_keys($form->getValues())));
       return;
     }
 
@@ -83,7 +83,7 @@ class Poll_AdminSettingsController extends Core_Controller_Action_Admin
     try
     {
       // Set permissions
-      $permissionsTable->setAllowed('poll', $id, $values);
+      $permissionsTable->setAllowed('recipe', $id, $values);
 
       // Commit
       $db->commit();
@@ -101,7 +101,7 @@ class Poll_AdminSettingsController extends Core_Controller_Action_Admin
   public function makepublicAction()
   {
     return;
-    $table = $this->_helper->api()->getDbtable('polls', 'poll');
+    $table = $this->_helper->api()->getDbtable('recipes', 'recipe');
     $auth  = Engine_Api::_()->authorization()->context;
     foreach( $table->fetchAll($table->select()) as $item ) {
       $auth->setAllowed($item, 'everyone',   'view', 1);

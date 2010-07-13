@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: browse.tpl 6398 2010-06-16 23:33:03Z steve $
@@ -13,7 +13,7 @@
 
 <div class="headline">
   <h2>
-    <?php echo $this->translate('Polls');?>
+    <?php echo $this->translate('Recipes');?>
   </h2>
   <div class="tabs">
     <?php
@@ -28,13 +28,12 @@
 
 <div class='layout_right'>
   <?php echo $this->search_form->render($this) ?>
-
   <?php if($this->can_create):?>
     <div class="quicklinks">
       <ul>
         <li>
-          <a href='<?php echo $this->url(array(), 'poll_create') ?>' class='buttonlink icon_poll_new'>
-            <?php echo $this->translate('Create New Poll') ?>
+          <a href='<?php echo $this->url(array(), 'recipe_create') ?>' class='buttonlink icon_poll_new'>
+            <?php echo $this->translate('Create New Recipe') ?>
           </a>
         </li>
       </ul>
@@ -43,7 +42,7 @@
 
   <script type="text/javascript">
   //<![CDATA[
-    $('browse_polls_by').addEvent('change', function(){
+    $('browse_recipes_by').addEvent('change', function(){
       $(this).getParent('form').submit();
     });
   //]]>
@@ -53,42 +52,39 @@
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
-        <?php echo $this->translate('There are no polls yet.') ?>
+        <?php echo $this->translate('There are no recipes yet.') ?>
         <?php if ($this->can_create): ?>
-        <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'poll_create').'">', '</a>') ?>
+        <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'recipe_create').'">', '</a>') ?>
         <?php endif; ?>
       </span>
     </div>
-  <?php else: // $this->polls is NOT empty ?>
-    <ul class="polls_browse">
-      <?php foreach ($this->paginator as $poll): ?>
-      <li id="poll-item-<?php echo $poll->poll_id ?>">
+  <?php else: // $this->recipes is NOT empty ?>
+    <ul class="recipes_browse">
+      <?php foreach ($this->paginator as $recipe): ?>
+      <li id="recipe-item-<?php echo $recipe->recipe_id ?>">
         <?php echo $this->htmlLink(
-                      $poll->getHref(),
-                      $this->itemPhoto($poll->getOwner(), 'thumb.icon', $poll->getOwner()->username),
-                      array('class' => 'polls_browse_photo')
+                      $recipe->getHref(),
+                      $this->itemPhoto($recipe->getOwner(), 'thumb.icon', $recipe->getOwner()->username),
+                      array('class' => 'recipes_browse_photo')
         ) ?>
-        <div class="polls_browse_info">
+        <div class="recipes_browse_info">
           <h3>
-            <?php echo $this->htmlLink($poll->getHref(), $poll->getTitle()) ?>
+            <?php echo $this->htmlLink($recipe->getHref(), $recipe->recipe_name) ?>
           </h3>
-          <div class="polls_browse_info_date">
-            <?php echo $this->translate('Posted by %s', $this->htmlLink($poll->getOwner(), $poll->getOwner()->getTitle())) ?>
-            <?php echo $this->timestamp($poll->creation_date) ?>
-            -
-            <?php echo $this->translate(array('%s vote', '%s votes', $poll->voteCount()), $this->locale()->toNumber($poll->voteCount())) ?>
-            -
-            <?php echo $this->translate(array('%s view', '%s views', $poll->views), $this->locale()->toNumber($poll->views)) ?>
+          <div class="recipes_browse_info_date">
+            <?php echo $this->translate('Posted by %s', $this->htmlLink($recipe->getOwner(), $recipe->getOwner()->getTitle())) ?>
+            <?php echo $this->timestamp($recipe->creation_date) ?>
+            <?php echo $this->translate(array('%s view', '%s views', $recipe->views), $this->locale()->toNumber($recipe->views)) ?>
           </div>
-          <?php if (!empty($poll->description)): ?>
-            <div class="polls_browse_info_desc">
-              <?php  echo $poll->description ?>
+          <?php if (!empty($recipe->recipe_description)): ?>
+            <div class="recipes_browse_info_desc">
+              <?php  echo $recipe->recipe_description ?>
             </div>
           <?php endif; ?>
         </div>
       </li>
       <?php endforeach; ?>
     </ul>
-  <?php endif; // $this->polls is NOT empty ?>
-  <?php echo $this->paginationControl($this->paginator, null, null, null, array('poll_search'=>$this->search)); ?>
+  <?php endif; // $this->recipes is NOT empty ?>
+  <?php echo $this->paginationControl($this->paginator, null, null, null, array('recipe_search'=>$this->search)); ?>
 </div>

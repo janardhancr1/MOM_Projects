@@ -3,20 +3,20 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Poll.php 6585 2010-06-25 02:17:06Z steve $
+ * @version    $Id: Recipe.php 6585 2010-06-25 02:17:06Z steve $
  * @author     Steve
  */
 
 /**
  * @category   Application_Extensions
- * @package    Poll
+ * @package    Recipe
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Poll_Model_Poll extends Core_Model_Item_Abstract
+class Recipe_Model_Recipe extends Core_Model_Item_Abstract
 {
   protected $_parent_type = 'user';
 
@@ -35,10 +35,10 @@ class Poll_Model_Poll extends Core_Model_Item_Abstract
     $slug = trim(preg_replace('/-+/', '-', preg_replace('/[^a-z0-9-]+/i', '-', strtolower($this->getTitle()))), '-');
 
     $params = array_merge(array(
-      'route' => 'poll_view',
+      'route' => 'recipe_view',
       'reset' => true,
       'user_id' => $this->user_id,
-      'poll_id' => $this->poll_id,
+      'recipe_id' => $this->recipe_id,
       'slug' => $slug,
     ), $params);
     $route = $params['route'];
@@ -71,61 +71,61 @@ class Poll_Model_Poll extends Core_Model_Item_Abstract
 
   public function getOptions()
   {
-    return Engine_Api::_()->getDbtable('options', 'poll')->fetchAll(array(
-      'poll_id = ?' => $this->getIdentity(),
+    return Engine_Api::_()->getDbtable('options', 'recipe')->fetchAll(array(
+      'recipe_id = ?' => $this->getIdentity(),
     ));
   }
 
   public function viewerVoted()
   {
     $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
-    $row     = Engine_Api::_()->getDbtable('votes', 'poll')->fetchRow(array(
-      'poll_id = ?' => $this->getIdentity(),
+    $row     = Engine_Api::_()->getDbtable('votes', 'recipe')->fetchRow(array(
+      'recipe_id = ?' => $this->getIdentity(),
       'user_id = ?' => $user_id,
     ));
     return $row
-           ? $row->poll_option_id
+           ? $row->recipe_option_id
            : false;
   }
 
   public function voteCount()
   {
-    $table  = Engine_Api::_()->getDbtable('votes', 'poll');
+    $table  = Engine_Api::_()->getDbtable('votes', 'recipe');
     $select = $table->select()
                     ->setIntegrityCheck(false)
                     ->from($table->info('name'), 'COUNT(*) AS count')
-                    ->where('poll_id = ?', $this->getIdentity());
+                    ->where('recipe_id = ?', $this->getIdentity());
     return $table->fetchRow($select)->count;
   }
 
   public function vote($option_id)
   {
     $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
-    $table   = Engine_Api::_()->getDbTable('votes', 'poll');
+    $table   = Engine_Api::_()->getDbTable('votes', 'recipe');
     $row     = $table->fetchRow(array(
-      'poll_id = ?' => $this->getIdentity(),
+      'recipe_id = ?' => $this->getIdentity(),
       'user_id = ?' => $user_id,
     ));
     if (!$row) {
       $row   = $table->createRow(array(
-        'poll_id' => $this->getIdentity(),
+        'recipe_id' => $this->getIdentity(),
         'user_id' => $user_id,
         'creation_date' => date("Y-m-d H:i:s"),
       ));
     }
-    $row->poll_option_id = $option_id;
+    $row->recipe_option_id = $option_id;
     $row->modified_date  = date("Y-m-d H:i:s");
     $row->save();
 
-    // We also have to update the poll_options table
-    // To avoid poll values getting out of sync, update all poll option counts
+    // We also have to update the recipe_options table
+    // To avoid recipe values getting out of sync, update all recipe option counts
     foreach ($this->getOptions() as $option) {
-      // $table is still set to poll_votes
+      // $table is still set to recipe_votes
       $select = $table->select()
                       ->setIntegrityCheck(false)
                       ->from($table->info('name'), 'COUNT(*) AS count')
-                      ->where('poll_id = ?', $this->getIdentity())
-                      ->where('poll_option_id = ?', $option->poll_option_id)
+                      ->where('recipe_id = ?', $this->getIdentity())
+                      ->where('recipe_option_id = ?', $option->recipe_option_id)
                       ->limit(1);
       $option->votes = $table->fetchRow($select)->count;
       $option->save();

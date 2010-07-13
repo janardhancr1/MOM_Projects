@@ -13,18 +13,18 @@ BROWSE POLLS
 These styles are used on the browse polls page
 and inside the polls profile tab.
 */
-ul.polls_browse > li
+ul.recipes_browse > li
 {
   clear: both;
   overflow: hidden;
   padding: 0px 0px 15px 0px;
 }
-ul.polls_browse > li + li
+ul.recipes_browse > li + li
 {
   border-top-width: 1px;
   padding-top: 15px;
 }
-ul.polls_browse > li > a
+ul.recipes_browse > li > a
 {
   display: block;
   float: left;
@@ -32,13 +32,13 @@ ul.polls_browse > li > a
   margin-right: 8px;
   font-weight: bold;
 }
-ul.polls_browse .polls_browse_options
+ul.recipes_browse .recipes_browse_options
 {
   float: right;
   width: 120px;
   padding-left: 15px;
 }
-ul.polls_browse .polls_browse_options a
+ul.recipes_browse .recipes_browse_options a
 {
   clear: both;
   margin: 3px 0px 0px 0px;
@@ -46,198 +46,63 @@ ul.polls_browse .polls_browse_options a
   padding-top: 1px;
   height: 16px;
 }
-ul.polls_browse .polls_browse_info
+ul.recipes_browse .recipes_browse_info
 {
   overflow: hidden;
 }
-ul.polls_browse .polls_browse_info_date
+ul.recipess_browse .recipes_browse_info_date
 {
   font-size: .8em;
   color: $theme_font_color_light;
 }
-ul.polls_browse .polls_browse_info_desc
+ul.recipes_browse .recipes_browse_info_desc
 {
   margin-top: 5px;
 }
-ul.polls_browse .polls_browse_photo > img
+ul.recipes_browse .recipes_browse_photo > img
 {
   display: block;
 }
 
-
-
 /*
-VIEW POLL
+VIEW Recipe
 These styles are used for viewing a single poll.
 */
-div.polls_view
+div.recipes_view
 {
   padding-top: 10px;
   border-top-width: 1px;
   margin-top: 10px;
 }
-div.polls_view .poll_desc
+div.recipe_view .recipe_desc
 {
   margin-bottom: 10px;
 }
-div.polls_view ul.poll_options
+div.recipe_view ul.recipe_options
 {
   max-width: 500px;
   clear: both;
 }
-div.polls_view ul.poll_options > li
+div.recipe_view ul.recipe_options > li
 {
   margin: 12px 0px 12px 0px;
   clear: both;
   overflow: hidden;
 }
-div.polls_view .poll_radio
-{
-  float: left;
-  width: 20px;
-  height: 18px;
-  overflow: hidden;
-}
-div.polls_view .poll_radio > input
-{
-  display: block;
-  float: left;
-  margin-left: 1px;
-}
-div.polls_view .poll_radio_loading
-{
-  float: left;
-  width: 20px;
-  height: 18px;
-  background-image: url(~/application/modules/Poll/externals/images/loading.gif);
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-div.polls_view .poll_radio_loading input
-{
-  display: none;
-}
-div.polls_view .poll_option
-{
-  margin-bottom: 3px;
-}
-div.polls_view .poll_answer
-{
-  +rounded;
-  width: 10px;
-  height: 15px;
-  font-size: 1px;
-  float: left;
-  overflow: hidden;
-}
-div.polls_view .poll_answer_total
-{
-  display: block;
-  height: 15px;
-  font-size: .7em;
-  width: 70px;
-  float: left;
-  padding-top: 2px;
-  padding-left: 5px;
-}
-div.polls_view .poll_stats
+div.recipes_view .recipe_stats
 {
   margin-top: 15px;
 }
-div.polls_view .poll_stats > a
+div.recipes_view .recipe_stats > a
 {
   font-weight: bold;
 }
-div.polls_view div.poll-answer-1
-{
-  background-color: #aaea4f;
-}
-div.polls_view div.poll-answer-2
-{
-  background-color: #ea4f4f;
-}
-div.polls_view div.poll-answer-3
-{
-  background-color: #4faaea;
-}
-div.polls_view div.poll-answer-4
-{
-  background-color: #eaaa4f;
-}
-div.polls_view div.poll-answer-5
-{
-  background-color: #4f5eea;
-}
-div.polls_view div.poll-answer-6
-{
-  background-color: #4feabc;
-}
-div.polls_view div.poll-answer-7
-{
-  background-color: #e54fea;
-}
-div.polls_view div.poll-answer-8
-{
-  background-color: #eae84f;
-}
-div.polls_view .comments
-{
-  margin-top: 10px;
-  border-top-width: 1px;
-  padding-top: 10px;
-}
-
-
-
-/*
-MANAGE POLLS
-These styles are used to list a member's
-polls on their polls management page.
-*/
-ul.polls_manage > li
-{
-  margin-bottom: 15px;
-  border-bottom-width: 1px;
-  padding-bottom: 15px;
-}
-ul.polls_manage > li > p + p
-{
-  margin-top: 10px;
-}
-ul.polls_manage > li > p > a
-{
-  margin-left: 15px;
-}
-
-
-/*
-CREATE POLL
-Stles the create poll form.
-*/
-#addOptionLink
-{
-  display: block;
-  margin-top: 3px;
-}
-
-
-
-
-
-/* ACTION TYPE ICONS */
-.activity_icon_comment_poll
-{
-  background-image: url(~/application/modules/Core/externals/images/types/post.png);
-}
-
-
-
 
 
 /* ITEM TYPE ICONS */
 .item_icon_poll
 {
-  background-image: url(~/application/modules/Poll/externals/images/types/poll.png);
+  background-image: url(~/application/modules/Recipe/externals/images/types/poll.png);
 }
 
 
@@ -245,13 +110,13 @@ Stles the create poll form.
 /* ICONS */
 .icon_poll_new
 {
-  background-image: url(~/application/modules/Poll/externals/images/new.png);
+  background-image: url(~/application/modules/Recipe/externals/images/new.png);
 }
-.icon_poll_delete
+.icon_recipe_delete
 {
-  background-image: url(~/application/modules/Poll/externals/images/delete.png);
+  background-image: url(~/application/modules/Recipe/externals/images/delete.png);
 }
-.icon_poll_edit
+.icon_recipe_edit
 {
-  background-image: url(~/application/modules/Poll/externals/images/edit.png);
+  background-image: url(~/application/modules/Recipe/externals/images/edit.png);
 }
