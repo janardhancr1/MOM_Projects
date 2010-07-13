@@ -30,11 +30,11 @@ class Album_IndexController extends Core_Controller_Action_Standard
         'search' => $this->getRequest()->getPost('search'),
         'category_id' => $this->getRequest()->getPost('category_id'),
       ));
-    } //else {
-     //$search_form->getElement('search')->setValue($this->_getParam('search'));
-      //$search_form->getElement('sort')->setValue($this->_getParam('sort'));
-      //$search_form->getElement('category_id')->setValue($this->_getParam('category_id'));
-    //}
+    } else {
+      $search_form->getElement('search')->setValue($this->_getParam('search'));
+      $search_form->getElement('sort')->setValue($this->_getParam('sort'));
+      $search_form->getElement('category_id')->setValue($this->_getParam('category_id'));
+    }
 
     $settings = Engine_Api::_()->getApi('settings', 'core');
 

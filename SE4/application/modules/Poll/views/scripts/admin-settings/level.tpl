@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: level.tpl 6523 2010-06-23 01:55:52Z shaun $
@@ -11,7 +11,7 @@
  */
 ?>
 
-<h2><?php echo $this->translate("Recipes Plugin") ?></h2>
+<h2><?php echo $this->translate("Polls Plugin") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -30,7 +30,7 @@
 <script type="text/javascript">
 //<![CDATA[
 $('level_id').addEvent('change', function(){
-  window.location.href = en4.core.baseUrl + 'admin/recipe/settings/level/id/'+this.get('value');
+  window.location.href = en4.core.baseUrl + 'admin/poll/settings/level/id/'+this.get('value');
 });
 //]]>
 </script>

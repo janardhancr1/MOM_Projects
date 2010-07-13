@@ -56,10 +56,5 @@
     ?>
   </div>
 </div>
-<div class='page_header'>
-	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'><?php echo $this->translate('Edit Blog Entry');?></div>
-	<div>
-		<?php echo $this->translate('Create or edit your entry below, then click "Post Entry" to publish the entry on your blog.');?>
-	</div>
 
 <?php echo $this->form->render($this) ?>

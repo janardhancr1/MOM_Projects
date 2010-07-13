@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: placeholder.tpl 6523 2010-06-23 01:55:52Z shaun $
@@ -11,7 +11,7 @@
  */
 ?>
 
-<h2><?php echo $this->translate("Recipe Plugin") ?></h2>
+<h2><?php echo $this->translate("Poll Plugin") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>

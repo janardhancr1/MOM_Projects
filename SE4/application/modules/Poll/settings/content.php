@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: content.php 6590 2010-06-25 19:40:21Z john $
@@ -11,13 +11,13 @@
  */
 return array(
   array(
-    'title' => 'Profile Recipes',
-    'description' => 'Displays a member\'s recipes on their profile.',
-    'category' => 'Recipes',
+    'title' => 'Profile Polls',
+    'description' => 'Displays a member\'s polls on their profile.',
+    'category' => 'Polls',
     'type' => 'widget',
-    'name' => 'recipe.profile-recipes',
+    'name' => 'poll.profile-polls',
     'defaultParams' => array(
-      'title' => 'Recipes',
+      'title' => 'Polls',
       'titleCount' => true,
     ),
   ),

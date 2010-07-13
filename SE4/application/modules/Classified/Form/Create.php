@@ -22,6 +22,10 @@ class Classified_Form_Create extends Engine_Form
 
   public function init()
   {
+    $this->setTitle('Post New Listing')
+      ->setDescription('Compose your new classified listing below, then click "Post Listing" to publish the listing.')
+      ->setAttrib('name', 'classifieds_create');
+
     $this->addElement('Text', 'title', array(
       'label' => 'Listing Title',
       'allowEmpty' => false,

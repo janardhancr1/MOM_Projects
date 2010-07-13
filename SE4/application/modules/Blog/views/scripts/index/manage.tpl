@@ -33,19 +33,30 @@
   </div>
 </div>
 
-<div class='search_box'>
-	<div class='page_header'>
-		<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'><?php echo $this->translate('My Blog Entries');?>
-		<div class="mom_div_small">
-			<?php echo $this->translate('Write your daily blog and read ones you have subscribed too ');?>
-		</div>
-	</div>
+<div class='layout_right'>
   <?php echo $this->form->render($this) ?>
   
-  
+  <?php if( $this->viewer()->getIdentity() ): ?>
+  <div class="quicklinks">
+    <ul>
+      <?php if( $this->can_create): ?>
+      <li>
+        <a href='<?php echo $this->url(array(), 'blog_create', true) ?>' class='buttonlink icon_blog_new'><?php echo $this->translate('Write New Entry')?></a>
+      </li>
+      <?php endif; ?>
+      <?php if( $this->can_style): ?>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'blog', 'controller' => 'index', 'action' => 'style'), $this->translate('Edit Blog Style'), array(
+          'class' => 'smoothbox buttonlink icon_blog_style'
+        )) ?>
+      </li>
+      <?php endif; ?>
+    </ul>
+  </div>
+  <?php endif; ?>
 </div>
 
-<div>
+<div class='layout_middle'>
     
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class="blogs_browse">

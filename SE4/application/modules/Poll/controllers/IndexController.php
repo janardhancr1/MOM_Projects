@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: IndexController.php 6585 2010-06-25 02:17:06Z steve $
@@ -12,11 +12,11 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_IndexController extends Core_Controller_Action_Standard
+class Poll_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
@@ -31,64 +31,64 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     // deal with searches in sessions
     $post      = new Zend_Controller_Request_Http();
-    if (null === $post->getPost('recipe_search'))
+    if (null === $post->getPost('poll_search'))
       $search  = $this->getSession()->search;
     else
-      $search  = $this->getSession()->search = $post->getPost('recipe_search');
+      $search  = $this->getSession()->search = $post->getPost('poll_search');
     $this->view->search = $this->getSession()->search = $search;
     $this->browseAction();
     $this->render('browse');
   }
   public function browseAction()
   {
-    $this->view->search_form = $search_form = new Recipe_Form_Index_Search();
+    $this->view->search_form = $search_form = new Poll_Form_Index_Search();
     if ($this->getRequest()->isPost() && $search_form->isValid($this->getRequest()->getPost())) {
       // redirect to GET route to prevent POST-back-button fo-paw
       $this->_helper->redirector->gotoRouteAndExit(array(
         'page' => 1,
-        'sort'   => $this->getRequest()->getPost('browse_recipes_by'),
-        'search' => $this->getRequest()->getPost('recipe_search'),
+        'sort'   => $this->getRequest()->getPost('browse_polls_by'),
+        'search' => $this->getRequest()->getPost('poll_search'),
       ));
     } else {
-      $search_form->getElement('recipe_search')->setValue($this->_getParam('search'));
-      $search_form->getElement('browse_recipes_by')->setValue($this->_getParam('sort'));
+      $search_form->getElement('poll_search')->setValue($this->_getParam('search'));
+      $search_form->getElement('browse_polls_by')->setValue($this->_getParam('sort'));
     }
 
-    $this->view->paginator  = Engine_Api::_()->recipe()->getRecipesPaginator(array(
+    $this->view->paginator  = Engine_Api::_()->poll()->getPollsPaginator(array(
       'user_id' => 0,
       'sort'    => $this->_getParam('sort'),
       'search'  => $this->_getParam('search'),
     ));
-    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10) );
+    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.perPage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
 
-    $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('recipe', null, 'create')->checkRequire();
+    $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('poll', null, 'create')->checkRequire();
   }
     public function viewAction()
   {
-    $recipe_id = $this->getRequest()->getParam('recipe_id');
-    $recipe = $this->view->recipe = Engine_Api::_()->getItem('recipe', $recipe_id);
-    if (!empty($recipe)) {
-      Engine_Api::_()->core()->setSubject($recipe);
+    $poll_id = $this->getRequest()->getParam('poll_id');
+    $poll = $this->view->poll = Engine_Api::_()->getItem('poll', $poll_id);
+    if (!empty($poll)) {
+      Engine_Api::_()->core()->setSubject($poll);
     }
     if (!$this->_helper->requireSubject()->isValid())
       return;
 
-    if( !$this->_helper->requireAuth()->setAuthParams($recipe, null, 'view')->isValid()) return;
+    if( !$this->_helper->requireAuth()->setAuthParams($poll, null, 'view')->isValid()) return;
     // Don't render this if not authorized
-    #if (!$this->_helper->requireAuth()->setAuthParams($recipe, null, 'view')->isValid()) return;
+    #if (!$this->_helper->requireAuth()->setAuthParams($poll, null, 'view')->isValid()) return;
 
-    $this->view->owner         = $recipe->getOwner();
-    $this->view->recipeOptions   = $recipe->getOptions();
-    $this->view->hasVoted      = $recipe->viewerVoted();
+    $this->view->owner         = $poll->getOwner();
+    $this->view->pollOptions   = $poll->getOptions();
+    $this->view->hasVoted      = $poll->viewerVoted();
     $this->view->votes = 0;
-    if (!empty($this->view->recipeOptions))
-      foreach ($this->view->recipeOptions as $i => $recipeOption)
-        $this->view->votes += $recipeOption->votes;
-    $this->view->recipe->views++;
-    $this->view->recipe->save();
-    $this->view->showPieChart  = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.showPieChart', false);
-    $this->view->canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false);
+    if (!empty($this->view->pollOptions))
+      foreach ($this->view->pollOptions as $i => $pollOption)
+        $this->view->votes += $pollOption->votes;
+    $this->view->poll->views++;
+    $this->view->poll->save();
+    $this->view->showPieChart  = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.showPieChart', false);
+    $this->view->canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.canChangeVote', false);
   }
   public function voteAction()
   {
@@ -96,27 +96,27 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     if( !$this->_helper->requireUser()->isValid() ) return;
     if( !$this->getRequest()->isPost() ) return;
 
-    $recipe_id       = $this->getRequest()->getParam('recipe_id');
-    $option_id     = $this->getRequest()->getParam('recipe_id');
-    $canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false);
+    $poll_id       = $this->getRequest()->getParam('poll_id');
+    $option_id     = $this->getRequest()->getParam('option_id');
+    $canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.canChangeVote', false);
 
-    $recipe = Engine_Api::_()->getItem('recipe', $this->_getParam('recipe_id'));
-    if (!$recipe) {
+    $poll = Engine_Api::_()->getItem('poll', $this->_getParam('poll_id'));
+    if (!$poll) {
       $this->view->success = false;
-      $this->view->error   = Zend_Registry::get('Zend_Translate')->_('This recipe does not seem to exist anymore.');
+      $this->view->error   = Zend_Registry::get('Zend_Translate')->_('This poll does not seem to exist anymore.');
       return;
     }
 
-    if ($recipe->viewerVoted() && !$canChangeVote) {
+    if ($poll->viewerVoted() && !$canChangeVote) {
       $this->view->success = false;
-      $this->view->error   = Zend_Registry::get('Zend_Translate')->_('You have already voted on this recipe, and are not permitted to change your vote.');
+      $this->view->error   = Zend_Registry::get('Zend_Translate')->_('You have already voted on this poll, and are not permitted to change your vote.');
       return;
     }
 
-    $db = Engine_Api::_()->getDbtable('recipes', 'recipe')->getAdapter();
+    $db = Engine_Api::_()->getDbtable('polls', 'poll')->getAdapter();
     $db->beginTransaction();
     try {
-      $recipe->vote($this->_getParam('option_id'));
+      $poll->vote($this->_getParam('option_id'));
       $db->commit();
       $this->view->success   = true;
     } catch (Exception $e) {
@@ -124,13 +124,13 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       $this->view->success   = false;
       throw $e;
     }
-    $recipeOptions = array();
-    foreach ($recipe->getOptions()->toArray() as $option) {
+    $pollOptions = array();
+    foreach ($poll->getOptions()->toArray() as $option) {
       $option['votesTranslated'] = $this->view->translate(array('%s vote', '%s votes', $option['votes']), $this->view->locale()->toNumber($option['votes']));
-      $recipeOptions[] = $option;
+      $pollOptions[] = $option;
     }
-    $this->view->recipeOptions = $recipeOptions;
-    $this->view->votes_total = $recipe->voteCount();
+    $this->view->pollOptions = $pollOptions;
+    $this->view->votes_total = $poll->voteCount();
 
   }
 
@@ -139,42 +139,42 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     if( !$this->_helper->requireUser()->isValid() ) return;
 
-    $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('recipe', null, 'create')->checkRequire();
+    $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('poll', null, 'create')->checkRequire();
 
     $this->view->users     = array($this->view->viewer_id => Engine_Api::_()->user()->getViewer());
     $this->view->owner     = Engine_Api::_()->user()->getViewer();
     $this->view->user_id   = $this->view->viewer_id;
 
-    $this->view->paginator = Engine_Api::_()->recipe()->getRecipesPaginator(array(
+    $this->view->paginator = Engine_Api::_()->poll()->getPollsPaginator(array(
       'user_id' => $this->view->viewer_id
     ));
-    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perpage', 10) );
+    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.perpage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
 
-    $recipe_ids  = array();
-    foreach ($this->view->paginator as $recipe) {
-      $recipe_ids[] = $recipe->recipe_id;
+    $poll_ids  = array();
+    foreach ($this->view->paginator as $poll) {
+      $poll_ids[] = $poll->poll_id;
     }
-    $this->view->recipeVotes  = Engine_Api::_()->recipe()->getRecipeVotes($recipe_ids);
+    $this->view->pollVotes  = Engine_Api::_()->poll()->getPollVotes($poll_ids);
   }
   public function createAction()
   {
     if( !$this->_helper->requireUser()->isValid() ) return;
-    if( !$this->_helper->requireAuth()->setAuthParams('recipe', null, 'create')->isValid()) return;
+    if( !$this->_helper->requireAuth()->setAuthParams('poll', null, 'create')->isValid()) return;
 
-    $this->view->maxOptions = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.maxoptions', 15);
-    $this->view->form = new Recipe_Form_Index_Create();
+    $this->view->maxOptions = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.maxoptions', 15);
+    $this->view->form = new Poll_Form_Index_Create();
     if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
-      $db = Engine_Api::_()->getDbTable('recipes', 'recipe')->getAdapter();
+      $db = Engine_Api::_()->getDbTable('polls', 'poll')->getAdapter();
       $db->beginTransaction();
       try {
-        $recipe_id    = $this->view->form->save();
-        if (empty($recipe_id))
+        $poll_id    = $this->view->form->save();
+        if (empty($poll_id))
           return;
         $values = $this->view->form->getValues();
 
-        $row        = Engine_Api::_()->getItem('recipe', $recipe_id);
-        $attachment = Engine_Api::_()->getItem($row->getType(), $recipe_id);
+        $row        = Engine_Api::_()->getItem('poll', $poll_id);
+        $attachment = Engine_Api::_()->getItem($row->getType(), $poll_id);
 
         // CREATE AUTH STUFF HERE
         $auth = Engine_Api::_()->authorization()->context;
@@ -198,7 +198,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         }
 
 
-        $action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'recipe_new');
+        $action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'poll_new');
         if (null !== $action)
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 
@@ -208,8 +208,8 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         throw $e;
       }
 
-      if ($recipe_id)
-        $this->_redirect("recipes/view/$recipe_id");
+      if ($poll_id)
+        $this->_redirect("polls/view/$poll_id");
     }
   }
 
@@ -218,17 +218,17 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     if( !$this->_helper->requireUser()->isValid() ) return;
 
     $viewer = $this->_helper->api()->user()->getViewer();
-    $recipe = Engine_Api::_()->getItem('recipe', $this->_getParam('recipe_id'));
-    if( !Engine_Api::_()->core()->hasSubject('recipe') )
+    $poll = Engine_Api::_()->getItem('poll', $this->_getParam('poll_id'));
+    if( !Engine_Api::_()->core()->hasSubject('poll') )
     {
-      Engine_Api::_()->core()->setSubject($recipe);
+      Engine_Api::_()->core()->setSubject($poll);
     }
 
     if( !$this->_helper->requireSubject()->isValid() ) return;
     //if( !$this->_helper->requireAuth()->setAuthParams($blog, $viewer, 'edit')->isValid() ) return;
 
     // Backup
-    if( $viewer->getIdentity() != $recipe->user_id && !$this->_helper->requireAuth()->setAuthParams($recipe, null, 'edit')->isValid())
+    if( $viewer->getIdentity() != $poll->user_id && !$this->_helper->requireAuth()->setAuthParams($poll, null, 'edit')->isValid())
     {
       return $this->_forward('requireauth', 'error', 'core');
       //die('are you trying to edit someone elses blog?');
@@ -236,7 +236,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
 
     $navigation = $this->getNavigation(true);
     $this->view->navigation = $navigation;
-    $this->view->form = $form = new Recipe_Form_Index_Edit();
+    $this->view->form = $form = new Poll_Form_Index_Edit();
     $form->removeElement('title');
     $form->removeElement('description');
     $form->removeElement('options');
@@ -246,9 +246,9 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     {
       /*
       $user_level = $viewer->level_id;
-      $allowed_view = Engine_Api::_()->authorization()->getPermission($user_level, 'recipe', 'auth_view');
+      $allowed_view = Engine_Api::_()->authorization()->getPermission($user_level, 'poll', 'auth_view');
       $allowed_view = unserialize($allowed_view);
-      $allowed_comment = Engine_Api::_()->authorization()->getPermission($user_level, 'recipe', 'auth_comment');
+      $allowed_comment = Engine_Api::_()->authorization()->getPermission($user_level, 'poll', 'auth_comment');
       $allowed_comment = unserialize($allowed_comment);
       */
       $auth = Engine_Api::_()->authorization()->context;
@@ -256,11 +256,11 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
       foreach( $roles as $role )
       {
-        if( 1 === $auth->isAllowed($recipe, $role, 'view'))
+        if( 1 === $auth->isAllowed($poll, $role, 'view'))
         {
           $form->auth_view->setValue($role);
         }
-        if( 1 === $auth->isAllowed($recipe, $role, 'comment'))
+        if( 1 === $auth->isAllowed($poll, $role, 'comment'))
         {
           $form->auth_comment->setValue($role);
         }
@@ -290,7 +290,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       $viewMax = array_search($auth_view, $roles);
       foreach( $roles as $i=>$role )
       {
-        $auth->setAllowed($recipe, $role, 'view', ($i <= $viewMax));
+        $auth->setAllowed($poll, $role, 'view', ($i <= $viewMax));
       }
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
       if($values['auth_comment']) $auth_comment =$values['auth_comment'];
@@ -299,28 +299,28 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
 
       foreach ($roles as $i=>$role)
       {
-        $auth->setAllowed($recipe, $role, 'comment', ($i <= $commentMax));
+        $auth->setAllowed($poll, $role, 'comment', ($i <= $commentMax));
       }
 
       // insert new activity if blog is just getting published
-      $action = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($recipe);
+      $action = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($poll);
       if (count($action->toArray())<=0 && $values['draft']=='0'){
-        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $recipe, 'recipe_new');
+        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $poll, 'poll_new');
           // make sure action exists before attaching the blog to the activity
         if($action!=null){
-          Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $recipe);
+          Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $poll);
         }
       }
 
       // Rebuild privacy
       $actionTable = Engine_Api::_()->getDbtable('actions', 'activity');
-      foreach( $actionTable->getActionsByObject($recipe) as $action ) {
+      foreach( $actionTable->getActionsByObject($poll) as $action ) {
         $actionTable->resetActivityBindings($action);
       }
 
       $db->commit();
 
-      return $this->_redirect("recipes/manage");
+      return $this->_redirect("polls/manage");
 
     }
     catch( Exception $e )
@@ -340,20 +340,20 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     else // Otherwise no layout
       $this->_helper->layout->disableLayout(true);
 
-    $recipe_id = $this->view->recipe_id = $this->getRequest()->getParam('recipe_id');
+    $poll_id = $this->view->poll_id = $this->getRequest()->getParam('poll_id');
     if (!$this->getRequest()->isPost())
       return;
 
-    $recipe_id = $this->getRequest()->getPost('recipe_id');
-    $recipe    = Engine_Api::_()->getItem('recipe', $recipe_id);
+    $poll_id = $this->getRequest()->getPost('poll_id');
+    $poll    = Engine_Api::_()->getItem('poll', $poll_id);
     
-    if ($this->view->viewer_id == $recipe->user_id) {
+    if ($this->view->viewer_id == $poll->user_id) {
       $this->view->permission = true;
       $this->view->success    = false;
-      $db = Engine_Api::_()->getDbtable('recipes', 'recipe')->getAdapter();
+      $db = Engine_Api::_()->getDbtable('polls', 'poll')->getAdapter();
       $db->beginTransaction();
       try {
-        Engine_Api::_()->getApi('core', 'recipe')->deleteRecipe($recipe_id);
+        Engine_Api::_()->getApi('core', 'poll')->deletePoll($poll_id);
         $db->commit();
         $this->view->success = true;
       } catch (Exception $e) {
@@ -369,25 +369,25 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     $user_id = $this->getRequest()->getParam('user_id');
     if ($user_id == $this->view->viewer_id)
-      $this->_helper->redirector->gotoRoute(array(), 'recipe_manage');
+      $this->_helper->redirector->gotoRoute(array(), 'poll_manage');
 
-    $this->view->paginator = Engine_Api::_()->recipe()->getRecipesPaginator(
-            //getRecipesPaginator($user_id = null, $sort = null, $search = '', $closed = 0)
+    $this->view->paginator = Engine_Api::_()->poll()->getPollsPaginator(
+            //getPollsPaginator($user_id = null, $sort = null, $search = '', $closed = 0)
             $user_id,
             $this->_getParam('sort'),
             $this->view->search);
-    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10) );
+    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.perPage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
     $this->view->user_id   = $user_id;
 
     $users     = array();
-    $recipe_ids  = array();
-    foreach ($this->view->paginator as $recipe) {
-      if (!isset($user[ $recipe->user_id ]))
-        $users[ $recipe->user_id ] = Engine_Api::_()->user()->getUser($recipe->user_id);
-      $recipe_ids[] = $recipe->recipe_id;
+    $poll_ids  = array();
+    foreach ($this->view->paginator as $poll) {
+      if (!isset($user[ $poll->user_id ]))
+        $users[ $poll->user_id ] = Engine_Api::_()->user()->getUser($poll->user_id);
+      $poll_ids[] = $poll->poll_id;
     }
-    $this->view->recipeVotes  = Engine_Api::_()->recipe()->getRecipeVotes($recipe_ids);
+    $this->view->pollVotes  = Engine_Api::_()->poll()->getPollVotes($poll_ids);
     $this->view->users      = $users;
     $this->render('browse');
   }
@@ -399,25 +399,25 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     $tabs   = array();
     $tabs[] = array(
-          'label'      => 'Browse recipes',
-          'route'      => 'recipe_browse',
+          'label'      => 'Browse Polls',
+          'route'      => 'poll_browse',
           'action'     => 'browse',
           'controller' => 'index',
-          'module'     => 'recipe'
+          'module'     => 'poll'
         );
     $tabs[] = array(
-          'label'      => 'My recipes',
-          'route'      => 'recipe_manage',
+          'label'      => 'My Polls',
+          'route'      => 'poll_manage',
           'action'     => 'manage',
           'controller' => 'index',
-          'module'     => 'recipe'
+          'module'     => 'poll'
         );
     $tabs[] = array(
-          'label'      => 'Create New Recipe',
-          'route'      => 'recipe_create',
+          'label'      => 'Create New Poll',
+          'route'      => 'poll_create',
           'action'     => 'create',
           'controller' => 'index',
-          'module'     => 'recipe'
+          'module'     => 'poll'
         );
     if( is_null($this->_navigation) ) {
       $this->_navigation = new Zend_Navigation();

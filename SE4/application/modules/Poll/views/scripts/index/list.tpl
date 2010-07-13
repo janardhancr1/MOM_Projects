@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: list.tpl 5333 2010-05-01 03:23:01Z alex $
@@ -13,7 +13,7 @@
 
 <div class="headline">
   <h2>
-    <?php echo $this->translate('Recipes');?>
+    <?php echo $this->translate('Polls');?>
   </h2>
   <div class="tabs">
     <?php

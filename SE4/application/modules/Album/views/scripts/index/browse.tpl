@@ -11,7 +11,7 @@
  */
 ?>
 
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Photo Albums');?>
@@ -26,17 +26,32 @@
     ?>
   </div>
 </div>
+-->
+<div class='layout_right'>
+  <!--<div class="quicklinks">
+    <ul>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'album_general', 'action' => 'upload'), $this->translate('Add New Photos'), array(
+          'class' => 'buttonlink icon_photos_new'
+        )) ?>
+      </li>
+    </ul>
+  </div>-->
+ 
+</div>
 
 <div class='layout_middle'>
-<div class='page_header'>
-	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('Photos');?>
-	<div class="page_header_small">
-		<?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?>
-	</div>
+<div class="headline_header">
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
+	<h2>
+    <?php echo $this->translate('Photo Albums');?><br/>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?></div>
+  </h2>
+  
 </div>
-<div class='search_box'>
-  <?php echo $this->search_form->render($this) ?>
-  <script type="text/javascript">
+<div>
+<?php echo $this->search_form->render($this) ?>
+ <script type="text/javascript">
   //<![CDATA[
     $('sort').addEvent('change', function(){
       $(this).getParent('form').submit();
@@ -46,7 +61,8 @@
     });
   //]]>
   </script>
-</div>
+ </div>
+ <div style='padding-top:5px;width:690px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
 
     <ul class="thumbs">
@@ -106,4 +122,5 @@
       </span>
     </div>
   <?php endif; ?>
+ </div>
 </div>

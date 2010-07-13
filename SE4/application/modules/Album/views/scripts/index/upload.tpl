@@ -48,11 +48,5 @@
     ?>
   </div>
 </div>
-<div class='search_box'>
-<div class='page_header'>
-	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('Create New Album');?>
-	<div>
-		<?php echo $this->translate('Please give us some information about your new album.');?>
-	</div>
-</div>
+
 <?php echo $this->form->render($this) ?>

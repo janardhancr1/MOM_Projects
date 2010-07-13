@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: deleteselected.tpl 6213 2010-06-09 06:04:50Z john $
@@ -16,9 +16,9 @@
   <?php if ($this->ids):?>
   <form method="post">
     <div>
-      <h3><?php echo $this->translate("Delete the selected recipes?") ?></h3>
+      <h3><?php echo $this->translate("Delete the selected polls?") ?></h3>
       <p>
-        <?php echo $this->translate("Are you sure that you want to delete the %d recipes? It will not be recoverable after being deleted.", $this->count) ?>
+        <?php echo $this->translate("Are you sure that you want to delete the %d polls? It will not be recoverable after being deleted.", $this->count) ?>
       </p>
       <br />
       <p>
@@ -33,7 +33,7 @@
     </div>
   </form>
   <?php else: ?>
-    <?php echo $this->translate("Please select a recipe to delete.") ?> <br/><br/>
+    <?php echo $this->translate("Please select a poll to delete.") ?> <br/><br/>
     <a href="<?php echo $this->url(array('action' => 'index')) ?>" class="buttonlink icon_back">
       <?php echo $this->translate("Go Back") ?>
     </a>

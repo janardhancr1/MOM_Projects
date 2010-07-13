@@ -46,17 +46,20 @@
   </div>
 </div>
 
-<div class='search_box'>
-	<div class='page_header'>
-		<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'><?php echo $this->translate('Classifieds');?>
-		<div class="page_header_small">
-			<?php echo $this->translate('Classified listings are a great way to list something for sale or find items.');?>
-		</div>
-	</div>
+<div class='layout_right'>
   <?php echo $this->form->render($this) ?>
+  <?php if( $this->can_create): ?>
+    <div class="quicklinks">
+      <ul>
+        <li>
+          <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
+        </li>
+      </ul>
+    </div>
+  <?php endif; ?>
 </div>
 
-<div>
+<div class='layout_middle'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Showing classified listings using the tag');?> #<?php echo $this->tag_text;?> <a href="<?php echo $this->url(array('module' => 'classified', 'controller' => 'index', 'action' => 'index'), 'default', true) ?>">(x)</a>

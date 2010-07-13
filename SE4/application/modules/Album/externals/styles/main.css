@@ -4,16 +4,7 @@
 
 
 
-/* NEW */
 
-.mom_div_small {
-font-family: Georgia, "Trebuchet MS", arial, serif;
-font-size: 12px;
-font-weight: normal;
-color: #D60077;
-}
-
-/* NEW END */
 
 /*
 BROWSE ALBUMS, VIEW ALBUM
@@ -124,7 +115,7 @@ ul.albums_manage .albums_manage_info_desc
 ul.albums_manage .albums_manage_options
 {
   width: 200px;
-  float: none;
+  float: left;
   overflow: hidden;
   padding-left: 15px;
 }

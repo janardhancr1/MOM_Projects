@@ -25,13 +25,6 @@
     ?>
   </div>
 </div>
-<div class='search_box'>
-<div class='page_header'>
-	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'><?php echo $this->translate('My Albums');?>
-	<div class="mom_div_small">
-		<?php echo $this->translate('Create a new album today and share it with friends');?>
-	</div>
-</div>
 <div class="layout_middle">
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class='albums_manage'>

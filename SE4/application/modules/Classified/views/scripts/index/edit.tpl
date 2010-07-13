@@ -56,15 +56,7 @@
     ?>
   </div>
 </div>
-<div class='search_box'>
-	<div class='page_header'>
-		<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'><?php echo $this->translate('Post Classified Listing');?>
-		<div>
-			<?php echo $this->translate('Write your new listing below, then click "Post Listing" to publish the listing on your classified.');?>
-		</div>
-	</div>
 
-</div>
 <form action="<?php echo $this->escape($this->form->getAction()) ?>" method="<?php echo $this->escape($this->form->getMethod()) ?>" class="global_form classifieds_browse_filters">
   <div>
     <div>

@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Core.php 6175 2010-06-08 00:57:06Z steve $
@@ -12,13 +12,13 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_Api_Core extends Core_Api_Abstract
+class Poll_Api_Core extends Core_Api_Abstract
 {
-  public function getRecipeSelect( $params = array() )
+  public function getPollSelect( $params = array() )
   {
     $params  = array_merge(array(
       'user_id' => null,
@@ -27,9 +27,9 @@ class Recipe_Api_Core extends Core_Api_Abstract
       'closed'  => 0,
     ), $params);
 
-    $p_table = Engine_Api::_()->getDbTable('recipes', 'recipe');
+    $p_table = Engine_Api::_()->getDbTable('polls', 'poll');
     $p_name  = $p_table->info('name');
-    $o_table = Engine_Api::_()->getDbTable('options', 'recipe');
+    $o_table = Engine_Api::_()->getDbTable('options', 'poll');
     $o_name  = $o_table->info('name');
 
     $select  = $p_table->select()->from($p_name)->where('is_closed = ?', $params['closed']);
@@ -42,8 +42,8 @@ class Recipe_Api_Core extends Core_Api_Abstract
         case 'popular':
           $select->setIntegrityCheck(false)
                  ->from($o_name, "SUM($o_name.votes) AS total_votes")
-                 ->where("$p_name.recipe_id = $o_name.recipe_id")
-                 ->group("$p_name.recipe_id");
+                 ->where("$p_name.poll_id = $o_name.poll_id")
+                 ->group("$p_name.poll_id");
           $select->order('total_votes DESC')
                  ->order('views DESC');
           break;
@@ -59,136 +59,136 @@ class Recipe_Api_Core extends Core_Api_Abstract
       // ->where("`title` LIKE ? OR `description` LIKE ?", $search);
       // but since we do, we must do the following join:
       if ('popular' != $sort) {
-        $table_options = Engine_Api::_()->getDbTable('options', 'recipe')->info('name');
-        $select->joinLeft($o_name, "$p_name.recipe_id = $o_name.recipe_id", '')
-               ->where("`title` LIKE ? OR `description` LIKE ? OR $o_name.recipe_option LIKE ?", $search)
-               ->group("$p_name.recipe_id");
+        $table_options = Engine_Api::_()->getDbTable('options', 'poll')->info('name');
+        $select->joinLeft($o_name, "$p_name.poll_id = $o_name.poll_id", '')
+               ->where("`title` LIKE ? OR `description` LIKE ? OR $o_name.poll_option LIKE ?", $search)
+               ->group("$p_name.poll_id");
       } else
-        $select->where("`title` LIKE ? OR `description` LIKE ? OR $o_name.recipe_option LIKE ?", $search);
+        $select->where("`title` LIKE ? OR `description` LIKE ? OR $o_name.poll_option LIKE ?", $search);
     }
     return $select;
   }
 
-  public function getRecipeOptions($recipe_id)
+  public function getPollOptions($poll_id)
   {
-    $table  = Engine_Api::_()->recipe()->api()->getDbtable('options', 'recipe');
+    $table  = Engine_Api::_()->poll()->api()->getDbtable('options', 'poll');
     $select = $table->select()
-                    ->where('recipe_id = ?', $recipe_id)
-                    ->order('recipe_option_id');
+                    ->where('poll_id = ?', $poll_id)
+                    ->order('poll_option_id');
     return $table->fetchAll($select);
   }
 
-  public function getRecipeVotes($recipe_ids)
+  public function getPollVotes($poll_ids)
   {
-    if (is_string($recipe_ids))
-      $recipe_ids = array($recipe_ids);
+    if (is_string($poll_ids))
+      $poll_ids = array($poll_ids);
 
-    $recipe_votes = array();
-    $table  = Engine_Api::_()->recipe()->api()->getDbtable('options', 'recipe');
+    $poll_votes = array();
+    $table  = Engine_Api::_()->poll()->api()->getDbtable('options', 'poll');
     $select = $table->select()
                     ->from($table->info('name'), array(
-                        'recipe_id',
+                        'poll_id',
                         new Zend_Db_Expr('SUM(votes) AS votes'),
                       ))
-                    ->group('recipe_id')
-                    ->order('recipe_id');
-    if (!empty($recipe_ids))
-      $select->where('recipe_id IN (?)', $recipe_ids);
+                    ->group('poll_id')
+                    ->order('poll_id');
+    if (!empty($poll_ids))
+      $select->where('poll_id IN (?)', $poll_ids);
 
     foreach ($table->fetchAll($select) as $row)
       if (!empty($row))
-        $recipe_votes[$row->recipe_id] = $row->votes;
+        $poll_votes[$row->poll_id] = $row->votes;
 
-    return $recipe_votes;
+    return $poll_votes;
   }
 
-  public function setVote($recipe_id, $option_id, $user_id=0)
+  public function setVote($poll_id, $option_id, $user_id=0)
   {
     if (empty($user_id))
       $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
     
-    $table  = Engine_Api::_()->getDbTable('votes', 'recipe');
+    $table  = Engine_Api::_()->getDbTable('votes', 'poll');
     $select = $table->select()
-                    ->where('recipe_id = ?', $recipe_id)
+                    ->where('poll_id = ?', $poll_id)
                     ->where('user_id = ?', $user_id);
     $row = $table->fetchRow($select);
     if (!empty($row)) {
-      $row->recipe_option_id = $option_id;
+      $row->poll_option_id = $option_id;
       $row->modified_date  = date('Y-m-d H:i:s');
       $row->save();
     } else {
-      Engine_Api::_()->getDbTable('votes', 'recipe')->insert(array(
-        'recipe_id' => $recipe_id,
+      Engine_Api::_()->getDbTable('votes', 'poll')->insert(array(
+        'poll_id' => $poll_id,
         'user_id' => $user_id,
-        'recipe_option_id' => $option_id,
+        'poll_option_id' => $option_id,
         'creation_date' => date('Y-m-d H:i:s'),
       ));
     }
 
-    // we also have to update the recipe_options table
-    $table  = Engine_Api::_()->getDbTable('votes', 'recipe');
+    // we also have to update the poll_options table
+    $table  = Engine_Api::_()->getDbTable('votes', 'poll');
     $select = $table->select()
                     ->setIntegrityCheck(false)
                     ->from($table->info('name'), array(
-                      'recipe_option_id',
+                      'poll_option_id',
                       new Zend_Db_Expr('COUNT(*) AS votes'),
                     ))
-                    ->where('recipe_id = ?', $recipe_id)
-                    ->group('recipe_option_id');
+                    ->where('poll_id = ?', $poll_id)
+                    ->group('poll_option_id');
     $options = array();
     foreach ($table->fetchAll($select) as $row)
-      $options[$row->recipe_option_id] = $row->votes;
+      $options[$row->poll_option_id] = $row->votes;
     
-    $table = Engine_Api::_()->getDbTable('options', 'recipe');
+    $table = Engine_Api::_()->getDbTable('options', 'poll');
     $select = $table->select()
-                    ->where('recipe_id = ?', $recipe_id);
+                    ->where('poll_id = ?', $poll_id);
     foreach ($table->fetchAll($select) as $row) {
-      $votes = isset($options[$row->recipe_option_id]) && !empty($options[$row->recipe_option_id])
-               ? $options[$row->recipe_option_id]
+      $votes = isset($options[$row->poll_option_id]) && !empty($options[$row->poll_option_id])
+               ? $options[$row->poll_option_id]
                : 0;
       $row->votes = $votes;
       $row->save();
     }
   }
 
-  public function viewerHasVoted($recipe_id)
+  public function viewerHasVoted($poll_id)
   {
     $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
-    $table   = Engine_Api::_()->recipe()->api()->getDbtable('votes', 'recipe');
+    $table   = Engine_Api::_()->poll()->api()->getDbtable('votes', 'poll');
     $select  = $table->select()
                      ->from($table->info('name'), array(
-                         'recipe_option_id',
+                         'poll_option_id',
                        ))
-                     ->where('recipe_id = ?', $recipe_id)
+                     ->where('poll_id = ?', $poll_id)
                      ->where('user_id = ?', $user_id)
                      ->limit(1);
     $row = $table->fetchRow($select);
-    if (!empty($row) && isset($row['recipe_option_id']))
-      return $row['recipe_option_id'];
+    if (!empty($row) && isset($row['poll_option_id']))
+      return $row['poll_option_id'];
   }
-  public function deleteRecipe($recipe_id)
+  public function deletePoll($poll_id)
   {
     // first, delete activity feed and its comments/likes
-    Engine_Api::_()->getItem('recipe', $recipe_id)->delete();
+    Engine_Api::_()->getItem('poll', $poll_id)->delete();
 
-    // next, delete recipe votes
-    Engine_Api::_()->getDbtable('votes', 'recipe')->delete(array(
-      'recipe_id = ?' => $recipe_id,
+    // next, delete poll votes
+    Engine_Api::_()->getDbtable('votes', 'poll')->delete(array(
+      'poll_id = ?' => $poll_id,
     ));
 
-    // next, delete recipe options
-    Engine_Api::_()->getDbtable('options', 'recipe')->delete(array(
-      'recipe_id = ?' => $recipe_id,
+    // next, delete poll options
+    Engine_Api::_()->getDbtable('options', 'poll')->delete(array(
+      'poll_id = ?' => $poll_id,
     ));
   }
 
   /**
-   * Gets a paginator for recipes
+   * Gets a paginator for polls
    *
    * @param Core_Model_Item_Abstract $user The user to get the messages for
    * @return Zend_Paginator
    */
-  public function getRecipesPaginator($params = array()) {
-    return Zend_Paginator::factory($this->getRecipeSelect($params));
+  public function getPollsPaginator($params = array()) {
+    return Zend_Paginator::factory($this->getPollSelect($params));
   }
 }

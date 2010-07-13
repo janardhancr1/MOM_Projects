@@ -3,16 +3,7 @@
 @include "~/application/modules/Core/externals/styles/constants.css";
 
 
-/* NEW */
 
-.mom_div_small {
-	font-family: Georgia, "Trebuchet MS", arial, serif;
-	font-size: 12px;
-	font-weight: normal;
-	color: #D60077;
-}
-/
-/* NEW END */
 
 
 
@@ -69,11 +60,7 @@ These styles are used on the browse groups page
 */
 .classifieds_browse_filters .form-wrapper
 {
-  float: left;
   overflow: hidden;
-  font-weight:bold;
-  margin:10px 0;
-  padding:7px 10px;
 }
 .classifieds_browse_filters .integer_field .form-element
 {
@@ -126,7 +113,6 @@ ul.classifieds_browse .classifieds_browse_options
   float: right;
   overflow: hidden;
   padding-left: 20px;
-  padding-right: 250px;
 }
 ul.classifieds_browse .classifieds_browse_options > a
 {

@@ -127,7 +127,7 @@ GENERAL LAYOUT
 */
 .generic_layout_container h3
 {
-  border-bottom:1px solid #D60077;
+  border-bottom:1px solid $theme_border_color;
   color:#D60077;
   padding: 5px;
   margin-bottom: 6px;
@@ -330,7 +330,7 @@ Shows the mini menu and search widget
   border: $theme_topbar_minimenu_border;*/
   float: right;
   overflow: hidden;
-  padding: .5em;
+  padding: 0px;
   border-top: none;
 }
 .layout_core_menu_mini > div > ul > li
@@ -344,7 +344,7 @@ Shows the mini menu and search widget
 }
 .layout_core_menu_mini #core_menu_mini_menu
 {
-  margin: 5px 0px 5px 0px;
+  margin: 10px 0px 5px 0px;
   font-size: $theme_topbar_minimenu_link_size;
   overflow: hidden;
   background-color: #D60077;
@@ -376,8 +376,8 @@ Shows the mini menu and search widget
 }
 #core_menu_mini_menu #global_search_form
 {
-  padding: 1px 0px;
-  margin-left: 10px;
+  padding: 2px 2px 0px 2px;
+  margin-left: 5px;
 }
 #core_menu_mini_menu #global_search_field
 {
@@ -438,7 +438,7 @@ usually above content, not within a form.
   float: left;
   margin-bottom: 15px;
   background-image: url(~/application/modules/Core/externals/images/tip.png);
-  border: 1px solid #D60077;
+  border: 1px solid #747474;
 }
 
 
@@ -772,38 +772,63 @@ index page. Form names and inputs are stacked
 vertically (not floated) to fit into small-width
 content areas.
 */
+#myalbum-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 100%;
+  float:right;
+  text-align: right;
+}
+
+#myalbum-wrapper #myalbum-label
+{
+  float:right;
+}
+
+#myalbum-wrapper #myalbum-element
+{
+  float:right;
+}
+
 .global_form_box
 {
   +foreground;
   +rounded;
-  padding: 10px;
-  width: auto;
-  padding: 10px; 
+  width: 680px;
+  padding: 5px; 
+  height: 55px;
   /*background: #F2F2F2; 
   border: 1px solid #BBBBBB; 
   font-weight: bold;
   width: auto;
-  height: 150px;*/
+  */
 }
 
-/*.form-wrapper
+.form-elements
+{
+	float:left;
+}
+.form-wrapper
 {
   margin-top:5px;
   margin-left:10px;
   float:left;
-}*/
+}
+
 .global_form_box .form-wrapper + .form-wrapper
 {
   margin-top:5px;
-  /*margin-left:10px;
-  float:left;*/
+  margin-left:10px;
+  float:left;
 }
 .global_form_box .form-label
 {
   padding: 3px;
   width: auto;
-  /*float: left;*/
-  clear: both;
+  float: left;
+  /*clear: both;*/
   margin: 0px;
 }
 .global_form_box label
@@ -815,9 +840,9 @@ content areas.
 }
 .global_form_box .form-element
 {
-  /*float: left;*/
+  float: left;
   overflow: hidden;
-  clear: both;
+  /*clear: both;*/
 }
 
 /* NEW */
@@ -856,19 +881,17 @@ These styles are for small, transparent forms
 that contain search boxes or filter fields. They
 are usually found on browse pages.
 */
+/*
+FILTER FORM
+These styles are for small, transparent forms
+that contain search boxes or filter fields. They
+are usually found on browse pages.
+*/
 form.filters
 {
-  /*+foreground;
+  +foreground;
   +rounded;
-  padding: 10px;*/
-  
-   padding: 7px 10px 7px 10px; 
-  background: #F2F2F2; 
-  border: 1px solid #BBBBBB; 
-  margin: 10px 0px 10px 0px; 
-  font-weight: bold;
-  width: 700px;
-  height: 150px;
+  padding: 10px;
 }
 form.filters div.form-label
 {
@@ -887,16 +910,11 @@ form.filters dt
 {
   font-size: .8em;
   padding-bottom: 2px;
-  float: left;
-  padding: 40px 5px 0px 0px;
 }
 form.filters dd
 {
   margin-bottom: 8px;
-  float: left;
-  padding: 36px 5px 0px 0px;
 }
-
 
 
 
@@ -1143,6 +1161,7 @@ Used at the top of most browse pages. Often contains button-style tabs.
   overflow: hidden;
   margin-bottom: 15px;
 }
+
 .headline h2
 {
   float: left;
@@ -1151,6 +1170,29 @@ Used at the top of most browse pages. Often contains button-style tabs.
   margin-bottom: 0px;
   margin-left: 3px;
 }
+
+.smallheadline
+{
+	color: $theme_headline_color;
+	font-size:16px;
+}
+
+.headline_header
+{
+  padding: 7px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.headline_header h2
+{
+  float: left;
+  overflow: hidden;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  margin-left: 3px;
+}
+
 
 
 

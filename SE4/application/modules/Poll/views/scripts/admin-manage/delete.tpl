@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: delete.tpl 6590 2010-06-25 19:40:21Z john $
@@ -13,13 +13,13 @@
 
 <form method="post" class="global_form_popup" action="<?php echo $this->url(array()) ?>">
   <div>
-    <h3><?php echo $this->translate("Delete Recipe?") ?></h3>
+    <h3><?php echo $this->translate("Delete Poll?") ?></h3>
     <p>
-      <?php echo $this->translate("Are you sure that you want to delete this recipe? It will not be recoverable after being deleted.") ?>
+      <?php echo $this->translate("Are you sure that you want to delete this poll? It will not be recoverable after being deleted.") ?>
     </p>
     <br />
     <p>
-      <input type="hidden" name="confirm" value="<?php echo $this->recipe_id?>"/>
+      <input type="hidden" name="confirm" value="<?php echo $this->poll_id?>"/>
       <button type='submit'><?php echo $this->translate("Delete") ?></button>
       <?php echo $this->translate("or") ?>
       <a href='javascript:void(0);' onclick='javascript:parent.Smoothbox.close()'>

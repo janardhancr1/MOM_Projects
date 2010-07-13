@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: install.php 6523 2010-06-23 01:55:52Z shaun $
@@ -12,11 +12,11 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_Installer extends Engine_Package_Installer_Module
+class Poll_Installer extends Engine_Package_Installer_Module
 {
   function onInstall()
   {
@@ -34,7 +34,7 @@ class Recipe_Installer extends Engine_Package_Installer_Module
     $page_id = $select->query()->fetchObject()->page_id;
 
 
-    // recipe.profile-recipes
+    // poll.profile-polls
 
     // Check if it's already been placed
     $select = new Zend_Db_Select($db);
@@ -42,7 +42,7 @@ class Recipe_Installer extends Engine_Package_Installer_Module
       ->from('engine4_core_content')
       ->where('page_id = ?', $page_id)
       ->where('type = ?', 'widget')
-      ->where('name = ?', 'recipe.profile-recipes')
+      ->where('name = ?', 'poll.profile-polls')
       ;
 
     $info = $select->query()->fetch();
@@ -85,10 +85,10 @@ class Recipe_Installer extends Engine_Package_Installer_Module
       $db->insert('engine4_core_content', array(
         'page_id' => $page_id,
         'type'    => 'widget',
-        'name'    => 'recipe.profile-recipes',
+        'name'    => 'poll.profile-polls',
         'parent_content_id' => ($tab_id ? $tab_id : $middle_id),
         'order'   => 11,
-        'params'  => '{"title":"recipes","titleCount":true}',
+        'params'  => '{"title":"Polls","titleCount":true}',
       ));
 
     }

@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Controller.php 6302 2010-06-12 00:47:21Z jung $
@@ -12,11 +12,11 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_Widget_ProfileRecipesController extends Engine_Content_Widget_Abstract
+class Poll_Widget_ProfilePollsController extends Engine_Content_Widget_Abstract
 {
   protected $_childCount;
   
@@ -36,7 +36,7 @@ class Recipe_Widget_ProfileRecipesController extends Engine_Content_Widget_Abstr
 
     // Get paginator
     $profile_owner_id = $subject->getIdentity();
-    $this->view->paginator = $paginator = Engine_Api::_()->recipe()->getRecipesPaginator(array(
+    $this->view->paginator = $paginator = Engine_Api::_()->poll()->getPollsPaginator(array(
         'user_id' => $profile_owner_id,
         'sort' => "creation_date",
         ));
@@ -53,7 +53,7 @@ class Recipe_Widget_ProfileRecipesController extends Engine_Content_Widget_Abstr
       $this->_childCount = $paginator->getTotalItemCount();
     }
     $settings = Engine_Api::_()->getApi('settings', 'core');
-    $this->view->items_per_page = $settings->getSetting('recipe_perpage', 10);
+    $this->view->items_per_page = $settings->getSetting('poll_perpage', 10);
   }
 
   public function getChildCount()

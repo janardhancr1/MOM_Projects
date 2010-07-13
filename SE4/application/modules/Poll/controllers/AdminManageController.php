@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: AdminManageController.php 6532 2010-06-23 22:17:37Z shaun $
@@ -12,19 +12,19 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_AdminManageController extends Core_Controller_Action_Admin
+class Poll_AdminManageController extends Core_Controller_Action_Admin
 {
   public function indexAction()
   {
     $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
-      ->getNavigation('recipe_admin_main', array(), 'recipe_admin_main_manage');
+      ->getNavigation('poll_admin_main', array(), 'poll_admin_main_manage');
  
-    $select    = Engine_Api::_()->getApi('core', 'recipe')->getRecipeSelect();
-    $select->orWhere('1=1'); // display all recipes
+    $select    = Engine_Api::_()->getApi('core', 'poll')->getPollSelect();
+    $select->orWhere('1=1'); // display all polls
     $paginator = $this->view->paginator = Zend_Paginator::factory($select);
     $users     = array();
   }
@@ -34,7 +34,7 @@ class Recipe_AdminManageController extends Core_Controller_Action_Admin
     // In smoothbox
     $this->_helper->layout->setLayout('admin-simple');
     $id = $this->_getParam('id');
-    $this->view->recipe_id=$id;
+    $this->view->poll_id=$id;
     // Check post
     if( $this->getRequest()->isPost())
     {
@@ -43,8 +43,8 @@ class Recipe_AdminManageController extends Core_Controller_Action_Admin
 
       try
       {
-        $recipe = Engine_Api::_()->getItem('recipe', $id);
-        $recipe->delete();
+        $poll = Engine_Api::_()->getItem('poll', $id);
+        $poll->delete();
         $db->commit();
       }
 
@@ -75,8 +75,8 @@ class Recipe_AdminManageController extends Core_Controller_Action_Admin
     {
       $ids_array = explode(",", $ids);
       foreach( $ids_array as $id ){
-        $recipe = Engine_Api::_()->getItem('recipe', $id);
-        if( $recipe ) $recipe->delete();
+        $poll = Engine_Api::_()->getItem('poll', $id);
+        if( $poll ) $poll->delete();
       }
 
       $this->_helper->redirector->gotoRoute(array('action' => 'index'));

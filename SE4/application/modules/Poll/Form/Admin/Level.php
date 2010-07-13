@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Level.php 5935 2010-05-21 01:35:38Z john $
@@ -12,11 +12,11 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Recipe_Form_Admin_Level extends Engine_Form
+class Poll_Form_Admin_Level extends Engine_Form
 {
   public function init()
   {
@@ -24,7 +24,7 @@ class Recipe_Form_Admin_Level extends Engine_Form
 
     $this
       ->setTitle('Member Level Settings')
-      ->setDescription('RECIPE_FORM_ADMIN_LEVEL_DESCRIPTION');
+      ->setDescription('POLL_FORM_ADMIN_LEVEL_DESCRIPTION');
 
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOptions(array('tag' => 'h4', 'placement' => 'PREPEND'));
@@ -40,54 +40,54 @@ class Recipe_Form_Admin_Level extends Engine_Form
     ));
 
     $this->addElement('Radio', 'view', array(
-      'label' => 'Allow Viewing of Recipes?',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION',
+      'label' => 'Allow Viewing of Polls?',
+      'description' => 'POLL_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION',
       'multiOptions' => array(
-        0 => 'No, do not allow recipes to be viewed.',
-        1 => 'Yes, allow viewing of recipes.',
-        2 => 'Yes, allow viewing of all recipes, even private ones.'
+        0 => 'No, do not allow polls to be viewed.',
+        1 => 'Yes, allow viewing of polls.',
+        2 => 'Yes, allow viewing of all polls, even private ones.'
       ),
       'value' => 1,
     ));
 
-    // @todo should the option to edit recipe privacy show up here?
+    // @todo should the option to edit poll privacy show up here?
     /*
     $this->addElement('Radio', 'edit', array(
-      'label' => 'Allow Editing of Recipes?',
-      'description' => 'Do you want to let members edit recipes? If set to no, some other settings on this page may not apply.',
+      'label' => 'Allow Editing of Polls?',
+      'description' => 'Do you want to let members edit polls? If set to no, some other settings on this page may not apply.',
       'multiOptions' => array(
-        0 => 'No, do not allow members to edit their recipes.',
-        1 => 'Yes, allow members to edit their own recipes.',
-        2 => 'Yes, allow members to edit all recipes.'
+        0 => 'No, do not allow members to edit their polls.',
+        1 => 'Yes, allow members to edit their own polls.',
+        2 => 'Yes, allow members to edit all polls.'
       ),
       'value' => 1,
     ));
     */
     
     $this->addElement('Radio', 'delete', array(
-      'label' => 'Allow Deletion of Recipes?',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION',
+      'label' => 'Allow Deletion of Polls?',
+      'description' => 'POLL_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION',
       'multiOptions' => array(
-        0 => 'No, do not allow members to delete their recipes.',
-        1 => 'Yes, allow members to delete their own recipes.',
-        2 => 'Yes, allow members to delete all recipes.'
+        0 => 'No, do not allow members to delete their polls.',
+        1 => 'Yes, allow members to delete their own polls.',
+        2 => 'Yes, allow members to delete all polls.'
       ),
       'value' => 1,
     ));
     $this->addElement('Radio', 'create', array(
-      'label' => 'Allow Recipes?',
-      'description' => 'Do you want to allow members to create recipes?',
+      'label' => 'Allow Polls?',
+      'description' => 'Do you want to allow members to create polls?',
       'multiOptions' => array(
-        1 => 'Yes, allow this member level to create recipes',
-        0 => 'No, do not allow this member level to create recipes',
+        1 => 'Yes, allow this member level to create polls',
+        0 => 'No, do not allow this member level to create polls',
       ),
       'value' => 1,
     ));
 
     // PRIVACY ELEMENTS
     $this->addElement('MultiCheckbox', 'auth_view', array(
-      'label' => 'Recipe Privacy',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION',
+      'label' => 'Poll Privacy',
+      'description' => 'POLL_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION',
       'multiOptions' => array(
         'everyone'       => 'Everyone',
         'owner_network' => 'Friends and Networks',
@@ -99,8 +99,8 @@ class Recipe_Form_Admin_Level extends Engine_Form
     ));
 
     $this->addElement('MultiCheckbox', 'auth_comment', array(
-      'label' => 'Recipe Comment Options',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_AUTHCOMMENT_DESCRIPTION',
+      'label' => 'Poll Comment Options',
+      'description' => 'POLL_FORM_ADMIN_LEVEL_AUTHCOMMENT_DESCRIPTION',
       'multiOptions' => array(
         'everyone'       => 'Everyone',
         'owner_network' => 'Friends and Networks',

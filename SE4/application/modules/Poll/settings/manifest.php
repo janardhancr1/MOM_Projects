@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Poll
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: manifest.php 6662 2010-07-01 03:41:18Z steve $
@@ -13,13 +13,13 @@ return array(
   // Package -------------------------------------------------------------------
   'package' => array(
     'type' => 'module',
-    'name' => 'recipe',
+    'name' => 'poll',
     'version' => '4.0.0',
-    'path' => 'application/modules/Recipe',
+    'path' => 'application/modules/Poll',
     'repository' => 'socialengine.net',
     'meta' => array(
-      'title' => 'Recipes',
-      'description' => 'Recipes',
+      'title' => 'Polls',
+      'description' => 'Polls',
       'author' => 'Webligo Developments',
     ),
     'actions' => array(
@@ -30,25 +30,25 @@ return array(
        'disable',
      ),
     'callback' => array(
-      'path' => 'application/modules/Recipe/settings/install.php',
-      'class' => 'Recipe_Installer',
+      'path' => 'application/modules/Poll/settings/install.php',
+      'class' => 'Poll_Installer',
     ),
     'directories' => array(
-      'application/modules/Recipe',
+      'application/modules/Poll',
     ),
     'files' => array(
-      'application/languages/en/recipe.csv',
+      'application/languages/en/poll.csv',
     ),
   ),
   // Content -------------------------------------------------------------------
   'content'=> array(
-    'recipe_profile_recipes' => array(
+    'poll_profile_polls' => array(
       'type' => 'action',
-      'title' => 'Recipes Profile Tabs',
+      'title' => 'Polls Profile Tabs',
       'route' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'widget',
-        'action' => 'profile-recipes',
+        'action' => 'profile-polls',
       ),
     )
   ),
@@ -56,24 +56,24 @@ return array(
   'hooks' => array(
     array(
       'event' => 'onStatistics',
-      'resource' => 'recipe_Plugin_Core'
+      'resource' => 'Poll_Plugin_Core'
     ),
     array(
       'event' => 'onUserDeleteBefore',
-      'resource' => 'Recipe_Plugin_Core',
+      'resource' => 'Poll_Plugin_Core',
     ),
   ),
   // Items ---------------------------------------------------------------------
   'items' => array(
-    'recipe'
+    'poll'
   ),
   // Routes --------------------------------------------------------------------
   'routes' => array(
     // Public
-    'recipe_browse' => array(
-      'route' => 'recipes/:page/:sort/*',
+    'poll_browse' => array(
+      'route' => 'polls/:page/:sort/*',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'browse',
         'page' => 1,
@@ -83,10 +83,10 @@ return array(
         'page' => '\d+',
       )
     ),
-    'recipe_list' => array(
-      'route' => 'recipes/list/:user_id/:page/:sort/*',
+    'poll_list' => array(
+      'route' => 'polls/list/:user_id/:page/:sort/*',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'list',
         'page' => 1,
@@ -94,74 +94,74 @@ return array(
       ),
       'reqs' => array(
         'user_id' => '\d+',
-        'recipe_id' => '\d+',
+        'poll_id' => '\d+',
       )
     ),
-    'recipe_search' => array(
-      'route' => 'recipes/search/:page/:sort',
+    'poll_search' => array(
+      'route' => 'polls/search/:page/:sort',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'search',
         'page' => 1,
         'sort' => 'recent',
       )
     ),
-    'recipe_view' => array(
-      'route' => 'recipes/view/:recipe_id/:slug',
+    'poll_view' => array(
+      'route' => 'polls/view/:poll_id/:slug',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'view',
         'slug' => '',
       ),
       'reqs' => array(
-        'recipe_id' => '\d+'
+        'poll_id' => '\d+'
       )
     ),
-    'recipe_vote' => array(
-      'route' => 'recipes/vote',
+    'poll_vote' => array(
+      'route' => 'polls/vote',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'vote'
       )
     ),
     // User
-    'recipe_create' => array(
-      'route' => 'recipes/create',
+    'poll_create' => array(
+      'route' => 'polls/create',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'create'
       )
     ),
-    'recipe_delete' => array(
-      'route' => 'recipes/delete/:recipe_id',
+    'poll_delete' => array(
+      'route' => 'polls/delete/:poll_id',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'delete'
       ),
       'reqs' => array(
-        'recipe_id' => '\d+'
+        'poll_id' => '\d+'
       )
     ),
-    'recipe_edit' => array(
-      'route' => 'recipes/edit/:recipe_id',
+    'poll_edit' => array(
+      'route' => 'polls/edit/:poll_id',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'edit'
       ),
       'reqs' => array(
-        'recipe_id' => '\d+'
+        'poll_id' => '\d+'
       )
     ),
-    'recipe_manage' => array(
-      'route' => 'recipes/manage',
+    'poll_manage' => array(
+      'route' => 'polls/manage',
       'defaults' => array(
-        'module' => 'recipe',
+        'module' => 'poll',
         'controller' => 'index',
         'action' => 'manage'
       )

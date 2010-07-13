@@ -45,16 +45,19 @@
     ?>
   </div>
 </div>
-<div class='search_box'>
-	<div class='page_header'>
-		<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'><?php echo $this->translate('My Classified Listings');?>
-		<div class="mom_div_small">
-			<?php echo $this->translate('Post your listing and check back regularly for responses ');?>
-		</div>
-	</div>
-  <?php echo $this->form->render($this) ?>
-</div>
 
+<div class='layout_right'>
+  <?php echo $this->form->render($this) ?>
+  <?php if( $this->can_create): ?>
+  <div class="quicklinks">
+    <ul>
+      <li>
+        <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
+      </li>
+    </ul>
+  </div>
+  <?php endif; ?>
+</div>
 
 <div class='layout_middle'>
   <?php if ($this->current_count >= $this->quota):?>

@@ -31,13 +31,4 @@ $this->headLink()
     });
 });
 </script>
-<div class='search_box'>
-	<div class='page_header'>
-		<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'><?php echo $this->translate('Edit Event: ');?><?php echo $this->subject()->__toString() ?>
-		<div>
-			<?php echo $this->translate('All of this events details are displayed and can be changed below.');?>
-		</div>
-	</div>
-	<br>
-</div>
 <?php echo $this->form/*->setAttrib('class', 'global_form_popup')*/->render($this) ?>

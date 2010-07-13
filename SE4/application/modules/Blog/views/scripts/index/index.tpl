@@ -17,6 +17,7 @@
     $('filter_form').submit();
   }
 </script>
+
 <div class="headline">
   <h2>
     <?php echo $this->translate('Blogs');?>
@@ -32,15 +33,18 @@
   </div>
 </div>
 
-<div class='search_box'>
-<div class='page_header'>
-	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'><?php echo $this->translate('Blogs');?>
-	<div class="page_header_small">
-		<?php echo $this->translate('Share your thoughts every day with moms');?>
-	</div>
-</div>
+<div class='layout_right'>
   <?php echo $this->form->render($this) ?>
-
+  
+  <?php if( $this->can_create): ?>
+  <div class="quicklinks">
+    <ul>
+      <li>
+        <a href='<?php echo $this->url(array(), 'blog_create', true) ?>' class='buttonlink icon_blog_new'><?php echo $this->translate('Write New Entry');?></a>
+      </li>
+    </ul>
+  </div>
+  <?php endif; ?>
 </div>
 
 <div class='layout_middle'>

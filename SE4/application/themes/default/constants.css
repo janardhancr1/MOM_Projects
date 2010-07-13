@@ -85,7 +85,7 @@ DEFAULT STYLES FOR THIS THEME
   These colors are applied to borders around or within boxes that have a background color,
   like widgets.
   */
-  theme_foreground_border_color: #D60077;
+  theme_foreground_border_color: #eaeaea;
   theme_foreground_border_color_light: #d7e8f1;
   theme_foreground_background_color: #fff;
 
@@ -112,7 +112,7 @@ DEFAULT STYLES FOR THIS THEME
   FORMS
   These colors are applied to most forms throughout the layout.
   */
-  theme_form_border_color: #D60077;
+  theme_form_border_color: #eaeaea;
   theme_form_background_color: #f4f9fb;
   theme_form_label_font_color: #777;
 
