@@ -31,7 +31,7 @@
   });
 </script>
 
-<div class="headline">
+<!--<div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
   </h2>
@@ -44,10 +44,10 @@
         ->render();
     ?>
   </div>
-</div>
+</div>-->
 
 <div class='layout_right'>
-  <?php echo $this->form->render($this) ?>
+  <!--
   <?php if( $this->can_create): ?>
     <div class="quicklinks">
       <ul>
@@ -56,10 +56,22 @@
         </li>
       </ul>
     </div>
-  <?php endif; ?>
+  <?php endif; ?>-->
 </div>
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<h2>
+    <?php echo $this->translate('Classifieds');?><br/>
+    <div class="smallheadline"><?php echo $this->translate('Classified listings are a great way to list something for sale or find items.');?></div>
+  </h2>
+  
+</div>
+<div>
+<?php echo $this->form->render($this) ?>
+</div>
+ <div style='padding-top:5px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Showing classified listings using the tag');?> #<?php echo $this->tag_text;?> <a href="<?php echo $this->url(array('module' => 'classified', 'controller' => 'index', 'action' => 'index'), 'default', true) ?>">(x)</a>

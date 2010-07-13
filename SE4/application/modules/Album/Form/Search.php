@@ -23,7 +23,7 @@ class Album_Form_Search extends Engine_Form
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'global_form_box',
+        'class' => 'global_search_box',
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
 
@@ -56,7 +56,7 @@ class Album_Form_Search extends Engine_Form
     }
     
     $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/albums/manage'>My Albums</a>");
-	$this->addElement('Dummy', 'myalbum', array(
+	$this->addElement('Dummy', 'my', array(
       'content' => $content,
     ));   
     

@@ -10,7 +10,7 @@
  * @author	   John
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Groups');?>
@@ -25,9 +25,9 @@
     ?>
   </div>
 </div>
-
+-->
 <div class='layout_right'>
-  <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
+  <!--
   <?php if( $this->viewer()->getIdentity() ): ?>
   <br />
     <div class="quicklinks">
@@ -39,10 +39,22 @@
         </li>
       </ul>
     </div>
-  <?php endif; ?>
+  <?php endif; ?>-->
 </div>
 
   <div class='layout_middle'>
+  <div class="headline_header">
+	<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'>
+	<h2>
+    <?php echo $this->translate('Groups');?><br/>
+    <div class="smallheadline"><?php echo $this->translate('Find a group to join or create a new one and invite your friends.');?></div>
+  </h2>
+  
+</div>
+<div>
+  <?php echo $this->formFilter->setAttrib('class', 'global_search_box')->render($this) ?>
+ </div>
+ <div style='padding-top:5px;width:690px'>
     <?php if( count($this->paginator) > 0 ): ?>
 
     <ul class='groups_browse'>

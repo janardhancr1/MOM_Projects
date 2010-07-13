@@ -71,5 +71,10 @@ class Group_Form_Filter_Browse extends Engine_Form
       'value' => 'creation_date DESC',
       'onchange' => '$(this).getParent("form").submit();',
     ));
+    
+    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/groups/manage'>My Groups</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
+    )); 
   }
 }

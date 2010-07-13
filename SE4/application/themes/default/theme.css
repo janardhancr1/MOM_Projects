@@ -772,73 +772,24 @@ index page. Form names and inputs are stacked
 vertically (not floated) to fit into small-width
 content areas.
 */
-#myalbum-wrapper
-{
-  margin-top:5px;
-  margin-left:10px;
-  padding:5px;
-  width: 100%;
-  float:right;
-  text-align: right;
-}
-
-#myalbum-wrapper #myalbum-label
-{
-  float:right;
-}
-
-#myalbum-wrapper #myalbum-element
-{
-  float:right;
-}
-
-#filter_form
-{
-	width: 680px;
-	height: 55px;
-}
-
-#user_form_login
-{
-	height:220px;
-}
 
 .global_form_box
 {
   +foreground;
   +rounded;
+  padding: 10px;
   width: auto;
-  padding: 5px; 
-  /*background: #F2F2F2; 
-  border: 1px solid #BBBBBB; 
-  font-weight: bold;
-  width: auto;
-  */
 }
-
-.form-elements
-{
-	float:left;
-}
-.form-wrapper
-{
-  margin-top:5px;
-  margin-left:10px;
-  float:left;
-}
-
 .global_form_box .form-wrapper + .form-wrapper
 {
-  margin-top:5px;
-  margin-left:10px;
-  float:left;
+  margin-top: 5px;
 }
 .global_form_box .form-label
 {
-  padding: 3px;
+  padding: 0px;
   width: auto;
-  float: left;
-  /*clear: both;*/
+  float: none;
+  clear: both;
   margin: 0px;
 }
 .global_form_box label
@@ -850,10 +801,98 @@ content areas.
 }
 .global_form_box .form-element
 {
+  overflow: hidden;
+}
+
+/*
+Global Serach Box
+Global Serach box at page header
+*/
+
+.global_search_box
+{
+  +foreground;
+  +rounded;
+  width: 680px;
+  height: 55px;
+  padding: 5px; 
+}
+
+.global_search_box .form-elements
+{
+	float:left;
+}
+.global_search_box .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+
+.global_search_box .form-wrapper + .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+.global_search_box .form-label
+{
+  padding: 3px;
+  width: auto;
+  float: left;
+  margin: 0px;
+}
+.global_search_box label
+{
+  text-align: left;
+  display: block;
+  font-size: .8em;
+  margin-bottom: 2px;
+}
+.global_search_box .form-element
+{
   float: left;
   overflow: hidden;
-  /*clear: both;*/
 }
+
+#my-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 50%;
+  float:right;
+  text-align: right;
+  overflow: hidden;
+}
+
+#my-wrapper #my-label
+{
+  float:right;
+}
+
+#my-wrapper #my-element
+{
+  float:right;
+}
+
+form.global_search_box dt
+{
+  padding-top:3px;
+  float:left;
+  margin-left:5px;
+}
+form.global_search_box dd
+{
+  float:left;
+  margin-left:5px;
+}
+
+.classifieds_browse_filters
+{
+	height:120px;
+}
+
 
 /* NEW */
 
@@ -885,12 +924,6 @@ div.page_header_small {
 /* NEW END */
 
 
-/*
-FILTER FORM
-These styles are for small, transparent forms
-that contain search boxes or filter fields. They
-are usually found on browse pages.
-*/
 /*
 FILTER FORM
 These styles are for small, transparent forms

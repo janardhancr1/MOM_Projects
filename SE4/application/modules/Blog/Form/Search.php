@@ -23,7 +23,7 @@ class Blog_Form_Search extends Engine_Form
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'global_form_box',
+        'class' => 'global_search_box',
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
@@ -83,6 +83,11 @@ class Blog_Form_Search extends Engine_Form
 
     $this->addElement('Hidden', 'end_date', array(
       'order' => 103
+    ));
+    
+    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/blogs/manage'>My Blogs</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
     ));
   }
 }
