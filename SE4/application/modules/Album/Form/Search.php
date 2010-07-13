@@ -55,7 +55,7 @@ class Album_Form_Search extends Engine_Form
           ));
     }
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/albums/manage'>My Albums</a>");
+    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/albums/manage'>My Albums</a>");
 	$this->addElement('Dummy', 'myalbum', array(
       'content' => $content,
     ));   
