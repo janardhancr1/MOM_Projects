@@ -52,14 +52,14 @@ class Blog_Form_Search extends Engine_Form
       'onchange' => 'this.form.submit();',
     ));
 
-    $this->addElement('Select', 'show', array(
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Blogs',
         '2' => 'Only My Friends\' Blogs',
       ),
       'onchange' => 'this.form.submit();',
-    ));
+    ));*/
 
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
@@ -85,7 +85,7 @@ class Blog_Form_Search extends Engine_Form
       'order' => 103
     ));
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/blogs/manage'>My Blogs</a>");
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/blogs/manage'>Go to My Blog Page</a>");
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
     ));

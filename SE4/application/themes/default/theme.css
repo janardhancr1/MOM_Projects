@@ -78,13 +78,11 @@ h4
 h2
 {
   font-size: $theme_headline_size_large;
-  letter-spacing: -1px;
   margin-bottom: 10px;
 }
 h3
 {
   font-size: $theme_headline_size_medium;
-  letter-spacing: -1px;
 }
 h4
 {
@@ -813,8 +811,8 @@ Global Serach box at page header
 {
   +foreground;
   +rounded;
-  width: 680px;
-  height: 55px;
+  width: 670px;
+  overflow: hidden;
   padding: 5px; 
 }
 
@@ -855,25 +853,41 @@ Global Serach box at page header
   overflow: hidden;
 }
 
+.global_search_box .button
+{
+  float: left;
+}
+
 #my-wrapper
 {
   margin-top:5px;
   margin-left:10px;
   padding:5px;
   width: 50%;
-  float:right;
+  float: left;
   text-align: right;
   overflow: hidden;
 }
 
 #my-wrapper #my-label
 {
-  float:right;
+  float: left;
 }
 
 #my-wrapper #my-element
 {
-  float:right;
+  float: left;
+}
+
+.my_groups
+{
+	float: right;
+	padding: 0px 60px;
+}
+
+form.global_search_box dl
+{
+	padding: 0px;
 }
 
 form.global_search_box dt
@@ -1214,6 +1228,12 @@ Used at the top of most browse pages. Often contains button-style tabs.
   margin-left: 3px;
 }
 
+.mainheadline
+{
+	color: $theme_headline_color;
+	font-size:24px;
+}
+
 .smallheadline
 {
 	color: $theme_headline_color;
@@ -1222,9 +1242,9 @@ Used at the top of most browse pages. Often contains button-style tabs.
 
 .headline_header
 {
-  padding: 7px;
+  padding: 5px;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .headline_header h2

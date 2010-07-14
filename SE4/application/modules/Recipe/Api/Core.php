@@ -29,8 +29,8 @@ class Recipe_Api_Core extends Core_Api_Abstract
 
     $p_table = Engine_Api::_()->getDbTable('recipes', 'recipe');
     $p_name  = $p_table->info('name');
-    $o_table = Engine_Api::_()->getDbTable('options', 'recipe');
-    $o_name  = $o_table->info('name');
+    //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
+    //$o_name  = $o_table->info('name');
 
     $select  = $p_table->select()->from($p_name)->where('is_closed = ?', $params['closed']);
 
