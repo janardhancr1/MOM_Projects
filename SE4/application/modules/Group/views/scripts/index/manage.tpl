@@ -10,7 +10,7 @@
  * @author	   John
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Groups');?>
@@ -25,9 +25,61 @@
     ?>
   </div>
 </div>
-
+-->
 <div class='layout_right'>
-  <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
+<div class="generic_layout_container layout_core_ad_campaign">
+<script type="text/javascript">
+
+ function processClick(adcampaign_id, ad_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/utility/advertisement',
+      'data' : {
+        'format' : 'json',
+        'adcampaign_id' : adcampaign_id,
+        'ad_id' : ad_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+      }
+    })).send();
+
+  }
+</script>
+<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="clear:both;"></div>
+<div style="vertical-align: middle;" onclick="javascript:processClick(2, 2)">
+  <a href='' target='_blank'><img src='/public/user/1000000/1000/1/3.gif'/></a></div></div>
+
+<div class="generic_layout_container layout_core_ad_campaign">
+<script type="text/javascript">
+
+ function processClick(adcampaign_id, ad_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/utility/advertisement',
+      'data' : {
+        'format' : 'json',
+        'adcampaign_id' : adcampaign_id,
+        'ad_id' : ad_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+      }
+    })).send();
+
+  }
+
+</script>
+<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="clear:both;"></div>
+<div style="vertical-align: middle;" onclick="javascript:processClick(3, 3)">
+  <a href='' target='_blank' style='border-bottom: 1px solid #DDDDDD'><img src='/public/user/1000000/1000/1/5.gif'/></a></div></div>
+  <!--
   <?php if( $this->viewer()->getIdentity() ): ?>
   <br />
     <div class="quicklinks">
@@ -39,16 +91,46 @@
         </li>
       </ul>
     </div>
-  <?php endif; ?>
+  <?php endif; ?>-->
 </div>
 
   <div class='layout_middle'>
+  <div class="headline_header">
+	<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Groups');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/groups'>Back to Groups</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Create a new group, invite moms, view all of your groups and join in on the conversation.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'group_general', 'action' => 'create'), $this->translate('Create New Group'), array(
+            'class' => 'buttonlink icon_group_new'
+          )) ?>
+      </li>
+    </ul>
+  </div>
+<div style='padding-top:20px;padding-right:10px;width:680px'>
     <?php if( count($this->paginator) > 0 ): ?>
       <ul class='groups_browse'>
         <?php foreach( $this->paginator as $group ): ?>
           <li>
             <div class="groups_photo">
               <?php echo $this->htmlLink($group->getHref(), $this->itemPhoto($group, 'thumb.normal')) ?>
+            </div>
+            <div class="groups_info">
+              <div class="groups_title">
+                <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
+              </div>
+              <div class="groups_members">
+                <?php echo $this->translate(array('%s member', '%s members', $group->membership()->getMemberCount()),$this->locale()->toNumber($group->membership()->getMemberCount())) ?>
+                <?php echo $this->translate('led by');?> <?php echo $this->htmlLink($group->getOwner()->getHref(), $group->getOwner()->getTitle()) ?>
+              </div>
+              <div class="groups_desc">
+                <?php echo $this->viewMore($group->getDescription()) ?>
+              </div>
             </div>
             <div class="groups_options">
               <?php if( $group->isOwner($this->viewer()) ): ?>
@@ -67,18 +149,6 @@
                   'class' => 'buttonlink smoothbox icon_group_leave'
                 )) ?>
               <?php endif; ?>
-            </div>
-            <div class="groups_info">
-              <div class="groups_title">
-                <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
-              </div>
-              <div class="groups_members">
-                <?php echo $this->translate(array('%s member', '%s members', $group->membership()->getMemberCount()),$this->locale()->toNumber($group->membership()->getMemberCount())) ?>
-                <?php echo $this->translate('led by');?> <?php echo $this->htmlLink($group->getOwner()->getHref(), $group->getOwner()->getTitle()) ?>
-              </div>
-              <div class="groups_desc">
-                <?php echo $this->viewMore($group->getDescription()) ?>
-              </div>
             </div>
           </li>
         <?php endforeach; ?>
@@ -101,3 +171,4 @@
 
 
 
+</div>

@@ -108,7 +108,7 @@
 <div>
   <?php echo $this->form->render($this) ?>
 </div>
- <div style='padding-top:5px;width:690px'>
+ <div style='padding-top:5px;padding-right:5px;width:680px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class="blogs_browse">
       <?php foreach( $this->paginator as $item ): ?>

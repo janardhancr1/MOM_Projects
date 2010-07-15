@@ -22,8 +22,7 @@ class Group_Form_Create extends Engine_Form
   {
     $user = Engine_Api::_()->user()->getViewer();
 
-    $this
-      ->setTitle('Create New Group');
+    //$this->setTitle('Create New Group');
 
     $this->addElement('Text', 'title', array(
       'label' => 'Group Name',

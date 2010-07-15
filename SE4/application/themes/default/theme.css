@@ -577,7 +577,6 @@ a.buttonlink
   background-repeat: no-repeat;
   background-position: 0px 0px;
   padding-left: 21px;
-  font-weight: bold;
   display: inline-block;
 }
 a.buttonlink_right
@@ -589,6 +588,16 @@ a.buttonlink_right
   display: inline-block;
 }
 
+div.button
+{
+	background:none repeat scroll 0 0 #FFFFFF;
+	border-color:#DDDDDD;
+	border-style:solid;
+	border-width:1px 1px 1px 5px;
+	padding:7px 8px 7px 6px;
+	text-align:left;
+	float:right;
+}
 
 /*
 LARGE BOX FORM

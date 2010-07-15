@@ -22,9 +22,9 @@ class Blog_Form_Create extends Engine_Form
 
   public function init()
   {   
-    $this->setTitle('Write New Entry')
-      ->setDescription('Compose your new blog entry below, then click "Post Entry" to publish the entry to your blog.')
-      ->setAttrib('name', 'blogs_create');
+    //$this->setTitle('Write New Entry')
+    //  ->setDescription('Compose your new blog entry below, then click "Post Entry" to publish the entry to your blog.')
+      $this->setAttrib('name', 'blogs_create');
     $user = Engine_Api::_()->user()->getViewer();
     $user_level = Engine_Api::_()->user()->getViewer()->level_id;
 

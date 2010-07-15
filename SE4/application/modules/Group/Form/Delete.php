@@ -20,8 +20,8 @@ class Group_Form_Delete extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Delete Group')
-      ->setDescription('Are you sure you want to delete this group?');
+    //$this->setTitle('Delete Group')
+    $this->setDescription('Are you sure you want to delete this group?');
 
     $this->addElement('Hash', 'token');
 

@@ -70,6 +70,7 @@ ul.albums_manage
 {
   clear: both;
   overflow: hidden;
+  padding-right: 5px;
 }
 ul.albums_manage > li
 {
@@ -114,14 +115,16 @@ ul.albums_manage .albums_manage_info_desc
 }
 ul.albums_manage .albums_manage_options
 {
-  width: 200px;
+  width: auto;
   float: left;
   overflow: hidden;
-  padding-left: 15px;
+  padding-top: 15px;
+  padding-left: 5px;
 }
 ul.albums_manage .albums_manage_options > a
 {
   margin: 2px;
+  float:left;
 }
 ul.albums_editphotos
 {

@@ -22,8 +22,7 @@ class Group_Form_Edit extends Engine_Form
   {
     $user = Engine_Api::_()->user()->getViewer();
 
-    $this
-      ->setTitle('Edit Group');
+    //$this->setTitle('Edit Group');
 
     $this->addElement('Text', 'title', array(
       'label' => 'Group Name',

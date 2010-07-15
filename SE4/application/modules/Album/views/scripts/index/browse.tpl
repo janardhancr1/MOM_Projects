@@ -99,8 +99,6 @@
 	<div class="mainheadline">
     <?php echo $this->translate('Photo Albums');?></div>
     <div class="smallheadline"><?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?></div>
-  </h2>
-  
 </div>
 <div>
 <?php echo $this->search_form->render($this) ?>
@@ -115,7 +113,7 @@
   //]]>
   </script>
  </div>
- <div style='padding-top:5px;width:690px'>
+ <div style='padding-top:10px;width:690px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
 
     <ul class="thumbs">
