@@ -1,0 +1,53 @@
+
+/* $Id: main.css 6161 2010-06-05 02:22:08Z alex $ */
+
+
+@include "~/application/modules/Core/externals/styles/constants.css";
+
+.global_answer_box
+{
+  +foreground;
+  +rounded;
+  width: 400px;
+  height: 250px;
+  padding: 5px; 
+  background:#F0F0F0 none repeat scroll 0 0;
+}
+
+.global_answer_box .form-elements
+{
+	float:left;
+}
+.global_answer_box .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+
+.global_answer_box .form-wrapper + .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+.global_answer_box .form-label
+{
+  padding: 3px;
+  width: auto;
+  float: left;
+  margin: 0px;
+}
+.global_answer_box label
+{
+  text-align: left;
+  display: block;
+  font-size: .8em;
+  margin-bottom: 2px;
+}
+.global_answer_box .form-element
+{
+  float: left;
+  overflow: hidden;
+}
+
