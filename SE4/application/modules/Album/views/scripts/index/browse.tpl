@@ -113,7 +113,7 @@
   //]]>
   </script>
  </div>
- <div style='padding-top:10px;width:690px'>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
 
     <ul class="thumbs">
