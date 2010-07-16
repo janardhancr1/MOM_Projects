@@ -16,16 +16,15 @@
 -- Table structure for table `engine4_questions_question`
 --
 
-DROP TABLE IF EXISTS `engine4_question_questions`;
-CREATE TABLE IF NOT EXISTS `engine4_question_questions` (
-  `question_id` int(11) unsigned NOT NULL auto_increment,
+DROP TABLE IF EXISTS `engine4_answer_answers`;
+CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
+  `answer_id` int(11) unsigned NOT NULL auto_increment,
   `user_id` int(11) unsigned NOT NULL,
   `is_closed` tinyint(1) NOT NULL default '0',
-  `question_title` varchar(255) NOT NULL,
-  `question_text` text NOT NULL,
-  `question_tags` varchar(255) NOT NULL,
-  `question_cat_id` int(11) unsigned NOT NULL,
-  `question_subcat_id` int(11) unsigned NOT NULL,
+  `answer_title` varchar(255) NOT NULL,
+  `answer_text` text NOT NULL,
+  `answer_tags` varchar(255) NOT NULL,
+  `answer_cat_id` int(11) unsigned NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY  (`question_id`),
   KEY `user_id` (`user_id`),
@@ -40,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `engine4_question_questions` (
 -- Table structure for table `engine4_question_categories`
 --
 
-DROP TABLE IF EXISTS `engine4_question_categories`;
-CREATE TABLE `engine4_question_categories` (
+DROP TABLE IF EXISTS `engine4_answer_categories`;
+CREATE TABLE `engine4_answer_categories` (
   `category_id` int(11) NOT NULL auto_increment,
   `user_id` int(11) unsigned NOT NULL,
   `category_name` varchar(128) NOT NULL,
@@ -53,7 +52,7 @@ CREATE TABLE `engine4_question_categories` (
 -- Dumping data for table `engine4_question_categories`
 --
 
-INSERT IGNORE INTO `engine4_question_categories` (`category_id`, `user_id`, `category_name`) VALUES
+INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `category_name`) VALUES
 (1, 1, 'Trying To Conceive'),
 (2, 1, 'Pregnancy'),
 (3, 1, 'Parenting'),

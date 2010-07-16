@@ -27,7 +27,7 @@ class Answer_Model_Category extends Core_Model_Item_Abstract
   {
     if( is_null($this->_table) )
     {
-      $this->_table = Engine_Api::_()->getDbtable('categories', 'question');
+      $this->_table = Engine_Api::_()->getDbtable('categories', 'answer');
     }
 
     return $this->_table;
@@ -35,7 +35,7 @@ class Answer_Model_Category extends Core_Model_Item_Abstract
 
 
   public function getUsedCount(){
-    $table  = Engine_Api::_()->getDbTable('questions', 'question');
+    $table  = Engine_Api::_()->getDbTable('answers', 'answer');
     $rName = $table->info('name');
     $select = $table->select()
                     ->from($rName)

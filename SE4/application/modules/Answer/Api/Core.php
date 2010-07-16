@@ -56,7 +56,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getAnswersSelect($params = array())
   {
-    $table = Engine_Api::_()->getDbtable('blogs', 'blog');
+    $table = Engine_Api::_()->getDbtable('answers', 'answer');
     $rName = $table->info('name');
 
     $tmTable = Engine_Api::_()->getDbtable('TagMaps', 'core');
@@ -137,7 +137,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */  
   public function addCategory($value)
   {
-    $this->api()->getDbtable('categories', 'blog')
+    $this->api()->getDbtable('categories', 'answer')
       ->delete(array(
         'user_id = ?' => $this->getIdentity(),
         'blocked_user_id = ?' => $user->getIdentity()
@@ -152,7 +152,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getCategories()
   {
-    return $this->api()->getDbtable('categories', 'question')->fetchAll();
+    return $this->api()->getDbtable('categories', 'answer')->fetchAll();
   }
 
   /**
@@ -175,7 +175,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getUserCategories($user_id)
   {
-    $table  = Engine_Api::_()->getDbtable('categories', 'blog');
+    $table  = Engine_Api::_()->getDbtable('categories', 'answer');
     $uName = Engine_Api::_()->getDbtable('blogs', 'blog')->info('name');
     $iName = $table->info('name');
 
@@ -198,7 +198,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   function getArchiveList($user_id)
   {
-    $table = Engine_Api::_()->getDbtable('blogs', 'blog');
+    $table = Engine_Api::_()->getDbtable('answers', 'answer');
     $rName = $table->info('name');
 
     $select = $table->select()

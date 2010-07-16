@@ -53,13 +53,6 @@ return array(
         'page' => 1
       )
     ),
-    'answer_create' => array(
-      'route' => 'answers/create',
-      'defaults' => array(
-        'module' => 'answer',
-        'controller' => 'index',
-        'action' => 'create'
-      )
-    ),
+
   ),
 );

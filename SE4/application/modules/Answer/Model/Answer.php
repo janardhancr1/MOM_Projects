@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Answer_Model_Blog extends Core_Model_Item_Abstract
+class Answer_Model_Answer extends Core_Model_Item_Abstract
 {
   // Properties
 
@@ -41,7 +41,7 @@ class Answer_Model_Blog extends Core_Model_Item_Abstract
     $slug = trim(preg_replace('/-+/', '-', preg_replace('/[^a-z0-9-]+/i', '-', strtolower($this->getTitle()))), '-');
     
     $params = array_merge(array(
-      'route' => 'blog_entry_view',
+      'route' => 'answer_entry_view',
       'reset' => true,
       'user_id' => $this->owner_id,
       'blog_id' => $this->blog_id,
