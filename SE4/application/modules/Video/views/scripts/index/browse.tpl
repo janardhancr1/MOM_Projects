@@ -101,7 +101,8 @@
 </div>
 <div>
 <?php echo $this->form->render($this) ?>
- <div style='padding-top:10px;padding-right:10px;width:690px'>
+</div>
+<div style='padding-top:10px;padding-right:10px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Videos using the tag');?> #<?php echo $this->tag;?> <a href="<?php echo $this->url(array('module' => 'video', 'controller' => 'index', 'action' => 'browse'), 'default', true) ?>">(x)</a>

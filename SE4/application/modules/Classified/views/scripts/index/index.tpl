@@ -47,6 +47,58 @@
 </div>-->
 
 <div class='layout_right'>
+<div class="generic_layout_container layout_core_ad_campaign">
+<script type="text/javascript">
+
+ function processClick(adcampaign_id, ad_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/utility/advertisement',
+      'data' : {
+        'format' : 'json',
+        'adcampaign_id' : adcampaign_id,
+        'ad_id' : ad_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+      }
+    })).send();
+
+  }
+</script>
+<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="clear:both;"></div>
+<div style="vertical-align: middle;" onclick="javascript:processClick(2, 2)">
+  <a href='' target='_blank'><img src='/public/user/1000000/1000/1/3.gif'/></a></div></div>
+
+<div class="generic_layout_container layout_core_ad_campaign">
+<script type="text/javascript">
+
+ function processClick(adcampaign_id, ad_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/utility/advertisement',
+      'data' : {
+        'format' : 'json',
+        'adcampaign_id' : adcampaign_id,
+        'ad_id' : ad_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+      }
+    })).send();
+
+  }
+
+</script>
+<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="clear:both;"></div>
+<div style="vertical-align: middle;" onclick="javascript:processClick(3, 3)">
+  <a href='' target='_blank' style='border-bottom: 1px solid #DDDDDD'><img src='/public/user/1000000/1000/1/5.gif'/></a></div></div>
   <!--
   <?php if( $this->can_create): ?>
     <div class="quicklinks">
@@ -62,16 +114,15 @@
 <div class='layout_middle'>
 <div class="headline_header">
 	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
-	<h2>
-    <?php echo $this->translate('Classifieds');?><br/>
+	<div class="mainheadline">
+    <?php echo $this->translate('Classifieds');?>
+	</div>
     <div class="smallheadline"><?php echo $this->translate('Classified listings are a great way to list something for sale or find items.');?></div>
-  </h2>
-  
 </div>
 <div>
 <?php echo $this->form->render($this) ?>
 </div>
- <div style='padding-top:5px;width:690px'>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Showing classified listings using the tag');?> #<?php echo $this->tag_text;?> <a href="<?php echo $this->url(array('module' => 'classified', 'controller' => 'index', 'action' => 'index'), 'default', true) ?>">(x)</a>

@@ -34,14 +34,14 @@ ul.polls_browse > li > a
 }
 ul.polls_browse .polls_browse_options
 {
-  float: right;
-  width: 120px;
+  float: left;
+  width: auto;
   padding-left: 15px;
 }
 ul.polls_browse .polls_browse_options a
 {
-  clear: both;
-  margin: 3px 0px 0px 0px;
+  float: left;
+  margin: 5px 10px 0px 0px;
   font-size: .8em;
   padding-top: 1px;
   height: 16px;

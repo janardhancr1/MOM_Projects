@@ -78,9 +78,17 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => 203,
     ));
 
-    $this->addElement('Text', 'search', array(
-      'label' => 'Search Classifieds',
+    /*$this->addElement('Button', 'done', array(
+      'label' => 'Search',
       'order' => $i--,
+      'onclick' => 'this.form.submit();',
+    ));*/
+    
+  
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go To My Classifieds</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
+	  'order' => $i--,
     ));
 
     $this->addElement('Select', 'orderby', array(
@@ -93,7 +101,7 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => $i--,
     ));
 
-    $this->addElement('Select', 'show', array(
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Posts',
@@ -112,7 +120,7 @@ class Classified_Form_Search extends Fields_Form_Search
       ),
       'onchange' => 'this.form.submit();',
       'order' => $i--,
-    ));
+    ));*/
 
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
@@ -123,15 +131,10 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => $i--,
     ));
 
-    $this->addElement('Button', 'done', array(
-      'label' => 'Search',
-      'order' => 100,
-      'onclick' => 'this.form.submit();',
+    $this->addElement('Text', 'search', array(
+      'label' => 'Search Classifieds',
+      'order' => $i--,
     ));
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<a href='/index.php/classifieds/manage'>My Listings</a>");
-	$this->addElement('Dummy', 'my', array(
-      'content' => $content,
-    ));
   }
 }

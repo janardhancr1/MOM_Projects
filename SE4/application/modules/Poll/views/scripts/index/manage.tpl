@@ -113,12 +113,6 @@
       <?php foreach ($this->paginator as $poll): ?>
       <li id="poll-item-<?php echo $poll->poll_id ?>">
         <?php echo $this->htmlLink($poll->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'polls_browse_photo')) ?>
-        <div class="polls_browse_options">
-          <?php echo $this->htmlLink(array('route' => 'poll_delete', 'poll_id' => $poll->poll_id), $this->translate('Delete Poll'), array(
-            'class'=>'buttonlink smoothbox icon_poll_delete'
-           )) ?>
-          <a href='<?php echo $this->url(array('poll_id' => $poll->poll_id), 'poll_edit', true) ?>' class='buttonlink icon_poll_edit'><?php echo $this->translate('Edit Privacy');?></a>
-        </div>
         <div class="polls_browse_info">
           <?php echo $this->htmlLink($poll->getHref(), $poll->getTitle()) ?>
           <div class="polls_browse_info_date">
@@ -134,6 +128,12 @@
               <?php echo $poll->description ?>
             </div>
           <?php endif; ?>
+        </div>
+        <div class="polls_browse_options">
+          <?php echo $this->htmlLink(array('route' => 'poll_delete', 'poll_id' => $poll->poll_id), $this->translate('Delete Poll'), array(
+            'class'=>'buttonlink smoothbox icon_poll_delete'
+           )) ?>
+          <a href='<?php echo $this->url(array('poll_id' => $poll->poll_id), 'poll_edit', true) ?>' class='buttonlink icon_poll_edit'><?php echo $this->translate('Edit Privacy');?></a>
         </div>
       </li>
       <?php endforeach; ?>

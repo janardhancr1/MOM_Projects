@@ -99,7 +99,7 @@
       </li>
     </ul>
   </div>
-<div style='padding-top:20px;width:690px'>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class='albums_manage'>
       <?php foreach( $this->paginator as $album ): ?>

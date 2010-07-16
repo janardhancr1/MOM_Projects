@@ -911,11 +911,6 @@ form.global_search_box dd
   margin-left:5px;
 }
 
-.classifieds_browse_filters
-{
-	height:120px;
-}
-
 
 /* NEW */
 
@@ -991,6 +986,7 @@ Also used to style popup response messages, etc.
 */
 .global_form_popup
 {
+  background-color: #fff;
   padding: 10px 10px 10px 13px;
   float: left;
   overflow: hidden;

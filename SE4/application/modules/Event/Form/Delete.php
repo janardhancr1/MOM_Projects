@@ -20,8 +20,8 @@ class Event_Form_Delete extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Delete Event')
-      ->setDescription('Are you sure you want to delete this event?');
+    //$this->setTitle('Delete Event')
+    $this->setDescription('Are you sure you want to delete this event?');
 
     $this->addElement('Hash', 'token');
 

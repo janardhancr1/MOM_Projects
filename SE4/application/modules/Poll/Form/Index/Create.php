@@ -20,8 +20,8 @@ class Poll_Form_Index_Create extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Create Poll')
-         ->setDescription('Create your poll below, then click "Create Poll" to start your poll.');
+    //$this->setTitle('Create Poll')
+    //     ->setDescription('Create your poll below, then click "Create Poll" to start your poll.');
     
     $auth = Engine_Api::_()->authorization()->context;
     $user = Engine_Api::_()->user()->getViewer();

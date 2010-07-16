@@ -20,8 +20,8 @@ class Video_Form_Edit extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Edit Video')
-      ->setAttrib('name', 'video_edit');
+    //$this->setTitle('Edit Video')
+    $this->setAttrib('name', 'video_edit');
     $user = Engine_Api::_()->user()->getViewer();
 
     $this->addElement('Text', 'title', array(

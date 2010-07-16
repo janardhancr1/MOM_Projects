@@ -58,10 +58,6 @@ ul.feed .feed_attachment_classified > div > div
 BROWSE CLASSIFIEDS
 These styles are used on the browse groups page
 */
-.classifieds_browse_filters
-{
-	height:120px;
-}
 .classifieds_browse_filters .form-wrapper
 {
   overflow: hidden;
@@ -114,13 +110,13 @@ ul.classifieds_browse .classifieds_browse_photo img
 }
 ul.classifieds_browse .classifieds_browse_options
 {
-  float: right;
+  float: left;
   overflow: hidden;
   padding-left: 20px;
 }
 ul.classifieds_browse .classifieds_browse_options > a
 {
-  clear: both;
+  float: left;
   display: block;
   margin: 5px;
   font-size: .8em;
