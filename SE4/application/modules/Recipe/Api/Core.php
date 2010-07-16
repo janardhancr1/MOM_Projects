@@ -71,7 +71,7 @@ class Recipe_Api_Core extends Core_Api_Abstract
 
   public function getRecipeVotes($recipe_ids)
   {
-    if (is_string($recipe_ids))
+    /*if (is_string($recipe_ids))
       $recipe_ids = array($recipe_ids);
 
     $recipe_votes = array();
@@ -90,7 +90,7 @@ class Recipe_Api_Core extends Core_Api_Abstract
       if (!empty($row))
         $recipe_votes[$row->recipe_id] = $row->votes;
 
-    return $recipe_votes;
+    return $recipe_votes;*/
   }
 
   public function setVote($recipe_id, $option_id, $user_id=0)

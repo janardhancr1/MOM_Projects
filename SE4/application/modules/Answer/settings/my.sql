@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   `answer_tags` varchar(255) NOT NULL,
   `answer_cat_id` int(11) unsigned NOT NULL,
   `creation_date` datetime NOT NULL,
-  PRIMARY KEY  (`question_id`),
+  PRIMARY KEY  (`answer_id`),
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`)
@@ -106,7 +106,7 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 --
 
 INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES
-('blog', 'Blogs', 'Blogs', '4.0.0', 1, 'extra');
+('answer', 'Answers', 'Answers', '4.0.0', 1, 'extra');
 
 
 -- --------------------------------------------------------

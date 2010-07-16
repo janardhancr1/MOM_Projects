@@ -20,8 +20,8 @@ class Recipe_Form_Index_Create extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Create Recipe')
-         ->setDescription('Create your recipe below, then click "Create Recipe" to start your recipe.');
+    //$this->setTitle('Create Recipe')
+    //     ->setDescription('Create your recipe below, then click "Create Recipe" to start your recipe.');
     
     $auth = Engine_Api::_()->authorization()->context;
     $user = Engine_Api::_()->user()->getViewer();

@@ -251,7 +251,6 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       */
       
       $auth = Engine_Api::_()->authorization()->context;
-
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
       foreach( $roles as $role )
       {
@@ -281,6 +280,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     try
     {
       $values = $form->getValues();
+      
       // CREATE AUTH STUFF HERE
       $auth = Engine_Api::_()->authorization()->context;
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
