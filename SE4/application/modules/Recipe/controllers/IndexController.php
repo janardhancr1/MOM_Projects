@@ -237,10 +237,12 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     $navigation = $this->getNavigation(true);
     $this->view->navigation = $navigation;
     $this->view->form = $form = new Recipe_Form_Index_Edit();
+    
+    $saved = $this->_getParam('saved');
 
     // Populate form with current settings
    
-    if( !$this->getRequest()->isPost())
+    if( !$this->getRequest()->isPost() || $saved)
     {
       /*
       $user_level = $viewer->level_id;
@@ -249,7 +251,29 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       $allowed_comment = Engine_Api::_()->authorization()->getPermission($user_level, 'recipe', 'auth_comment');
       $allowed_comment = unserialize($allowed_comment);
       */
+    	
+       if( $saved )
+      {
+        $url = $this->_helper->url->url(array('user_id' => $viewer->getIdentity(), 'recipe_id' => $classified->getIdentity()), 'classified_entry_view');
+        $savedChangesNotice = Zend_Registry::get('Zend_Translate')->_("Your changes were saved. Click %s to view your listing.",'<a href="'.$url.'">here</a>');
+        $form->addNotice($savedChangesNotice);
+      }
+       // prepare tags
+      $classifiedTags = $recipe->tags()->getTagMaps();
+      //$form->getSubForm('custom')->saveValues();
       
+      $tagString = '';
+      foreach( $classifiedTags as $tagmap )
+      {
+        if( $tagString !== '' ) $tagString .= ', ';
+        $tagString .= $tagmap->getTag()->getTitle();
+      }
+
+      $this->view->tagNamePrepared = $tagString;
+      $form->tags->setValue($tagString);
+
+      // etc
+      $form->populate($recipe->toArray());
       $auth = Engine_Api::_()->authorization()->context;
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
       foreach( $roles as $role )
