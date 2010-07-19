@@ -24,8 +24,16 @@ class Answer_IndexController extends Core_Controller_Action_Standard
   public function indexAction()
   {
      $this->view->form = $form = new Answer_Form_Search();
+     
      $this->view->form1 = $form1 = new Answer_Form_Create();
+     
+     $this->view->form2 = $form2 = new Answer_Form_Manage();
 
+     if($this->getRequest()->isPost() && $this->view->form2->isValid($this->getRequest()->getPost()))
+     {
+     	
+		$this->_redirect("answers/manage");
+     }
      if ( $this->getRequest()->isPost() && $this->view->form1->isValid($this->getRequest()->getPost()) ) {
       $db = Engine_Api::_()->getDbTable('answers', 'answer')->getAdapter();
       $db->beginTransaction();
@@ -35,39 +43,10 @@ class Answer_IndexController extends Core_Controller_Action_Standard
           return;
         $values = $this->view->form1->getValues();
 
-        $row        = Engine_Api::_()->getItem('recipe', $answer_id);
-        //$attachment = Engine_Api::_()->getItem($row->getType(), $answer_id);
-        $db->commit();
-      }
-     catch (Exception $e) {
-        $db->rollback();
-        throw $e;
-      }
-     }
-  }
- 
-
-  public function createAction()
-  {
-    if( !$this->_helper->requireUser()->isValid() ) return;
-    
-   
-    $this->view->form = $form = new Answer_Form_Create();
-            
- 	 if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
-      $db = Engine_Api::_()->getDbTable('answers', 'answer')->getAdapter();
-      $db->beginTransaction();
-      try {
-        $question_id    = $this->view->form->save();
+        $row        = Engine_Api::_()->getItem('answer', $answer_id);
+        $attachment = Engine_Api::_()->getItem($row->getType(), $answer_id);
         
-        if (empty($question_id))
-          return;
-        $values = $this->view->form->getValues();
-
-        $row        = Engine_Api::_()->getItem('question', $question_id);
-        $attachment = Engine_Api::_()->getItem($row->getType(), $question_id);
-
-        // CREATE AUTH STUFF HERE
+          // CREATE AUTH STUFF HERE
         $auth = Engine_Api::_()->authorization()->context;
         $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
         if($values['auth_view']) $auth_view =$values['auth_view'];
@@ -89,22 +68,58 @@ class Answer_IndexController extends Core_Controller_Action_Standard
         }
 
 
-        $action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'recipe_new');
+        $action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'answer_new');
         if (null !== $action)
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
-
         $db->commit();
-      } catch (Exception $e) {
+      }
+     catch (Exception $e) {
         $db->rollback();
         throw $e;
       }
-
-      if ($question_id)
-        $this->_redirect("anwers/view/$question_id");
-    }
+            if ($answer_id)
+        $this->_redirect("answers/view/$answer_id");
+     }
     
   }
+public function viewAction()
+  {
 
+    $answer_id = $this->getRequest()->getParam('answer_id');
+    $answer = $this->view->answer = Engine_Api::_()->getItem('answer', $answer_id);
+    if (!empty($answer)) {
+      Engine_Api::_()->core()->setSubject($answer);
+    }
+    if (!$this->_helper->requireSubject()->isValid())
+      return;
 
+    if( !$this->_helper->requireAuth()->setAuthParams($answer, null, 'view')->isValid()) return;
+   
+    $this->view->owner         = $answer->getOwner();
+    $this->view->answer->save();
+  
+  }
+  public function manageAction()
+  {
+    if( !$this->_helper->requireUser()->isValid() ) return;
+
+    $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('answer', null, 'create')->checkRequire();
+
+    $this->view->users     = array($this->view->viewer_id => Engine_Api::_()->user()->getViewer());
+    $this->view->owner     = Engine_Api::_()->user()->getViewer();
+    $this->view->user_id   = $this->view->viewer_id;
+
+    $this->view->paginator = Engine_Api::_()->answer()->getAnswersPaginator(array(
+      'user_id' => $this->view->viewer_id
+    ));
+    $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.perpage', 10) );
+    $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
+
+    $recipe_ids  = array();
+    foreach ($this->view->paginator as $answer) {
+      $answer_ids[] = $answer->answer_id;
+    }
+   
+  }
 }
 

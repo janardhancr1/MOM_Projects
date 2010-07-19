@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Blog
+ * @package    Answer
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Core.php 5712 2010-05-12 18:20:05Z jung $
@@ -12,7 +12,7 @@
 
 /**
  * @category   Application_Extensions
- * @package    Blog
+ * @package    Answer
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
@@ -29,7 +29,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getAnswersPaginator($params = array())
   {
-    $paginator = Zend_Paginator::factory($this->getBlogsSelect($params));
+    $paginator = Zend_Paginator::factory($this->getAnswersSelect($params));
     if( !empty($params['page']) )
     {
       $paginator->setCurrentPageNumber($params['page']);
@@ -41,7 +41,7 @@ class Answer_Api_Core extends Core_Api_Abstract
 
     if( empty($params['limit']) )
     {
-      $page = (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('blog.page', 10);
+      $page = (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.page', 10);
       $paginator->setItemCountPerPage($page);
     }
 
@@ -88,42 +88,16 @@ class Answer_Api_Core extends Core_Api_Abstract
       $select
         ->setIntegrityCheck(false)
         ->from($rName)
-        ->joinLeft($tmName, "$tmName.resource_id = $rName.blog_id")
-        ->where($tmName.'.resource_type = ?', 'blog')
+        ->joinLeft($tmName, "$tmName.resource_id = $rName.answer_id")
+        ->where($tmName.'.resource_type = ?', 'answer')
         ->where($tmName.'.tag_id = ?', $params['tag']);
     }
-
-    if( !empty($params['category']) )
-    {
-      $select->where($rName.'.category_id = ?', $params['category']);
-    }
-
-    if( isset($params['draft']) )
-    {
-      $select->where($rName.'.draft = ?', $params['draft']);
-    }
-
     //else $select->group("$rName.blog_id");
 
     // Could we use the search indexer for this?
     if( !empty($params['search']) )
     {
-      $select->where($rName.".title LIKE ? OR ".$rName.".body LIKE ?", '%'.$params['search'].'%');
-    }
-
-    if( !empty($params['start_date']) )
-    {
-      $select->where($rName.".creation_date > ?", date('Y-m-d', $params['start_date']));
-    }
-
-    if( !empty($params['end_date']) )
-    {
-      $select->where($rName.".creation_date < ?", date('Y-m-d', $params['end_date']));
-    }
-
-    if( !empty($params['visible']) )
-    {
-      $select->where($rName.".search = ?", $params['visible']);
+      $select->where($rName.".answer_title LIKE ?", '%'.$params['search'].'%');
     }
 
     return $select;
@@ -163,7 +137,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getCategory($category_id)
   {
-    $category = new Blog_Model_Category($category_id);
+    $category = new Answer_Model_Category($category_id);
     return $category;
   }
 
@@ -176,7 +150,7 @@ class Answer_Api_Core extends Core_Api_Abstract
   public function getUserCategories($user_id)
   {
     $table  = Engine_Api::_()->getDbtable('categories', 'answer');
-    $uName = Engine_Api::_()->getDbtable('blogs', 'blog')->info('name');
+    $uName = Engine_Api::_()->getDbtable('answers', 'answer')->info('name');
     $iName = $table->info('name');
 
     $select = $table->select()

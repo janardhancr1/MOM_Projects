@@ -87,15 +87,15 @@ INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `categ
 --
 
 INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-('core_main_blog', 'blog', 'Blogs', '', '{"route":"blog_browse"}', 'core_main', '', 4),
-('core_sitemap_blog', 'blog', 'Blogs', '', '{"route":"blog_browse"}', 'core_sitemap', '', 4),
+('core_main_answer', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_main', '', 4),
+('core_sitemap_answer', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_sitemap', '', 4),
 
-('core_admin_main_plugins_blog', 'blog', 'Blogs', '', '{"route":"admin_default","module":"blog","controller":"settings"}', 'core_admin_main_plugins', '', 999),
+('core_admin_main_plugins_answer', 'answer', 'Answers', '', '{"route":"admin_default","module":"answer","controller":"settings"}', 'core_admin_main_plugins', '', 999),
 
-('blog_admin_main_manage', 'blog', 'View Blogs', '', '{"route":"admin_default","module":"blog","controller":"manage"}', 'blog_admin_main', '', 1),
-('blog_admin_main_settings', 'blog', 'Global Settings', '', '{"route":"admin_default","module":"blog","controller":"settings"}', 'blog_admin_main', '', 2),
-('blog_admin_main_level', 'blog', 'Member Level Settings', '', '{"route":"admin_default","module":"blog","controller":"level"}', 'blog_admin_main', '', 3),
-('blog_admin_main_categories', 'blog', 'Categories', '', '{"route":"admin_default","module":"blog","controller":"settings", "action":"categories"}', 'blog_admin_main', '', 4)
+('answer_admin_main_manage', 'answer', 'View Answer', '', '{"route":"admin_default","module":"answer","controller":"manage"}', 'answer_admin_main', '', 1),
+('answer_admin_main_settings', 'answer', 'Global Settings', '', '{"route":"admin_default","module":"answer","controller":"settings"}', 'answer_admin_main', '', 2),
+('answer_admin_main_level', 'answer', 'Member Level Settings', '', '{"route":"admin_default","module":"answer","controller":"level"}', 'answer_admin_main', '', 3),
+('answer_admin_main_categories', 'answer', 'Categories', '', '{"route":"admin_default","module":"answer","controller":"settings", "action":"categories"}', 'answer_admin_main', '', 4)
 ;
 
 
@@ -116,8 +116,8 @@ INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `vers
 --
 
 INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`, `body`, `enabled`, `displayable`, `attachable`, `commentable`, `shareable`, `is_generated`) VALUES
-('blog_new', 'blog', '{item:$subject} wrote a new blog entry:', 1, 5, 1, 3, 1, 1),
-('comment_blog', 'blog', '{item:$subject} commented on {item:$owner}''s {item:$object:blog entry}: {body:$body}', 1, 1, 1, 1, 1, 0);
+('answer_new', 'answer', '{item:$subject} wrote a new answer entry:', 1, 5, 1, 3, 1, 1),
+('comment_answer', 'answer', '{item:$subject} commented on {item:$owner}''s {item:$object:answer entry}: {body:$body}', 1, 1, 1, 1, 1, 0);
 
 
 -- --------------------------------------------------------
@@ -127,53 +127,64 @@ INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`, `body`, `en
 --
 
 INSERT IGNORE INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `value`, `params`) VALUES
-(1, 'blog', 'create', 1, NULL),
-(1, 'blog', 'delete', 1, NULL),
-(1, 'blog', 'edit', 1, NULL),
-(1, 'blog', 'view', 1, NULL),
-(1, 'blog', 'comment', 1, NULL),
-(1, 'blog', 'css', 1, NULL),
-(1, 'blog', 'max', 3, '20'),
-(1, 'blog', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
-(1, 'blog', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
-(1, 'blog', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(1, 'answer', 'create', 1, NULL),
+(1, 'answer', 'delete', 1, NULL),
+(1, 'answer', 'edit', 1, NULL),
+(1, 'answer', 'view', 1, NULL),
+(1, 'answer', 'comment', 1, NULL),
+(1, 'answer', 'css', 1, NULL),
+(1, 'answer', 'max', 3, '20'),
+(1, 'answer', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(1, 'answer', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
+(1, 'answer', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
-(2, 'blog', 'create', 1, NULL),
-(2, 'blog', 'delete', 1, NULL),
-(2, 'blog', 'edit', 1, NULL),
-(2, 'blog', 'view', 1, NULL),
-(2, 'blog', 'comment', 2, NULL),
-(2, 'blog', 'css', 1, NULL),
-(2, 'blog', 'max', 3, '20'),
-(2, 'blog', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
-(2, 'blog', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
-(2, 'blog', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(2, 'answer', 'create', 1, NULL),
+(2, 'answer', 'delete', 1, NULL),
+(2, 'answer', 'edit', 1, NULL),
+(2, 'answer', 'view', 1, NULL),
+(2, 'answer', 'comment', 2, NULL),
+(2, 'answer', 'css', 1, NULL),
+(2, 'answer', 'max', 3, '20'),
+(2, 'answer', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(2, 'answer', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
+(2, 'answer', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
-(3, 'blog', 'create', 1, NULL),
-(3, 'blog', 'delete', 1, NULL),
-(3, 'blog', 'edit', 1, NULL),
-(3, 'blog', 'view', 1, NULL),
-(3, 'blog', 'comment', 1, NULL),
-(3, 'blog', 'css', 1, NULL),
-(3, 'blog', 'max', 3, '20'),
-(3, 'blog', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
-(3, 'blog', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
-(3, 'blog', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(3, 'answer', 'create', 1, NULL),
+(3, 'answer', 'delete', 1, NULL),
+(3, 'answer', 'edit', 1, NULL),
+(3, 'answer', 'view', 1, NULL),
+(3, 'answer', 'comment', 1, NULL),
+(3, 'answer', 'css', 1, NULL),
+(3, 'answer', 'max', 3, '20'),
+(3, 'answer', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(3, 'answer', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
+(3, 'answer', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
-(4, 'blog', 'create', 1, NULL),
-(4, 'blog', 'delete', 1, NULL),
-(4, 'blog', 'edit', 1, NULL),
-(4, 'blog', 'view', 1, NULL),
-(4, 'blog', 'comment', 1, NULL),
-(4, 'blog', 'css', 1, NULL),
-(4, 'blog', 'max', 3, '20'),
-(4, 'blog', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
-(4, 'blog', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
-(4, 'blog', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(4, 'answer', 'create', 1, NULL),
+(4, 'answer', 'delete', 1, NULL),
+(4, 'answer', 'edit', 1, NULL),
+(4, 'answer', 'view', 1, NULL),
+(4, 'answer', 'comment', 1, NULL),
+(4, 'answer', 'css', 1, NULL),
+(4, 'answer', 'max', 3, '20'),
+(4, 'answer', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(4, 'answer', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
+(4, 'answer', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
-(5, 'blog', 'view', 1, NULL),
-(5, 'blog', 'css', 1, NULL),
-(5, 'blog', 'max', 3, '20'),
-(5, 'blog', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
-(5, 'blog', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
-(5, 'blog', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]');
+(5, 'answer', 'view', 1, NULL),
+(5, 'answer', 'css', 1, NULL),
+(5, 'answer', 'max', 3, '20'),
+(5, 'answer', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(5, 'answer', 'auth_html', 3, 'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr'),
+(5, 'answer', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]');
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `engine4_activity_actiontypes`
+--
+
+INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`,  `body`,  `enabled`,  `displayable`,  `attachable`,  `commentable`,  `shareable`, `is_generated`) VALUES
+('answer_new', 'answer', '{item:$subject} created a new answer:', '1', '5', '1', '3', '1', 1),
+('comment_answer', 'answer', '{item:$subject} commented on {item:$owner}''s {item:$object:answer}.', 1, 1, 1, 1, 1, 1);
+

@@ -35,6 +35,7 @@ class Answer_Form_Search extends Engine_Form
     'value' => 'What are you looking for?',
     'onfocus' => "if(this.value == 'What are you looking for?') this.value='';",
     'onblur'=> "if(this.value.length == 0) this.value='What are you looking for?';",
+    
       
     ));
     

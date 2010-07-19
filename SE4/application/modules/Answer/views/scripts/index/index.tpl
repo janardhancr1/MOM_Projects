@@ -59,4 +59,8 @@
 	<div>
 	  <?php echo $this->form1->render($this) ?>
 	</div>
+	<div>
+	
+		<?php echo $this->form2->render($this) ?>
+	</div>
 </div>

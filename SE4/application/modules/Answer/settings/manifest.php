@@ -53,6 +53,36 @@ return array(
         'page' => 1
       )
     ),
+     'answer_search' => array(
+      'route' => 'answers/search/:page/:sort',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'search',
+        'page' => 1,
+        'sort' => 'recent',
+      )
+    ),
+        'answer_view' => array(
+      'route' => 'answers/view/:answer_id/:slug',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'view',
+        'slug' => '',
+      ),
+      'reqs' => array(
+        'answer_id' => '\d+'
+      )
+    ),
+     'answer_manage' => array(
+      'route' => 'answers/manage',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'manage'
+      )
+    ),    
 
   ),
 );
