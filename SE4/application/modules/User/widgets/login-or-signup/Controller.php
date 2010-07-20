@@ -39,7 +39,7 @@ class User_Widget_LoginOrSignupController extends Engine_Content_Widget_Abstract
       if ($form->getElement('facebook')) {
         $content = $form->getElement('facebook')->getContent();
         $content = str_replace('FB.Event.subscribe',
-                               'FB.Event.subscribe(\'fb.log\', function(response) {
+                               'FB.Event.subscribe(\'auth.sessionChange\', function(response) {
                                  window.location.reload();
                                 });
                                 FB.Event.subscribe',

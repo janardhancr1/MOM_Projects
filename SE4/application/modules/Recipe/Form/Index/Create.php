@@ -26,7 +26,7 @@ class Recipe_Form_Index_Create extends Engine_Form
     $auth = Engine_Api::_()->authorization()->context;
     $user = Engine_Api::_()->user()->getViewer();
 
-    $this->addElement('text', 'title', array(
+    $this->addElement('text', 'recipe_name', array(
         'label' => 'Recipe Name',
         'required' => true,
         'maxlength' => 63,
@@ -212,7 +212,7 @@ class Recipe_Form_Index_Create extends Engine_Form
     $recipe = $db_recipes->createRow();
     $recipe->user_id           = Engine_Api::_()->user()->getViewer()->getIdentity();
     $recipe->is_closed         = 0;
-    $recipe->recipe_name             = $this->getElement('title')->getValue();
+    $recipe->recipe_name             = $this->getElement('recipe_name')->getValue();
     $recipe->recipe_description       = $this->getElement('description')->getValue();
     $recipe->recipe_tags              = $this->getElement('tags')->getValue();
     $recipe->recipe_prep_tm   = $this->getElement('preparationTime')->getValue();

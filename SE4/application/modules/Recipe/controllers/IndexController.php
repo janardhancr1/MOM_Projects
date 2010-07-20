@@ -79,7 +79,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     #if (!$this->_helper->requireAuth()->setAuthParams($recipe, null, 'view')->isValid()) return;
 
     $this->view->owner         = $recipe->getOwner();
-    $this->view->recipeOptions   = $recipe->getOptions();
+    //$this->view->recipeOptions   = $recipe->getOptions();
     $this->view->hasVoted      = $recipe->viewerVoted();
     $this->view->votes = 0;
     if (!empty($this->view->recipeOptions))
@@ -219,6 +219,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
 
     $viewer = $this->_helper->api()->user()->getViewer();
     $recipe = Engine_Api::_()->getItem('recipe', $this->_getParam('recipe_id'));
+
     if( !Engine_Api::_()->core()->hasSubject('recipe') )
     {
       Engine_Api::_()->core()->setSubject($recipe);
@@ -237,7 +238,6 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     $navigation = $this->getNavigation(true);
     $this->view->navigation = $navigation;
     $this->view->form = $form = new Recipe_Form_Index_Edit();
-    
     $saved = $this->_getParam('saved');
 
     // Populate form with current settings
@@ -259,7 +259,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         $form->addNotice($savedChangesNotice);
       }
        // prepare tags
-      $classifiedTags = $recipe->tags()->getTagMaps();
+      /*$classifiedTags = $recipe->tags()->getTagMaps();
       //$form->getSubForm('custom')->saveValues();
       
       $tagString = '';
@@ -270,7 +270,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       }
 
       $this->view->tagNamePrepared = $tagString;
-      $form->tags->setValue($tagString);
+      $form->tags->setValue($tagString);*/
 
       // etc
       $form->populate($recipe->toArray());
