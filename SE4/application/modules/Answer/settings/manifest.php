@@ -45,12 +45,16 @@ return array(
   'routes' => array(
     // Public
     'answer_browse' => array(
-      'route' => 'answers/:page/*',
+      'route' => 'answers/:page/:sort/*',
       'defaults' => array(
         'module' => 'answer',
         'controller' => 'index',
-        'action' => 'index',
-        'page' => 1
+        'action' => 'browse',
+        'page' => 1,
+  		'sort' => 'recent',
+      ),
+      'reqs' => array(
+        'page' => '\d+',
       )
     ),
      'answer_search' => array(
@@ -68,8 +72,7 @@ return array(
       'defaults' => array(
         'module' => 'answer',
         'controller' => 'index',
-        'action' => 'view',
-        'slug' => '',
+        'action' => 'view'
       ),
       'reqs' => array(
         'answer_id' => '\d+'
@@ -82,7 +85,15 @@ return array(
         'controller' => 'index',
         'action' => 'manage'
       )
-    ),    
+    ), 
+        'answer_create' => array(
+      'route' => 'answers/create',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'create'
+      )
+    ),   
 
   ),
 );

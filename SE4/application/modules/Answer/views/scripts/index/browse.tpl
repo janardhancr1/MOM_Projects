@@ -6,7 +6,7 @@
  * @package    Answer
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: manage.tpl 6160 2010-06-05 02:20:37Z alex $
+ * @version    $Id: browse.tpl 6398 2010-06-16 23:33:03Z steve $
  * @author     Steve
  */
 ?>
@@ -80,7 +80,17 @@
 <div style="vertical-align: middle;" onclick="javascript:processClick(3, 3)">
   <a href='' target='_blank' style='border-bottom: 1px solid #DDDDDD'><img src='/public/user/1000000/1000/1/5.gif'/></a></div></div>  
 <!--
-  
+  <?php if($this->can_create):?>
+    <div class="quicklinks">
+      <ul>
+        <li>
+          <a href='<?php echo $this->url(array(), 'answer_create') ?>' class='buttonlink icon_poll_new'>
+            <?php echo $this->translate('Create New Question') ?>
+          </a>
+        </li>
+      </ul>
+    </div>
+  <?php endif;?>
 
   <script type="text/javascript">
   //<![CDATA[
@@ -95,49 +105,51 @@
 <div class='layout_middle'>
 <div class="headline_header">
 	<h2><img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
-	<div class="mainheadline">
-    <?php echo $this->translate('My Questions');?>
-    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers'>Back to Questions</a></div>
-    </div>
-    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div></h2>
+		
+	    <?php echo $this->translate('Momburbia Answers');?>
+	    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
+	  </h2>
 </div>
-<?php if($this->can_create):?>
-    <div>
-      <ul>
-        <li>
-          <a href='<?php echo $this->url(array(), 'answer_create') ?>' class='buttonlink icon_answer_new'>
-            <?php echo $this->translate('Create New Question') ?>
-          </a>
-        </li>
-      </ul>
-    </div>
-  <?php endif;?>
-
+<div>
+<?php echo $this->search_form->render($this) ?>
+</div>
  <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
-        <?php echo $this->translate('There are no questions yet.') ?>
-        <?php if (TRUE): // @todo check if user is allowed to create a recipe ?>
-        <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'recipe_create').'">', '</a>') ?>
+        <?php echo $this->translate('There are no questionss yet.') ?>
+        <?php if ($this->can_create): ?>
+        <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'answer_create').'">', '</a>') ?>
         <?php endif; ?>
       </span>
     </div>
   <?php else: // $this->answers is NOT empty ?>
     <ul class="answers_browse">
       <?php foreach ($this->paginator as $answer): ?>
-      <li id="recipe-item-<?php echo $answer->answer_id ?>">
-        <?php echo $this->htmlLink($answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
-        <div class="recipes_browse_info">
-          <?php echo $this->htmlLink($answer->getHref(), $answer->answer_title) ?>
-          
-          <div class="recipes_browse_info_date">
-              <?php echo $this->timestamp($answer->creation_date) ?>
+      <li id="answer-item-<?php echo $answer->answer_id ?>">
+        <?php echo $this->htmlLink(
+                      $answer->getHref(),
+                      $this->itemPhoto($answer->getOwner(), 'thumb.icon', $answer->getOwner()->username),
+                      array('class' => 'answers_browse_photo')
+        ) ?>
+        <div class="answers_browse_info">
+          <h3>
+            <?php echo $this->htmlLink($answer->getHref(), $answer->answer_title) ?>
+          </h3>
+          <div class="answers_browse_info_date">
+            <?php echo $this->translate('Asked by %s', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
+            <?php echo $this->timestamp($answer->creation_date) ?>
           </div>
-         
+          <?php if (!empty($answer->answer_text)): ?>
+            <div class="answers_browse_info_desc">
+              <?php  echo $answer->answer_text ?>
+            </div>
+          <?php endif; ?>
+        </div>
       </li>
       <?php endforeach; ?>
     </ul>
   <?php endif; // $this->answers is NOT empty ?>
-  <?php echo $this->paginationControl($this->paginator); ?>
+  <?php echo $this->paginationControl($this->paginator, null, null, null, array('answer_search'=>$this->search)); ?>
+</div>
 </div>

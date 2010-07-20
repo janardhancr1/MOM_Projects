@@ -18,93 +18,56 @@
  */
 class Answer_Api_Core extends Core_Api_Abstract
 {
-  // Select
-
-
-  /**
-   * Gets a paginator for blogs
-   *
-   * @param Core_Model_Item_Abstract $user The user to get the messages for
-   * @return Zend_Paginator
-   */
-  public function getAnswersPaginator($params = array())
+  public function getAnswerSelect( $params = array() )
   {
-    $paginator = Zend_Paginator::factory($this->getAnswersSelect($params));
-    if( !empty($params['page']) )
-    {
-      $paginator->setCurrentPageNumber($params['page']);
-    }
-    if( !empty($params['limit']) )
-    {
-      $paginator->setItemCountPerPage($params['limit']);
-    }
+    $params  = array_merge(array(
+      'user_id' => null,
+      'sort'    => 'recent',
+      'search'  => '',
+    ), $params);
 
-    if( empty($params['limit']) )
-    {
-      $page = (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.page', 10);
-      $paginator->setItemCountPerPage($page);
-    }
+    $p_table = Engine_Api::_()->getDbTable('answers', 'answer');
+    $p_name  = $p_table->info('name');
+    //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
+    //$o_name  = $o_table->info('name');
 
-    return $paginator;
-  }
+    $select  = $p_table->select()->from($p_name);
 
-  /**
-   * Gets a select object for the user's blog entries
-   *
-   * @param Core_Model_Item_Abstract $user The user to get the messages for
-   * @return Zend_Db_Table_Select
-   */
-  public function getAnswersSelect($params = array())
-  {
-    $table = Engine_Api::_()->getDbtable('answers', 'answer');
-    $rName = $table->info('name');
+    if (!empty($params['user_id']))
+      $select->where('user_id = ?', $params['user_id']);
 
-    $tmTable = Engine_Api::_()->getDbtable('TagMaps', 'core');
-    $tmName = $tmTable->info('name');
-    //$tmTable = Engine_Api::_()->getDbtable('tagmaps', 'blog');
-    //$tmName = $tmTable->info('name');
 
-    $select = $table->select()
-      ->order( !empty($params['orderby']) ? $params['orderby'].' DESC' : 'creation_date DESC' );
-    
-    if( !empty($params['user_id']) && is_numeric($params['user_id']) )
-    {
-      $select->where($rName.'.owner_id = ?', $params['user_id']);
+    switch ($params['sort']) {
+        case 'open':
+          	$select->where('is_closed = 0');
+          break;
+        case 'resolved':
+        $select->where('is_closed = 1');
+          break;
+          
+        case 'recent':
+        default:
+          $select->order('creation_date DESC');
+          break;
     }
 
-    if( !empty($params['user']) && $params['user'] instanceof User_Model_User )
-    {
-      $select->where($rName.'.owner_id = ?', $params['user_id']->getIdentity());
+    if (!empty($params['search'])) {
+      $search = "%{$params['search']}%";
+      // if we do not need to search the Options table, we could just do this:
+      // ->where("`title` LIKE ? OR `description` LIKE ?", $search);
+      // but since we do, we must do the following join:
+      if ('popular' != $search) {
+        $select
+               ->where("`answer_title` LIKE ? ", $search)
+               ->group("$p_name.answer_id");
+      } else
+        $select->where("`answer_title` LIKE ? ", $search);
     }
-
-    if( !empty($params['users']) )
-    {
-      $str = (string) ( is_array($params['users']) ? "'" . join("', '", $params['users']) . "'" : $params['users'] );
-      $select->where($rName.'.owner_id in (?)', new Zend_Db_Expr($str));
-    }
-
-    if( !empty($params['tag']) )
-    {
-      $select
-        ->setIntegrityCheck(false)
-        ->from($rName)
-        ->joinLeft($tmName, "$tmName.resource_id = $rName.answer_id")
-        ->where($tmName.'.resource_type = ?', 'answer')
-        ->where($tmName.'.tag_id = ?', $params['tag']);
-    }
-    //else $select->group("$rName.blog_id");
-
-    // Could we use the search indexer for this?
-    if( !empty($params['search']) )
-    {
-      $select->where($rName.".answer_title LIKE ?", '%'.$params['search'].'%');
-    }
-
     return $select;
   }
-
+  
   /**
-   * Adds a category to the blog plugin
+   * Adds a category to the answers plugin
    *
    * @param String name of category
    * @return Zend_Paginator
@@ -120,7 +83,7 @@ class Answer_Api_Core extends Core_Api_Abstract
   }
 
   /**
-   * Returns a collection of all the categories in the blog plugin
+   * Returns a collection of all the categories in the answers plugin
    *
    * @return Zend_Db_Table_Select
    */
@@ -183,4 +146,9 @@ class Answer_Api_Core extends Core_Api_Abstract
 
     return $table->fetchAll($select);
   }
+  
+	public function getAnswersPaginator($params = array()) {
+    return Zend_Paginator::factory($this->getAnswerSelect($params));
+  }
+
 }

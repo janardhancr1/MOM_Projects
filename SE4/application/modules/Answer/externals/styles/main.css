@@ -51,3 +51,95 @@
   overflow: hidden;
 }
 
+/*
+BROWSE ANSWERS
+These styles are used on the browse answers page
+and inside the polls profile tab.
+*/
+ul.answers_browse > li
+{
+  clear: both;
+  overflow: hidden;
+  padding: 0px 0px 15px 0px;
+}
+ul.answers_browse > li + li
+{
+  border-top-width: 1px;
+  padding-top: 15px;
+}
+ul.answers_browse > li > a
+{
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin-right: 8px;
+  font-weight: bold;
+}
+ul.answers_browse .answers_browse_options
+{
+  float: left;
+  width: auto;
+  padding-left: 15px;
+}
+ul.answers_browse .answers_browse_options a
+{
+  float: left;
+  margin: 5px 10px 0px 0px;
+  font-size: .8em;
+  padding-top: 1px;
+  height: 16px;
+}
+ul.answers_browse .answers_browse_info
+{
+  overflow: hidden;
+}
+ul.answerss_browse .answers_browse_info_date
+{
+  font-size: .8em;
+  color: $theme_font_color_light;
+}
+ul.answers_browse .answers_browse_info_desc
+{
+  margin-top: 5px;
+}
+ul.answers_browse .answers_browse_photo > img
+{
+  display: block;
+}
+
+/*
+VIEW ANSWER
+These styles are used for viewing a single poll.
+*/
+div.answers_view
+{
+  padding-top: 10px;
+  border-top-width: 1px;
+  margin-top: 10px;
+}
+div.recipe_view .recipe_desc
+{
+  margin-bottom: 10px;
+}
+div.answer_view ul.answer_options
+{
+  max-width: 500px;
+  clear: both;
+}
+div.answer_view ul.answer_options > li
+{
+  margin: 12px 0px 12px 0px;
+  clear: both;
+  overflow: hidden;
+}
+div.answers_view .answer_stats
+{
+  margin-top: 15px;
+}
+div.answers_view .answer_stats > a
+{
+  font-weight: bold;
+}
+
+
+

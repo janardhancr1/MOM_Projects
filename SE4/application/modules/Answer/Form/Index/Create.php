@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Answer_Form_Create extends Engine_Form
+class Answer_Form_Index_Create extends Engine_Form
 {
   public function init()
   {   
@@ -55,6 +55,7 @@ class Answer_Form_Create extends Engine_Form
       $categories_prepared[0]= "";
       foreach ($categories as $category){
         $categories_prepared[$category->category_id]= $category->category_name;
+        
       }
 
       // category field

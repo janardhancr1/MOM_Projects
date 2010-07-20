@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Answer_Form_Search extends Engine_Form
+class Answer_Form_Index_Search extends Engine_Form
 {
   public function init()
   {
@@ -29,22 +29,28 @@ class Answer_Form_Search extends Engine_Form
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
 
-    $this->addElement('Text', 'search', array(
-      'size' => '50',
+    $this->addElement('Text', 'answer_search', array(
+      'size' => '25',
       'maxlength' => '100',
     'value' => 'What are you looking for?',
     'onfocus' => "if(this.value == 'What are you looking for?') this.value='';",
     'onblur'=> "if(this.value.length == 0) this.value='What are you looking for?';",
     
-      
+      'onchange' => 'this.form.submit();',
     ));
-    
-    $this->addElement('Button', 'submit', array(
-      'label' => 'Search Answers',
-      'type' => 'submit',
-    'class' => 'btnStyle',
+     $this->addElement('Select', 'browse_answers_by', array(
+      'label' => 'Browse By:',
+      'multiOptions' => array(
+        'recent' => 'Most Recent',
+        'open' => 'Open Questions',
+     	'resolved' => 'Resolved Questions',
+      ),
+     
     ));
-    
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/answers/manage'>Go to My Questions</a>");
+	$this->addElement('Dummy', 'my_groups', array(
+      'content' => $content,
+    ));
    
   }
 }
