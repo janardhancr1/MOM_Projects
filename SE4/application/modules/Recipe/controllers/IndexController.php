@@ -179,7 +179,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         // CREATE AUTH STUFF HERE
         $auth = Engine_Api::_()->authorization()->context;
         $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
-        if($values['auth_view']) $auth_view =$values['auth_view'];
+        if($values['views']) $auth_view =$values['views'];
         else $auth_view = "everyone";
         $viewMax = array_search($auth_view, $roles);
         foreach( $roles as $i=>$role )
@@ -188,9 +188,9 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         }
 
         $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
-        if($values['auth_comment']) $auth_comment =$values['auth_comment'];
+        if($values['comments']) $auth_comment =$values['comments'];
         else $auth_comment = "everyone";
-        $commentMax = array_search($values['auth_comment'], $roles);
+        $commentMax = array_search($values['comments'], $roles);
 
         foreach ($roles as $i=>$role)
         {
@@ -280,11 +280,11 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       {
         if( 1 === $auth->isAllowed($recipe, $role, 'view'))
         {
-          $form->auth_view->setValue($role);
+          $form->views->setValue($role);
         }
         if( 1 === $auth->isAllowed($recipe, $role, 'comment'))
         {
-          $form->auth_comment->setValue($role);
+          $form->comments->setValue($role);
         }
       }
       
@@ -303,12 +303,13 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     $db->beginTransaction();
     try
     {
-      $values = $form->getValues();
+    	$recipe_id    = $this->view->form->save();
+      $values = $this->view->form->getValues();
       
       // CREATE AUTH STUFF HERE
       $auth = Engine_Api::_()->authorization()->context;
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
-      if($values['auth_view']) $auth_view =$values['auth_view'];
+      if($values['views']) $auth_view =$values['views'];
       else $auth_view = "everyone";
       $viewMax = array_search($auth_view, $roles);
       foreach( $roles as $i=>$role )
@@ -316,7 +317,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         $auth->setAllowed($recipe, $role, 'view', ($i <= $viewMax));
       }
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
-      if($values['auth_comment']) $auth_comment =$values['auth_comment'];
+      if($values['comments']) $auth_comment =$values['comments'];
       else $auth_comment = "everyone";
       $commentMax = array_search($auth_comment, $roles);
 

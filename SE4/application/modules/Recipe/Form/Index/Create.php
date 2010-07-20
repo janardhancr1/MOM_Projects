@@ -38,7 +38,7 @@ class Recipe_Form_Index_Create extends Engine_Form
       ));
      
        
-    $this->addElement('textarea', 'description', array(
+    $this->addElement('textarea', 'recipe_description', array(
         'label' => 'Description',
         'filters' => array(
           'StripTags',
@@ -48,7 +48,7 @@ class Recipe_Form_Index_Create extends Engine_Form
       ));
     
 
-    $this->addElement('text', 'tags', array(
+    $this->addElement('text', 'recipe_tags', array(
         'label' => 'Tags',
         'maxlength' => 255,
         'filters' => array(
@@ -58,7 +58,7 @@ class Recipe_Form_Index_Create extends Engine_Form
         ),
       ));
       
-    $this->addElement('text', 'preparationTime', array(
+    $this->addElement('text', 'recipe_prep_tm', array(
         'label' => 'Preparation Time',
         'maxlength' => 100,
         'filters' => array(
@@ -68,7 +68,7 @@ class Recipe_Form_Index_Create extends Engine_Form
         ),
       ));
       
-    $this->addElement('text', 'cookingTime', array(
+    $this->addElement('text', 'recipe_cook_tm', array(
         'label' => 'Cooking Time',
         'maxlength' => 100,
         'filters' => array(
@@ -77,7 +77,7 @@ class Recipe_Form_Index_Create extends Engine_Form
           new Engine_Filter_StringLength(array('max' => '100'))
         ),
       ));
-    $this->addElement('text', 'numPeople', array(
+    $this->addElement('text', 'recipe_serve_to', array(
         'label' => 'How many people does it serve?',
         'maxlength' => 100,
         'filters' => array(
@@ -87,7 +87,7 @@ class Recipe_Form_Index_Create extends Engine_Form
         ),
       ));
       
-    $this->addElement('Select', 'difficulty', array(
+    $this->addElement('Select', 'recipe_difficulty', array(
       'label' => 'Difficulty',
       'multiOptions' => array("Easy"=>"Easy - for beginners", 
       						  "Medium"=>"Medium - some experience needed",
@@ -95,7 +95,7 @@ class Recipe_Form_Index_Create extends Engine_Form
       'value' => 'Easy - for beginners',
     ));
     
-    $this->addElement('textarea', 'ingredients', array(
+    $this->addElement('textarea', 'recipe_ingredients', array(
         'label' => 'Ingredients',
         'required' => true,
         'maxlength' => 100,
@@ -106,7 +106,7 @@ class Recipe_Form_Index_Create extends Engine_Form
         ),
       ));
       
-    $this->addElement('textarea', 'method', array(
+    $this->addElement('textarea', 'recipe_method', array(
         'label' => 'Method',
         'required' => true,
         'maxlength' => 100,
@@ -117,31 +117,31 @@ class Recipe_Form_Index_Create extends Engine_Form
         ),
       ));
       
-       $this->addElement('checkbox', 'vegetarians', array(
+       $this->addElement('checkbox', 'recipe_vege', array(
         'label' => 'Suitable for vegetarians?',
         'value' => 1,
         'disableTranslator' => true
       ));
       
-     $this->addElement('Checkbox', 'vegans', array(
+     $this->addElement('Checkbox', 'recipe_vegan', array(
       'label' => 'Suitable for vegans?',
       'value' => 1,
       'disableTranslator' => true
     ));
     
-    $this->addElement('Checkbox', 'dairyfree', array(
+    $this->addElement('Checkbox', 'recipe_dairy', array(
       'label' => 'Dairy free?',
     'value' => 1,
       'disableTranslator' => true
     ));
     
-    $this->addElement('Checkbox', 'glutenfree', array(
+    $this->addElement('Checkbox', 'recipe_gluten', array(
       'label' => 'Gluten free?',
       'value' => 1,
       'disableTranslator' => true
     ));
     
-    $this->addElement('Checkbox', 'nutfree', array(
+    $this->addElement('Checkbox', 'recipe_nut', array(
       'label' => 'nutfree?',
       'value' => 1,
       'disableTranslator' => true
@@ -161,26 +161,26 @@ class Recipe_Form_Index_Create extends Engine_Form
     $options = array_intersect_key($availableLabels, array_flip($options));
 
 
-    $this->addElement('Select', 'auth_view', array(
+    $this->addElement('Select', 'views', array(
       'label' => 'Privacy',
       'description' => 'Who may see this poll?',
       'multiOptions' => $options,
       'value' => 'everyone',
     ));
-    $this->auth_view->getDecorator('Description')->setOption('placement', 'append');
+    $this->views->getDecorator('Description')->setOption('placement', 'append');
     
      // Comment
     // Init profile comment
     $options =(array) Engine_Api::_()->authorization()->getAdapter('levels')->getAllowed('poll', $user, 'auth_comment');
     $options = array_intersect_key($availableLabels, array_flip($options));
 
-    $this->addElement('Select', 'auth_comment', array(
+    $this->addElement('Select', 'comments', array(
       'label' => 'Comment Privacy',
       'description' => 'Who may post comments on this poll?',
       'multiOptions' => $options,
       'value' => 'everyone',
     ));
-    $this->auth_comment->getDecorator('Description')->setOption('placement', 'append');
+    $this->comments->getDecorator('Description')->setOption('placement', 'append');
     
     $this->addElement('button', 'submit', array(
         'label' => 'Create recipe',
@@ -213,21 +213,21 @@ class Recipe_Form_Index_Create extends Engine_Form
     $recipe->user_id           = Engine_Api::_()->user()->getViewer()->getIdentity();
     $recipe->is_closed         = 0;
     $recipe->recipe_name             = $this->getElement('recipe_name')->getValue();
-    $recipe->recipe_description       = $this->getElement('description')->getValue();
-    $recipe->recipe_tags              = $this->getElement('tags')->getValue();
-    $recipe->recipe_prep_tm   = $this->getElement('preparationTime')->getValue();
-    $recipe->recipe_cook_tm       = $this->getElement('cookingTime')->getValue();
-    $recipe->recipe_serve_to         = $this->getElement('numPeople')->getValue();
-    $recipe->recipe_difficulty        = $this->getElement('difficulty')->getValue();
-    $recipe->recipe_ingredients       = $this->getElement('ingredients')->getValue();
-    $recipe->recipe_method            = $this->getElement('method')->getValue();
-    $recipe->recipe_vege       = $this->getElement('vegetarians')->getValue();
-    $recipe->recipe_vegan            = $this->getElement('vegans')->getValue();
-    $recipe->recipe_dairy         = $this->getElement('dairyfree')->getValue();
-    $recipe->recipe_gluten        = $this->getElement('glutenfree')->getValue();
-    $recipe->recipe_nut           = $this->getElement('nutfree')->getValue();
-    $recipe->views             = $this->getElement('auth_view')->getValue();
-    $recipe->comments          = $this->getElement('auth_comment')->getValue();
+    $recipe->recipe_description       = $this->getElement('recipe_description')->getValue();
+    $recipe->recipe_tags              = $this->getElement('recipe_tags')->getValue();
+    $recipe->recipe_prep_tm   = $this->getElement('recipe_prep_tm')->getValue();
+    $recipe->recipe_cook_tm       = $this->getElement('recipe_cook_tm')->getValue();
+    $recipe->recipe_serve_to         = $this->getElement('recipe_serve_to')->getValue();
+    $recipe->recipe_difficulty        = $this->getElement('recipe_difficulty')->getValue();
+    $recipe->recipe_ingredients       = $this->getElement('recipe_ingredients')->getValue();
+    $recipe->recipe_method            = $this->getElement('recipe_method')->getValue();
+    $recipe->recipe_vege       = $this->getElement('recipe_vege')->getValue();
+    $recipe->recipe_vegan            = $this->getElement('recipe_vegan')->getValue();
+    $recipe->recipe_dairy         = $this->getElement('recipe_dairy')->getValue();
+    $recipe->recipe_gluten        = $this->getElement('recipe_gluten')->getValue();
+    $recipe->recipe_nut           = $this->getElement('recipe_nut')->getValue();
+    $recipe->views             = $this->getElement('views')->getValue();
+    $recipe->comments          = $this->getElement('comments')->getValue();
     $recipe->creation_date = date('Y-m-d H:i:s');
     $recipe->save();
 
