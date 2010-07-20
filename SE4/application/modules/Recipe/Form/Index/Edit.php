@@ -21,8 +21,8 @@ class Recipe_Form_Index_Edit extends Recipe_Form_Index_Create
   public function init()
   {
     parent::init();
-    $this->setTitle('Edit Recipe Privacy')
-      ->setDescription('Edit your recipe privacy below, then click "Save Recipe" to apply the new settings for the recipe.');
+    //$this->setTitle('Edit Recipe Privacy')
+    //  ->setDescription('Edit your recipe privacy below, then click "Save Recipe" to apply the new settings for the recipe.');
     $this->submit->setLabel('Save Recipe');
   }
 }

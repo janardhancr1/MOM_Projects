@@ -143,10 +143,10 @@
             </div>
           <?php endif; ?>
          <div class="recipes_browse_options">
+         <a href='<?php echo $this->url(array('recipe_id' => $recipe->recipe_id), 'recipe_edit', true) ?>' class='buttonlink icon_recipe_edit'><?php echo $this->translate('Edit Recipe');?></a>
          <?php echo $this->htmlLink(array('route' => 'recipe_delete', 'recipe_id' => $recipe->recipe_id), $this->translate('Delete Recipe'), array(
             'class'=>'buttonlink smoothbox icon_poll_delete'
            )) ?>
-          <a href='<?php echo $this->url(array('recipe_id' => $recipe->recipe_id), 'recipe_edit', true) ?>' class='buttonlink icon_recipe_edit'><?php echo $this->translate('Edit Recipe');?></a>
         </div>
          
       </li>
