@@ -24,7 +24,7 @@
       <li id="recipe-item-<?php echo $this->answer->answer_id ?>">
         <?php echo $this->htmlLink($this->answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
         <div class="recipes_browse_info">
-          <?php echo $this->answer->answer_title ?>
+          <?php echo $this->answer->title ?>
           
           <div class="recipes_browse_info_date">
               <?php echo $this->timestamp($this->answer->creation_date) ?>

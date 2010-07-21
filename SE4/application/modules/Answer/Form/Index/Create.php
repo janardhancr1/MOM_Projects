@@ -28,7 +28,7 @@ class Answer_Form_Index_Create extends Engine_Form
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
     
-     $this->addElement('Text', 'question', array(
+     $this->addElement('Text', 'title', array(
       'size' => '50',
       'maxlength' => '100',
       'value' => 'What Would You Like to Know?',
@@ -82,8 +82,8 @@ class Answer_Form_Index_Create extends Engine_Form
     $answer = $db_answer->createRow();
     $answer->user_id        = Engine_Api::_()->user()->getViewer()->getIdentity();
     $answer->is_closed       = 0;
-    $answer->answer_title    = $this->getElement('question')->getValue();
-    $answer->answer_text     = $this->getElement('description')->getValue();
+    $answer->title    		 = $this->getElement('title')->getValue();
+    $answer->description     = $this->getElement('description')->getValue();
     $answer->answer_tags     = $this->getElement('tags')->getValue();
     $answer->answer_cat_id   = $this->getElement('category_id')->getValue();
     $answer->creation_date   = date('Y-m-d H:i:s');

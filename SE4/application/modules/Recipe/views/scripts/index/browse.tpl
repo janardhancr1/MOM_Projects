@@ -133,16 +133,16 @@
         ) ?>
         <div class="recipes_browse_info">
           <h3>
-            <?php echo $this->htmlLink($recipe->getHref(), $recipe->recipe_name) ?>
+            <?php echo $this->htmlLink($recipe->getHref(), $recipe->title) ?>
           </h3>
           <div class="recipes_browse_info_date">
             <?php echo $this->translate('Posted by %s', $this->htmlLink($recipe->getOwner(), $recipe->getOwner()->getTitle())) ?>
             <?php echo $this->timestamp($recipe->creation_date) ?>
             <?php echo $this->translate(array('%s view', '%s views', $recipe->views), $this->locale()->toNumber($recipe->views)) ?>
           </div>
-          <?php if (!empty($recipe->recipe_description)): ?>
+          <?php if (!empty($recipe->description)): ?>
             <div class="recipes_browse_info_desc">
-              <?php  echo $recipe->recipe_description ?>
+              <?php  echo $recipe->description ?>
             </div>
           <?php endif; ?>
         </div>

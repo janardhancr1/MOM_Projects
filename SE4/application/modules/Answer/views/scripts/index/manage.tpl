@@ -101,7 +101,7 @@
       <li id="recipe-item-<?php echo $answer->answer_id ?>">
         <?php echo $this->htmlLink($answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
         <div class="recipes_browse_info">
-          <?php echo $this->htmlLink($answer->getHref(), $answer->answer_title) ?>
+          <?php echo $this->htmlLink($answer->getHref(), $answer->title) ?>
           
           <div class="recipes_browse_info_date">
               <?php echo $this->timestamp($answer->creation_date) ?>

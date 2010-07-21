@@ -142,6 +142,11 @@ div.answers_view .answer_stats > a
 }
 
 
+/* ITEM TYPE ICONS */
+.item_icon_answer
+{
+  background-image: url(~/application/modules/Answer/externals/images/qa_qa16.gif);
+}
 
 /* ICONS */
 .icon_answer_new

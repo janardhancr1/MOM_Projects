@@ -95,15 +95,15 @@
         ) ?>
         <div class="answers_browse_info">
           <h3>
-            <?php echo $this->htmlLink($answer->getHref(), $answer->answer_title) ?>
+            <?php echo $this->htmlLink($answer->getHref(), $answer->title) ?>
           </h3>
           <div class="answers_browse_info_date">
             <?php echo $this->translate('Asked by %s', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
             <?php echo $this->timestamp($answer->creation_date) ?>
           </div>
-          <?php if (!empty($answer->answer_text)): ?>
+          <?php if (!empty($answer->description)): ?>
             <div class="answers_browse_info_desc">
-              <?php  echo $answer->answer_text ?>
+              <?php  echo $answer->description ?>
             </div>
           <?php endif; ?>
         </div>

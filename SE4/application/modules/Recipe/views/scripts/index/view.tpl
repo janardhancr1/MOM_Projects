@@ -31,11 +31,11 @@
   </div>
   	<div>
 	    <h3>
-	      <?php echo $this->recipe->recipe_name ?>
+	      <?php echo $this->recipe->title ?>
 	    </h3>
     </div>
     <div class="recipe_desc">
-      <?php echo $this->recipe->recipe_description ?>
+      <?php echo $this->recipe->description ?>
     </div>
      <?php if (!empty($this->recipe->recipe_difficulty)): ?>
         <div>
