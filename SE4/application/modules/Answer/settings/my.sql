@@ -33,6 +33,20 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 
+DROP TABLE IF EXISTS `engine4_answer_post`;
+CREATE TABLE IF NOT EXISTS `engine4_answer_post` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `user_id` int(11) unsigned NOT NULL,
+  `answer_id` int(11) unsigned NOT NULL,
+  `is_closed` tinyint(1) NOT NULL default '0',
+  `answer_description` varchar(255) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `is_closed` (`is_closed`),
+  KEY `creation_date` (`creation_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+
 -- --------------------------------------------------------
 
 --

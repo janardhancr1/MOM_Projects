@@ -28,6 +28,8 @@ class Answer_Api_Core extends Core_Api_Abstract
 
     $p_table = Engine_Api::_()->getDbTable('answers', 'answer');
     $p_name  = $p_table->info('name');
+    $o_table = Engine_Api::_()->getDbTable('posts', 'answer');
+    $o_name  = $o_table->info('name');
     //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
     //$o_name  = $o_table->info('name');
 
@@ -39,10 +41,14 @@ class Answer_Api_Core extends Core_Api_Abstract
 
     switch ($params['sort']) {
         case 'open':
-          	$select->where('is_closed = 0');
+          	$select->setIntegrityCheck(false)
+        	->from($o_name)
+        	->where("$p_name.answer_id <> $o_name.answer_id");
           break;
         case 'resolved':
-        $select->where('is_closed = 1');
+            $select->setIntegrityCheck(false)
+        	->from($o_name)
+        	->where("$p_name.answer_id = $o_name.answer_id");
           break;
           
         case 'recent':
@@ -135,7 +141,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   function getArchiveList($user_id)
   {
-    $table = Engine_Api::_()->getDbtable('answers', 'answer');
+    $table = Engine_Api::_()->getDbtable('questions', 'answer');
     $rName = $table->info('name');
 
     $select = $table->select()
@@ -150,5 +156,23 @@ class Answer_Api_Core extends Core_Api_Abstract
 	public function getAnswersPaginator($params = array()) {
     return Zend_Paginator::factory($this->getAnswerSelect($params));
   }
+  
+	public function getPostAnswersPaginator($params = array()) {
+    return Zend_Paginator::factory($this->getPostAnswerSelect($params));
+  }
+	public function getPostAnswerSelect( $params = array() )
+  {
+    $p_table = Engine_Api::_()->getDbTable('posts', 'answer');
+    $p_name  = $p_table->info('name');
+    //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
+    //$o_name  = $o_table->info('name');
 
+    $select  = $p_table->select()->from($p_name);
+
+    if ($params['answer_id']) {
+     
+        $select->where("`answer_id` = ?", $params['answer_id']);
+    }
+    return $select;
+  }
 }

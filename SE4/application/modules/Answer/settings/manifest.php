@@ -72,7 +72,8 @@ return array(
       'defaults' => array(
         'module' => 'answer',
         'controller' => 'index',
-        'action' => 'view'
+        'action' => 'view',
+    	'slug' => '',
       ),
       'reqs' => array(
         'answer_id' => '\d+'
