@@ -143,3 +143,12 @@ div.answers_view .answer_stats > a
 
 
 
+/* ICONS */
+.icon_answer_new
+{
+  background-image: url(~/application/modules/Answer/externals/images/qa_qa16.gif);
+}
+.icon_answer_edit
+{
+  background-image: url(~/application/modules/Answer/externals/images/qa_qa16.gif);
+}

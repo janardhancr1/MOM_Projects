@@ -28,7 +28,7 @@ class Answer_Form_Index_Search extends Engine_Form
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
-
+      
     $this->addElement('Text', 'answer_search', array(
       'size' => '25',
       'maxlength' => '100',
@@ -45,6 +45,7 @@ class Answer_Form_Index_Search extends Engine_Form
         'open' => 'Open Questions',
      	'resolved' => 'Resolved Questions',
       ),
+      'onchange' => 'this.form.submit();',
      
     ));
     $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/answers/manage'>Go to My Questions</a>");

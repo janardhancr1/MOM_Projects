@@ -10,22 +10,6 @@
  * @author     Steve
  */
 ?>
-<!--
-<div class="headline">
-  <h2>
-    <?php echo $this->translate('Recipes');?>
-  </h2>
-  <div class="tabs">
-    <?php
-      // Render the menu
-      echo $this->navigation()
-        ->menu()
-        ->setContainer($this->navigation)
-        ->render();
-    ?>
-  </div>
-</div>
--->
 <div class='layout_right'>
 <div class="generic_layout_container layout_core_ad_campaign">
 <script type="text/javascript">
@@ -79,36 +63,13 @@
 <div style="clear:both;"></div>
 <div style="vertical-align: middle;" onclick="javascript:processClick(3, 3)">
   <a href='' target='_blank' style='border-bottom: 1px solid #DDDDDD'><img src='/public/user/1000000/1000/1/5.gif'/></a></div></div>  
-<!--
-  <?php if($this->can_create):?>
-    <div class="quicklinks">
-      <ul>
-        <li>
-          <a href='<?php echo $this->url(array(), 'answer_create') ?>' class='buttonlink icon_poll_new'>
-            <?php echo $this->translate('Create New Question') ?>
-          </a>
-        </li>
-      </ul>
-    </div>
-  <?php endif;?>
-
-  <script type="text/javascript">
-  //<![CDATA[
-    $('browse_recipes_by').addEvent('change', function(){
-      $(this).getParent('form').submit();
-    });
-  //]]>
-  </script>
--->
- 
 </div>
 <div class='layout_middle'>
 <div class="headline_header">
-	<h2><img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
-		
-	    <?php echo $this->translate('Momburbia Answers');?>
-	    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
-	  </h2>
+	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Momburbia Answers');?>
+    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
 </div>
 <div>
 <?php echo $this->search_form->render($this) ?>

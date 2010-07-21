@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 
-DROP TABLE IF EXISTS `engine4_answer_post`;
-CREATE TABLE IF NOT EXISTS `engine4_answer_post` (
+DROP TABLE IF EXISTS `engine4_answer_posts`;
+CREATE TABLE IF NOT EXISTS `engine4_answer_posts` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `user_id` int(11) unsigned NOT NULL,
   `answer_id` int(11) unsigned NOT NULL,

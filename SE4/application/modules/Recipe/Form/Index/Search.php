@@ -39,6 +39,7 @@ class Recipe_Form_Index_Search extends Engine_Form
         'recent' => 'Most Recent',
         'popular' => 'Most Popular',
       ),
+      'onchange' => 'this.form.submit();',
     ));
 
     $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/recipes/manage'>Go to My Recipes</a>");
