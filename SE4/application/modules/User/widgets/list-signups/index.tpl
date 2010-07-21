@@ -13,6 +13,7 @@
 
 <table>
 <tr>
+<?php $i=0; ?>
   <?php foreach( $this->users as $user ): ?>
    <td width="33%">
       <div class='newestmembers_info'>
@@ -24,6 +25,11 @@
         </div>
       </div>
     </td>
+     <?php
+     $i++;
+     if ($i%3 == 0)
+     echo "</tr><tr>";
+     ?>
   <?php endforeach; ?>
 </tr>
  </table>
