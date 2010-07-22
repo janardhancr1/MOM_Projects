@@ -94,7 +94,15 @@ return array(
         'controller' => 'index',
         'action' => 'create'
       )
-    ),   
+    ), 
+       'answer_delete' => array(
+      'route' => 'answers/delete/:answer_id',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'delete'
+      )
+      ),
 
   ),
 );

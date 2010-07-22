@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
 
 DROP TABLE IF EXISTS `engine4_answer_posts`;
 CREATE TABLE IF NOT EXISTS `engine4_answer_posts` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `post_id` int(11) unsigned NOT NULL auto_increment,
   `user_id` int(11) unsigned NOT NULL,
   `answer_id` int(11) unsigned NOT NULL,
   `is_closed` tinyint(1) NOT NULL default '0',
   `answer_description` varchar(255) NOT NULL,
   `creation_date` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY  (`post_id`),
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`)

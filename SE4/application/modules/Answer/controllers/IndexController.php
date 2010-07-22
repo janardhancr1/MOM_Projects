@@ -49,7 +49,9 @@ public function browseAction()
         'sort'   => $this->getRequest()->getPost('browse_answers_by'),
         'search' => $this->getRequest()->getPost('answer_search'),
       ));
-    }  
+    }  else {
+      	$search_form->getElement('browse_answers_by')->setValue($this->_getParam('sort'));
+    } 
 
     $this->view->paginator  = Engine_Api::_()->answer()->getAnswersPaginator(array(
       'user_id' => 0,
@@ -131,9 +133,7 @@ public function viewAction()
     if( !$this->_helper->requireAuth()->setAuthParams($answer, null, 'view')->isValid()) return;
 
     $this->view->owner         = $answer->getOwner();
-    
     $this->view->answer->save();
-    
     $this->view->form = new Answer_Form_Index_Answer();
     
         $this->view->paginator  = Engine_Api::_()->answer()->getPostAnswersPaginator(array(
@@ -190,6 +190,29 @@ public function viewAction()
       $answer_ids[] = $answer->answer_id;
     }
    
+  }
+  
+  public function deleteAction()
+  {
+  if( !$this->_helper->requireUser()->isValid() ) return;
+
+    //$this->view->navigation = $this->getNavigation();
+
+    $viewer = $this->_helper->api()->user()->getViewer();
+    $this->view->answer = $answer = Engine_Api::_()->getItem('answer', $this->_getParam('answer_id'));
+
+    //if( $viewer->getIdentity() != $answer->owner_id && !$this->_helper->requireAuth()->setAuthParams($answer, null, 'delete')->isValid())
+    //{
+     //return $this->_forward('requireauth', 'error', 'core');
+      //die('You do not have permission to delete this blog');
+    //}
+
+    if( $this->getRequest()->isPost() && $this->getRequest()->getPost('confirm') == true )
+    {
+      // do delete. in model or just right here? I think I can get the row and just call a delete function
+      $this->view->answer->delete();
+      return $this->_redirect("answers/manage");
+    }
   }
 }
 

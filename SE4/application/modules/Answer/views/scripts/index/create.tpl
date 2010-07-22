@@ -12,19 +12,12 @@
 ?>
 
 
-<div class="headline">
-  <h2>
-    <?php echo $this->translate('Answers');?>
-  </h2>
-  <div class="tabs">
-    <?php
-      // Render the menu
-      echo $this->navigation()
-        ->menu()
-        ->setContainer($this->navigation)
-        ->render();
-    ?>
-  </div>
-</div>
+<div class="headerline_header">
+ <img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Ask New Question');?>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
+</div><br>
 
 <?php echo $this->form->render($this) ?>

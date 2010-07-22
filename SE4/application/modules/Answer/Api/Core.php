@@ -64,10 +64,10 @@ class Answer_Api_Core extends Core_Api_Abstract
       // but since we do, we must do the following join:
       if ('popular' != $search) {
         $select
-               ->where("`answer_title` LIKE ? ", $search)
+               ->where("`title` LIKE ? ", $search)
                ->group("$p_name.answer_id");
       } else
-        $select->where("`answer_title` LIKE ? ", $search);
+        $select->where("`title` LIKE ? ", $search);
     }
     return $select;
   }
@@ -174,5 +174,11 @@ class Answer_Api_Core extends Core_Api_Abstract
         $select->where("`answer_id` = ?", $params['answer_id']);
     }
     return $select;
+  }
+  
+public function deleteAnswer($answer_id)
+  {
+    // first, delete activity feed and its comments/likes
+    Engine_Api::_()->getItem('answer', $answer_id)->delete();
   }
 }

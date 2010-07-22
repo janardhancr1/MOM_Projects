@@ -20,15 +20,10 @@ class Answer_Form_Index_Create extends Engine_Form
 {
   public function init()
   {   
-   $this
-      ->setAttribs(array(
-        'id' => 'filter_form',
-        'class' => 'global_answer_box',
-      ))
-      ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
-      ;
+   
     
      $this->addElement('Text', 'title', array(
+     'label'=>'Your Question', 
       'size' => '50',
       'maxlength' => '100',
       'value' => 'What Would You Like to Know?',
@@ -36,13 +31,13 @@ class Answer_Form_Index_Create extends Engine_Form
      'onblur'=> "if(this.value.length == 0) this.value='What Would You Like to Know?';",
     ));
     
-	$this->addElement('Text', 'description',array(
+	$this->addElement('Textarea', 'description',array(
       'label'=>'Additional Details (Optional)',
 	  'size' => '50',
       'maxlength' => '100',
     ));
     // init to
-    $this->addElement('Text', 'tags',array(
+    $this->addElement('Textarea', 'tags',array(
       'label'=>'Tags - help moms find your question, i.e.', 
       'size' => '50',
       'maxlength' => '100',
@@ -80,7 +75,7 @@ class Answer_Form_Index_Create extends Engine_Form
     
     // try/catch being done in controller
     $answer = $db_answer->createRow();
-    $answer->user_id        = Engine_Api::_()->user()->getViewer()->getIdentity();
+    $answer->user_id         = Engine_Api::_()->user()->getViewer()->getIdentity();
     $answer->is_closed       = 0;
     $answer->title    		 = $this->getElement('title')->getValue();
     $answer->description     = $this->getElement('description')->getValue();
