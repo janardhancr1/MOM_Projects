@@ -20,6 +20,10 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 {
   protected $_navigation;
 
+  public function init()
+  {
+	$this->getRightSideContent();
+  }
   // NONE USER SPECIFIC METHODS
   public function indexAction()
   {

@@ -20,6 +20,8 @@ class Contests_IndexController extends Core_Controller_Action_Standard
 {
 	public function browseAction()
 	{
-
+		$this->getRightSideContent();
 	}
+
+	
 }

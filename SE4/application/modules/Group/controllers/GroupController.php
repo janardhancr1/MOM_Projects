@@ -25,7 +25,7 @@ class Group_GroupController extends Core_Controller_Action_Standard
     {
       Engine_Api::_()->core()->setSubject($group);
     }
-
+	$this->getRightSideContent();
     $this->_helper->requireUser();
     $this->_helper->requireSubject('group');
     /*

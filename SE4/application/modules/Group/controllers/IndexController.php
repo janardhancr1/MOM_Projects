@@ -24,7 +24,7 @@ class Group_IndexController extends Core_Controller_Action_Standard
     if( !$this->_helper->requireAuth()->setAuthParams('group', null, 'view')->isValid() ) return;
 
     $this->getNavigation();
-    
+    $this->getRightSideContent();
     $id = $this->_getParam('group_id', $this->_getParam('id', null));
     if( $id )
     {

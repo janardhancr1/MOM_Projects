@@ -28,6 +28,7 @@ class Video_IndexController extends Core_Controller_Action_Standard
       ->addActionContext('validation', 'html')
       ->initContext();
 
+    $this->getRightSideContent();
     $id = $this->_getParam('video_id', $this->_getParam('id', null));
     if( $id )
     {

@@ -34,7 +34,7 @@ class Classified_PhotoController extends Core_Controller_Action_Standard
         Engine_Api::_()->core()->setSubject($classified);
       }
     }
-
+	$this->getRightSideContent();
     $this->_helper->requireUser->addActionRequires(array(
       'upload',
       'upload-photo', // Not sure if this is the right
