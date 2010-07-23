@@ -64,7 +64,7 @@
   <?php echo $this->paginationControl($this->paginator, null, null, null, array('answer_search'=>$this->search)); ?>
 </div>
   <?php
-  	if($this->viewer != $this->answer->user_id) 
+  	if($this->viewer_id != $this->answer->user_id) 
   		echo $this->form->render($this) 
   ?>
 </div>
