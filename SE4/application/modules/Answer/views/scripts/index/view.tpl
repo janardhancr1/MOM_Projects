@@ -13,11 +13,10 @@
 
 <div class="layout_middle">
 <div class="headline_header">
-	<h2><img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
-		
-	    <?php echo $this->translate('Momburbia Answers');?>
-	    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
-	  </h2>
+	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Momburbia Answers');?>
+    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
 </div>
 <div class='answer_view'>
 	<ul class="answers_browse">
@@ -64,6 +63,9 @@
   <?php endif; // $this->answers is NOT empty ?>
   <?php echo $this->paginationControl($this->paginator, null, null, null, array('answer_search'=>$this->search)); ?>
 </div>
-  <?php echo $this->form->render($this) ?>
+  <?php
+  	if($this->viewer != $this->answer->user_id) 
+  		echo $this->form->render($this) 
+  ?>
 </div>
 </div>

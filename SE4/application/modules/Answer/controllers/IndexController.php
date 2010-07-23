@@ -20,8 +20,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
-    $this->view->viewer_id   = Engine_Api::_()->user()->getViewer()->getIdentity();
-  
+    $this->view->viewer_id   = $viewer = Engine_Api::_()->user()->getViewer()->getIdentity();
     
     $ajaxContext = $this->_helper->getHelper('AjaxContext');
     $ajaxContext->addActionContext('delete', 'json');
@@ -132,7 +131,7 @@ public function viewAction()
 
     if( !$this->_helper->requireAuth()->setAuthParams($answer, null, 'view')->isValid()) return;
 
-    $this->view->owner         = $answer->getOwner();
+    $this->view->owner    = $owner   = $answer->getOwner();
     $this->view->answer->save();
     $this->view->form = new Answer_Form_Index_Answer();
     
