@@ -22,7 +22,7 @@ function showUploader()
 </script>
 
 <h2>
-<?php echo $this->htmlLink(array('route'=>'forum_general'), "Forums");?>
+<?php echo $this->htmlLink(array('route'=>'forum_general'), $this->translate("Forums"));?>
   &#187; <?php echo $this->htmlLink(array('route'=>'forum_forum', 'forum_id'=>$this->forum->getIdentity()), $this->forum->getTitle());?>  
   &#187 <?php echo $this->translate('Post Topic');?>
 </h2>
