@@ -24,7 +24,6 @@ class Answer_Form_Index_Create extends Engine_Form
     
      $this->addElement('Text', 'title', array(
      'label'=>'Your Question', 
-      'size' => '50',
       'maxlength' => '100',
       'value' => 'What Would You Like to Know?',
      'onfocus' => "if(this.value == 'What Would You Like to Know?') this.value='';",
@@ -33,13 +32,12 @@ class Answer_Form_Index_Create extends Engine_Form
     
 	$this->addElement('Textarea', 'description',array(
       'label'=>'Additional Details (Optional)',
-	  'size' => '50',
+	  'style' => 'width:200px',
       'maxlength' => '100',
     ));
     // init to
-    $this->addElement('Textarea', 'tags',array(
+    $this->addElement('Text', 'tags',array(
       'label'=>'Tags - help moms find your question, i.e.', 
-      'size' => '50',
       'maxlength' => '100',
     ));
   
@@ -56,7 +54,8 @@ class Answer_Form_Index_Create extends Engine_Form
       // category field
       $this->addElement('Select', 'category_id', array(
             'label' => 'Category',
-            'multiOptions' => $categories_prepared
+            'multiOptions' => $categories_prepared,
+      		'style' => 'width:202px',
           ));
     }
 

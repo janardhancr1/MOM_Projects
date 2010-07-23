@@ -24,6 +24,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
     
     $ajaxContext = $this->_helper->getHelper('AjaxContext');
     $ajaxContext->addActionContext('delete', 'json');
+    $this->getRightSideContent();
   }
   
 public function searchAction()

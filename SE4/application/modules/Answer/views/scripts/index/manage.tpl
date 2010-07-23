@@ -10,60 +10,8 @@
  * @author     Steve
  */
 ?>
-<div class='layout_right'>
-<div class="generic_layout_container layout_core_ad_campaign">
-<script type="text/javascript">
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
- function processClick(adcampaign_id, ad_id) {
-    (new Request.JSON({
-      'format': 'json',
-      'url' : '/utility/advertisement',
-      'data' : {
-        'format' : 'json',
-        'adcampaign_id' : adcampaign_id,
-        'ad_id' : ad_id
-      },
-      'onRequest' : function(){
-      },
-      'onSuccess' : function(responseJSON, responseText)
-      {
-      }
-    })).send();
-
-  }
-</script>
-<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
-<div style="clear:both;"></div>
-<div style="vertical-align: middle;" onclick="javascript:processClick(2, 2)">
-  <a href='' target='_blank'><img src='/public/user/1000000/1000/1/3.gif'/></a></div></div>
-
-<div class="generic_layout_container layout_core_ad_campaign">
-<script type="text/javascript">
-
- function processClick(adcampaign_id, ad_id) {
-    (new Request.JSON({
-      'format': 'json',
-      'url' : '/utility/advertisement',
-      'data' : {
-        'format' : 'json',
-        'adcampaign_id' : adcampaign_id,
-        'ad_id' : ad_id
-      },
-      'onRequest' : function(){
-      },
-      'onSuccess' : function(responseJSON, responseText)
-      {
-      }
-    })).send();
-
-  }
-
-</script>
-<div style="float:right;color:#B2BCC0;font-family:Georgia;font-size:10px;">Advertisement&nbsp;&nbsp;&nbsp;&nbsp;</div>
-<div style="clear:both;"></div>
-<div style="vertical-align: middle;" onclick="javascript:processClick(3, 3)">
-  <a href='' target='_blank' style='border-bottom: 1px solid #DDDDDD'><img src='/public/user/1000000/1000/1/5.gif'/></a></div></div>  
-</div>
 <div class='layout_middle'>
 <div class="headline_header">
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
@@ -85,7 +33,7 @@
     </div>
   <?php endif;?>
 
- <div style='padding-top:20px;padding-right:10px;width:690px'>
+ <div style='padding-top:20px;padding-right:10px;width:680px'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>

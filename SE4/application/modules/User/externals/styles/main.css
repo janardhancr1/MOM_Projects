@@ -237,7 +237,7 @@ on the main home page.
 }
 .layout_user_list_popular .popularmembers_name
 {
-  font-weight: bold;
+  font-weight: normal;
 }
 .layout_user_list_popular .popularmembers_friends
 {
@@ -288,7 +288,7 @@ on the main home page.
 }
 .layout_user_list_signups .newestmembers_name
 {
-  font-weight: bold;
+  font-weight: normal;
 }
 .layout_user_list_signups .newestmembers_date
 {
@@ -377,7 +377,7 @@ Lists the friends common to the subject and viewer.
 }
 #profile_options li
 {
-  font-weight: bold;
+  font-weight: normal;
   padding: 6px 0px 6px 0px;
 }
 #profile_options li + li
@@ -860,7 +860,7 @@ including the search from and results.
 }
 .browsemembers_results div.browsemembers_results_info > a
 {
-  font-weight: bold;
+  font-weight: normal;
 }
 .browsemembers_results div.browsemembers_results_info > div
 {

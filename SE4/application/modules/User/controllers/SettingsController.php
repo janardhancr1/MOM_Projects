@@ -68,6 +68,9 @@ class User_SettingsController extends Core_Controller_Action_User
   
   public function generalAction()
   {
+  	$this->view->navigation = $navigation = $this->_helper->api()
+      ->getApi('menus', 'core')
+      ->getNavigation('user_settings');
     // Config vars
     $user = $this->_helper->api()->core()->getSubject();
     $this->view->form = $form = new User_Form_Settings_General(array('item' => $user));
@@ -209,6 +212,10 @@ class User_SettingsController extends Core_Controller_Action_User
 
   public function privacyAction()
   {
+  	$this->view->navigation = $navigation = $this->_helper->api()
+      ->getApi('menus', 'core')
+      ->getNavigation('user_settings');
+      
     $this->view->form = $form = new User_Form_Settings_Privacy();
     $user = $this->_helper->api()->core()->getSubject();
     $settings = Engine_Api::_()->getApi('settings', 'core');
@@ -267,6 +274,10 @@ class User_SettingsController extends Core_Controller_Action_User
   
   public function passwordAction()
   {
+  	$this->view->navigation = $navigation = $this->_helper->api()
+      ->getApi('menus', 'core')
+      ->getNavigation('user_settings');
+  	
     $this->view->form = $form = new User_Form_Settings_Password();
     $user = $this->_helper->api()->core()->getSubject();
     
@@ -362,6 +373,10 @@ class User_SettingsController extends Core_Controller_Action_User
   
   public function deleteAction()
   {
+  	$this->view->navigation = $navigation = $this->_helper->api()
+      ->getApi('menus', 'core')
+      ->getNavigation('user_settings');
+      
     $user = $this->_helper->api()->core()->getSubject();
     if( !$this->_helper->requireAuth()->setAuthParams($user, null, 'delete')->isValid() ) return;
     $this->view->isLastSuperAdmin   = false;

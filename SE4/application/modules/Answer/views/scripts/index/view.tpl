@@ -11,12 +11,15 @@
  */
 ?>
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+
 <div class="layout_middle">
 <div class="headline_header">
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <?php echo $this->translate('Momburbia Answers');?>
-    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
 </div>
 <div class='answer_view'>
 	<ul class="answers_browse">
@@ -26,6 +29,7 @@
           <?php echo $this->answer->title ?>
           
           <div class="recipes_browse_info_date">
+          	  <?php echo $this->translate('Asked by %s', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
               <?php echo $this->timestamp($this->answer->creation_date) ?>
           </div>
       </li>

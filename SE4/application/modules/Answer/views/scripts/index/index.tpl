@@ -44,11 +44,11 @@
 <div class='layout_middle'>
 	<div class="headline_header">
 		<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
-		<h2>
-	    <?php echo $this->translate('Momburbia Answers');?><br/>
+		<div class="mainheadline">
+	    <?php echo $this->translate('Momburbia Answers');?>
+	    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Back to My Questions</a></div>
+	    </div>
 	    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
-	  </h2>
-	  
 	</div>
 	<div>
 	  <?php echo $this->form->render($this) ?>

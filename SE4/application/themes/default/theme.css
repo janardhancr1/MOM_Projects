@@ -84,6 +84,7 @@ h2
 h3
 {
   font-size: $theme_headline_size_medium;
+  font-weight: normal;
 }
 h4
 {
