@@ -79,6 +79,7 @@ h2
 {
   font-size: $theme_headline_size_large;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 h3
 {

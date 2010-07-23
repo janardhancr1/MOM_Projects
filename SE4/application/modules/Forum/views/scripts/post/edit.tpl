@@ -10,6 +10,9 @@
  * @author     Sami
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+
+<div class='layout_middle'>
 <script type="text/javascript">
 function updateUploader()
 {
@@ -25,3 +28,4 @@ function updateUploader()
 
 <h2><?php echo $this->translate('Edit Post');?></h2>
 <?php echo $this->form->render($this) ?>
+</div>

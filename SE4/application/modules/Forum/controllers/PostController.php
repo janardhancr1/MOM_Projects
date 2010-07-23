@@ -30,6 +30,7 @@ class Forum_PostController extends Core_Controller_Action_Standard
     {
       Engine_Api::_()->core()->setSubject($topic);
     }
+    $this->getRightSideContent();
   }
 
   public function createAction()

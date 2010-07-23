@@ -96,10 +96,10 @@ DEFAULT STYLES FOR THIS THEME
   theme_input_background_color: #fff;
   theme_input_font_color: #555;
   theme_input_border_colors: #999 #ccc #ccc #999;
-  theme_button_background_color: #619dbe;
-  theme_button_background_color_hover: #7eb6d5;
+  theme_button_background_color: #BEB800;
+  theme_button_background_color_hover: #D60077;
   theme_button_font_color: #fff;
-  theme_button_border_color: #50809b;
+  theme_button_border_color: #BEB800;
 
   /*
   PHOTO BORDERS
@@ -133,7 +133,7 @@ DEFAULT STYLES FOR THIS THEME
   These colors are applied to tab menus (as seen on several pages, including
   the member profile page).
   */
-  theme_tabs_background_color: #e9f4fa;
+  theme_tabs_background_color: #F2F2F2;
   theme_tabs_border_color: #cad9e1;
   theme_tabs_border_color_hover: #cad9e1;
   theme_tabs_font_color: #838e9a;

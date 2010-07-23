@@ -10,7 +10,9 @@
  * @author     John
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<div class='layout_middle'>
 <script type="text/javascript">
 function showUploader()
 {
@@ -26,3 +28,4 @@ function showUploader()
 </h2>
 
 <?php echo $this->form->render($this) ?>
+</div>
