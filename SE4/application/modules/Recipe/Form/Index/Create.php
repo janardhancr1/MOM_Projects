@@ -98,22 +98,18 @@ class Recipe_Form_Index_Create extends Engine_Form
     $this->addElement('textarea', 'recipe_ingredients', array(
         'label' => 'Ingredients',
         'required' => true,
-        'maxlength' => 100,
         'filters' => array(
           'StripTags',
           new Engine_Filter_Censor(),
-          new Engine_Filter_StringLength(array('max' => '100'))
         ),
       ));
       
     $this->addElement('textarea', 'recipe_method', array(
         'label' => 'Method',
         'required' => true,
-        'maxlength' => 100,
         'filters' => array(
           'StripTags',
           new Engine_Filter_Censor(),
-          new Engine_Filter_StringLength(array('max' => '100'))
         ),
       ));
       
@@ -163,7 +159,7 @@ class Recipe_Form_Index_Create extends Engine_Form
 
     $this->addElement('Select', 'views', array(
       'label' => 'Privacy',
-      'description' => 'Who may see this poll?',
+      'description' => 'Who may see this recipe?',
       'multiOptions' => $options,
       'value' => 'everyone',
     ));
@@ -176,7 +172,7 @@ class Recipe_Form_Index_Create extends Engine_Form
 
     $this->addElement('Select', 'comments', array(
       'label' => 'Comment Privacy',
-      'description' => 'Who may post comments on this poll?',
+      'description' => 'Who may post comments on this recipe?',
       'multiOptions' => $options,
       'value' => 'everyone',
     ));

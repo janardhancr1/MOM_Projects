@@ -98,6 +98,10 @@ div.recipes_view .recipe_stats > a
   font-weight: bold;
 }
 
+div.recipes_view div
+{
+	margin: 10px 10px 0px 0px;	
+}
 
 /* ITEM TYPE ICONS */
 .item_icon_recipe

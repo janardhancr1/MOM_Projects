@@ -304,9 +304,12 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     $db->beginTransaction();
     try
     {
-    	$recipe_id    = $this->view->form->save();
-      $values = $this->view->form->getValues();
+    	//$recipe_id    = $this->view->form->save();
+      $values = $form->getValues();
       
+      $recipe->setFromArray($values);
+	  $recipe->modified_date = date('Y-m-d H:i:s');
+	  $recipe->save();
       // CREATE AUTH STUFF HERE
       $auth = Engine_Api::_()->authorization()->context;
       $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');

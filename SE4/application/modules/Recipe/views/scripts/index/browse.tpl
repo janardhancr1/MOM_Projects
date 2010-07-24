@@ -39,7 +39,7 @@
 <div>
 <?php echo $this->search_form->render($this) ?>
 </div>
- <div style='padding-top:20px;padding-right:10px;width:690px'>
+ <div style='padding-top:20px;padding-right:10px;width:680px'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>

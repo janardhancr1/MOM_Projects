@@ -133,6 +133,14 @@ return array(
         'action' => 'index'
       )
     ),
+    'invite_moms' => array(
+      'route' => '/invite',
+      'defaults' => array(
+        'module' => 'user',
+        'controller' => 'index',
+        'action' => 'invite'
+      )
+    ),
     /*
     'user_friends_add' => array(
       'type' => 'Zend_Controller_Router_Route_Static',

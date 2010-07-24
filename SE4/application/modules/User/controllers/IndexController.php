@@ -22,6 +22,27 @@ class User_IndexController extends Core_Controller_Action_Standard
   {
 
   }
+  
+  public function inviteAction()
+  {
+  	if( !$this->_executeSearch() ) {
+      throw new Exception('error');
+    }
+    
+    $this->view->maxOptions = 10;
+    $this->view->inviteForm = $inviteForm = new User_Form_Invite();
+    
+   if( !$inviteForm->isValid($this->getRequest()->getPost()) )
+    {
+      return;
+    }
+    
+    /*$inviteMessage = new Zend_Mail_Transport_Sendmail();
+    $inviteMessage->recipients = 'janardhancr@gmail.com';
+    $inviteMessage->body = 'This is sample message';
+    $inviteMessage->subject = 'test message';
+    $inviteMessage->_sendMail();*/
+  }
 
   public function homeAction()
   {
