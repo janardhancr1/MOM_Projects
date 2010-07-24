@@ -63,6 +63,8 @@
 		<?php echo $this->recipe->recipe_serve_to ?>
 	<?php endif; ?>
 </div>
+<div style='height:10px;clear:both'>
+</div>
 <div>
 	<div><b><?php echo $this->translate('Ingredients: ');?></b></div>
 	<div>
