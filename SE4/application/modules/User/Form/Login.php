@@ -24,9 +24,10 @@ class User_Form_Login extends Engine_Form
     $description= sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
 
     // Init form
-    $this->setTitle('Member Sign In');
-    $this->setDescription($description);
+    $this->setTitle('Please sign in to continue.');
+    //$this->setDescription($description);
     $this->setAttrib('id', 'user_form_login');
+    $this->setAttrib('class', 'global_form1');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 
@@ -93,10 +94,10 @@ class User_Form_Login extends Engine_Form
       'tabindex' => 5,
     ));
 
-    $this->addDisplayGroup(array(
-      'submit',
-      'remember'
-    ), 'buttons');
+    /*$this->addDisplayGroup(array(
+      'remember',
+      'submit'
+    ), 'buttons');*/
 
     $content = Zend_Registry::get('Zend_Translate')->_("<span><a href='%s'>Forgot Password?</a></span>");
     $content= sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));

@@ -19,6 +19,10 @@
  */
 class Chat_IndexController extends Core_Controller_Action_User
 {
+  public function init()
+  {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
+  }
   public function indexAction()
   {
     //var_dump(Zend_Locale::getTranslation(null, 'datetime'));

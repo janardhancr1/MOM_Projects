@@ -20,6 +20,7 @@ class Poll_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     $this->view->viewer_id   = Engine_Api::_()->user()->getViewer()->getIdentity();
     $this->view->navigation  = $this->getNavigation();
     

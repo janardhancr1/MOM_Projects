@@ -22,6 +22,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
 	$this->getRightSideContent();
   }
   // NONE USER SPECIFIC METHODS

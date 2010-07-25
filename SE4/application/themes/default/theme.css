@@ -173,7 +173,7 @@ GENERAL LAYOUT
   padding-left: 2px;
   padding-right: 2px;
   overflow: hidden;
-  min-height: 500px;
+  min-height: 300px;
   width:996px;
 }
 #global_content_simple
@@ -628,6 +628,14 @@ Examples: Signup form, member settings form, etc.
   padding: 12px 12px 12px 12px;
   background-color: #FFFFFF;
 }
+
+.global_form1 > div > div
+{
+  +rounded(8px);
+  border: 1px solid $theme_form_border_color;
+  padding: 12px 12px 12px 12px;
+  background-color: #FFFFFF;
+}
 /* form headline */
 .global_form div.form-wrapper-heading
 {
@@ -672,6 +680,13 @@ Examples: Signup form, member settings form, etc.
   clear: both;
   overflow: hidden;
 }
+
+.global_form1 div.form-wrapper
+{
+  overflow: hidden;
+  padding: 2px;
+}
+
 /* left-side element label container */
 .global_form div.form-label
 {
@@ -686,6 +701,21 @@ Examples: Signup form, member settings form, etc.
   font-weight: bold;
   color: $theme_form_label_font_color;
 }
+
+/* left-side element label container */
+.global_form1 div.form-label
+{
+  width: 100px;
+  text-align: right;
+  padding: 4px 15px 0px 2px;
+  overflow: hidden;
+  float: left;
+  clear: left;
+  font-size: .9em;
+  font-weight: bold;
+  color: $theme_form_label_font_color;
+}
+
 /* right-side form element container */
 .global_form div.form-element
 {
@@ -697,6 +727,18 @@ Examples: Signup form, member settings form, etc.
   float: left;
   clear: none;
 }
+
+/* right-side form element container */
+.global_form1 div.form-element
+{
+  min-width: 150px;
+  max-width: 600px;
+  text-align: left;
+  overflow: hidden;
+  float: left;
+  clear: none;
+}
+
 /* all paragraphs of text in the form */
 .global_form div > p
 {
@@ -716,6 +758,15 @@ Examples: Signup form, member settings form, etc.
   padding: 2px;
   font-size: 10pt;
   width: 200px;
+}
+
+/* all text inputs in form */
+.global_form1 input[type=text],
+.global_form1 input[type=password]
+{
+  padding: 2px;
+  font-size: 10pt;
+  width: 150px;
 }
 /* only for text inputs that come after other text inputs */
 /* i.e. for when there is a vertical list of text inputs */
