@@ -25,9 +25,6 @@
 </div>
 
 <div class='layout_middle'>
- <h3>
- 	<?php echo $this->translate('Invite Moms that you Know to Join');?>
- </h3>
  <?php echo $this->inviteForm->render($this) ?>
  <a href="javascript: void(0);" onclick="return addAnotherOption();" id="addOptionLink"><?php echo $this->translate("Add another Email Address") ?></a>
  <script type="text/javascript">

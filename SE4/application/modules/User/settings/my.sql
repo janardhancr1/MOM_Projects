@@ -277,7 +277,10 @@ INSERT IGNORE INTO `engine4_core_settings` (`name`, `value`) VALUES
 ('user.signup.random', 0),
 ('user.signup.terms', 1),
 ('user.signup.verifyemail', 0),
-('core.facebook.enable', 'none');
+('core.facebook.enable', 'none'),
+('core.invite.from', 'admin@momburbia.com'),
+('core.invite.fromname', 'Momburbia Admin'),
+('core.invite.subject', 'Invite from your friend');
 
 
 -- --------------------------------------------------------
