@@ -2,19 +2,22 @@
   Options +FollowSymLinks
   RewriteEngine On
 
+  #RewriteCond %{HTTP_HOST} !^www\.momburbia\.com [NC]
+  #RewriteRule ^(.*)$ http://www.momburbia.com/index.php/$1 [R=301,L]
+
   # Get rid of index.php
-  RewriteCond %{REQUEST_URI} /index\.php
-  RewriteRule (.*) index.php?rewrite=2 [L,QSA]
+  #RewriteCond %{REQUEST_URI} /index\.php
+  #RewriteRule (.*) index.php?rewrite=2 [L,QSA]
 
   # Rewrite all directory-looking urls
-  RewriteCond %{REQUEST_URI} /$
-  RewriteRule (.*) index.php?rewrite=1 [L,QSA]
+  #RewriteCond %{REQUEST_URI} /$
+  #RewriteRule (.*) index.php?rewrite=1 [L,QSA]
 
   # If the file doesn't exist, rewrite to index
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !\.[\w]+$
-  RewriteRule ^(.*)$ index.php?rewrite=1 [L,QSA]
+  #RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteCond %{REQUEST_FILENAME} !-d
+  #RewriteCond %{REQUEST_FILENAME} !\.[\w]+$
+  #RewriteRule ^(.*)$ index.php?rewrite=1 [L,QSA]
 
 </IfModule>
 
