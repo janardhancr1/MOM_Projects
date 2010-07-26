@@ -41,7 +41,7 @@ class Recipe_Form_Admin_Global extends Engine_Form
       'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10),
     ));
 
-    $this->addElement('Text', 'maxOptions', array(
+    /*$this->addElement('Text', 'maxOptions', array(
       'label' => 'Maximum Options',
       'description' => 'How many possible recipe answers do you want to permit?',
       'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.maxOptions', 15),
@@ -55,7 +55,7 @@ class Recipe_Form_Admin_Global extends Engine_Form
         0 => 'No, members cannot change their vote.',
       ),
       'value' => (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false),
-    ));
+    ));*/
 
 
     // Add submit button
