@@ -1,0 +1,94 @@
+"Recipe";"Recipe"
+# Navigation
+"Recipes";"Recipes"
+"Recipe";"Recipe";"Recipes"
+"recipe vote";"recipe vote";"recipe votes"
+"Browse Recipes";"Browse Recipes"
+"My Recipes";"My Recipes"
+"Create New Recipe";"Create New Recipe"
+"Search Recipes:";"Search Recipes:"
+"Browse By:";"Browse By:"
+"Most Recent";"Most Recent"
+"Most Popular";"Most Popular"
+"Create New Recipe";"Create New Recipe"
+"There are no recipes yet";"There are no recipes yet"
+"Why don't you %1$screate one%2$s";"Why don't you %1$screate one%2$s"
+"Posted by %s";"Posted by %s"
+"%s view";"%s view";"%s views"
+"%s vote";"%s vote";"%s votes"
+"%s's Recipes";"%s's Recipes"
+"Show Questions";"Show Questions"
+"Show Results";"Show Results"
+"Add another option";"Add another option"
+"Who may see this recipe?";"Who may see this recipe?"
+"Who may post comments on this recipe?";"Who may post comments on this recipe?"
+"View All Recipes";"View All Recipes"
+
+"Posted";"Posted"
+"Recipe Title";"Recipe Title"
+"Description";"Description"
+"Possible Answers";"Possible Answers"
+"Create Recipe";"Create Recipe"
+"Create your recipe below, then click ""Create Recipe"" to start your recipe.";"Create your recipe below, then click ""Create Recipe"" to start your recipe."
+
+"You have already voted on this recipe, and are not permitted to change your vote.";"You have already voted on this recipe, and are not permitted to change your vote."
+"You must provide at least two possible answers.";"You must provide at least two possible answers."
+"The recipe you are looking for does not exist or has been deleted.";"The recipe you are looking for does not exist or has been deleted."
+
+"ADMIN_ACTIVITY_TYPE_RECIPE_NEW";"When a new recipe is created."
+"ADMIN_ACTIVITY_TYPE_LIKE_RECIPE";"When someone likes one of my recipes."
+"ADMIN_ACTIVITY_TYPE_LIKED_RECIPE";"When someone comments on a recipe I liked."
+"ADMIN_ACTIVITY_TYPE_COMMENT_RECIPE";"When someone comments on one of my recipes."
+"ADMIN_ACTIVITY_TYPE_COMMENTED_RECIPE";"When someone comments on a recipe I commented on."
+
+"_ACTIVITY_ACTIONTYPE_RECIPE_NEW";"New recipes"
+"_ACTIVITY_ACTIONTYPE_COMMENT_RECIPE";"Comments on your recipes"
+
+"RECIPE_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
+
+Allow Viewing of Recipes
+"RECIPE_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION";"Do you want to let members view recipes? If set to no, some other settings on this page may not apply."
+"No, do not allow recipes to be viewed.";"No, do not allow recipes to be viewed."
+"Yes, allow viewing of recipes.";"Yes, allow viewing of recipes."
+"Yes, allow viewing of all recipes, even private ones.";"Yes, allow viewing of all recipes, even private ones."
+
+"Allow Deletion of Recipes?";"Allow Deletion of Recipes?"
+"RECIPE_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION";"Do you want to let members delete recipes? If set to no, some other settings on this page may not apply."
+"No, do not allow members to delete their recipes.";"No, do not allow members to delete their recipes."
+"Yes, allow members to delete their own recipes.";"Yes, allow members to delete their own recipes."
+"Yes, allow members to delete all recipes.";"Yes, allow members to delete all recipes."
+
+"Allow Recipes?";"Allow Recipes?"
+"Do you want to allow members to create recipes?";"Do you want to allow members to create recipes?"
+"No, do not allow this member level to create recipes";"No, do not allow this member level to create recipes"
+"Yes, allow this member level to create recipes";"Yes, allow this member level to create recipes"
+
+"Recipe Privacy";"Recipe Privacy"
+"RECIPE_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION";"Your members can choose from any of the options checked below when they decide who can see their recipe. If you do not check any options, everyone will be allowed to view recipes."
+
+"Recipe Comment Options";"Recipe Comment Options"
+"RECIPE_FORM_ADMIN_LEVEL_AUTHCOMMENT_DESCRIPTION";"Your members can choose from any of the options checked below when they decide who can post comments on their recipe. If you do not check any options, everyone will be allowed to post comments on the recipe."
+
+"These settings affect all members in your community.";"These settings affect all members in your community."
+
+"Public Permissions";"Public Permissions"
+"RECIPE_FORM_ADMIN_GLOBAL_RECIPEPUBLIC_DESCRIPTION";"Select whether or not you want to let the public (visitors that are not logged-in) to view the following sections of your social network. In some cases (such as Profiles, Blogs, and Albums), if you have given them the option, your users will be able to make their pages private even though you have made them publically viewable here. For more permissions settings, please visit the General Settings page."
+"Yes, the public can view recipes unless they are made private.";"Yes, the public can view recipes unless they are made private."
+"No, the public cannot view recipes.";"No, the public cannot view recipes."
+
+"Recipes Per Page";"Recipes Per Page"
+"How many recipes will be shown per page? (Enter a number between 1 and 999)";"How many recipes will be shown per page? (Enter a number between 1 and 999)"
+
+"Delete Recipe?";"Delete Recipe?"
+"Are you sure that you want to delete this recipe? It will not be recoverable after being deleted.";"Are you sure that you want to delete this recipe? It will not be recoverable after being deleted."
+
+"RECIPE_VIEWS_SCRIPTS_ADMINMANAGE_INDEX_DESCRIPTION";"This page lists all of the recipes your users have posted. You can use this page to monitor these recipes and delete offensive material if necessary."
+"There are no recipes created yet.";"There are no recipes created yet."
+
+"Your recipe has been deleted.";"Your recipe has been deleted."
+"A maximum of %s options are permitted.";"A maximum of %s options are permitted."
+"Are you sure that you want to delete this Recipe? This action cannot be undone.";"Are you sure that you want to delete this Recipe? This action cannot be undone."
+"Change Vote?";"Change Vote?"
+"Do you want to permit your members to change their vote?";"Do you want to permit your members to change their vote?"
+"Yes, members can change their vote.";"Yes, members can change their vote."
+"No, members cannot change their vote.";"No, members cannot change their vote."
