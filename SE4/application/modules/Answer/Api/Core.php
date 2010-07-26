@@ -134,7 +134,7 @@ class Answer_Api_Core extends Core_Api_Abstract
   }
 
   /**
-   * Returns a collection of dates where a given user created a blog entry
+   * Returns a collection of dates where a given user created a question entry
    *
    * @param Int user_id
    * @return Zend_Db_Table_Select

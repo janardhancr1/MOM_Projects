@@ -101,15 +101,13 @@ INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `categ
 --
 
 INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-('core_main_answer', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_main', '', 4),
-('core_sitemap_answer', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_sitemap', '', 4),
-
+('core_main_answerl', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_main', '', 5),
+('core_sitemap_answer', 'answer', 'Answers', '', '{"route":"answer_browse"}', 'core_sitemap', '', 5),
 ('core_admin_main_plugins_answer', 'answer', 'Answers', '', '{"route":"admin_default","module":"answer","controller":"settings"}', 'core_admin_main_plugins', '', 999),
 
-('answer_admin_main_manage', 'answer', 'View Answer', '', '{"route":"admin_default","module":"answer","controller":"manage"}', 'answer_admin_main', '', 1),
+('answer_admin_main_manage', 'answer', 'Manage Answers', '', '{"route":"admin_default","module":"answer","controller":"manage"}', 'answer_admin_main', '', 1),
 ('answer_admin_main_settings', 'answer', 'Global Settings', '', '{"route":"admin_default","module":"answer","controller":"settings"}', 'answer_admin_main', '', 2),
-('answer_admin_main_level', 'answer', 'Member Level Settings', '', '{"route":"admin_default","module":"answer","controller":"level"}', 'answer_admin_main', '', 3),
-('answer_admin_main_categories', 'answer', 'Categories', '', '{"route":"admin_default","module":"answer","controller":"settings", "action":"categories"}', 'answer_admin_main', '', 4)
+('answer_admin_main_level', 'answer', 'Member Level Settings', '', '{"route":"admin_default","module":"answer","controller":"settings","action":"level"}', 'answer_admin_main', '', 3)
 ;
 
 

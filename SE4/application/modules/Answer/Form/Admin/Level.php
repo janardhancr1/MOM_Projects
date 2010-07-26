@@ -3,7 +3,7 @@
  * SocialEngine
  *
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Answer
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  * @version    $Id: Level.php 5935 2010-05-21 01:35:38Z john $
@@ -12,7 +12,7 @@
 
 /**
  * @category   Application_Extensions
- * @package    Recipe
+ * @package    Answer
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
@@ -24,7 +24,7 @@ class Answer_Form_Admin_Level extends Engine_Form
 
     $this
       ->setTitle('Member Level Settings')
-      ->setDescription('RECIPE_FORM_ADMIN_LEVEL_DESCRIPTION');
+      ->setDescription('ANSWER_FORM_ADMIN_LEVEL_DESCRIPTION');
 
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOptions(array('tag' => 'h4', 'placement' => 'PREPEND'));
@@ -40,12 +40,12 @@ class Answer_Form_Admin_Level extends Engine_Form
     ));
 
     $this->addElement('Radio', 'view', array(
-      'label' => 'Allow Viewing of Recipes?',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION',
+      'label' => 'Allow Viewing of Questions?',
+      'description' => 'ANSWER_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION',
       'multiOptions' => array(
-        0 => 'No, do not allow recipes to be viewed.',
-        1 => 'Yes, allow viewing of answers.',
-        2 => 'Yes, allow viewing of all answers, even private ones.'
+        0 => 'No, do not allow questions to be viewed.',
+        1 => 'Yes, allow viewing of questions.',
+        2 => 'Yes, allow viewing of all questions, even private ones.'
       ),
       'value' => 1,
     ));
@@ -65,29 +65,29 @@ class Answer_Form_Admin_Level extends Engine_Form
     */
     
     $this->addElement('Radio', 'delete', array(
-      'label' => 'Allow Deletion of Recipes?',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION',
+      'label' => 'Allow Deletion of Questions?',
+      'description' => 'ANSWER_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION',
       'multiOptions' => array(
-        0 => 'No, do not allow members to delete their recipes.',
-        1 => 'Yes, allow members to delete their own recipes.',
-        2 => 'Yes, allow members to delete all recipes.'
+        0 => 'No, do not allow members to delete their questions.',
+        1 => 'Yes, allow members to delete their own questions.',
+        2 => 'Yes, allow members to delete all questions.'
       ),
       'value' => 1,
     ));
     $this->addElement('Radio', 'create', array(
-      'label' => 'Allow Recipes?',
-      'description' => 'Do you want to allow members to create recipes?',
+      'label' => 'Allow Questions?',
+      'description' => 'Do you want to allow members to create questions?',
       'multiOptions' => array(
-        1 => 'Yes, allow this member level to create recipes',
-        0 => 'No, do not allow this member level to create recipes',
+        1 => 'Yes, allow this member level to create questions',
+        0 => 'No, do not allow this member level to create questions',
       ),
       'value' => 1,
     ));
 
     // PRIVACY ELEMENTS
-    $this->addElement('MultiCheckbox', 'auth_view', array(
+   /* $this->addElement('MultiCheckbox', 'auth_view', array(
       'label' => 'Recipe Privacy',
-      'description' => 'RECIPE_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION',
+      'description' => 'ANSWER_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION',
       'multiOptions' => array(
         'everyone'       => 'Everyone',
         'owner_network' => 'Friends and Networks',
@@ -109,7 +109,7 @@ class Answer_Form_Admin_Level extends Engine_Form
         'owner'          => 'Just Me'
       ),
       'value' => array('everyone', 'owner_network','owner_member_member', 'owner_member', 'owner')
-    ));
+    ));*/
 
 
     // Add submit button

@@ -29,11 +29,39 @@ return array(
        'enable',
        'disable',
      ),
-    
+     'callback' => array(
+      'path' => 'application/modules/Answer/settings/install.php',
+      'class' => 'Answer_Installer',
+    ),
     'directories' => array(
       'application/modules/Answer',
     ),
-    
+    'files' => array(
+      'application/languages/en/answer.csv',
+    ),
+  ),
+  // Content -------------------------------------------------------------------
+  'content'=> array(
+    'answer_profile_answers' => array(
+      'type' => 'action',
+      'title' => 'Answers Profile Tabs',
+      'route' => array(
+        'module' => 'answer',
+        'controller' => 'widget',
+        'action' => 'profile-answers',
+      ),
+    )
+  ),
+  // Hooks ---------------------------------------------------------------------
+  'hooks' => array(
+    array(
+      'event' => 'onStatistics',
+      'resource' => 'Answer_Plugin_Core'
+    ),
+    array(
+      'event' => 'onUserDeleteBefore',
+      'resource' => 'Answer_Plugin_Core',
+    ),
   ),
  
   // Items ---------------------------------------------------------------------

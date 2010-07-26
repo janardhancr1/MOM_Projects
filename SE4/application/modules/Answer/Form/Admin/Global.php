@@ -25,12 +25,12 @@ class Answer_Form_Admin_Global extends Engine_Form
       ->setDescription('These settings affect all members in your community.');
 
 
-    $this->addElement('Radio', 'recipe_public', array(
+    $this->addElement('Radio', 'answer_public', array(
       'label' => 'Public Permissions',
-      'description' => 'RECIPE_FORM_ADMIN_GLOBAL_RECIPEPUBLIC_DESCRIPTION',
+      'description' => 'ANSWER_FORM_ADMIN_GLOBAL_ANSWERPUBLIC_DESCRIPTION',
       'multiOptions' => array(
-        1 => 'Yes, the public can view answers unless they are made private.',
-        0 => 'No, the public cannot view recipes.'
+        1 => 'Yes, the public can view questions unless they are made private.',
+        0 => 'No, the public cannot view questions.'
       ),
       'value' => 1,
     ));
@@ -41,13 +41,13 @@ class Answer_Form_Admin_Global extends Engine_Form
       'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10),
     ));
 
-    $this->addElement('Text', 'maxOptions', array(
+    /*$this->addElement('Text', 'maxOptions', array(
       'label' => 'Maximum Options',
       'description' => 'How many possible answere answers do you want to permit?',
       'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.maxOptions', 15),
-    ));
+    ));*/
 
-    $this->addElement('Radio', 'canChangeVote', array(
+    /*$this->addElement('Radio', 'canChangeVote', array(
       'label' => 'Change Vote?',
       'description' => 'Do you want to permit your members to change their vote?',
       'multiOptions' => array(
@@ -55,7 +55,7 @@ class Answer_Form_Admin_Global extends Engine_Form
         0 => 'No, members cannot change their vote.',
       ),
       'value' => (int) Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false),
-    ));
+    ));*/
 
 
     // Add submit button
@@ -71,7 +71,7 @@ class Answer_Form_Admin_Global extends Engine_Form
     $values   = $this->getValues();
     $settings = Engine_Api::_()->getApi('settings', 'core');
 
-    $settings->recipe_canChangeVote = (bool) $values['canChangeVote'];
+   // $settings->recipe_canChangeVote = (bool) $values['canChangeVote'];
 
     if (!is_numeric($values['perPage'])
             || 0 >= $values['perPage']
@@ -79,11 +79,11 @@ class Answer_Form_Admin_Global extends Engine_Form
       $values['perPage'] = 10;
     $settings->recipe_perPage = $values['perPage'];
 
-    if (!is_numeric($values['maxOptions'])
+    /*if (!is_numeric($values['maxOptions'])
             || 0 >= $values['maxOptions']
             || 999 < $values['maxOptions'])
       $values['maxOptions'] = 15;
-    $settings->recipe_maxOptions = $values['maxOptions'];
+    $settings->recipe_maxOptions = $values['maxOptions'];*/
     
   }
 }
