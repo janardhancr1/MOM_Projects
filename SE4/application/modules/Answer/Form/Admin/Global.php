@@ -37,7 +37,7 @@ class Answer_Form_Admin_Global extends Engine_Form
 
     $this->addElement('Text', 'perPage', array(
       'label' => 'answers Per Page',
-      'description' => 'How many recipes will be shown per page? (Enter a number between 1 and 999)',
+      'description' => 'How many questions will be shown per page? (Enter a number between 1 and 999)',
       'value' => Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10),
     ));
 
