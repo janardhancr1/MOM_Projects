@@ -111,6 +111,7 @@ class User_Form_Login extends Engine_Form
     // Init facebook login link
     if ('none' != $settings->getSetting('core_facebook_enable', false) && $settings->core_facebook_secret) {
       $this->addElement('Dummy', 'facebook', array(
+        'label' => 'Login using your favourite social network:',
         'content' => User_Model_DbTable_Facebook::loginButton(),
       ));
     }

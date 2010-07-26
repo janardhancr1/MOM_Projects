@@ -11,13 +11,18 @@ MAIN LOGIN FORM
 Gives special positioning to the elements in the main
 login form.
 */
+#user_form_login > div > div
+{
+	text-align: center;
+}
+
 #user_form_login #fieldset-buttons
 {
 
 }
 #user_form_login #submit-wrapper
 {
-  width:50%;
+  width:30%;
   float: left;
 }
 #user_form_login #submit-element
@@ -38,10 +43,24 @@ login form.
 
 #user_form_login #remember-wrapper
 {
-  width:47%;
+  width:67%;
+  text-align: right;
   padding-top: 10px;
   float: left;
 }
+#user_form_login #remember-wrapper > div
+{
+	text-align: right;
+    float: right;
+}
+
+#remember
+{
+    float: right;
+    margin-left: 5px;
+}
+
+
 #user_form_login h3
 {
   font-size: 18px;
@@ -68,10 +87,23 @@ login form.
 }
 #user_form_login #forgot-element
 {
+  text-align: center;
   margin-top: 5px;
 }
 
+#facebook-element
+{
+	min-width:50px;
+	text-align: right;
+}
 
+#facebook-label
+{
+	padding: 2px;
+	vertical-align: middle;
+	font-weight: normal;
+	font-size: 14px;
+}
 
 
 /*
