@@ -133,6 +133,14 @@ return array(
         'action' => 'index'
       )
     ),
+    'facebook_signup' => array(
+      'route' => '/facebooksignup/:action/*',
+      'defaults' => array(
+        'module' => 'user',
+        'controller' => 'facebook',
+        'action' => 'facebook'
+      )
+    ),
     'invite_moms' => array(
       'route' => '/invite',
       'defaults' => array(

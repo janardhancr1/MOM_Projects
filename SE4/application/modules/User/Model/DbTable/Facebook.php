@@ -46,11 +46,13 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
     $settings  = Engine_Api::_()->getApi('settings', 'core');
     $facebook  = self::getFBInstance();
 
-    $fb_params = array('popup' => true);
+    $fb_params = array();
     switch ($settings->core_facebook_enable) {
       case 'login':
-        $fb_params[] = 'email';
-        $fb_params[] = 'user_birthday';
+        $fb_params['req_perms'] = 'email,user_birthday,offline_access,publish_stream';
+        //$fb_params[] = 'user_birthday';
+        //$fb_params[] = 'offline_access';
+        //$fb_params[] = 'publish_stream';
         break;
       case 'publish':
         $fb_params[] = 'email';
@@ -82,7 +84,9 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
             xfbml: true
           });
           FB.Event.subscribe(\'auth.sessionChange\', function(response) {
-            '.($prevent_reload?'':'window.location.reload();').'
+            if (response.session) {
+            '.($prevent_reload?'':'window.location = "index.php/facebooksignup";').'
+            }
             }); };
           (function() {
             var e = document.createElement("script"); e.async = true; e.src = document.location.protocol + "//connect.facebook.net/'.Zend_Locale::findLocale().'/all.js";
@@ -90,7 +94,9 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
           }());
       //]]>
       </script>
-      <a href="'.$facebook->getLoginUrl($fb_params).'" target="_blank" onclick="FB.login();return false;"><img src="http://static.ak.fbcdn.net/rsrc.php/z38X1/hash/6ad3z8m6.gif" border="0" alt="'.$connect_with_facebook.'" /></a>
+      <!--<a href="'.$facebook->getLoginUrl($fb_params).'" target="_blank" onclick="FB.login();return false;"><img src="http://static.ak.fbcdn.net/rsrc.php/z38X1/hash/6ad3z8m6.gif" border="0" alt="'.$connect_with_facebook.'" /></a>-->
+      <fb:login-button perms="email,user_birthday"></fb:login-button>
+      
       ';
   }
 }

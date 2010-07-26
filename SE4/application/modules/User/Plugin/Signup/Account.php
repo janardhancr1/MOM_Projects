@@ -35,13 +35,16 @@ class User_Plugin_Signup_Account extends Core_Plugin_FormSequence_Abstract
   public function onView()
   {
     // Init facebook login link
-    if (FALSE && 'none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+    
+    if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
       $facebook = User_Model_DbTable_Facebook::getFBInstance();
       if ($facebook->getSession()) {
+      	
         try {
+        	
           $me  = $facebook->api('/me');
-          
           $uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?'=>$facebook->getUser()));
+
           if ($uid)
             $uid = $uid->user_id;
           if ($uid) {
@@ -58,7 +61,7 @@ class User_Plugin_Signup_Account extends Core_Plugin_FormSequence_Abstract
 
             if ($this->getForm()->getElement('username')->getValue() == '')
                 $this->getForm()->getElement('username')->setValue(preg_replace('/[^A-Za-z]/', '', $me['name']));
-
+			
             $maps    = Engine_Api::_()->fields()->getFieldsMaps('user');
             $fb_data = array();
             foreach (array('gender', 'first_name', 'last_name', 'birthdate') as $field_alias) {
