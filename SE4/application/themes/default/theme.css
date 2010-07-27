@@ -613,6 +613,14 @@ Examples: Signup form, member settings form, etc.
   clear: both;
   overflow: hidden;
 }
+
+/* form container */
+.global_form1
+{
+  clear: both;
+  overflow: hidden;
+  width: 375px
+}
 /* external form border */
 .global_form > div
 {
@@ -705,12 +713,11 @@ Examples: Signup form, member settings form, etc.
 /* left-side element label container */
 .global_form1 div.form-label
 {
-  width: 100px;
+  min-width: 150px;
+  max-width: 600px;
   text-align: right;
-  padding: 4px 15px 0px 2px;
-  overflow: hidden;
+  padding: 4px 10px 0px 2px;
   float: left;
-  clear: left;
   font-size: .9em;
   font-weight: bold;
   color: $theme_form_label_font_color;
@@ -731,12 +738,10 @@ Examples: Signup form, member settings form, etc.
 /* right-side form element container */
 .global_form1 div.form-element
 {
-  min-width: 150px;
+  min-width: 180px;
   max-width: 600px;
   text-align: left;
-  overflow: hidden;
   float: left;
-  clear: none;
 }
 
 /* all paragraphs of text in the form */
