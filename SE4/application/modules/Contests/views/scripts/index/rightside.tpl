@@ -57,7 +57,7 @@
      <?php
      $i++;
      if ($i%3 == 0)
-     echo "</tr><tr>";
+     echo "</tr><tr><td colspan='3'>&nbsp;</tr><tr>";
      ?>
   <?php endforeach; ?>
 </tr>
@@ -82,7 +82,7 @@
      <?php
      $i++;
      if ($i%3 == 0)
-     echo "</tr><tr>";
+     echo "</tr><tr><td colspan='3'>&nbsp;</tr><tr>";
      ?>
   <?php endforeach; ?>
 </tr>
