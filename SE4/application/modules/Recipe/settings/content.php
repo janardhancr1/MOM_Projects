@@ -21,4 +21,15 @@ return array(
       'titleCount' => true,
     ),
   ),
+   array(
+    'title' => 'Recent Recipes',
+    'description' => 'Displays recent recipes.',
+    'category' => 'Recipes',
+    'type' => 'widget',
+    'name' => 'recipe.recent-recipes',
+    'defaultParams' => array(
+      'title' => 'Recipes',
+      'titleCount' => true,
+    ),
+  ),
 ) ?>
