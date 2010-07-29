@@ -50,7 +50,16 @@ return array(
         'controller' => 'widget',
         'action' => 'profile-polls',
       ),
-    )
+    ),
+     'poll_recent_polls' => array(
+      'type' => 'action',
+      'title' => 'Polls Recent Tabs',
+      'route' => array(
+        'module' => 'poll',
+        'controller' => 'widget',
+        'action' => 'recent-polls',
+      ),
+    ),
   ),
   // Hooks ---------------------------------------------------------------------
   'hooks' => array(

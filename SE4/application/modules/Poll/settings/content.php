@@ -21,4 +21,16 @@ return array(
       'titleCount' => true,
     ),
   ),
+  
+  array(
+    'title' => 'Recent Polls',
+    'description' => 'Displays recent polls',
+    'category' => 'Polls',
+    'type' => 'widget',
+    'name' => 'poll.recent-polls',
+    'defaultParams' => array(
+      'title' => 'Polls',
+      'titleCount' => true,
+    ),
+  ),
 ) ?>
