@@ -33,3 +33,6 @@
 
 # @todo This may not be effective in some cases
 FileETag Size
+
+#PHP memory size
+php_value memory_limit 128M
