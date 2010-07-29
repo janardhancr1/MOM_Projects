@@ -40,7 +40,7 @@
 <?php }?>
 <div class="generic_layout_container layout_user_list_signups">
 <h3>Newest Members</h3>
-<table>
+<table width="100%">
 <tr>
 <?php $i=0; ?>
   <?php foreach( $this->users as $user ): ?>
@@ -65,7 +65,7 @@
 </div>
 <div class="generic_layout_container layout_user_list_signups">
 <h3>Popular Members</h3>
-<table>
+<table width="100%">
 <tr>
 <?php $i=0; ?>
   <?php foreach( $this->popularusers as $user ): ?>

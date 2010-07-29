@@ -22,14 +22,14 @@ return array(
     ),
   ),
    array(
-    'title' => 'Recent Recipes',
-    'description' => 'Displays recent recipes.',
+    'title' => 'Todays Recipe',
+    'description' => 'Displays Today\'s Recipe on home page.',
     'category' => 'Recipes',
     'type' => 'widget',
-    'name' => 'recipe.recent-recipes',
+    'name' => 'recipe.todays-recipe',
     'defaultParams' => array(
-      'title' => 'Recipes',
-      'titleCount' => true,
+      'title' => 'Today\'s Recipe',
     ),
+    'adminForm' => 'Recipe_Form_Admin_Widget_Today',
   ),
 ) ?>

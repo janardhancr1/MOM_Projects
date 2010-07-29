@@ -55,6 +55,12 @@ ul.recipess_browse .recipes_browse_info_date
   font-size: .8em;
   color: $theme_font_color_light;
 }
+
+div.recipes_browse_info_date
+{
+	font-size: .8em;
+    color: $theme_font_color_light;
+} 
 ul.recipes_browse .recipes_browse_info_desc
 {
   margin-top: 5px;

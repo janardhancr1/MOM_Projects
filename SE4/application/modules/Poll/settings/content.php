@@ -21,16 +21,15 @@ return array(
       'titleCount' => true,
     ),
   ),
-  
   array(
-    'title' => 'Recent Polls',
-    'description' => 'Displays recent polls',
+    'title' => 'Todays Poll',
+    'description' => 'Displays Today\'s polls on home page.',
     'category' => 'Polls',
     'type' => 'widget',
-    'name' => 'poll.recent-polls',
+    'name' => 'poll.todays-poll',
     'defaultParams' => array(
-      'title' => 'Polls',
-      'titleCount' => true,
+      'title' => 'Today\'s Poll',
     ),
+    'adminForm' => 'Poll_Form_Admin_Widget_Today',
   ),
 ) ?>

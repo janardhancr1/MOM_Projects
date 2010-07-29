@@ -51,16 +51,6 @@ return array(
         'action' => 'profile-recipes',
       ),
     ),
-    'recipe_recent_recipes' => array(
-      'type' => 'action',
-      'title' => 'Recipes Recent Tabs',
-      'route' => array(
-        'module' => 'recipe',
-        'controller' => 'widget',
-        'action' => 'recent-recipes',
-      ),
-    )
-    
   ),
   // Hooks ---------------------------------------------------------------------
   'hooks' => array(
