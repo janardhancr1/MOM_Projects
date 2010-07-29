@@ -30,6 +30,8 @@
  <script type="text/javascript">
   //<!--
   var maxOptions = <?php echo $this->maxOptions ?>;
+  if(maxOptions > 10)
+	  $('addOptionLink').destroy();
   window.addEvent('domready', function() {
     addAnotherOption(true); // display five boxes
     addAnotherOption(true); // to start with
@@ -72,7 +74,7 @@
 
     if (maxOptions && $$('input.pollOptionInput').length >= maxOptions)
       $('addOptionLink').destroy();
-
+	
     return false;
   }
   // -->

@@ -56,7 +56,7 @@ return array(
   'hooks' => array(
     array(
       'event' => 'onStatistics',
-      'resource' => 'recipe_Plugin_Core'
+      'resource' => 'Recipe_Plugin_Core'
     ),
     array(
       'event' => 'onUserDeleteBefore',

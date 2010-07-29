@@ -11,6 +11,7 @@ div.notifications_layout
 {
   clear: both;
   overflow: hidden;
+  padding: 0px 5px;
 }
 div.notifications_layout > div.notifications_leftside
 {

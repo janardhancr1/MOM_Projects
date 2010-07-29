@@ -19,7 +19,7 @@
     <?php echo $this->translate('My Questions');?>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers'>Back to Questions</a></div>
     </div>
-    <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Ask the community a question and check back for answers.');?></div>
 </div>
 <?php if($this->can_create):?>
     <div>

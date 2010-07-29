@@ -11,14 +11,14 @@
  */
 ?>
 
-<table>
+<table width="100%">
 <tr style='margin-bottom:5px'>
 <?php $i=0; ?>
   <?php foreach( $this->users as $user ): ?>
    <td width="33%">
       <div class='newestmembers_info'>
         <div class='newestmembers_name'>
-          <?php echo $this->htmlLink($user->getHref(), $user->getTitle()) ?>
+          <?php echo $this->htmlLink($user->getHref(), $user->username) ?>
         </div>
         <div class='newestmembers_date'>
           <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'newestmembers_thumb')) ?>

@@ -112,3 +112,8 @@ div.answers_view .answer_stats > a
 {
   background-image: url(~/application/modules/Answer/externals/images/qa_qa16.gif);
 }
+
+.tags_input
+{
+	margin-top: 20px;
+}

@@ -72,7 +72,7 @@ class Group_Form_Filter_Browse extends Engine_Form
       'onchange' => '$(this).getParent("form").submit();',
     ));
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/groups/manage'>My Groups</a>");
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/groups/manage'>Go to My Groups</a>");
 	$this->addElement('Dummy', 'my', array(
 	  'label' => '    ',
       'content' => $content,

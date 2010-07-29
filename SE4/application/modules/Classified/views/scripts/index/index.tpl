@@ -112,7 +112,7 @@
       <span>
         <?php echo $this->translate('Nobody has posted a classified listing with that criteria.');?>
         <?php if ($this->can_create): ?>
-          <?php echo $this->translate('Be the first to %post%2$s one!', '<a href="'.$this->url(array(), 'classified_create').'">', '</a>'); ?>
+          <?php echo $this->translate('Be the first to %1$spost%2$s one!', '<a href="'.$this->url(array(), 'classified_create').'">', '</a>'); ?>
         <?php endif; ?>
       </span>
     </div>

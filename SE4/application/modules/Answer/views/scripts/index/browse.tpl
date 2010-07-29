@@ -17,8 +17,8 @@
 <div class="headline_header">
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Momburbia Answers');?>
-    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>
+    <?php echo $this->translate('Momburbia Answers');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
 </div>
 <div>
 <?php echo $this->search_form->render($this) ?>

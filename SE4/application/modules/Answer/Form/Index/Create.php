@@ -37,10 +37,10 @@ class Answer_Form_Index_Create extends Engine_Form
     ));
     // init to
     $this->addElement('Text', 'tags',array(
-      'label'=>'Tags - help moms find your question, i.e.', 
+      'label'=>'Tags (help moms find your question i.e. sleeping, feeding, crying)', 
       'maxlength' => '100',
+      'class' => 'tags_input',
     ));
-  
     
     // prepare categories
     $categories = Engine_Api::_()->answer()->getCategories();
