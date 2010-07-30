@@ -131,4 +131,17 @@ class Poll_Model_Poll extends Core_Model_Item_Abstract
       $option->save();
     }
   }
+ protected function _delete()
+  {
+    if( $this->_disableHooks ) return;
+    
+    // Delete all child posts
+    $postTable = Engine_Api::_()->getDbtable('polls', 'poll');
+    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
+      $groupPost->disableHooks()->delete();
+    }
+    
+    parent::_delete();
+  }
 }
