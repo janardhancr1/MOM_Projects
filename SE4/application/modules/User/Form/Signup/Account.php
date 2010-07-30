@@ -276,6 +276,13 @@ class User_Form_Signup_Account extends Engine_Form
       'ignore' => true,
     ));
     
+    // Init facebook login link
+    if ('none' != $settings->getSetting('core_facebook_enable', false) && $settings->core_facebook_secret) {
+      $this->addElement('Dummy', 'facebook', array(
+        'label' => '',
+        'content' => '',
+      ));
+    }
     // Set default action
     $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup'));
   }
