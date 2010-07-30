@@ -27,14 +27,7 @@ class Recipe_Plugin_Core
                         'COUNT(*) AS count'));
     $rows    = $table->fetchAll($select)->toArray();
     $event->addResponse($rows[0]['count'], 'recipe');
-    
-    $table   = Engine_Api::_()->getDbTable('votes', 'recipe');
-    $select  = $table->select()
-                    ->setIntegrityCheck(false)
-                    ->from($table->info('name'), array(
-                        'COUNT(*) AS count'));
-    $rows    = $table->fetchAll($select)->toArray();
-    $event->addResponse($rows[0]['count'], 'recipe vote');
+
   }
 
   public function onUserDeleteBefore($event)
