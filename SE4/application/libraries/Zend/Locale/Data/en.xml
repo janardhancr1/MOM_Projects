@@ -687,6 +687,8 @@
             <territory type="200">Czechoslovakia</territory>
             <territory type="419">Latin America and the Caribbean</territory>
             <territory type="830">Channel Islands</territory>
+            <territory type="CA">Canada</territory>
+			<territory type="US">United States</territory>
             <territory type="AD">Andorra</territory>
             <territory type="AE">United Arab Emirates</territory>
             <territory type="AF">Afghanistan</territory>
@@ -725,7 +727,6 @@
             <territory type="BW">Botswana</territory>
             <territory type="BY">Belarus</territory>
             <territory type="BZ">Belize</territory>
-            <territory type="CA">Canada</territory>
             <territory type="CC">Cocos [Keeling] Islands</territory>
             <territory type="CD">Congo - Kinshasa</territory>
             <territory type="CF">Central African Republic</territory>
@@ -931,8 +932,7 @@
             <territory type="TZ">Tanzania</territory>
             <territory type="UA">Ukraine</territory>
             <territory type="UG">Uganda</territory>
-            <territory type="UM">U.S. Minor Outlying Islands</territory>
-            <territory type="US">United States</territory>
+            <territory type="UM">U.S. Minor Outlying Islands</territory>            
             <territory type="UY">Uruguay</territory>
             <territory type="UZ">Uzbekistan</territory>
             <territory type="VA">Vatican City</territory>

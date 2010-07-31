@@ -22,7 +22,7 @@ class Fields_Form_Element_Country extends Engine_Form_Element_Select
   public function init()
   {
     $territories = Zend_Locale::getTranslationList('territory', null, 2);
-    asort($territories);
+    //asort($territories);
     $this->setMultiOptions($territories);
   }
 }

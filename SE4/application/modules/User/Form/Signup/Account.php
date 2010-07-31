@@ -147,7 +147,7 @@ class User_Form_Signup_Account extends Engine_Form
     }
     
     // Init timezone
-    $this->addElement('Select', 'timezone', array(
+    /*$this->addElement('Select', 'timezone', array(
       'label' => 'Timezone',
       'value' => $settings->getSetting('core.locale.timezone'),
       'multiOptions' => array(
@@ -185,7 +185,7 @@ class User_Form_Signup_Account extends Engine_Form
         'Pacific/Auckland' => '(UTC+12) Fiji, Kamchatka, Marshall Is., Wellington',
       )
     ));
-    $this->timezone->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));
+    $this->timezone->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));*/
 
     // Languages
     $translate    = Zend_Registry::get('Zend_Translate');

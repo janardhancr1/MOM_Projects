@@ -203,7 +203,7 @@ class User_AuthController extends Core_Controller_Action_Standard
       ));
 
     // Facebook
-    if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+    /*if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
       $fb_id = Engine_Api::_()->getDbtable('facebook', 'user')->find($viewer->getIdentity())->current();
       if ($fb_id && $fb_id->facebook_uid) {
         $facebook = User_Model_DbTable_Facebook::getFBInstance();
@@ -213,7 +213,7 @@ class User_AuthController extends Core_Controller_Action_Standard
           exit;
         }
       }
-    }
+    }*/
     
     // Logout
     Engine_Api::_()->user()->getAuth()->clearIdentity();

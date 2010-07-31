@@ -17,11 +17,13 @@ class User_FacebookController extends Core_Controller_Action_Standard
 					if ($uid) {
 						// prevent Facebook users with established accounts from signing up again
 						Engine_Api::_()->user()->getAuth()->getStorage()->write($uid);
-						$user['email'] = $me['email'];
+						/*$user['email'] = $me['email'];
 						$user['password'] = 'password';
-						return $this->authenticate($user);
+						return $this->authenticate($user);*/
+						return $this->_helper->redirector->gotoRoute(array('action' => 'home'), 'user_general');
 					} else {
-
+						return $this->_helper->redirector->gotoRoute(array(), 'user_signup');
+						/*
 						$fb_data = array();
 						$fb_data["email"] = $me['email'];
 						$fb_data["username"] = preg_replace('/[^A-Za-z]/', '', $me['name']);
@@ -45,7 +47,7 @@ class User_FacebookController extends Core_Controller_Action_Standard
 						$user->save();
 						Engine_Api::_()->user()->setViewer($user);
 						
-						return $this->authenticate($user);
+						return $this->authenticate($user);*/
 					}
 				} catch (Exception $e) {
 					throw $e;
