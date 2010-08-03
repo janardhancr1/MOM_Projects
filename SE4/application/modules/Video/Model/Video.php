@@ -178,4 +178,18 @@ class Video_Model_Video extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, $this->api()->getDbtable('tags', 'core'));
   }
+  
+protected function _delete()
+  {
+    if( $this->_disableHooks ) return;
+    
+    // Delete all child posts
+    $postTable = Engine_Api::_()->getDbtable('videos', 'video');
+    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
+      $groupPost->disableHooks()->delete();
+    }
+    
+    parent::_delete();
+  }
 }
