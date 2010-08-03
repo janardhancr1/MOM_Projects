@@ -104,4 +104,17 @@ class Answer_Model_Post extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('tags', 'core'));
   }
+protected function _delete()
+  {
+    if( $this->_disableHooks ) return;
+    
+    // Delete all child posts
+    $postTable = Engine_Api::_()->getDbtable('answers', 'answer');
+    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
+      $groupPost->disableHooks()->delete();
+    }
+    
+    parent::_delete();
+  }
 }
