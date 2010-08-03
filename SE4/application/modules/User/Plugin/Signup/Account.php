@@ -43,6 +43,14 @@ class User_Plugin_Signup_Account extends Core_Plugin_FormSequence_Abstract
 				try {
 
 					$me  = $facebook->api('/me');
+					/*$me = array(
+						'email' => 'janardhanacr@hotmail.com',
+						'name' => 'janardhancr',
+						'first_name' => 'jana',
+						'last_name' => 'cr',
+						'gender' => 'male',
+						'birthdate' => '10/11/1978',
+					);*/
 					$uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?'=>$facebook->getUser()));
 
 					if ($uid)
