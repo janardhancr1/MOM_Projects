@@ -107,4 +107,18 @@ class Album_Model_Album extends Core_Model_Item_Collection
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('likes', 'core'));
   }
+  
+protected function _delete()
+  {
+    if( $this->_disableHooks ) return;
+    
+    // Delete all child posts
+    $postTable = Engine_Api::_()->getDbtable('alubms', 'alubm');
+    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
+      $groupPost->disableHooks()->delete();
+    }
+    
+    parent::_delete();
+  }
 }
