@@ -37,6 +37,168 @@ class Answer_AdminSettingsController extends Core_Controller_Action_Admin
     }
   }
   
+  public function categoriesAction()
+  {
+    $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+      ->getNavigation('answer_admin_main', array(), 'answer_admin_main_categories');
+
+    $this->view->categories = Engine_Api::_()->answer()->getCategories();
+  }
+  
+  public function addCategoryAction()
+  {
+    // In smoothbox
+    $this->_helper->layout->setLayout('admin-simple');
+
+    // Generate and assign form
+    $form = $this->view->form = new Answer_Form_Admin_Category();
+    $form->setAction($this->getFrontController()->getRouter()->assemble(array()));
+    // Check post
+    if( $this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()) )
+    {
+      // we will add the category
+      $values = $form->getValues();
+
+      $db = Engine_Db_Table::getDefaultAdapter();
+      $db->beginTransaction();
+
+      try
+      {
+        // add category to the database
+        // Transaction
+        $table = Engine_Api::_()->getDbtable('categories', 'answer');
+
+        // insert the answer entry into the database
+        $row = $table->createRow();
+        $row->user_id   =  1;
+        $row->category_name = $values["label"];
+        $row->save();
+
+        // change the category of all the answers using that category
+
+        $db->commit();
+      }
+
+      catch( Exception $e )
+      {
+        $db->rollBack();
+        throw $e;
+      }
+
+      $this->_forward('success', 'utility', 'core', array(
+          'smoothboxClose' => 10,
+          'parentRefresh'=> 10,
+          'messages' => array('')
+      ));
+    }
+
+    // Output
+    $this->renderScript('admin-settings/form.tpl');
+  }
+  
+  public function deleteCategoryAction()
+  {
+    // In smoothbox
+    $this->_helper->layout->setLayout('admin-simple');
+    $id = $this->_getParam('id');
+    $this->view->answer_id=$id;
+    // Check post
+    if( $this->getRequest()->isPost())
+    {
+      $db = Engine_Db_Table::getDefaultAdapter();
+      $db->beginTransaction();
+
+      try
+      {
+        // go through logs and see which blog used this $id and set it to ZERO
+        $answerTable = $this->_helper->api()->getDbtable('answers', 'answer');
+        $select = $answerTable->select()->where('answer_cat_id = ?', $id);
+        $answers = $answerTable->fetchAll($select);
+
+
+        // create permissions
+        foreach( $answers as $answer )
+        {
+          //this is not working
+          $answer->answer_cat_id = 0;
+          $answer->save();
+        }
+
+        $row = Engine_Api::_()->answer()->getCategory($id);
+        // delete the answer entry into the database
+        $row->delete();
+
+        $db->commit();
+      }
+
+      catch( Exception $e )
+      {
+        $db->rollBack();
+        throw $e;
+      }
+      $this->_forward('success', 'utility', 'core', array(
+          'smoothboxClose' => 10,
+          'parentRefresh'=> 10,
+          'messages' => array('')
+      ));
+    }
+
+    // Output
+    $this->renderScript('admin-settings/delete.tpl');
+  }
+  
+public function editCategoryAction()
+  {
+    // In smoothbox
+    $this->_helper->layout->setLayout('admin-simple');
+    $form = $this->view->form = new Answer_Form_Admin_Category();
+    $form->setAction($this->getFrontController()->getRouter()->assemble(array()));
+
+    // Check post
+    if( $this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()) )
+    {
+      // Ok, we're good to add field
+      $values = $form->getValues();
+
+      $db = Engine_Db_Table::getDefaultAdapter();
+      $db->beginTransaction();
+
+      try
+      {
+        // edit category in the database
+        // Transaction
+        $row = Engine_Api::_()->answer()->getCategory($values["id"]);
+
+        $row->category_name = $values["label"];
+        $row->save();
+        $db->commit();
+      }
+
+      catch( Exception $e )
+      {
+        $db->rollBack();
+        throw $e;
+      }
+      $this->_forward('success', 'utility', 'core', array(
+          'smoothboxClose' => 10,
+          'parentRefresh'=> 10,
+          'messages' => array('')
+      ));
+    }
+
+    // Must have an id
+    if( !($id = $this->_getParam('id')) )
+    {
+      die('No identifier specified');
+    }
+
+    // Generate and assign form
+    $category = Engine_Api::_()->answer()->getCategory($id);
+    $form->setField($category);
+
+    // Output
+    $this->renderScript('admin-settings/form.tpl');
+  }
   public function levelAction()
   {
     // Make navigation
