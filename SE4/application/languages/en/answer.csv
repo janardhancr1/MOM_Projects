@@ -85,6 +85,8 @@ Allow Viewing of Questions
 "ANSWER_VIEWS_SCRIPTS_ADMINMANAGE_INDEX_DESCRIPTION";"This page lists all of the questions your users have posted. You can use this page to monitor these questions and delete offensive material if necessary."
 "There are no questions created yet.";"There are no questions created yet."
 
+"ANSWER_VIEW_SCRIPTS_ADMINSETTINGS_CATEGORIES_DESCRIPTION";"If you want to allow your users to categorize their answer entries, create the categories below. This feature is useful if you want to list all your users' answer entries that If you have no categories, your users will not be given the option of assigning a answer category."
+
 "Your question has been deleted.";"Your question has been deleted."
 "A maximum of %s options are permitted.";"A maximum of %s options are permitted."
 "Are you sure that you want to delete this Question? This action cannot be undone.";"Are you sure that you want to delete this Question? This action cannot be undone."
