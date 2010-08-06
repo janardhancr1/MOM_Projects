@@ -174,7 +174,13 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         if (empty($recipe_id))
           return;
         $values = $this->view->form->getValues();
-
+		
+        
+        // Set photo
+        if( !empty($values['photo']) ) {
+          $recipe->setPhoto($form->photo);
+        }
+        
         $row        = Engine_Api::_()->getItem('recipe', $recipe_id);
         $attachment = Engine_Api::_()->getItem($row->getType(), $recipe_id);
 
@@ -205,13 +211,42 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 
         $db->commit();
-      } catch (Exception $e) {
+        
+        // Redirect
+        //$allowed_upload = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'recipe', 'photo');
+        
+        
+          return $this->_helper->redirector->gotoRoute(array('recipe_id'=>$recipe_id), 'recipe_success', true);
+        
+         return $this->_redirect("recipes/manage");
+      } 
+      catch (Exception $e) {
         $db->rollback();
         throw $e;
       }
 
       if ($recipe_id)
         $this->_redirect("recipes/view/$recipe_id");
+    }
+  }
+  
+ public function successAction()
+  {
+    if( !$this->_helper->requireUser()->isValid() ) return;
+
+    $this->view->navigation = $this->getNavigation();
+
+    $viewer = $this->_helper->api()->user()->getViewer();
+    $this->view->recipe = $recipe = Engine_Api::_()->getItem('recipe', $this->_getParam('recipe_id'));
+
+    //if( $viewer->getIdentity() != $recipe->owner_id )
+    //{
+      //return $this->_forward('requireauth', 'error', 'core');
+    //}
+
+    if( $this->getRequest()->isPost() && $this->getRequest()->getPost('confirm') == true )
+    {
+      return $this->_redirect("recipes/photo/upload/subject/recipe_".$this->_getParam('recipe_id'));
     }
   }
 

@@ -65,7 +65,8 @@ return array(
   ),
   // Items ---------------------------------------------------------------------
   'items' => array(
-    'recipe'
+    'recipe',
+  'recipe_photo'
   ),
   // Routes --------------------------------------------------------------------
   'routes' => array(
@@ -164,6 +165,14 @@ return array(
         'module' => 'recipe',
         'controller' => 'index',
         'action' => 'manage'
+      )
+    ),
+        'recipe_success' => array(
+      'route' => 'recipes/success/:recipe_id',
+      'defaults' => array(
+        'module' => 'recipe',
+        'controller' => 'index',
+        'action' => 'success'
       )
     ),
   ),

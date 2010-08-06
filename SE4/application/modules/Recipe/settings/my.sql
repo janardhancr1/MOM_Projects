@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
   `recipe_difficulty` varchar(255) NOT NULL,
   `recipe_ingredients` mediumtext NOT NULL,
   `recipe_method` mediumtext NOT NULL,
+  'photo_id` int(10) unsigned NOT NULL default '0',
   `recipe_vege` char(1) NOT NULL default '0',
   `recipe_vegan` char(1) NOT NULL default '0',
   `recipe_dairy` char(1) NOT NULL default '0',
