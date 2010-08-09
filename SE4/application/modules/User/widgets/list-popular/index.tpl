@@ -18,7 +18,7 @@
   	<td width="33%">
       <div class='popularmembers_info'>
         <div class='popularmembers_name'>
-          <?php echo $this->htmlLink($user->getHref(), $user->username) ?>
+          <?php echo $this->htmlLink($user->getHref(), $user->getTitle()) ?>
         </div>
         <div class='popularmembers_friends'>
           <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'popularmembers_thumb')) ?>

@@ -35,7 +35,10 @@ class User_Model_User extends Core_Model_Item_Abstract
     //}
     if( !empty($this->displayname) )
     {
-      return $this->displayname;
+    	if(strpos($this->displayname, ' ')>0)
+      		return substr($this->displayname, 0, strpos($this->displayname, ' '));
+      	else
+      		return $this->displayname;
     }
     if (!empty($this->username)){
       return $this->username;

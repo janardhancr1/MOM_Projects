@@ -171,6 +171,9 @@ $this->headScript()
   en4.core.runonce.add(set_rating);
 </script>
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+
+<div class='layout_middle'>
 <h2>
   <a href='<?php echo $this->url(array('id' => $this->video->owner_id), 'user_profile') ?>'><?php echo $this->user($this->video->owner_id)->getTitle() ?></a>'s Videos
 </h2>
@@ -179,7 +182,7 @@ $this->headScript()
   <input type="hidden" id="tag" name="tag" value=""/>
 </form>
 
-<div class='layout_middle'>
+
 <div class="video_view">
   <h3>
     <?php echo $this->video->title;?>

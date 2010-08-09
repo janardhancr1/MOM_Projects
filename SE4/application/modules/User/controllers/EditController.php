@@ -39,7 +39,7 @@ class User_EditController extends Core_Controller_Action_User
     // Set up navigation
     $this->view->navigation = $navigation = $this->_helper->api()
       ->getApi('menus', 'core')
-      ->getNavigation('user_edit', array('params'=>array('id'=>$id)));
+      ->getNavigation('user_edit');
 
     // Set up require's
     $this->_helper->requireUser();

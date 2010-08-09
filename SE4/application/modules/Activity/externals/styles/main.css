@@ -22,7 +22,7 @@ div.notifications_layout > div.notifications_leftside
 div.notifications_layout > div.notifications_rightside
 {
   overflow: hidden;
-  padding-left: 30px;
+  padding-left: 20px;
 }
 ul.notifications > li
 {
