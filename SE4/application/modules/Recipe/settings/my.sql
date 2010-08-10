@@ -52,6 +52,24 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
 -- Table structure for table `engine4_recipe_votes`
 --
 
+DROP TABLE IF EXISTS `engine4_recipe_photos`;
+CREATE TABLE `engine4_recipe_photos` (
+  `photo_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `album_id` int(11) unsigned NOT NULL,
+  `recipe_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `collection_id` int(11) unsigned NOT NULL,
+  `file_id` int(11) unsigned NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL,
+  PRIMARY KEY (`photo_id`),
+  KEY `album_id` (`album_id`),
+  KEY `classified_id` (`recipe_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+
 DROP TABLE IF EXISTS `engine4_recipe_votes`;
 CREATE TABLE IF NOT EXISTS `engine4_recipe_votes` (
   `recipe_id` int(11) unsigned NOT NULL,

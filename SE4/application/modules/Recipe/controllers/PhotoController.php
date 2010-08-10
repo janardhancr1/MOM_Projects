@@ -78,7 +78,7 @@ class Recipe_PhotoController extends Core_Controller_Action_Standard
     $viewer = Engine_Api::_()->user()->getViewer();
     $recipe = Engine_Api::_()->getItem('recipe', (int) $recipe->getIdentity());
 
-    $album = $recipe->getSingletonAlbum();
+    //$album = $recipe->getSingletonAlbum();
 
     $this->view->recipe_id = $recipe->recipe_id;
     $this->view->form = $form = new Recipe_Form_Photo_Upload();
@@ -239,7 +239,7 @@ class Recipe_PhotoController extends Core_Controller_Action_Standard
 
     $photo = Engine_Api::_()->core()->getSubject();
 
-    $this->view->form = $form = new Classified_Form_Photo_Edit();
+    $this->view->form = $form = new Recipe_Form_Photo_Edit();
 
     if( !$this->getRequest()->isPost() )
     {
@@ -282,7 +282,7 @@ class Recipe_PhotoController extends Core_Controller_Action_Standard
     $viewer = Engine_Api::_()->user()->getViewer();
     
     $photo_id= (int) $this->_getParam('photo_id');
-    $photo = Engine_Api::_()->getItem('classified_photo', $photo_id);
+    $photo = Engine_Api::_()->getItem('recipe_photo', $photo_id);
 
     $db = $photo->getTable()->getAdapter();
     $db->beginTransaction();

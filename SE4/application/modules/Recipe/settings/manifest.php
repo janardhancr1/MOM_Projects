@@ -66,10 +66,23 @@ return array(
   // Items ---------------------------------------------------------------------
   'items' => array(
     'recipe',
+  'recipe_album',
   'recipe_photo'
   ),
   // Routes --------------------------------------------------------------------
   'routes' => array(
+  'recipe_extended' => array(
+      'route' => 'recipes/:controller/:action/*',
+      'defaults' => array(
+        'module' => 'recipe',
+        'controller' => 'index',
+        'action' => 'index',
+      ),
+      'reqs' => array(
+        'controller' => '\D+',
+        'action' => '\D+',
+      )
+    ),
     // Public
     'recipe_browse' => array(
       'route' => 'recipes/:page/:sort/*',
