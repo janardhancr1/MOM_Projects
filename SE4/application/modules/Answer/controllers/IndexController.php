@@ -49,15 +49,18 @@ public function browseAction()
         'page' => 1,
         'sort'   => $this->getRequest()->getPost('browse_answers_by'),
         'search' => $this->getRequest()->getPost('answer_search'),
+      	'category' => $this->getRequest()->getPost('category_id'),
       ));
     }  else {
       	$search_form->getElement('browse_answers_by')->setValue($this->_getParam('sort'));
+      	$search_form->getElement('category_id')->setValue($this->_getParam('category'));
     } 
 
     $this->view->paginator  = Engine_Api::_()->answer()->getAnswersPaginator(array(
       'user_id' => 0,
       'sort'    => $this->_getParam('sort'),
       'search'  => $this->_getParam('search'),
+      'category'  => $this->_getParam('category'),
     ));
     $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.perPage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
@@ -119,11 +122,12 @@ public function browseAction()
         $this->_redirect("answers/manage");
      }
   }
-  
+
 public function viewAction()
   {
  	$answer_id = $this->getRequest()->getParam('answer_id');
     $answer = $this->view->answer = Engine_Api::_()->getItem('answer', $answer_id);
+    $cat = $this->view->cat = Engine_Api::_()->answer()->getCategory($answer->answer_cat_id);
    
     if (!empty($answer)) {
       Engine_Api::_()->core()->setSubject($answer);
@@ -136,6 +140,7 @@ public function viewAction()
     $this->view->owner    = $owner   = $answer->getOwner();
     $this->view->answer->save();
     $this->view->form = new Answer_Form_Index_Answer();
+    $this->view->acceptform = new Answer_Form_Index_Accept();
     
         $this->view->paginator  = Engine_Api::_()->answer()->getPostAnswersPaginator(array(
       'user_id' => 0,
@@ -143,8 +148,34 @@ public function viewAction()
     ));
     $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.perPage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
-     
+    
+  	if($this->getRequest()->isPost() && $this->view->acceptform->isValid($this->getRequest()->getPost()))
+    {
+    	$post      = new Zend_Controller_Request_Http();
+    	if(null !== $post->getPost('submit1'))
+    	{
+			$db = $answer->getTable()->getAdapter();
+			$db->beginTransaction();
+			try
+			{
+				$answer->is_closed = 1;
+				$answer->save();
+				
+				$db->commit();
+	
+				return $this->_redirect("answers/manage");
+	
+			}
+			catch( Exception $e )
+			{
+				$db->rollBack();
+				throw $e;
+			}
+    	}
+				
+    }
    if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
+   
       $db = Engine_Api::_()->getDbTable('posts', 'answer')->getAdapter();
       $db->beginTransaction();
       try {
@@ -165,7 +196,6 @@ public function viewAction()
             if ($post_id)
         $this->_redirect("answers/manage");
      }
-  
   }
   public function manageAction()
   {

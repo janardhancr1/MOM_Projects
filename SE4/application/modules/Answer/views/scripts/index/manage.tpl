@@ -37,9 +37,9 @@
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
-        <?php echo $this->translate('There are no questions yet.') ?>
+        <?php echo $this->translate('You have no questions.') ?>
         <?php if (TRUE): // @todo check if user is allowed to create a recipe ?>
-        <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'recipe_create').'">', '</a>') ?>
+        <?php echo $this->translate('Why don\'t you create one') ?>
         <?php endif; ?>
       </span>
     </div>

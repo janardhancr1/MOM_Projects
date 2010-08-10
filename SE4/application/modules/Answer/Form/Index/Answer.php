@@ -29,7 +29,7 @@ class Answer_Form_Index_Answer extends Engine_Form
       ;
     
 	$this->addElement('Textarea', 'description',array(
-      'label'=>'Answer',
+      'label'=>'Your Answer',
       'maxlength' => '500',
     ));
   
@@ -38,8 +38,6 @@ class Answer_Form_Index_Answer extends Engine_Form
       'label' => 'Post Answer',
       'type' => 'submit',
     ));
-    
-
   }
   
  public function save($id)

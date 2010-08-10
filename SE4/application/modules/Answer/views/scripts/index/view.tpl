@@ -26,8 +26,19 @@
       <li id="recipe-item-<?php echo $this->answer->answer_id ?>">
         <?php echo $this->htmlLink($this->answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
         <div class="recipes_browse_info">
-          <?php echo $this->answer->title ?>
-          
+          <b><?php echo $this->translate('Question: ');?></b><?php echo $this->answer->title ?><br>
+          <b><?php echo $this->translate('Description: ');?></b>
+			<?php if (!empty($this->answer->description)): ?>
+				<?php echo $this->answer->description ?>
+			<?php endif; ?><br>
+			 <b><?php echo $this->translate('Tags: ');?></b>
+			<?php if (!empty($this->answer->answer_tags)): ?>
+				<?php echo $this->answer->answer_tags ?>
+			<?php endif; ?><br>
+			<b><?php echo $this->translate('Category: ');?></b>
+			<?php if (!empty($this->cat->category_name)): ?>
+				<?php echo $this->cat->category_name ?>
+			<?php endif; ?> 
           <div class="recipes_browse_info_date">
           	  <?php echo $this->translate('Asked by %s', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
               <?php echo $this->timestamp($this->answer->creation_date) ?>
@@ -59,6 +70,10 @@
           <div class="answers_browse_info_date">
             <?php echo $this->translate('Answered by %s', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
             <?php echo $this->timestamp($answer->creation_date) ?>
+            <?php 
+            if($this->viewer_id == $this->answer->user_id) 
+            	echo $this->acceptform->render($this); 
+            ?>
           </div>
         </div>
       </li>
@@ -69,7 +84,7 @@
 </div>
   <?php
   	if($this->viewer_id != $this->answer->user_id) 
-  		echo $this->form->render($this) 
+  		echo $this->form->render($this);
   ?>
 </div>
 </div>

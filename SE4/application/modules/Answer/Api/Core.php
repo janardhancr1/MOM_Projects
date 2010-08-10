@@ -28,8 +28,8 @@ class Answer_Api_Core extends Core_Api_Abstract
 
     $p_table = Engine_Api::_()->getDbTable('answers', 'answer');
     $p_name  = $p_table->info('name');
-    $o_table = Engine_Api::_()->getDbTable('posts', 'answer');
-    $o_name  = $o_table->info('name');
+    //$o_table = Engine_Api::_()->getDbTable('posts', 'answer');
+    //$o_name  = $o_table->info('name');
     //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
     //$o_name  = $o_table->info('name');
 
@@ -42,13 +42,13 @@ class Answer_Api_Core extends Core_Api_Abstract
     switch ($params['sort']) {
         case 'open':
           	$select->setIntegrityCheck(false)
-        	->from($o_name)
-        	->where("$p_name.answer_id <> $o_name.answer_id");
+        	
+        	->where("is_closed = 0");
           break;
         case 'resolved':
             $select->setIntegrityCheck(false)
-        	->from($o_name)
-        	->where("$p_name.answer_id = $o_name.answer_id");
+        	
+        	->where("is_closed = 1");
           break;
           
         case 'recent':
@@ -65,10 +65,13 @@ class Answer_Api_Core extends Core_Api_Abstract
       if ('popular' != $search) {
         $select
                ->where("`title` LIKE ? ", $search)
-               ->group("$p_name.answer_id");
+               ->group("answer_id");
       } else
         $select->where("`title` LIKE ? ", $search);
     }
+        if (!empty($params['category']))
+      $select->where("`answer_cat_id` = ?", $params['category']);
+      
     return $select;
   }
   
