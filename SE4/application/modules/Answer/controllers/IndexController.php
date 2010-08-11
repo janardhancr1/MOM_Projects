@@ -163,7 +163,7 @@ public function viewAction()
 				
 				$db->commit();
 	
-				return $this->_redirect("answers/manage");
+				//return $this->_redirect("answers/view/$answer_id/". $$answer->getHref());
 	
 			}
 			catch( Exception $e )
@@ -193,8 +193,8 @@ public function viewAction()
         $db->rollback();
         throw $e;
       }
-            if ($post_id)
-        $this->_redirect("answers/manage");
+            //if ($post_id)
+        //return $this->_redirect("answers/view/$answer_id/". $$answer->getHref());
      }
   }
   public function manageAction()

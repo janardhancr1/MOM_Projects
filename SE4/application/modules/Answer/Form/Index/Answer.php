@@ -30,6 +30,7 @@ class Answer_Form_Index_Answer extends Engine_Form
     
 	$this->addElement('Textarea', 'description',array(
       'label'=>'Your Answer',
+	  'required' => true,
       'maxlength' => '500',
     ));
   

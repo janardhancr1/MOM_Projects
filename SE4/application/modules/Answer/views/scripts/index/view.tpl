@@ -18,37 +18,35 @@
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <?php echo $this->translate('Momburbia Answers');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers'>Back to Questions</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
 </div>
 <div class='answer_view'>
 	<ul class="answers_browse">
-      <li id="recipe-item-<?php echo $this->answer->answer_id ?>">
+      <li id="recipe-item-<?php echo $this->answer->answer_id ?>" style="border-bottom-width: 1px;margin-bottom:15px">
         <?php echo $this->htmlLink($this->answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
         <div class="recipes_browse_info">
-          <b><?php echo $this->translate('Question: ');?></b><?php echo $this->answer->title ?><br>
-          <b><?php echo $this->translate('Description: ');?></b>
+          <?php echo $this->answer->title ?>
+          <div class="recipes_browse_info_date">
 			<?php if (!empty($this->answer->description)): ?>
 				<?php echo $this->answer->description ?>
-			<?php endif; ?><br>
-			 <b><?php echo $this->translate('Tags: ');?></b>
+			<?php endif; ?>
+		</div>
+		<div class="recipes_browse_info_date">
 			<?php if (!empty($this->answer->answer_tags)): ?>
+				<?php echo $this->translate('Tags: ');?>
 				<?php echo $this->answer->answer_tags ?>
-			<?php endif; ?><br>
-			<b><?php echo $this->translate('Category: ');?></b>
-			<?php if (!empty($this->cat->category_name)): ?>
-				<?php echo $this->cat->category_name ?>
-			<?php endif; ?> 
-          <div class="recipes_browse_info_date">
+			<?php endif; ?>
+		</div>
+		<div class="recipes_browse_info_date">
           	  <?php echo $this->translate('Asked by %s', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
               <?php echo $this->timestamp($this->answer->creation_date) ?>
           </div>
       </li>
     </ul>
     
-    
-    
-     <?php if (0 == count($this->paginator) ): ?>
+    <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
         <?php echo $this->translate('There are no answers yet.') ?>
@@ -65,10 +63,10 @@
         ) ?>
         <div class="answers_browse_info">
         <div class="answers_browse_info_desc">
-        	<?php  echo "Answer: ".$answer->answer_description ?>
+        	<?php  echo $this->translate('%s: %s', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle()), $answer->answer_description); ?>
         </div>
-          <div class="answers_browse_info_date">
-            <?php echo $this->translate('Answered by %s', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
+          <div class="recipes_browse_info_date">
+            <?php echo $this->translate('Answered ') ?>
             <?php echo $this->timestamp($answer->creation_date) ?>
             <?php 
             if($this->viewer_id == $this->answer->user_id) 
