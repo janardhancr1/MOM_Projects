@@ -499,6 +499,22 @@ ul.form-notices > li {
 GLOBAL FORM ELEMENTS
 Used for most forms throughout the site.
 */
+
+.buttonlabel
+{
+  +rounded;
+  margin-top:10px;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  background-color: $theme_button_background_color;
+  border: 1px solid $theme_button_border_color;
+  color: $theme_button_font_color;
+  background-image: url(~/application/modules/Core/externals/images/buttonbg.png);
+  background-repeat: repeat-x;
+  background-position: 0px 1px;
+  width: 130px;
+}
 button
 {
   +rounded;

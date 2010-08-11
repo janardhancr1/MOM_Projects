@@ -27,13 +27,15 @@ class Answer_Form_Index_Accept extends Engine_Form
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
+      
+    $this->addElement('Hidden', 'post_id', array(
+      'order' => 2
+    ));
 
     $this->addElement('Button', 'submit1', array(
       'label' => 'Accept',
       'type' => 'submit',
     ));
-    
-
   }
 
 }

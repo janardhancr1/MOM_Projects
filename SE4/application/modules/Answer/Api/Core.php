@@ -176,6 +176,7 @@ class Answer_Api_Core extends Core_Api_Abstract
      
         $select->where("`answer_id` = ?", $params['answer_id']);
     }
+   
     return $select;
   }
   

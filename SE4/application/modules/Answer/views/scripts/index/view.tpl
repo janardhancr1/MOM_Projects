@@ -55,7 +55,7 @@
   <?php else: // $this->answers is NOT empty ?>
     <ul class="answers_browse">
       <?php foreach ($this->paginator as $answer): ?>
-      <li id="answer-item-<?php echo $answer->answer_id ?>">
+      <li id="answer-item-<?php echo $answer->post_id ?>" <?php if($answer->is_closed) echo "style=\"background-color:#F2F2F2;\"" ?> >
         <?php echo $this->htmlLink(
                       $answer->getHref(),
                       $this->itemPhoto($answer->getOwner(), 'thumb.icon', $answer->getOwner()->username),
@@ -69,8 +69,21 @@
             <?php echo $this->translate('Answered ') ?>
             <?php echo $this->timestamp($answer->creation_date) ?>
             <?php 
-            if($this->viewer_id == $this->answer->user_id) 
-            	echo $this->acceptform->render($this); 
+            if($this->viewer_id == $this->answer->user_id)
+            {
+            	$this->acceptform->getElement('post_id')->setValue($answer->post_id);
+            	
+            	if($answer->is_closed)
+            	{
+           ?>
+           <div class="buttonlabel">
+ 			<span>Accpeted Answer</span>
+ 		</div>    
+           <?php
+           		}
+            	else
+            	   echo $this->acceptform->render($this);
+            } 
             ?>
           </div>
         </div>
