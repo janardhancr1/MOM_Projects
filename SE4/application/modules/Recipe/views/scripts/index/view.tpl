@@ -30,7 +30,7 @@
 <div>
 	<?php echo $this->recipe->description ?>
 </div>
-<div style='height:100px;float:left; padding-right:50px'>
+<div style='height:200px;width:200px;float:left; margin-right:50px'>
 	<div style='vertical-align:middle'>
 	<?php echo $this->htmlLink(
 	$this->recipe->getHref(),
