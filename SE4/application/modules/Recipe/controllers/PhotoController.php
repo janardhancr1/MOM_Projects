@@ -78,7 +78,7 @@ class Recipe_PhotoController extends Core_Controller_Action_Standard
     $viewer = Engine_Api::_()->user()->getViewer();
     $recipe = Engine_Api::_()->getItem('recipe', (int) $recipe->getIdentity());
 
-    //$album = $recipe->getSingletonAlbum();
+    $album = $recipe->getSingletonAlbum();
 
     $this->view->recipe_id = $recipe->recipe_id;
     $this->view->form = $form = new Recipe_Form_Photo_Upload();

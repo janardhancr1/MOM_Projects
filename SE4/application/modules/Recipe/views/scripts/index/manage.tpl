@@ -62,8 +62,10 @@
   <?php else: // $this->recipes is NOT empty ?>
     <ul class="recipes_browse">
       <?php foreach ($this->paginator as $recipe): ?>
-      <li id="recipe-item-<?php echo $recipe->recipe_id ?>">
-        <?php echo $this->htmlLink($recipe->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'recipes_browse_photo')) ?>
+      <li>
+      <div class='recipes_browse_photo'>
+        <?php echo $this->htmlLink($recipe->getHref(), $this->itemPhoto($recipe, 'thumb.normal')) ?>
+        </div>
         <div class="recipes_browse_info">
           <?php echo $this->htmlLink($recipe->getHref(), $recipe->title) ?>
           
@@ -81,8 +83,18 @@
           <?php endif; ?>
          <div class="recipes_browse_options">
          <a href='<?php echo $this->url(array('recipe_id' => $recipe->recipe_id), 'recipe_edit', true) ?>' class='buttonlink icon_recipe_edit'><?php echo $this->translate('Edit Recipe');?></a>
+                     <?php if( $this->allowed_upload ): ?>
+              <?php echo $this->htmlLink(array(
+                  'route' => 'recipe_extended',
+                  'controller' => 'photo',
+                  'action' => 'upload',
+                  'subject' => $recipe->getGuid(),
+                ), $this->translate('Add Photos'), array(
+                  'class' => 'buttonlink icon_recipe_photo_new'
+              )) ?>
+            <?php endif; ?>
          <?php echo $this->htmlLink(array('route' => 'recipe_delete', 'recipe_id' => $recipe->recipe_id), $this->translate('Delete Recipe'), array(
-            'class'=>'buttonlink smoothbox icon_poll_delete'
+            'class'=>'buttonlink smoothbox icon_recipe_delete'
            )) ?>
         </div>
          

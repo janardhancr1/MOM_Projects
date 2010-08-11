@@ -53,11 +53,9 @@
     <ul class="recipes_browse">
       <?php foreach ($this->paginator as $recipe): ?>
       <li id="recipe-item-<?php echo $recipe->recipe_id ?>">
-        <?php echo $this->htmlLink(
-                      $recipe->getHref(),
-                      $this->itemPhoto($recipe->getOwner(), 'thumb.icon', $recipe->getOwner()->username),
-                      array('class' => 'recipes_browse_photo')
-        ) ?>
+      <div class='recipes_browse_photo'>
+ 		<?php echo $this->htmlLink($recipe->getHref(), $this->itemPhoto($recipe, 'thumb.normal')) ?>
+ 		</div>
         <div class="recipes_browse_info">
           <h3>
             <?php echo $this->htmlLink($recipe->getHref(), $recipe->title) ?>

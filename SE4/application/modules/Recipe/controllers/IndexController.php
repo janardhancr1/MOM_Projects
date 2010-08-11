@@ -79,6 +79,12 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     if( !$this->_helper->requireAuth()->setAuthParams($recipe, null, 'view')->isValid()) return;
     // Don't render this if not authorized
     #if (!$this->_helper->requireAuth()->setAuthParams($recipe, null, 'view')->isValid()) return;
+    
+          // album material
+      $this->view->album = $album = $recipe->getSingletonAlbum();
+      $this->view->paginator = $paginator = $album->getCollectiblesPaginator();
+      $paginator->setCurrentPageNumber($this->_getParam('page', 1));
+      $paginator->setItemCountPerPage(100);
 
     $this->view->owner         = $recipe->getOwner();
     //$this->view->recipeOptions   = $recipe->getOptions();
@@ -141,8 +147,10 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     if( !$this->_helper->requireUser()->isValid() ) return;
 
+    $viewer = $this->_helper->api()->user()->getViewer();
+    
     $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('recipe', null, 'create')->checkRequire();
-
+    $this->view->allowed_upload = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'recipe', 'photo');
     $this->view->users     = array($this->view->viewer_id => Engine_Api::_()->user()->getViewer());
     $this->view->owner     = Engine_Api::_()->user()->getViewer();
     $this->view->user_id   = $this->view->viewer_id;

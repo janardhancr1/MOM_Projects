@@ -65,11 +65,16 @@ ul.recipes_browse .recipes_browse_info_desc
 {
   margin-top: 5px;
 }
+ul.recipes_browse .recipes_browse_photo 
+{
+    float: left;
+  overflow: hidden;
+  margin-right: 8px;
+}
 ul.recipes_browse .recipes_browse_photo > img
 {
-  display: block;
+  width: 100px;
 }
-
 /*
 VIEW Recipe
 These styles are used for viewing a single poll.
@@ -129,4 +134,8 @@ div.recipes_view div
 .icon_recipe_edit
 {
   background-image: url(~/application/modules/Recipe/externals/images/edit.png);
+}
+.icon_recipe_photo_new
+{
+  background-image: url(~/application/modules/Recipe/externals/images/upload.png);
 }

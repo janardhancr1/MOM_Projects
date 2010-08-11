@@ -30,13 +30,11 @@
 <div>
 	<?php echo $this->recipe->description ?>
 </div>
+
 <div style='height:200px;width:200px;float:left; margin-right:50px'>
 	<div style='vertical-align:middle'>
-	<?php echo $this->htmlLink(
-	$this->recipe->getHref(),
-	$this->itemPhoto($this->recipe->getOwner(), 'thumb.icon', $this->recipe->getOwner()->username),
-	array('class' => 'recipes_browse_photo')
-	) ?>
+
+	<?php echo $this->htmlLink($this->recipe->getHref(), $this->itemPhoto($this->recipe, 'thumb.normal')) ?>
 	</div>
 </div>
 <div>
@@ -87,6 +85,20 @@
 		<?php echo $this->recipe->recipe_tags ?>
 	<?php endif; ?>  
 </div>
+  <?php foreach( $this->paginator as $photo ): ?>
+    <?php if($this->recipe->photo_id != $photo->file_id):?>
+    
+        <div class="classifieds_thumbs_description">
+          <?php if( '' != $photo->getDescription() ): ?>
+            <?php echo $this->string()->chunk($photo->getDescription(), 100) ?>
+          <?php endif; ?>
+        </div>
+        <?php echo $this->htmlImage($photo->getPhotoUrl(), $photo->getTitle(), array(
+          'id' => 'media_photo'
+        )); ?>
+     
+    <?php endif; ?>
+  <?php endforeach;?><br>
 <div>
 	<b><?php echo $this->translate(array('%s view', '%s views', $this->recipe->views), $this->locale()->toNumber($this->recipe->views)) ?></b>
 </div>
@@ -94,5 +106,6 @@
   <?php echo $this->action("list", "comment", "core", array("type"=>"recipe", "id"=>$this->recipe->recipe_id)) ?>
 
 </div>
+
 </div>
 

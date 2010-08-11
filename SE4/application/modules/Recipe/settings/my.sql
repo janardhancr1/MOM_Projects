@@ -70,6 +70,23 @@ CREATE TABLE `engine4_recipe_photos` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
+DROP TABLE IF EXISTS `engine4_recipe_albums`;
+CREATE TABLE `engine4_recipe_albums` (
+  `album_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `recipe_id` int(11) unsigned NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL,
+  `search` tinyint(1) NOT NULL default '1',
+  `photo_id` int(11) unsigned NOT NULL default '0',
+  `view_count` int(11) unsigned NOT NULL default '0',
+  `comment_count` int(11) unsigned NOT NULL default '0',
+  `collectible_count` int(11) unsigned NOT NULL default '0',
+  PRIMARY KEY (`album_id`),
+  KEY `recipe_id` (`recipe_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+
 DROP TABLE IF EXISTS `engine4_recipe_votes`;
 CREATE TABLE IF NOT EXISTS `engine4_recipe_votes` (
   `recipe_id` int(11) unsigned NOT NULL,
@@ -134,6 +151,7 @@ INSERT INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `va
 (1, 'recipe', 'edit', 1, NULL),
 (1, 'recipe', 'view', 2, NULL),
 (1, 'recipe', 'comment', 1, NULL),
+(1, 'recipe', 'photo', 1, NULL),
 (1, 'recipe', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 (1, 'recipe', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
@@ -142,6 +160,7 @@ INSERT INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `va
 (2, 'recipe', 'edit', 1, NULL),
 (2, 'recipe', 'view', 1, NULL),
 (2, 'recipe', 'comment', 1, NULL),
+(2, 'recipe', 'photo', 1, NULL),
 (2, 'recipe', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 (2, 'recipe', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
@@ -150,6 +169,7 @@ INSERT INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `va
 (3, 'recipe', 'edit', 1, NULL),
 (3, 'recipe', 'view', 1, NULL),
 (3, 'recipe', 'comment', 1, NULL),
+(3, 'recipe', 'photo', 1, NULL),
 (3, 'recipe', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 (3, 'recipe', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
@@ -158,10 +178,12 @@ INSERT INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `va
 (4, 'recipe', 'edit', 1, NULL),
 (4, 'recipe', 'view', 1, NULL),
 (4, 'recipe', 'comment', 1, NULL),
+(4, 'recipe', 'photo', 1, NULL),
 (4, 'recipe', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 (4, 'recipe', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
 (5, 'recipe', 'view', 1, NULL),
+(5, 'recipe', 'photo', 1, NULL),
 (5, 'recipe', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 (5, 'recipe', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]');
 

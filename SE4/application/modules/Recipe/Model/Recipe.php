@@ -75,7 +75,28 @@ class Recipe_Model_Recipe extends Core_Model_Item_Abstract
       'recipe_id = ?' => $this->getIdentity(),
     ));
   }
+  public function getSingletonAlbum()
+  {
+    $table = Engine_Api::_()->getItemTable('recipe_album');
+    $select = $table->select()
+      ->where('recipe_id = ?', $this->getIdentity())
+      ->order('album_id ASC')
+      ->limit(1);
 
+    $album = $table->fetchRow($select);
+
+    if( null === $album )
+   {
+      $album = $table->createRow();
+      $album->setFromArray(array(
+        'title' => $this->getTitle(),
+        'recipe_id' => $this->getIdentity()
+      ));
+      $album->save();
+    }
+
+    return $album;
+  }
   public function viewerVoted()
   {
     $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
