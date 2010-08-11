@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
   `recipe_difficulty` varchar(255) NOT NULL,
   `recipe_ingredients` mediumtext NOT NULL,
   `recipe_method` mediumtext NOT NULL,
-  'photo_id` int(10) unsigned NOT NULL default '0',
+  `photo_id` int(10) unsigned NOT NULL default '0',
   `recipe_vege` char(1) NOT NULL default '0',
   `recipe_vegan` char(1) NOT NULL default '0',
   `recipe_dairy` char(1) NOT NULL default '0',
@@ -52,6 +52,19 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
 -- Table structure for table `engine4_recipe_votes`
 --
 
+DROP TABLE IF EXISTS `engine4_recipe_votes`;
+CREATE TABLE IF NOT EXISTS `engine4_recipe_votes` (
+  `recipe_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `recipe_option_id` int(11) unsigned NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL,
+  PRIMARY KEY (`recipe_id`,`user_id`),
+  KEY `recipe_option_id` (`recipe_option_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+
+
 DROP TABLE IF EXISTS `engine4_recipe_photos`;
 CREATE TABLE `engine4_recipe_photos` (
   `photo_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -66,7 +79,7 @@ CREATE TABLE `engine4_recipe_photos` (
   `modified_date` datetime NOT NULL,
   PRIMARY KEY (`photo_id`),
   KEY `album_id` (`album_id`),
-  KEY `classified_id` (`recipe_id`),
+  KEY `recipe_id` (`recipe_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
@@ -86,19 +99,6 @@ CREATE TABLE `engine4_recipe_albums` (
   PRIMARY KEY (`album_id`),
   KEY `recipe_id` (`recipe_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
-
-DROP TABLE IF EXISTS `engine4_recipe_votes`;
-CREATE TABLE IF NOT EXISTS `engine4_recipe_votes` (
-  `recipe_id` int(11) unsigned NOT NULL,
-  `user_id` int(11) unsigned NOT NULL,
-  `recipe_option_id` int(11) unsigned NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `modified_date` datetime NOT NULL,
-  PRIMARY KEY (`recipe_id`,`user_id`),
-  KEY `recipe_option_id` (`recipe_option_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
-
 
 -- --------------------------------------------------------
 

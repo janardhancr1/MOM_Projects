@@ -222,7 +222,7 @@ window.addEvent('domready', function() { // wait for the content
 
 <div id="demo-status" class="hide">
   <div>
-    <?php echo $this->translate('Click "Add Photos" to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo list to save them to your recipe listing.');?>
+    <?php echo $this->translate('Click "Add Photos" to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo list to save them to your recipe.');?>
   </div>
   <div>
     <a class="buttonlink icon_photos_new" href="javascript:void(0);" id="demo-browse"><?php echo $this->translate('Add Photos');?></a>

@@ -15,8 +15,10 @@
   <?php foreach ($this->paginator as $item): ?>
     <li>
       <div class='recipes_browse_info'>
-        <img src="application/modules/Recipe/externals/images/recipe_new16.png" alt="admin" border="0" /> &nbsp;
+        <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.normal')) ?>
+        <div>
         <?php echo $this->htmlLink(array('route'=>'recipe_view', 'user_id'=>$item->user_id, 'recipe_id'=>$item->recipe_id), $item->getTitle()) ?>
+       	</div>
         <div class='recipes_browse_info_date'>
           <?php echo $this->translate('Posted') ?> <?php echo $this->timestamp($item->creation_date) ?>
         </div>
