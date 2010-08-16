@@ -36,6 +36,20 @@ class User_Form_Invite extends Engine_Form
 		new Engine_Filter_StringLength(array('max' => '400'))
 		),
 		));
+		
+		$this->addElement('captcha', 'captcha', array(
+        'description' => '_CAPTCHA_DESCRIPTION',
+        'captcha' => 'image',
+        'required' => true,
+        'allowEmpty' => false,
+        'captchaOptions' => array(
+          'wordLen' => 6,
+          'fontSize' => '30',
+          'timeout' => 300,
+          'imgDir' => APPLICATION_PATH . '/public/temporary/',
+          'imgUrl' => $this->getView()->baseUrl().'/public/temporary',
+          'font' => APPLICATION_PATH . '/application/modules/Core/externals/fonts/arial.ttf'
+        )));
 
 		$this->addElement('button', 'submit', array(
         'label' => 'Send Invite',

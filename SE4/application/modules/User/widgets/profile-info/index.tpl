@@ -13,10 +13,10 @@
 
 <ul>
   <?php if( !empty($this->memberType) ): ?>
-  <li>
+  <!--<li>
     <?php echo $this->translate('Member Type:') ?>
     <a href="#"><?php echo $this->memberType ?></a>
-  </li>
+  </li>-->
   <?php endif; ?>
   <?php if( !empty($this->networklist) && count($this->networklist) > 0 ): ?>
   <li>

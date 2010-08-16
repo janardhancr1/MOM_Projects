@@ -23,7 +23,7 @@
 		<img src='./application/modules/Core/externals/images/home_left.jpg' border='0' alt='' />
 	</div>
 </div>
-<div style='float: left; width: 375px;'>
+<div style='float: left; width: 365px;padding-right:10px'>
 <?php
   if( $this->form ):
     echo $this->form->render($this);

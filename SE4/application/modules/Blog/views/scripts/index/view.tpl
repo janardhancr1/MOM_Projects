@@ -98,7 +98,7 @@ endif; ?>
 </div>
 
 <div class='layout_middle'>
-
+  <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs'>Back to Blogs</a></div>
   <?php if ($this->blog->owner_id == $this->viewer->getIdentity()&&$this->blog->draft == 1):?>
     <div class="tip">
       <span>

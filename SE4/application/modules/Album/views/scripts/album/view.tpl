@@ -10,10 +10,14 @@
  * @author     Sami
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
+<div class="layout_middle">
 <h2>
   <?php echo $this->translate('%1$s\'s Album: %2$s', $this->album->getOwner()->__toString(), $this->album->getTitle()); ?>
 </h2>
+
+<div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums'>Back to Photos</a></div>
 
 <?php if (""!=$this->album->getDescription()): ?>
   <p>
@@ -39,7 +43,7 @@
   </div>
 <?php endif;?>
 
-<div class="layout_middle">
+
   <ul class="thumbs thumbs_nocaptions">
     <?php foreach( $this->paginator as $photo ): ?>
       <li>

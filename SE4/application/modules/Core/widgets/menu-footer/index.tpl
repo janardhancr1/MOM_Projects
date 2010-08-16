@@ -21,10 +21,10 @@
 <?php endforeach; ?>
 
 <?php if( 1 !== count($this->languageNameList) ): ?>
-    &nbsp;-&nbsp;
+    <!--&nbsp;-&nbsp;-->
     <form method="post" action="<?php echo $this->url(array('controller' => 'utility', 'action' => 'locale'), 'default', true) ?>" style="display:inline-block">
       <?php $selectedLanguage = $this->translate()->getLocale() ?>
-      <?php echo $this->formSelect('language', $selectedLanguage, array('onchange' => '$(this).getParent(\'form\').submit();'), $this->languageNameList) ?>
+      <?php //echo $this->formSelect('language', $selectedLanguage, array('onchange' => '$(this).getParent(\'form\').submit();'), $this->languageNameList) ?>
       <?php echo $this->formHidden('return', $this->url()) ?>
     </form>
 <?php endif; ?>

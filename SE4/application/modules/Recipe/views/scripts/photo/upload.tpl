@@ -24,6 +24,6 @@
     <div class="smallheadline"><?php echo $this->translate('Choose photos on your computer to add to this Recipe. (2MB maximum)');?></div>
 </div>
 <div style='padding-top:20px;padding-right:10px;width:690px'>
-
 <?php echo $this->form->render($this) ?>
+</div>
 </div>

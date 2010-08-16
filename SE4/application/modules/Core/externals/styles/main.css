@@ -87,7 +87,7 @@ login form.
 }
 #user_form_login #forgot-element
 {
-  text-align: center;
+  text-align: right;
   margin-top: 5px;
 }
 
@@ -100,9 +100,10 @@ login form.
 #facebook-label
 {
 	padding: 2px;
+	padding-top:4px;
 	vertical-align: middle;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 

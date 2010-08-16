@@ -49,3 +49,11 @@
     </ul>
   </li>
 </ul>
+
+<div id="profile_options">
+<ul>
+<li>
+<a class="buttonlink smoothbox menu_group_profile" style='background-image: url("application/modules/Core/externals/images/back16.gif");' href='/index.php/groups'>Back to Groups</a>
+</li>
+</ul>
+</div>
