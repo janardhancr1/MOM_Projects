@@ -11,9 +11,9 @@
  */
 ?>
 
-<h2><?php echo $this->translate('Browse Members');?></h2>
+<h2>&nbsp;<?php echo $this->translate('Browse Members');?></h2>
 
-<div class='layout_left'>
+<div class='layout_left' style='padding-left:2px'>
   <?php echo $this->form->render($this) ?>
   <div class="quicklinks">
     <ul>
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div class='layout_middle'>
+<div class='layout_middle' style='padding-right:10px'>
   <div class='browsemembers_results' id='browsemembers_results'>
       <?php echo $this->render('_browseUsers.tpl') ?>
   </div>

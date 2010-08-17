@@ -11,6 +11,17 @@
  */
 ?>
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Messages/externals/images/send.png' border='0' class='icon_big' style='margin-top:5px'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Messages');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/messages/inbox'>Back to Inbox</a></div>
+    </div>
+</div>
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Messages');?>
@@ -24,7 +35,7 @@
         ->render();
     ?>
   </div>
-</div>
+</div>-->
 
 <h3>
   <?php //echo $this->conversation->current()->title ?>
@@ -155,3 +166,4 @@
 <?php foreach( $this->composePartials as $partial ): ?>
   <?php echo $this->partial($partial[0], $partial[1]) ?>
 <?php endforeach; ?>
+</div>

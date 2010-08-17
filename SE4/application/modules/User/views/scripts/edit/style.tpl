@@ -10,6 +10,7 @@
  * @author     John
  */
 ?>
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php if ($this->viewer == $this->user):?>
@@ -30,3 +31,4 @@
 </div>
 
 <?php echo $this->form->render($this) ?>
+</div>

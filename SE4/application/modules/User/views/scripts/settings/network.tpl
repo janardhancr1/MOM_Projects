@@ -10,7 +10,7 @@
  * @author     Alex
  */
 ?>
-
+<div class='layout_middle'>
 <?php
   $this->headScript()
     ->appendFile($this->baseUrl().'/externals/autocompleter/Observer.js')
@@ -95,13 +95,4 @@
 
 <?php echo $this->form->render($this) ?>
 </div>
-
-
-
-
-
-
-
-
-
-
+</div>

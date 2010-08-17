@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Settings');?>
@@ -47,3 +47,4 @@
     });
   </script>
 <?php endif; ?>
+</div>
