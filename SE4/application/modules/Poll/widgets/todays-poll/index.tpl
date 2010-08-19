@@ -10,6 +10,7 @@
  * @author     Steve
  */
 ?>
+<div style='padding: 0px 3px'>
 <ul class="polls_browse">
   <?php foreach ($this->paginator as $item): ?>
     <li>
@@ -26,3 +27,4 @@
     </li>
   <?php endforeach; ?>
 </ul>
+</div>

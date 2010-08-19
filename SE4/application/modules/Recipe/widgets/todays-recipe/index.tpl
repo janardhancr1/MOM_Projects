@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<div style='padding: 0px 3px'>
 <ul class="recipes_browse">
   <?php foreach ($this->paginator as $item): ?>
     <li>
@@ -29,3 +29,4 @@
     </li>
   <?php endforeach; ?>
 </ul>
+</div>
