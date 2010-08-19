@@ -74,3 +74,10 @@
     </li>
   </ul>
 </div>
+<div id="profile_options">
+<ul>
+<li>
+<a class="buttonlink menu_group_profile" style='background-image: url("application/modules/Core/externals/images/back16.gif");' href='/index.php/events'>Back to Events</a>
+</li>
+</ul>
+</div>
