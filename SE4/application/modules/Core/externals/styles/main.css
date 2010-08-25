@@ -52,6 +52,8 @@ login form.
 {
 	text-align: right;
     float: right;
+    font-size: 0.9em;
+    color: #777777;
 }
 
 #remember

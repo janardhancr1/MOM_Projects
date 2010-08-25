@@ -20,7 +20,7 @@
 	<div style='clear:both;height:20px'>
 	</div>
 	<div style='padding-left:5px;float:left'>
-		<img src='./application/modules/Core/externals/images/home_left.jpg' border='0' alt='' />
+		<img src='./application/modules/Core/externals/images/momshomeimage.gif' border='0' alt='' />
 	</div>
 </div>
 <div style='float: left; width: 365px;padding-right:10px'>

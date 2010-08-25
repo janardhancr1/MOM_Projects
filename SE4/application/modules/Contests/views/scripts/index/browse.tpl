@@ -24,7 +24,7 @@
 <br />
 <br />
 <center>
-	<img src='./application/modules/Contests/externals/images/contestimage.jpg' border='0' alt='' />
+	<img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNER.gif' border='0' alt='' />
 
 <br />
 <br />
