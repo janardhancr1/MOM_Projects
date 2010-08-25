@@ -48,6 +48,11 @@ class Group_Api_Core extends Core_Api_Abstract
       $params['users'] = array_filter($params['users']);
       $select->where('user_id IN(\''.join("', '", $params['users']).'\')');
     }
+    // Title
+    if( !empty($params['title']) )
+    {
+      $select->where('title = ?', $params['title']);
+    }
     // Category
     if( !empty($params['category_id']) )
     {

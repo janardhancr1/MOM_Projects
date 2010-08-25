@@ -76,5 +76,13 @@ return array(
         'category' => 'Group',
         'type' => 'widget',
         'name' => 'group.profile-events'
+  ),
+  array(
+	'title'=> 'Contest Group',
+        'description' => 'Displays a Contests Group on home page',
+        'category' => 'Group',
+        'type' => 'widget',
+        'name' => 'group.contests-group'
   )
+  
 ) ?>
