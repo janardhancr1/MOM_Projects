@@ -34,6 +34,8 @@ endif; ?>
 
 <div class='layout_right'>
   <div class='blogs_gutter'>
+  	<?php include './application/modules/Contests/views/scripts/index/rightad.tpl' ?>
+  	<div style='float:left'>
     <?php echo $this->htmlLink($this->owner->getHref(), $this->itemPhoto($this->owner), array('class' => 'blogs_gutter_photo')) ?>
     <?php echo $this->htmlLink($this->owner->getHref(), $this->owner->getTitle(), array('class' => 'blogs_gutter_name')) ?>
 
@@ -93,7 +95,7 @@ endif; ?>
         <?php endforeach; ?>
       </ul>
     <?php endif; ?>
-      
+      </div>
   </div>
 </div>
 

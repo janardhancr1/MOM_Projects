@@ -66,7 +66,7 @@
 </script>
 
 
-
+<div class="layout_middle">
 <h2>
   <?php echo $this->translate('%1$s\'s Album: %2$s', $this->album->getOwner()->__toString(), $this->htmlLink($this->album, $this->album->getTitle())); ?>
 </h2>
@@ -77,7 +77,6 @@
   </p>
 <?php endif ?>
 
-<div class="layout_middle">
 <div class='albums_viewmedia'>
   <?php if (!$this->message_view):?>
   <div class="albums_viewmedia_nav">

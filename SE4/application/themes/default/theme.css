@@ -770,7 +770,7 @@ Examples: Signup form, member settings form, etc.
 .global_form div > input + p
 {
   margin-top: 3px;
-  font-size: 7pt;
+  font-size: 10pt;
 }
 /* all text inputs in form */
 .global_form input[type=text],

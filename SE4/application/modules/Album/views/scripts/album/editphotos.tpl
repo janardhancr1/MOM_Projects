@@ -20,7 +20,7 @@
     <?php echo $this->htmlLink($this->album->getHref(), $this->album->getTitle()) ?> (<?php echo $this->translate(array('%s photo', '%s photos', $this->album->count()),$this->locale()->toNumber($this->album->count())) ?>)
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums/manage'>Back to My Albums</a></div>
     </div>
-    <div class="smallheadline"><?php echo $this->translate('Choose title, description to this album.');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Choose title and description for this album');?></div>
 </div>
 <div>
 

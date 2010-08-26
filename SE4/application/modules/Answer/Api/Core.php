@@ -98,7 +98,7 @@ class Answer_Api_Core extends Core_Api_Abstract
    */
   public function getCategories()
   {
-    return $this->api()->getDbtable('categories', 'answer')->fetchAll();
+    return $this->api()->getDbtable('categories', 'answer')->fetchAll(null, 'category_name');
   }
 
   /**

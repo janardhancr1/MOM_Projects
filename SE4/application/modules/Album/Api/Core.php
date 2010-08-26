@@ -130,7 +130,7 @@ class Album_Api_Core extends Core_Api_Abstract
    */
   public function getCategories()
   {
-    return $this->api()->getDbtable('categories', 'album')->fetchAll();
+    return $this->api()->getDbtable('categories', 'album')->fetchAll(null, 'category_name');
   }
 
   /**
