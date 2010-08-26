@@ -68,7 +68,9 @@ INSERT IGNORE INTO `engine4_album_categories` (`category_id`, `user_id`, `catego
 (10, 1, 'Society'),
 (11, 1, 'Sports'),
 (12, 1, 'Technology'),
-(13, 1, 'Other');
+(13, 1, 'Other'),
+(14, 1, 'Pets & Animals'),
+(15, 1, 'Travel & Events'),;
 
 
 -- --------------------------------------------------------
