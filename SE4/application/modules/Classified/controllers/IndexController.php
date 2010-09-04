@@ -49,7 +49,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     }
 	$form->subcategory->clearMultiOptions();
 	$form->subcategory->addMultiOption("0", "");
-    if($_SESSION['catid'])
+    if(isset($_SESSION['catid']))
 	{
 		$catid = $_SESSION['catid'];
 		$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
