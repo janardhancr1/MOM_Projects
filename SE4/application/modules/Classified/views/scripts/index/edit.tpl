@@ -78,6 +78,7 @@
         <?php echo $this->form->title; ?>
         <?php echo $this->form->tags; ?>
         <?php if($this->form->category_id) echo $this->form->category_id; ?>
+        <?php if($this->form->category_id) echo $this->form->sub_category_id; ?>
         <?php echo $this->form->body; ?>
         <?php echo $this->form->getSubForm('customField'); ?>
         <?php if($this->form->auth_view)echo $this->form->auth_view; ?>
@@ -120,3 +121,30 @@
   <?php echo $this->paginationControl($this->paginator); ?>
 <?php endif; ?>
 </div>
+<script type="text/javascript">
+  //<!--
+  function getSubCats(cat_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/index.php/classifieds/subcats',
+      'data' : {
+        'format' : 'json',
+        'cat_id' : cat_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+        $('sub_category_id').empty();
+      	var subcats = responseText.split(';');
+      	for(var i=0; i<subcats.length-1; i++)
+      	{
+      		var subcat = subcats[i].split(',');
+      		$('sub_category_id').options[i] = new Option(subcat[1], subcat[0]);
+      	}
+      	//document.getElementById('sub_category_id').innerHTML = responseText;
+      }
+    })).send();
+  }
+  // -->
+ </script>

@@ -36,7 +36,6 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     $this->view->can_create = $this->_helper->requireAuth()->setAuthParams('classified', null, 'create')->checkRequire();
 
     $this->view->form = $form = new Classified_Form_Search();
-
     if( !$viewer->getIdentity() )
     {
       $form->removeElement('show');
@@ -48,10 +47,32 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     {
       $form->category->addMultiOption($category->category_id, $category->category_name);
     }
-
+	$form->subcategory->clearMultiOptions();
+	$form->subcategory->addMultiOption("0", "");
+    if($_SESSION['catid'])
+	{
+		$catid = $_SESSION['catid'];
+		$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
+		foreach($subcategories as $subcategory)
+		{
+			$form->subcategory->addMultiOption($subcategory->category_id, $subcategory->category_name);
+		}
+	}
     // Process form
     if( $form->isValid($this->getRequest()->getPost()) ) {
       $values = $form->getValues();
+      if(isset($values['category']))
+      {
+     	// Populate subcategories
+     	$form->subcategory->clearMultiOptions();
+	    $form->subcategory->addMultiOption("0", "");
+     	$_SESSION['catid'] = $values['category'];
+     	$this->view->subcategories = $subcategories = Engine_Api::_()->classified()->getSubCategories($values['category']);
+     	foreach( $subcategories as $subcategory )
+     	{
+       	$form->subcategory->addMultiOption($subcategory->category_id, $subcategory->category_name);
+     	}
+      }
     } else {
       $values = array();
     }
@@ -339,6 +360,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 
     $viewer = $this->_helper->api()->user()->getViewer();
     $this->view->classified = $classified = Engine_Api::_()->getItem('classified', $this->_getParam('classified_id'));
+
     if( !Engine_Api::_()->core()->hasSubject('classified') )
     {
       Engine_Api::_()->core()->setSubject($classified);
@@ -355,7 +377,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     // Get navigation
     $navigation = $this->getNavigation(true);
     $this->view->navigation = $navigation;
-    
+    $_SESSION['catid'] = $classified->category_id;
     $this->view->form = $form = new Classified_Form_Edit(array(
       'item' => $classified
     ));
@@ -685,5 +707,22 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     //krsort($archive_list);
     return $archive_list;
   }
+  
+	public function subcatsAction()
+	{
+		$return = '0,;';
+		$catid = $this->_getParam('cat_id', null);
+		if($catid)
+		{
+			$_SESSION['catid'] = $catid;
+			$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
+			foreach($subcategories as $subcategory)
+			{
+				$return .= $subcategory->category_id.','.$subcategory->category_name.';';
+			}
+		}
+		echo $return;
+		exit();
+	}
 }
 

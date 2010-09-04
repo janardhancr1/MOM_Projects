@@ -113,6 +113,14 @@ return array(
         'action' => 'create'
       )
     ),
+    'classified_subcats' => array(
+      'route' => 'classifieds/subcats',
+      'defaults' => array(
+        'module' => 'classified',
+        'controller' => 'index',
+        'action' => 'subcats'
+      )
+    ), 
     'classified_delete' => array(
       'route' => 'classifieds/delete/:classified_id',
       'defaults' => array(

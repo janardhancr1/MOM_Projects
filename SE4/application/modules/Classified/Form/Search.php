@@ -89,17 +89,13 @@ class Classified_Form_Search extends Fields_Form_Search
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
 	  'order' => $i--,
+	'decorators' => array(
+        'ViewHelper',
+        array('HtmlTag', array('tag' => 'div', 'class' => 'my_groups', 'style' => 'padding-top:10px')),
+        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
+      ),
     ));
 
-    $this->addElement('Select', 'orderby', array(
-      'label' => 'Browse By',
-      'multiOptions' => array(
-        'creation_date' => 'Most Recent',
-        'view_count' => 'Most Viewed',
-      ),
-      'onchange' => 'this.form.submit();',
-      'order' => $i--,
-    ));
 
     /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
@@ -122,10 +118,30 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => $i--,
     ));*/
 
+    $this->addElement('Select', 'subcategory', array(
+      'label' => 'Sub Category',
+      'multiOptions' => array(
+        '0' => '',
+      ),
+      'onchange' => 'this.form.submit();',
+      'style' => 'width:120px',
+      'order' => $i--,
+    ));
+    
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
       'multiOptions' => array(
         '0' => 'All Categories',
+      ),
+      'onchange' => 'this.form.submit();',
+      'order' => $i--,
+    ));
+    
+    $this->addElement('Select', 'orderby', array(
+      'label' => 'Browse By',
+      'multiOptions' => array(
+        'creation_date' => 'Most Recent',
+        'view_count' => 'Most Viewed',
       ),
       'onchange' => 'this.form.submit();',
       'order' => $i--,

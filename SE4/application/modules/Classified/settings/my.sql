@@ -24,6 +24,7 @@ CREATE TABLE `engine4_classified_classifieds` (
   `body` longtext NOT NULL,
   `owner_id` int(11) unsigned NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
+  `sub_category_id` int(11) unsigned,
   `photo_id` int(10) unsigned NOT NULL default '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
@@ -97,6 +98,7 @@ CREATE TABLE `engine4_classified_categories` (
   `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `category_name` varchar(128) NOT NULL,
+  `parent_cat_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;

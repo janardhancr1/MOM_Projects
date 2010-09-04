@@ -82,3 +82,31 @@
   <?php echo $this->form->render($this);?>
 <?php endif; ?>
 </div>
+
+<script type="text/javascript">
+  //<!--
+  function getSubCats(cat_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/index.php/classifieds/subcats',
+      'data' : {
+        'format' : 'json',
+        'cat_id' : cat_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+        $('sub_category_id').empty();
+      	var subcats = responseText.split(';');
+      	for(var i=0; i<subcats.length-1; i++)
+      	{
+      		var subcat = subcats[i].split(',');
+      		$('sub_category_id').options[i] = new Option(subcat[1], subcat[0]);
+      	}
+      	//document.getElementById('sub_category_id').innerHTML = responseText;
+      }
+    })).send();
+  }
+  // -->
+ </script>
