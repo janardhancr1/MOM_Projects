@@ -23,5 +23,33 @@
 </div>
  <div style='padding-top:20px;padding-right:10px;width:680px'>
 <?php echo $this->form->render($this) ?>
+
+<script type="text/javascript">
+  //<!--
+  function getSubCats(cat_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/index.php/answers/subcats',
+      'data' : {
+        'format' : 'json',
+        'cat_id' : cat_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+      	$('parent_cat_id').empty();
+      	var subcats = responseText.split(';');
+      	for(var i=0; i<subcats.length-1; i++)
+      	{
+      		var subcat = subcats[i].split(',');
+      		$('parent_cat_id').options[i] = new Option(subcat[1], subcat[0]);
+      	}
+      	//document.getElementById('parent_cat_id').innerHTML = responseText;
+      }
+    })).send();
+  }
+  // -->
+ </script>
 </div>
 </div>

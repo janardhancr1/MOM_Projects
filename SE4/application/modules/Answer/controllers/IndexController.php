@@ -40,28 +40,46 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		$this->browseAction();
 		$this->render('browse');
 	}
+
 	public function browseAction()
 	{
 		$this->view->search_form = $search_form = new Answer_Form_Index_Search();
+
+		if($this->_getParam('category'))
+		{
+			$search_form->parent_cat_id->clearMultiOptions();
+			$search_form->parent_cat_id->addMultiOption("0", "");
+			$catid = $this->_getParam('category');
+			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
+			foreach($subcategories as $subcategory)
+			{
+				$search_form->parent_cat_id->addMultiOption($subcategory->category_id, $subcategory->category_name);
+			}
+		}
+		
 		if ($this->getRequest()->isPost() && $search_form->isValid($this->getRequest()->getPost())) {
 			// redirect to GET route to prevent POST-back-button fo-paw
+			$_SESSION['catid'] = $this->getRequest()->getPost('category_id');
 			$this->_helper->redirector->gotoRouteAndExit(array(
-        'page' => 1,
-        'sort'   => $this->getRequest()->getPost('browse_answers_by'),
-        'search' => $this->getRequest()->getPost('answer_search'),
-      	'category' => $this->getRequest()->getPost('category_id'),
-			));
+			        'page' => 1,
+			        'sort'   => $this->getRequest()->getPost('browse_answers_by'),
+			        'search' => $this->getRequest()->getPost('answer_search'),
+			      	'category' => $this->getRequest()->getPost('category_id'),
+					'subcategory' => $this->getRequest()->getPost('parent_cat_id'),));
 		}  else {
 			$search_form->getElement('browse_answers_by')->setValue($this->_getParam('sort'));
 			$search_form->getElement('category_id')->setValue($this->_getParam('category'));
+			$search_form->getElement('parent_cat_id')->setValue($this->_getParam('subcategory'));
 		}
 
 		$this->view->paginator  = Engine_Api::_()->answer()->getAnswersPaginator(array(
-      'user_id' => 0,
-      'sort'    => $this->_getParam('sort'),
-      'search'  => $this->_getParam('search'),
-      'category'  => $this->_getParam('category'),
-		));
+				      'user_id' => 0,
+				      'sort'    => $this->_getParam('sort'),
+				      'search'  => $this->_getParam('search'),
+				      'category'  => $this->_getParam('category'),
+					  'subcategory'  => $this->_getParam('subcategory')));
+
+
 		$this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('answer.perPage', 10) );
 		$this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
 
@@ -72,7 +90,6 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 	{
 		if( !$this->_helper->requireUser()->isValid() ) return;
 		if( !$this->_helper->requireAuth()->setAuthParams('answer', null, 'create')->isValid()) return;
-
 
 		$this->view->form = new Answer_Form_Index_Create();
 		if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
@@ -113,6 +130,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				if (null !== $action)
 				Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 				$db->commit();
+				$_SESSION['catid'] = null;
 			}
 			catch (Exception $e) {
 				$db->rollback();
@@ -176,17 +194,17 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				try
 				{
 					$db_answer       = Engine_Api::_()->answer()->api()->getDbtable('posts', 'answer');
-					
+
 					//clear the old acepted answer
 					$data['is_closed'] = 0;
 					$where = " answer_id =" .$answer_id;
 					$acceptedAnswer  = $db_answer->update($data, $where);
-					
+
 					//update the current accepted answer
 					$data['is_closed'] = 1;
 					$where = " post_id =" .$values['post_id'];
 					$acceptedAnswer  = $db_answer->update($data, $where);
-					
+
 					$db->commit();
 
 				}
@@ -195,13 +213,13 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 					$db->rollBack();
 					throw $e;
 				}
-				
+
 				$this->_redirect("answers/view/$answer_id/". $slug);
 			}
 
 		}
 		if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
-			 
+
 			$db = Engine_Api::_()->getDbTable('posts', 'answer')->getAdapter();
 			$db->beginTransaction();
 			try {
@@ -220,10 +238,10 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				throw $e;
 			}
 			if ($post_id)
-			 $this->_redirect("answers/view/$answer_id/". $slug);
+			$this->_redirect("answers/view/$answer_id/". $slug);
 		}
 	}
-	
+
 	public function manageAction()
 	{
 		if( !$this->_helper->requireUser()->isValid() ) return;
@@ -247,7 +265,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		foreach ($this->view->paginator as $answer) {
 			$answer_ids[] = $answer->answer_id;
 		}
-		 
+			
 	}
 
 	public function deleteAction()
@@ -262,15 +280,32 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		//if( $viewer->getIdentity() != $answer->owner_id && !$this->_helper->requireAuth()->setAuthParams($answer, null, 'delete')->isValid())
 		//{
 		//return $this->_forward('requireauth', 'error', 'core');
-			//die('You do not have permission to delete this blog');
-			//}
+		//die('You do not have permission to delete this blog');
+		//}
 
-			if( $this->getRequest()->isPost() && $this->getRequest()->getPost('confirm') == true )
-			{
-				// do delete. in model or just right here? I think I can get the row and just call a delete function
-				$this->view->answer->delete();
-				return $this->_redirect("answers/manage");
-			}
+		if( $this->getRequest()->isPost() && $this->getRequest()->getPost('confirm') == true )
+		{
+			// do delete. in model or just right here? I think I can get the row and just call a delete function
+			$this->view->answer->delete();
+			return $this->_redirect("answers/manage");
 		}
 	}
+
+	public function subcatsAction()
+	{
+		$return = '0,;';
+		$catid = $this->_getParam('cat_id', null);
+		if($catid)
+		{
+			$_SESSION['catid'] = $catid;
+			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
+			foreach($subcategories as $subcategory)
+			{
+				$return .= $subcategory->category_id.','.$subcategory->category_name.';';
+			}
+		}
+		echo $return;
+		exit();
+	}
+}
 

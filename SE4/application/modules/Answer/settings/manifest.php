@@ -123,6 +123,14 @@ return array(
         'action' => 'create'
       )
     ), 
+       'answer_subcats' => array(
+      'route' => 'answers/subcats',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'subcats'
+      )
+    ), 
        'answer_delete' => array(
       'route' => 'answers/delete/:answer_id',
       'defaults' => array(

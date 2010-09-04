@@ -25,11 +25,13 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   `description` text NOT NULL,
   `answer_tags` varchar(255) NOT NULL,
   `answer_cat_id` int(11) unsigned NOT NULL,
+  `answer_sub_cat_id` int(11) unsigned,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY  (`answer_id`),
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`)
+  KEY `answer_cat_id` (`answer_cat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 
@@ -58,6 +60,7 @@ CREATE TABLE `engine4_answer_categories` (
   `category_id` int(11) NOT NULL auto_increment,
   `user_id` int(11) unsigned NOT NULL,
   `category_name` varchar(128) NOT NULL,
+  `parent_cat_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
@@ -66,32 +69,32 @@ CREATE TABLE `engine4_answer_categories` (
 -- Dumping data for table `engine4_question_categories`
 --
 
-INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `category_name`) VALUES
-(1, 1, 'Trying To Conceive'),
-(2, 1, 'Pregnancy'),
-(3, 1, 'Parenting'),
-(5, 1, 'Back To School'),
-(6, 1, 'Beauty & Style'),
-(7, 1, 'Comsumer Products'),
-(8, 1, 'Diet & Fitness'),
-(9, 1, 'Education'),
-(10, 1, 'Entertainment & Music'),
-(11, 1, 'Environment'),
-(12, 1, 'Family & Relationships'),
-(13, 1, 'Food & Drink'),
-(14, 1, 'Health'),
-(15, 1, 'HObbies & Crafts'),
-(16, 1, 'Holidays'),
-(17, 1, 'Home & Garden'),
-(18, 1, 'Money & Work'),
-(19, 1, 'News & Events'),
-(20, 1, 'Pets'),
-(21, 1, 'Politics & Government'),
-(22, 1, 'Remdon Fun'),
-(23, 1, 'Religion & Beliefs'),
-(24, 1, 'Shopping'),
-(25, 1, 'Sports'),
-(26, 1, 'Travel');
+INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `category_name`, `parent_cat_id`) VALUES
+(1, 1, 'Trying To Conceive', 0),
+(2, 1, 'Pregnancy', 0),
+(3, 1, 'Parenting', 0),
+(5, 1, 'Back To School', 0),
+(6, 1, 'Beauty & Style', 0),
+(7, 1, 'Comsumer Products', 0),
+(8, 1, 'Diet & Fitness', 0),
+(9, 1, 'Education', 0),
+(10, 1, 'Entertainment & Music', 0),
+(11, 1, 'Environment', 0),
+(12, 1, 'Family & Relationships', 0),
+(13, 1, 'Food & Drink', 0),
+(14, 1, 'Health', 0),
+(15, 1, 'HObbies & Crafts', 0),
+(16, 1, 'Holidays', 0),
+(17, 1, 'Home & Garden', 0),
+(18, 1, 'Money & Work', 0),
+(19, 1, 'News & Events', 0),
+(20, 1, 'Pets', 0),
+(21, 1, 'Politics & Government', 0),
+(22, 1, 'Remdon Fun', 0),
+(23, 1, 'Religion & Beliefs', 0),
+(24, 1, 'Shopping', 0),
+(25, 1, 'Sports', 0),
+(26, 1, 'Travel', 0);
 
 
 -- --------------------------------------------------------
