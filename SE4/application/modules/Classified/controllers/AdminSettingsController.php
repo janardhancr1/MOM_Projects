@@ -43,7 +43,15 @@ class Classified_AdminSettingsController extends Core_Controller_Action_Admin
 
     $this->view->categories = Engine_Api::_()->classified()->getCategories();
   }
-
+  
+  public function subcategoriesAction()
+  {
+    $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+      ->getNavigation('classified_admin_main', array(), 'classified_admin_main_categories');
+	$id = $this->_getParam('id');
+    $this->view->subcategories = Engine_Api::_()->classified()->getSubCategories($id);
+    $this->view->parent_cat_id = $id;
+  }
   public function addCategoryAction()
   {
     // In smoothbox
