@@ -169,6 +169,7 @@ public function editCategoryAction()
         // Transaction
         $row = Engine_Api::_()->answer()->getCategory($values["id"]);
 
+        
         $row->category_name = $values["label"];
         $row->save();
         $db->commit();
@@ -199,6 +200,64 @@ public function editCategoryAction()
     // Output
     $this->renderScript('admin-settings/form.tpl');
   }
+  
+  public function addSubcategoryAction()
+  {
+    // In smoothbox
+    $this->_helper->layout->setLayout('admin-simple');
+    $form = $this->view->form = new Answer_Form_Admin_Subcategory();
+    $form->setAction($this->getFrontController()->getRouter()->assemble(array()));
+
+    // Check post
+    if( $this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()) )
+    {
+      // Ok, we're good to add field
+      $values = $form->getValues();
+
+      $db = Engine_Db_Table::getDefaultAdapter();
+      $db->beginTransaction();
+
+      try
+      {
+        // add sub category in to database
+        // Transaction
+        $table = Engine_Api::_()->getDbtable('categories', 'answer');
+        $row = $table->createRow();
+      
+
+        $row->parent_cat_id = $this->_getParam('id');
+        $row->category_name = $values["category_name"];
+        $row->user_id   =  1;
+        $row->save();
+        $db->commit();
+      }
+
+      catch( Exception $e )
+      {
+        $db->rollBack();
+        throw $e;
+      }
+      $this->_forward('success', 'utility', 'core', array(
+          'smoothboxClose' => 10,
+          'parentRefresh'=> 10,
+          'messages' => array('')
+      ));
+    }
+
+    // Must have an id
+    if( !($id = $this->_getParam('id')) )
+    {
+      die('No identifier specified');
+    }
+
+    // Generate and assign form
+    $category = Engine_Api::_()->answer()->getCategory($id);
+    $form->setField($category);
+
+    // Output
+    $this->renderScript('admin-settings/form.tpl');
+  }
+  
   public function levelAction()
   {
     // Make navigation
