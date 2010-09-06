@@ -53,7 +53,7 @@ class Recipe_Form_Index_Search extends Engine_Form
 			$this->addElement('Select', 'category_id', array(
             'label' => 'Category',
             'multiOptions' => $categories_prepared,
-      		'style' => 'width:202px',
+      		'style' => 'width:150px',
 			'onchange' => 'this.form.submit();',
 			));
 		}

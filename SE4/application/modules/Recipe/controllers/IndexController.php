@@ -55,6 +55,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     } else {
       $search_form->getElement('recipe_search')->setValue($this->_getParam('search'));
       $search_form->getElement('browse_recipes_by')->setValue($this->_getParam('sort'));
+      $search_form->getElement('category_id')->setValue($this->_getParam('category'));
     }
 
     $this->view->paginator  = Engine_Api::_()->recipe()->getRecipesPaginator(array(

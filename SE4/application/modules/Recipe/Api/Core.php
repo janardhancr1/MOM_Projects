@@ -35,8 +35,8 @@ class Recipe_Api_Core extends Core_Api_Abstract
 
     $p_table = Engine_Api::_()->getDbTable('recipes', 'recipe');
     $p_name  = $p_table->info('name');
-    //$o_table = Engine_Api::_()->getDbTable('options', 'recipe');
-    //$o_name  = $o_table->info('name');
+    $o_table = Engine_Api::_()->getDbTable('votes', 'recipe');
+    $o_name  = $o_table->info('name');
 
     $select  = $p_table->select()->from($p_name)->where('is_closed = ?', $params['closed']);
 
@@ -47,7 +47,7 @@ class Recipe_Api_Core extends Core_Api_Abstract
     switch ($params['sort']) {
         case 'popular':
           $select->setIntegrityCheck(false)
-                 ->from($o_name, "SUM($o_name.votes) AS total_votes")
+                 ->from($o_name, "SUM($o_name.recipe_id) AS total_votes")
                  ->where("$p_name.recipe_id = $o_name.recipe_id")
                  ->group("$p_name.recipe_id");
           $select->order('total_votes DESC')
