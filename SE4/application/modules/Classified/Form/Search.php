@@ -84,16 +84,21 @@ class Classified_Form_Search extends Fields_Form_Search
       'onclick' => 'this.form.submit();',
     ));*/
     
-  
+    $this->addElement('Select', 'subcategory', array(
+      'label' => 'Sub Category',
+      'multiOptions' => array(
+        '0' => '',
+      ),
+      'onchange' => 'this.form.submit();',
+      'style' => 'width:150px',
+      'order' => $i--,
+    ));
+    
+    
     $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
 	  'order' => $i--,
-	'decorators' => array(
-        'ViewHelper',
-        array('HtmlTag', array('tag' => 'div', 'class' => 'my_groups', 'style' => 'padding-top:10px')),
-        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
-      ),
     ));
 
 
@@ -118,15 +123,6 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => $i--,
     ));*/
 
-    $this->addElement('Select', 'subcategory', array(
-      'label' => 'Sub Category',
-      'multiOptions' => array(
-        '0' => '',
-      ),
-      'onchange' => 'this.form.submit();',
-      'style' => 'width:120px',
-      'order' => $i--,
-    ));
     
     $this->addElement('Select', 'category', array(
       'label' => 'Category',

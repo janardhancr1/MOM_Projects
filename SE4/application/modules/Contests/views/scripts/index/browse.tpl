@@ -24,7 +24,7 @@
 <br />
 <br />
 <center>
-	<a href="index.php/groups/5"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNER.gif' border='0' alt='' /></a>
+	<a href="index.php/group/5"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNER.gif' border='0' alt='' /></a>
 
 <br />
 <br />

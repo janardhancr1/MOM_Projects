@@ -115,31 +115,26 @@ class Recipe_Form_Index_Create extends Engine_Form
       
        $this->addElement('checkbox', 'recipe_vege', array(
         'label' => 'Suitable for vegetarians?',
-        'value' => 1,
         'disableTranslator' => true
       ));
       
      $this->addElement('Checkbox', 'recipe_vegan', array(
       'label' => 'Suitable for vegans?',
-      'value' => 1,
       'disableTranslator' => true
     ));
     
     $this->addElement('Checkbox', 'recipe_dairy', array(
       'label' => 'Dairy free?',
-    'value' => 1,
       'disableTranslator' => true
     ));
     
     $this->addElement('Checkbox', 'recipe_gluten', array(
       'label' => 'Gluten free?',
-      'value' => 1,
       'disableTranslator' => true
     ));
     
     $this->addElement('Checkbox', 'recipe_nut', array(
       'label' => 'nutfree?',
-      'value' => 1,
       'disableTranslator' => true
     ));
 

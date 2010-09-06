@@ -941,16 +941,17 @@ Global Serach box at page header
   float: left;
 }
 
-#my-wrapper
+#my-wrapper 
 {
   margin-top:5px;
   margin-left:10px;
   padding:5px;
-  width: 50%;
+  width: 45%;
   float: left;
   text-align: right;
   overflow: hidden;
 }
+
 
 #my-wrapper #my-label
 {
@@ -960,6 +961,52 @@ Global Serach box at page header
 #my-wrapper #my-element
 {
   float: left;
+}
+
+#parent_cat_id-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 39%;
+  float: right;
+  text-align: right;
+  overflow: hidden;
+}
+
+
+#parent_cat_id-wrapper #parent_cat_id-label
+{
+  float: left;
+}
+
+#parent_cat_id-wrapper #parent_cat_id-element
+{
+  float: left;
+  width: 150px;
+}
+
+#subcategory-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 35%;
+  float: right;
+  text-align: right;
+  overflow: hidden;
+}
+
+
+#subcategory-wrapper #subcategory-label
+{
+  float: left;
+}
+
+#subcategory-wrapper #subcategory-element
+{
+  float: left;
+  width: 150px;
 }
 
 .my_groups

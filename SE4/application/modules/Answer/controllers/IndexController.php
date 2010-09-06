@@ -47,16 +47,28 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 
 		if($this->_getParam('category'))
 		{
-			$search_form->parent_cat_id->clearMultiOptions();
-			$search_form->parent_cat_id->addMultiOption("0", "");
 			$catid = $this->_getParam('category');
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
-			foreach($subcategories as $subcategory)
+			if(count($subcategories)>0)
 			{
-				$search_form->parent_cat_id->addMultiOption($subcategory->category_id, $subcategory->category_name);
+				$search_form->parent_cat_id->clearMultiOptions();
+				$search_form->parent_cat_id->addMultiOption("0", "");
+				foreach($subcategories as $subcategory)
+				{
+					$search_form->parent_cat_id->addMultiOption($subcategory->category_id, $subcategory->category_name);
+				}
+				$search_form->getElement('parent_cat_id')->setValue($this->_getParam('subcategory'));
+			}
+			else
+			{
+				$search_form->removeElement('parent_cat_id');
 			}
 		}
-		
+		else
+		{
+			$search_form->removeElement('parent_cat_id');
+		}
+
 		if ($this->getRequest()->isPost() && $search_form->isValid($this->getRequest()->getPost())) {
 			// redirect to GET route to prevent POST-back-button fo-paw
 			$_SESSION['catid'] = $this->getRequest()->getPost('category_id');
@@ -69,7 +81,6 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		}  else {
 			$search_form->getElement('browse_answers_by')->setValue($this->_getParam('sort'));
 			$search_form->getElement('category_id')->setValue($this->_getParam('category'));
-			$search_form->getElement('parent_cat_id')->setValue($this->_getParam('subcategory'));
 		}
 
 		$this->view->paginator  = Engine_Api::_()->answer()->getAnswersPaginator(array(
