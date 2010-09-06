@@ -45,6 +45,15 @@ class Answer_AdminSettingsController extends Core_Controller_Action_Admin
     $this->view->categories = Engine_Api::_()->answer()->getCategories();
   }
   
+  public function subcategoriesAction()
+  {
+    $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+      ->getNavigation('answer_admin_main', array(), 'answer_admin_main_categories');
+	$id = $this->_getParam('id');
+    $this->view->subcategories = Engine_Api::_()->answer()->getSubCategories($id);
+    $this->view->parent_cat_id = $id;
+  }
+  
   public function addCategoryAction()
   {
     // In smoothbox

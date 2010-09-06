@@ -107,8 +107,7 @@ class Answer_Api_Core extends Core_Api_Abstract
 	{
 		return $this->api()->getDbtable('categories', 'answer')->fetchAll('parent_cat_id = 0', 'category_name');
 	}
-
-
+	
 	/**
 	 * Returns a collection of all the categories in the answers plugin
 	 *

@@ -61,8 +61,8 @@
               )) ?>
               |
               
-              <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'answer', 'controller' => 'settings', 'action' => 'add-subcategory', 'id' =>$category->category_id), $this->translate('Add Subcategory'), array(
-                'class' => 'smoothbox',
+              <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'answer', 'controller' => 'settings', 'action' => 'subcategories', 'id' =>$category->category_id), $this->translate('Subcategories'), array(
+               
               )) ?>
               
             </td>
