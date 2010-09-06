@@ -73,7 +73,7 @@ class Recipe_Api_Core extends Core_Api_Abstract
         $select->where("`recipe_name` LIKE ? OR `recipe_description` LIKE ? ", $search);
         
     }
-      if (!empty($params['category']))
+    if (!empty($params['category']))
 	{
 		$select->where("`category_id` = ?", $params['category']);
 	}
