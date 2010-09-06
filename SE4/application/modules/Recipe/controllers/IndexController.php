@@ -50,6 +50,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         'page' => 1,
         'sort'   => $this->getRequest()->getPost('browse_recipes_by'),
         'search' => $this->getRequest()->getPost('recipe_search'),
+      	'category' => $this->getRequest()->getPost('category_id'),
       ));
     } else {
       $search_form->getElement('recipe_search')->setValue($this->_getParam('search'));
@@ -60,6 +61,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
       'user_id' => 0,
       'sort'    => $this->_getParam('sort'),
       'search'  => $this->_getParam('search'),
+      'category'  => $this->_getParam('category'),
     ));
     $this->view->paginator->setItemCountPerPage( Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.perPage', 10) );
     $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );

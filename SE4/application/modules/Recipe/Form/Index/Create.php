@@ -46,7 +46,21 @@ class Recipe_Form_Index_Create extends Engine_Form
           new Engine_Filter_StringLength(array('max' => '200'))
         ),
       ));
-    
+  // prepare categories
+		$categories = Engine_Api::_()->recipe()->getCategories();
+		if (count($categories)!=0){
+			$categories_prepared[0]= "";
+			foreach ($categories as $category){
+					$categories_prepared[$category->category_id]= $category->category_name;
+			}
+
+			// category field
+			$this->addElement('Select', 'category_id', array(
+            'label' => 'Category',
+            'multiOptions' => $categories_prepared,
+      		'style' => 'width:202px',
+			));
+		}
 
     $this->addElement('text', 'recipe_tags', array(
         'label' => 'Tags',
@@ -205,6 +219,7 @@ class Recipe_Form_Index_Create extends Engine_Form
     $recipe->is_closed         = 0;
     $recipe->title             = $this->getElement('title')->getValue();
     $recipe->description       = $this->getElement('description')->getValue();
+    $recipe->category_id       = $this->getElement('category_id')->getValue();
     $recipe->recipe_tags              = $this->getElement('recipe_tags')->getValue();
     $recipe->recipe_prep_tm   = $this->getElement('recipe_prep_tm')->getValue();
     $recipe->recipe_cook_tm       = $this->getElement('recipe_cook_tm')->getValue();

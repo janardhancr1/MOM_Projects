@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
   `is_closed` tinyint(1) NOT NULL default '0',
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `category_id` int(11) unsigned NOT NULL default '0',
   `recipe_tags` varchar(255) NOT NULL,
   `recipe_prep_tm` varchar(255) NOT NULL,
   `recipe_cook_tm` varchar(255) NOT NULL,
@@ -40,12 +41,31 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
   `views` int(11) unsigned NOT NULL default '0',
   `comments` int(11) unsigned NOT NULL default '0',
   `creation_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL,
   PRIMARY KEY  (`recipe_id`),
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
+
+DROP TABLE IF EXISTS `engine4_recipe_categories`;
+CREATE TABLE `engine4_recipe_categories` (
+  `category_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) unsigned NOT NULL,
+  `category_name` varchar(128) NOT NULL,
+  PRIMARY KEY (`category_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+
+INSERT IGNORE INTO `engine4_recipe_categories` (`category_id`, `user_id`, `category_name`) VALUES
+(1, 1, 'Beverages'),
+(2, 1, 'Dinner and Main Dishes'),
+(3, 1, 'Appetizers'),
+(4, 1, 'Snacks'),
+(5, 1, 'Desserts'),
+(6, 1, 'Breakfast and Brunch'),
+(7, 1, 'Lunch');
 -- --------------------------------------------------------
 
 --
@@ -114,6 +134,7 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 ('recipe_admin_main_manage', 'recipe', 'Manage Recipes', '', '{"route":"admin_default","module":"recipe","controller":"manage"}', 'recipe_admin_main', '', 1),
 ('recipe_admin_main_settings', 'recipe', 'Global Settings', '', '{"route":"admin_default","module":"recipe","controller":"settings"}', 'recipe_admin_main', '', 2),
 ('recipe_admin_main_level', 'recipe', 'Member Level Settings', '', '{"route":"admin_default","module":"recipe","controller":"settings","action":"level"}', 'recipe_admin_main', '', 3)
+('recipe_admin_main_categories', 'recipe', 'Categories', '', '{"route":"admin_default","module":"recipe","controller":"settings","action":"categories"}', 'recipe_admin_main', '', 4)
 ;
 
 

@@ -71,10 +71,31 @@ class Recipe_Api_Core extends Core_Api_Abstract
                ->group("$p_name.recipe_id");
       } else
         $select->where("`recipe_name` LIKE ? OR `recipe_description` LIKE ? ", $search);
+        
     }
+      if (!empty($params['category']))
+	{
+		$select->where("`category_id` = ?", $params['category']);
+	}
     return $select;
   }
 
+  /**
+   * Returns a collection of all the categories in the recipe plugin
+   *
+   * @return Zend_Db_Table_Select
+   */
+  public function getCategories()
+  {
+    return $this->api()->getDbtable('categories', 'recipe')->fetchAll();
+  }
+  
+  public function getCategory($category_id)
+  {
+    $category = new Recipe_Model_Category($category_id);
+    return $category;
+  }
+  
   public function getRecipeVotes($recipe_ids)
   {
     /*if (is_string($recipe_ids))

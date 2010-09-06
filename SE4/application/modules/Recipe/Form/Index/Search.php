@@ -41,6 +41,22 @@ class Recipe_Form_Index_Search extends Engine_Form
       ),
       'onchange' => 'this.form.submit();',
     ));
+    
+  $categories = Engine_Api::_()->recipe()->getCategories();
+		if (count($categories)!=0){
+			$categories_prepared[0]= "";
+			foreach ($categories as $category){
+					$categories_prepared[$category->category_id]= $category->category_name;
+			}
+
+			// category field
+			$this->addElement('Select', 'category_id', array(
+            'label' => 'Category',
+            'multiOptions' => $categories_prepared,
+      		'style' => 'width:202px',
+			'onchange' => 'this.form.submit();',
+			));
+		}
 
     $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/recipes/manage'>Go to My Recipes</a>");
 	$this->addElement('Dummy', 'my_groups', array(
