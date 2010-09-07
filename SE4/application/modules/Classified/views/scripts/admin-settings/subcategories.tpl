@@ -23,6 +23,9 @@
       <p class="description">
         <?php echo $this->translate("CLASSIFIEDS_VIEWS_SCRIPTS_ADMINSETTINGS_CATEGORIES_DESCRIPTION") ?>
       </p>
+       <h3><?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'classified', 'controller' => 'settings', 'action' => 'categories', 'id' =>$this->parent_cat_id), $this->translate(' Back To Categories'), array(
+                
+              )) ?></h3>
           <?php if(count($this->subcategories)>0):?>
 
       <table class='admin_table'>
@@ -33,6 +36,7 @@
             <th><?php echo $this->translate("Owner") ?></th>
             <th><?php echo $this->translate("Number of Times Used") ?></th>
             <th><?php echo $this->translate("Options") ?></th>
+            
           </tr>
 
         </thead>
