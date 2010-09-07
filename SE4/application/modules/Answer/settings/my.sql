@@ -94,7 +94,17 @@ INSERT IGNORE INTO `engine4_answer_categories` (`category_id`, `user_id`, `categ
 (23, 1, 'Religion & Beliefs', 0),
 (24, 1, 'Shopping', 0),
 (25, 1, 'Sports', 0),
-(26, 1, 'Travel', 0);
+(26, 1, 'Travel', 0),
+(27,1,'Babies (0-12 months)',3),
+(28,1,'Toddlers (1-2)',3),
+(29,1,'Preschoolers (3-4)',3),
+(30,1,'School-Age Kids (5-8)',3),
+(31,1,'Tweens (9-12)',3),
+(32,1,'Teens (13-17)',3),
+(33,1,'Adult Children (18+)',3),
+(34,1,'Adoption',3),
+(35,1,'Kids\' Health',3),
+(36,1,'General Parenting',3);
 
 
 -- --------------------------------------------------------
