@@ -71,7 +71,7 @@ class User_IndexController extends Core_Controller_Action_Standard
 				$mail->setBodyText($body);
 
 				//$mail->send();
-				
+
 				$inviteForm->addNotice(Zend_Registry::get('Zend_Translate')->_('Your invite has been sent to your friends'));
 				$inviteForm->clearElements();
 				$this->view->maxOptions = 11;
@@ -99,6 +99,41 @@ class User_IndexController extends Core_Controller_Action_Standard
 		{
 			return $this->_helper->redirector->gotoRoute(array(), 'home', true);
 		}
+
+		$viewer = Engine_Api::_()->user()->getViewer();
+		$aliasedFields = $viewer->fields()->getFieldsObjectsByAlias();
+		$values = Engine_Api::_()->fields()->getFieldsValues($viewer);
+
+		//print_r($aliasedFields["country"]->field_id);
+
+		foreach($values as $index => $info)
+		{
+			if($info->field_id == $aliasedFields["country"]->field_id)
+			{
+				if($info->value == "CA")
+				{
+					$network = Engine_Api::_()->getItem('network', 1);
+				}
+				elseif($info->value == "US")
+				{
+					$network = Engine_Api::_()->getItem('network', 2);
+				}
+				else
+				{
+					$network = Engine_Api::_()->getItem('network', 3);
+				}
+
+				if( $network  && $network->assignment == 0) {
+					if( !$network->membership()->isMember($viewer) )
+					{
+						$network->membership()->addMember($viewer)
+						->setUserApproved($viewer)
+						->setResourceApproved($viewer);
+					}
+				}
+			}
+		}
+
 		$this->_helper->content->render();
 		//$this->_helper->content->setNoRender()->render();
 	}
