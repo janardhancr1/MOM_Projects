@@ -23,4 +23,9 @@ class Network_Api_Core extends Core_Api_Abstract
   {
     return Engine_Api::_()->getDbtable('networks', 'network')->recalculate($member, $values);
   }
+  
+ public function recalculateNew(User_Model_User $member)
+  {
+    return Engine_Api::_()->getDbtable('networks', 'network')->recalculateNew($member);
+  }
 }

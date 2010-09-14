@@ -36,4 +36,13 @@ class Network_Model_DbTable_Networks extends Engine_Db_Table
 
     return $this;
   }
+  
+  public function recalculateNew(User_Model_User $member)
+  {
+    foreach( $this->fetchAll() as $network )
+    {
+      $network->recalculateNew($member);
+    }
+    return $this;
+  }
 }
