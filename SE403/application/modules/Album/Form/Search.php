@@ -23,7 +23,7 @@ class Album_Form_Search extends Engine_Form
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'global_form_box',
+        'class' => 'global_search_box',
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
 
@@ -54,6 +54,10 @@ class Album_Form_Search extends Engine_Form
             'multiOptions' => $categories_prepared
           ));
     }
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/albums/manage'>Go to My Photo Albums</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
+    )); 
 
   }
 }
