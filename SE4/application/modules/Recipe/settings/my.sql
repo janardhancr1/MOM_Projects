@@ -133,7 +133,7 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 
 ('recipe_admin_main_manage', 'recipe', 'Manage Recipes', '', '{"route":"admin_default","module":"recipe","controller":"manage"}', 'recipe_admin_main', '', 1),
 ('recipe_admin_main_settings', 'recipe', 'Global Settings', '', '{"route":"admin_default","module":"recipe","controller":"settings"}', 'recipe_admin_main', '', 2),
-('recipe_admin_main_level', 'recipe', 'Member Level Settings', '', '{"route":"admin_default","module":"recipe","controller":"settings","action":"level"}', 'recipe_admin_main', '', 3)
+('recipe_admin_main_level', 'recipe', 'Member Level Settings', '', '{"route":"admin_default","module":"recipe","controller":"settings","action":"level"}', 'recipe_admin_main', '', 3),
 ('recipe_admin_main_categories', 'recipe', 'Categories', '', '{"route":"admin_default","module":"recipe","controller":"settings","action":"categories"}', 'recipe_admin_main', '', 4)
 ;
 

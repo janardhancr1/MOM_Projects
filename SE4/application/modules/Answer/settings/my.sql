@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   PRIMARY KEY  (`answer_id`),
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
-  KEY `creation_date` (`creation_date`)
+  KEY `creation_date` (`creation_date`),
   KEY `answer_cat_id` (`answer_cat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
