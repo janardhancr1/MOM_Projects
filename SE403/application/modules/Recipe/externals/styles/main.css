@@ -1,0 +1,141 @@
+
+/* $Id: main.css 6161 2010-06-05 02:22:08Z alex $ */
+
+
+@include "~/application/modules/Core/externals/styles/constants.css";
+
+
+
+
+
+/*
+BROWSE POLLS
+These styles are used on the browse polls page
+and inside the polls profile tab.
+*/
+ul.recipes_browse > li
+{
+  clear: both;
+  overflow: hidden;
+  padding: 0px 0px 15px 0px;
+}
+ul.recipes_browse > li + li
+{
+  border-top-width: 1px;
+  padding-top: 15px;
+}
+ul.recipes_browse > li > a
+{
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin-right: 8px;
+  font-weight: bold;
+}
+ul.recipes_browse .recipes_browse_options
+{
+  float: left;
+  width: auto;
+  padding-left: 15px;
+}
+ul.recipes_browse .recipes_browse_options a
+{
+  float: left;
+  margin: 5px 10px 0px 0px;
+  font-size: .8em;
+  padding-top: 1px;
+  height: 16px;
+}
+ul.recipes_browse .recipes_browse_info
+{
+  overflow: hidden;
+}
+ul.recipess_browse .recipes_browse_info_date
+{
+  font-size: .8em;
+  color: $theme_font_color_light;
+}
+
+div.recipes_browse_info_date
+{
+	font-size: .8em;
+    color: $theme_font_color_light;
+} 
+ul.recipes_browse .recipes_browse_info_desc
+{
+  margin-top: 5px;
+}
+ul.recipes_browse .recipes_browse_photo 
+{
+    float: left;
+  overflow: hidden;
+  margin-right: 8px;
+}
+ul.recipes_browse .recipes_browse_photo > img
+{
+  width: 100px;
+}
+/*
+VIEW Recipe
+These styles are used for viewing a single poll.
+*/
+div.recipes_view
+{
+  padding-top: 10px;
+  border-top-width: 1px;
+  margin-top: 10px;
+}
+div.recipe_view .recipe_desc
+{
+  margin-bottom: 10px;
+}
+div.recipe_view ul.recipe_options
+{
+  max-width: 500px;
+  clear: both;
+}
+div.recipe_view ul.recipe_options > li
+{
+  margin: 12px 0px 12px 0px;
+  clear: both;
+  overflow: hidden;
+}
+div.recipes_view .recipe_stats
+{
+  margin-top: 15px;
+}
+div.recipes_view .recipe_stats > a
+{
+  font-weight: bold;
+}
+
+div.recipes_view div
+{
+	margin: 10px 10px 0px 0px;	
+}
+
+/* ITEM TYPE ICONS */
+.item_icon_recipe
+{
+  background-image: url(~/application/modules/Recipe/externals/images/recipe_new16.png);
+}
+
+
+
+/* ICONS */
+.icon_recipe_new
+{
+  background-image: url(~/application/modules/Recipe/externals/images/recipe_new16.png);
+}
+.icon_recipe_delete
+{
+  background-image: url(~/application/modules/Recipe/externals/images/delete.png);
+}
+.icon_recipe_edit
+{
+  background-image: url(~/application/modules/Recipe/externals/images/edit.png);
+}
+.icon_recipe_photo_new
+{
+  background-image: url(~/application/modules/Recipe/externals/images/upload.png);
+}

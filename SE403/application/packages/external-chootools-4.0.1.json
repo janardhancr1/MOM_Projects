@@ -1,0 +1,55 @@
+{
+  "type": "external",
+  "name": "chootools",
+  "version": "4.0.1",
+  "revision": "7129",
+  "path": "externals\/chootools",
+  "repository": null,
+  "meta": {
+    "date": "Sat, 04 Sep 2010 00:31:57 +0000",
+    "title": "Chootools",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": {
+      "4.0.1": {
+        "chootools.js": "Added console.log() error protection; changed class name to update timestamps"
+      }
+    }
+  },
+  "dependencies": null,
+  "permissions": [
+    
+  ],
+  "actions": [
+    
+  ],
+  "callback": null,
+  "tests": null,
+  "structure": {
+    "externals\/chootools": {
+      "type": "directory",
+      "path": "externals\/chootools",
+      "structure": [
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 650,
+          "sha1": "b456e601361beffdc3eae565179455fcddb3f0bc"
+        },
+        {
+          "path": "chootools.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 22902,
+          "sha1": "3bda4ad518022add10dc244f9e6f55583dbe9dde"
+        }
+      ]
+    }
+  }
+}

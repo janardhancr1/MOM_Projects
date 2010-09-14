@@ -1,0 +1,145 @@
+"Forums Plugin";"Forums Plugin"
+"Forum";"Forum"
+"Forums";"Forums"
+"Create Forum";"Create Forum"
+"No forums in this category.";"No forums in this category."
+"Moderators:";"Moderators:"
+"Moderator";"Moderator"
+"Moderators";"Moderators"
+"Last post";"Last post"
+
+"view";"view";"views"
+"%1$s %2$s view";"%1$s %2$s view";"%1$s %2$s views"
+"reply";"reply";"replies"
+"%1$s %2$s reply";"%1$s %2$s reply";"%1$s %2$s replies"
+"post";"post";"posts"
+"topic";"topic";"topics"
+
+"By";"By"
+"in";"in"
+
+"Post Reply";"Post Reply"
+"Edit Post";"Edit Post"
+"Post Topic";"Post Topic"
+
+"Back To Topics";"Back To Topics"
+
+"Make Sticky";"Make Sticky"
+"Remove Sticky";"Remove Sticky"
+"Close";"Close"
+"Open";"Open"
+"Rename";"Rename"
+"Delete";"Delete"
+
+"This topic has been closed.";"This topic has been closed."
+"posts";"posts"
+
+"Quote";"Quote"
+"Edit";"Edit"
+
+"This post was edited by %1$s at %2$s";""This post was edited by %1$s at %2$s"
+
+"Post deleted.";"Post deleted."
+"Topic deleted.";"Topic deleted."
+"Topic renamed.";"Topic renamed."
+
+"Title";"Title"
+"Create";"Create"
+"Description";"Description"
+
+"<a id=""photo-label"" href=""javascript:showUploader();"">Attach a Photo</a>";"<a id=""photo-label"" href=""javascript:showUploader();"">Attach a Photo</a>"
+"or";"or"
+"cancel";"cancel"
+
+"Delete Post";"Delete Post"
+"Are you sure you want to delete this post?";"Are you sure you want to delete this post?"
+"Cancel";"Cancel"
+
+"This post has a photo attached. Do you want to delete it?";"This post has a photo attached. Do you want to delete it?"
+"Quick Reply";"Quick Reply"
+"Save Changes";"Save Changes"
+
+"Topic Title";"Topic Title"
+"Delete Topic";"Delete Topic"
+"Are you sure you want to delete this topic?";"Are you sure you want to delete this topic?"
+
+"Rename Topic";"Rename Topic"
+"forum topic";"forum topic";"forum topics"
+
+"Category Title";"Category Title"
+"Forum Title";"Forum Title"
+"Forum Description";"Forum Description"
+Category;Category
+"Member Name";"Member Name"
+"Delete Category";"Delete Category"
+"Delete Forum";"Delete Forum"
+"Are you sure you want to delete this category?";"Are you sure you want to delete this category?"
+"These settings affect all members in your community.";"These settings affect all members in your community."
+"How many posts will be shown per topic page? (Enter a number between 1 and 999";"How many posts will be shown per topic page? (Enter a number between 1 and 999"
+"Posts per topic page";"Posts per topic page"
+"How topics will be shown per forum page? (Enter a number between 1 and 999";"How topics will be shown per forum page? (Enter a number between 1 and 999"
+"Topics per forum page";"Topics per forum page"
+"Yes, members can use BBCode tags.";"Yes, members can use BBCode tags."
+"No, do not let members use BBCode.";"No, do not let members use BBCode."
+"Enable BBCode";"Enable BBCode"
+"Yes, members can use HTML in their posts.";"Yes, members can use HTML in their posts."
+"No, strip HTML from posts.";"No, strip HTML from posts."
+"Enable HTML";"Enable HTML"
+
+"FORUM_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
+
+"Allow Viewing of Forums?";"Allow Viewing of Forums?"
+"FORUM_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION";"Do you want to let users view forums? If set to no, some other settings on this page may not apply."
+"Yes, allow viewing and subscription of forums.";"Yes, allow viewing and subscription of forums."
+"No, do not allow forum to be viewed or subscribed to.";"No, do not allow forum to be viewed or subscribed to."
+
+"Allow Posting?";"Allow Posting?"
+"FORUM_FORM_ADMIN_LEVEL_CREATE_DESCRIPTION";"Do you want to allow users to post to the forums? If set to no, some other settings on this page may not apply. This is useful if you want users to be able to view forums and manage their subscriptions, but only want certain levels to be able to create forums."
+"Yes, allow posting to forums.";"Yes, allow posting to forums."
+"No, do not allow forum posts.";"No, do not allow forum posts."
+
+"Allow Moderation?";"Allow Moderation?"
+"FORUM_FORM_ADMIN_LEVEL_MODERATE_DESCRIPTION";"Do you want to allow members to moderate forums?  This permission allows members to tag sticky topics, close an existing topic, and edit or delete any post."
+"Yes, allow moderation.";"Yes, allow moderation."
+"No, do not allow moderation.";"No, do not allow moderation."
+
+"Allow HTML in posts?";"Allow HTML in posts?"
+"FORUM_FORM_ADMIN_LEVEL_CONTENTHTML_DESCRIPTION";"If you have disabled HTML in posts but want to allow specific tags, you can enter them below (separated by commas). If you have enabled HTML in posts, this setting will have no effect.  Example: b, img, a, embed, font"
+
+"Remove Moderator";"Remove Moderator"
+"Are you sure you want to remove this moderator?";"Are you sure you want to remove this moderator?"
+
+"Forum renamed.";"Forum renamed."
+"Category added.";"Category added."
+"Forum added.";"Forum added."
+"Moderator Added";"Moderator Added"
+"Moderator Removed";"Moderator Removed"
+"Category deleted.";"Category deleted."
+"Forum deleted.";"Forum deleted."
+
+"Add Moderator";"Add Moderator"
+"Search for a member to add as a moderator for this forum.";"Search for a member to add as a moderator for this forum."
+
+"Add Category";"Add Category"
+"Add Forum";"Add Forum"
+"move up";"move up"
+
+"Your search returned too many results; only displaying the first 20.";"Your search returned too many results; only displaying the first 20."
+
+"Post New Topic";"Post New Topic"
+
+"ITEM_TYPE_FORUM_CATEGORY";"Forum Categories"
+"ITEM_TYPE_FORUM";"Forums"
+"ITEM_TYPE_FORUM_TOPIC";"Forum Topics"
+"ITEM_TYPE_FORUM_POST";"Forum Posts"
+
+"Off-Topic";"Off-Topic"
+"News and Announcements";"News and Announcements"
+"Support";"Support"
+"Off-Topic Discussions";"Off-Topic Discussions"
+"Introduce Yourself";"Introduce Yourself"
+"Suggestions";"Suggestions"
+
+"Manage Forums";"Manage Forums"
+"add";"add"
+"remove";"remove"
