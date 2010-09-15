@@ -24,8 +24,8 @@ class Poll_Form_Create extends Engine_Form
     $user = Engine_Api::_()->user()->getViewer();
 
 
-    $this->setTitle('Create Poll')
-      ->setDescription('Create your poll below, then click "Create Poll" to start your poll.');
+    //$this->setTitle('Create Poll')
+      //->setDescription('Create your poll below, then click "Create Poll" to start your poll.');
     
     $this->addElement('text', 'title', array(
       'label' => 'Poll Title',

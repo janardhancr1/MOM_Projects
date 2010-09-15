@@ -49,18 +49,16 @@ ul.blogs_browse > li + li
 ul.blogs_browse > li .blogs_browse_photo
 {
   float: left;
-  overflow: hidden;
   margin-right: 8px;
 }
 ul.blogs_browse > li .blogs_browse_options
 {
-  float: right;
-  overflow: hidden;
-  padding-left: 20px;
+  float: left;
+  padding-left: 50px;
 }
 ul.blogs_browse > li .blogs_browse_options > a
 {
-  clear: both;
+  float: left;
   display: block;
   margin: 5px;
   font-size: .8em;

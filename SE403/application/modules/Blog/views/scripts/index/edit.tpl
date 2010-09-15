@@ -41,7 +41,7 @@
     });
   });
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Blogs');?>
@@ -56,5 +56,18 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+
+<div class="layout_middle">
+<div class="headline_header">
+	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Edit Blog Entry');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs/manage'>Back to My Blogs</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Edit your entry below, then publish the entry on your blog.');?></div>
+</div>
 <?php echo $this->form->render($this) ?>
+</div>

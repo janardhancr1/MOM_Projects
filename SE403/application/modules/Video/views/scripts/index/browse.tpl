@@ -10,7 +10,7 @@
  * @author     Jung
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Videos');?>
@@ -25,7 +25,11 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
   <?php if($this->can_create):?>
@@ -39,8 +43,19 @@
   </div>
   <?php endif; ?>
 </div>
+-->
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Video/externals/images/video_video48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Videos ');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view videos from moms everywhere!');?></div>
+</div>
+<div>
+<?php echo $this->form->render($this) ?>
+</div>
+<div style='padding-top:10px;padding-right:10px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Videos using the tag');?> #<?php echo $this->tag;?> <a href="<?php echo $this->url(array('module' => 'video', 'controller' => 'index', 'action' => 'browse'), 'default', true) ?>">(x)</a>
@@ -97,4 +112,5 @@
   <?php echo $this->paginationControl($this->paginator, null, null, array(
       'query' => $this->formValues
     )); ?>
+</div>
 </div>

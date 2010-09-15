@@ -30,7 +30,7 @@
     });
   });
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
@@ -45,7 +45,10 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
   <?php if( $this->can_create): ?>
@@ -58,8 +61,25 @@
   </div>
   <?php endif; ?>
 </div>
+-->
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Classified Listings');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds'>Back to Classifieds</a></div>
+	</div>
+    <div class="smallheadline"><?php echo $this->translate('Post your listing and check back regularly for responses.');?></div>
+</div>
+<div>
+   <ul>
+      <li>
+        <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
+      </li>
+    </ul>
+  </div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
     <div class="tip">
       <span>
@@ -75,27 +95,7 @@
           <div class='classifieds_browse_photo'>
             <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.normal')) ?>
           </div>
-          <div class='classifieds_browse_options'>
-            <a href='<?php echo $this->url(array('classified_id' => $item->classified_id), 'classified_edit', true) ?>' class='buttonlink icon_classified_edit'><?php echo $this->translate('Edit Listing');?></a>
-            <?php if( $this->allowed_upload ): ?>
-              <?php echo $this->htmlLink(array(
-                  'route' => 'classified_extended',
-                  'controller' => 'photo',
-                  'action' => 'upload',
-                  'subject' => $item->getGuid(),
-                ), $this->translate('Add Photos'), array(
-                  'class' => 'buttonlink icon_classified_photo_new'
-              )) ?>
-            <?php endif; ?>
-
-            <?php if( !$item->closed ): ?>
-              <a href='<?php echo $this->url(array('classified_id' => $item->classified_id, 'closed' => 1), 'classified_close', true) ?>' class='buttonlink icon_classified_close'><?php echo $this->translate('Close Listing');?></a>
-            <?php else: ?>
-              <a href='<?php echo $this->url(array('classified_id' => $item->classified_id, 'closed' => 0), 'classified_close', true) ?>' class='buttonlink icon_classified_open'><?php echo $this->translate('Open Listing');?></a>
-            <?php endif; ?>
-
-            <a href='<?php echo $this->url(array('classified_id' => $item->classified_id), 'classified_delete', true) ?>' class='buttonlink icon_classified_delete'><?php echo $this->translate('Delete Listing');?></a>
-          </div>
+         
           <div class='classifieds_browse_info'>
             <div class='classifieds_browse_info_title'>
               <h3>
@@ -119,6 +119,27 @@
               ?>
             </div>
           </div>
+           <div class='classifieds_browse_options'>
+            <a href='<?php echo $this->url(array('classified_id' => $item->classified_id), 'classified_edit', true) ?>' class='buttonlink icon_classified_edit'><?php echo $this->translate('Edit Listing');?></a>
+            <?php if( $this->allowed_upload ): ?>
+              <?php echo $this->htmlLink(array(
+                  'route' => 'classified_extended',
+                  'controller' => 'photo',
+                  'action' => 'upload',
+                  'subject' => $item->getGuid(),
+                ), $this->translate('Add Photos'), array(
+                  'class' => 'buttonlink icon_classified_photo_new'
+              )) ?>
+            <?php endif; ?>
+
+            <?php if( !$item->closed ): ?>
+              <a href='<?php echo $this->url(array('classified_id' => $item->classified_id, 'closed' => 1), 'classified_close', true) ?>' class='buttonlink icon_classified_close'><?php echo $this->translate('Close Listing');?></a>
+            <?php else: ?>
+              <a href='<?php echo $this->url(array('classified_id' => $item->classified_id, 'closed' => 0), 'classified_close', true) ?>' class='buttonlink icon_classified_open'><?php echo $this->translate('Open Listing');?></a>
+            <?php endif; ?>
+
+            <a href='<?php echo $this->url(array('classified_id' => $item->classified_id), 'classified_delete', true) ?>' class='buttonlink icon_classified_delete'><?php echo $this->translate('Delete Listing');?></a>
+          </div>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -140,4 +161,5 @@
     </div>
   <?php endif; ?>
   <?php echo $this->paginationControl($this->paginator, null, array("pagination/pagination.tpl","classified")); ?>
+</div>
 </div>

@@ -170,7 +170,7 @@ $this->headScript()
   
   en4.core.runonce.add(set_rating);
 </script>
-
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 <h2>
   <a href='<?php echo $this->url(array('id' => $this->video->owner_id), 'user_profile') ?>'><?php echo $this->user($this->video->owner_id)->getTitle() ?></a>'s Videos
 </h2>

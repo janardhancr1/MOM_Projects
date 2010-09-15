@@ -10,7 +10,7 @@
  * @author     Jung
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Blogs');?>
@@ -25,7 +25,19 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+
+<div class="layout_middle">
+<div class="headline_header">
+	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Delete Blog Entry?');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs/manage'>Back to My Blogs</a></div>
+    </div>
+    <div class="smallheadline"></div>
+</div>
 <div class='global_form'>
   <form method="post" class="global_form" action="<?php echo $this->url() ?>">
     <div>
@@ -45,4 +57,5 @@
       </div>
     </div>
   </form>
+</div>
 </div>

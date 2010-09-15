@@ -41,7 +41,7 @@
     });
   });
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
@@ -56,13 +56,23 @@
     ?>
   </div>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Edit Classified Listing');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds/manage'>Back to My Classifieds</a></div>
+	</div>
+    <div class="smallheadline"><?php echo $this->translate('Edit your classified listing below, then publish the listing.');?></div>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
 <form action="<?php echo $this->escape($this->form->getAction()) ?>" method="<?php echo $this->escape($this->form->getMethod()) ?>" class="global_form classifieds_browse_filters">
   <div>
     <div>
-      <h3>
-        <?php echo $this->translate($this->form->getTitle()) ?>
-      </h3>
+      
     
       <div class="form-elements">
         <?php echo $this->form->title; ?>
@@ -109,3 +119,4 @@
   <br />
   <?php echo $this->paginationControl($this->paginator); ?>
 <?php endif; ?>
+</div>

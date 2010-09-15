@@ -23,7 +23,7 @@ class Video_Form_Video extends Engine_Form
   {
     // Init form
     $this
-      ->setTitle('Add New Video')
+      //->setTitle('Add New Video')
       ->setAttrib('id', 'form-upload')
       ->setAttrib('name', 'video_create')
       ->setAttrib('enctype','multipart/form-data')

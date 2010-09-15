@@ -23,7 +23,7 @@ class Poll_Form_Index_Search extends Engine_Form
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'global_form_box',
+        'class' => 'global_search_box',
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array('page'=>1)));
 
@@ -39,6 +39,11 @@ class Poll_Form_Index_Search extends Engine_Form
         'recent' => 'Most Recent',
         'popular' => 'Most Popular',
       ),
+    ));
+    
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button' style='padding-left:30px'>&nbsp;<a href='/index.php/polls/manage'>Go to My Polls</a>");
+	$this->addElement('Dummy', 'my_groups', array(
+      'content' => $content,
     ));
 
   }

@@ -11,6 +11,7 @@
  */
 ?>
 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Photo Albums');?>
@@ -25,7 +26,28 @@
     ?>
   </div>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+
 <div class="layout_middle">
+<div class="headline_header">
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Albums');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums'>Back to Photos</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Create a new album today and share it with friends.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'album_general', 'action' => 'upload'), $this->translate('Add New Photos'), array(
+          'class' => 'buttonlink icon_photos_new'
+        )) ?>
+      </li>
+    </ul>
+  </div>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class='albums_manage'>
       <?php foreach( $this->paginator as $album ): ?>
@@ -70,4 +92,5 @@
       </span>
     </div>
   <?php endif; ?>
+</div>
 </div>

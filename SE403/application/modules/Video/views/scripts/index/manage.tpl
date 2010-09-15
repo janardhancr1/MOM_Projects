@@ -11,6 +11,7 @@
  */
 ?>
 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Videos');?>
@@ -25,7 +26,10 @@
     ?>
   </div>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
   <?php if($this->can_create):?>
@@ -39,8 +43,25 @@
   </div>
   <?php endif ?>
 </div>
+-->
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Video/externals/images/video_video48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Videos ');?><div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/videos'>Back to Videos</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Upload new video today and share it with friends.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+      <?php echo $this->htmlLink(array('route' => 'video_general', 'action' => 'create'), $this->translate('Post New Video'), array(
+        'class' => 'buttonlink icon_video_new'
+      )) ?>
+     </ul>
+  </div>
+<div style='padding-top:20px;width:690px'>
 <?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
   <div class="tip">
     <span>
@@ -69,18 +90,7 @@
           else echo '<img alt="" src="application/modules/Video/externals/images/video.png">';
         ?>
       </div>
-      <div class='video_options'>
-          <?php echo $this->htmlLink(array('route' => 'video_edit', 'video_id' => $item->video_id), $this->translate('Edit Video'), array(
-            'class' => 'buttonlink icon_video_edit'
-          )) ?>
-          <?php
-          if ($item->status !=2){
-            echo $this->htmlLink(array('route' => 'default', 'module' => 'video', 'controller' => 'index', 'action' => 'delete', 'video_id' => $item->video_id, 'format' => 'smoothbox'), $this->translate('Delete Video'), array(
-              'class' => 'buttonlink smoothbox icon_video_delete'
-            ));
-          }
-          ?>
-      </div>
+      
       <div class="video_info">
         <h3>
           <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
@@ -132,6 +142,18 @@
           </div>
         <?php endif;?>
       </div>
+      <div class='video_options'>
+          <?php echo $this->htmlLink(array('route' => 'video_edit', 'video_id' => $item->video_id), $this->translate('Edit Video'), array(
+            'class' => 'buttonlink icon_video_edit'
+          )) ?>
+          <?php
+          if ($item->status !=2){
+            echo $this->htmlLink(array('route' => 'default', 'module' => 'video', 'controller' => 'index', 'action' => 'delete', 'video_id' => $item->video_id, 'format' => 'smoothbox'), $this->translate('Delete Video'), array(
+              'class' => 'buttonlink smoothbox icon_video_delete'
+            ));
+          }
+          ?>
+      </div>
     </li>
     <?php endforeach; ?>
   </ul>
@@ -148,4 +170,5 @@
 
   <?php endif; ?>
   <?php echo $this->paginationControl($this->paginator); ?>
+</div>
 </div>

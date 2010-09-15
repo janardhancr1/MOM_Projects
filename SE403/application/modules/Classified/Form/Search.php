@@ -31,7 +31,7 @@ class Classified_Form_Search extends Fields_Form_Search
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'global_form_box classifieds_browse_filters',
+        'class' => 'global_search_box classifieds_browse_filters',
       ))
       ->setAction($_SERVER['REQUEST_URI'])
       ;
@@ -77,7 +77,11 @@ class Classified_Form_Search extends Fields_Form_Search
     $this->addElement('Hidden', 'end_date', array(
       'order' => 203,
     ));
-
+$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
+	  'order' => $i--,
+    ));
     $this->addElement('Text', 'search', array(
       'label' => 'Search Classifieds',
       'order' => $i--,
@@ -128,5 +132,7 @@ class Classified_Form_Search extends Fields_Form_Search
       'order' => 100,
       'onclick' => 'this.form.submit();',
     ));
+    
+    
   }
 }

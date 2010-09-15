@@ -11,6 +11,7 @@
  */
 ?>
 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Polls');?>
@@ -25,7 +26,10 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<!-- 
 <div class='layout_right'>
   <?php echo $this->search_form->render($this) ?>
 
@@ -49,7 +53,25 @@
   //]]>
   </script>
 </div>
+-->
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Polls');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create a Poll or Tell Others What you Think');?></div>
+</div>
+<div>
+<?php echo $this->search_form->render($this) ?>
+<script type="text/javascript">
+  //<![CDATA[
+    $('browse_polls_by').addEvent('change', function(){
+      $(this).getParent('form').submit();
+    });
+  //]]>
+  </script>
+</div>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>

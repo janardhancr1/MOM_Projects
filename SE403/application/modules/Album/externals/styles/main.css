@@ -114,8 +114,8 @@ ul.albums_manage .albums_manage_info_desc
 }
 ul.albums_manage .albums_manage_options
 {
-  width: 200px;
-  float: none;
+  width: auto;
+  float: left;
   overflow: hidden;
   padding-left: 15px;
 }

@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Polls');?>
@@ -25,7 +25,29 @@
     ?>
   </div>
 </div>
+-->
+
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Polls');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/polls'>Back to Polls</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Create a Poll or Tell Others What you Think');?></div>
+</div>
+<div>
+  <ul>
+    <li>
+      <a href='<?php echo $this->url(array(), 'poll_create') ?>' class='buttonlink icon_poll_new'>
+        <?php echo $this->translate('Create New Poll') ?>
+      </a>
+    </li>
+  </ul>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
@@ -40,12 +62,7 @@
       <?php foreach ($this->paginator as $poll): ?>
       <li id="poll-item-<?php echo $poll->poll_id ?>">
         <?php echo $this->htmlLink($poll->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'polls_browse_photo')) ?>
-        <div class="polls_browse_options">
-          <?php echo $this->htmlLink(array('route' => 'poll_delete', 'poll_id' => $poll->poll_id), $this->translate('Delete Poll'), array(
-            'class'=>'buttonlink smoothbox icon_poll_delete'
-           )) ?>
-          <a href='<?php echo $this->url(array('poll_id' => $poll->poll_id), 'poll_edit', true) ?>' class='buttonlink icon_poll_edit'><?php echo $this->translate('Edit Privacy');?></a>
-        </div>
+       
         <div class="polls_browse_info">
           <?php echo $this->htmlLink($poll->getHref(), $poll->getTitle()) ?>
           <div class="polls_browse_info_date">
@@ -62,9 +79,16 @@
             </div>
           <?php endif; ?>
         </div>
+         <div class="polls_browse_options">
+          <?php echo $this->htmlLink(array('route' => 'poll_delete', 'poll_id' => $poll->poll_id), $this->translate('Delete Poll'), array(
+            'class'=>'buttonlink smoothbox icon_poll_delete'
+           )) ?>
+          <a href='<?php echo $this->url(array('poll_id' => $poll->poll_id), 'poll_edit', true) ?>' class='buttonlink icon_poll_edit'><?php echo $this->translate('Edit Privacy');?></a>
+        </div>
       </li>
       <?php endforeach; ?>
     </ul>
   <?php endif; // $this->polls is NOT empty ?>
   <?php echo $this->paginationControl($this->paginator); ?>
+</div>
 </div>

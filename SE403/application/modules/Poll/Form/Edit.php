@@ -22,8 +22,8 @@ class Poll_Form_Edit extends Poll_Form_Create
   {
     parent::init();
 
-    $this->setTitle('Edit Poll Privacy')
-      ->setDescription('Edit your poll privacy below, then click "Save Privacy" to apply the new privacy settings for the poll.');
+    //$this->setTitle('Edit Poll Privacy')
+     // ->setDescription('Edit your poll privacy below, then click "Save Privacy" to apply the new privacy settings for the poll.');
     
     $this->submit->setLabel('Save Privacy');
   }

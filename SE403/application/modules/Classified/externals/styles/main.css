@@ -110,13 +110,13 @@ ul.classifieds_browse .classifieds_browse_photo img
 }
 ul.classifieds_browse .classifieds_browse_options
 {
-  float: right;
+  float: left;
   overflow: hidden;
   padding-left: 20px;
 }
 ul.classifieds_browse .classifieds_browse_options > a
 {
-  clear: both;
+  float: left;
   display: block;
   margin: 5px;
   font-size: .8em;

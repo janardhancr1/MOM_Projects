@@ -17,7 +17,7 @@
     $('filter_form').submit();
   }
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Blogs');?>
@@ -34,7 +34,10 @@
     </div>
   <?php endif; ?>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
 
@@ -50,15 +53,48 @@
     </div>
   <?php endif; ?>
 </div>
+-->
 
 <div class='layout_middle'>
-    
+ <div class="headline_header">
+	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Blog Entries');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs'>Back to Blogs</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Share your thoughts every day with moms.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+        <a href='<?php echo $this->url(array('action' => 'create'), 'blog_general') ?>' class='buttonlink icon_blog_new'><?php echo $this->translate('Write New Entry');?></a>
+      </li>
+    </ul>
+</div>
+<div style='padding-top:20px;padding-right:5px;width:680px'> 
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class="blogs_browse">
       <?php foreach( $this->paginator as $item ): ?>
         <li>
           <div class='blogs_browse_photo'>
             <?php echo $this->htmlLink($item->getOwner()->getHref(), $this->itemPhoto($item->getOwner(), 'thumb.icon')) ?>
+          </div>
+          <div class='blogs_browse_info'>
+            <p class='blogs_browse_info_title'>
+              <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
+            </p>
+            <p class='blogs_browse_info_date'>
+              <?php echo $this->translate('Posted by');?>
+              <?php echo $this->htmlLink($item->getOwner()->getHref(), $item->getOwner()->getTitle()) ?>
+              <?php echo $this->translate('about');?>
+              <?php echo $this->timestamp(strtotime($item->creation_date)) ?>
+            </p>
+            <p class='blogs_browse_info_blurb'>
+              <?php
+                // Not mbstring compat
+                echo substr(strip_tags($item->body), 0, 350); if (strlen($item->body)>349) echo "...";
+              ?>
+            </p>
           </div>
           <div class='blogs_browse_options'>
             <?php echo $this->htmlLink(array(
@@ -78,23 +114,7 @@
               'class' => 'buttonlink icon_blog_delete',
             )) ?>
           </div>
-          <div class='blogs_browse_info'>
-            <p class='blogs_browse_info_title'>
-              <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
-            </p>
-            <p class='blogs_browse_info_date'>
-              <?php echo $this->translate('Posted by');?>
-              <?php echo $this->htmlLink($item->getOwner()->getHref(), $item->getOwner()->getTitle()) ?>
-              <?php echo $this->translate('about');?>
-              <?php echo $this->timestamp(strtotime($item->creation_date)) ?>
-            </p>
-            <p class='blogs_browse_info_blurb'>
-              <?php
-                // Not mbstring compat
-                echo substr(strip_tags($item->body), 0, 350); if (strlen($item->body)>349) echo "...";
-              ?>
-            </p>
-          </div>
+          
         </li>
       <?php endforeach; ?>
     </ul>
@@ -117,4 +137,5 @@
   <?php endif; ?>
   <?php echo $this->paginationControl($this->paginator, null, array("pagination/blogpagination.tpl","blog"), array("orderby"=>$this->orderby)); ?>
 
+</div>
 </div>
