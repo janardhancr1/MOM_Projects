@@ -227,7 +227,7 @@ protected function _delete()
     
     // Delete all child posts
     $postTable = Engine_Api::_()->getDbtable('classifieds', 'classified');
-    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    $postSelect = $postTable->select()->where('owner_id = ?', $this->getIdentity());
     foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
       $groupPost->disableHooks()->delete();
     }
