@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Core.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Core.php 4622 2010-03-25 02:09:30Z jung $
  * @author     Steve
  */
 
@@ -21,9 +21,12 @@ class Classified_Plugin_Core
   public function onStatistics($event)
   {
     $table   = Engine_Api::_()->getDbTable('classifieds', 'classified');
-    $select = new Zend_Db_Select($table->getAdapter());
-    $select->from($table->info('name'), 'COUNT(*) AS count');
-    $event->addResponse($select->query()->fetchColumn(0), 'classified');
+    $select  = $table->select()
+                    ->setIntegrityCheck(false)
+                    ->from($table->info('name'), array(
+                        'COUNT(*) AS count'));
+    $rows    = $table->fetchAll($select)->toArray();
+    $event->addResponse($rows[0]['count'], 'classified');
   }
 
 

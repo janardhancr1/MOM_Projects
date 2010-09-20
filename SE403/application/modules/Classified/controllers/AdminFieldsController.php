@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: AdminFieldsController.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: AdminFieldsController.php 6657 2010-07-01 01:38:38Z john $
  * @author     Jung
  */
 
@@ -41,19 +41,28 @@ class Classified_AdminFieldsController extends Fields_Controller_AdminAbstract
     if($form){
       $form->setTitle('Add Classified Question');
 
-      $display = $form->getElement('display');
-      $display->setLabel('Show on classified page?');
-      $display->setOptions(array('multiOptions' => array(
-          1 => 'Show on classified page',
-          0 => 'Hide on classified page'
-        )));
+      $form->removeElement('display');
+      $form->removeElement('search');
+     
+      // Display
+      $form->addElement('hidden', 'display', array(
+        'label' => 'Show on Member Profiles?',
+        'multiOptions' => array(
+          1 => 'Show on Member Profiles',
+          2 => 'Show on Member Profiles (with links)',
+          0 => 'Hide on Member Profiles'
+        )
+      ));
 
-      $search = $form->getElement('search');
-      $search->setLabel('Show on the search options?');
-      $search->setOptions(array('multiOptions' => array(
+
+      $form->addElement('Select', 'search', array(
+        'label' => 'Show on the search options?',
+        'multiOptions' => array(
           0 => 'Hide on the search options',
           1 => 'Show on the search options'
-        )));
+        ),
+        'value' => 1
+      ));
     }
   }
 
@@ -67,19 +76,17 @@ class Classified_AdminFieldsController extends Fields_Controller_AdminAbstract
     if($form){
       $form->setTitle('Edit Classified Question');
 
-      $display = $form->getElement('display');
-      $display->setLabel('Show on classified page?');
-      $display->setOptions(array('multiOptions' => array(
-          1 => 'Show on classified page',
-          0 => 'Hide on classified page'
-        )));
+      $form->removeElement('display');
+      $form->removeElement('search');
 
-      $search = $form->getElement('search');
-      $search->setLabel('Show on the search options?');
-      $search->setOptions(array('multiOptions' => array(
+      $form->addElement('Select', 'search', array(
+        'label' => 'Show on the search options?',
+        'multiOptions' => array(
           0 => 'Hide on the search options',
           1 => 'Show on the search options'
-        )));
+        ),
+        'value' => $this->view->search
+      ));
     }
   }
 }

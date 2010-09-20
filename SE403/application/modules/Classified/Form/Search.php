@@ -77,27 +77,32 @@ class Classified_Form_Search extends Fields_Form_Search
     $this->addElement('Hidden', 'end_date', array(
       'order' => 203,
     ));
-$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
+
+    /*$this->addElement('Button', 'done', array(
+      'label' => 'Search',
+      'order' => $i--,
+      'onclick' => 'this.form.submit();',
+    ));*/
+    
+    $this->addElement('Select', 'subcategory', array(
+      'label' => 'Sub Category',
+      'multiOptions' => array(
+        '0' => '',
+      ),
+      'onchange' => 'this.form.submit();',
+      'style' => 'width:150px',
+      'order' => $i--,
+    ));
+    
+    
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
 	  'order' => $i--,
     ));
-    $this->addElement('Text', 'search', array(
-      'label' => 'Search Classifieds',
-      'order' => $i--,
-    ));
 
-    $this->addElement('Select', 'orderby', array(
-      'label' => 'Browse By',
-      'multiOptions' => array(
-        'creation_date' => 'Most Recent',
-        'view_count' => 'Most Viewed',
-      ),
-      'onchange' => 'this.form.submit();',
-      'order' => $i--,
-    ));
 
-    $this->addElement('Select', 'show', array(
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Posts',
@@ -116,8 +121,9 @@ $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modu
       ),
       'onchange' => 'this.form.submit();',
       'order' => $i--,
-    ));
+    ));*/
 
+    
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
       'multiOptions' => array(
@@ -126,13 +132,21 @@ $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modu
       'onchange' => 'this.form.submit();',
       'order' => $i--,
     ));
-
-    $this->addElement('Button', 'done', array(
-      'label' => 'Search',
-      'order' => 100,
-      'onclick' => 'this.form.submit();',
-    ));
     
+    $this->addElement('Select', 'orderby', array(
+      'label' => 'Browse By',
+      'multiOptions' => array(
+        'creation_date' => 'Most Recent',
+        'view_count' => 'Most Viewed',
+      ),
+      'onchange' => 'this.form.submit();',
+      'order' => $i--,
+    ));
+
+    $this->addElement('Text', 'search', array(
+      'label' => 'Search Classifieds',
+      'order' => $i--,
+    ));
     
   }
 }

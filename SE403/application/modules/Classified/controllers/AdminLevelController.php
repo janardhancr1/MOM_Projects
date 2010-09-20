@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: AdminLevelController.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: AdminLevelController.php 6072 2010-06-02 02:36:45Z john $
  * @author     Jung
  */
 
@@ -24,7 +24,7 @@ class Classified_AdminLevelController extends Core_Controller_Action_Admin
       ->getNavigation('classified_admin_main', array(), 'classified_admin_main_level');
 
     // Get level id
-    if( null !== ($id = $this->_getParam('id')) ) {
+    if( null !== ($id = $this->_getParam('level_id')) ) {
       $level = Engine_Api::_()->getItem('authorization_level', $id);
     } else {
       $level = Engine_Api::_()->getItemTable('authorization_level')->getDefaultLevel();
@@ -37,18 +37,14 @@ class Classified_AdminLevelController extends Core_Controller_Action_Admin
     $id = $level->level_id;
 
     // Make form
-    $this->view->form = $form = new Classified_Form_Admin_Settings_Level(array(
-      'public' => ( in_array($level->type, array('public')) ),
-      'moderator' => ( in_array($level->type, array('admin', 'moderator')) ),
-    ));
+    $this->view->form = $form = new Classified_Form_Admin_Level();
     $form->level_id->setValue($id);
 
-    // Populate data
     $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
-    $form->populate($permissionsTable->getAllowed('classified', $id, array_keys($form->getValues())));
 
     // Check post
     if( !$this->getRequest()->isPost() ) {
+      $form->populate($permissionsTable->getAllowed('classified', $id, array_keys($form->getValues())));
       return;
     }
 

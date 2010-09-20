@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: view.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: view.tpl 5703 2010-05-12 08:29:07Z john $
  * @author     Jung
  */
 ?>
@@ -170,7 +170,7 @@ endif; ?>
 
       </div>
       <div class="classified_entrylist_entry_body">
-        <?php echo nl2br($this->classified->body) ?>
+        <?php echo $this->classified->body ?>
       </div>
         <ul class='classified_thumbs'>
           <?php if($this->main_photo):?>

@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Classified.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Classified.php 5849 2010-05-17 23:46:00Z steve $
  * @author     Jung
  */
 
@@ -130,11 +130,6 @@ class Classified_Model_Classified extends Core_Model_Item_Abstract
     $iMain->bridge($iIconNormal, 'thumb.normal');
     $iMain->bridge($iSquare, 'thumb.icon');
 
-    // Remove temp files
-    @unlink($path.'/p_'.$name);
-    @unlink($path.'/m_'.$name);
-    @unlink($path.'/in_'.$name);
-    @unlink($path.'/is_'.$name);
 
 
     // Add to album
@@ -226,12 +221,17 @@ class Classified_Model_Classified extends Core_Model_Item_Abstract
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('tags', 'core'));
   }
   
-  protected function _insert()
+protected function _delete()
   {
-    if( null === $this->search ) {
-      $this->search = 1;
+    if( $this->_disableHooks ) return;
+    
+    // Delete all child posts
+    $postTable = Engine_Api::_()->getDbtable('classifieds', 'classified');
+    $postSelect = $postTable->select()->where('user_id = ?', $this->getIdentity());
+    foreach( $postTable->fetchAll($postSelect) as $groupPost ) {
+      $groupPost->disableHooks()->delete();
     }
-
-    parent::_insert();
+    
+    parent::_delete();
   }
 }

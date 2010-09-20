@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: categories.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: categories.tpl 6241 2010-06-10 01:54:01Z jung $
  * @author     Jung
  */
 ?>
@@ -58,6 +58,11 @@
                   <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'classified', 'controller' => 'settings', 'action' => 'delete-category', 'id' =>$category->category_id), $this->translate('delete'), array(
                     'class' => 'smoothbox',
                   )) ?>
+                  |
+              
+              <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'classified', 'controller' => 'settings', 'action' => 'subcategories', 'id' =>$category->category_id), $this->translate('Subcategories'), array(
+                
+              )) ?>
 
                 </td>
               </tr>

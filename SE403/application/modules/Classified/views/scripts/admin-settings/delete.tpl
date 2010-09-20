@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: delete.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: delete.tpl 6537 2010-06-23 22:51:46Z shaun $
  * @author     Jung
  */
 ?>
@@ -19,10 +19,10 @@
       </p>
       <br />
       <p>
-        <input type="hidden" name="confirm" value="<?php echo $this->classified_id?>"/>
+        <input type="hidden" name="confirm" value="<?php echo $this->blog_id?>"/>
         <button type='submit'><?php echo $this->translate("Delete") ?></button>
         <?php echo $this->translate(" or ") ?> 
-        <a href='<?php echo $this->url(array(), 'classified_manage', true) ?>'>
+        <a href='<?php echo $this->url(array(), 'blog_manage', true) ?>'>
         <?php echo $this->translate("cancel") ?></a>
       </p>
     </div>

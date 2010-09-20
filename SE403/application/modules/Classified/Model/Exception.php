@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Exception.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Exception.php 4334 2010-03-12 10:40:39Z john $
  * @author     Jung
  */
 

@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: my.sql 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: my.sql 6511 2010-06-23 00:09:51Z shaun $
  * @author	   John
  */
 
@@ -24,6 +24,7 @@ CREATE TABLE `engine4_classified_classifieds` (
   `body` longtext NOT NULL,
   `owner_id` int(11) unsigned NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
+  `sub_category_id` int(11) unsigned,
   `photo_id` int(10) unsigned NOT NULL default '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
@@ -97,6 +98,7 @@ CREATE TABLE `engine4_classified_categories` (
   `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `category_name` varchar(128) NOT NULL,
+  `parent_cat_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
@@ -105,19 +107,118 @@ CREATE TABLE `engine4_classified_categories` (
 -- Dumping data for table `engine4_classified_categories`
 --
 
-INSERT IGNORE INTO `engine4_classified_categories` (`category_id`, `user_id`, `category_name`) VALUES
-(1, 1, 'Arts & Culture'),
-(2, 1, 'Business'),
-(3, 1, 'Entertainment'),
-(5, 1, 'Family & Home'),
-(6, 1, 'Health'),
-(7, 1, 'Recreation'),
-(8, 1, 'Personal'),
-(9, 1, 'Shopping'),
-(10, 1, 'Society'),
-(11, 1, 'Sports'),
-(12, 1, 'Technology'),
-(13, 1, 'Other');
+--INSERT IGNORE INTO `engine4_classified_categories` (`category_id`, `user_id`, `category_name`) VALUES
+--(1, 1, 'Arts & Culture'),
+--(2, 1, 'Business'),
+--(3, 1, 'Entertainment'),
+--(5, 1, 'Family & Home'),
+--(6, 1, 'Health'),
+--(7, 1, 'Recreation'),
+--(8, 1, 'Personal'),
+--(9, 1, 'Shopping'),
+--(10, 1, 'Society'),
+--(11, 1, 'Sports'),
+--(12, 1, 'Technology'),
+--(13, 1, 'Other');
+
+INSERT IGNORE INTO `engine4_classified_categories` (`category_id`, `user_id`, `category_name`, `parent_cat_id`) VALUES
+(1,1,'buy and sell',0),
+(2,1,'art, collectibles',1),
+(3,1,'baby items',1),
+(4,1,'books',1),
+(5,1,'business, industrial',1),
+(6,1,'cameras, camcorders',1),
+(7,1,'cds, dvds, blu-ray',1),
+(8,1,'clothing',1),
+(9,1,'computers',1),
+(10,1,'computer accessories',1),
+(11,1,'electronics',1),
+(12,1,'furniture',1),
+(13,1,'health, special needs',1),
+(14,1,'hobbies, crafts',1),
+(15,1,'home appliances',1),
+(16,1,'home & graden',1),
+(17,1,'jewellery, watches',1),
+(18,1,'musical instruments',1),
+(19,1,'phones, PDAs, ipods',1),
+(20,1,'sports, bikes',1),
+(21,1,'tickets',1),
+(22,1,'tools, equipment',1),
+(23,1,'toys, games',1),
+(24,1,'video games, consoles',1),
+(25,1,'other',1),
+(26,1,'housing',0),
+(27,1,'apartments for rent',26),
+(28,1,'commercial',26),
+(29,1,'house rental',26),
+(30,1,'housing for sale',26),
+(31,1,'real estate services',26),
+(32,1,'room rental, roommates',26),
+(33,1,'short term rentals',26),
+(34,1,'storage, parking',26),
+(35,1,'other',26),
+(36,1,'services',0),
+(37,1,'childcare, nanny',36),
+(38,1,'cleaners, cleaning',36),
+(39,1,'computer',36),
+(40,1,'entertainment',36),
+(41,1,'financial, legal',36),
+(42,1,'fitness, personal trainer',36),
+(43,1,'helath, beauty',36),
+(44,1,'moving, storage',36),
+(45,1,'music lessons',36),
+(46,1,'painters, painting',36),
+(47,1,'photography, video',36),
+(48,1,'skilled trades',36),
+(49,1,'tutors, languages',36),
+(50,1,'wedding',36),
+(51,1,'travel, vacations',36),
+(52,1,'other',36),
+(53,1,'car & vehicles',0),
+(54,1,'cars',53),
+(55,1,'SUVs, trucks, vans',53),
+(56,1,'classic cars',53),
+(57,1,'auto parts, tires',53),
+(58,1,'automotive services',53),
+(59,1,'motorcycles',53),
+(60,1,'ATVs, snowmobiles',53),
+(61,1,'boats, watercraft',53),
+(62,1,'RVs, campers, trailers',53),
+(63,1,'heavy equipment',53),
+(64,1,'other',53),
+(65,1,'pets',0),
+(66,1,'accessories',65),
+(67,1,'animal, pet services',65),
+(68,1,'birds for sale',65),
+(69,1,'cats, kittens for sale',65),
+(70,1,'dogs, puppies for sale',65),
+(71,1,'livestock for sale',65),
+(72,1,'other pets for sale',65),
+(73,1,'to give or donate',65),
+(74,1,'other',65),
+(75,1,'jobs',0),
+(76,1,'accounting, mgmt',75),
+(77,1,'child care',75),
+(78,1,'bar, food, hospitality',75),
+(79,1,'cleaning, housekeeper',75),
+(80,1,'construction, trades',75),
+(81,1,'customer service',75),
+(82,1,'driver, security',75),
+(83,1,'general labour',75),
+(84,1,'graphic, web design',75),
+(85,1,'hair stylist, salon',75),
+(86,1,'office mgr, receptionist',75),
+(87,1,'part time, students',75),
+(88,1,'programmers, computer',75),
+(89,1,'sales, retail sales',75),
+(90,1,'tv, media, fashion',75),
+(91,1,'other',75),
+(92,1,'vacation rentals',0),
+(93,1,'Canada',92),
+(94,1,'United States',92),
+(95,1,'Others',92),
+(96,1,'Others ',0);
+
 
 
 -- --------------------------------------------------------
@@ -180,8 +281,8 @@ CREATE TABLE `engine4_classified_fields_meta` (
 --
 
 INSERT IGNORE INTO `engine4_classified_fields_meta` (`field_id`, `type`, `label`, `description`, `alias`, `required`, `config`, `validators`, `filters`, `display`, `search`) VALUES
-(2, 'currency', 'Price', '', 'price', 0, '{"unit":"USD"}', NULL, NULL, 1, 1),
-(3, 'location', 'Location', '', 'location', 0, '', NULL, NULL, 1, 1);
+(2, 'currency', 'Price', '', 'price', 0, '{"unit":""}', NULL, NULL, 1, 1),
+(3, 'location', 'Location', '(ie. Address, City, ZIP/Postal Code)', 'location', 0, '', NULL, NULL, 1, 1);
 
 
 -- --------------------------------------------------------
@@ -264,7 +365,7 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 --
 
 INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES
-('classified', 'Classifieds', 'Classifieds', '4.0.3', 1, 'extra');
+('classified', 'Classifieds', 'Classifieds', '4.0.0', 1, 'extra');
 
 
 -- --------------------------------------------------------
@@ -304,191 +405,49 @@ INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body
 -- Dumping data for table `engine4_authorization_permissions`
 --
 
--- ALL
--- auth_view, auth_comment, auth_html
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'auth_view' as `name`,
-    5 as `value`,
-    '["everyone","owner_network","owner_member_member","owner_member","owner"]' as `params`
-  FROM `engine4_authorization_levels` WHERE `type` NOT IN('public');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'auth_comment' as `name`,
-    5 as `value`,
-    '["everyone","owner_network","owner_member_member","owner_member","owner"]' as `params`
-  FROM `engine4_authorization_levels` WHERE `type` NOT IN('public');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'auth_html' as `name`,
-    3 as `value`,
-    'strong, b, em, i, u, strike, sub, sup, p, div, pre, address, h1, h2, h3, h4, h5, h6, span, ol, li, ul, a, img, embed, br, hr' as `params`
-  FROM `engine4_authorization_levels` WHERE `type` NOT IN('public');
+INSERT IGNORE INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `value`, `params`) VALUES
+(1, 'classified', 'create', 1, NULL),
+(1, 'classified', 'delete', 1, NULL),
+(1, 'classified', 'edit', 1, NULL),
+(1, 'classified', 'view', 1, NULL),
+(1, 'classified', 'comment', 1, NULL),
+(1, 'classified', 'photo', 1, NULL),
+(1, 'classified', 'max', 3, '20'),
+(1, 'classified', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(1, 'classified', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
--- ADMIN, MODERATOR
--- create, delete, edit, view, comment, css, style, max, photo
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'create' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'delete' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'edit' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'view' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'comment' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'css' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'style' as `name`,
-    2 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'max' as `name`,
-    3 as `value`,
-    1000 as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'photo' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('moderator', 'admin');
+(2, 'classified', 'create', 1, NULL),
+(2, 'classified', 'delete', 1, NULL),
+(2, 'classified', 'edit', 1, NULL),
+(2, 'classified', 'view', 1, NULL),
+(2, 'classified', 'comment', 1, NULL),
+(2, 'classified', 'photo', 1, NULL),
+(2, 'classified', 'max', 3, '20'),
+(2, 'classified', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(2, 'classified', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
--- USER
--- create, delete, edit, view, comment, css, style, max
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'create' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'delete' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'edit' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'view' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'comment' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'css' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'style' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'max' as `name`,
-    3 as `value`,
-    50 as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'photo' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('user');
+(3, 'classified', 'create', 1, NULL),
+(3, 'classified', 'delete', 1, NULL),
+(3, 'classified', 'edit', 1, NULL),
+(3, 'classified', 'view', 1, NULL),
+(3, 'classified', 'comment', 1, NULL),
+(3, 'classified', 'photo', 1, NULL),
+(3, 'classified', 'max', 3, '20'),
+(3, 'classified', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(3, 'classified', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
--- PUBLIC
--- view
-INSERT IGNORE INTO `engine4_authorization_permissions`
-  SELECT
-    level_id as `level_id`,
-    'classified' as `type`,
-    'view' as `name`,
-    1 as `value`,
-    NULL as `params`
-  FROM `engine4_authorization_levels` WHERE `type` IN('public');
+(4, 'classified', 'create', 1, NULL),
+(4, 'classified', 'delete', 1, NULL),
+(4, 'classified', 'edit', 1, NULL),
+(4, 'classified', 'view', 1, NULL),
+(4, 'classified', 'comment', 1, NULL),
+(4, 'classified', 'photo', 1, NULL),
+(4, 'classified', 'max', 3, '20'),
+(4, 'classified', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(4, 'classified', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
 
+(5, 'classified', 'view', 1, NULL),
+(5, 'classified', 'photo', 1, NULL),
+(5, 'classified', 'max', 3, '20'),
+(5, 'classified', 'auth_comment', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]'),
+(5, 'classified', 'auth_view', 5, '["everyone","owner_network","owner_member_member","owner_member","owner"]');

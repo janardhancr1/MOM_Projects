@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: manage.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: manage.tpl 6159 2010-06-05 02:12:43Z alex $
  * @author     Jung
  */
 ?>
@@ -30,8 +30,8 @@
     });
   });
 </script>
-<!--
-<div class="headline">
+
+<!--<div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
   </h2>
@@ -44,24 +44,9 @@
         ->render();
     ?>
   </div>
-</div>
--->
+</div>-->
 
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
-<!--
-<div class='layout_right'>
-  <?php echo $this->form->render($this) ?>
-  <?php if( $this->can_create): ?>
-  <div class="quicklinks">
-    <ul>
-      <li>
-        <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
-      </li>
-    </ul>
-  </div>
-  <?php endif; ?>
-</div>
--->
 
 <div class='layout_middle'>
 <div class="headline_header">
@@ -80,7 +65,7 @@
     </ul>
   </div>
 <div style='padding-top:20px;padding-right:10px;width:690px'>
-  <?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
+  <?php if ($this->current_count >= $this->quota):?>
     <div class="tip">
       <span>
         <?php echo $this->translate('You have already created the maximum number of listings allowed. If you would like to create a new listing, please delete an old one first.');?>
@@ -95,7 +80,6 @@
           <div class='classifieds_browse_photo'>
             <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.normal')) ?>
           </div>
-         
           <div class='classifieds_browse_info'>
             <div class='classifieds_browse_info_title'>
               <h3>
@@ -119,7 +103,7 @@
               ?>
             </div>
           </div>
-           <div class='classifieds_browse_options'>
+          <div class='classifieds_browse_options'>
             <a href='<?php echo $this->url(array('classified_id' => $item->classified_id), 'classified_edit', true) ?>' class='buttonlink icon_classified_edit'><?php echo $this->translate('Edit Listing');?></a>
             <?php if( $this->allowed_upload ): ?>
               <?php echo $this->htmlLink(array(

@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Edit.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Edit.php 4854 2010-04-07 23:38:57Z jung $
  * @author     Jung
  */
 
@@ -36,7 +36,7 @@ class Classified_Form_Edit extends Classified_Form_Create
   {
     parent::init();
     //$this->setTitle('Edit Classified Listing')
-   $this->setDescription('Edit your listing below, then click \"Save Changes\" to save your listing.');
+    $this->setDescription('Edit your listing below, then click \"Save Changes\" to save your listing.');
     $this->addElement('Radio', 'cover', array(
       'label' => 'Album Cover',
     ));

@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: AdminManageController.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: AdminManageController.php 6657 2010-07-01 01:38:38Z john $
  * @author     Jung
  */
 

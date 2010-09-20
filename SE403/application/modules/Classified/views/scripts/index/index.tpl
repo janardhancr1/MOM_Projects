@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: index.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: index.tpl 6159 2010-06-05 02:12:43Z alex $
  * @author     Jung
  */
 ?>
@@ -30,8 +30,8 @@
     });
   });
 </script>
-<!--
-<div class="headline">
+
+<!--<div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
   </h2>
@@ -44,23 +44,10 @@
         ->render();
     ?>
   </div>
-</div>
--->
+</div>-->
+
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
-<!--
-<div class='layout_right'>
-  <?php echo $this->form->render($this) ?>
-  <?php if( $this->can_create): ?>
-    <div class="quicklinks">
-      <ul>
-        <li>
-          <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
-        </li>
-      </ul>
-    </div>
-  <?php endif; ?>
-</div>
--->
+
 <div class='layout_middle'>
 <div class="headline_header">
 	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
@@ -72,7 +59,7 @@
 <div>
 <?php echo $this->form->render($this) ?>
 </div>
-<div style='padding-top:20px;padding-right:10px;width:690px'>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Showing classified listings using the tag');?> #<?php echo $this->tag_text;?> <a href="<?php echo $this->url(array('module' => 'classified', 'controller' => 'index', 'action' => 'index'), 'default', true) ?>">(x)</a>
@@ -125,7 +112,7 @@
       <span>
         <?php echo $this->translate('Nobody has posted a classified listing with that criteria.');?>
         <?php if ($this->can_create): ?>
-          <?php echo $this->translate('Be the first to %post%2$s one!', '<a href="'.$this->url(array(), 'classified_create').'">', '</a>'); ?>
+          <?php echo $this->translate('Be the first to %1$spost%2$s one!', '<a href="'.$this->url(array(), 'classified_create').'">', '</a>'); ?>
         <?php endif; ?>
       </span>
     </div>

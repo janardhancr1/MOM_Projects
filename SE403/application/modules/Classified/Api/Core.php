@@ -135,7 +135,10 @@ class Classified_Api_Core extends Core_Api_Abstract
     {
       $select->where($rName.'.category_id = ?', $params['category']);
     }
-
+  	if( !empty($params['subcategory']) )
+    {
+      $select->where($rName.'.sub_category_id = ?', $params['subcategory']);
+    }
     if( isset($params['closed']) && $params['closed']!="" )
     {
       $select->where($rName.'.closed = ?', $params['closed']);
@@ -164,6 +167,11 @@ class Classified_Api_Core extends Core_Api_Abstract
   public function getCategories()
   {
     return $this->api()->getDbtable('categories', 'classified')->fetchAll();
+  }
+  
+  public function getSubCategories($id)
+  {
+    return $this->api()->getDbtable('categories', 'classified')->fetchAll('parent_cat_id=' . $id);
   }
 
   public function getCategory($category_id)

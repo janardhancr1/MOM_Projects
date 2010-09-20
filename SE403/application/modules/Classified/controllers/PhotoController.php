@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: PhotoController.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: PhotoController.php 6511 2010-06-23 00:09:51Z shaun $
  * @author     John
  */
 
@@ -34,7 +34,7 @@ class Classified_PhotoController extends Core_Controller_Action_Standard
         Engine_Api::_()->core()->setSubject($classified);
       }
     }
-
+	$this->getRightSideContent();
     $this->_helper->requireUser->addActionRequires(array(
       'upload',
       'upload-photo', // Not sure if this is the right

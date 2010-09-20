@@ -6,10 +6,11 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: upload.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: upload.tpl 6590 2010-06-25 19:40:21Z john $
  * @author     Jung
  */
 ?>
+
 
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 

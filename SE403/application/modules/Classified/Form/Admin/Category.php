@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Category.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Category.php 6072 2010-06-02 02:36:45Z john $
  * @author     Jung
  */
 

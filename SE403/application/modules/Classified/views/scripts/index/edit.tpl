@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: edit.tpl 7250 2010-09-01 07:42:35Z john $
+ * @version    $Id: edit.tpl 5333 2010-05-01 03:23:01Z alex $
  * @author     Jung
  */
 ?>
@@ -55,8 +55,8 @@
         ->render();
     ?>
   </div>
-</div>
--->
+</div>-->
+
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
 <div class='layout_middle'>
@@ -72,14 +72,15 @@
 <form action="<?php echo $this->escape($this->form->getAction()) ?>" method="<?php echo $this->escape($this->form->getMethod()) ?>" class="global_form classifieds_browse_filters">
   <div>
     <div>
-      
+      <h3> <?php echo $this->form->getTitle(); ?>   </h3>
     
       <div class="form-elements">
         <?php echo $this->form->title; ?>
         <?php echo $this->form->tags; ?>
         <?php if($this->form->category_id) echo $this->form->category_id; ?>
+        <?php if($this->form->category_id) echo $this->form->sub_category_id; ?>
         <?php echo $this->form->body; ?>
-        <?php echo $this->form->getSubForm('fields'); ?>
+        <?php echo $this->form->getSubForm('customField'); ?>
         <?php if($this->form->auth_view)echo $this->form->auth_view; ?>
         <?php if($this->form->auth_comment)echo $this->form->auth_comment; ?>
         <?php //echo print_r($this->form->getSubForm('customField')->getErrors('0_0_2')->render());?>
@@ -120,3 +121,30 @@
   <?php echo $this->paginationControl($this->paginator); ?>
 <?php endif; ?>
 </div>
+<script type="text/javascript">
+  //<!--
+  function getSubCats(cat_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/index.php/classifieds/subcats',
+      'data' : {
+        'format' : 'json',
+        'cat_id' : cat_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+        $('sub_category_id').empty();
+      	var subcats = responseText.split(';');
+      	for(var i=0; i<subcats.length-1; i++)
+      	{
+      		var subcat = subcats[i].split(',');
+      		$('sub_category_id').options[i] = new Option(subcat[1], subcat[0]);
+      	}
+      	//document.getElementById('sub_category_id').innerHTML = responseText;
+      }
+    })).send();
+  }
+  // -->
+ </script>

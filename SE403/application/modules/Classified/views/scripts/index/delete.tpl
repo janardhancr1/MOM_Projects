@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: delete.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: delete.tpl 6537 2010-06-23 22:51:46Z shaun $
  * @author     Jung
  */
 ?>
@@ -24,8 +24,8 @@
         ->render();
     ?>
   </div>
-</div>
--->
+</div>-->
+
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
 <div class='layout_middle'>
@@ -42,7 +42,6 @@
   <form method="post" class="global_form">
     <div>
       <div>
-      <h3><?php echo $this->translate('Delete Classified Listing?');?></h3>
       <p>
         <?php echo $this->translate('Are you sure that you want to delete the classified listing with the title "%1$s" last modified %2$s? It will not be recoverable after being deleted.', $this->classified->title,$this->timestamp($this->classified->modified_date)); ?>
       </p>

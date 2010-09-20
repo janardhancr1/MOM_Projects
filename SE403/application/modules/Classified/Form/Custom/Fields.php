@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Fields.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Fields.php 4334 2010-03-12 10:40:39Z john $
  * @author     Jung
  */
 
@@ -20,15 +20,11 @@ class Classified_Form_Custom_Fields extends Fields_Form_Standard
 {
   public $_error = array();
 
-  protected $_name = 'fields';
-
-  protected $_elementsBelongTo = 'fields';
-
   public function init()
   { 
     // custom classified fields
-    if( !$this->_item ) {
-      $classified_item = new Classified_Model_Classified(array());
+    if (!$this->_item){
+      $classified_item = new Classified_Model_Classified(null);
       $this->setItem($classified_item);
     }
     parent::init();

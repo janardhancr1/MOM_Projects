@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Album.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Album.php 6511 2010-06-23 00:09:51Z shaun $
  * @author     John
  */
 

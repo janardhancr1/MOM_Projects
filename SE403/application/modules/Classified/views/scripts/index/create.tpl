@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: create.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: create.tpl 6537 2010-06-23 22:51:46Z shaun $
  * @author     Jung
  */
 ?>
@@ -56,8 +56,8 @@
         ->render();
     ?>
   </div>
-</div>
--->
+</div>-->
+
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
 <div class='layout_middle'>
@@ -70,7 +70,7 @@
     <div class="smallheadline"><?php echo $this->translate('Compose your new classified listing below, then publish the listing.');?></div>
 </div>
 <div style='padding-top:20px;padding-right:10px;width:690px'>
-<?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
+<?php if ($this->current_count >= $this->quota):?>
   <div class="tip">
     <span>
       <?php echo $this->translate('You have already created the maximum number of classified listings allowed.');?>
@@ -82,3 +82,31 @@
   <?php echo $this->form->render($this);?>
 <?php endif; ?>
 </div>
+
+<script type="text/javascript">
+  //<!--
+  function getSubCats(cat_id) {
+    (new Request.JSON({
+      'format': 'json',
+      'url' : '/index.php/classifieds/subcats',
+      'data' : {
+        'format' : 'json',
+        'cat_id' : cat_id
+      },
+      'onRequest' : function(){
+      },
+      'onSuccess' : function(responseJSON, responseText)
+      {
+        $('sub_category_id').empty();
+      	var subcats = responseText.split(';');
+      	for(var i=0; i<subcats.length-1; i++)
+      	{
+      		var subcat = subcats[i].split(',');
+      		$('sub_category_id').options[i] = new Option(subcat[1], subcat[0]);
+      	}
+      	//document.getElementById('sub_category_id').innerHTML = responseText;
+      }
+    })).send();
+  }
+  // -->
+ </script>

@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: index.tpl 7250 2010-09-01 07:42:35Z john $
+ * @version    $Id: index.tpl 6206 2010-06-09 02:18:13Z jung $
  * @author     Jung
  */
 ?>
@@ -69,7 +69,7 @@
         <td><?php echo $item->getTitle() ?></td>
         <td><?php echo $this->user($item->owner_id)->getTitle() ?></td>
         <td><?php echo $this->locale()->toNumber($item->view_count) ?></td>
-        <td><?php echo $this->locale()->toDateTime($item->creation_date) ?></td>
+        <td><?php echo $item->creation_date ?></td>
         <td>
           <a href="<?php echo $this->url(array('user_id' => $item->owner_id, 'classified_id' => $item->classified_id), 'classified_entry_view') ?>">
             <?php echo $this->translate("view") ?>

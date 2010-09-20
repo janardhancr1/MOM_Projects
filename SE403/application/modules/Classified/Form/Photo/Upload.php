@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: Upload.php 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: Upload.php 6511 2010-06-23 00:09:51Z shaun $
  * @author     John
  */
 
@@ -22,8 +22,8 @@ class Classified_Form_Photo_Upload extends Engine_Form
   {
     // Init form
     $this
-      ->setTitle('Add New Photos')
-      ->setDescription('Choose photos on your computer to add to this classified listing. (2MB maximum)')
+      //->setTitle('Add New Photos')
+      //->setDescription('Choose photos on your computer to add to this classified listing. (2MB maximum)')
       ->setAttrib('id', 'form-upload')
       ->setAttrib('class', 'global_form classified_form_upload')
       ->setAttrib('name', 'albums_create')

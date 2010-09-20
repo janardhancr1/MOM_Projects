@@ -6,7 +6,7 @@
  * @package    Classified
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
- * @version    $Id: deleteselected.tpl 7244 2010-09-01 01:49:53Z john $
+ * @version    $Id: deleteselected.tpl 6213 2010-06-09 06:04:50Z john $
  * @author     Jung
  */
 ?>
