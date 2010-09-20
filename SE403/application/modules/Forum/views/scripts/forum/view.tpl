@@ -11,9 +11,11 @@
  */
 ?>
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<div class='layout_middle'>
 <h2>
 <?php echo $this->htmlLink(array('route'=>'forum_general'), $this->translate("Forums"));?>
-  &#187; <?php echo $this->translate($this->forum->getTitle()) ?>
+  &#187; <?php echo $this->forum->getTitle();?>
 </h2>
 
 <div class="forum_header">
@@ -102,4 +104,5 @@
 <?php endif;?>
 <div class="forum_pages">
   <?php echo $this->paginationControl($this->paginator);?>
+</div>
 </div>
