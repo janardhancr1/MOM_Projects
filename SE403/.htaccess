@@ -2,9 +2,12 @@
   Options +FollowSymLinks
   RewriteEngine On
 
+  #RewriteCond %{HTTP_HOST} !^www\.momburbia\.com [NC]
+  #RewriteRule ^(.*)$ http://www.momburbia.com/index.php/$1 [R=301,L]
+  
   # Get rid of index.php
-  RewriteCond %{REQUEST_URI} /index\.php
-  RewriteRule (.*) index.php?rewrite=2 [L,QSA]
+  #RewriteCond %{REQUEST_URI} /index\.php
+  #RewriteRule (.*) index.php?rewrite=2 [L,QSA]
 
   # Rewrite all directory-looking urls
   RewriteCond %{REQUEST_URI} /$
@@ -28,3 +31,8 @@
 
 # @todo This may not be effective in some cases
 FileETag Size
+
+#PHP memory size
+php_value memory_limit 128M
+php_value upload_max_filesize 4M
+php_value post_max_size 10M

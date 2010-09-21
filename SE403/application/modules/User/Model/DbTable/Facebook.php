@@ -90,7 +90,8 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
           }());
       //]]>
       </script>
-      <a href="'.$fb_href.'" target="_blank" onclick="'.$fb_onclick.'"><img src="http://static.ak.fbcdn.net/rsrc.php/z38X1/hash/6ad3z8m6.gif" border="0" alt="'.$connect_with_facebook.'" /></a>
+      <!--<a href="'.$fb_href.'" target="_blank" onclick="'.$fb_onclick.'"><img src="http://static.ak.fbcdn.net/rsrc.php/z38X1/hash/6ad3z8m6.gif" border="0" alt="'.$connect_with_facebook.'" /></a>-->
+      <fb:login-button perms="email,user_birthday"></fb:login-button>
       ';
   }
 
