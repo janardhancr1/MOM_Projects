@@ -29,6 +29,7 @@ class Group_GroupController extends Core_Controller_Action_Standard
 
     $this->_helper->requireUser();
     $this->_helper->requireSubject('group');
+    $this->getRightSideContent();
   }
 
   public function editAction()

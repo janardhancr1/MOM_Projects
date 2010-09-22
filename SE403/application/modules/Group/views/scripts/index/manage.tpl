@@ -10,7 +10,7 @@
  * @author	   John
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Groups');?>
@@ -25,7 +25,9 @@
     ?>
   </div>
 </div>
-
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+<!--
 <div class='layout_right'>
   <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
   <?php if( $this->viewer()->getIdentity() ): ?>
@@ -41,14 +43,45 @@
     </div>
   <?php endif; ?>
 </div>
-
+-->
   <div class='layout_middle'>
+  <div class="headline_header">
+	<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Groups');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/groups'>Back to Groups</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Create a new group, invite moms, view all of your groups and join in on the conversation.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'group_general', 'action' => 'create'), $this->translate('Create New Group'), array(
+            'class' => 'buttonlink icon_group_new'
+          )) ?>
+      </li>
+    </ul>
+  </div>
+<div style='padding-top:20px;padding-right:10px;width:680px'>
     <?php if( count($this->paginator) > 0 ): ?>
       <ul class='groups_browse'>
         <?php foreach( $this->paginator as $group ): ?>
           <li>
             <div class="groups_photo">
               <?php echo $this->htmlLink($group->getHref(), $this->itemPhoto($group, 'thumb.normal')) ?>
+            </div>
+            
+            <div class="groups_info">
+              <div class="groups_title">
+                <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
+              </div>
+              <div class="groups_members">
+                <?php echo $this->translate(array('%s member', '%s members', $group->membership()->getMemberCount()),$this->locale()->toNumber($group->membership()->getMemberCount())) ?>
+                <?php echo $this->translate('led by');?> <?php echo $this->htmlLink($group->getOwner()->getHref(), $group->getOwner()->getTitle()) ?>
+              </div>
+              <div class="groups_desc">
+                <?php echo $this->viewMore($group->getDescription()) ?>
+              </div>
             </div>
             <div class="groups_options">
               <?php if( $group->isOwner($this->viewer()) ): ?>
@@ -68,18 +101,6 @@
                 )) ?>
               <?php endif; ?>
             </div>
-            <div class="groups_info">
-              <div class="groups_title">
-                <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
-              </div>
-              <div class="groups_members">
-                <?php echo $this->translate(array('%s member', '%s members', $group->membership()->getMemberCount()),$this->locale()->toNumber($group->membership()->getMemberCount())) ?>
-                <?php echo $this->translate('led by');?> <?php echo $this->htmlLink($group->getOwner()->getHref(), $group->getOwner()->getTitle()) ?>
-              </div>
-              <div class="groups_desc">
-                <?php echo $this->viewMore($group->getDescription()) ?>
-              </div>
-            </div>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -97,6 +118,7 @@
       </div>
     <?php endif; ?>
 
+  </div>
   </div>
 
 
