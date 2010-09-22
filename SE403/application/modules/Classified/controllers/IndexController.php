@@ -554,9 +554,10 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 
 	public function deleteAction()
 	{
+		
 		if( !$this->_helper->requireUser()->isValid() ) return;
 
-		$this->view->navigation = $this->getNavigation();
+		//$this->view->navigation = $this->getNavigation();
 
 		$viewer = $this->_helper->api()->user()->getViewer();
 		$this->view->classified = $classified = Engine_Api::_()->getItem('classified', $this->_getParam('classified_id'));
