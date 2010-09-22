@@ -10,7 +10,7 @@
  * @author     Sami
  */
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Events');?>
@@ -25,10 +25,10 @@
     ?>
   </div>
 </div>
+-->
 
 
-<?php if( count($this->paginator) > 0 ): ?>
-
+<!--
   <div class='layout_right'>
     <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
     <?php if ($this->viewer()->getIdentity()):?>
@@ -44,8 +44,21 @@
       </div>
     <?php endif;?>
   </div>
+  -->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Events');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view events from moms everywhere!');?></div>
+</div>
+<div>
+	<?php echo $this->formFilter->setAttrib('class', 'global_search_box')->render($this) ?>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
+<?php if( count($this->paginator) > 0 ): ?>
 
-  <div class='layout_middle'>
     <ul class='events_browse'>
       <?php foreach( $this->paginator as $event ): ?>
         <li>
@@ -97,7 +110,7 @@
       )); ?>
     <?php endif; ?>
 
-  </div>
+
 
 <?php else: ?>
 
@@ -111,3 +124,4 @@
   </div>
 
 <?php endif; ?>
+  </div>

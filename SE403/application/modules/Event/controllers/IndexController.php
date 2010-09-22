@@ -39,6 +39,7 @@ class Event_IndexController extends Core_Controller_Action_Standard
         Engine_Api::_()->core()->setSubject($event);
       }
     }
+    $this->getRightSideContent();
 
   }
 
