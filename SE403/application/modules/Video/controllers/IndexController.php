@@ -42,6 +42,7 @@ class Video_IndexController extends Core_Controller_Action_Standard
       }
     }
     if( !$this->_helper->requireAuth()->setAuthParams('video', null, 'view')->isValid()) return;
+    $this->getRightSideContent();
   }
 
   public function browseAction()
