@@ -22,6 +22,12 @@ class Contests_IndexController extends Core_Controller_Action_Standard
 	{
 		if( !$this->_helper->requireUser()->isValid() ) return;
 		$this->getRightSideContent();
+		
+		$values["title"] = "Momburbia Contest Group";
+		$this->view->paginator = $paginator = Engine_Api::_()->getApi('core', 'group')
+            ->getGroupPaginator($values);
+      
+		$paginator->setCurrentPageNumber(1);
 	}
 
 	
