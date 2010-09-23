@@ -63,7 +63,7 @@
             <div class="albums_manage_info_desc">
               <?php echo $album->getDescription() ?>
             </div>
-          </div>
+         
           <div class="albums_manage_options">
             <?php echo $this->htmlLink(array('route' => 'album_specific', 'action' => 'editphotos', 'album_id' => $album->album_id), $this->translate('Manage Photos'), array(
               'class' => 'buttonlink icon_photos_manage'
