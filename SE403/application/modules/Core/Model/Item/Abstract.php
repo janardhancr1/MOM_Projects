@@ -76,8 +76,10 @@ abstract class Core_Model_Item_Abstract extends Engine_Db_Table_Row implements C
    * 
    * @param mixed $identity
    */
-  public function __construct(array $config)
+  public function __construct($config)
   {
+  	if( is_array($config) )
+    {
     parent::__construct($config);
 
     // Get identity
@@ -91,9 +93,45 @@ abstract class Core_Model_Item_Abstract extends Engine_Db_Table_Row implements C
     } else if( isset($this->$prop) ) {
       $this->_identity = $this->$prop;
     }
+    }
+    /*else
+    {
+    	$this->_readData($config);
+    }*/
 
     // Get store
     $this->_store = new stdClass();
+  }
+  
+ protected function _readData($spec)
+  {
+    // Null object
+    if( null === $spec )
+    {
+      return;
+    }
+    
+    // Row object
+    else if( $spec instanceof Zend_Db_Table_Row_Abstract )
+    {
+      $prop = $this->getShortType() . '_id';
+      if( !isset($spec->$prop) )
+      {
+        throw new Core_Model_Exception('Identity is a row object of improper type');
+      }
+      $this->_cloneData($spec);
+    }
+
+    // Scalar identity
+    else if( is_scalar($spec) )
+    {
+      $rowset = $this->getTable()->find($spec);
+      $row = $rowset->current();
+      if( $row )
+      {
+        $this->_cloneData($row);
+      }
+    }
   }
 
   /**
