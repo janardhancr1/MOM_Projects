@@ -52,14 +52,14 @@ class Blog_Form_Search extends Engine_Form
       'onchange' => 'this.form.submit();',
     ));
 
-    $this->addElement('Select', 'show', array(
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Blogs',
         '2' => 'Only My Friends\' Blogs',
       ),
       'onchange' => 'this.form.submit();',
-    ));
+    ));*/
 
     $this->addElement('Select', 'category', array(
       'label' => 'Category',

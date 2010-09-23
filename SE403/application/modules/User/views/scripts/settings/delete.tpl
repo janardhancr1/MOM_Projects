@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Settings');?>
@@ -35,3 +35,4 @@
 <?php endif;?>
 
 <?php echo $this->form->setAttrib('id', 'user_form_settings_delete')->render($this) ?>
+</div>

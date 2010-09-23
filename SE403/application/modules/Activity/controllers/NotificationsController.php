@@ -21,6 +21,7 @@ class Activity_NotificationsController extends Core_Controller_Action_Standard
   public function init()
   {
     $this->_helper->requireUser();
+    $this->getRightSideContent();
   }
 
   public function indexAction()

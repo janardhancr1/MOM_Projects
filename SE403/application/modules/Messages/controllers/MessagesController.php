@@ -25,6 +25,7 @@ class Messages_MessagesController extends Core_Controller_Action_User
   public function init()
   {
     $this->_helper->requireUser();
+    $this->getRightSideContent();
     $this->_helper->requireAuth()->setAuthParams('messages', null, 'create');
   }
   

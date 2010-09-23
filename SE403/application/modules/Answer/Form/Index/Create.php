@@ -74,7 +74,7 @@ class Answer_Form_Index_Create extends Engine_Form
 			}
 		}
 		// sub category field
-		$this->addElement('Select', 'parent_cat_id', array(
+		$this->addElement('Select', 'sub_cat_id', array(
             'label' => 'Sub Category',
             'multiOptions' => $sub_prepared,
       		'style' => 'width:202px',
@@ -102,7 +102,7 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answer->description     	= $this->getElement('description')->getValue();
 		$answer->answer_tags     	= $this->getElement('tags')->getValue();
 		$answer->answer_cat_id   	= $this->getElement('category_id')->getValue();
-		$answer->answer_sub_cat_id	= $this->getElement('parent_cat_id')->getValue();
+		$answer->answer_sub_cat_id	= $this->getElement('sub_cat_id')->getValue();
 		$answer->creation_date   	= date('Y-m-d H:i:s');
 
 		$answer->save();
