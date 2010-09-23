@@ -33,6 +33,8 @@ class Album_AlbumController extends Core_Controller_Action_Standard
     {
       Engine_Api::_()->core()->setSubject($album);
     }
+    
+    $this->getRightSideContent();
   }
 
   public function editAction()

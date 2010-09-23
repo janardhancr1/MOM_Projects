@@ -234,7 +234,8 @@ on the main home page.
 }
 .layout_user_list_popular .popularmembers_name
 {
-  font-weight: bold;
+  font-weight: normal;
+  text-transform: capitalize;
 }
 .layout_user_list_popular .popularmembers_friends
 {
@@ -284,7 +285,8 @@ on the main home page.
 }
 .layout_user_list_signups .newestmembers_name
 {
-  font-weight: bold;
+  font-weight: normal;
+  text-transform: capitalize;
 }
 .layout_user_list_signups .newestmembers_date
 {

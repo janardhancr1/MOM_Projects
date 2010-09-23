@@ -23,12 +23,15 @@
 
 <br />
 <br />
+<?php $href = "#"; ?>
+<?php foreach ($this->paginator as $group): ?>
+<?php $href = $group->getHref(); ?>
+<?php endforeach; ?>
 <center>
-	<a href="index.php/group/5"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNER.gif' border='0' alt='' /></a>
-
+	<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNER.gif' border='0' alt='' /></a>
 <br />
 <br />
-<div style='text-align:center'><a href="#">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>
+<div style='text-align:center'><a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>
 </center>
 </div>
 

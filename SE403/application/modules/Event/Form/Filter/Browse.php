@@ -43,7 +43,7 @@ class Event_Form_Filter_Browse extends Engine_Form
       'onchange' => '$(this).getParent("form").submit();',
     ));
 
-    $this->addElement('Select', 'view', array(
+    /*$this->addElement('Select', 'view', array(
       'label' => 'View:',
       'multiOptions' => array(
         'everyone' => 'Everyone\'s Events',
@@ -55,7 +55,7 @@ class Event_Form_Filter_Browse extends Engine_Form
         array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
       ),
       'onchange' => '$(this).getParent("form").submit();',
-    ));
+    ));*/
 
     $this->addElement('Select', 'order', array(
       'label' => 'List By:',
