@@ -41,6 +41,7 @@ class Engine_View_Helper_FormDate extends Zend_View_Helper_FormElement
   {
     if( is_string($value) )
     {
+      $value = date("Y-m-d", strtotime($value));
       $parsedValue = array();
       list($parsedValue['year'], $parsedValue['month'], $parsedValue['day']) = @explode('-', $value, 3);
       //list($parsedValue['day'], $parsedValue['month'], $parsedValue['year']) = @explode('-', $value, 3);

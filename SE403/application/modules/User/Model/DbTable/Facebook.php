@@ -82,7 +82,9 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
             xfbml: true
           });
           FB.Event.subscribe(\'auth.sessionChange\', function(response) {
-            '.($prevent_reload ? '' : 'if (-1 != document.cookie.search(/^(.*; ?)fbs_/)) window.location.reload();').'
+            if (response.session) {
+            '.($prevent_reload?'':'window.location = "index.php/signup";').'
+            }
             }); };
           (function() {
             var e = document.createElement("script"); e.async = true; e.src = document.location.protocol + "//connect.facebook.net/'.Zend_Locale::findLocale().'/all.js";
@@ -91,7 +93,7 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
       //]]>
       </script>
       <!--<a href="'.$fb_href.'" target="_blank" onclick="'.$fb_onclick.'"><img src="http://static.ak.fbcdn.net/rsrc.php/z38X1/hash/6ad3z8m6.gif" border="0" alt="'.$connect_with_facebook.'" /></a>-->
-      <fb:login-button perms="email,user_birthday"></fb:login-button>
+      <fb:login-button perms="email,user_birthday,publish_stream,user_status"></fb:login-button>
       ';
   }
 
@@ -103,7 +105,7 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
     } else {
       $facebook  = self::getFBInstance();
       if ($facebook->getSession()) {
-        $form->removeElement('facebook');
+        //$form->removeElement('facebook');
         try {
           $me  = $facebook->api('/me');
           $uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?' => $facebook->getUser()));
@@ -118,11 +120,11 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
               return false;
             }
           } else {
-            $notice = Zend_Registry::get('Zend_Translate')->translate('USER_FORM_AUTH_FACEBOOK_NOACCOUNT');
+            /*$notice = Zend_Registry::get('Zend_Translate')->translate('USER_FORM_AUTH_FACEBOOK_NOACCOUNT');
             $router = Zend_Controller_Front::getInstance()->getRouter();
             $notice = sprintf($notice, $router->assemble(array(), 'user_signup', true),
                                        $router->assemble(array('controller'=>'settings','action'=>'general'), 'user_extended', true));
-            $form->addNotice($notice);
+            $form->addNotice($notice);*/
           }
         } catch (Facebook_Exception $e) {
           $log = Engine_Exception::getLog();

@@ -35,50 +35,77 @@ class User_Plugin_Signup_Account extends Core_Plugin_FormSequence_Abstract
   public function onView()
   {
     // Init facebook login link
-    if (FALSE && 'none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
-      $facebook = User_Model_DbTable_Facebook::getFBInstance();
-      if ($facebook->getSession()) {
-        try {
-          $me  = $facebook->api('/me');
-          
-          $uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?'=>$facebook->getUser()));
-          if ($uid)
-            $uid = $uid->user_id;
-          if ($uid) {
-            // prevent Facebook users with established accounts from signing up again
-            Engine_Api::_()->user()->getAuth()->getStorage()->write($uid);
-            $this->getForm()->getElement('facebook')->setContent('<script type="text/javascript">window.location.reload();</script>"');
-            return;
-          } else {
-            // pre-fill facebook data into signup process
-            $this->getForm()->removeElement('facebook');
+  		if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+			$facebook = User_Model_DbTable_Facebook::getFBInstance();
+			if ($facebook->getSession()) {
+					
+				try {
 
-            if ($this->getForm()->getElement('email')->getValue() == '')
-                $this->getForm()->getElement('email')->setValue($me['email']);
+					$me  = $facebook->api('/me');
+					/*$me = array(
+						'email' => 'janardhanacr@hotmail.com',
+						'name' => 'janardhancr',
+						'first_name' => 'jana',
+						'last_name' => 'cr',
+						'gender' => 'male',
+						'birthdate' => '10/11/1978',
+					);*/
+					$uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?'=>$facebook->getUser()));
 
-            if ($this->getForm()->getElement('username')->getValue() == '')
-                $this->getForm()->getElement('username')->setValue(preg_replace('/[^A-Za-z]/', '', $me['name']));
+					if ($uid)
+					$uid = $uid->user_id;
+					if ($uid) {
+						// prevent Facebook users with established accounts from signing up again
+						Engine_Api::_()->user()->getAuth()->getStorage()->write($uid);
+						$this->getForm()->getElement('facebook')->setContent('<script type="text/javascript">window.location.reload();</script>"');
+						return;
+					} else {
+						// pre-fill facebook data into signup process
+						$this->getForm()->removeElement('facebook');
 
-            $maps    = Engine_Api::_()->fields()->getFieldsMaps('user');
-            $fb_data = array();
-            foreach (array('gender', 'first_name', 'last_name', 'birthdate') as $field_alias) {
-              if (isset($me[$field_alias])) {
-                $field    = Engine_Api::_()->fields()->getFieldsObjectsByAlias('user', $field_alias);
-                $field_id = $field[$field_alias]['field_id'];
-                foreach ($maps as $map) {
-                  if ($field_id == $map->child_id) {
-                    $fb_data[$map->getKey()] = $me[$field_alias];
-                  }
-                }
-              }
-            }
-            $this->getSession()->data = $fb_data;
-          }
-        } catch (Exception $e) { 
-          $this->getForm()->removeElement('facebook');
-        }
-      }
-    }
+						if ($this->getForm()->getElement('email')->getValue() == '')
+						$this->getForm()->getElement('email')->setValue($me['email']);
+
+						if ($this->getForm()->getElement('username')->getValue() == '')
+						$this->getForm()->getElement('username')->setValue(preg_replace('/[^A-Za-z]/', '', $me['name']));
+
+						$this->getForm()->password->renderPassword = true;
+						$this->getForm()->passconf->renderPassword = true; 
+						
+						$this->getForm()->getElement('password')->setAttrib('style', 'display:none');
+						$this->getForm()->getElement('password')->removeValidator('NotEmpty');
+						$this->getForm()->getElement('password')->removeValidator('StringLength');
+						$this->getForm()->getElement('password')->setRequired(false);
+						$this->getForm()->getElement('password')->setDescription('Always use your Facebook password to login to Momburbia');
+						$this->getForm()->getElement('password')->setValue("facebook");
+
+						$this->getForm()->getElement('passconf')->setAttrib('style', 'display:none');
+						$this->getForm()->getElement('passconf')->removeValidator('NotEmpty');
+						$this->getForm()->getElement('passconf')->removeValidator('Engine_Validate_Callback');
+						$this->getForm()->getElement('passconf')->setRequired(false);
+						$this->getForm()->getElement('passconf')->setDescription('Always use your Facebook password to login to Momburbia');
+						$this->getForm()->getElement('passconf')->setValue("facebook");
+						
+						$maps    = Engine_Api::_()->fields()->getFieldsMaps('user');
+						$fb_data = array();
+						foreach (array('gender', 'first_name', 'last_name', 'birthdate') as $field_alias) {
+							if (isset($me[$field_alias])) {
+								$field    = Engine_Api::_()->fields()->getFieldsObjectsByAlias('user', $field_alias);
+								$field_id = $field[$field_alias]['field_id'];
+								foreach ($maps as $map) {
+									if ($field_id == $map->child_id) {
+										$fb_data[$map->getKey()] = $me[$field_alias];
+									}
+								}
+							}
+						}
+						$this->getSession()->data = $fb_data;
+					}
+				} catch (Exception $e) {
+					$this->getForm()->removeElement('facebook');
+				}
+			}
+		}
   }
   public function onProcess()
   {

@@ -76,6 +76,57 @@ class User_Plugin_Signup_Fields extends Core_Plugin_FormSequence_Abstract
 
   public function onView()
   {
+  		if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+			$facebook = User_Model_DbTable_Facebook::getFBInstance();
+			if ($facebook->getSession()) {
+				try {
+					$me  = $facebook->api('/me');
+					/*$me = array(
+						'email' => 'janardhanacr@hotmail.com',
+						'name' => 'janardhancr',
+						'first_name' => 'jana',
+						'last_name' => 'cr',
+						'gender' => 'male',
+						'birthdate' => '10/11/1978',
+					);*/
+
+					/*if ($this->getForm()->getElement('email')->getValue() == '')
+					 $this->getForm()->getElement('email')->setValue($me['email']);
+
+					 if ($this->getForm()->getElement('username')->getValue() == '')
+					 $this->getForm()->getElement('username')->setValue(preg_replace('/[^A-Za-z]/', '', $me['name']));*/
+					
+					if(isset($me['gender']))
+					{
+						if(strtolower($me['gender']) == 'male')
+							$me['gender'] = 2;
+						elseif(strtolower($me['gender']) == 'female')
+							$me['gender'] = 3;
+					}
+					$maps    = Engine_Api::_()->fields()->getFieldsMaps('user');
+					$fb_data = array();
+					foreach (array('gender', 'first_name', 'last_name', 'birthdate') as $field_alias) {
+						if (isset($me[$field_alias])) {
+							$field    = Engine_Api::_()->fields()->getFieldsObjectsByAlias('user', $field_alias);
+							$field_id = $field[$field_alias]['field_id'];
+							foreach ($maps as $map) {
+								if ($field_id == $map->child_id) {
+									$fb_data[$map->getKey()] = $me[$field_alias];
+								}
+							}
+						}
+					}
+					$this->getSession()->data = $fb_data;
+
+					$data = $this->getSession()->data;
+					//print_r($data);
+						
+
+				} catch (Exception $e) {
+					$this->getForm()->removeElement('facebook');
+				}
+			}
+		}
   }
   
   public function onSubmit(Zend_Controller_Request_Abstract $request)

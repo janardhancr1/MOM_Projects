@@ -34,6 +34,34 @@ class User_Plugin_Signup_Photo extends Core_Plugin_FormSequence_Abstract
 
   protected $_coordinates;
 
+  public function onView()
+	{
+		if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+			$facebook = User_Model_DbTable_Facebook::getFBInstance();
+			if ($facebook->getSession()) {
+				try {
+					$me  = $facebook->api('/me');
+					$uid = Engine_Api::_()->getDbtable('Facebook', 'User')->fetchRow(array('facebook_uid = ?'=>$facebook->getUser()));
+					//$uid = "616510235";
+					if ($uid)
+					{
+						$url = 'http://graph.facebook.com/'.$uid.'/picture?type=large';
+						$img = APPLICATION_PATH.'/public/temporary/'.$uid.'.gif';
+						$path = dirname($img);
+						$name = basename($img);
+						$this->getSession()->data['Filedata'] = $name;
+						file_put_contents($img, file_get_contents($url));
+						$this->_resizeImages($img);
+
+						$_SESSION['TemporaryProfileImg'] = $name;
+					}
+
+				} catch (Exception $e) {
+					throw $e;
+				}
+			}
+		}
+	}
   
   public function onSubmit(Zend_Controller_Request_Abstract $request)
   {
