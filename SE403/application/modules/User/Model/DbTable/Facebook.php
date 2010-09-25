@@ -83,7 +83,7 @@ class User_Model_DbTable_Facebook extends Engine_Db_Table
           });
           FB.Event.subscribe(\'auth.sessionChange\', function(response) {
             if (response.session) {
-            '.($prevent_reload?'':'window.location = "index.php/signup";').'
+            '.($prevent_reload?'':'window.location = "index.php/facebooksignup";').'
             }
             }); };
           (function() {
