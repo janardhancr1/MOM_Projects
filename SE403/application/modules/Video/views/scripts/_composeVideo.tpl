@@ -17,7 +17,7 @@
     $user = Engine_Api::_()->user()->getViewer();
     $allowed_upload = (bool) Engine_Api::_()->authorization()->getAdapter('levels')->getAllowed('video', $user, 'upload');
     $ffmpeg_path = (bool) Engine_Api::_()->getApi('settings', 'core')->video_ffmpeg_path;
-    if($allowed_upload && $ffmpeg_path) $allowed = 1;
+    if($allowed_upload && $ffmpeg_path) $allowed = 0;
     ?>
 
 
