@@ -67,7 +67,7 @@ class Classified_Form_Create extends Engine_Form
 		}
 
 		$sub_prepared[0]= "";
-		if($_SESSION['catid'])
+		if(isset($_SESSION['catid']))
 		{
 			$catid = $_SESSION['catid'];
 			$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);

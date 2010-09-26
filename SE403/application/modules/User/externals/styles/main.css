@@ -375,7 +375,7 @@ Lists the friends common to the subject and viewer.
 }
 #profile_options li
 {
-  font-weight: bold;
+  font-weight: normal;
   padding: 6px 0px 6px 0px;
 }
 #profile_options li + li
