@@ -1,0 +1,100 @@
+"Answer";"Answer"
+# Navigation
+"Answers";"Answers"
+"Answer";"Answer";"Answers"
+"Answer vote";"Answer vote";"Answer votes"
+"Browse Answers";"Browse Answers"
+"My Questions";"My Questions"
+"Create New Answer";"Create New Answer"
+"Search Answers:";"Search Answers:"
+"Browse By:";"Browse By:"
+"Most Recent";"Most Recent"
+"Most Popular";"Most Popular"
+"Create New Question";"Create New Question"
+"There are no questions yet";"There are no questions yet"
+"Why don't you %1$screate one%2$s";"Why don't you %1$screate one%2$s"
+"Posted by %s";"Posted by %s"
+"%s view";"%s view";"%s views"
+"%s vote";"%s vote";"%s votes"
+"%s's Questions";"%s's Questions"
+"Show Questions";"Show Questions"
+"Show Results";"Show Results"
+"Add another option";"Add another option"
+"Who may see this question?";"Who may see this question?"
+"Who may post comments on this question?";"Who may post comments on this question?"
+"View All Questions";"View All Questions"
+
+"Posted";"Posted"
+"Question Title";"Question Title"
+"Description";"Description"
+"Possible Questions";"Possible Questions"
+"Create Question";"Create Question"
+"Create your question below, then click ""Create Question"" to start your question.";"Create your question below, then click ""Create Question"" to start your question."
+
+"You have already voted on this question, and are not permitted to change your vote.";"You have already voted on this question, and are not permitted to change your vote."
+"You must provide at least two possible answers.";"You must provide at least two possible answers."
+"The question you are looking for does not exist or has been deleted.";"The question you are looking for does not exist or has been deleted."
+
+"ADMIN_ACTIVITY_TYPE_ANSWER_NEW";"When a new question is created."
+"ADMIN_ACTIVITY_TYPE_LIKE_ANSWER";"When someone likes one of my questions."
+"ADMIN_ACTIVITY_TYPE_LIKED_ANSWER";"When someone comments on a question I liked."
+"ADMIN_ACTIVITY_TYPE_COMMENT_ANSWER";"When someone comments on one of my questions."
+"ADMIN_ACTIVITY_TYPE_COMMENTED_ANSWER";"When someone comments on a question I commented on."
+
+"_ACTIVITY_ACTIONTYPE_ANSWER_NEW";"New questions"
+"_ACTIVITY_ACTIONTYPE_COMMENT_ANSWER";"Comments on your questions"
+
+"ACTIVITY_TYPE_ANSWER_NEW";"When a new question is created."
+"ACTIVITY_TYPE_ANSWER_ANSWER";"When someone answered one of my questions."
+"ACTIVITY_TYPE_ANSWERED_ANSWER";"When someone answered on a question I answered."
+
+"ANSWER_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
+
+Allow Viewing of Questions
+"ANSWER_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION";"Do you want to let members view questions? If set to no, some other settings on this page may not apply."
+"No, do not allow questions to be viewed.";"No, do not allow questions to be viewed."
+"Yes, allow viewing of questions.";"Yes, allow viewing of questions."
+"Yes, allow viewing of all questions, even private ones.";"Yes, allow viewing of all questions, even private ones."
+
+"Allow Deletion of Questions?";"Allow Deletion of Questions?"
+"ANSWER_FORM_ADMIN_LEVEL_DELETE_DESCRIPTION";"Do you want to let members delete questions? If set to no, some other settings on this page may not apply."
+"No, do not allow members to delete their questions.";"No, do not allow members to delete their questions."
+"Yes, allow members to delete their own questions.";"Yes, allow members to delete their own questions."
+"Yes, allow members to delete all questions.";"Yes, allow members to delete all questions."
+
+"Allow Questions?";"Allow Questions?"
+"Do you want to allow members to create questions?";"Do you want to allow members to create questions?"
+"No, do not allow this member level to create questions";"No, do not allow this member level to create questions"
+"Yes, allow this member level to create questions";"Yes, allow this member level to create questions"
+
+"Question Privacy";"Question Privacy"
+"ANSWER_FORM_ADMIN_LEVEL_AUTHVIEW_DESCRIPTION";"Your members can choose from any of the options checked below when they decide who can see their question. If you do not check any options, everyone will be allowed to view questions."
+
+"Question Comment Options";"Question Comment Options"
+"ANSWER_FORM_ADMIN_LEVEL_AUTHCOMMENT_DESCRIPTION";"Your members can choose from any of the options checked below when they decide who can post comments on their question. If you do not check any options, everyone will be allowed to post comments on the question."
+
+"These settings affect all members in your community.";"These settings affect all members in your community."
+
+"Public Permissions";"Public Permissions"
+"ANSWER_FORM_ADMIN_GLOBAL_ANSWERPUBLIC_DESCRIPTION";"Select whether or not you want to let the public (visitors that are not logged-in) to view the following sections of your social network. In some cases (such as Profiles, Blogs, and Albums), if you have given them the option, your users will be able to make their pages private even though you have made them publically viewable here. For more permissions settings, please visit the General Settings page."
+"Yes, the public can view questions unless they are made private.";"Yes, the public can view questions unless they are made private."
+"No, the public cannot view questions.";"No, the public cannot view questions."
+
+"Questions Per Page";"Questions Per Page"
+"How many questions will be shown per page? (Enter a number between 1 and 999)";"How many questions will be shown per page? (Enter a number between 1 and 999)"
+
+"Delete Question?";"Delete Question?"
+"Are you sure that you want to delete this question? It will not be recoverable after being deleted.";"Are you sure that you want to delete this question? It will not be recoverable after being deleted."
+
+"ANSWER_VIEWS_SCRIPTS_ADMINMANAGE_INDEX_DESCRIPTION";"This page lists all of the questions your users have posted. You can use this page to monitor these questions and delete offensive material if necessary."
+"There are no questions created yet.";"There are no questions created yet."
+
+"ANSWER_VIEW_SCRIPTS_ADMINSETTINGS_CATEGORIES_DESCRIPTION";"If you want to allow your users to categorize their answer entries, create the categories below. This feature is useful if you want to list all your users' answer entries that If you have no categories, your users will not be given the option of assigning a answer category."
+
+"Your question has been deleted.";"Your question has been deleted."
+"A maximum of %s options are permitted.";"A maximum of %s options are permitted."
+"Are you sure that you want to delete this Question? This action cannot be undone.";"Are you sure that you want to delete this Question? This action cannot be undone."
+"Change Vote?";"Change Vote?"
+"Do you want to permit your members to change their vote?";"Do you want to permit your members to change their vote?"
+"Yes, members can change their vote.";"Yes, members can change their vote."
+"No, members cannot change their vote.";"No, members cannot change their vote."
