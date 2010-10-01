@@ -312,7 +312,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{
-				$return .= $subcategory->category_id.','.$subcategory->category_name.';';
+				$return .= $subcategory->category_id.'~'.$subcategory->category_name.';';
 			}
 		}
 		echo $return;
