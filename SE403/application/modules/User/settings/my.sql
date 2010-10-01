@@ -328,7 +328,34 @@ INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body
 ('tagged', 'user', '{item:$subject} tagged you in a {item:$object:$label}.', 0, '')
 ;
 
+insert into `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) values
+('commented_recipe','recipe','{item:$subject} has commented on a {item:$object:recipe} you commented on.','0',''),
+('comment_recipe','recipe','{item:$subject} has commented on your {item:$object:recipe}.','0',''),
+('like_recipe','recipe','{item:$subject} likes your {item:$object:recipe}.','0',''),
+('liked_recipe','recipe','{item:$subject} has commented on a {item:$object:recipe} you liked.','0',''),
 
+('commented_blog','blog','{item:$subject} has commented on a {item:$object:blog} you commented on.','0',''),
+('comment_blog','blog','{item:$subject} has commented on your {item:$object:blog}.','0',''),
+('like_blog','blog','{item:$subject} likes your {item:$object:blog}.','0',''),
+('liked_blog','blog','{item:$subject} has commented on a {item:$object:blog} you liked.','0',''),
+
+('commented_album','album','{item:$subject} has commented on a {item:$object:album} you commented on.','0',''),
+('comment_album','album','{item:$subject} has commented on your {item:$object:albumg}.','0',''),
+('like_album','album','{item:$subject} likes your {item:$object:album}.','0',''),
+('liked_album','album','{item:$subject} has commented on a {item:$object:album} you liked.','0',''),
+('commented_album_photo','album','{item:$subject} has commented on a {item:$object:album} you commented on.','0',''),
+('comment_album_photo','album','{item:$subject} has commented on your {item:$object:albumg}.','0',''),
+('like_album_photo','album','{item:$subject} likes your {item:$object:album}.','0',''),
+('liked_album_photo','album','{item:$subject} has commented on a {item:$object:album} you liked.','0',''),
+
+('commented_poll','poll','{item:$subject} has commented on a {item:$object:poll} you commented on.','0',''),
+('comment_poll','poll','{item:$subject} has commented on your {item:$object:poll}.','0',''),
+('like_poll','poll','{item:$subject} likes your {item:$object:pollg}.','0',''),
+('liked_poll','poll','{item:$subject} has commented on a {item:$object:poll} you liked.','0',''),
+
+
+('answer_answer','answer','{item:$subject} answered your {item:$object:answerg}.','0',''),
+('answered_answer','answer','{item:$subject} has answered on a {item:$object:answer} you answered.','0','');
 -- --------------------------------------------------------
 
 --
