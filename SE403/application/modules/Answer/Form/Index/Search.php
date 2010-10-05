@@ -49,7 +49,7 @@ class Answer_Form_Index_Search extends Engine_Form
 			
 		));
 
-		$categories_prepared[0]= "";
+		$categories_prepared[0]= "All Categories";
 		// prepare categories
 		$categories = Engine_Api::_()->answer()->getCategories();
 		if (count($categories)!=0){

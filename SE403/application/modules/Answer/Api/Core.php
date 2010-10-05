@@ -64,7 +64,7 @@ class Answer_Api_Core extends Core_Api_Abstract
 			// but since we do, we must do the following join:
 			if ('popular' != $search) {
 				$select
-				->where("`title` LIKE ? ", $search)
+				->where("`title` LIKE ? OR `description` LIKE ?", $search)
 				->group("answer_id");
 			} else
 			$select->where("`title` LIKE ? ", $search);

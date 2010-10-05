@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 
+ALTER TABLE engine4_answer_answers ADD FULLTEXT(title, description);
+
 DROP TABLE IF EXISTS `engine4_answer_posts`;
 CREATE TABLE IF NOT EXISTS `engine4_answer_posts` (
   `post_id` int(11) unsigned NOT NULL auto_increment,

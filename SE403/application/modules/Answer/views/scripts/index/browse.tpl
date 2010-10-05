@@ -27,7 +27,7 @@
   <?php if (0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
-        <?php echo $this->translate('There are no questionss yet.') ?>
+        <?php echo $this->translate('There are no questions yet.') ?>
         <?php if ($this->can_create): ?>
         <?php echo $this->translate('Why don\'t you %1$screate one%2$s', '<a href="'.$this->url(array(), 'answer_create').'">', '</a>') ?>
         <?php endif; ?>
