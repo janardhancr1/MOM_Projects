@@ -304,7 +304,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 
 	public function subcatsAction()
 	{
-		$return = '0,;';
+		$return = '0~;';
 		$catid = $this->_getParam('cat_id', null);
 		if($catid)
 		{

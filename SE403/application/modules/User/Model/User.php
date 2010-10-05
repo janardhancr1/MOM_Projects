@@ -34,7 +34,10 @@ class User_Model_User extends Core_Model_Item_Abstract
     //  return $translate->translate('You');
     //}
     if( isset($this->displayname) && '' !== trim($this->displayname) ) {
-      return $this->displayname;
+      if(strpos($this->displayname, ' ')>0)
+      		return substr($this->displayname, 0, strpos($this->displayname, ' '));
+      	else
+      		return $this->displayname;
     } else if( isset($this->username) && '' !== trim($this->username) ) {
       return $this->username;
     } else {
