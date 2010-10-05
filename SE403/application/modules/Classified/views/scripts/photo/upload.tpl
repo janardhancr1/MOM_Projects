@@ -21,7 +21,7 @@
     <?php echo $this->translate('Add New Photos');?>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds/manage'>Back to My Classifieds</a></div>
 	</div>
-    <div class="smallheadline"><?php echo $this->translate('Choose photos on your computer to add to this classified listing. (2MB maximum)');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Choose photos on your computer to add to this classified listing. (4MB maximum)');?></div>
 </div>
 <div style='padding-top:20px;padding-right:10px;width:690px'>
 
