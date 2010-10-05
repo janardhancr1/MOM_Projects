@@ -44,7 +44,7 @@ class Recipe_Form_Index_Search extends Engine_Form
     
   $categories = Engine_Api::_()->recipe()->getCategories();
 		if (count($categories)!=0){
-			$categories_prepared[0]= "";
+			$categories_prepared[0]= "All Categories";
 			foreach ($categories as $category){
 					$categories_prepared[$category->category_id]= $category->category_name;
 			}

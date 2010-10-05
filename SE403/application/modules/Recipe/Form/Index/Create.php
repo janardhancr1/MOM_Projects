@@ -74,6 +74,7 @@ class Recipe_Form_Index_Create extends Engine_Form
       
     $this->addElement('text', 'recipe_prep_tm', array(
         'label' => 'Preparation Time',
+    	'description' => '(ie. 10 Mins)',
         'maxlength' => 100,
         'filters' => array(
           'StripTags',
@@ -81,9 +82,11 @@ class Recipe_Form_Index_Create extends Engine_Form
           new Engine_Filter_StringLength(array('max' => '100'))
         ),
       ));
+      $this->recipe_prep_tm->getDecorator('Description')->setOption('placement', 'append');
       
     $this->addElement('text', 'recipe_cook_tm', array(
         'label' => 'Cooking Time',
+    'description' => '(ie. 10 Mins)',
         'maxlength' => 100,
         'filters' => array(
           'StripTags',
@@ -91,6 +94,8 @@ class Recipe_Form_Index_Create extends Engine_Form
           new Engine_Filter_StringLength(array('max' => '100'))
         ),
       ));
+       $this->recipe_cook_tm->getDecorator('Description')->setOption('placement', 'append');
+       
     $this->addElement('text', 'recipe_serve_to', array(
         'label' => 'How many people does it serve?',
         'maxlength' => 100,
@@ -111,21 +116,25 @@ class Recipe_Form_Index_Create extends Engine_Form
     
     $this->addElement('textarea', 'recipe_ingredients', array(
         'label' => 'Ingredients',
+    	'description' => '(List each ingredient on a separate line)',
         'required' => true,
         'filters' => array(
           'StripTags',
           new Engine_Filter_Censor(),
         ),
       ));
+       $this->recipe_ingredients->getDecorator('Description')->setOption('placement', 'append');
       
     $this->addElement('textarea', 'recipe_method', array(
         'label' => 'Method',
+    	'description' => '(List each step on a separate line)',
         'required' => true,
         'filters' => array(
           'StripTags',
           new Engine_Filter_Censor(),
         ),
       ));
+       $this->recipe_method->getDecorator('Description')->setOption('placement', 'append');
       
        $this->addElement('checkbox', 'recipe_vege', array(
         'label' => 'Suitable for vegetarians?',
