@@ -98,7 +98,7 @@
       <span>
         <?php echo $this->translate('Nobody has written a blog entry with that criteria.');?>
         <?php if (TRUE): // @todo check if user is allowed to create a poll ?>
-          <?php echo $this->translate('Be the first to %1$swrite%2$s one!', '<a href="'.$this->url(array(), 'blog_create').'">', '</a>'); ?>
+          <?php echo $this->translate('Be the first to %1$swrite%2$s one!', '<a href="'.$this->url(array(), 'blog_general').'">', '</a>'); ?>
         <?php endif; ?>
       </span>
     </div>
