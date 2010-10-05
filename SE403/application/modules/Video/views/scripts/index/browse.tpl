@@ -50,7 +50,7 @@
 	<img src='./application/modules/Video/externals/images/video_video48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <?php echo $this->translate('Videos ');?></div>
-    <div class="smallheadline"><?php echo $this->translate('Create, share and view videos from moms everywhere!');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Share and view videos from moms everywhere!');?></div>
 </div>
 <div>
 <?php echo $this->form->render($this) ?>
