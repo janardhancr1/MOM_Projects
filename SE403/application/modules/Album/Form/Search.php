@@ -43,7 +43,7 @@ class Album_Form_Search extends Engine_Form
     // prepare categories
     $categories = Engine_Api::_()->album()->getCategories();
     if (count($categories)!=0){
-      $categories_prepared[0]= "";
+      $categories_prepared[0]= "All Categories";
       foreach ($categories as $category){
         $categories_prepared[$category->category_id]= $category->category_name;
       }
