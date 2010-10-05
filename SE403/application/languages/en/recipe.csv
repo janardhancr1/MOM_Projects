@@ -50,7 +50,7 @@
 "ACTIVITY_TYPE_LIKED_RECIPE";"When someone comments on a recipe I liked."
 "ACTIVITY_TYPE_COMMENTED_RECIPE";"When someone comments on a recipe I commented on."
 
-
+"ITEM_TYPE_RECIPE";"Recipes"
 "RECIPE_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
 
 Allow Viewing of Recipes

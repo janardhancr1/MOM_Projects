@@ -48,6 +48,8 @@
 "ACTIVITY_TYPE_ANSWER_ANSWER";"When someone answered one of my questions."
 "ACTIVITY_TYPE_ANSWERED_ANSWER";"When someone answered on a question I answered."
 
+"ITEM_TYPE_ANSWER";"Answer"
+
 "ANSWER_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
 
 Allow Viewing of Questions
