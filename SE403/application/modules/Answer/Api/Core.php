@@ -58,16 +58,29 @@ class Answer_Api_Core extends Core_Api_Abstract
 		}
 
 		if (!empty($params['search'])) {
-			$search = "%{$params['search']}%";
+			
+			$search1 = explode(" ",$params['search']);
+			$count = count($search1);
+			$search = "";
+			for($i=0; $i<$count;$i++)
+			{
+				$search .= "`title` LIKE '%".$search1[$i]."%' OR `description` LIKE '%".$search1[$i]."%'";
+				if ( end($search1) != $search1[$i] ) 
+					$search .= " OR ";
+      		}
+			
+			
+			//$search = "%{$params['search']}%";
 			// if we do not need to search the Options table, we could just do this:
 			// ->where("`title` LIKE ? OR `description` LIKE ?", $search);
 			// but since we do, we must do the following join:
-			if ('popular' != $search) {
+			//if ('popular' != $search) {
 				$select
-				->where("`title` LIKE ? OR `description` LIKE ?", $search)
+				->where($search)
 				->group("answer_id");
-			} else
-			$select->where("`title` LIKE ? ", $search);
+			//} else
+			//$select->where("`title` LIKE ? ", $search);
+			
 		}
 		if (!empty($params['category']))
 		{

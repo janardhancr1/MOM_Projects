@@ -69,6 +69,8 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 			{
 				// Populate subcategories
 				$_SESSION['catid'] = $values['category'];
+				$form->subcategory->clearMultiOptions();
+		        $form->subcategory->addMultiOption("0", "");
 				$this->view->subcategories = $subcategories = Engine_Api::_()->classified()->getSubCategories($values['category']);
 				if(count($subcategories)>0 && $values['category'] != "0")
 				{
