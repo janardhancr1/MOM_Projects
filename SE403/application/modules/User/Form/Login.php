@@ -24,13 +24,17 @@ class User_Form_Login extends Engine_Form
     $description= sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
 
     // Init form
-    $this->setTitle('Please sign in to continue.');
+    //$this->setTitle('Sign In:');
     //$this->setDescription($description);
-    $this->setAttrib('id', 'user_form_login');
+    //$this->setAttrib('id', 'user_form_login');
     $this->setAttrib('class', 'global_form1');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 
+    $this->addElement('Dummy', 'header', array(
+      'label' => 'Sign In:',
+    ));
+    
     $email = Zend_Registry::get('Zend_Translate')->_('Email Address');
     // Init email
     $this->addElement('Text', 'email', array(
@@ -111,8 +115,9 @@ class User_Form_Login extends Engine_Form
     // Init facebook login link
     if ('none' != $settings->getSetting('core_facebook_enable', 'none') && $settings->core_facebook_secret) {
       $this->addElement('Dummy', 'facebook', array(
-        'label' => 'Login using your favourite social network:',
+        'label' => 'Have Facebook? Click here to login:',
         'content' => User_Model_DbTable_Facebook::loginButton(),
+        'order' => -1,
       ));
     }
 

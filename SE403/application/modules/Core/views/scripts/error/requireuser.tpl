@@ -10,7 +10,7 @@
  * @author     John
  */
 ?>
-<div style='float: left; width: 600px; padding: 0px 10px 0px 10px;'>
+<div style='float: left; width: 570px; padding: 0px 10px 0px 10px;'>
 	<div class='mom_tag_line'>
 		<center>
 			<?php echo $this->translate('A unique, safe and rewarding place <br> for Moms to stay connected'); ?> 
@@ -22,7 +22,7 @@
 		<img src='./application/modules/Core/externals/images/momshomeimage.gif' border='0' alt='' />
 	</div>
 </div>
-<div style='float: left; width: 365px;padding-right:10px'>
+<div style='float: left; width: 395px;padding-right:10px'>
 <?php
   if( $this->form ):
     echo $this->form->render($this);
@@ -31,11 +31,11 @@
   endif;
 ?>
 <div>
-	<div class='mom_socail_line' style='float:left;padding-top:10px;margin-left:10px'>
+	<!--<div class='mom_socail_line' style='float:left;padding-top:10px;margin-left:10px'>
 		 <center>
 		 or
 		 </center>
-	</div>
+	</div>-->
 	<div class='mom_join' style='float:left'>
 		 <center>
 		 	<a class="join_link" href='index.php/signup'><?php echo $this->translate('Join Momburbia Today'); ?> </a>
@@ -60,8 +60,8 @@
  	<img src='./application/modules/Core/externals/images/home_bullet.gif' border='0' alt='' />&nbsp;
 	Buy and sell items from trusted moms 
  </div>
- <div class='mom_nosocail_line'>
+<!-- <div class='mom_nosocail_line'>
  	<img src='./application/modules/Core/externals/images/home_bullet.gif' border='0' alt='' />&nbsp;
 	Check daily for recipes posted by top mom chefs 
- </div>
+ </div>-->
 </div>

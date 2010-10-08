@@ -105,10 +105,51 @@ login form.
 	padding-top:4px;
 	vertical-align: middle;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 18px;
 }
 
+#header-label
+{
+	font-size: 18px;
+	font-weight: normal;
+}
 
+#remember-wrapper
+{
+	width: 190px;
+	float:left;	
+}
+
+#remember-label 
+{
+	padding-top: 5px;
+	min-width : 55px;
+}
+
+#remember-element 
+{
+	min-width : 120px;
+	padding-top: 5px;
+	font-weight: normal;
+}
+
+#submit-wrapper
+{
+	width: 160px;
+	float:left;	
+}
+
+#submit-label
+{
+	min-width : 2px;
+	padding:0px;
+}
+
+#submit-element
+{
+	min-width : 120px;
+	font-weight: normal;
+}
 
 
 /*
@@ -1302,7 +1343,7 @@ ul.notifications_menu > li > span > a
 
 .mom_tag_line
 {
-	padding-bottom: 10px;
+	padding-top: 10px;
 	font-family: Georgia, "Trebuchet MS", arial, serif;
 	font-size: 22px;
 	color: #999999;
@@ -1318,7 +1359,7 @@ ul.notifications_menu > li > span > a
 
 .mom_nosocail_line
 {
-	padding-bottom: 5px;
+	padding-bottom: 7px;
 	font-family: Georgia, "Trebuchet MS", arial, serif;
 	font-size: 12px;
 	color: #50626E;
@@ -1330,13 +1371,14 @@ ul.notifications_menu > li > span > a
 	width: 264px;
 	height: 30px;
 	padding-top: 10px;
-	margin-left: 20px;
+	margin-left: 0px;
 	font-family: Georgia, "Trebuchet MS", arial, serif;
 	font-size: 18px;
 	color: #fff;
 }
 a.join_link:link {
 	color: #fff;
+	font-weight: bold;
 }
 
 a.join_link:hover {
