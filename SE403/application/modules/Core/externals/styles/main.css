@@ -133,19 +133,19 @@ login form.
 	font-weight: normal;
 }
 
-#submit-wrapper
+.global_form1 #submit-wrapper
 {
 	width: 160px;
 	float:left;	
 }
 
-#submit-label
+.global_form1 #submit-label
 {
 	min-width : 2px;
 	padding:0px;
 }
 
-#submit-element
+.global_form1 #submit-element
 {
 	min-width : 120px;
 	font-weight: normal;
