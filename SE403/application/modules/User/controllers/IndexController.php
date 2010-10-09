@@ -71,7 +71,7 @@ class User_IndexController extends Core_Controller_Action_Standard
 				$mail->setSubject($subject . ' - ' .$vuser->username);
 				$mail->setBodyText($body);
 
-				//$mail->send();
+				$mail->send();
 
 				$inviteForm->addNotice(Zend_Registry::get('Zend_Translate')->_('Your invite has been sent to your friends'));
 				$inviteForm->clearElements();
