@@ -116,7 +116,7 @@ login form.
 
 #remember-wrapper
 {
-	width: 190px;
+	width: 185px;
 	float:left;	
 }
 
@@ -128,14 +128,19 @@ login form.
 
 #remember-element 
 {
-	min-width : 120px;
-	padding-top: 5px;
+	min-width : 115px;
+	padding-top: 8px;
 	font-weight: normal;
+}
+
+#forgot-element a
+{
+	color: #777777;	
 }
 
 .global_form1 #submit-wrapper
 {
-	width: 160px;
+	width: 170px;
 	float:left;	
 }
 

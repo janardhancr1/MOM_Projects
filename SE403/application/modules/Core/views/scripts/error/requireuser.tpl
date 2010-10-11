@@ -22,7 +22,7 @@
 		<img src='./application/modules/Core/externals/images/momshomeimage.gif' border='0' alt='' />
 	</div>
 </div>
-<div style='float: left; width: 395px;padding-right:10px'>
+<div style='float: left; width: 400px;padding-right:5px'>
 <?php
   if( $this->form ):
     echo $this->form->render($this);
