@@ -438,6 +438,14 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     } else {
       $this->view->permission = false;
     }
+    $this->view->status = true;
+    $this->view->message = Zend_Registry::get('Zend_Translate')->_('Recipe has been deleted.');
+    return $this->_forward('success' ,'utility', 'core', array(
+      'parentRedirect' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array('action' => 'manage'), 'recipe_manage', true),
+      'smoothboxClose' => true,
+      'parentRefresh' => true,
+      'messages' => Array($this->view->message)
+    ));
   }
 
   public function dlistAction()
