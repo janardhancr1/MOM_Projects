@@ -56,18 +56,29 @@ CREATE TABLE `engine4_blog_categories` (
 --
 
 INSERT IGNORE INTO `engine4_blog_categories` (`category_id`, `user_id`, `category_name`) VALUES
-(1, 1, 'Arts & Culture'),
-(2, 1, 'Business'),
-(3, 1, 'Entertainment'),
-(5, 1, 'Family & Home'),
-(6, 1, 'Health'),
-(7, 1, 'Recreation'),
-(8, 1, 'Personal'),
-(9, 1, 'Shopping'),
-(10, 1, 'Society'),
-(11, 1, 'Sports'),
-(12, 1, 'Technology'),
-(13, 1, 'Other');
+(1, 1, 'Contests'),
+(2, 1, 'Cooking, Baking & Food'),
+(3, 1, 'Culture and Heritage'),
+(4, 1, 'Current Events & Politics'),
+(5, 1, 'Entertainment & Pop Culture'),
+(6, 1, 'Family & Work Life'),
+(7, 1, 'Fashion, Beauty & Style'),
+(8, 1, 'Gardening'),
+(9, 1, 'Health & Wellness'),
+(10, 1, 'Hobbies & Crafts'),
+(11, 1, 'Home Improvement & Decor'),
+(12, 1, 'Military Moms'),
+(13, 1, 'Money & Finance'),
+(14, 1, 'My Local Area'),
+(15, 1, 'Parenting'),
+(16, 1, 'Pets & Animals'),
+(17, 1, 'Pregnancy and Trying to Conceive'),
+(18, 1, 'Relationships'),
+(19, 1, 'Religion and Spirituality'),
+(20, 1, 'Schools & Education'),
+(21, 1, 'Shopping'),
+(22, 1, 'Sports & Recreation'),
+(23, 1, 'Other');
 
 
 -- --------------------------------------------------------

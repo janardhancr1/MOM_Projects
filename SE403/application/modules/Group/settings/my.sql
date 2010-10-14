@@ -54,24 +54,31 @@ CREATE TABLE IF NOT EXISTS `engine4_group_categories` (
 --
 
 INSERT IGNORE INTO `engine4_group_categories` (`title`) VALUES
-('Animals'),
-('Business & Finance'),
-('Computers & Internet'),
-('Cultures & Community'),
-('Dating & Relationships'),
-('Entertainment & Arts'),
-('Family & Home'),
-('Games'),
-('Government & Politics'),
+('Contests'),
+('Cooking, Baking & Food'),
+('Culture and Heritage'),
+('Current Events & Politics'),
+('Entertainment & Pop Culture'),
+('Family & Work Life'),
+('Fashion, Beauty & Style'),
+('Gardening'),
 ('Health & Wellness'),
 ('Hobbies & Crafts'),
-('Music'),
-('Recreation & Sports'),
-('Regional'),
-('Religion & Beliefs'),
+('Home Improvement & Decor'),
+('Military Moms'),
+('Money & Finance'),
+('Moms my Age'),
+('My Child`s Age'),
+('Money & Finance'),
+('Parenting'),
+('Pets & Animals'),
+('Pregnancy and Trying to Conceive'),
+('Relationships'),
+('Religion and Spirituality'),
 ('Schools & Education'),
-('Science')
-;
+('Shopping'),
+('Sports & Recreation'),
+('Other');
 
 
 -- --------------------------------------------------------
