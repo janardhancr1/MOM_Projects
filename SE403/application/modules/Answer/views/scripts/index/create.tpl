@@ -38,12 +38,12 @@
       },
       'onSuccess' : function(responseJSON, responseText)
       {
-      	$('parent_cat_id').empty();
+      	$('sub_cat_id').empty();
       	var subcats = responseText.split(';');
       	for(var i=0; i<subcats.length-1; i++)
       	{
       		var subcat = subcats[i].split('~');
-      		$('parent_cat_id').options[i] = new Option(subcat[1], subcat[0]);
+      		$('sub_cat_id').options[i] = new Option(subcat[1], subcat[0]);
       	}
       	//document.getElementById('parent_cat_id').innerHTML = responseText;
       }
