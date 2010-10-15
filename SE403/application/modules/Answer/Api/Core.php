@@ -128,7 +128,7 @@ class Answer_Api_Core extends Core_Api_Abstract
 	 */
 	public function getSubCategories($id)
 	{
-		return $this->api()->getDbtable('categories', 'answer')->fetchAll('parent_cat_id=' . $id, 'category_name');
+		return $this->api()->getDbtable('categories', 'answer')->fetchAll('parent_cat_id=' . $id);
 	}
 
 	/**
