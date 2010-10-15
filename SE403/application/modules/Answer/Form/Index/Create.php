@@ -48,10 +48,10 @@ class Answer_Form_Index_Create extends Engine_Form
 		if (count($categories)!=0){
 			$categories_prepared[0]= "";
 			foreach ($categories as $category){
-				if($category->parent_cat_id == 0)
-				{
+				//if($category->parent_cat_id == 0)
+				//{
 					$categories_prepared[$category->category_id]= $category->category_name;
-				}
+				//}
 			}
 
 			// category field
@@ -64,7 +64,7 @@ class Answer_Form_Index_Create extends Engine_Form
 		}
 
 		$sub_prepared[0]= "";
-		if($_SESSION['catid'])
+		if(isset($_SESSION['catid']))
 		{
 			$catid = $_SESSION['catid'];
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
