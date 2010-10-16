@@ -63,6 +63,7 @@ class Blog_Form_Search extends Engine_Form
 
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
+      'style' => 'width:150px',
       'multiOptions' => array(
         '0' => 'All Categories',
       ),

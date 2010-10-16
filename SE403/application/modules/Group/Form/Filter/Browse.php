@@ -32,6 +32,7 @@ class Group_Form_Filter_Browse extends Engine_Form
     
     $this->addElement('Select', 'category_id', array(
       'label' => 'Category:',
+      'style' => 'width:200px',
       'multiOptions' => array(
         '' => 'All Categories',
       ),
