@@ -102,7 +102,6 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		if( !$this->_helper->requireUser()->isValid() ) return;
 		if( !$this->_helper->requireAuth()->setAuthParams('answer', null, 'create')->isValid()) return;
 		
-		$_SESSION['catid'] = null;
 		$this->view->form = new Answer_Form_Index_Create();
 		if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
 			$db = Engine_Api::_()->getDbTable('answers', 'answer')->getAdapter();
