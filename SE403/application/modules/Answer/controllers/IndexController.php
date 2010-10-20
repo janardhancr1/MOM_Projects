@@ -232,6 +232,8 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
 
 			$db = Engine_Api::_()->getDbTable('posts', 'answer')->getAdapter();
+			$subject = Engine_Api::_()->core()->getSubject();
+			$viewer = Engine_Api::_()->user()->getViewer();
 			$db->beginTransaction();
 			try {
 				$post_id    = $this->view->form->save($answer_id);
@@ -241,7 +243,16 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 
 				$row        = Engine_Api::_()->getItem('answer', $post_id);
 				//$attachment = Engine_Api::_()->getItem($row->getType(), $post_id);
-
+				
+				// Add notification
+		      $subjectOwner = $subject->getOwner();
+		      if( $subjectOwner->getType() == 'user' && $subjectOwner->getIdentity() != $viewer->getIdentity() )
+		      {
+		        $notifyApi = Engine_Api::_()->getDbtable('notifications', 'activity');
+		        $notifyApi->addNotification($subjectOwner, $viewer, $subject, 'answer_answer', array(
+		          'label' => $subject->getShortType()
+		        ));
+		      }
 				$db->commit();
 			}
 			catch (Exception $e) {
