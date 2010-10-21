@@ -246,6 +246,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				
 				// Add notification
 		      $subjectOwner = $subject->getOwner();
+		      
 		      if( $subjectOwner->getType() == 'user' && $subjectOwner->getIdentity() != $viewer->getIdentity() )
 		      {
 		        $notifyApi = Engine_Api::_()->getDbtable('notifications', 'activity');
