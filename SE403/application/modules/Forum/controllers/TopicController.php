@@ -237,19 +237,6 @@ class Forum_TopicController extends Core_Controller_Action_Standard
         $db->commit();
         $this->view->post_id = $post_id = $post->getIdentity();
         $form = $this->view->form = new Forum_Form_Post_Quick(array('topic_id'=>$topic->getIdentity()));
-        
-        $subject = Engine_Api::_()->core()->getSubject();
-		$viewer = Engine_Api::_()->user()->getViewer();
-      	// Add notification
-      	$subjectOwner = $subject->getOwner();
-      	if( $subjectOwner->getType() == 'user' && $subjectOwner->getIdentity() != $viewer->getIdentity() )
-      	{
-        	$notifyApi = Engine_Api::_()->getDbtable('notifications', 'activity');
-        	$notifyApi->addNotification($subjectOwner, $viewer, $subject, 'forum_reply', array(
-          	'label' => $subject->getShortType()
-        	));
-      	}
-
       }
       catch( Exception $e )
       {
