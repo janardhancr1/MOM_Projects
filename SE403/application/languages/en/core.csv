@@ -981,6 +981,63 @@ http://[host][object_link]
 Best Regards,
 Momburbia Team"
 
+# notify_answer
+
+"_EMAIL_NOTIFY_ANSWER_ANSWER_TITLE";"Answer"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_DESCRIPTION";"This email is sent to someone when a answer is made on their question.
+<br />
+<br />
+Available placeholders:
+<br />
+[recipient_title], [sender_title], [host], [object_link]"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_SUBJECT";"New Answer on Post"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_BODY";"Hello [recipient_title],
+
+A new answer has been posted on one of your questions by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+Best Regards,
+Momburbia Team"
+
+# notify_answer
+
+"_EMAIL_NOTIFY_GROUP_APPROVE_TITLE";"Answer"
+"_EMAIL_NOTIFY_GROUP_APPROVE_DESCRIPTION";"This email is sent to someone reduested tot jin a group.
+<br />
+<br />
+Available placeholders:
+<br />
+[recipient_title], [sender_title], [host], [object_link]"
+"_EMAIL_NOTIFY_GROUP_APPROVE_SUBJECT";"New Answer on Post"
+"_EMAIL_NOTIFY_GROUP_APPROVE_BODY";"Hello [recipient_title],
+
+[sender_title]. requested to join a group. Please click the following link to view it:
+
+http://[host][object_link]
+
+Best Regards,
+Momburbia Team"
+
+# notify_forum
+
+"_EMAIL_NOTIFY_FORUM_REPLY_TITLE";"Forum"
+"_EMAIL_NOTIFY_FORUM_REPLY_DESCRIPTION";"This email is sent to someone when a reply is made on their forum topic.
+<br />
+<br />
+Available placeholders:
+<br />
+[recipient_title], [sender_title], [host], [object_link]"
+"_EMAIL_NOTIFY_FORUM_REPLY_SUBJECT";"New Reply on Forum Topic"
+"_EMAIL_NOTIFY_FORUM_REPLY_BODY";"Hello [recipient_title],
+
+A new reply has been posted on one of your forum topic by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+Best Regards,
+Momburbia Team"
+
 # notify_commented_commented
 "_EMAIL_NOTIFY_COMMENTED_COMMENTED_TITLE";"Also Commented"
 "_EMAIL_NOTIFY_COMMENTED_COMMENTED_DESCRIPTION";"This email is sent to the member when someone comments on a post the member has commented on.

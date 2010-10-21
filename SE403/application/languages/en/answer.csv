@@ -100,3 +100,22 @@ Allow Viewing of Questions
 "Do you want to permit your members to change their vote?";"Do you want to permit your members to change their vote?"
 "Yes, members can change their vote.";"Yes, members can change their vote."
 "No, members cannot change their vote.";"No, members cannot change their vote."
+
+# notify_answer
+
+"_EMAIL_NOTIFY_ANSWER_ANSWER_TITLE";"Answer"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_DESCRIPTION";"This email is sent to someone when a answer is made on their question.
+<br />
+<br />
+Available placeholders:
+<br />
+[recipient_title], [sender_title], [host], [object_link]"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_SUBJECT";"New Answer on Post"
+"_EMAIL_NOTIFY_ANSWER_ANSWER_BODY";"Hello [recipient_title],
+
+A new answer has been posted on one of your questions by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+Best Regards,
+Momburbia Team"
