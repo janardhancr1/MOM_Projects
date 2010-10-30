@@ -1,0 +1,46 @@
+2010-10-29T11:51:06+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireAdmin failed check for: core.admin-index.index
+2010-10-29T11:51:06+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.admin-index.index
+2010-10-29T11:51:06+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.error.requireuser
+2010-10-30T07:31:17+00:00 ERR (3): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Table 'momse405.engine4_core_modules' doesn't exist' in E:\MOM\SE405\application\libraries\Zend\Db\Adapter\Mysqli.php:204
+Stack trace:
+#0 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(823): Zend_Db_Adapter_Mysqli->describeTable('engine4_core_mo...', NULL)
+#1 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(866): Zend_Db_Table_Abstract->_setupMetadata()
+#2 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(973): Zend_Db_Table_Abstract->_setupPrimaryKey()
+#3 E:\MOM\SE405\application\libraries\Zend\Db\Table\Select.php(100): Zend_Db_Table_Abstract->info()
+#4 E:\MOM\SE405\application\libraries\Zend\Db\Table\Select.php(78): Zend_Db_Table_Select->setTable(Object(Core_Model_DbTable_Modules))
+#5 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(1009): Zend_Db_Table_Select->__construct(Object(Core_Model_DbTable_Modules))
+#6 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(1307): Zend_Db_Table_Abstract->select()
+#7 E:\MOM\SE405\application\modules\Core\Model\DbTable\Modules.php(43): Zend_Db_Table_Abstract->fetchAll()
+#8 E:\MOM\SE405\application\modules\Core\Model\DbTable\Modules.php(78): Core_Model_DbTable_Modules->getModules()
+#9 E:\MOM\SE405\application\modules\Core\Bootstrap.php(250): Core_Model_DbTable_Modules->getEnabledModuleNames()
+#10 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(256): Core_Bootstrap->_initFrontControllerModules()
+#11 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(207): Engine_Application_Bootstrap_Abstract->_executeResource('frontcontroller...')
+#12 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(150): Engine_Application_Bootstrap_Abstract->_bootstrap(NULL)
+#13 E:\MOM\SE405\application\libraries\Engine\Application.php(88): Engine_Application_Bootstrap_Abstract->bootstrap(NULL)
+#14 E:\MOM\SE405\application\index.php(186): Engine_Application->bootstrap()
+#15 E:\MOM\SE405\index.php(15): include('E:\MOM\SE405\ap...')
+#16 {main}
+2010-10-30T07:31:25+00:00 ERR (3): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Table 'momse405.engine4_core_modules' doesn't exist' in E:\MOM\SE405\application\libraries\Zend\Db\Adapter\Mysqli.php:204
+Stack trace:
+#0 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(823): Zend_Db_Adapter_Mysqli->describeTable('engine4_core_mo...', NULL)
+#1 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(866): Zend_Db_Table_Abstract->_setupMetadata()
+#2 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(973): Zend_Db_Table_Abstract->_setupPrimaryKey()
+#3 E:\MOM\SE405\application\libraries\Zend\Db\Table\Select.php(100): Zend_Db_Table_Abstract->info()
+#4 E:\MOM\SE405\application\libraries\Zend\Db\Table\Select.php(78): Zend_Db_Table_Select->setTable(Object(Core_Model_DbTable_Modules))
+#5 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(1009): Zend_Db_Table_Select->__construct(Object(Core_Model_DbTable_Modules))
+#6 E:\MOM\SE405\application\libraries\Zend\Db\Table\Abstract.php(1307): Zend_Db_Table_Abstract->select()
+#7 E:\MOM\SE405\application\modules\Core\Model\DbTable\Modules.php(43): Zend_Db_Table_Abstract->fetchAll()
+#8 E:\MOM\SE405\application\modules\Core\Model\DbTable\Modules.php(78): Core_Model_DbTable_Modules->getModules()
+#9 E:\MOM\SE405\application\modules\Core\Bootstrap.php(250): Core_Model_DbTable_Modules->getEnabledModuleNames()
+#10 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(256): Core_Bootstrap->_initFrontControllerModules()
+#11 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(207): Engine_Application_Bootstrap_Abstract->_executeResource('frontcontroller...')
+#12 E:\MOM\SE405\application\libraries\Engine\Application\Bootstrap\Abstract.php(150): Engine_Application_Bootstrap_Abstract->_bootstrap(NULL)
+#13 E:\MOM\SE405\application\libraries\Engine\Application.php(88): Engine_Application_Bootstrap_Abstract->bootstrap(NULL)
+#14 E:\MOM\SE405\application\index.php(186): Engine_Application->bootstrap()
+#15 E:\MOM\SE405\index.php(15): include('E:\MOM\SE405\ap...')
+#16 {main}
+2010-10-30T07:34:17+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireAdmin failed check for: core.admin-index.index
+2010-10-30T07:34:17+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.admin-index.index
+2010-10-30T07:34:17+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: core.error.requireuser
+2010-10-30T07:47:25+00:00 DEBUG (7): Require class Authorization_Controller_Action_Helper_RequireAuth failed check for: blog.index.index
+2010-10-30T07:50:05+00:00 DEBUG (7): Require class Core_Controller_Action_Helper_RequireUser failed check for: group.index.create
