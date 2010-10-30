@@ -10,14 +10,12 @@ html
 {
   min-height: 100%;
   margin-bottom: 1px;
-  /* overflow-x: hidden; */
   overflow-y: scroll;
 }
 body
 {
-  background-color: $theme_body_background_color;
-  overflow-x: hidden;
-}
+  background: url(~/application/modules/Core/externals/images/bg.gif) repeat scroll 0 0 #FFF;
+ }
 *
 {
   padding: 0;
@@ -80,13 +78,13 @@ h4
 h2
 {
   font-size: $theme_headline_size_large;
-  letter-spacing: -1px;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 h3
 {
   font-size: $theme_headline_size_medium;
-  letter-spacing: -1px;
+  font-weight: normal;
 }
 h4
 {
@@ -120,10 +118,6 @@ h3.sep > span
   padding: 5px 10px 5px 0px;
   font-weight: bold;
 }
-html[dir="rtl"] h3.sep > span
-{
-  padding: 5px 0px 5px 10px;
-}
 
 
 
@@ -133,6 +127,9 @@ GENERAL LAYOUT
 */
 .generic_layout_container h3
 {
+  border-bottom:1px solid $theme_border_color;
+  color:#D60077;
+  padding: 5px;
   margin-bottom: 6px;
 }
 
@@ -140,22 +137,15 @@ GENERAL LAYOUT
 {
   float: left;
   width: $theme_content_columns_left_width;
-  padding: 0px 15px 0px 0px;
+  padding: 1px;
   vertical-align: top;
-  margin-right: 5px;
-}
-html[dir="rtl"] .layout_left
-{
-  float: right;
-  padding: 0px 0px 0px 15px;
   margin-right: 0px;
-  margin-left: 5px;
 }
 
 .layout_middle
 {
-  overflow: hidden;
-  padding: 0px 0px 0px 0px;
+  overflow:hidden;
+  padding: 0px 5px 0px 5px;
   vertical-align: top;
 }
 
@@ -163,48 +153,55 @@ html[dir="rtl"] .layout_left
 {
   float: right;
   width: $theme_content_columns_right_width;
-  padding: 0px 0px 10px 15px;
+  padding: 0px;
   vertical-align: top;
-  margin-left: 5px;
-}
-html[dir="rtl"] .layout_right
-{
-  float: left;
-  padding: 0px 15px 10px 0px;
   margin-left: 0px;
-  margin-right: 5px;
 }
 
 #global_wrapper
 {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 #global_content
 {
   width: $theme_content_width;
   margin: 0px auto 0px auto;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
   overflow: hidden;
-  min-height: 500px;
+  min-height: 300px;
+  width:996px;
 }
 #global_content_simple
 {
   display: inline-block;
 }
 
+/* Ad Campaign */
+.layout_core_ad_campaign
+{
+	float:right;
+	padding:2px;
+	background-color: #fff;
+	height: 100%;
+}
+
 /* Header */
 .layout_page_header
 {
-  background-color: $theme_topbar_background_color;
+  /*background-color: $theme_topbar_background_color;*/
   text-align: center;
   padding: 0px;
   clear: both;
-  border-bottom: $theme_topbar_border;
+  /*border-bottom: $theme_topbar_border;*/
   background-image: url(~/application/themes/default/images/topbar_bg.png);
   background-repeat: no-repeat;
   background-position: top center;
-  -moz-box-shadow: 0px 3px 3px #ddd;
+  /*-moz-box-shadow: 0px 3px 3px #ddd;*/
 }
 .layout_page_header .layout_main
 {
@@ -222,14 +219,13 @@ html[dir="rtl"] .layout_right
 }
 .layout_page_footer .layout_main
 {
-  +rounded;
-  +foreground;
   width: $theme_footer_width;
-  margin: 20px auto 0px auto;
+  margin: 0px auto 10px auto;
+  background-color:#fff;
   text-align: left;
   overflow: hidden;
-  margin-top: 40px;
-  padding: 10px;
+  margin-top: 0px;
+  width:1000px;
 }
 .layout_page_footer select
 {
@@ -239,6 +235,13 @@ html[dir="rtl"] .layout_right
 {
   font-size: .8em;
   color: $theme_font_color_light;
+  padding:4px;
+  text-align: right;
+}
+
+.layout_core_menu_footer a
+{
+  color: #BEB800;
 }
 
 
@@ -255,30 +258,29 @@ MAIN MENU WIDGET
   background-color: $theme_topbar_menu_background_color;
   background-image: url(~/application/themes/default/images/topbar_menu_bg.png);
   background-repeat: repeat-x;
-  border: $theme_topbar_menu_border;
+  /*border: $theme_topbar_menu_border;*/
   border-left: none;
   border-right: none;
+  width:1000px;
 }
 .layout_core_menu_main ul
 {
   width: $theme_topbar_menu_width;
   margin: 0px auto 0px auto;
-  padding: 0px;
+  padding-left: 5px;
   white-space: nowrap;
   overflow: hidden;
 }
 .layout_core_menu_main li
 {
+  +rounded(4px, false, false, true, true);
   float: left;
   font-size: $theme_topbar_menu_link_size;
-  font-weight: bold;
-  margin-right: 15px;
-}
-html[dir="rtl"] .layout_core_menu_main li
-{
-  float: right;
-  margin-right: 0px;
-  margin-left: 15px;
+  background-color: $theme_mom_color;
+  /*font-weight: bold;*/
+  margin-right: 1px;
+  padding-left:10px;
+  padding-right:10px;
 }
 .layout_core_menu_main li:hover
 {
@@ -317,50 +319,35 @@ Shows the mini menu and search widget
 .layout_core_menu_mini
 {
   width: $theme_topbar_minimenu_width;
-  margin: 0px auto 0px auto;
+  margin: 0px 2px 0px auto;
   overflow: hidden;
+  background-color:#fff;
 }
 .layout_core_menu_mini > div > ul
 {
-  +rounded(4px, true, true, false, false);
+  /*+rounded(4px, true, true, false, false);
+  background: $theme_topbar_minimenu_background_color;
+  border: $theme_topbar_minimenu_border;*/
   float: right;
   overflow: hidden;
-  background: $theme_topbar_minimenu_background_color;
-  padding: .5em;
-  border: $theme_topbar_minimenu_border;
+  padding: 0px;
   border-top: none;
-}
-html[dir="rtl"] .layout_core_menu_mini > div > ul
-{
-  float: left;
 }
 .layout_core_menu_mini > div > ul > li
 {
   float: left;
   overflow: hidden;
 }
-html[dir="rtl"] .layout_core_menu_mini > div > ul > li
-{
-  float: right;
-}
 .layout_core_menu_mini > div > ul > li + li
 {
   margin-left: 3px;
 }
-html[dir="rtl"] .layout_core_menu_mini > div > ul > li + li
-{
-  margin-left: 0px;
-  margin-right: 3px;
-}
 .layout_core_menu_mini #core_menu_mini_menu
 {
-  padding: 0px 0px 5px 10px;
+  margin: 10px 0px 5px 0px;
   font-size: $theme_topbar_minimenu_link_size;
   overflow: hidden;
-}
-html[dir="rtl"] .layout_core_menu_mini #core_menu_mini_menu
-{
-  padding: 0px 10px 5px 0px;
+  background-color: #D60077;
 }
 .layout_core_menu_mini #core_menu_mini_menu > ul > li > a
 {
@@ -368,12 +355,12 @@ html[dir="rtl"] .layout_core_menu_mini #core_menu_mini_menu
   color: $theme_topbar_minimenu_link_color;
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .layout_core_menu_mini #core_menu_mini_menu > ul > li > a:hover
 {
-  +rounded(3px);
-  background: $theme_topbar_minimenu_link_hover_background_color;
+  /*+rounded(3px);
+  background: $theme_topbar_minimenu_link_hover_background_color;*/
   color: $theme_topbar_minimenu_link_hover_color;
   text-decoration: $theme_topbar_minimenu_link_hover_decoration;
 }
@@ -389,8 +376,8 @@ html[dir="rtl"] .layout_core_menu_mini #core_menu_mini_menu
 }
 #core_menu_mini_menu #global_search_form
 {
-  padding: 1px 0px;
-  margin-left: 10px;
+  padding: 2px 2px 0px 2px;
+  margin-left: 5px;
 }
 #core_menu_mini_menu #global_search_field
 {
@@ -418,10 +405,13 @@ SITE LOGO WIDGET
   width: $theme_topbar_logo_width;
   font-size: 23pt;
   font-weight: bold;
-  margin: 0px auto 10px auto;
+  margin: 0px auto 0px auto;
+  padding: 10px 2px 2px 2px;
   text-align: left;
   letter-spacing: -2px;
   overflow: hidden;
+  background-color:#fff;
+  float:left;
 }
 
 
@@ -442,18 +432,13 @@ usually above content, not within a form.
   display: inline-block;
   background-repeat: no-repeat;
   background-position: 6px 6px;
-  padding: 6px 6px 6px 27px;
+  padding: 6px;
+  padding-left: 27px;
   background-color: #faf6e4;
   float: left;
   margin-bottom: 15px;
   background-image: url(~/application/modules/Core/externals/images/tip.png);
-  border: 1px solid #e4dfc6;
-}
-html[dir="rtl"] .tip > span
-{
-  background-position: 99% 50%;
-  padding: 6px 27px 6px 6px;
-  float: right;
+  border: 1px solid #747474;
 }
 
 
@@ -479,22 +464,15 @@ ul.form-notices > li
 {
   +rounded;
   margin: 7px 5px 7px 5px;
-  padding: 5px 15px 5px 32px;
+  padding: 5px;
+  padding-left: 32px;
+  padding-right: 15px;
   background-repeat: no-repeat;
   background-position: 8px 5px;
   float: left;
   clear: left;
   overflow: hidden;
   border: 1px solid #ccc;
-}
-
-html[dir="rtl"] ul.form-errors > li,
-html[dir="rtl"] ul.form-notices > li
-{
-  padding: 5px 32px 5px 15px;
-  background-position: 98% 5px;
-  float: right;
-  clear: right;
 }
 ul.form-errors > li > b,
 ul.form-notices > li > b
@@ -521,6 +499,22 @@ ul.form-notices > li {
 GLOBAL FORM ELEMENTS
 Used for most forms throughout the site.
 */
+
+.buttonlabel
+{
+  +rounded;
+  margin-top:10px;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  background-color: $theme_button_background_color;
+  border: 1px solid $theme_button_border_color;
+  color: $theme_button_font_color;
+  background-image: url(~/application/modules/Core/externals/images/buttonbg.png);
+  background-repeat: repeat-x;
+  background-position: 0px 1px;
+  width: 130px;
+}
 button
 {
   +rounded;
@@ -563,12 +557,6 @@ input[type=radio]
   display: block;
   float: left;
 }
-html[dir="rtl"] input[type=checkbox],
-html[dir="rtl"] input[type=radio]
-{
-  margin: 2px 0px 0px 5px;
-  float: right;
-}
 input[type=checkbox] + label,
 input[type=radio] + label
 {
@@ -593,35 +581,21 @@ select
   color: $theme_input_font_color;
   border-width: 1px;
   border-color: $theme_input_border_colors;
-  padding: 1px 0px 1px 1px;
+  padding: 1px;
+  padding-right: 0px;
   font-size: 10pt;
   max-width: 250px;
-}
-html[dir="rtl"] select
-{
-  padding: 1px 1px 1px 0px;
 }
 select option
 {
   padding: 0px 10px 0px 3px;
-}
-html[dir="rtl"] select option
-{
-  padding: 0px 3px 0px 10px;
 }
 a.buttonlink
 {
   background-repeat: no-repeat;
   background-position: 0px 0px;
   padding-left: 21px;
-  font-weight: bold;
   display: inline-block;
-}
-html[dir="rtl"] a.buttonlink
-{
-  background-position: top right;
-  padding-left: 0px;
-  padding-right: 21px;
 }
 a.buttonlink_right
 {
@@ -631,17 +605,17 @@ a.buttonlink_right
   font-weight: bold;
   display: inline-block;
 }
-html[dir="rtl"] a.buttonlink_right
-{
-  background-position: top left;
-  padding-right: 0px;
-  padding-left: 19px;
-}
-br.multi-text-separator
-{
-  margin-bottom: 8px;
-}
 
+div.button
+{
+	background:none repeat scroll 0 0 #FFFFFF;
+	border-color:#DDDDDD;
+	border-style:solid;
+	border-width:1px 1px 1px 5px;
+	padding:7px 8px 7px 6px;
+	text-align:left;
+	float:right;
+}
 
 /*
 LARGE BOX FORM
@@ -655,6 +629,14 @@ Examples: Signup form, member settings form, etc.
   clear: both;
   overflow: hidden;
 }
+
+/* form container */
+.global_form1
+{
+  clear: both;
+  overflow: hidden;
+  width: 390px;
+}
 /* external form border */
 .global_form > div
 {
@@ -662,17 +644,21 @@ Examples: Signup form, member settings form, etc.
   overflow: hidden;
   margin: 0px auto 0px auto;
 }
-html[dir="rtl"] .global_form > div
-{
-  float: right;
-}
 /* internal form border */
 .global_form > div > div
 {
   +rounded(8px);
-  border: 5px solid $theme_form_border_color;
+  border: 1px solid $theme_form_border_color;
   padding: 12px 12px 12px 12px;
-  background-color: $theme_form_background_color;
+  background-color: #FFFFFF;
+}
+
+.global_form1 > div > div
+{
+  +rounded(8px);
+  border: 1px solid $theme_form_border_color;
+  padding: 12px 12px 12px 12px;
+  background-color: #FFFFFF;
 }
 /* form headline */
 .global_form div.form-wrapper-heading
@@ -689,10 +675,6 @@ html[dir="rtl"] .global_form > div
   overflow: hidden;
   padding: 4px 6px 4px 0px;
   background: $theme_form_background_color;
-}
-html[dir="rtl"] .global_form div.form-wrapper-heading > span
-{
-  padding: 4px 0px 4px 6px;
 }
 .global_form div.form-wrapper + div.form-wrapper-heading
 {
@@ -722,6 +704,13 @@ html[dir="rtl"] .global_form div.form-wrapper-heading > span
   clear: both;
   overflow: hidden;
 }
+
+.global_form1 div.form-wrapper
+{
+  overflow: hidden;
+  padding: 2px;
+}
+
 /* left-side element label container */
 .global_form div.form-label
 {
@@ -736,13 +725,20 @@ html[dir="rtl"] .global_form div.form-wrapper-heading > span
   font-weight: bold;
   color: $theme_form_label_font_color;
 }
-html[dir="rtl"] .global_form div.form-label
+
+/* left-side element label container */
+.global_form1 div.form-label
 {
-  text-align: left;
-  padding: 4px 2px 0px 15px;
-  float: right;
-  clear: right;
+  min-width: 180px;
+  max-width: 600px;
+  text-align: right;
+  padding: 4px 10px 0px 2px;
+  float: left;
+  font-size: .9em;
+  font-weight: normal;
+  color: $theme_form_label_font_color;
 }
+
 /* right-side form element container */
 .global_form div.form-element
 {
@@ -754,11 +750,17 @@ html[dir="rtl"] .global_form div.form-label
   float: left;
   clear: none;
 }
-html[dir="rtl"] .global_form div.form-element
+
+/* right-side form element container */
+.global_form1 div.form-element
 {
-  text-align: right;
-  float: right;
+  min-width: 150px;
+  max-width: 600px;
+  text-align: left;
+  float: left;
+  color: $theme_form_label_font_color;
 }
+
 /* all paragraphs of text in the form */
 .global_form div > p
 {
@@ -769,7 +771,7 @@ html[dir="rtl"] .global_form div.form-element
 .global_form div > input + p
 {
   margin-top: 3px;
-  font-size: 7pt;
+  font-size: 10pt;
 }
 /* all text inputs in form */
 .global_form input[type=text],
@@ -778,6 +780,15 @@ html[dir="rtl"] .global_form div.form-element
   padding: 2px;
   font-size: 10pt;
   width: 200px;
+}
+
+/* all text inputs in form */
+.global_form1 input[type=text],
+.global_form1 input[type=password]
+{
+  padding: 2px;
+  font-size: 10pt;
+  width: 150px;
 }
 /* only for text inputs that come after other text inputs */
 /* i.e. for when there is a vertical list of text inputs */
@@ -792,11 +803,6 @@ html[dir="rtl"] .global_form div.form-element
 {
   clear: left;
 }
-html[dir="rtl"] .global_form input[type=checkbox],
-html[dir="rtl"] .global_form input[type=radio]
-{
-  clear: right;
-}
 /* for clickable labels that appear to the right of elements */
 /* such as checkboxes or radios */
 .global_form input + label
@@ -806,22 +812,13 @@ html[dir="rtl"] .global_form input[type=radio]
   margin-top: 0px;
   margin-left: 2px;
 }
-html[dir="rtl"] .global_form input + label
-{
-  float: right;
-  margin-left: 0px;
-  margin-right: 2px;
-}
 /* all select boxes in form */
 .global_form select
 {
-  padding: 1px 0px 1px 1px;
+  padding: 1px;
+  padding-right: 0px;
   font-size: 10pt;
   max-width: 250px;
-}
-html[dir="rtl"] .global_form select
-{
-  padding: 1px 1px 1px 0px;
 }
 /* all textareas in form */
 .global_form textarea
@@ -843,11 +840,6 @@ html[dir="rtl"] .global_form select
 {
   margin-right: 3px;
 }
-html[dir="rtl"] .global_form button[type=submit]
-{
-  margin-right: 0px;
-  margin-left: 3px;
-}
 
 
 
@@ -862,6 +854,7 @@ index page. Form names and inputs are stacked
 vertically (not floated) to fit into small-width
 content areas.
 */
+
 .global_form_box
 {
   +foreground;
@@ -888,15 +881,187 @@ content areas.
   font-size: .8em;
   margin-bottom: 2px;
 }
-html[dir="rtl"] .global_form_box label
-{
-  text-align: right;
-}
 .global_form_box .form-element
 {
   overflow: hidden;
 }
 
+/*
+Global Serach Box
+Global Serach box at page header
+*/
+
+.global_search_box
+{
+  +foreground;
+  +rounded;
+  width: 670px;
+  overflow: hidden;
+  padding: 5px; 
+}
+
+.global_search_box .form-elements
+{
+	float:left;
+}
+.global_search_box .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+
+.global_search_box .form-wrapper + .form-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  float:left;
+}
+.global_search_box .form-label
+{
+  padding: 3px;
+  width: auto;
+  float: left;
+  margin: 0px;
+}
+.global_search_box label
+{
+  text-align: left;
+  display: block;
+  font-size: .8em;
+  margin-bottom: 2px;
+}
+.global_search_box .form-element
+{
+  float: left;
+  overflow: hidden;
+}
+
+.global_search_box .button
+{
+  float: left;
+}
+
+#my-wrapper 
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 45%;
+  float: left;
+  text-align: right;
+  overflow: hidden;
+}
+
+
+#my-wrapper #my-label
+{
+  float: left;
+}
+
+#my-wrapper #my-element
+{
+  float: left;
+}
+
+#parent_cat_id-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 39%;
+  float: right;
+  text-align: right;
+  overflow: hidden;
+}
+
+
+#parent_cat_id-wrapper #parent_cat_id-label
+{
+  float: left;
+}
+
+#parent_cat_id-wrapper #parent_cat_id-element
+{
+  float: left;
+  width: 150px;
+}
+
+#subcategory-wrapper
+{
+  margin-top:5px;
+  margin-left:10px;
+  padding:5px;
+  width: 35%;
+  float: right;
+  text-align: right;
+  overflow: hidden;
+}
+
+
+#subcategory-wrapper #subcategory-label
+{
+  float: left;
+}
+
+#subcategory-wrapper #subcategory-element
+{
+  float: left;
+  width: 150px;
+}
+
+.my_groups
+{
+	float: right;
+	padding: 0px 40px;
+}
+
+form.global_search_box dl
+{
+	padding: 0px;
+}
+
+form.global_search_box dt
+{
+  padding-top:3px;
+  float:left;
+  margin-left:5px;
+}
+form.global_search_box dd
+{
+  float:left;
+  margin-left:5px;
+}
+
+
+/* NEW */
+
+div.page_header {
+	font-size: 24px;
+	float:left;
+	color: #D60077;
+	padding-bottom: 5px;
+	font-family: Georgia, arial, verdana, serif;
+	width:696px;
+}
+div.page_header_small {
+	font-size: 18px;
+	color: #D60077;
+	margin-bottom: 0px;
+	padding-left: 2px;
+	font-family: Georgia, arial, verdana, serif;
+}
+.icon_big {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+.search_box{
+	/*float: left;*/ 
+	width: 690px; 
+	padding-bottom: 5px;
+}
+/* NEW END */
 
 
 /*
@@ -936,7 +1101,6 @@ form.filters dd
 
 
 
-
 /*
 POPUP FORM
 These are used to style popup (i.e. smoothbox) forms.
@@ -944,25 +1108,16 @@ Also used to style popup response messages, etc.
 */
 .global_form_popup
 {
+  background-color: #fff;
   padding: 10px 10px 10px 13px;
   float: left;
   overflow: hidden;
-}
-html[dir="rtl"] .global_form_popup
-{
-  padding: 10px 13px 10px 10px;
-  float: right;
 }
 .global_form_popup #submit-wrapper,
 .global_form_popup #cancel-wrapper
 {
   float: left;
   overflow: hidden;
-}
-html[dir="rtl"] .global_form_popup #submit-wrapper,
-html[dir="rtl"] .global_form_popup #cancel-wrapper
-{
-  float: right;
 }
 .global_form_popup #buttons-wrapper
 {
@@ -971,11 +1126,6 @@ html[dir="rtl"] .global_form_popup #cancel-wrapper
 .global_form_popup #buttons-wrapper button
 {
   margin-right: 4px;
-}
-html[dir="rtl"] .global_form_popup #buttons-wrapper button
-{
-  margin-right: 0px;
-  margin-left: 4px;
 }
 .global_form_popup_message
 {
@@ -1077,13 +1227,10 @@ Used to style the main search page.
 }
 .search_result .search_title
 {
-  /* font-weight: bold; */
+  font-weight: bold;
   font-size: 1.1em;
 }
-.search_result .highlighted-text
-{
-  font-weight: bold;
-}
+
 
 
 
@@ -1123,23 +1270,10 @@ These styles are used everywhere comments appear.
   font-weight: bold;
   margin-right: 2px;
 }
-html[dir="rtl"] .comments .comments_author a
-{
-  margin-right: 0px;
-  margin-left: 2px;
-}
-html[dir="rtl"] .comments_author
-{
-  float: right;
-}
 .comments .comments_author_photo
 {
   float: left;
   overflow: hidden;
-}
-html[dir="rtl"] .comments .comments_author_photo
-{
-  float: right;
 }
 .comments .comments_author_photo img
 {
@@ -1152,24 +1286,12 @@ html[dir="rtl"] .comments .comments_author_photo
   color: $theme_font_color_light;
   margin-bottom: 6px;
 }
-.comments .comments_comment_options > a
-{
-  font-size: .8em;
-  font-weight: bold;
-  margin-top: 5px;
-  overflow: hidden;
-}
 .comments .comments_info
 {
   font-size: .8em;
   padding-top: 2px;
   padding-left: 5px;
   overflow: hidden;
-}
-html[dir="rtl"] .comments .comments_info
-{
-  padding-left: 0px;
-  padding-right: 5px;
 }
 .comments .comments_date
 {
@@ -1193,12 +1315,9 @@ html[dir="rtl"] .comments .comments_info
   +foreground;
   background-image: none;
   border: none;
-  padding: 5px 10px 5px 5px;
+  padding: 5px;
+  padding-right: 10px;
   border-top: 1px solid $theme_foreground_border_color;
-}
-html[dir="rtl"] .comments > form
-{
-  padding: 5px 5px 5px 10px;
 }
 .comments > form > textarea
 {
@@ -1226,6 +1345,7 @@ Used at the top of most browse pages. Often contains button-style tabs.
   overflow: hidden;
   margin-bottom: 15px;
 }
+
 .headline h2
 {
   float: left;
@@ -1234,12 +1354,35 @@ Used at the top of most browse pages. Often contains button-style tabs.
   margin-bottom: 0px;
   margin-left: 3px;
 }
-html[dir="rtl"] .headline h2
+
+.mainheadline
 {
-  float: right;
-  margin-right: 3px;
-  margin-left: 25px;
+	color: $theme_headline_color;
+	font-size:24px;
 }
+
+.smallheadline
+{
+	color: $theme_headline_color;
+	font-size:16px;
+}
+
+.headline_header
+{
+  padding: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.headline_header h2
+{
+  float: left;
+  overflow: hidden;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  margin-left: 3px;
+}
+
 
 
 
@@ -1253,10 +1396,6 @@ html[dir="rtl"] .headline h2
 {
   float: left;
   overflow: hidden;
-}
-html[dir="rtl"] .tabs > ul li
-{
-  float: right;
 }
 .tabs > ul li > a
 {
@@ -1278,11 +1417,6 @@ html[dir="rtl"] .tabs > ul li
 {
   margin-left: 10px;
 }
-html[dir="rtl"] .tabs > ul li + li
-{
-  margin-left: 0px;
-  margin-right: 10px;
-}
 .tabs > ul li.active > a
 {
   background-color: $theme_buttontabs_background_color_active;
@@ -1290,6 +1424,7 @@ html[dir="rtl"] .tabs > ul li + li
 }
 .tabs > ul li.active > a:hover
 {
+  background-color: $theme_buttontabs_background_color_active;
   text-decoration: none;
 }
 
@@ -1317,11 +1452,6 @@ TABS (TAB STYLE, NON-DEFAULT)
   font-weight: bold;
   border-bottom: 1px solid $theme_tabs_border_color;
   padding: 3px 0px 5px 7px;
-}
-html[dir="rtl"] .tabs_alt > ul
-{
-  text-align: right;
-  padding: 3px 7px 5px 0px;
 }
 .tabs_alt > ul > li
 {
@@ -1355,11 +1485,6 @@ html[dir="rtl"] .tabs_alt > ul
   font-weight: normal;
   margin-left: 4px;
   border: none;
-}
-html[dir="rtl"] .tabs_alt > ul > li > a span
-{
-  margin-left: 0px;
-  margin-right: 4px;
 }
 .tabs_alt > ul > li > a:hover
 {
@@ -1413,10 +1538,6 @@ html[dir="rtl"] .tabs_alt > ul > li > a span
   max-width: 250px;
   -moz-user-select: none;
   -webkit-user-select: none;
-}
-.tab_pulldown_contents > ul > li.active
-{
-  background-color: $theme_pulldown_contents_list_background_color_active;
 }
 .tab_pulldown_contents > ul > li + li
 {
@@ -1539,33 +1660,33 @@ as an alternative to regular input select boxes in some places.
   color: $theme_topbar_minimenu_link_color;
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .updates_pulldown > a
 {
   display: block;
-  +rounded(3px);
+  /*+rounded(3px);*/
   font-weight: bold;
   padding: 6px 7px 6px 7px;
-  text-transform: uppercase;
+   /*text-transform: uppercase;*/
   outline: none;
 }
 .updates_pulldown > a.new_updates
 {
-  +rounded(3px);
+  /*+rounded(3px);*/
   background: #f96262;
   color: #fff;
 }
 .updates_pulldown > a.new_updates:hover
 {
-  +rounded(3px);
+  /*+rounded(3px);*/
   background: #e45656;
   color: #fff;
 }
 .updates_pulldown > a:hover
 {
-  +rounded(3px);
-  background: #D7E7F0;
+  /*+rounded(3px);
+  background: #D7E7F0;*/
   color: $theme_topbar_minimenu_link_hover_color;
   text-decoration: $theme_topbar_minimenu_link_hover_decoration;
 }
@@ -1599,20 +1720,15 @@ lists, etc. Each tag has its own remove link.
   margin: 0px 10px 5px 0px;
   font-size: .8em;
 }
-html[dir="rtl"] .tag
-{
-  float: right;
-  margin: 0px 0px 5px 10px;
-}
 .tag > a
 {
   text-decoration: none;
   padding-left: 6px;
   text-transform: uppercase;
 }
-html[dir="rtl"] .tag > a
+
+.red_bar
 {
-  float: left;
-  padding-left: 0px;
-  padding-right: 6px;
+   background:none repeat scroll 0 0 #D60077;
+   height:25px;
 }
