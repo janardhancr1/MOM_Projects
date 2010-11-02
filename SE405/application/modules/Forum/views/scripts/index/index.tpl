@@ -10,10 +10,16 @@
  * @author     John
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
-<h2>
-  <?php echo $this->translate('Forums') ?>
-</h2>
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Forum/externals/images/forum_forum16_1.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Mom Forums');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Share your opinion on products and services moms use daily');?></div>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:680px'>
 
 <ul class="forum_categories">
 
@@ -80,4 +86,6 @@
 
 <?php endforeach;?>
 </ul>
+</div>
+</div>
 

@@ -84,31 +84,28 @@ class Fields_Form_Search extends Engine_Form
     $this->generate();
   }
 
-  public function generate()
+public function generate()
   {
     // get the search structure
-    $structure = Engine_Api::_()->getApi('core', 'fields')->getFieldsStructureSearch($this->_fieldType, $this->_topLevelId, $this->_topLevelValue);
-
-    $globalOrderIndex = 100;
-    $normalOrderIndex = 1000;
+    $structure = Engine_Api::_()->getApi('core', 'fields')->getFieldsStructureSearch($this->_fieldType);
 
     // Start firing away
-    foreach( $structure as $map ) {
+    $index = 0;
+    foreach( $structure as $map )
+    {
       $field = $map->getChild();
+      $index++;
 
       // Ignore fields not searchable (even though getFieldsStructureSearch should have skipped it already)
-      if( !$field->search ) {
+      if( !$field->search )
+      {
         continue;
       }
 
-      $isGlobal = ( $map->field_id == 0
-          || $field->search == 2
-          || ($map->field_id == $this->_topLevelId && $map->option_id == $this->_topLevelValue) );
-
       // Get search key
       $key = null;
-      if( !empty($field->alias) ) {
-        $key = $field->alias;
+      if( !empty( $field->alias) ) {
+        $key =  $field->alias;
       } else {
         $key = sprintf('field_%d', $field->field_id);
       }
@@ -116,20 +113,9 @@ class Fields_Form_Search extends Engine_Form
       // Get params
       $params = $field->getElementParams($this->_fieldType, array('required' => false));
 
-      // Add attribs
       if( !@is_array($params['options']['attribs']) ) {
         $params['options']['attribs'] = array();
       }
-      $params['options']['attribs']['class'] =
-        'field_toggle' . ' ' .
-        'parent_' . $map->field_id . ' ' .
-        'option_' . $map->option_id . ' ' .
-        'field_'  . $map->child_id  . ' ';
-      if( $isGlobal ) {
-        $params['options']['attribs']['class'] .= ' field_toggle_nohide';
-      }
-      $params['options']['attribs']['onchange'] = 'changeFields();';
-      //$params['options']['attribs']['id'] = $map->getKey();
 
       // Remove some stuff
       unset($params['options']['required']);
@@ -140,15 +126,9 @@ class Fields_Form_Search extends Engine_Form
       $params['options']['decorators'] = array(
         'ViewHelper',
         array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li', 'style' => ( !$isGlobal ? 'display:none;' : '') ))
+        array('HtmlTag', array('tag' => 'li'))
       );
-
-      // Change order
-      if( $isGlobal ) {
-        $params['options']['order'] = $globalOrderIndex++;
-      } else {
-        $params['options']['order'] = $normalOrderIndex++;
-      }
+      $params['options']['order'] = $index;
 
       // Get generic type
       $info = Engine_Api::_()->fields()->getFieldInfo($field->type);
@@ -159,17 +139,15 @@ class Fields_Form_Search extends Engine_Form
         $genericType = $field->type;
       }
       $params['type'] = $genericType; // For now
-      
+
       // Hack birthdate->age
       if( $field->type == 'birthdate' ) {
         $params['type'] = 'Select';
-        $params['options']['label'] = Zend_Registry::get('Zend_Translate')->translate('Age');
-        $params['options']['disableTranslator'] = true;
+        $params['options']['label'] = 'Age';
         $multiOptions = array('' => ' ');
         $min_age = 13;
-        if( isset($field->config['min_age']) ) {
+        if (isset($field->config['min_age']))
           $min_age = $field->config['min_age'];
-        }
         for( $i = $min_age; $i <= 100; $i++ ) {
           $multiOptions[$i] = $i;
         }
@@ -177,21 +155,17 @@ class Fields_Form_Search extends Engine_Form
       }
 
       // Populate country multiOptions
-      if( $field->type == 'country' ) {
-        $locale = Zend_Registry::get('Locale');
-        $territories = Zend_Locale::getTranslationList('territory', $locale, 2);
-        asort($territories);
-        // fixes #1279
-        $params['options']['multiOptions'] = array_merge(array(
-          '' => '',
-        ), $territories);
-      }
+			if( $field->type == 'country' ){
+				$territories = Zend_Locale::getTranslationList('territory', null, 2);
+		    asort($territories);
+				$params['options']['multiOptions'] = $territories;
+			}
 
       // Ignored fields (these are hard-coded)
       if( in_array($field->type, array('profile_type', 'first_name', 'last_name')) ) {
         continue;
       }
-
+      
       // Hacks
       switch( $genericType ) {
         // Ranges
@@ -206,7 +180,7 @@ class Fields_Form_Search extends Engine_Form
             'decorators' => array(
               'FormElements',
               array('Description', array('placement' => 'PREPEND', 'tag' => 'span')),
-              array('HtmlTag', array('tag' => 'li', 'class' => 'browse-range-wrapper', 'style' => ( !$isGlobal ? 'display:none;' : '')))
+              array('HtmlTag', array('tag' => 'li', 'class' => 'browse-range-wrapper'))
             )
           ));
           Fields_Form_Standard::enableForm($subform);
@@ -225,24 +199,14 @@ class Fields_Form_Search extends Engine_Form
         case 'radio':
         case 'multiselect':
         case 'multi_checkbox':
-          // Ignore if there is only one/zero option?
-          if( count(@$params['options']['multiOptions']) <= 1 && isset($params['options']['multiOptions']['']) ) {
+          // Ignore if there is only one option
+          if( count(@$params['options']['multiOptions']) <= 1 ) {
             continue;
-          } else if( count(@$params['options']['multiOptions']) <= 0 ) {
+          }
+          if( count(@$params['options']['multiOptions']) <= 2 && isset($params['options']['multiOptions']['']) ) {
             continue;
           }
           $this->addElement(Engine_Api::_()->fields()->inflectFieldType($params['type']), $key, $params['options']);
-          break;
-
-        // Checkbox
-        case 'checkbox':
-          $params['options']['uncheckedValue'] = null;
-          $params['options']['decorators'] = array(
-            'ViewHelper',
-            array('Label', array('placement' => 'APPEND', 'tag' => 'label')),
-              array('HtmlTag', array('tag' => 'li', 'class' => 'browse-range-wrapper', 'style' => ( !$isGlobal ? 'display:none;' : '')))
-          );
-          $this->addElement($params['type'], $key, $params['options']);
           break;
 
         // Normal
@@ -250,31 +214,10 @@ class Fields_Form_Search extends Engine_Form
           $this->addElement($params['type'], $key, $params['options']);
           break;
       }
-      
+
       $element = $this->$key;
       //$element = $this->getElement($key);
       $this->_fieldElements[$key] = $element;
     }
-
-
-    // Add a separators?
-    $this->addElement('Heading', 'separator1', array(
-      //'label' => '------',
-      'order' => $globalOrderIndex++,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li', 'class' => 'browse-separator-wrapper'))
-      ),
-    ));
-    $this->addElement('Heading', 'separator2', array(
-      //'label' => '------',
-      'order' => $normalOrderIndex++,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li', 'class' => 'browse-separator-wrapper'))
-      ),
-    ));
   }
 }

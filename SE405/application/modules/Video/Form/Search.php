@@ -34,11 +34,7 @@ class Video_Form_Search extends Engine_Form
       $categories_prepared[$category->category_id] = $category->category_name;
     }
 
-    $this->addElement('Text', 'text', array(
-      'label' => 'Search',
-    ));
-
-    $this->addElement('Hidden', 'tag');
+       $this->addElement('Hidden', 'tag');
 
     $this->addElement('Select', 'orderby', array(
       'label' => 'Browse By',

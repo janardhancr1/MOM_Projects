@@ -10,6 +10,8 @@
  * @author     Sami
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<div class='layout_middle'>
 <script type="text/javascript">
 function showUploader()
 {
@@ -24,3 +26,4 @@ function showUploader()
   &#187 <?php echo $this->translate('Post Reply');?>
 </h2>
 <?php echo $this->form->render($this) ?>
+</div>

@@ -38,8 +38,9 @@ class Poll_IndexController extends Core_Controller_Action_Standard
     $viewer = ( $viewer && $viewer->getIdentity() ? $viewer : null );
     if( !$this->_helper->requireAuth()->setAuthParams($resource, $viewer, 'view')->isValid() ) {
       return;
-       $this->getRightSideContent();
+       
     }
+    $this->getRightSideContent();
   }
 
   public function browseAction()

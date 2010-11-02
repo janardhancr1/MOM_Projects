@@ -25,6 +25,7 @@ class Forum_TopicController extends Core_Controller_Action_Standard
         $topic instanceof Forum_Model_Topic ) {
       Engine_Api::_()->core()->setSubject($topic);
     }
+    $this->getRightSideContent();
   }
 
   public function deleteAction()

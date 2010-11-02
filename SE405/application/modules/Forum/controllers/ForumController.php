@@ -31,6 +31,7 @@ class Forum_ForumController extends Core_Controller_Action_Standard
     {
       Engine_Api::_()->core()->setSubject($category);
     }
+    $this->getRightSideContent();
   }
   
   public function viewAction()

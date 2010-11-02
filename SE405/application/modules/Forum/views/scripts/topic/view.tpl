@@ -10,12 +10,13 @@
  * @author     John
  */
 ?>
-
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<div class='layout_middle'>
 <h2>
 <?php echo $this->htmlLink(array('route'=>'forum_general'), $this->translate("Forums"));?>
   &#187; <?php echo $this->htmlLink(array('route'=>'forum_forum', 'forum_id'=>$this->forum->getIdentity()), $this->forum->getTitle());?>
 </h2>
-
+<div style='padding-top:10px;padding-right:10px;width:680px'>
 <div class="forum_topic_title_wrapper">
   <div class="forum_topic_title_options">
     <?php echo $this->htmlLink($this->forum->getHref(), $this->translate('Back To Topics'), array(
@@ -176,3 +177,5 @@
 <?php if( $this->canPost && $this->form ): ?>
   <?php echo $this->form->render(); ?>
 <?php endif; ?>
+</div>
+</div>

@@ -35,7 +35,7 @@ class Poll_Form_Search extends Engine_Form
       'label' => 'Search Polls:',
     ));
 
-    $this->addElement('Select', 'show', array(
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Polls',
@@ -52,7 +52,7 @@ class Poll_Form_Search extends Engine_Form
         '0' => 'Only Open Polls',
         '1' => 'Only Closed Polls',
       ),
-    ));
+    ));*/
 
     $this->addElement('Select', 'order', array(
       'label' => 'Browse By:',

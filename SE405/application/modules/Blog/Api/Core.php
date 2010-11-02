@@ -108,7 +108,17 @@ class Blog_Api_Core extends Core_Api_Abstract
     // Could we use the search indexer for this?
     if( !empty($params['search']) )
     {
-      $select->where($rName.".title LIKE ? OR ".$rName.".body LIKE ?", '%'.$params['search'].'%');
+     $search1 = explode(" ",$params['search']);
+		$count = count($search1);
+		$search = "";
+		for($i=0; $i<$count;$i++)
+		{
+			$search .= $rName.".title LIKE '%".$search1[$i]."%' OR ".$rName.".body LIKE '%".$search1[$i]."%'";
+			if ( end($search1) != $search1[$i] ) 
+				$search .= " OR ";
+	    }
+    	
+     	$select->where($search);
     }
 
     if( !empty($params['start_date']) )
