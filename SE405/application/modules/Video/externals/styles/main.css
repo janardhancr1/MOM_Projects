@@ -208,8 +208,8 @@ ul.videos_manage .video_info h3
 }
 ul.videos_manage .video_options
 {
-  float: right;
-  width: 120px;
+  float: left;
+  width: auto;
   padding-left: 15px;
 }
 html[dir="rtl"] ul.videos_manage .video_options
@@ -220,7 +220,7 @@ html[dir="rtl"] ul.videos_manage .video_options
 }
 ul.videos_manage .video_options a
 {
-  clear: both;
+  float: left;
   margin: 3px 0px 0px 0px;
   font-size: .8em;
   padding-top: 1px;

@@ -90,18 +90,7 @@
           else echo '<img alt="" src="application/modules/Video/externals/images/video.png">';
         ?>
       </div>
-      <div class='video_options'>
-          <?php echo $this->htmlLink(array('route' => 'video_edit', 'video_id' => $item->video_id), $this->translate('Edit Video'), array(
-            'class' => 'buttonlink icon_video_edit'
-          )) ?>
-          <?php
-          if ($item->status !=2){
-            echo $this->htmlLink(array('route' => 'default', 'module' => 'video', 'controller' => 'index', 'action' => 'delete', 'video_id' => $item->video_id, 'format' => 'smoothbox'), $this->translate('Delete Video'), array(
-              'class' => 'buttonlink smoothbox icon_video_delete'
-            ));
-          }
-          ?>
-      </div>
+      
       <div class="video_info">
         <h3>
           <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
@@ -152,6 +141,18 @@
             </span>
           </div>
         <?php endif;?>
+      </div>
+      <div class='video_options'>
+          <?php echo $this->htmlLink(array('route' => 'video_edit', 'video_id' => $item->video_id), $this->translate('Edit Video'), array(
+            'class' => 'buttonlink icon_video_edit'
+          )) ?>
+          <?php
+          if ($item->status !=2){
+            echo $this->htmlLink(array('route' => 'default', 'module' => 'video', 'controller' => 'index', 'action' => 'delete', 'video_id' => $item->video_id, 'format' => 'smoothbox'), $this->translate('Delete Video'), array(
+              'class' => 'buttonlink smoothbox icon_video_delete'
+            ));
+          }
+          ?>
       </div>
     </li>
     <?php endforeach; ?>
