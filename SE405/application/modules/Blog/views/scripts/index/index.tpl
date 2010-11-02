@@ -17,7 +17,7 @@
     $('filter_form').submit();
   }
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Blogs');?>
@@ -34,7 +34,10 @@
     </div>
   <?php endif; ?>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
 
@@ -50,9 +53,18 @@
     </div>
   <?php endif; ?>
 </div>
-
+-->
 <div class='layout_middle'>
-  
+  <div class="headline_header">
+	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Blogs');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Share your thoughts every day with moms.');?></div>
+</div>
+<div>
+  <?php echo $this->form->render($this) ?>
+</div>
+<div style='padding-top:5px;padding-right:5px;width:680px'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
     <ul class="blogs_browse">
       <?php foreach( $this->paginator as $item ): ?>

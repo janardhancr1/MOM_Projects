@@ -36,8 +36,8 @@ class Event_Form_Create extends Engine_Form
   {
     $user = Engine_Api::_()->user()->getViewer();
 
-    $this->setTitle('Create New Event')
-      ->setAttrib('id', 'event_create_form')
+    //$this->setTitle('Create New Event')
+      $this->setAttrib('id', 'event_create_form')
       ->setMethod("POST")
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
 

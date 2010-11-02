@@ -65,7 +65,7 @@
     //'topLevelValue' => (int) @$this->topLevelValue
   ))
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
@@ -80,7 +80,10 @@
     ?>
   </div>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
 
@@ -96,8 +99,20 @@
     </div>
   <?php endif; ?>
 </div>
+-->
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Classifieds');?>
+	</div>
+    <div class="smallheadline"><?php echo $this->translate('Classified listings are a great way to list something for sale or find items.');?></div>
+</div>
+<div>
+<?php echo $this->form->render($this) ?>
+</div>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( $this->tag ): ?>
     <h3>
       <?php echo $this->translate('Showing classified listings using the tag');?> #<?php echo $this->tag_text;?> <a href="<?php echo $this->url(array('module' => 'classified', 'controller' => 'index', 'action' => 'index'), 'default', true) ?>">(x)</a>
@@ -150,7 +165,7 @@
       <span>
         <?php echo $this->translate('Nobody has posted a classified listing with that criteria.');?>
         <?php if ($this->can_create): ?>
-          <?php echo $this->translate('Be the first to %post%2$s one!', '<a href="'.$this->url(array('action' => 'create'), 'classified_general', true).'">', '</a>'); ?>
+          <?php echo $this->translate('Be the first to %1$spost%2$s one!', '<a href="'.$this->url(array('action' => 'create'), 'classified_general', true).'">', '</a>'); ?>
         <?php endif; ?>
       </span>
     </div>

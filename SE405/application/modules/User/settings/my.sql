@@ -40,7 +40,7 @@ CREATE TABLE `engine4_users` (
   `verified` tinyint(1) NOT NULL default '0',
   `creation_date` datetime NOT NULL,
   `creation_ip` bigint(11) NOT NULL,
-  `modified_date` datetime NOT NULL,
+  `modified_date` datetime NOT NULL default '0000-00-00',
   `lastlogin_date` datetime default NULL,
   `lastlogin_ip` int(11) default NULL,
   `update_date` int(11) default NULL,

@@ -23,7 +23,7 @@
   })
 //]]>
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Photo Albums');?>
@@ -40,7 +40,10 @@
     </div>
   <?php endif; ?>
 </div>
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->search_form->render($this) ?>
 
@@ -56,6 +59,7 @@
     </div>
   <?php endif; ?>
 </div>
+
 
 <div class='layout_middle'>
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
@@ -93,4 +97,63 @@
       </span>
     </div>
   <?php endif; ?>
+</div>
+-->
+
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Photo Albums');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?></div>
+</div>
+<div>
+<?php echo $this->search_form->render($this) ?>
+ <script type="text/javascript">
+  //<![CDATA[
+    $('sort').addEvent('change', function(){
+      $(this).getParent('form').submit();
+    });
+    $('category_id').addEvent('change', function(){
+      $(this).getParent('form').submit();
+    });
+  //]]>
+  </script>
+ </div>
+ <div style='padding-top:20px;padding-right:10px;width:690px'>
+  <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
+
+    <ul class="thumbs">
+      <?php foreach( $this->paginator as $album ): ?>
+        <li>
+          <a class="thumbs_photo" href="<?php echo $album->getHref(); ?>">
+            <span style="background-image: url(<?php echo $album->getPhotoUrl('thumb.normal'); ?>);"></span>
+          </a>
+          <p class="thumbs_info">
+            <span class="thumbs_title">
+              <?php echo $this->htmlLink($album, $this->string()->chunk(substr($album->getTitle(), 0, 45), 10)) ?>
+            </span>
+            <?php echo $this->translate('By');?>
+            <?php echo $this->htmlLink($album->getOwner()->getHref(), $album->getOwner()->getTitle(), array('class' => 'thumbs_author')) ?>
+            <br />
+            <?php echo $this->translate(array('%s photo', '%s photos', $album->count()),$this->locale()->toNumber($album->count())) ?>
+          </p>
+        </li>
+      <?php endforeach;?>
+    </ul>
+<?php if( $this->paginator->count() > 1 ): ?>
+      <br />
+      <?php echo $this->paginationControl($this->paginator, null, null); ?>
+    <?php endif; ?>
+  <?php else: ?>
+    <div class="tip">
+      <span>
+        <?php echo $this->translate('Nobody has created an album yet.');?>
+        <?php if (TRUE): // @todo check if user is allowed to create an album ?>
+          <?php echo $this->translate('Be the first to %1$screate%2$s one!', '<a href="'.$this->url(array('action' => 'upload')).'">', '</a>'); ?>
+        <?php endif; ?>
+      </span>
+    </div>
+  <?php endif; ?>
+ </div>
 </div>

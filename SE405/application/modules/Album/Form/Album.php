@@ -25,8 +25,8 @@ class Album_Form_Album extends Engine_Form
 
     // Init form
     $this
-      ->setTitle('Add New Photos')
-      ->setDescription('Choose photos on your computer to add to this album.')
+      //->setTitle('Add New Photos')
+      //->setDescription('Choose photos on your computer to add to this album.')
       ->setAttrib('id', 'form-upload')
       ->setAttrib('name', 'albums_create')
       ->setAttrib('enctype','multipart/form-data')

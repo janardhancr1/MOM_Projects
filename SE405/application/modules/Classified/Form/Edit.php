@@ -43,5 +43,8 @@ class Classified_Form_Edit extends Classified_Form_Create
       'label' => 'Album Cover',
     ));
     $this->execute->setLabel('Save Changes');
+    
+   
+    
   }
 }

@@ -92,4 +92,111 @@ abstract class Core_Controller_Action_Standard extends Engine_Controller_Action
         break;
     }
   }
+protected function getRightSideContent($adCamp1=2, $adCamp2=3)
+	{
+		$this->view->campaign1 = $campaign1 = Engine_Api::_()->getItem('core_adcampaign', $adCamp1);
+		//print_r($campaign);
+		if($campaign1){
+			$this->view->ad1= $ad1 = $campaign1->getAd();
+			$viewer = Engine_Api::_()->user()->getViewer();
+
+			// check if ad is active
+			if(!$ad1 || !$campaign1->status){
+				$this->_noRender1 = true;
+			}
+			// check if user is the audience
+			else if(!$campaign1->allowedToView($viewer) && !($campaign1->public && !$viewer->getIdentity())){
+				$this->_noRender1 = true;
+			}
+
+			// check if exeeded limits
+			else if($campaign1->checkLimits()){
+				$this->_noRender1 = true;
+			}
+
+			// check if campaign expired
+			else if($campaign1->checkExpired()){
+				$this->_noRender1 = true;
+			}
+
+			// all clear, incremement views and render
+			else{
+				$campaign1->views++;
+				$campaign1->save();
+				$ad1->views++;
+				$ad1->save();
+			}
+		}
+		else {
+			$this->_noRender1 = true;
+		}
+
+		$this->view->campaign2 = $campaign2 = Engine_Api::_()->getItem('core_adcampaign', $adCamp2);
+		//print_r($campaign);
+		if($campaign2){
+			$this->view->ad2= $ad2 = $campaign2->getAd();
+			$viewer = Engine_Api::_()->user()->getViewer();
+
+			// check if ad is active
+			if(!$ad2 || !$campaign2->status){
+				$this->_noRender2 = true;
+			}
+			// check if user is the audience
+			else if(!$campaign2->allowedToView($viewer) && !($campaign2->public && !$viewer->getIdentity())){
+				$this->_noRender2 = true;
+			}
+
+			// check if exeeded limits
+			else if($campaign2->checkLimits()){
+				$this->_noRender2 = true;
+			}
+
+			// check if campaign expired
+			else if($campaign2->checkExpired()){
+				$this->_noRender2 = true;
+			}
+
+			// all clear, incremement views and render
+			else{
+				$campaign2->views++;
+				$campaign2->save();
+				$ad2->views++;
+				$ad2->save();
+			}
+		}
+		else {
+			$this->_noRender2 = true;
+		}
+
+		$table = Engine_Api::_()->getDbtable('users', 'user');
+		$select = $table->select()
+		->where('search = ?', 1)
+		->where('member_count > ?', -1) //0)
+		->order('member_count DESC')
+		->limit(4);
+
+		$popularusers = $table->fetchAll($select);
+			
+		if( count($popularusers) < 1 )
+		{
+			return $this->setNoRender();
+		}
+
+		$this->view->popularusers = $popularusers;
+			
+		$table = Engine_Api::_()->getDbtable('users', 'user');
+		$select = $table->select()
+		->where('search = ?', 1)
+		->order('creation_date DESC')
+		->limit(4);
+
+		$users = $table->fetchAll($select);
+
+		if( count($users) < 1 )
+		{
+			return $this->setNoRender();
+		}
+
+		$this->view->users = $users;
+	}
 }

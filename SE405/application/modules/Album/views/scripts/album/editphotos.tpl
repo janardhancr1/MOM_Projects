@@ -10,7 +10,8 @@
  * @author     Sami
  */
 ?>
-
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?> 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Photo Albums');?>
@@ -25,12 +26,24 @@
     ?>
   </div>
 </div>
+-->
 
 <div class="layout_middle">
+<div class="headline_header">
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->htmlLink($this->album->getHref(), $this->album->getTitle()) ?> (<?php echo $this->translate(array('%s photo', '%s photos', $this->album->count()),$this->locale()->toNumber($this->album->count())) ?>)
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums/manage'>Back to My Albums</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Choose title and description for this album');?></div>
+</div>
+<div>
+<!--
 <h3>
   <?php echo $this->htmlLink($this->album->getHref(), $this->album->getTitle()) ?>
   (<?php echo $this->translate(array('%s photo', '%s photos', $this->album->count()),$this->locale()->toNumber($this->album->count())) ?>)
 </h3>
+-->
 
 <?php if( $this->paginator->count() > 0 ): ?>
   <br />

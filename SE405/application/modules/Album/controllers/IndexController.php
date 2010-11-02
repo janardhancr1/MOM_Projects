@@ -18,6 +18,11 @@
  */
 class Album_IndexController extends Core_Controller_Action_Standard
 {
+  public function init()
+  {
+	if( !$this->_helper->requireUser()->isValid() ) return;
+	$this->getRightSideContent();
+  }
   public function browseAction()
   {
     if( !$this->_helper->requireAuth()->setAuthParams('album', null, 'view')->isValid() ) return;

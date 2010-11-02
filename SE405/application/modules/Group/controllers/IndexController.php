@@ -35,6 +35,7 @@ class Group_IndexController extends Core_Controller_Action_Standard
         Engine_Api::_()->core()->setSubject($group);
       }
     }
+    $this->getRightSideContent();
   }
 
   public function browseAction()

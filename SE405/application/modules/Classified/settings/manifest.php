@@ -101,7 +101,14 @@ return array(
         'action' => '(delete|edit|close|success)',
       ),
     ),
-
+'classified_create' => array(
+      'route' => 'classifieds/create',
+      'defaults' => array(
+        'module' => 'classified',
+        'controller' => 'index',
+        'action' => 'create'
+      )
+    ),
 
     // Public
     'classified_view' => array(

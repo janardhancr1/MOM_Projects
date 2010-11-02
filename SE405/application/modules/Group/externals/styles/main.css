@@ -88,9 +88,9 @@ ul.groups_browse .groups_desc
 }
 ul.groups_browse .groups_options
 {
-  float: right;
+  float: left;
   overflow: hidden;
-  width: 120px;
+  width: auto;
   padding-left: 15px;
 }
 html[dir="rtl"] ul.groups_browse .groups_options
@@ -101,7 +101,7 @@ html[dir="rtl"] ul.groups_browse .groups_options
 }
 ul.groups_browse .groups_options a
 {
-  clear: both;
+  float: left;
   margin: 3px 0px 0px 0px;
   font-size: .8em;
   padding-top: 1px;

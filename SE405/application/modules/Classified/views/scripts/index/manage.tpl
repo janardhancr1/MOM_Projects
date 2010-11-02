@@ -30,7 +30,7 @@
     });
   });
 </script>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
@@ -45,7 +45,9 @@
     ?>
   </div>
 </div>
-
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
 
@@ -61,8 +63,24 @@
     </div>
   <?php endif; ?>
 </div>
-
+-->
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Classified Listings');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds'>Back to Classifieds</a></div>
+	</div>
+    <div class="smallheadline"><?php echo $this->translate('Post your listing and check back regularly for responses.');?></div>
+</div>
+<div>
+   <ul>
+      <li>
+        <a href='<?php echo $this->url(array(), 'classified_create', true) ?>' class='buttonlink icon_classified_new'><?php echo $this->translate('Post New Listing');?></a>
+      </li>
+    </ul>
+  </div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
     <div class="tip">
       <span>
@@ -77,6 +95,30 @@
         <li>
           <div class='classifieds_browse_photo'>
             <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.normal')) ?>
+          </div>
+          
+          <div class='classifieds_browse_info'>
+            <div class='classifieds_browse_info_title'>
+              <h3>
+                <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
+                <?php if( $item->closed ): ?>
+                  <img alt="close" src='application/modules/Classified/externals/images/close.png'/>
+                <?php endif;?>
+              </h3>
+            </div>
+            <div class='classifieds_browse_info_date'>
+              <?php echo $this->timestamp(strtotime($item->creation_date)) ?>
+              -
+              <?php echo $this->translate('posted by');?> <?php echo $this->htmlLink($item->getOwner()->getHref(), $item->getOwner()->getTitle()) ?>
+            </div>
+            <div class='classifieds_browse_info_blurb'>
+              <?php $fieldStructure = Engine_Api::_()->fields()->getFieldsStructurePartial($item)?>
+              <?php echo $this->fieldValueLoop($item, $fieldStructure) ?>
+              <?php
+                // Not mbstring compat
+                echo substr(strip_tags($item->body), 0, 350); if (strlen($item->body)>349) echo "...";
+              ?>
+            </div>
           </div>
           <div class='classifieds_browse_options'>
             <?php echo $this->htmlLink(array(
@@ -125,29 +167,6 @@
               'class' => 'buttonlink icon_classified_delete'
             )) ?>
           </div>
-          <div class='classifieds_browse_info'>
-            <div class='classifieds_browse_info_title'>
-              <h3>
-                <?php echo $this->htmlLink($item->getHref(), $item->getTitle()) ?>
-                <?php if( $item->closed ): ?>
-                  <img alt="close" src='application/modules/Classified/externals/images/close.png'/>
-                <?php endif;?>
-              </h3>
-            </div>
-            <div class='classifieds_browse_info_date'>
-              <?php echo $this->timestamp(strtotime($item->creation_date)) ?>
-              -
-              <?php echo $this->translate('posted by');?> <?php echo $this->htmlLink($item->getOwner()->getHref(), $item->getOwner()->getTitle()) ?>
-            </div>
-            <div class='classifieds_browse_info_blurb'>
-              <?php $fieldStructure = Engine_Api::_()->fields()->getFieldsStructurePartial($item)?>
-              <?php echo $this->fieldValueLoop($item, $fieldStructure) ?>
-              <?php
-                // Not mbstring compat
-                echo substr(strip_tags($item->body), 0, 350); if (strlen($item->body)>349) echo "...";
-              ?>
-            </div>
-          </div>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -169,4 +188,5 @@
     </div>
   <?php endif; ?>
   <?php echo $this->paginationControl($this->paginator, null, array("pagination/pagination.tpl","classified")); ?>
+</div>
 </div>

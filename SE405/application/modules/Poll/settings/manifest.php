@@ -87,6 +87,15 @@ return array(
         'action' => '(index|browse|manage|create|vote)',
       ),
     ),
+    // User
+    'poll_create' => array(
+      'route' => 'polls/create',
+      'defaults' => array(
+        'module' => 'poll',
+        'controller' => 'index',
+        'action' => 'create'
+      )
+    ),
     'poll_specific' => array(
       'route' => 'polls/:action/:poll_id/*',
       'defaults' => array(

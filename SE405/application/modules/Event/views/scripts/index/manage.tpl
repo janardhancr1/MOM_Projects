@@ -11,6 +11,7 @@
  */
 ?>
 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Events');?>
@@ -25,9 +26,30 @@
     ?>
   </div>
 </div>
+-->
 
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Events');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/events'>Back to Events</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Below are all of the events that you\'ve created or been invited to.');?></div>
+</div>
+<div>
+    <ul>
+      <li>
+        <?php echo $this->htmlLink(array('route' => 'event_general', 'action' => 'create'), $this->translate('Create New Event'), array(
+          'class' => 'buttonlink icon_photos_new'
+        )) ?>
+      </li>
+    </ul>
+  </div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
 <?php if( count($this->paginator) > 0 ): ?>
-
+<!--
   <div class='layout_right'>
     <?php echo $this->formFilter->setAttrib('class', 'filters')->render($this) ?>
     <br />
@@ -41,13 +63,30 @@
       </ul>
     </div>
   </div>
+  -->
 
-  <div class='layout_middle'>
+
     <ul class='events_browse'>
       <?php foreach( $this->paginator as $event ): ?>
         <li>
           <div class="events_photo">
             <?php echo $this->htmlLink($event->getHref(), $this->itemPhoto($event, 'thumb.normal')) ?>
+          </div>
+          <div class="events_info">
+            <div class="events_title">
+              <h3><?php echo $this->htmlLink($event->getHref(), $event->getTitle()) ?></h3>
+            </div>
+            <div class="events_members">
+	      <?php echo $this->locale()->toDateTime($event->starttime) ?>
+	    </div>
+            <div class="events_members">
+              <?php echo $this->translate(array('%s guest', '%s guests', $event->membership()->getMemberCount()),$this->locale()->toNumber($event->membership()->getMemberCount())) ?>
+              <?php echo $this->translate('led by') ?>
+              <?php echo $this->htmlLink($event->getOwner()->getHref(), $event->getOwner()->getTitle()) ?>
+            </div>
+            <div class="events_desc">
+              <?php echo $event->getDescription() ?>
+            </div>
           </div>
           <div class="events_options">
             <?php if( $this->viewer() && $event->isOwner($this->viewer()) ): ?>
@@ -69,22 +108,8 @@
               )) ?>
             <?php endif; ?>
           </div>
-          <div class="events_info">
-            <div class="events_title">
-              <h3><?php echo $this->htmlLink($event->getHref(), $event->getTitle()) ?></h3>
-            </div>
-	    <div class="events_members">
-	      <?php echo $this->locale()->toDateTime($event->starttime) ?>
-	    </div>
-            <div class="events_members">
-              <?php echo $this->translate(array('%s guest', '%s guests', $event->membership()->getMemberCount()),$this->locale()->toNumber($event->membership()->getMemberCount())) ?>
-              <?php echo $this->translate('led by') ?>
-              <?php echo $this->htmlLink($event->getOwner()->getHref(), $event->getOwner()->getTitle()) ?>
-            </div>
-            <div class="events_desc">
-              <?php echo $event->getDescription() ?>
-            </div>
-          </div>
+          
+	    
         </li>
       <?php endforeach; ?>
     </ul>
@@ -103,5 +128,6 @@
     </span>
   </div>
 <?php endif; ?>
+</div>
 
 

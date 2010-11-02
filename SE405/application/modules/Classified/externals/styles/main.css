@@ -56,34 +56,33 @@ ul.feed .feed_attachment_classified > div > div
 
 /*
 BROWSE CLASSIFIEDS
-These styles are used on the browse classifieds page
+These styles are used on the browse groups page
 */
-.browseclassifieds_criteria
+.classifieds_browse_filters .form-wrapper
 {
-  +rounded;
-  +foreground;
-  padding: 7px;
+  overflow: hidden;
 }
-.browseclassifieds_criteria span.overTxtLabel
+.classifieds_browse_filters .integer_field .form-element
+{
+  float: left;
+  overflow: hidden;
+}
+.classifieds_browse_filters .integer_field label
+{
+  display: block;
+  margin-bottom: 2px;
+}
+.classifieds_browse_filters .integer_field .form-element + .form-element
+{
+  margin-left: 5px;
+}
+.classifieds_browse_filters .form-element span.overTxtLabel
 {
   color: $theme_font_color_light;
 }
-.browseclassifieds_criteria > ul > li + li
-{
-  margin-top: 7px;
+.classifieds_browse_filters .integer_field input {
+  width: 50px;
 }
-.browseclassifieds_criteria > ul > li
-{
-  clear: both;
-  font-size: 0.8em;
-  overflow: hidden;
-}
-.browseclassifieds_criteria > ul > li > span
-{
-  display: block;
-  margin-bottom: 3px;
-}
-
 ul.classifieds_browse
 {
   clear: both;
@@ -105,25 +104,19 @@ ul.classifieds_browse .classifieds_browse_photo
   overflow: hidden;
   margin-right: 8px;
 }
-html[dir="rtl"] ul.classifieds_browse .classifieds_browse_photo
-{
-  float: right;
-  margin-right: 0px;
-  margin-left: 8px;
-}
 ul.classifieds_browse .classifieds_browse_photo img
 {
   width: 100px;
 }
 ul.classifieds_browse .classifieds_browse_options
 {
-  float: right;
+  float: left;
   overflow: hidden;
   padding-left: 20px;
 }
 ul.classifieds_browse .classifieds_browse_options > a
 {
-  clear: both;
+  float: left;
   display: block;
   margin: 5px;
   font-size: .8em;

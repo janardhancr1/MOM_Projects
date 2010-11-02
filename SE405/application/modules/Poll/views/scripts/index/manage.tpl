@@ -11,6 +11,7 @@
  */
 ?>
 
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Polls');?>
@@ -25,6 +26,9 @@
     ?>
   </div>
 </div>
+-->
+
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
 <script type="text/javascript">
   var searchPolls = function() {
@@ -32,6 +36,7 @@
   }
 </script>
 
+<!--
 <div class='layout_right'>
   <?php echo $this->form->render($this) ?>
 
@@ -47,8 +52,27 @@
     </div>
   <?php endif; ?>
 </div>
+-->
 
 <div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('My Polls');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/polls'>Back to Polls</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Create a Poll or Tell Others What you Think');?></div>
+</div>
+<div>
+  <ul>
+    <li>
+      <a href='<?php echo $this->url(array(), 'poll_create') ?>' class='buttonlink icon_poll_new'>
+        <?php echo $this->translate('Create New Poll') ?>
+      </a>
+    </li>
+  </ul>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( 0 == count($this->paginator) ): ?>
     <div class="tip">
       <span>
@@ -65,6 +89,22 @@
       <?php foreach( $this->paginator as $poll ): ?>
       <li id="poll-item-<?php echo $poll->poll_id ?>">
         <?php echo $this->htmlLink($poll->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'polls_browse_photo')) ?>
+        <div class="polls_browse_info">
+          <?php echo $this->htmlLink($poll->getHref(), $poll->getTitle()) ?>
+          <div class="polls_browse_info_date">
+              <?php echo $this->translate('Posted by %s', $this->htmlLink($this->owner, $this->owner->getTitle())) ?>
+              <?php echo $this->timestamp($poll->creation_date) ?>
+              -
+              <?php echo $this->translate(array('%s vote', '%s votes', $poll->vote_count), $this->locale()->toNumber($poll->vote_count)) ?>
+              -
+              <?php echo $this->translate(array('%s view', '%s views', $poll->views), $this->locale()->toNumber($poll->views)) ?>
+          </div>
+          <?php if( '' != ($description = $poll->getDescription()) ): ?>
+            <div class="polls_browse_info_desc">
+              <?php echo $description ?>
+            </div>
+          <?php endif; ?>
+        </div>
         <div class="polls_browse_options">
           <?php echo $this->htmlLink(array(
             'route' => 'poll_specific',
@@ -83,22 +123,7 @@
             'class' => 'buttonlink icon_poll_edit'
           )) ?>
         </div>
-        <div class="polls_browse_info">
-          <?php echo $this->htmlLink($poll->getHref(), $poll->getTitle()) ?>
-          <div class="polls_browse_info_date">
-              <?php echo $this->translate('Posted by %s', $this->htmlLink($this->owner, $this->owner->getTitle())) ?>
-              <?php echo $this->timestamp($poll->creation_date) ?>
-              -
-              <?php echo $this->translate(array('%s vote', '%s votes', $poll->vote_count), $this->locale()->toNumber($poll->vote_count)) ?>
-              -
-              <?php echo $this->translate(array('%s view', '%s views', $poll->views), $this->locale()->toNumber($poll->views)) ?>
-          </div>
-          <?php if( '' != ($description = $poll->getDescription()) ): ?>
-            <div class="polls_browse_info_desc">
-              <?php echo $description ?>
-            </div>
-          <?php endif; ?>
-        </div>
+        
       </li>
       <?php endforeach; ?>
     </ul>
@@ -109,4 +134,5 @@
     'query' => $this->formValues,
     //'params' => $this->formValues,
   )); ?>
+</div>
 </div>

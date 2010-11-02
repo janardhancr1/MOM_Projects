@@ -10,7 +10,7 @@
  * @author     Sami
  */
 ?>
-
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 <h2>
   <?php echo $this->translate('%1$s\'s Album: %2$s',
     $this->album->getOwner()->__toString(),

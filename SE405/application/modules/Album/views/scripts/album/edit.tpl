@@ -11,20 +11,18 @@
  */
 ?>
 
-<div class="headline">
-  <h2>
-    <?php echo $this->translate('Photo Albums');?>
-  </h2>
-  <div class="tabs">
-    <?php
-      // Render the menu
-      echo $this->navigation()
-        ->menu()
-        ->setContainer($this->navigation)
-        ->render();
-    ?>
-  </div>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
+
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Add New Photos');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums/manage'>Back to My Albums</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Choose photos on your computer to add to this album.');?></div>
 </div>
+<div>
 
 <?php
   echo $this->form->render();

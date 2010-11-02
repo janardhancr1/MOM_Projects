@@ -10,7 +10,16 @@
  * @author     Sami
  */
 ?>
-
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?> 
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Edit Event');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/events/manage'>Back to My Events</a></div>
+    </div>
+    <div class="smallheadline"><?php echo $this->translate('Edit event today and invite friends.');?></div>
+</div>
 <?php
 $this->headScript()
   ->appendFile($this->baseUrl() . '/externals/calendar/calendar.compat.js');
@@ -32,3 +41,4 @@ $this->headLink()
 });
 </script>
 <?php echo $this->form/*->setAttrib('class', 'global_form_popup')*/->render($this) ?>
+</div>

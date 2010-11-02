@@ -22,27 +22,23 @@ class Classified_Form_Search extends Fields_Form_Search
   
   public function init()
   {
-    parent::init();
+    //parent::init();
 
     $this->loadDefaultDecorators();
 
+    $this->getDecorator('HtmlTag')->setOption('class', 'browseclassifieds_criteria classifieds_browse_filters')->setOption('id', 'filter_form');
+    
     $this
       ->setAttribs(array(
         'id' => 'filter_form',
-        'class' => 'classifieds_browse_filters field_search_criteria',
+        'class' => 'global_search_box classifieds_browse_filters',
       ))
       ->setAction($_SERVER['REQUEST_URI'])
-      ->getDecorator('HtmlTag')
-        ->setOption('class', 'browseclassifieds_criteria classifieds_browse_filters');
-
+      ;
+    
     // Generate
-    //$this->generate();
+    $this->generate();
 
-    // Add custom elements
-    $this->getAdditionalOptionsElement();
-
-
-    /*
     foreach( $this->getFieldElements() as $fel ) {
       if( $fel instanceof Zend_Form_Element ) {
         $fel->clearDecorators();
@@ -57,68 +53,63 @@ class Classified_Form_Search extends Fields_Form_Search
             ->addDecorator('HtmlTag2', array('tag' => 'div', 'id'  => $fel->getName() . '-wrapper', 'class' => 'form-wrapper browse-range-wrapper'));
       }
     }
-     * 
-     */
+    
+    // Add custom elements
+    $this->getAdditionalOptionsElement();
   }
 
   public function getAdditionalOptionsElement()
   {
-    $i = -5000;
-
+    $i = -1000;
+    
     $this->addElement('Hidden', 'page', array(
-      'order' => $i--,
+      'order' => 200,
     ));
 
     $this->addElement('Hidden', 'tag', array(
-      'order' => $i--,
+      'order' => 201,
     ));
 
     $this->addElement('Hidden', 'start_date', array(
-      'order' => $i--,
+      'order' => 202,
     ));
 
     $this->addElement('Hidden', 'end_date', array(
-      'order' => $i--,
+      'order' => 203,
     ));
 
-    $this->addElement('Text', 'search', array(
-      'label' => 'Search Classifieds',
+    /*$this->addElement('Button', 'done', array(
+      'label' => 'Search',
       'order' => $i--,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
-    ));
-
-    $this->addElement('Select', 'orderby', array(
-      'label' => 'Browse By',
+      'onclick' => 'this.form.submit();',
+    ));*/
+    
+    $this->addElement('Select', 'subcategory', array(
+      'label' => 'Sub Category',
       'multiOptions' => array(
-        'creation_date' => 'Most Recent',
-        'view_count' => 'Most Viewed',
+        '0' => '',
       ),
-      'onchange' => 'searchClassifieds();',
+      'onchange' => 'this.form.submit();',
+      'style' => 'width:150px',
       'order' => $i--,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
+    ));
+    
+    
+    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
+	$this->addElement('Dummy', 'my', array(
+      'content' => $content,
+	  'order' => $i--,
     ));
 
-    $this->addElement('Select', 'show', array(
+
+    /*$this->addElement('Select', 'show', array(
       'label' => 'Show',
       'multiOptions' => array(
         '1' => 'Everyone\'s Posts',
         '2' => 'Only My Friends\' Posts',
       ),
-      'onchange' => 'searchClassifieds();',
+      'onchange' => 'this.form.submit();',
       'order' => $i--,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
     ));
 
     $this->addElement('Select', 'closed', array(
@@ -128,52 +119,34 @@ class Classified_Form_Search extends Fields_Form_Search
         '0' => 'Only Open Listings',
         '1' => 'Only Closed Listings',
       ),
-      'onchange' => 'searchClassifieds();',
+      'onchange' => 'this.form.submit();',
       'order' => $i--,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
-    ));
+    ));*/
 
+    
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
       'multiOptions' => array(
         '0' => 'All Categories',
       ),
-      'onchange' => 'searchClassifieds();',
+      'onchange' => 'this.form.submit();',
       'order' => $i--,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
-    ));
-
-
-
-    
-    $this->addElement('Checkbox', 'has_photo', array(
-      'label' => 'Only Classifieds With Photos',
-      'order' => 10000000,
-      'decorators' => array(
-        'ViewHelper',
-        array('Label', array('placement' => 'APPEND', 'tag' => 'label')),
-        array('HtmlTag', array('tag' => 'li'))
-      ),
     ));
     
-    $this->addElement('Button', 'done', array(
-      'label' => 'Search',
-      'onclick' => 'searchClassifieds();',
-      'ignore' => true,
-      'order' => 10000001,
-      'decorators' => array(
-        'ViewHelper',
-        //array('Label', array('tag' => 'span')),
-        array('HtmlTag', array('tag' => 'li'))
+    $this->addElement('Select', 'orderby', array(
+      'label' => 'Browse By',
+      'multiOptions' => array(
+        'creation_date' => 'Most Recent',
+        'view_count' => 'Most Viewed',
       ),
+      'onchange' => 'this.form.submit();',
+      'order' => $i--,
     ));
+
+    $this->addElement('Text', 'search', array(
+      'label' => 'Search Classifieds',
+      'order' => $i--,
+    ));
+    
   }
 }

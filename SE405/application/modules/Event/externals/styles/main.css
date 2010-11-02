@@ -119,9 +119,9 @@ ul.events_browse .events_desc
 }
 ul.events_browse .events_options
 {
-  float: right;
+  float: left;
   overflow: hidden;
-  width: 120px;
+  width: auto;
   padding-left: 15px;
 }
 html[dir="rtl"] ul.events_browse .events_options

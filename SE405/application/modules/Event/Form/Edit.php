@@ -35,8 +35,8 @@ class Event_Form_Edit extends Engine_Form
   public function init()
   {
     $user = Engine_Api::_()->user()->getViewer();
-    $this->setTitle('Edit Event')
-      ->setAttrib('id', 'event_create_form')
+    //$this->setTitle('Edit Event')
+      $this->setAttrib('id', 'event_create_form')
       ->setMethod("POST")
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
       

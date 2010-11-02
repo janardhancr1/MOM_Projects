@@ -50,7 +50,7 @@
     //'topLevelValue' => (int) @$this->topLevelValue
   ))
 ?>
-
+<!--
 <div class="headline">
   <h2>
     <?php echo $this->translate('Classified Listings');?>
@@ -65,7 +65,18 @@
     ?>
   </div>
 </div>
-
+-->
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<div class='layout_middle'>
+<div class="headline_header">
+	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
+	<div class="mainheadline">
+    <?php echo $this->translate('Post New Listing');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds/manage'>Back to My Classifieds</a></div>
+	</div>
+    <div class="smallheadline"><?php echo $this->translate('Compose your new classified listing below, then publish the listing.');?></div>
+</div>
+<div style='padding-top:20px;padding-right:10px;width:690px'>
 <?php if (($this->current_count >= $this->quota) && !empty($this->quota)):?>
   <div class="tip">
     <span>
@@ -77,3 +88,4 @@
 <?php else:?>
   <?php echo $this->form->render($this);?>
 <?php endif; ?>
+</div>

@@ -34,6 +34,8 @@ endif; ?>
 
 <div class='layout_right'>
   <div class='blogs_gutter'>
+  <?php include './application/modules/Contests/views/scripts/index/rightad.tpl' ?>
+  <div style='float:left'>
     <?php echo $this->htmlLink($this->owner->getHref(), $this->itemPhoto($this->owner), array('class' => 'blogs_gutter_photo')) ?>
     <?php echo $this->htmlLink($this->owner->getHref(), $this->owner->getTitle(), array('class' => 'blogs_gutter_name')) ?>
 
@@ -88,9 +90,10 @@ endif; ?>
       
   </div>
 </div>
+</div>
 
 <div class='layout_middle'>
-
+<div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs'>Back to Blogs</a></div>
   <?php if ($this->blog->owner_id == $this->viewer->getIdentity()&&$this->blog->draft == 1):?>
     <div class="tip">
       <span>

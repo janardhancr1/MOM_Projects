@@ -5,7 +5,7 @@
     'host' => 'localhost',
     'username' => 'root',
     'password' => 'kamflex',
-    'dbname' => 'momse405',
+    'dbname' => 'mom405',
     'charset' => 'UTF8',
     'adapterNamespace' => 'Zend_Db_Adapter',
   ),
