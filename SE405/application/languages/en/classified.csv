@@ -260,3 +260,51 @@
 "{item:$subject} likes your {item:$object:classified listing}.";"{item:$subject} likes your {item:$object:classified listing}."
 "{item:$subject} has commented on a {item:$object:classified listing} you commented on.";"{item:$subject} has commented on a {item:$object:classified listing} you commented on."
 "{item:$subject} has commented on a {item:$object:classified listing} you liked.";"{item:$subject} has commented on a {item:$object:classified listing} you liked."
+
+# notify_comment_classified
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_TITLE";"Classified Comment"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_DESCRIPTION";"This email is sent to the owner of the classified when someone comments on the classified."
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_SUBJECT";"[sender_title] commented on classified you posted"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_BODY";"[header]
+
+A new comment has been posted on one of your classified by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_commented_classified
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_TITLE";"Classified Commented"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_DESCRIPTION";"This email is sent to a member when someone comments on a classified the member has commented on."
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_SUBJECT";"[sender_title] commented on classified you commented"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_BODY";"[header]
+
+[sender_title] has also commented on a classified you commented on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_like_classified
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_TITLE";"Classified Like"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_DESCRIPTION";"This email is sent to the owner of the classified when someone likess on the classified."
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_SUBJECT";"[sender_title] liked on classified you posted"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_BODY";"[header]
+
+[sender_title] has liked one of your classified. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_liked_classified
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_TITLE";"Classified Liked"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_DESCRIPTION";"This email is sent to a member when someone liked on a classified the member has liked on."
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_SUBJECT";"[sender_title] liked on classified you liked"
+"_EMAIL_NOTIFY_COMMENT_CLASSIFIED_BODY";"[header]
+
+[sender_title] has also liked on a classified you liked on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"

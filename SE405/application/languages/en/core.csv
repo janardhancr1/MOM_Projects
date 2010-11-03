@@ -1017,7 +1017,7 @@ run as desired. You can view the current status here."
 "_EMAIL_FOOTER_DESCRIPTION";"This can be added to other emails using the [footer] placeholder."
 "_EMAIL_FOOTER_SUBJECT";""
 "_EMAIL_FOOTER_BODY";"Best Regards,
-Social Network Administration"
+Momburbia Team"
 
 # header_member
 "_EMAIL_HEADER_MEMBER_TITLE";"Header (Members)"
@@ -1030,7 +1030,7 @@ Social Network Administration"
 "_EMAIL_FOOTER_MEMBER_DESCRIPTION";"This can be added to other emails using the [footer] placeholder."
 "_EMAIL_FOOTER_MEMBER_SUBJECT";""
 "_EMAIL_FOOTER_MEMBER_BODY";"Best Regards,
-Social Network Administration"
+Momburbia Team"
 
 # core_contact
 "_EMAIL_CORE_CONTACT_TITLE";"Contact Form Email"

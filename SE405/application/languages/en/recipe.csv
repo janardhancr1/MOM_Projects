@@ -101,3 +101,52 @@ Allow Viewing of Recipes
 "Do you want to permit your members to change their vote?";"Do you want to permit your members to change their vote?"
 "Yes, members can change their vote.";"Yes, members can change their vote."
 "No, members cannot change their vote.";"No, members cannot change their vote."
+
+
+# notify_comment_recipe
+"_EMAIL_NOTIFY_COMMENT_RECIPE_TITLE";"Recipe Comment"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_DESCRIPTION";"This email is sent to the owner of the recipe when someone comments on the recipe."
+"_EMAIL_NOTIFY_COMMENT_RECIPE_SUBJECT";"[sender_title] commented on recipe you posted"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_BODY";"[header]
+
+A new comment has been posted on one of your recipe by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_commented_recipe
+"_EMAIL_NOTIFY_COMMENT_RECIPE_TITLE";"Recipe Commented"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_DESCRIPTION";"This email is sent to a member when someone comments on a recipe the member has commented on."
+"_EMAIL_NOTIFY_COMMENT_RECIPE_SUBJECT";"[sender_title] commented on recipe you commented"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_BODY";"[header]
+
+[sender_title] has also commented on a recipe you commented on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_like_recipe
+"_EMAIL_NOTIFY_COMMENT_RECIPE_TITLE";"Recipe Like"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_DESCRIPTION";"This email is sent to the owner of the recipe when someone likess on the recipe."
+"_EMAIL_NOTIFY_COMMENT_RECIPE_SUBJECT";"[sender_title] liked on recipe you posted"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_BODY";"[header]
+
+[sender_title] has liked one of your recipe. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_liked_recipe
+"_EMAIL_NOTIFY_COMMENT_RECIPE_TITLE";"Recipe Liked"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_DESCRIPTION";"This email is sent to a member when someone liked on a recipe the member has liked on."
+"_EMAIL_NOTIFY_COMMENT_RECIPE_SUBJECT";"[sender_title] liked on recipe you liked"
+"_EMAIL_NOTIFY_COMMENT_RECIPE_BODY";"[header]
+
+[sender_title] has also liked on a recipe you liked on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"

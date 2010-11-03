@@ -216,3 +216,51 @@
 # item types
 "ITEM_TYPE_ALBUM";"Albums"
 "ITEM_TYPE_ALBUM_PHOTO";"Album Photos"
+
+# notify_comment_blog
+"_EMAIL_NOTIFY_COMMENT_ALBUM_TITLE";"Album Comment"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_DESCRIPTION";"This email is sent to the owner of the album when someone comments on the album."
+"_EMAIL_NOTIFY_COMMENT_ALBUM_SUBJECT";"[sender_title] commented on album you posted"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_BODY";"[header]
+
+A new comment has been posted on one of your album by [sender_title]. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_commented_album
+"_EMAIL_NOTIFY_COMMENT_ALBUM_TITLE";"Album Commented"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_DESCRIPTION";"This email is sent to a member when someone comments on a album the member has commented on."
+"_EMAIL_NOTIFY_COMMENT_ALBUM_SUBJECT";"[sender_title] commented on album you commented"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_BODY";"[header]
+
+[sender_title] has also commented on a album you commented on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_like_album
+"_EMAIL_NOTIFY_COMMENT_ALBUM_TITLE";"Album Like"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_DESCRIPTION";"This email is sent to the owner of the album when someone likess on the album."
+"_EMAIL_NOTIFY_COMMENT_ALBUM_SUBJECT";"[sender_title] liked on album you posted"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_BODY";"[header]
+
+[sender_title] has liked one of your album. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+# notify_liked_album
+"_EMAIL_NOTIFY_COMMENT_ALBUM_TITLE";"Album Liked"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_DESCRIPTION";"This email is sent to a member when someone liked on a album the member has liked on."
+"_EMAIL_NOTIFY_COMMENT_ALBUM_SUBJECT";"[sender_title] liked on album you liked"
+"_EMAIL_NOTIFY_COMMENT_ALBUM_BODY";"[header]
+
+[sender_title] has also liked on a album you liked on. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
