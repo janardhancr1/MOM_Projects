@@ -321,3 +321,22 @@ INSERT IGNORE INTO `engine4_authorization_permissions`
     0 as `value`,
     NULL as `params`
   FROM `engine4_authorization_levels` WHERE `type` IN('public');
+  
+  --
+-- Dumping data for table `engine4_activity_notificationtypes`
+--
+
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('commented_album', 'album', '{item:$subject} has commented on a {item:$object:album} you commented on.', 0, ''),
+('comment_album', 'album', '{item:$subject} has commented on your {item:$object:album}.', 0, ''),
+('like_album', 'album', '{item:$subject} has liked on a {item:$object:album} you liked.', 0, ''),
+('liked_album', 'album', '{item:$subject} likes your {item:$object:album}.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_comment_album', 'album', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_album', 'album', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_album', 'album', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_album', 'album', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
