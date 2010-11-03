@@ -500,3 +500,16 @@ INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`,  `body`,  `
 ('answer_new', 'answer', '{item:$subject} created a new answer:', '1', '5', '1', '3', '1', 1),
 ('comment_answer', 'answer', '{item:$subject} commented on {item:$owner}''s {item:$object:answer}.', 1, 1, 1, 1, 1, 1);
 
+--
+-- Dumping data for table `engine4_activity_notificationtypes`
+--
+
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('answer_answer', 'answer', '{item:$subject} has answered on a question you asked on.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_answer_answer', 'answer', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
+
