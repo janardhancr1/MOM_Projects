@@ -219,3 +219,19 @@ INSERT INTO `engine4_authorization_permissions` (`level_id`, `type`, `name`, `va
 INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`,  `body`,  `enabled`,  `displayable`,  `attachable`,  `commentable`,  `shareable`, `is_generated`) VALUES
 ('recipe_new', 'recipe', '{item:$subject} created a new recipe:', '1', '5', '1', '3', '1', 1),
 ('comment_recipe', 'recipe', '{item:$subject} commented on {item:$owner}''s {item:$object:recipe}.', 1, 1, 1, 1, 1, 1);
+
+
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('commented_recipe', 'recipe', '{item:$subject} has commented on a {item:$object:recipe} you commented on.', 0, ''),
+('comment_recipe', 'recipe', '{item:$subject} has commented on your {item:$object:recipe}.', 0, ''),
+('like_recipe', 'recipe', '{item:$subject} has liked on a {item:$object:recipe} you liked.', 0, ''),
+('liked_recipe', 'recipe', '{item:$subject} likes your {item:$object:recipe}.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_comment_recipe', 'recipe', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_recipe', 'recipe', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_recipe', 'recipe', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_recipe', 'recipe', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');

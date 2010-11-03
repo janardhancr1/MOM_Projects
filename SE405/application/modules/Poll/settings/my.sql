@@ -290,4 +290,20 @@ INSERT IGNORE INTO `engine4_authorization_permissions`
     1 as `value`,
     NULL as `params`
   FROM `engine4_authorization_levels` WHERE `type` IN('public');
+  
+  
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('commented_poll', 'poll', '{item:$subject} has commented on a {item:$object:poll} you commented on.', 0, ''),
+('comment_poll', 'poll', '{item:$subject} has commented on your {item:$object:poll}.', 0, ''),
+('like_poll', 'poll', '{item:$subject} has liked on a {item:$object:poll} you liked.', 0, ''),
+('liked_poll', 'poll', '{item:$subject} likes your {item:$object:poll}.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_comment_poll', 'poll', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_poll', 'poll', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_poll', 'poll', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_poll', 'poll', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
 

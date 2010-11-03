@@ -104,7 +104,11 @@ CREATE TABLE IF NOT EXISTS `engine4_video_videos` (
 
 INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
 ('notify_video_processed', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
-('notify_video_processed_failed', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
+('notify_video_processed_failed', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_comment_video', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_video', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_video', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_video', 'video', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
 
 
 -- --------------------------------------------------------
@@ -196,7 +200,11 @@ INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`,  `body`,  `
 
 INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
 ('video_processed', 'video', 'Your {item:$object:video} is ready to be viewed.', 0, ''),
-('video_processed_failed', 'video', 'Your {item:$object:video} has failed to process.', 0, '');
+('video_processed_failed', 'video', 'Your {item:$object:video} has failed to process.', 0, ''),
+('commented_video', 'video', '{item:$subject} has commented on a {item:$object:video} you commented on.', 0, ''),
+('comment_video', 'video', '{item:$subject} has commented on your {item:$object:video}.', 0, ''),
+('like_video', 'video', '{item:$subject} has liked on a {item:$object:video} you liked.', 0, ''),
+('liked_video', 'video', '{item:$subject} likes your {item:$object:video}.', 0, '');
 
 
 -- --------------------------------------------------------
