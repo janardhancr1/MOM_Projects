@@ -309,4 +309,26 @@ INSERT IGNORE INTO `engine4_authorization_permissions`
     1 as `value`,
     NULL as `params`
   FROM `engine4_authorization_levels` WHERE `type` IN('public');
+  
+  -- --------------------------------------------------------
+
+--
+-- Dumping data for table `engine4_activity_notificationtypes`
+--
+
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('commented_blog', 'blog', '{item:$subject} has commented on a {item:$object:blog} you commented on.', 0, ''),
+('comment_blog', 'blog', '{item:$subject} has commented on your {item:$object:blog}.', 0, ''),
+('like_blog', 'blog', '{item:$subject} has liked on a {item:$object:blog} you liked.', 0, ''),
+('liked_blog', 'blog', '{item:$subject} likes your {item:$object:blog}.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_comment_blog', 'blog', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_blog', 'blog', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_blog', 'blog', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_blog', 'blog', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
+
 
