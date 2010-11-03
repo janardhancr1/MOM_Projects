@@ -518,4 +518,23 @@ INSERT IGNORE INTO `engine4_authorization_permissions`
     1 as `value`,
     NULL as `params`
   FROM `engine4_authorization_levels` WHERE `type` IN('public');
+  
+--
+-- Dumping data for table `engine4_activity_notificationtypes`
+--
+
+INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
+('commented_classified', 'classified', '{item:$subject} has commented on a {item:$object:classified} you commented on.', 0, ''),
+('comment_classified', 'classified', '{item:$subject} has commented on your {item:$object:classified}.', 0, ''),
+('like_classified', 'classified', '{item:$subject} has liked on a {item:$object:classified} you liked.', 0, ''),
+('liked_classified', 'classified', '{item:$subject} likes your {item:$object:classified}.', 0, '');
+
+
+-- --------------------------------------------------------
+
+INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUES
+('notify_comment_classified', 'classified', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_commented_classified', 'classified', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_like_classified', 'classified', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]'),
+('notify_liked_classified', 'classified', '[host],[email],[recipient_title],[recipient_link],[recipient_photo],[sender_title],[sender_link],[sender_photo],[object_title],[object_link],[object_photo],[object_description]');
 
