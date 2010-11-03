@@ -283,6 +283,7 @@
 
 "ACTIVITY_TYPE_EVENT_ACCEPTED";"When my request to attend an event is approved."
 "ACTIVITY_TYPE_EVENT_CREATE";"When a new event is created"
+"ACTIVITY_TYPE_EVENT_APPROVE";"When someone has requested to join event."
 "ACTIVITY_TYPE_EVENT_DISCUSSION_REPLY";"When people reply to discussion topics that I've replied to."
 "ACTIVITY_TYPE_EVENT_DISCUSSION_RESPONSE";"When people reply to discussion topics that I create."
 "ACTIVITY_TYPE_EVENT_INVITE";"When I'm invited to attend an event."
