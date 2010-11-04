@@ -168,7 +168,12 @@ class Classified_Api_Core extends Core_Api_Abstract
 
   public function getCategories()
   {
-    return $this->api()->getDbtable('categories', 'classified')->fetchAll();
+    return $this->api()->getDbtable('categories', 'classified')->fetchAll('parent_cat_id = 0');
+  }
+  
+  public function getSubCategories($id)
+  {
+    return $this->api()->getDbtable('categories', 'classified')->fetchAll('parent_cat_id=' . $id);
   }
 
   public function getCategory($category_id)

@@ -56,10 +56,48 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     {
       $form->category->addMultiOption($category->category_id, $category->category_name);
     }
+    
+  	$form->subcategory->clearMultiOptions();
+	$form->subcategory->addMultiOption("0", "");
+	if(isset($_SESSION['catid']))
+	{
+		$catid = $_SESSION['catid'];
+		$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
+		if(count($subcategories)>0)
+		{
+			foreach($subcategories as $subcategory)
+			{
+				$form->subcategory->addMultiOption($subcategory->category_id, $subcategory->category_name);
+			}
+		}
+	}
 
     // Process form
     if( $form->isValid($this->getRequest()->getPost()) ) {
       $values = $form->getValues();
+    	if(isset($values['category']))
+		{
+			// Populate subcategories
+			$_SESSION['catid'] = $values['category'];
+			$form->subcategory->clearMultiOptions();
+	        $form->subcategory->addMultiOption("0", "");
+			$this->view->subcategories = $subcategories = Engine_Api::_()->classified()->getSubCategories($values['category']);
+			if(count($subcategories)>0 && $values['category'] != "0")
+			{
+				foreach( $subcategories as $subcategory )
+				{
+					$form->subcategory->addMultiOption($subcategory->category_id, $subcategory->category_name);
+				}
+			}
+			else
+			{
+				$form->removeElement('subcategory');
+			}
+		}
+		else
+		{
+			$form->removeElement('subcategory');
+		}
     } else {
       $values = array();
     }
@@ -411,6 +449,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 
 
     // Prepare form
+    $_SESSION['catid'] = $classified->category_id;
     $this->view->form = $form = new Classified_Form_Edit(array(
       'item' => $classified
     ));
@@ -765,5 +804,22 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     //krsort($archive_list);
     return $archive_list;
   }
+	public function subcatsAction()
+	{
+		$return = '0~;';
+		$catid = $this->_getParam('cat_id', null);
+		
+		if($catid)
+		{
+			$_SESSION['catid'] = $catid;
+			$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
+			foreach($subcategories as $subcategory)
+			{
+				$return .= $subcategory->category_id.'~'.$subcategory->category_name.';';
+			}
+		}
+		echo $return;
+		exit();
+	}
 }
 

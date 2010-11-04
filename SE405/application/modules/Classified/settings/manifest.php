@@ -109,7 +109,14 @@ return array(
         'action' => 'create'
       )
     ),
-
+'classified_subcats' => array(
+      'route' => 'classifieds/subcats',
+      'defaults' => array(
+        'module' => 'classified',
+        'controller' => 'index',
+        'action' => 'subcats'
+      )
+    ), 
     // Public
     'classified_view' => array(
       'route' => 'classifieds/:user_id/*',

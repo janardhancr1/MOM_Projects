@@ -61,9 +61,28 @@ class Classified_Form_Create extends Engine_Form
       // category field
       $this->addElement('Select', 'category_id', array(
         'label' => 'Category',
-        'multiOptions' => $categories_prepared
+        'multiOptions' => $categories_prepared,
+      'onchange' => 'javascript:getSubCats(this.value);',
       ));
     }
+    
+    $sub_prepared[0]= "";
+	if(isset($_SESSION['catid']))
+	{
+		$catid = $_SESSION['catid'];
+		$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
+		foreach($subcategories as $subcategory)
+		{
+			$sub_prepared[$subcategory->category_id]= $subcategory->category_name;
+		}
+	}
+	
+	// sub category field
+	$this->addElement('Select', 'sub_category_id', array(
+            'label' => 'Sub Category',
+            'multiOptions' => $sub_prepared,
+      	'style' => 'width:153px',
+	));
 
     $this->addElement('Textarea', 'body', array(
       'label' => 'Description',
