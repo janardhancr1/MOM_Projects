@@ -76,6 +76,19 @@ return array(
         'action' => '\D+',
       ),
     ),
+    'poll_browse' => array(
+      'route' => 'polls/:page/:sort/*',
+      'defaults' => array(
+        'module' => 'poll',
+        'controller' => 'index',
+        'action' => 'browse',
+        'page' => 1,
+        'sort' => 'recent',
+      ),
+      'reqs' => array(
+        'page' => '\d+',
+      )
+    ),
     'poll_general' => array(
       'route' => 'polls/:action/*',
       'defaults' => array(

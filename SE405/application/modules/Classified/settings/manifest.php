@@ -78,6 +78,16 @@ return array(
         'action' => '\D+',
       ),
     ),
+    // Public
+    'classified_browse' => array(
+      'route' => 'classifieds/browse/:page/*',
+      'defaults' => array(
+        'module' => 'classified',
+        'controller' => 'index',
+        'action' => 'index',
+        'page' => 1
+      )
+    ),
     'classified_general' => array(
       'route' => 'classifieds/:action/*',
       'defaults' => array(

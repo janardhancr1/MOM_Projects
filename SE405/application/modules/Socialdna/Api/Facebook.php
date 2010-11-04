@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Facebook/facebook.php';
+require_once 'Facebook.php';
  
 class Socialdna_Api_Facebook extends Core_Api_Abstract
 {
