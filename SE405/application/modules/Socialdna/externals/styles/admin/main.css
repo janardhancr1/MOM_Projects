@@ -1,0 +1,103 @@
+
+.admin_fields_heading
+{
+  +rounded(3px);
+  padding: 7px 10px 7px 7px;  
+  float:left;
+  background-color:#F1FAE9;
+  border:1px solid #CFE1C1;
+  font-weight:bold;
+  padding:7px 10px 7px 7px;
+  
+}
+
+.admin_fields_field
+{
+  +rounded(3px);
+  padding: 7px 10px 7px 7px;  
+  float:left;
+  background-color:#E9F4FA;
+  border:1px solid #C1D6E1;
+  font-weight:bold;
+  padding:7px 10px 7px 7px;
+}
+
+.admin_fields_field label, .admin_fields_standard label {
+  font-weight: bold;
+}
+
+.admin_fields_standard
+{
+  +rounded(3px);
+  padding: 7px 10px 7px 7px;  
+  float:left;
+  background-color:#FFF;
+  border:1px solid #DDD;
+  font-weight:bold;
+  padding:7px 10px 7px 7px;
+}
+
+
+
+
+
+div.success-notice
+{
+  margin-bottom: 15px;
+  overflow: hidden;
+
+  +rounded;
+  font-weight: bold;
+  padding: .5em .75em .5em .75em;
+
+  margin-top: 5px;
+
+  color: #546d50;
+  background-color: #e3f2e1;
+  border: 2px solid #d2e5cf;
+
+}
+
+
+td.step {
+  padding: 7px 10px 7px 5px; 
+  font-size: 32pt; 
+  color: #CCCCCC; 
+  font-weight: bold; 
+  vertical-align: top; 
+  text-align: center;
+}
+
+
+.socialdna_faq_a {
+  border: 1px solid #F6F6F6;
+  padding: 5px;
+  display: none;
+  margin-bottom: 40px;
+}
+
+.socialdna_faq_q {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+  background-color: #F6F6F6;
+}
+
+.socialdna_faq_a ul {
+  padding: 0px 0px 0px 40px;
+  margin: 13px 0px;
+}
+
+.socialdna_faq_a li {
+  list-style-type: disc;
+}
+
+div.code {
+  background:#FFFAEF none repeat scroll 0%;
+  border:1px solid #FFE5A7;
+  font-family:courier,courier new,tahoma,serif;
+  margin-bottom:5px;
+  margin-top:5px;
+  padding:10px;
+}
