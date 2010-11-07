@@ -22,6 +22,66 @@ class User_IndexController extends Core_Controller_Action_Standard
   {
 
   }
+  
+public function inviteAction()
+	{
+		if( !$this->_executeSearch() ) {
+			throw new Exception('error');
+		}
+
+		$vuser = Engine_Api::_()->user()->getViewer();
+		$this->view->maxOptions = 10;
+		$this->view->inviteForm = $inviteForm = new User_Form_Invite();
+
+		if($this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()))
+		{
+			if( !$inviteForm->isValid($this->getRequest()->getPost()) )
+			{
+				return;
+			}
+			$values = $this->view->inviteForm->getValues();
+			try
+			{
+				$valid = $this->view->inviteForm->validate();
+				if (empty($valid))
+				return;
+					
+				$options = array();
+				foreach ($_POST['optionsArray'] as $option)
+				if (strlen(trim($option)))
+				$options[] = strip_tags(trim($option));
+
+				$body = $values['message'];
+					
+				$mail = new Zend_Mail();
+				$from = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.invite.from');
+				$fromname = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.invite.fromname');
+				$subject = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.invite.subject');
+
+				$mail->setFrom($from, $fromname);
+				foreach($options as $key => $value)
+				{
+					$mail->addTo($value, $value);
+				}
+				$mail->setSubject($subject . ' - ' .$vuser->username);
+				$mail->setBodyText($body);
+
+				$mail->send();
+
+				$inviteForm->addNotice(Zend_Registry::get('Zend_Translate')->_('Your invite has been sent to your friends'));
+				$inviteForm->clearElements();
+				$this->view->maxOptions = 11;
+				//return $this->_redirect("members");
+			} catch (Exception $e) {
+				throw $e;
+			}
+		}
+		/*$inviteMessage = new Zend_Mail_Transport_Sendmail();
+		 $inviteMessage->recipients = 'janardhancr@gmail.com';
+		 $inviteMessage->body = 'This is sample message';
+		 $inviteMessage->subject = 'test message';
+		 $inviteMessage->_sendMail();*/
+	}
 
   public function homeAction()
   {

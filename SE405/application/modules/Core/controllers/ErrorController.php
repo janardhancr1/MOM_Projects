@@ -91,7 +91,7 @@ class Core_ErrorController extends Core_Controller_Action_Standard
 
     // Show the login form for them :P
     $this->view->form = $form = new User_Form_Login();
-    $form->addError('Please sign in to continue..');
+    //$form->addError('Please sign in to continue..');
     $form->return_url->setValue(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
 
     // Facebook login

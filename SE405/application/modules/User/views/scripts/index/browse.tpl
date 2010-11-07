@@ -13,8 +13,15 @@
 
 <h2><?php echo $this->translate('Browse Members');?></h2>
 
-<div class='layout_left'>
+<div class='layout_left'  style='padding-left:2px'>
   <?php echo $this->form->render($this) ?>
+  <div class="quicklinks">
+    <ul>
+      <li>
+        <a href='<?php echo $this->url(array(), 'invite_moms', true) ?>' class='buttonlink notification_type_message_new'><?php echo $this->translate('Invite Moms');?></a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class='layout_middle'>

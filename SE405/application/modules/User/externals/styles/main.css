@@ -1040,7 +1040,10 @@ body .activity_icon_tagged
   background-image: url(~/application/modules/User/externals/images/types/user.png);
 }
 
-
+.layout_page_user_profile_index
+{
+	padding: 0px 5px;
+}
 
 
 /* NOTIFICATION TYPE ICONS */

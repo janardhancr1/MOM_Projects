@@ -24,12 +24,17 @@ class User_Form_Login extends Engine_Form
     $description= sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
 
     // Init form
-    $this->setTitle('Member Sign In');
-    $this->setDescription($description);
-    $this->setAttrib('id', 'user_form_login');
+    //$this->setTitle('Member Sign In');
+    //$this->setDescription($description);
+    //$this->setAttrib('id', 'user_form_login');
+    $this->setAttrib('class', 'global_form1');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
-
+    
+    $this->addElement('Dummy', 'header', array(
+      'label' => 'Sign In:',
+    ));
+    
     $email = Zend_Registry::get('Zend_Translate')->_('Email Address');
     // Init email
     $this->addElement('Text', 'email', array(
@@ -93,10 +98,10 @@ class User_Form_Login extends Engine_Form
       'tabindex' => 5,
     ));
 
-    $this->addDisplayGroup(array(
+    /*$this->addDisplayGroup(array(
       'submit',
       'remember'
-    ), 'buttons');
+    ), 'buttons');*/
 
     $content = Zend_Registry::get('Zend_Translate')->_("<span><a href='%s'>Forgot Password?</a></span>");
     $content= sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));
@@ -110,7 +115,9 @@ class User_Form_Login extends Engine_Form
     // Init facebook login link
     if ('none' != $settings->getSetting('core_facebook_enable', 'none') && $settings->core_facebook_secret) {
       $this->addElement('Dummy', 'facebook', array(
+        'label' => 'Have Facebook? Click here to login:',
         'content' => User_Model_DbTable_Facebook::loginButton(),
+        'order' => -1,
       ));
     }
 
