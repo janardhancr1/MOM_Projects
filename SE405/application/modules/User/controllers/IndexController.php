@@ -20,7 +20,7 @@ class User_IndexController extends Core_Controller_Action_Standard
 {
   public function indexAction()
   {
-
+	if( !$this->_helper->requireUser()->isValid() ) return;
   }
   
 public function inviteAction()

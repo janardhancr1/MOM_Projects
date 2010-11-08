@@ -1,825 +1,826 @@
-
 /* $Id: composer.js 7462 2010-09-24 03:15:46Z john $ */
 
+var Composer = new Class( {
 
-var Composer = new Class({
-  
-  Implements : [Events, Options],
+	Implements : [ Events, Options ],
 
-  elements : {},
+	elements : {},
 
-  plugins : {},
+	plugins : {},
 
-  options : {
-    lang : {},
-    overText : true,
-    allowEmptyWithoutAttachment : false,
-    allowEmptyWithAttachment : true,
-    hideSubmitOnBlur : true,
-    submitElement : false
-  },
+	options : {
+		lang : {},
+		overText : true,
+		allowEmptyWithoutAttachment : false,
+		allowEmptyWithAttachment : true,
+		hideSubmitOnBlur : true,
+		submitElement : false
+	},
 
-  initialize : function(element, options) {
-    this.setOptions(options);
-    this.elements = new Hash(this.elements);
-    this.plugins = new Hash(this.plugins);
-    
-    this.elements.textarea = $(element);
-    this.elements.textarea.store('Composer');
+	initialize : function(element, options) {
+		this.setOptions(options);
+		this.elements = new Hash(this.elements);
+		this.plugins = new Hash(this.plugins);
 
-    this.attach();
-    this.getTray();
-    this.getMenu();
+		this.elements.textarea = $(element);
+		this.elements.textarea.store('Composer');
 
-    this.pluginReady = false;
+		this.attach();
+		this.getTray();
+		this.getMenu();
 
-    this.getForm().addEvent('submit', function(e) {
-      if( this.pluginReady ) {
-        if( !this.options.allowEmptyWithAttachment && this.getContent() == '' ) {
-          e.stop();
-          return;
-        }
-      } else {
-        if( !this.options.allowEmptyWithoutAttachment && this.getContent() == '' ) {
-          e.stop();
-          return;
-        }
-      }
-      this.saveContent();
-    }.bind(this));
-  },
+		this.pluginReady = false;
 
-  getMenu : function() {
-    if( !$type(this.elements.menu) ) {
-      this.elements.menu = $try(function(){
-        return $(this.options.menuElement);
-      }.bind(this));
+		this.getForm().addEvent(
+				'submit',
+				function(e) {
+					if (this.pluginReady) {
+						if (!this.options.allowEmptyWithAttachment
+								&& this.getContent() == '') {
+							e.stop();
+							return;
+						}
+					} else {
+						if (!this.options.allowEmptyWithoutAttachment
+								&& this.getContent() == '') {
+							e.stop();
+							return;
+						}
+					}
+					this.saveContent();
+				}.bind(this));
+	},
 
-      if( !$type(this.elements.menu) ) {
-        this.elements.menu = new Element('div',{
-          'id' : 'compose-menu',
-          'class' : 'compose-menu'
-        }).inject(this.getForm(), 'after');
-      }
-    }
-    return this.elements.menu;
-  },
+	getMenu : function() {
+		if (!$type(this.elements.menu)) {
+			this.elements.menu = $try(function() {
+				return $(this.options.menuElement);
+			}.bind(this));
 
-  getTray : function() {
-    if( !$type(this.elements.tray) ) {
-      this.elements.tray = $try(function(){
-        return $(this.options.trayElement);
-      }.bind(this));
+			if (!$type(this.elements.menu)) {
+				this.elements.menu = new Element('div', {
+					'id' : 'compose-menu',
+					'class' : 'compose-menu'
+				}).inject(this.getForm(), 'after');
+			}
+		}
+		return this.elements.menu;
+	},
 
-      if( !$type(this.elements.tray) ) {
-        this.elements.tray =  new Element('div',{
-          'id' : 'compose-tray',
-          'class' : 'compose-tray',
-          'styles' : {
-            'display' : 'none'
-          }
-        }).inject(this.getForm(), 'after');
-      }
-    }
-    return this.elements.tray;
-  },
+	getTray : function() {
+		if (!$type(this.elements.tray)) {
+			this.elements.tray = $try(function() {
+				return $(this.options.trayElement);
+			}.bind(this));
 
-  getInputArea : function() {
-    if( !$type(this.elements.inputarea) ) {
-      var form = this.elements.textarea.getParent('form');
-      this.elements.inputarea = new Element('div', {
-        'styles' : {
-          'display' : 'none'
-        }
-      }).inject(form);
-    }
-    return this.elements.inputarea;
-  },
+			if (!$type(this.elements.tray)) {
+				this.elements.tray = new Element('div', {
+					'id' : 'compose-tray',
+					'class' : 'compose-tray',
+					'styles' : {
+						'display' : 'none'
+					}
+				}).inject(this.getForm(), 'after');
+			}
+		}
+		return this.elements.tray;
+	},
 
-  getForm : function() {
-    return this.elements.textarea.getParent('form');
-  },
+	getInputArea : function() {
+		if (!$type(this.elements.inputarea)) {
+			var form = this.elements.textarea.getParent('form');
+			this.elements.inputarea = new Element('div', {
+				'styles' : {
+					'display' : 'none'
+				}
+			}).inject(form);
+		}
+		return this.elements.inputarea;
+	},
 
+	getForm : function() {
+		return this.elements.textarea.getParent('form');
+	},
 
+	// Editor
 
-  // Editor
-  
-  attach : function() {
-    var size = this.elements.textarea.getSize();
+	attach : function() {
+		var size = this.elements.textarea.getSize();
 
-    // Modify textarea
-    this.elements.textarea.addClass('compose-textarea').setStyle('display', 'none');
+		// Modify textarea
+		this.elements.textarea.addClass('compose-textarea').setStyle('display',
+				'none');
 
-    // Create container
-    this.elements.container = new Element('div', {
-      'id' : 'compose-container',
-      'class' : 'compose-container',
-      'styles' : {
-        
-      }
-    });
-    this.elements.container.wraps(this.elements.textarea);
+		// Create container
+		this.elements.container = new Element('div', {
+			'id' : 'compose-container',
+			'class' : 'compose-container',
+			'styles' : {
 
-    // Create body
-    this.elements.body = new Element('div', {
-      'class' : 'compose-content',
-      'styles' : {
-        'display' : 'block'
-      },
-      'events' : {
-        'keypress' : function(event) {
-          if( event.key == 'a' && event.control ) {
-            // FF only
-            if( Browser.Engine.gecko ) {
-              fix_gecko_select_all_contenteditable_bug(this, event);
-            }
-          }
-        }
-      }
-    }).inject(this.elements.textarea, 'before');
+			}
+		});
+		this.elements.container.wraps(this.elements.textarea);
 
-    var self = this;
-    this.elements.body.addEvent('blur', function(e) {
-      if( '' == this.get('html').replace(/\s/, '').replace(/<[^<>]+?>/ig, '') )
-      {
-        if( !Browser.Engine.trident ) {
-          this.set('html', '<br />');
-        }
-        if( self.options.hideSubmitOnBlur ) {
-          (function() {
-            if( !self.hasActivePlugin() ) {
-              self.getMenu().setStyle('display', 'none');
-            }
-          }).delay(250);
-        }
-      }
-    });
+		// Create body
+		this.elements.body = new Element('div', {
+			'class' : 'compose-content',
+			'styles' : {
+				'display' : 'block'
+			},
+			'events' : {
+				'keypress' : function(event) {
+					if (event.key == 'a' && event.control) {
+						// FF only
+			if (Browser.Engine.gecko) {
+				fix_gecko_select_all_contenteditable_bug(this, event);
+			}
+		}
+	}
+}
+		}).inject(this.elements.textarea, 'before');
 
-    if( self.options.hideSubmitOnBlur ) {
-      this.getMenu().setStyle('display', 'none');
-      this.elements.body.addEvent('focus', function(e) {
-        self.getMenu().setStyle('display', '');
-      });
-    }
-    
-    $(this.elements.body);
-    this.elements.body.contentEditable = true;
-    this.elements.body.designMode = 'On';
-    
-    ['MouseUp', 'MouseDown', 'ContextMenu', 'Click', 'Dblclick', 'KeyPress', 'KeyUp', 'KeyDown'].each(function(eventName) {
-      var method = (this['editor' + eventName] || function(){}).bind(this);
-      this.elements.body.addEvent(eventName.toLowerCase(), method);
-    }.bind(this));
+		var self = this;
+		this.elements.body.addEvent('blur', function(e) {
+			if ('' == this.get('html').replace(/\s/, '').replace(/<[^<>]+?>/ig,
+					'')) {
+				if (!Browser.Engine.trident) {
+					this.set('html', '<br />');
+				}
+				if (self.options.hideSubmitOnBlur) {
+					(function() {
+						if (!self.hasActivePlugin()) {
+							self.getMenu().setStyle('display', 'none');
+						}
+					}).delay(250);
+				}
+			}
+		});
 
-    this.setContent(this.elements.textarea.value);
-    
-    this.selection = new Composer.Selection(this.elements.body);
+		if (self.options.hideSubmitOnBlur) {
+			this.getMenu().setStyle('display', 'none');
+			this.elements.body.addEvent('focus', function(e) {
+				self.getMenu().setStyle('display', '');
+			});
+		}
 
-    if( this.options.overText ) {
-      new Composer.OverText(this.elements.body, $merge({
-        textOverride : this._lang('Post Something...'),
-        poll : true,
-        positionOptions: {
-          position: ( en4.orientation == 'rtl' ? 'upperRight' : 'upperLeft' ),
-          edge: ( en4.orientation == 'rtl' ? 'upperRight' : 'upperLeft' ),
-          offset: {
-            x: ( en4.orientation == 'rtl' ? -4 : 4 ),
-            y: 2
-          }
-        }
-      }, this.options.overTextOptions));
-    }
-    
-    this.fireEvent('attach', this);
-    
-    this.plugins.each(function(){
+		$(this.elements.body);
+		this.elements.body.contentEditable = true;
+		this.elements.body.designMode = 'On';
 
-    });
+		[ 'MouseUp', 'MouseDown', 'ContextMenu', 'Click', 'Dblclick',
+				'KeyPress', 'KeyUp', 'KeyDown' ].each(function(eventName) {
+			var method = (this['editor' + eventName] || function() {
+			}).bind(this);
+			this.elements.body.addEvent(eventName.toLowerCase(), method);
+		}.bind(this));
 
-  },
+		this.setContent(this.elements.textarea.value);
 
-  detach : function() {
-    this.saveContent();
-    this.textarea.setStyle('display', '').removeClass('compose-textarea').inject(this.container, 'before');
-    this.container.dispose();
-    this.fireEvent('detach', this);
-    return this;
-  },
+		this.selection = new Composer.Selection(this.elements.body);
 
-  focus: function(){
-    // needs the delay to get focus working
-    (function(){
-      this.elements.body.focus();
-      this.fireEvent('focus', this);
-    }).bind(this).delay(10);
-    return this;
-  },
+		if (this.options.overText) {
+			new Composer.OverText(this.elements.body, $merge( {
+				textOverride : this._lang('Post Something...'),
+				poll : true,
+				positionOptions : {
+					position : (en4.orientation == 'rtl' ? 'upperRight'
+							: 'upperLeft'),
+					edge : (en4.orientation == 'rtl' ? 'upperRight'
+							: 'upperLeft'),
+					offset : {
+						x : (en4.orientation == 'rtl' ? -4 : 4),
+						y : 2
+					}
+				}
+			}, this.options.overTextOptions));
+		}
 
+		this.fireEvent('attach', this);
 
+		this.plugins.each(function() {
 
-  // Content
-  
-  getContent: function(){
-    return this.cleanup(this.elements.body.get('html'));
-  },
+		});
 
-  setContent: function(newContent){
-    if( !newContent.trim() && !Browser.Engine.trident ) newContent = '<br />';
-    this.elements.body.set('html', newContent);
-    return this;
-  },
+	},
 
-  saveContent: function(){
-    this.elements.textarea.set('value', this.getContent());
-    return this;
-  },
+	detach : function() {
+		this.saveContent();
+		this.textarea.setStyle('display', '').removeClass('compose-textarea')
+				.inject(this.container, 'before');
+		this.container.dispose();
+		this.fireEvent('detach', this);
+		return this;
+	},
 
-  cleanup : function(html) {
-    // @todo
-    return html
-      .replace(/<(br|p|div)[^<>]*?>/ig, "\r\n")
-      .replace(/<[^<>]+?>/ig, ' ')
-      .replace(/(\r\n?|\n){3,}/ig, "\n\n")
-      .trim();
-  },
+	focus : function() {
+		// needs the delay to get focus working
+		(function() {
+			this.elements.body.focus();
+			this.fireEvent('focus', this);
+		}).bind(this).delay(10);
+		return this;
+	},
 
+	// Content
 
+	getContent : function() {
+		return this.cleanup(this.elements.body.get('html'));
+	},
 
-  // Plugins
+	setContent : function(newContent) {
+		if (!newContent.trim() && !Browser.Engine.trident)
+			newContent = '<br />';
+		this.elements.body.set('html', newContent);
+		return this;
+	},
 
-  addPlugin : function(plugin) {
-    var key = plugin.getName();
-    this.plugins.set(key, plugin);
-    plugin.setComposer(this);
-    return this;
-  },
+	saveContent : function() {
+		this.elements.textarea.set('value', this.getContent());
+		return this;
+	},
 
-  addPlugins : function(plugins) {
-    plugins.each(function(plugin) {
-      this.addPlugin(plugin);
-    }.bind(this));
-  },
+	cleanup : function(html) {
+		// @todo
+	return html.replace(/<(br|p|div)[^<>]*?>/ig, "\r\n").replace(/<[^<>]+?>/ig,
+			' ').replace(/(\r\n?|\n){3,}/ig, "\n\n").trim();
+},
 
-  getPlugin : function(name) {
-    return this.plugins.get(name);
-  },
+// Plugins
 
-  activate : function(name) {
-    this.deactivate();
-    this.getMenu().setStyle();
-    this.plugins.get(name).activate();
-  },
+	addPlugin : function(plugin) {
+		var key = plugin.getName();
+		this.plugins.set(key, plugin);
+		plugin.setComposer(this);
+		return this;
+	},
 
-  deactivate : function() {
-    this.plugins.each(function(plugin) {
-      plugin.deactivate();
-    });
-    this.getTray().empty();
-  },
+	addPlugins : function(plugins) {
+		plugins.each(function(plugin) {
+			this.addPlugin(plugin);
+		}.bind(this));
+	},
 
-  signalPluginReady : function(state) {
-    this.pluginReady = state;
-  },
+	getPlugin : function(name) {
+		return this.plugins.get(name);
+	},
 
-  hasActivePlugin : function() {
-    var active = false;
-    this.plugins.each(function(plugin) {
-      active = active || plugin.active;
-    });
-    return active;
-  },
+	activate : function(name) {
+		this.deactivate();
+		this.getMenu().setStyle();
+		this.plugins.get(name).activate();
+	},
 
+	deactivate : function() {
+		this.plugins.each(function(plugin) {
+			plugin.deactivate();
+		});
+		this.getTray().empty();
+	},
 
+	signalPluginReady : function(state) {
+		this.pluginReady = state;
+	},
 
-  // Key events
+	hasActivePlugin : function() {
+		var active = false;
+		this.plugins.each(function(plugin) {
+			active = active || plugin.active;
+		});
+		return active;
+	},
 
-  editorMouseUp: function(e){
-    this.fireEvent('editorMouseUp', e);
-  },
+	// Key events
 
-  editorMouseDown: function(e){
-    this.fireEvent('editorMouseDown', e);
-  },
+	editorMouseUp : function(e) {
+		this.fireEvent('editorMouseUp', e);
+	},
 
-  editorContextMenu: function(e){
-    this.fireEvent('editorContextMenu', e);
-  },
+	editorMouseDown : function(e) {
+		this.fireEvent('editorMouseDown', e);
+	},
 
-  editorClick: function(e){
-    // make images selectable and draggable in Safari
-    if (Browser.Engine.webkit){
-      var el = e.target;
-      if (el.get('tag') == 'img'){
-        this.selection.selectNode(el);
-      }
-    }
+	editorContextMenu : function(e) {
+		this.fireEvent('editorContextMenu', e);
+	},
 
-    this.fireEvent('editorClick', e);
-  },
+	editorClick : function(e) {
+		// make images selectable and draggable in Safari
+	if (Browser.Engine.webkit) {
+		var el = e.target;
+		if (el.get('tag') == 'img') {
+			this.selection.selectNode(el);
+		}
+	}
 
-  editorDoubleClick: function(e){
-    this.fireEvent('editorDoubleClick', e);
-  },
+	this.fireEvent('editorClick', e);
+},
 
-  editorKeyPress: function(e){
-    this.keyListener(e);
-    this.fireEvent('editorKeyPress', e);
-  },
+editorDoubleClick : function(e) {
+	this.fireEvent('editorDoubleClick', e);
+},
 
-  editorKeyUp: function(e){
-    this.fireEvent('editorKeyUp', e);
-  },
+editorKeyPress : function(e) {
+	this.keyListener(e);
+	this.fireEvent('editorKeyPress', e);
+},
 
-  editorKeyDown: function(e){
-    if (e.key == 'enter'){
-      /*
-      if (this.options.paragraphise && !e.shift){
-        if (Browser.Engine.gecko || Browser.Engine.webkit){
-          var node = this.selection.getNode();
-          var blockEls = /^(H[1-6]|P|DIV|ADDRESS|PRE|FORM|TABLE|LI|OL|UL|TD|CAPTION|BLOCKQUOTE|CENTER|DL|DT|DD)$/;
-          var isBlock = node.getParents().include(node).some(function(el){
-            return el.nodeName.test(blockEls);
-          });
-          if (!isBlock) this.execute('insertparagraph');
-        }
-      } else {
-        if (Browser.Engine.trident){
-          var r = this.selection.getRange();
-          var node = this.selection.getNode();
-          if (node.get('tag') != 'li'){
-            if (r){
-              this.selection.insertContent('<br>');
-              this.selection.collapse(false);
-            }
-          }
-          e.preventDefault();
-        }
-      }
-      */
-    }
+editorKeyUp : function(e) {
+	this.fireEvent('editorKeyUp', e);
+},
 
-    this.fireEvent('editorKeyDown', e);
-  },
+editorKeyDown : function(e) {
+	if (e.key == 'enter') {
+		/*
+		 * if (this.options.paragraphise && !e.shift){ if (Browser.Engine.gecko ||
+		 * Browser.Engine.webkit){ var node = this.selection.getNode(); var
+		 * blockEls =
+		 * /^(H[1-6]|P|DIV|ADDRESS|PRE|FORM|TABLE|LI|OL|UL|TD|CAPTION|BLOCKQUOTE|CENTER|DL|DT|DD)$/;
+		 * var isBlock = node.getParents().include(node).some(function(el){
+		 * return el.nodeName.test(blockEls); }); if (!isBlock)
+		 * this.execute('insertparagraph'); } } else { if
+		 * (Browser.Engine.trident){ var r = this.selection.getRange(); var node =
+		 * this.selection.getNode(); if (node.get('tag') != 'li'){ if (r){
+		 * this.selection.insertContent('<br>');
+		 * this.selection.collapse(false); } } e.preventDefault(); } }
+		 */
+	}
 
-  keyListener: function(e){
-    
-  },
-  
+	this.fireEvent('editorKeyDown', e);
+},
 
-  _lang : function() {
-    try {
-      if( arguments.length < 1 ) {
-        return '';
-      }
+keyListener : function(e) {
 
-      var string = arguments[0];
-      if( $type(this.options.lang) && $type(this.options.lang[string]) ) {
-        string = this.options.lang[string];
-      }
+},
 
-      if( arguments.length <= 1 ) {
-        return string;
-      }
+_lang : function() {
+	try {
+		if (arguments.length < 1) {
+			return '';
+		}
 
-      var args = new Array();
-      for( var i = 1, l = arguments.length; i < l; i++ ) {
-        args.push(arguments[i]);
-      }
+		var string = arguments[0];
+		if ($type(this.options.lang) && $type(this.options.lang[string])) {
+			string = this.options.lang[string];
+		}
 
-      return string.vsprintf(args);
-    } catch( e ) {
-      alert(e);
-    }
-  }
+		if (arguments.length <= 1) {
+			return string;
+		}
+
+		var args = new Array();
+		for ( var i = 1, l = arguments.length; i < l; i++) {
+			args.push(arguments[i]);
+		}
+
+		return string.vsprintf(args);
+	} catch (e) {
+		alert(e);
+	}
+}
 });
 
+Composer.OverText = new Class( {
 
+	Extends : OverText,
 
-Composer.Selection = new Class({
-
-  initialize: function(win){
-    this.win = win;
-  },
-
-  getSelection: function(){
-    //this.win.focus();
-    return window.getSelection();
-  },
-
-  getRange: function(){
-    var s = this.getSelection();
-
-    if (!s) return null;
-
-    try {
-      return s.rangeCount > 0 ? s.getRangeAt(0) : (s.createRange ? s.createRange() : null);
-    } catch(e) {
-      // IE bug when used in frameset
-      return document.body.createTextRange();
-    }
-  },
-
-  setRange: function(range){
-    if (range.select){
-      $try(function(){
-        range.select();
-      });
-    } else {
-      var s = this.getSelection();
-      if (s.addRange){
-        s.removeAllRanges();
-        s.addRange(range);
-      }
-    }
-  },
-
-  selectNode: function(node, collapse){
-    var r = this.getRange();
-    var s = this.getSelection();
-
-    if (r.moveToElementText){
-      $try(function(){
-        r.moveToElementText(node);
-        r.select();
-      });
-    } else if (s.addRange){
-      collapse ? r.selectNodeContents(node) : r.selectNode(node);
-      s.removeAllRanges();
-      s.addRange(r);
-    } else {
-      s.setBaseAndExtent(node, 0, node, 1);
-    }
-
-    return node;
-  },
-
-  isCollapsed: function(){
-    var r = this.getRange();
-    if (r.item) return false;
-    return r.boundingWidth == 0 || this.getSelection().isCollapsed;
-  },
-
-  collapse: function(toStart){
-    var r = this.getRange();
-    var s = this.getSelection();
-
-    if (r.select){
-      r.collapse(toStart);
-      r.select();
-    } else {
-      toStart ? s.collapseToStart() : s.collapseToEnd();
-    }
-  },
-
-  getContent: function(){
-    var r = this.getRange();
-    var body = new Element('body');
-
-    if (this.isCollapsed()) return '';
-
-    if (r.cloneContents){
-      body.appendChild(r.cloneContents());
-    } else if ($defined(r.item) || $defined(r.htmlText)){
-      body.set('html', r.item ? r.item(0).outerHTML : r.htmlText);
-    } else {
-      body.set('html', r.toString());
-    }
-
-    var content = body.get('html');
-    return content;
-  },
-
-  getText : function(){
-    var r = this.getRange();
-    var s = this.getSelection();
-
-    return this.isCollapsed() ? '' : r.text || s.toString();
-  },
-
-  getNode: function(){
-    var r = this.getRange();
-
-    if (!Browser.Engine.trident){
-      var el = null;
-
-      if (r){
-        el = r.commonAncestorContainer;
-
-        // Handle selection a image or other control like element such as anchors
-        if (!r.collapsed)
-          if (r.startContainer == r.endContainer)
-            if (r.startOffset - r.endOffset < 2)
-              if (r.startContainer.hasChildNodes())
-                el = r.startContainer.childNodes[r.startOffset];
-
-        while ($type(el) != 'element') el = el.parentNode;
-      }
-
-      return $(el);
-    }
-
-    return $(r.item ? r.item(0) : r.parentElement());
-  },
-
-  insertContent: function(content){
-    var r = this.getRange();
-
-    if (r.insertNode){
-      r.deleteContents();
-      r.insertNode(r.createContextualFragment(content));
-    } else {
-      // Handle text and control range
-      (r.pasteHTML) ? r.pasteHTML(content) : r.item(0).outerHTML = content;
-    }
-  }
+	test : function() {
+		var v = this.element.get('html').replace(/\s+/, '').replace(/<br.*?>/,'');
+		return !v;
+	}
 
 });
 
+Composer.Selection = new Class( {
 
-Composer.OverText = new Class({
+	initialize : function(win) {
+		this.win = win;
+	},
 
-  Extends : OverText,
+	getSelection : function() {
+		// this.win.focus();
+	return window.getSelection();
+},
 
-  test : function() {
-    var v = this.element.get('html').replace(/\s+/, '').replace(/<br.*?>/, '');
-    return !v;
-  }
+	getRange : function() {
+		var s = this.getSelection();
 
-})
+		if (!s)
+			return null;
 
+		try {
+			return s.rangeCount > 0 ? s.getRangeAt(0) : (s.createRange ? s
+					.createRange() : null);
+		} catch (e) {
+			// IE bug when used in frameset
+			return document.body.createTextRange();
+		}
+	},
+
+	setRange : function(range) {
+		if (range.select) {
+			$try(function() {
+				range.select();
+			});
+		} else {
+			var s = this.getSelection();
+			if (s.addRange) {
+				s.removeAllRanges();
+				s.addRange(range);
+			}
+		}
+	},
+
+	selectNode : function(node, collapse) {
+		var r = this.getRange();
+		var s = this.getSelection();
+
+		if (r.moveToElementText) {
+			$try(function() {
+				r.moveToElementText(node);
+				r.select();
+			});
+		} else if (s.addRange) {
+			collapse ? r.selectNodeContents(node) : r.selectNode(node);
+			s.removeAllRanges();
+			s.addRange(r);
+		} else {
+			s.setBaseAndExtent(node, 0, node, 1);
+		}
+
+		return node;
+	},
+
+	isCollapsed : function() {
+		var r = this.getRange();
+		if (r.item)
+			return false;
+		return r.boundingWidth == 0 || this.getSelection().isCollapsed;
+	},
+
+	collapse : function(toStart) {
+		var r = this.getRange();
+		var s = this.getSelection();
+
+		if (r.select) {
+			r.collapse(toStart);
+			r.select();
+		} else {
+			toStart ? s.collapseToStart() : s.collapseToEnd();
+		}
+	},
+
+	getContent : function() {
+		var r = this.getRange();
+		var body = new Element('body');
+
+		if (this.isCollapsed())
+			return '';
+
+		if (r.cloneContents) {
+			body.appendChild(r.cloneContents());
+		} else if ($defined(r.item) || $defined(r.htmlText)) {
+			body.set('html', r.item ? r.item(0).outerHTML : r.htmlText);
+		} else {
+			body.set('html', r.toString());
+		}
+
+		var content = body.get('html');
+		return content;
+	},
+
+	getText : function() {
+		var r = this.getRange();
+		var s = this.getSelection();
+
+		return this.isCollapsed() ? '' : r.text || s.toString();
+	},
+
+	getNode : function() {
+		var r = this.getRange();
+
+		if (!Browser.Engine.trident) {
+			var el = null;
+
+			if (r) {
+				el = r.commonAncestorContainer;
+
+				// Handle selection a image or other control like element such
+	// as anchors
+	if (!r.collapsed)
+		if (r.startContainer == r.endContainer)
+			if (r.startOffset - r.endOffset < 2)
+				if (r.startContainer.hasChildNodes())
+					el = r.startContainer.childNodes[r.startOffset];
+
+	while ($type(el) != 'element')
+		el = el.parentNode;
+}
+
+return $(el);
+}
+
+return $(r.item ? r.item(0) : r.parentElement());
+},
+
+insertContent : function(content) {
+var r = this.getRange();
+
+if (r.insertNode) {
+r.deleteContents();
+r.insertNode(r.createContextualFragment(content));
+} else {
+// Handle text and control range
+	(r.pasteHTML) ? r.pasteHTML(content) : r.item(0).outerHTML = content;
+}
+}
+
+});
 
 Composer.Plugin = {};
 
-Composer.Plugin.Interface = new Class({
+Composer.Plugin.Interface = new Class( {
 
-  Implements : [Options, Events],
+	Implements : [ Options, Events ],
 
-  name : 'interface',
+	name : 'interface',
 
-  active : false,
+	active : false,
 
-  composer : false,
+	composer : false,
 
-  options : {
-    loadingImage : 'application/modules/Core/externals/images/loading.gif'
-  },
-  
-  elements : {},
+	options : {
+		loadingImage : 'application/modules/Core/externals/images/loading.gif'
+	},
 
-  persistentElements : ['activator', 'loadingImage'],
+	elements : {},
 
-  params : {},
+	persistentElements : [ 'activator', 'loadingImage' ],
 
-  initialize : function(options) {
-    this.params = new Hash();
-    this.elements = new Hash();
-    this.reset();
-    this.setOptions(options);
-  },
+	params : {},
 
-  getName : function() {
-    return this.name;
-  },
+	initialize : function(options) {
+		this.params = new Hash();
+		this.elements = new Hash();
+		this.reset();
+		this.setOptions(options);
+	},
 
-  setComposer : function(composer) {
-    this.composer = composer;
-    this.attach();
-    return this;
-  },
+	getName : function() {
+		return this.name;
+	},
 
-  getComposer : function() {
-    if( !this.composer ) throw "No composer defined";
-    return this.composer;
-  },
+	setComposer : function(composer) {
+		this.composer = composer;
+		this.attach();
+		return this;
+	},
 
-  attach : function() {
-    this.reset();
-  },
+	getComposer : function() {
+		if (!this.composer)
+			throw "No composer defined";
+		return this.composer;
+	},
 
-  detach : function() {
-    this.reset();
-    if( this.elements.activator ) {
-      this.elements.activator.destroy();
-      this.elements.erase('menu');
-    }
-  },
+	attach : function() {
+		this.reset();
+	},
 
-  reset : function() {
-    this.elements.each(function(element, key) {
-      if( $type(element) == 'element' && !this.persistentElements.contains(key) ) {
-        element.destroy();
-        this.elements.erase(key);
-      }
-    }.bind(this));
-    this.params = new Hash();
-    this.elements = new Hash();
-  },
+	detach : function() {
+		this.reset();
+		if (this.elements.activator) {
+			this.elements.activator.destroy();
+			this.elements.erase('menu');
+		}
+	},
 
-  activate : function() {
-    if( this.active ) return;
-    this.active = true;
+	reset : function() {
+		this.elements.each(function(element, key) {
+			if ($type(element) == 'element'
+					&& !this.persistentElements.contains(key)) {
+				element.destroy();
+				this.elements.erase(key);
+			}
+		}.bind(this));
+		this.params = new Hash();
+		this.elements = new Hash();
+	},
 
-    this.reset();
+	activate : function() {
+		if (this.active)
+			return;
+		this.active = true;
 
-    this.getComposer().getTray().setStyle('display', '');
-    this.getComposer().getMenu().setStyle('display', 'none');
-    var submitButtonEl = $(this.getComposer().options.submitElement);
-    if( submitButtonEl ) {
-      submitButtonEl.setStyle('display', 'none');
-    }
-    this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
-      element.setStyle('display', 'none');
-    });
-   
-    switch( $type(this.options.loadingImage) ) {
-      case 'element':
-        break;
-      case 'string':
-        this.elements.loadingImage = new Asset.image(this.options.loadingImage, {
-          'id' : 'compose-' + this.getName() + '-loading-image',
-          'class' : 'compose-loading-image'
-        });
-        break;
-      default:
-        this.elements.loadingImage = new Asset.image('loading.gif', {
-          'id' : 'compose-' + this.getName() + '-loading-image',
-          'class' : 'compose-loading-image'
-        });
-        break;
-    }
-  },
+		this.reset();
 
-  deactivate : function() {
-    if( !this.active ) return;
-    this.active = false;
+		this.getComposer().getTray().setStyle('display', '');
+		this.getComposer().getMenu().setStyle('display', 'none');
+		var submitButtonEl = $(this.getComposer().options.submitElement);
+		if (submitButtonEl) {
+			submitButtonEl.setStyle('display', 'none');
+		}
+		this.getComposer().getMenu().getElements('.compose-activator').each(
+				function(element) {
+					element.setStyle('display', 'none');
+				});
 
-    this.reset();
+		switch ($type(this.options.loadingImage)) {
+		case 'element':
+			break;
+		case 'string':
+			this.elements.loadingImage = new Asset.image(
+					this.options.loadingImage, {
+						'id' : 'compose-' + this.getName() + '-loading-image',
+						'class' : 'compose-loading-image'
+					});
+			break;
+		default:
+			this.elements.loadingImage = new Asset.image('loading.gif', {
+				'id' : 'compose-' + this.getName() + '-loading-image',
+				'class' : 'compose-loading-image'
+			});
+			break;
+		}
+	},
 
-    this.getComposer().getTray().setStyle('display', 'none');
-    this.getComposer().getMenu().setStyle('display', '');
-    var submitButtonEl = $(this.getComposer().options.submitElement);
-    if( submitButtonEl ) {
-      submitButtonEl.setStyle('display', '');
-    }
-    this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
-      element.setStyle('display', '');
-    });
-    
-    this.getComposer().signalPluginReady(false);
-  },
+	deactivate : function() {
+		if (!this.active)
+			return;
+		this.active = false;
 
-  ready : function() {
-    this.getComposer().signalPluginReady(true);
-    this.getComposer().getMenu().setStyle('display', '');
-    var submitEl = $(this.getComposer().options.submitElement);
-    if( submitEl ) {
-      submitEl.setStyle('display', '');
-    }
-  },
+		this.reset();
 
+		this.getComposer().getTray().setStyle('display', 'none');
+		this.getComposer().getMenu().setStyle('display', '');
+		var submitButtonEl = $(this.getComposer().options.submitElement);
+		if (submitButtonEl) {
+			submitButtonEl.setStyle('display', '');
+		}
+		this.getComposer().getMenu().getElements('.compose-activator').each(
+				function(element) {
+					element.setStyle('display', '');
+				});
 
-  // Utility
+		this.getComposer().signalPluginReady(false);
+	},
 
-  makeActivator : function() {
-    if( !this.elements.activator ) {
-      this.elements.activator = new Element('a', {
-        'id' : 'compose-' + this.getName() + '-activator',
-        'class' : 'compose-activator buttonlink',
-        'href' : 'javascript:void(0);',
-        'html' : this._lang(this.options.title),
-        'events' : {
-          'click' : this.activate.bind(this)
-        }
-      }).inject(this.getComposer().getMenu());
-    }
-  },
+	ready : function() {
+		this.getComposer().signalPluginReady(true);
+		this.getComposer().getMenu().setStyle('display', '');
+		var submitEl = $(this.getComposer().options.submitElement);
+		if (submitEl) {
+			submitEl.setStyle('display', '');
+		}
+	},
 
-  makeMenu : function() {
-    if( !this.elements.menu ) {
-      var tray = this.getComposer().getTray();
+	// Utility
 
-      this.elements.menu = new Element('div', {
-        'id' : 'compose-' + this.getName() + '-menu',
-        'class' : 'compose-menu'
-      }).inject(tray);
+	makeActivator : function() {
+		if (!this.elements.activator) {
+			this.elements.activator = new Element('a', {
+				'id' : 'compose-' + this.getName() + '-activator',
+				'class' : 'compose-activator buttonlink',
+				'href' : 'javascript:void(0);',
+				'html' : this._lang(this.options.title),
+				'events' : {
+					'click' : this.activate.bind(this)
+				}
+			}).inject(this.getComposer().getMenu());
+		}
+	},
 
-      this.elements.menuTitle = new Element('span', {
-        'html' : this._lang(this.options.title) + ' ('
-      }).inject(this.elements.menu);
+	makeMenu : function() {
+		if (!this.elements.menu) {
+			var tray = this.getComposer().getTray();
 
-      this.elements.menuClose = new Element('a', {
-        'href' : 'javascript:void(0);',
-        'html' : this._lang('cancel'),
-        'events' : {
-          'click' : function(e) {
-            e.stop();
-            this.getComposer().deactivate();
-          }.bind(this)
-        }
-      }).inject(this.elements.menuTitle);
+			this.elements.menu = new Element('div', {
+				'id' : 'compose-' + this.getName() + '-menu',
+				'class' : 'compose-menu'
+			}).inject(tray);
 
-      this.elements.menuTitle.appendText(')');
-    }
-  },
-  
-  makeBody : function() {
-    if( !this.elements.body ) {
-      var tray = this.getComposer().getTray();
-      this.elements.body = new Element('div', {
-        'id' : 'compose-' + this.getName() + '-body',
-        'class' : 'compose-body'
-      }).inject(tray);
-    }
-  },
+			this.elements.menuTitle = new Element('span', {
+				'html' : this._lang(this.options.title) + ' ('
+			}).inject(this.elements.menu);
 
-  makeLoading : function(action) {
-    if( !this.elements.loading ) {
-      if( action == 'empty' ) {
-        this.elements.body.empty();
-      } else if( action == 'hide' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('display', 'none')});
-      } else if( action == 'invisible' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('height', '0px').setStyle('visibility', 'hidden')});
-      }
+			this.elements.menuClose = new Element('a', {
+				'href' : 'javascript:void(0);',
+				'html' : this._lang('cancel'),
+				'events' : {
+					'click' : function(e) {
+						e.stop();
+						this.getComposer().deactivate();
+					}.bind(this)
+				}
+			}).inject(this.elements.menuTitle);
 
-      this.elements.loading = new Element('div', {
-        'id' : 'compose-' + this.getName() + '-loading',
-        'class' : 'compose-loading'
-      }).inject(this.elements.body);
+			this.elements.menuTitle.appendText(')');
+		}
+	},
 
-      var image = this.elements.loadingImage || (new Element('img', {
-        'id' : 'compose-' + this.getName() + '-loading-image',
-        'class' : 'compose-loading-image'
-      }));
-      
-      image.inject(this.elements.loading);
+	makeBody : function() {
+		if (!this.elements.body) {
+			var tray = this.getComposer().getTray();
+			this.elements.body = new Element('div', {
+				'id' : 'compose-' + this.getName() + '-body',
+				'class' : 'compose-body'
+			}).inject(tray);
+		}
+	},
 
-      new Element('span', {
-        'html' : this._lang('Loading...')
-      }).inject(this.elements.loading);
-    }
-  },
+	makeLoading : function(action) {
+		if (!this.elements.loading) {
+			if (action == 'empty') {
+				this.elements.body.empty();
+			} else if (action == 'hide') {
+				this.elements.body.getChildren().each(function(element) {
+					element.setStyle('display', 'none')
+				});
+			} else if (action == 'invisible') {
+				this.elements.body.getChildren().each(
+						function(element) {
+							element.setStyle('height', '0px').setStyle(
+									'visibility', 'hidden')
+						});
+			}
 
-  makeError : function(message, action) {
-    if( !$type(action) ) action = 'empty';
-    message = message || 'An error has occurred';
-    message = this._lang(message);
-    
-    this.elements.error = new Element('div', {
-      'id' : 'compose-' + this.getName() + '-error',
-      'class' : 'compose-error',
-      'html' : message
-    }).inject(this.elements.body);
-  },
+			this.elements.loading = new Element('div', {
+				'id' : 'compose-' + this.getName() + '-loading',
+				'class' : 'compose-loading'
+			}).inject(this.elements.body);
 
-  makeFormInputs : function(data) {
-    this.ready();
-    
-    this.getComposer().getInputArea().empty();
+			var image = this.elements.loadingImage || (new Element('img', {
+				'id' : 'compose-' + this.getName() + '-loading-image',
+				'class' : 'compose-loading-image'
+			}));
 
-    data.type = this.getName();
+			image.inject(this.elements.loading);
 
-    $H(data).each(function(value, key) {
-      this.setFormInputValue(key, value);
-    }.bind(this));
-  },
+			new Element('span', {
+				'html' : this._lang('Loading...')
+			}).inject(this.elements.loading);
+		}
+	},
 
-  setFormInputValue : function(key, value) {
-    var elName = 'attachmentForm' + key.capitalize();
-    if( !this.elements.has(elName) ) {
-      this.elements.set(elName, new Element('input', {
-        'type' : 'hidden',
-        'name' : 'attachment[' + key + ']',
-        'value' : value || ''
-      }).inject(this.getComposer().getInputArea()));
-    }
-    this.elements.get(elName).value = value;
-  },
+	makeError : function(message, action) {
+		if (!$type(action))
+			action = 'empty';
+		message = message || 'An error has occurred';
+		message = this._lang(message);
 
-  _lang : function() {
-    try {
-      if( arguments.length < 1 ) {
-        return '';
-      }
+		this.elements.error = new Element('div', {
+			'id' : 'compose-' + this.getName() + '-error',
+			'class' : 'compose-error',
+			'html' : message
+		}).inject(this.elements.body);
+	},
 
-      var string = arguments[0];
-      if( $type(this.options.lang) && $type(this.options.lang[string]) ) {
-        string = this.options.lang[string];
-      }
+	makeFormInputs : function(data) {
+		this.ready();
 
-      if( arguments.length <= 1 ) {
-        return string;
-      }
+		this.getComposer().getInputArea().empty();
 
-      var args = new Array();
-      for( var i = 1, l = arguments.length; i < l; i++ ) {
-        args.push(arguments[i]);
-      }
+		data.type = this.getName();
 
-      return string.vsprintf(args);
-    } catch( e ) {
-      alert(e);
-    }
-  }
-  
+		$H(data).each(function(value, key) {
+			this.setFormInputValue(key, value);
+		}.bind(this));
+	},
+
+	setFormInputValue : function(key, value) {
+		var elName = 'attachmentForm' + key.capitalize();
+		if (!this.elements.has(elName)) {
+			this.elements.set(elName, new Element('input', {
+				'type' : 'hidden',
+				'name' : 'attachment[' + key + ']',
+				'value' : value || ''
+			}).inject(this.getComposer().getInputArea()));
+		}
+		this.elements.get(elName).value = value;
+	},
+
+	_lang : function() {
+		try {
+			if (arguments.length < 1) {
+				return '';
+			}
+
+			var string = arguments[0];
+			if ($type(this.options.lang) && $type(this.options.lang[string])) {
+				string = this.options.lang[string];
+			}
+
+			if (arguments.length <= 1) {
+				return string;
+			}
+
+			var args = new Array();
+			for ( var i = 1, l = arguments.length; i < l; i++) {
+				args.push(arguments[i]);
+			}
+
+			return string.vsprintf(args);
+		} catch (e) {
+			alert(e);
+		}
+	}
+
 });
