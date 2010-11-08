@@ -156,11 +156,12 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 	{
 		$answer_id = $this->getRequest()->getParam('answer_id');
 		$answer = $this->view->answer = Engine_Api::_()->getItem('answer', $answer_id);
-		$cat = $this->view->cat = Engine_Api::_()->answer()->getCategory($answer->answer_cat_id);
+		//$cat = $this->view->cat = Engine_Api::_()->answer()->getCategory($answer->answer_cat_id);
 		$slug = trim(preg_replace('/-+/', '-', preg_replace('/[^a-z0-9-]+/i', '-', strtolower($answer->getTitle()))), '-');
 		if (!empty($answer)) {
 			Engine_Api::_()->core()->setSubject($answer);
 		}
+		
 		if (!$this->_helper->requireSubject()->isValid())
 		return;
 
