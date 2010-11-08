@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `engine4_forum_categories` (
 --
 
 INSERT IGNORE INTO `engine4_forum_categories` (`category_id`, `title`, `description`, `creation_date`, `modified_date`, `order`, `forum_count`) VALUES
-(1, 'General', '', NOW(), NOW(), 1, 1),
-(2, 'Off-Topic', '', NOW(), NOW(), 2, 1);
+(1, 'Momburbia.com', '', NOW(), NOW(), 1, 1),
+(2, 'Open Discussions', '', NOW(), NOW(), 2, 1);
 
 
 -- --------------------------------------------------------
@@ -69,11 +69,30 @@ CREATE TABLE IF NOT EXISTS `engine4_forum_forums` (
 
 INSERT INTO `engine4_forum_forums` (`forum_id`, `category_id`, `title`, `description`, `creation_date`, `modified_date`, `order`, `topic_count`, `post_count`, `lastpost_id`) VALUES
 (1, 1, 'News and Announcements', '', '2010-02-01 14:59:01', '2010-02-01 14:59:01', 1, 0, 0, 0),
-(2, 1, 'Support', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 2, 0, 0, 0),
-(3, 1, 'Suggestions', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 3, 0, 0, 0),
+(2, 1, 'Welcome', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 2, 0, 0, 0),
+(3, 1, 'Suggestions & Feedback', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 3, 0, 0, 0),
 
-(4, 2, 'Off-Topic Discussions', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 1, 0, 0, 0),
-(5, 2, 'Introduce Yourself', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 2, 0, 0, 0);
+(4, 2, 'Contests', 'Chat about the great contests online and get moms involved', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 1, 0, 0, 0),
+(5, 2, 'Cooking, Baking & Food', 'Discuss and share on how to be the best mom chef', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 2, 0, 0, 0),
+(6, 2, 'Culture and Heritage', ' Learn, ask and share about your culture or others', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 3, 0, 0, 0),
+(7, 2, 'Current Events & Politics', 'If it’s in the news, chat about it here', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 4, 0, 0, 0),
+(8, 2, 'Entertainment & Pop Culture', 'Chat about your TV shows and celebrity buzz', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 5, 0, 0, 0),
+(9, 2, 'Family & Work Life', 'Everything about your family and work', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 6, 0, 0, 0),
+(10, 2, 'Fashion, Beauty & Style', 'Share and get tips on everything', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 7, 0, 0, 0),
+(11, 2, 'Gardening', 'Your green thumb gets greener here', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 8, 0, 0, 0),
+(12, 2, 'Health & Wellness', 'Bring out the best by sharing and learning from other moms', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 9, 0, 0, 0),
+(13, 2, 'Hobbies & Crafts', 'So many things to share and ask, get started today', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 10, 0, 0, 0),
+(14, 2, 'Home Improvement & Décor', 'Big Flip or small project – chat about it here', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 11, 0, 0, 0),
+(15, 2, 'Money & Finance', 'Moms can support one another in this key area of life', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 12, 0, 0, 0),
+(16, 2, 'Parenting', 'Talk about everything that relates to raising children', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 13, 0, 0, 0),
+(17, 2, 'Pets & Animals', 'Love your pet? Share about them or ask questions', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 14, 0, 0, 0),
+(18, 2, 'Pregnancy and Trying to Conceive', 'So many moms to get great support from…ask away', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 15, 0, 0, 0),
+(19, 2, 'Relationships', 'Discussion on anything that relates to love, friendships, family', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 16, 0, 0, 0),
+(20, 2, 'Religion and Spirituality', 'Get support from moms who are there to listen', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 17, 0, 0, 0),
+(21, 2, 'Schools & Education', 'Your child’s education is key, discuss it here', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 18, 0, 0, 0),
+(22, 2, 'Shopping', 'Need a deal or know where to get one?  Share here', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 19, 0, 0, 0),
+(23, 2, 'Sports & Recreation', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 20, 0, 0, 0),
+(24, 2, 'Other', '', '2010-02-01 15:09:01', '2010-02-01 17:59:01', 21, 0, 0, 0);
 
 
 -- --------------------------------------------------------

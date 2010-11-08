@@ -11,6 +11,7 @@
  */
 ?>
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
+<div class="layout_middle">
 <h2>
   <?php echo $this->translate('%1$s\'s Album: %2$s',
     $this->album->getOwner()->__toString(),
@@ -42,7 +43,7 @@
   </div>
 <?php endif;?>
 
-<div class="layout_middle">
+
   <ul class="thumbs thumbs_nocaptions">
     <?php foreach( $this->paginator as $photo ): ?>
       <li>

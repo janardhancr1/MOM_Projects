@@ -808,7 +808,6 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 	{
 		$return = '0~;';
 		$catid = $this->_getParam('cat_id', null);
-		
 		if($catid)
 		{
 			$_SESSION['catid'] = $catid;
