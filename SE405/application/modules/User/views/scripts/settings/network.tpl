@@ -52,7 +52,7 @@
     });
   });
 </script>
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Settings');?>
@@ -94,6 +94,7 @@
 <br />
 
 <?php echo $this->form->render($this) ?>
+</div>
 </div>
 
 

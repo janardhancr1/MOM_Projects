@@ -10,7 +10,9 @@
  * @author     John
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Messages');?>
@@ -162,3 +164,4 @@
 <?php foreach( $this->composePartials as $partial ): ?>
   <?php echo $this->partial($partial[0], $partial[1]) ?>
 <?php endforeach; ?>
+</div>

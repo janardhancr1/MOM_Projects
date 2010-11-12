@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Settings');?>
@@ -32,7 +32,7 @@
   <?php endif; ?>
   <?php echo $this->form->render($this) ?>
 </div>
-
+</div>
 <?php if( Zend_Controller_Front::getInstance()->getRequest()->getParam('format') == 'html' ): ?>
   <script type="text/javascript">
     en4.core.runonce.add(function(){

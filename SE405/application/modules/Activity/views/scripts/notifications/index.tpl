@@ -65,7 +65,10 @@
 
   });
 </script>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>
 
+<div class='layout_middle'>
+<div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/members/home'>Back to Home</a></div>
 <div class='notifications_layout'>
 
   <div class='notifications_leftside'>
@@ -149,4 +152,4 @@
   </div>
 
 </div>
-
+</div>

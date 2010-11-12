@@ -10,7 +10,9 @@
  * @author     John
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Messages');?>
@@ -113,3 +115,4 @@
 <?php endif; ?>
 
 <?php echo $this->paginationControl($this->paginator); ?>
+</div>

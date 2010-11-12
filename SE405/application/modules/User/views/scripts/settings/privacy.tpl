@@ -10,7 +10,7 @@
  * @author     Steve
  */
 ?>
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('My Settings');?>
@@ -34,7 +34,7 @@
       <li>[ <a class="smoothbox" href="../../member/block/remove/<?php echo $user->username ?>"><?php echo $this->translate('We now');?></a> ] <?php echo $user->username ?></li>
     <?php endforeach; ?>
   </ul>
-</div>
+</div></div>
 
 <script type="text/javascript">
 <!--

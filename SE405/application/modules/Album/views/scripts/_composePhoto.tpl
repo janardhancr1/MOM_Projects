@@ -42,7 +42,7 @@
       title : '<?php echo $this->string()->escapeJavascript($this->translate('Add Photo')) ?>',
       lang : {
         'Add Photo' : '<?php echo $this->string()->escapeJavascript($this->translate('Add Photo')) ?>',
-        'Select File' : '<?php echo $this->string()->escapeJavascript($this->translate('Select File')) ?>',
+        'Select File' : '<?php echo $this->string()->escapeJavascript($this->translate('Select File (Max Size 4MB)')) ?>',
         'cancel' : '<?php echo $this->string()->escapeJavascript($this->translate('cancel')) ?>',
         'Loading...' : '<?php echo $this->string()->escapeJavascript($this->translate('Loading...')) ?>',
         'Unable to upload photo. Please click cancel and try again': '<?php echo $this->string()->escapeJavascript($this->translate('Unable to upload photo. Please click cancel and try again')) ?>'

@@ -10,7 +10,9 @@
  * @author     John
  */
 ?>
+<?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
+<div class='layout_middle'>
 <?php
   $this->headScript()
     ->appendFile($this->baseUrl().'/externals/autocompleter/Observer.js')
@@ -191,4 +193,5 @@
 </div>
 
 <?php echo $this->form->render($this) ?>
+</div>
 
