@@ -51,7 +51,11 @@ login form.
   margin-top: 5px;
 }
 
-
+#remember
+{
+    float: right;
+    margin-left: 5px;
+}
 
 
 /*
@@ -1439,6 +1443,11 @@ ul.notifications_menu > li > span > a
 	color: #fff;
 }
 a.join_link:link {
+	color: #fff;
+	font-weight: bold;
+}
+
+a.join_link:visited {
 	color: #fff;
 	font-weight: bold;
 }

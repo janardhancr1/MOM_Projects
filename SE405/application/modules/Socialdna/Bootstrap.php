@@ -16,14 +16,14 @@ class Socialdna_Bootstrap extends Engine_Application_Bootstrap_Abstract
     
     $frontController = Zend_Controller_Front::getInstance();
     
-    $frontController->registerPlugin( new Socialdna_Plugin_Login() );
+    //$frontController->registerPlugin( new Socialdna_Plugin_Login() );
 
     
     // this is only needed for quicksignup - only add in that controller
     // Add our special path for action helpers
     $this->initActionHelperPath();
     
-    $router = $frontController->getRouter();
+    //$router = $frontController->getRouter();
     
     if(Semods_Utils::getSetting('socialdna_login_page_hook', 1) == 1) {
 
@@ -39,7 +39,7 @@ class Socialdna_Bootstrap extends Engine_Application_Bootstrap_Abstract
           ),
         );
 
-      $router->addConfig(new Zend_Config($routes));
+      //$router->addConfig(new Zend_Config($routes));
       
     }
     
