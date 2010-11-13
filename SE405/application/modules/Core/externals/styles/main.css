@@ -1058,6 +1058,7 @@ main feed.
 {
   background-image: url(~/application/modules/Activity/externals/images/link.png);
   background-repeat: no-repeat;
+  padding-left: 20px;
 }
 #compose-link-form-input
 {

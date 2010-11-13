@@ -45,6 +45,7 @@ main feed.
 {
   background-repeat: no-repeat;
   background-image: url(~/application/modules/Album/externals/images/album_upload.png);
+  padding-left: 20px;
 }
 #compose-photo-preview-image
 {

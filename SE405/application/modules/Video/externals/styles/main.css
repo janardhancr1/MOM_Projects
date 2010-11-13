@@ -453,6 +453,7 @@ Used for the attachment composer above the main feed.
 {
   background-image: url(~/application/modules/Video/externals/images/new.png);
   background-repeat: no-repeat;
+  padding-left: 20px;
 }
 #compose-video-form-input
 {
