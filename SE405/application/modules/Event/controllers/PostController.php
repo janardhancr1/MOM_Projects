@@ -20,6 +20,7 @@ class Event_PostController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     if( Engine_Api::_()->core()->hasSubject() ) return;
 
     if( 0 !== ($post_id = (int) $this->_getParam('post_id')) &&

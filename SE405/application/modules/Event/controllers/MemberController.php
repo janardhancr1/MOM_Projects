@@ -21,6 +21,7 @@ class Event_MemberController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     if( 0 !== ($event_id = (int) $this->_getParam('event_id')) &&
         null !== ($event = Engine_Api::_()->getItem('event', $event_id)) )
     {

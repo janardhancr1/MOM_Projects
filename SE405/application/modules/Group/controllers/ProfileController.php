@@ -20,6 +20,7 @@ class Group_ProfileController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     // @todo this may not work with some of the content stuff in here, double-check
     $subject = null;
     if( !Engine_Api::_()->core()->hasSubject() )

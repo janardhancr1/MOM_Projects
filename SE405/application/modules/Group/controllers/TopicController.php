@@ -20,6 +20,7 @@ class Group_TopicController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     if( Engine_Api::_()->core()->hasSubject() ) return;
 
     /*

@@ -11,8 +11,8 @@
  */
 ?>
 <div class='layout_middle'>
-<h2><?php echo $this->translate('Privacy Statement') ?></h2>
+<h2><?php echo $this->translate('About us') ?></h2>
 <p>
-  <?php echo $this->translate('_CORE_PRIVACY_STATEMENT') ?>
+  <?php echo $this->translate('_CORE_ABOUT_STATEMENT') ?>
 </p>
 </div>

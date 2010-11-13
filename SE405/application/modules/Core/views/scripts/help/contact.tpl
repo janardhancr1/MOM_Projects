@@ -10,9 +10,10 @@
  * @author     John
  */
 ?>
-
+<div class='layout_middle'>
 <?php if( $this->status ): ?>
   <?php echo $this->message; ?>
 <?php else: ?>
   <?php echo $this->form->render($this) ?>
 <?php endif; ?>
+</div>

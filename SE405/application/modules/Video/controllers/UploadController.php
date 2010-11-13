@@ -20,6 +20,7 @@ class Video_UploadController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     // only permit controller access if authorized
     if( !$this->_helper->requireAuth()->setAuthParams('video', null, 'upload')->isValid()) return;
   }

@@ -10,8 +10,9 @@
  * @author     John
  */
 ?>
-
+<div class='layout_middle'>
 <h2><?php echo $this->translate('Terms of Service') ?></h2>
 <p>
   <?php echo $this->translate('_CORE_TERMS_OF_SERVICE') ?>
 </p>
+</div>

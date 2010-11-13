@@ -20,6 +20,7 @@ class Video_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     //$this->getNavigation();
     
     // only show videos if authorized

@@ -20,6 +20,7 @@ class Classified_PhotoController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     if( !Engine_Api::_()->core()->hasSubject() )
     {
       if( 0 !== ($photo_id = (int) $this->_getParam('photo_id')) &&

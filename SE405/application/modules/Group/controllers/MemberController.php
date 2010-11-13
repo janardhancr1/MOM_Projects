@@ -20,6 +20,7 @@ class Group_MemberController extends Core_Controller_Action_Standard
 {
   public function init()
   {
+  	if( !$this->_helper->requireUser()->isValid() ) return;
     if( 0 !== ($group_id = (int) $this->_getParam('group_id')) &&
         null !== ($group = Engine_Api::_()->getItem('group', $group_id)) )
     {
