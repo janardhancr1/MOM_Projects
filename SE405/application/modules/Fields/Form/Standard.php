@@ -188,6 +188,7 @@ class Fields_Form_Standard extends Engine_Form
           ->removeDecorator('HtmlTag')
           ->getDecorator('HtmlTag2')->setOption('class', 'form-wrapper-heading');
       }
+      $element->getDecorator('Description')->setOption('placement', 'append');
     }
 
     $this->addElement('Button', 'submit', array(

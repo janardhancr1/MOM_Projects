@@ -35,7 +35,7 @@ class User_Plugin_Signup_Account extends Core_Plugin_FormSequence_Abstract
 	public function onView()
 	{
 		// Init facebook login link
-		if (FALSE && 'none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
+		if ('none' != Engine_Api::_()->getApi('settings', 'core')->core_facebook_enable) {
 			$facebook = User_Model_DbTable_Facebook::getFBInstance();
 			if ($facebook->getSession()) {
 				try {
