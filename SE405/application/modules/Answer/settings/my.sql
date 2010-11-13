@@ -407,8 +407,7 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 ('answer_admin_main_manage', 'answer', 'Manage Answers', '', '{"route":"admin_default","module":"answer","controller":"manage"}', 'answer_admin_main', '', 1),
 ('answer_admin_main_settings', 'answer', 'Global Settings', '', '{"route":"admin_default","module":"answer","controller":"settings"}', 'answer_admin_main', '', 2),
 ('answer_admin_main_level', 'answer', 'Member Level Settings', '', '{"route":"admin_default","module":"answer","controller":"settings","action":"level"}', 'answer_admin_main', '', 3),
-('answer_admin_main_categories', 'answer', 'Categories', '', '{"route":"admin_default","module":"answer","controller":"settings","action":"categories"}', 'answer_admin_main', '', 4),
-;
+('answer_admin_main_categories', 'answer', 'Categories', '', '{"route":"admin_default","module":"answer","controller":"settings","action":"categories"}', 'answer_admin_main', '', 4);
 
 
 -- --------------------------------------------------------

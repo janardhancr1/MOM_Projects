@@ -84,9 +84,9 @@ class Blog_Form_Search extends Engine_Form
     $this->addElement('Hidden', 'end_date', array(
       'order' => 103
     ));
-    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/blogs/manage'>Go to My Blogs</a>");
+    /*$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/blogs/manage'>Go to My Blogs</a>");
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
-    ));
+    ));*/
   }
 }

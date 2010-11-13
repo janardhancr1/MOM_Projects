@@ -53,9 +53,9 @@ class Video_Form_Search extends Engine_Form
       'onchange' => 'this.form.submit();'
     ));
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/videos/manage'>Go to My Videos</a>");
+    /*$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/videos/manage'>Go to My Videos</a>");
 	$this->addElement('Dummy', 'my_groups', array(
       'content' => $content,
-    ));  
+    ));  */
   }
 }

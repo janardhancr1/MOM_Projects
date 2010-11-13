@@ -63,9 +63,9 @@ class Poll_Form_Search extends Engine_Form
       ),
     ));
     
-     $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button' style='padding-left:30px'>&nbsp;<a href='/index.php/polls/manage'>Go to My Polls</a>");
+     /*$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button' style='padding-left:30px'>&nbsp;<a href='/index.php/polls/manage'>Go to My Polls</a>");
 	$this->addElement('Dummy', 'my_groups', array(
       'content' => $content,
-    ));
+    ));*/
   }
 }

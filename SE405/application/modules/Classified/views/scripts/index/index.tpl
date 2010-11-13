@@ -106,6 +106,7 @@
 	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <?php echo $this->translate('Classifieds');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/classifieds/manage'>Go to My Classifieds</a></div>
 	</div>
     <div class="smallheadline"><?php echo $this->translate('Classified listings are a great way to list something for sale or find items.');?></div>
 </div>

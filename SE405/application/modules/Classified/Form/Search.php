@@ -95,11 +95,11 @@ class Classified_Form_Search extends Fields_Form_Search
     ));
     
     
-    $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
+    /*$content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/classifieds/manage'>Go to My Classifieds</a>");
 	$this->addElement('Dummy', 'my', array(
       'content' => $content,
 	  'order' => $i--,
-    ));
+    ));*/
 
 
     /*$this->addElement('Select', 'show', array(

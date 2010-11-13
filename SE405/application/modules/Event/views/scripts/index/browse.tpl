@@ -51,7 +51,9 @@
 <div class="headline_header">
 	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Events');?></div>
+    <?php echo $this->translate('Events');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/events/manage'>Go to My Events</a></div>
+    </div>
     <div class="smallheadline"><?php echo $this->translate('Create, share and view events from moms everywhere!');?></div>
 </div>
 <div>

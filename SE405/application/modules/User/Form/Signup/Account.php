@@ -30,7 +30,7 @@ class User_Form_Signup_Account extends Engine_Form
 
     // Element: email
     $this->addElement('Text', 'email', array(
-      'label' => 'Email Address',
+      'label' => 'Email Address*',
       'description' => 'You will use your email address to login.',
       'required' => true,
       'allowEmpty' => false,
@@ -73,7 +73,7 @@ class User_Form_Signup_Account extends Engine_Form
 
       // Element: password
       $this->addElement('Password', 'password', array(
-        'label' => 'Password',
+        'label' => 'Password*',
         'description' => 'Passwords must be at least 6 characters in length.',
         'required' => true,
         'allowEmpty' => false,
@@ -87,7 +87,7 @@ class User_Form_Signup_Account extends Engine_Form
 
       // Element: passconf
       $this->addElement('Password', 'passconf', array(
-        'label' => 'Password Again',
+        'label' => 'Password Again*',
         'description' => 'Enter your password again for confirmation.',
         'required' => true,
         'validators' => array(
@@ -107,7 +107,7 @@ class User_Form_Signup_Account extends Engine_Form
     $description = sprintf($description, $_SERVER['HTTP_HOST'] . Zend_Controller_Front::getInstance()->getRouter()->assemble(array('id' => Zend_Registry::get('Zend_Translate')->_('yourname')), 'user_profile'));
 
     $this->addElement('Text', 'username', array(
-      'label' => 'Profile Address',
+      'label' => 'Profile Address*',
       'description' => $description,
       'required' => true,
       'allowEmpty' => false,

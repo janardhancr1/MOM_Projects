@@ -76,7 +76,7 @@ class User_Form_Signup_Invite extends Engine_Form
 
     // Element: done
     $this->addElement('Button', 'done', array(
-      'label' => 'Save Photo',
+      'label' => 'Send',
       'type' => 'submit',
       'onclick' => 'javascript:finishForm();',
       'decorators' => array(

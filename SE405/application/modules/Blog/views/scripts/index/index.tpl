@@ -58,7 +58,9 @@
   <div class="headline_header">
 	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Blogs');?></div>
+    <?php echo $this->translate('Blogs');?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/blogs/manage'>Go to My Blogs</a></div>
+    </div>
     <div class="smallheadline"><?php echo $this->translate('Share your thoughts every day with moms.');?></div>
 </div>
 <div>
