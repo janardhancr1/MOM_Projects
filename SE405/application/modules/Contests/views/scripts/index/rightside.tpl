@@ -40,52 +40,39 @@
 <?php }?>
 <div class="generic_layout_container layout_user_list_signups">
 <h3>Newest Members</h3>
-<table width="100%">
-<tr>
-<?php $i=0; ?>
+ <ul>
   <?php foreach( $this->users as $user ): ?>
-   <td width="33%">
+    <li>
+      <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'newestmembers_thumb')) ?>
       <div class='newestmembers_info'>
         <div class='newestmembers_name'>
           <?php echo $this->htmlLink($user->getHref(), $user->getTitle()) ?>
         </div>
         <div class='newestmembers_date'>
-          <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'newestmembers_thumb')) ?>
+          <?php echo $this->timestamp($user->creation_date) ?>
         </div>
       </div>
-    </td>
-     <?php
-     $i++;
-     if ($i%3 == 0)
-     echo "</tr><tr><td colspan='3'>&nbsp;</tr><tr>";
-     ?>
+    </li>
   <?php endforeach; ?>
-</tr>
- </table>
+</ul>
 </div>
-<div class="generic_layout_container layout_user_list_signups">
+<div class="generic_layout_container layout_user_list_popular">
 <h3>Popular Members</h3>
-<table width="100%">
-<tr>
-<?php $i=0; ?>
+ <ul>
   <?php foreach( $this->popularusers as $user ): ?>
-   <td width="33%">
-      <div class='newestmembers_info'>
-        <div class='newestmembers_name'>
+    <li>
+      <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'popularmembers_thumb')) ?>
+      <div class='popularmembers_info'>
+        <div class='popularmembers_name'>
           <?php echo $this->htmlLink($user->getHref(), $user->getTitle()) ?>
         </div>
-        <div class='newestmembers_date'>
-          <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'newestmembers_thumb')) ?>
+        <div class='popularmembers_friends'>
+          <?php echo $this->translate(array('%s friend', '%s friends', $user->member_count),$this->locale()->toNumber($user->member_count)) ?>
         </div>
       </div>
-    </td>
-     <?php
-     $i++;
-     if ($i%3 == 0)
-     echo "</tr><tr><td colspan='3'>&nbsp;</tr><tr>";
-     ?>
+    </li>
   <?php endforeach; ?>
-</tr>
- </table>
+</ul>
+ 
 </div>
 </div>
