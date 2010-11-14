@@ -10,8 +10,10 @@
  * @author     Sami
  */
 ?>
+<div class='layout_middle'>
 <div id="invite_form">
   
   <?php echo $this->form->render($this) ?>
 
+</div>
 </div>

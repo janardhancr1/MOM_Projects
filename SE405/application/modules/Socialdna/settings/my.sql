@@ -409,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `engine4_openid_user_settings` (
 
 
 /* import existing facebook users */
-INSERT IGNORE INTO engine4_openid_users(openid_user_id,openid_user_key,openid_service_id) SELECT user_id, facebook_uid, 1 FROM engine4_user_facebook;
+INSERT IGNORE INTO engine4_openid_users(openid_user_id,openid_user_key,openid_service_id,openid_user_displayname) SELECT user_id, facebook_uid, 1, '' FROM engine4_user_facebook;
 
 
 /* settings */

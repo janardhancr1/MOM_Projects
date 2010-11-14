@@ -10,12 +10,10 @@
  * @author     Steve
  */
 ?>
-
+<div class="layout_middle">
 <h2>
   <?php echo $this->translate('%s\'s Polls', $this->htmlLink($this->owner, $this->owner->getTitle())) ?>
 </h2>
-
-<div class="layout_middle">
   <div class='polls_view'>
 
     <h3>

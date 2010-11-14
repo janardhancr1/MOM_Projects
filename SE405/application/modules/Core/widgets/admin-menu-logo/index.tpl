@@ -13,6 +13,6 @@
 
 <div id='global_header_logo'>
   <a href='<?php echo $this->url(array(), 'admin_default', true) ?>'>
-    <?php echo $this->htmlImage('application/modules/Core/externals/images/socialengine_logo_admin.png', $this->translate('SocialEngine Control Panel')) ?>
+    <?php echo $this->htmlImage('application/modules/Core/externals/images/logo_new.gif', $this->translate('SocialEngine Control Panel')) ?>
   </a>
 </div>

@@ -13,6 +13,10 @@ BROWSE POLLS
 These styles are used on the browse polls page
 and inside the polls profile tab.
 */
+.poll_not_voted
+{
+  padding-left: 2px;
+}
 ul.polls_browse > li
 {
   clear: both;
@@ -80,6 +84,7 @@ ul.polls_browse .polls_browse_photo > img
 /*
 COMMON VIEW POLL
 */
+
 .poll_view_single ul.poll_options
 {
   max-width: 500px;

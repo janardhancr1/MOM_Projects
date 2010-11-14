@@ -11,7 +11,7 @@ require_once APPLICATION_PATH_COR . DS . 'modules' . DS . 'Socialdna' . DS . 'Ap
 require_once APPLICATION_PATH_COR . DS . 'modules' . DS . 'Socialdna' . DS . 'Api' . DS . 'functions_openidconnect.php';
 
 // Facebook
-require_once 'Facebook.php';
+require_once APPLICATION_PATH_COR . DS . 'libraries/Facebook/facebook.php';
 
 
 class Socialdna_Api_Core extends Core_Api_Abstract

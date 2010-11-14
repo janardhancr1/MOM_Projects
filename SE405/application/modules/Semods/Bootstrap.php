@@ -21,7 +21,7 @@ class Semods_Bootstrap extends Engine_Application_Bootstrap_Abstract
     //$this->initViewHelperPath();
 
     $headScript = new Zend_View_Helper_HeadScript();
-    $headScript->appendFile('application/modules/Semods/externals/scripts/semods.js');
+    $headScript->appendFile('/application/modules/Semods/externals/scripts/semods.js');
     
     //$loader = new Semods_Loader();
     

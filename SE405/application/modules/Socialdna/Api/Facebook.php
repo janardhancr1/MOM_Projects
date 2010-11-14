@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Facebook.php';
+require_once APPLICATION_PATH_COR . DS . 'libraries/Facebook/facebook.php';
  
 class Socialdna_Api_Facebook extends Core_Api_Abstract
 {

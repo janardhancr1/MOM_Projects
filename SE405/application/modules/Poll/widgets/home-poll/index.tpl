@@ -29,7 +29,7 @@
 
 <span class="poll_view_single">
   <div class="poll_stats">
-    <?php echo $this->htmlLink($this->poll->getHref(), $this->translate('View')) ?>
+    &nbsp;<?php echo $this->htmlLink($this->poll->getHref(), $this->translate('View')) ?>
     <?php /*
     <br />
     <span class="poll_vote_total">
