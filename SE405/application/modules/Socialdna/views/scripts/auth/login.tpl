@@ -1,4 +1,4 @@
-
+<div class='layout_middle'>
 <table cellpadding=0 cellpadding=0 width="100%">
 <tr>
 <td style='min-width: 500px'>
@@ -17,3 +17,4 @@
 </td>
 </tr>
 </table>
+</div>
