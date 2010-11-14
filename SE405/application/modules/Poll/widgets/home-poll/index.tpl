@@ -17,7 +17,7 @@
 </h3>
   */ ?>
 
-<div class="poll_desc">
+<div class="poll_desc">&nbsp;
   <?php echo $this->poll->description ?>
 </div>
 
