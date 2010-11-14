@@ -67,6 +67,22 @@
           <div class="events_photo">
             <?php echo $this->htmlLink($event->getHref(), $this->itemPhoto($event, 'thumb.normal')) ?>
           </div>
+                    <div class="events_info">
+            <div class="events_title">
+              <h3><?php echo $this->htmlLink($event->getHref(), $event->getTitle()) ?></h3>
+            </div>
+	    <div class="events_members">
+	      <?php echo $this->locale()->toDateTime($event->starttime) ?>
+	    </div>
+            <div class="events_members">
+              <?php echo $this->translate(array('%s guest', '%s guests', $event->membership()->getMemberCount()),$this->locale()->toNumber($event->membership()->getMemberCount())) ?>
+              <?php echo $this->translate('led by') ?>
+              <?php echo $this->htmlLink($event->getOwner()->getHref(), $event->getOwner()->getTitle()) ?>
+            </div>
+            <div class="events_desc">
+              <?php echo $event->getDescription() ?>
+            </div>
+          </div>
           <div class="events_options">
             <?php if( $this->viewer() && $event->isOwner($this->viewer()) ): ?>
               <?php echo $this->htmlLink(array('route' => 'event_specific', 'action' => 'edit', 'event_id' => $event->getIdentity()), $this->translate('Edit Event'), array(
@@ -87,22 +103,7 @@
               )) ?>
             <?php endif; ?>
           </div>
-          <div class="events_info">
-            <div class="events_title">
-              <h3><?php echo $this->htmlLink($event->getHref(), $event->getTitle()) ?></h3>
-            </div>
-	    <div class="events_members">
-	      <?php echo $this->locale()->toDateTime($event->starttime) ?>
-	    </div>
-            <div class="events_members">
-              <?php echo $this->translate(array('%s guest', '%s guests', $event->membership()->getMemberCount()),$this->locale()->toNumber($event->membership()->getMemberCount())) ?>
-              <?php echo $this->translate('led by') ?>
-              <?php echo $this->htmlLink($event->getOwner()->getHref(), $event->getOwner()->getTitle()) ?>
-            </div>
-            <div class="events_desc">
-              <?php echo $event->getDescription() ?>
-            </div>
-          </div>
+
         </li>
       <?php endforeach; ?>
     </ul>
