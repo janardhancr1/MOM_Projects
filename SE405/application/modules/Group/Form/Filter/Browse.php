@@ -29,9 +29,17 @@ class Group_Form_Filter_Browse extends Engine_Form
       ->setMethod('get')
       //->setAttrib('onchange', 'this.submit()')
       ;
-    
+    $this->addElement('Text', 'title', array(
+      'label' => 'Search Groups:',
+    'decorators' => array(
+        'ViewHelper',
+        array('HtmlTag', array('tag' => 'dd')),
+        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
+      ),
+    ));
     $this->addElement('Select', 'category_id', array(
       'label' => 'Category:',
+      'style' => 'width:150px',
       'multiOptions' => array(
         '' => 'All Categories',
       ),

@@ -52,7 +52,7 @@ class Group_Api_Core extends Core_Api_Abstract
    // Title
     if( !empty($params['title']) )
     {
-      $select->where('title = ?', $params['title']);
+      $select->where("title LIKE'%".$params['title']."%'");
     }
     // Category
     if( !empty($params['category_id']) )
