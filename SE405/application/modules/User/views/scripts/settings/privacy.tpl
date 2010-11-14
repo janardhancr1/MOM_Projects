@@ -31,7 +31,7 @@
 <div id="blockedUserList" style="display:none;">
   <ul>
     <?php foreach ($this->blockedUsers as $user): ?>
-      <li>[ <a class="smoothbox" href="../../member/block/remove/<?php echo $user->username ?>"><?php echo $this->translate('We now');?></a> ] <?php echo $user->username ?></li>
+      <li>[ <a class="smoothbox" href="/index.php/members/block/remove/user_id/<?php echo $user->user_id ?>"><?php echo $this->translate('We now');?></a> ] <?php echo $user->username ?></li>
     <?php endforeach; ?>
   </ul>
 </div></div>
