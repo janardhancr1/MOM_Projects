@@ -395,15 +395,14 @@ html[dir="rtl"] .sharebox_photo
 /* FACEBOOK STYLES FOR FEED COMPOSER */
 .composer_facebook_toggle
 {
-  float: right;
   display: inline-block;
   width: 16px;
   height: 16px;
   background-image: url(~/application/modules/Activity/externals/images/facebook_inactive.png);
   background-repeat: no-repeat;
-  margin-left: 10px;
+  margin-left: 1px;
   margin-top: 7px;
-  margin-right: 1px;
+  margin-right: 5px;
   padding: 0px;
 }
 .composer_facebook_toggle:hover

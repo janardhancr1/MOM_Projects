@@ -69,7 +69,7 @@
 </script>
 
 
-
+<div class="layout_middle">
 <h2>
   <?php echo $this->translate('%1$s\'s Album: %2$s', $this->album->getOwner()->__toString(), $this->htmlLink($this->album, $this->album->getTitle())); ?>
 </h2>
@@ -136,5 +136,6 @@
   </div>
 
   <?php echo $this->action("list", "comment", "core", array("type"=>"album_photo", "id"=>$this->photo->getIdentity())); ?>
+</div>
 </div>
 </div>

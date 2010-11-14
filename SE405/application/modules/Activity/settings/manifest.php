@@ -47,6 +47,15 @@ return array(
       'application/languages/en/activity.csv',
     ),
   ),
+  // Compose -------------------------------------------------------------------
+  'compose' => array(
+    array('_composeFacebook.tpl', 'user'),
+  ),
+  'composer' => array(
+    'user' => array(
+      'script' => array('_composeFacebook.tpl', 'user'),
+    ),
+  ),
   // Hooks ---------------------------------------------------------------------
   'hooks' => array(
     array(
