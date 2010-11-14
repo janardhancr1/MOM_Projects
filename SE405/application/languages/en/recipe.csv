@@ -53,7 +53,7 @@
 "ITEM_TYPE_RECIPE";"Recipes"
 "RECIPE_FORM_ADMIN_LEVEL_DESCRIPTION";"These settings are applied on a per member level basis. Start by selecting the member level you want to modify, then adjust the settings for that level below."
 
-Allow Viewing of Recipes
+#Allow Viewing of Recipes
 "RECIPE_FORM_ADMIN_LEVEL_VIEW_DESCRIPTION";"Do you want to let members view recipes? If set to no, some other settings on this page may not apply."
 "No, do not allow recipes to be viewed.";"No, do not allow recipes to be viewed."
 "Yes, allow viewing of recipes.";"Yes, allow viewing of recipes."
