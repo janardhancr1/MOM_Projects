@@ -23,7 +23,7 @@ class Event_Form_Photo_Upload extends Engine_Form
     // Init form
     $this
       ->setTitle('Add New Photos')
-      ->setDescription('Choose photos on your computer to add to this album. (2MB maximum)')
+      ->setDescription('Choose photos on your computer to add to this album. (4MB maximum)')
       ->setAttrib('id', 'form-upload')
       ->setAttrib('class', 'global_form event_form_upload')
       ->setAttrib('name', 'albums_create')
