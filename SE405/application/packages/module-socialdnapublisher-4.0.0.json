@@ -1,0 +1,242 @@
+{
+  "type": "module",
+  "name": "socialdnapublisher",
+  "version": "4.0.0",
+  "path": "application\/modules\/Socialdnapublisher",
+  "repository": null,
+  "meta": {
+    "date": "Mon, 27 Sep 2010 19:50:13 +0000",
+    "title": "Social DNA Publisher",
+    "description": "Social DNA",
+    "developer": null,
+    "authors": [
+      "SocialEngineMods"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Socialdnapublisher\/settings\/install.php",
+    "class": "Socialdnapublisher_Installer",
+    "priority": 100
+  },
+  "tests": null,
+  "structure": {
+    "application\/modules\/Socialdnapublisher": {
+      "type": "directory",
+      "path": "application\/modules\/Socialdnapublisher",
+      "structure": [
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 72,
+          "sha1": "9632fe6ec362ae05d22e57e87bb4963c35eea575"
+        },
+        {
+          "path": "Api\/Feed.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 20280,
+          "sha1": "f926b1c3754c30a55f12ba6f6d35ffe9192a3d9a"
+        },
+        {
+          "path": "Api\/functions_openidconnect.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 33735,
+          "sha1": "89309c1aa9ccff0d1e6bf94e8b8522b18ce3a7ec"
+        },
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 395,
+          "sha1": "8882f7e5d8588eceeb89a25439358dd3ce3779cf"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/Feedstories.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 128,
+          "sha1": "5daaee90d7cbd6b7138eb2ff64daa557bc5c1b15"
+        },
+        {
+          "path": "Model\/DbTable\/Stats.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 116,
+          "sha1": "1342f5acac9010b477dc140f2bafc8d2d7a5c7e8"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 1773,
+          "sha1": "b5503ca81080067619e967bcf4394097e6dd8413"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 25626,
+          "sha1": "7a2c8bfe758db1d35010c7f20103592fbabac119"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 2314,
+          "sha1": "2216d2a657b0831ca9f0836f3e488c6480b1eff0"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 2102,
+          "sha1": "51292aae050442876f6003f9a8388f3576bf2842"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "widgets",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        }
+      ]
+    },
+    "application\/languages\/en\/socialdnapublisher.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/socialdnapublisher.csv",
+      "structure": {
+        "path": "socialdnapublisher.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0666",
+        "size": 0,
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      }
+    }
+  }
+}

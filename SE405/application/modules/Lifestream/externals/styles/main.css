@@ -1,0 +1,433 @@
+
+@include "Core/externals/styles/constants.css";
+
+.UIIntentionalStream_Content {
+  color: #555;  
+
+  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+  font-size:11px;
+  text-align:left;
+}
+
+.UIIntentionalStream_Content label {
+  color:#666666;
+  cursor:pointer;
+  font-weight:bold;
+  vertical-align:middle;
+}
+
+.UIIntentionalStream_Content img {
+  border: 0px none;
+}
+
+.UIIntentionalStream_Content .clearfix {
+  display:block;
+}
+
+.UIIntentionalStream_Content a {
+  color:#3B5998;
+  cursor:pointer;
+  outline-style:none;
+  text-decoration:none;
+}
+
+.UIIntentionalStream_Content h1, .UIIntentionalStream_Content h2, .UIIntentionalStream_Content h3, .UIIntentionalStream_Content h4, .UIIntentionalStream_Content h5 {
+  color:#555;
+  font-size:13px;
+  margin:0;
+  padding:0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* emphasize */
+div.UIStory_First {
+  border-top:medium none;
+  margin-top:0;
+  
+  padding-top: 0px;
+}
+
+.UIIntentionalStory {
+  Xbackground-color:#FFFFFF;
+  border-top:1px solid #EEEEEE;
+  margin-bottom:7px;
+  padding:7px 0 0 60px;
+  position:relative;
+}
+
+.UIIntentionalStory_Pic {
+  left:0;
+  position:absolute;
+}
+
+.UIProfileImage_LARGE {
+  height:50px;
+  width:50px;
+}
+
+.UIIntentionalStory_Message, .UIIntentionalStory .location {
+  font-size:13px;
+  font-weight:normal;
+  overflow:hidden;
+}
+
+.UIIntentionalStory_Names {
+  color:#444444;
+  font-weight:bold;
+}
+
+.UIStoryAttachment {
+  margin-bottom:5px;
+  margin-top:6px;
+  overflow:hidden;
+  padding-right:10px;
+}
+
+.UIIntentionalStory .UIStoryAttachment_MediaSingle {
+  padding-right:10px;
+}
+
+.UIStoryAttachment_Media {
+  float:left;
+  overflow:hidden;
+}
+
+.UIIntentionalStory_Info {
+  clear:left;
+  display:block;
+  margin-top:3px;
+  min-height:16px;
+}
+
+.UIActionLinks_bottom, .UIActionLinks_left, .UIActionLinks_right {
+  color:#999999;
+}
+
+.UIImageBlock_Image {
+  float:left;
+  margin-right:5px;
+}
+
+.UIImageBlock_Image img, img.UIImageBlock_Image {
+  vertical-align:bottom;
+}
+
+.UIMediaItem_Wrapper {
+  overflow:hidden;
+}
+
+.sx_icons_hidden {
+  background-position:0 -877px;
+}
+
+/* todo: cache sprite */
+.spritemap_icons {
+  background-image:url(http://www.facebook.com/rsrc.php/z7M7F/hash/4k0zzgdi.png);
+  background-repeat:no-repeat;
+  display:inline-block;
+  height:16px;
+  width:16px;
+}
+
+.UIImageBlock_Content {
+  Xdisplay:table-cell;
+}
+
+.UIIntentionalStory_InfoText {
+  color:#777777;
+  min-height:16px;
+  padding:2px 0 0;
+}
+
+.UIIntentionalStory_Location, .UIIntentionalStory_Time, .UIIntentionalStory_Time a {
+  color:#777777;
+  font-size:11px;
+}
+
+.action_links_title .comment_link, .action_links_bottom .comment_link, .UIActionLinks .comment_link {
+  color:#3B5998;
+  font-weight:normal;
+  vertical-align:text-bottom;
+}
+
+.UIStoryAttachment_Title {
+  font-weight:bold;
+  padding-top:3px;
+}
+
+.UIStoryAttachment_Caption {
+  color:#808080;
+  padding-top:3px;
+}
+
+.UIStoryAttachment_Table {
+  padding-top:2px;
+}
+
+.UIStoryAttachment_Label {
+  color:#999999;
+  padding-right:4px;
+}
+
+.UIStoryAttachment_BlockQuote {
+  border-left:2px solid #CCCCCC;
+  padding:0 0 3px 8px;
+}
+
+div.UIStoryAttachment_MediaWide {
+  float:none;
+}
+
+.UIMediaItem_ManyItems {
+  float:left;
+}
+
+.UIIntentionalStory_MediaExtra {
+  padding-left:8px;
+}
+
+.UIMediaItem_Photo .UIMediaItem_Wrapper {
+  border:1px solid #CCCCCC;
+  padding:3px;
+}
+
+.UIMediaItem img {
+  display:block;
+  vertical-align:middle;
+}
+
+.UIStoryAttachment_TitleBelow {
+  clear:left;
+  padding:5px 0 0;
+}
+
+.UIIntentionalStory .UIMediaItem_video {
+  padding-bottom:0;
+}
+
+a .video_thumb {
+  display:block;
+  float:left;
+  margin:0;
+}
+
+.video_thumb span.thumb {
+  background-image:url(http://www.facebook.com/rsrc.php/z92UN/hash/76y253lh.png);
+  background-position:left bottom;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  position:absolute;
+  z-index:9;
+}
+
+.share_media .video_thumb img {
+  width:130px;
+}
+
+.video_thumb span.play {
+  background-image:url(http://www.facebook.com/rsrc.php/z92UN/hash/76y253lh.png);
+  background-position:left bottom;
+  background-repeat:no-repeat;
+  display:inline;
+  position:absolute;
+  z-index:10;
+}
+
+.video_thumb img.decoy {
+  display:inline;
+  visibility:hidden;
+}
+
+.UIStoryAttachment_Copy {
+  color:#808080;
+}
+
+.UIStoryAttachment_Copy .CopyTitle {
+  font-weight:bold;
+  color:#808080;
+}
+
+.UIStoryAttachment_Copy .CopyBody {
+  color:#808080;
+}
+
+.UIMediaItem .uiVideoThumb {
+  display:block;
+}
+
+.uiVideoThumb {
+  border:0 none;
+  overflow:hidden;
+  position:relative;
+}
+
+.uiVideoThumb i {
+  background:transparent url(http://www.facebook.com/rsrc.php/z467T/hash/1fjg6c8h.png) no-repeat scroll 0 0;
+  bottom:0;
+  height:32px;
+  left:0;
+  position:absolute;
+  width:39px;
+}
+
+.GenericStory {
+  min-height: 58px;
+}
+
+.facebookwall_content h3 {
+  border-bottom: none;
+}
+
+.facebookwall_content {
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.UIStream {
+  Xposition: relative;
+}
+
+.UIStreamLinks {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  visibility: hidden;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+
+.UIStream:hover .UIStreamLinks {
+  visibility: visible;
+}
+
+UIIntentionalStory_Time a:hover {
+  text-decoration: underline;
+}
+
+.wall_tabs {
+  
+}
+
+.wall_tabs li {
+  float: left;
+}
+
+.wall_tabs li a {
+  display: block;
+  padding: 5px 10px;
+}
+
+a.facebookwall_feed_view_more{
+  display:block;
+  background:#EDF6FA;
+  font-size:10pt;
+  text-decoration:none;
+  padding:4px;
+  font-weight:bold;
+  border:1px #fff solid;
+}
+
+a.facebookwall_feed_view_more:hover{
+  display:block;
+  background:#EDF6FA;
+  font-size:10pt;
+  text-decoration:none;
+  padding:4px;
+  font-weight:bold;
+  border:1px #ccc solid;
+}
+.facebookwall_servicelogo {
+  float: left;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.facebookwall_servicelogos {
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 7px;
+  margin-bottom: 6px;
+  border: 1px solid #EEE;
+}
+.commentable_item {
+  min-height: 16px;
+}
+
+
+
+
+
+
+
+/*** Social Friends ***/
+
+.socialfriends_servicelogo {
+  float: left;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.socialfriends_servicelogos {
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 4px;
+  padding-top: 3px;
+  border: 1px solid #EEE;
+}
+
+#openidconnect_send_message_hint {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+.layout_middle .openidconnect_friends_listview .openidconnect_friendrow {
+  width: 242px;
+}
+
+.layout_middle .openidconnect_friends_listview .openidconnect_friend_details {
+  width: 182px;
+}
+
+
+
+
+
+
+/* Social Profile Links */
+.layout_lifestream_profile_identity
+{
+  margin-top: 20px;
+  overflow: hidden;
+}
+.layout_lifestream_profile_identity > ul
+{
+  +foreground;
+  +rounded;
+  padding: 10px;
+}
+.layout_lifestream_profile_identity > ul > li
+{
+  font-size: .8em;
+  Xpadding-bottom: 4px;
+  min-height: 16px;
+}
+.layout_lifestream_profile_identity > ul > li + li
+{
+  margin-top: 5px;
+}
+.layout_lifestream_profile_identity > h3
+{
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: normal;
+}
+
+.layout_lifestream_profile_identity img {
+  float: left;
+  padding-right: 5px;
+}
+

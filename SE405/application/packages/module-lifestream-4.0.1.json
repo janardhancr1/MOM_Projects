@@ -1,0 +1,379 @@
+{
+  "type": "module",
+  "name": "lifestream",
+  "version": "4.0.1",
+  "path": "application\/modules\/Lifestream",
+  "repository": null,
+  "meta": {
+    "date": "Sun, 12 Sep 2010 22:50:43 +0000",
+    "title": "Social DNA Socializer \/ Lifestream",
+    "description": "Social DNA - Socializer \/ Lifestream",
+    "developer": null,
+    "authors": [
+      "SocialEngineMods"
+    ],
+    "changeLog": null
+  },
+  "dependencies": {
+    "module-socialdna": {
+      "type": "module",
+      "name": "socialdna",
+      "guid": "module-socialdna",
+      "minVersion": "4.0.0",
+      "maxVersion": null
+    }
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Lifestream\/settings\/install.php",
+    "class": "Lifestream_Installer",
+    "priority": 100
+  },
+  "tests": null,
+  "structure": {
+    "application\/modules\/Lifestream": {
+      "type": "directory",
+      "path": "application\/modules\/Lifestream",
+      "structure": [
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 4897,
+          "sha1": "b54991bba4cd983bd4980a47bfe35d10a9a89285"
+        },
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 712,
+          "sha1": "376ef9fb3a9ebbd198405d84eaa3349aed08f589"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 94,
+          "sha1": "bc38ea0af4ebc6b50fc35dd0a50617f9e6622d19"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/icon_close.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 70,
+          "sha1": "2a33f77aff56c3426bff988d81191a70c9c95512"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/lifestream.js",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 16735,
+          "sha1": "d3ce1ee5a236c6f8c667d56c4b7582ab636c349b"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 7012,
+          "sha1": "03e10df079764abde4902902a1436491bf018f12"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/Lifestream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 111,
+          "sha1": "b0f29ec251def403d8767a7bcff13ba4a9893af4"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 337,
+          "sha1": "57dcf228945eef9658a5d9304695c17a1d6f2dd7"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "settings\/content.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 829,
+          "sha1": "a702413da8411045667392450a9c1d767fca8588"
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 320,
+          "sha1": "33a7636948e976491b9e8950a43219e40bbbaf93"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 1879,
+          "sha1": "dc56a4e65d19dc3e5de72717487541a069786c81"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 612,
+          "sha1": "66ff31eceb7b0c48e3ad6fee3ab28acdcb47067c"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 905,
+          "sha1": "eb021403f907d9ccfb9ffdb57bd2365b33914774"
+        },
+        {
+          "path": "views\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 9594,
+          "sha1": "8b3f892c809a8f09efe88014d343f56b23ad8aa8"
+        },
+        {
+          "path": "widgets",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/friends",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/friends\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 1154,
+          "sha1": "32f3b5b40c0e197787d169a984f5901dafd3eafa"
+        },
+        {
+          "path": "widgets\/friends\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 10144,
+          "sha1": "6b0d7986663e845ff7db7a7a258598f77a6920b0"
+        },
+        {
+          "path": "widgets\/profile-identity",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/profile-identity\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 1652,
+          "sha1": "d1984977e7aa51dddc6d3137a0561c29acc50da9"
+        },
+        {
+          "path": "widgets\/profile-identity\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 318,
+          "sha1": "1c19710698c5837136811a173dee64d7717d00f2"
+        },
+        {
+          "path": "widgets\/userhome-stream",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 0,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/userhome-stream\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 2152,
+          "sha1": "0e89edf326f523aa087fd60c7b1537dbfe552604"
+        },
+        {
+          "path": "widgets\/userhome-stream\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0666",
+          "size": 32347,
+          "sha1": "d205590f254497df1feacb9368b02fed0158b5c2"
+        }
+      ]
+    },
+    "application\/languages\/en\/lifestream.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/lifestream.csv",
+      "structure": {
+        "path": "lifestream.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0666",
+        "size": 1800,
+        "sha1": "cc213466897020d5c4db7b9d4dc99a5d76089115"
+      }
+    }
+  }
+}

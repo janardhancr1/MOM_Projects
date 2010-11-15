@@ -1,4 +1,4 @@
-
+<div class='layout_middle'>
 <h2><?php echo $this->title ?></h2>
 <script type="text/javascript">
   function skipForm()
@@ -137,4 +137,5 @@
 </tr>
 </table>
 <?php endif; ?>
+</div>
 
