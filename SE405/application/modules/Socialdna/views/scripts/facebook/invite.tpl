@@ -1,4 +1,4 @@
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('Social DNA');?>
@@ -56,6 +56,7 @@
                              );
     ?>
 
+  </div>
   </div>
 
   <script type="text/javascript">

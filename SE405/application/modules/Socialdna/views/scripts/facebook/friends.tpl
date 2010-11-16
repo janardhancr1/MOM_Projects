@@ -4,7 +4,7 @@
     ->appendFile($this->baseUrl() . '/application/modules/Socialdna/externals/scripts/socialdna.js')
 ?>
 
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('Social DNA');?>
@@ -31,7 +31,7 @@
       <?php echo $this->render('_browseUsers.tpl') ?>
   </div>
 </div>
-
+</div>
 <script type="text/javascript">
   var url = '<?php echo $this->url() ?>';
   var requestActive = false;

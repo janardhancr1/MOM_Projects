@@ -1,4 +1,4 @@
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('Social DNA');?>
@@ -15,4 +15,6 @@
 </div>
 
 <?php echo $this->form->render($this) ?>
+
+</div>
 

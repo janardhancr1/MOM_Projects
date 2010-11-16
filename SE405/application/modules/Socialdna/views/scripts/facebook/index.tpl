@@ -4,7 +4,7 @@
     ->appendFile($this->baseUrl() . '/application/modules/Socialdna/externals/scripts/socialdna.js')
 ?>
 
-
+<div class='layout_middle'>
 <div class="headline">
   <h2>
     <?php echo $this->translate('Social DNA');?>
@@ -156,3 +156,4 @@
 
 
 <?php endif; ?>
+</div>
