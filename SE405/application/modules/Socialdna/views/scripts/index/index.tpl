@@ -12,7 +12,7 @@
   
 ?>
 
-
+<div class='layout_middle'>
 <div id="socialdna_form">
 
   <?php if( count($this->navigation) ): ?>
@@ -200,5 +200,6 @@
 
 
 
+</div>
 </div>
 

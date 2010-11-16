@@ -3,7 +3,7 @@
     ->appendFile($this->baseUrl() . '/application/modules/Semods/externals/scripts/semods.js')
     ->appendFile($this->baseUrl() . '/application/modules/Socialdna/externals/scripts/socialdna.js')
 ?>
-
+<div class='layout_middle'>
 <?php if( count($this->navigation) ): ?>
 <div class="headline">
   <h2>
@@ -140,6 +140,7 @@
   
 </div></div>
 </form>
+</div>
 
 
   
