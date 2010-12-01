@@ -52,7 +52,17 @@ class Group_Api_Core extends Core_Api_Abstract
    // Title
     if( !empty($params['title']) )
     {
-      $select->where("title LIKE'%".$params['title']."%'");
+      //$select->where("title LIKE'%".$params['title']."%'");
+      $search1 = explode(" ",$params['title']);
+	  $count = count($search1);
+	  $search = "";
+	  for($i=0; $i<$count;$i++)
+	  {
+		$search .= "`title` LIKE '%".$search1[$i]."%' OR `description` LIKE '%".$search1[$i]."%'";
+		if ( end($search1) != $search1[$i] ) 
+			$search .= " OR ";
+      }
+      $select->where($search);
     }
     // Category
     if( !empty($params['category_id']) )

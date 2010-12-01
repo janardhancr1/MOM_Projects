@@ -77,8 +77,19 @@ class Album_IndexController extends Core_Controller_Action_Standard
     if ($user_id) $select->where("owner_id = ?", $user_id);
     if ($this->_getParam('category_id')) $select->where("category_id = ?", $this->_getParam('category_id'));
 
-    if ($this->_getParam('search', false)) {
-      $select->where('title LIKE ? OR description LIKE ?', '%'.$this->_getParam('search').'%');
+    if ($this->_getParam('search', false)) 
+    {
+    	
+	    $search1 = explode(" ",$this->_getParam('search'));
+		$count = count($search1);
+		$search = "";
+		for($i=0; $i<$count;$i++)
+		{
+			$search .= "`title` LIKE '%".$search1[$i]."%' OR `description` LIKE '%".$search1[$i]."%'";
+			if ( end($search1) != $search1[$i] ) 
+				$search .= " OR ";
+	      }
+	      $select->where($search);
     }
 
     $this->view->canCreate = Engine_Api::_()->authorization()->isAllowed('album', null, 'create');

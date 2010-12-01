@@ -25,7 +25,7 @@ class User_Form_Edit_Photo extends Engine_Form
       ->setAttrib('name', 'EditPhoto');
 
     $this->addElement('Image', 'current', array(
-      'label' => 'Current Photo',
+      'label' => 'Current Photo ',
       'ignore' => true,
       'decorators' => array(array('ViewScript', array(
         'viewScript' => '_formEditImage.tpl',
@@ -37,7 +37,7 @@ class User_Form_Edit_Photo extends Engine_Form
     Engine_Form::addDefaultDecorators($this->current);
     
     $this->addElement('File', 'Filedata', array(
-      'label' => 'Choose New Photo',
+      'label' => 'Choose New Photo (4MB Max)',
       'destination' => APPLICATION_PATH.'/public/temporary/',
       'multiFile' => 1,
       'validators' => array(

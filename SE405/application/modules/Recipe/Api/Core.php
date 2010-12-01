@@ -60,9 +60,9 @@ class Recipe_Api_Core extends Core_Api_Abstract
     }
 
     if (!empty($params['search'])) {
-      $search = "%{$params['search']}%";
+      //$search = "%{$params['search']}%";
       // if we do not need to search the Options table, we could just do this:
-       $select->where("$p_name.title LIKE ? OR $p_name.description LIKE ?", $search);
+      // $select->where("$p_name.title LIKE ? OR $p_name.description LIKE ?", $search);
       // but since we do, we must do the following join:
       /*if ('popular' != $search) {
         $table_options = Engine_Api::_()->getDbTable('options', 'recipe')->info('name');
@@ -71,7 +71,16 @@ class Recipe_Api_Core extends Core_Api_Abstract
                ->group("$p_name.recipe_id");
       } else
         $select->where("`recipe_name` LIKE ? OR `recipe_description` LIKE ? ", $search);*/
-        
+      $search1 = explode(" ",$params['search']);
+	  $count = count($search1);
+	  $search = "";
+	  for($i=0; $i<$count;$i++)
+	  {
+	     $search .= "$p_name.title LIKE '%".$search1[$i]."%' OR $p_name.description LIKE '%".$search1[$i]."%'";
+		 if ( end($search1) != $search1[$i] ) 
+		 $search .= " OR ";
+      }
+      $select->where($search);
     }
     if (!empty($params['category']))
 	{

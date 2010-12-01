@@ -26,20 +26,20 @@
 	<ul class="answers_browse">
       <li id="recipe-item-<?php echo $this->answer->answer_id ?>" style="border-bottom-width: 1px;margin-bottom:15px">
         <?php echo $this->htmlLink($this->answer->getHref(), $this->itemPhoto($this->owner, 'thumb.icon'), array('class' => 'answers_browse_photo')) ?>
-        <div class="recipes_browse_info">
+        <div class="answers_browse_info">
           <?php echo $this->answer->title ?>
-          <div class="recipes_browse_info_date">
+          <div class="answers_browse_info_date">
 			<?php if (!empty($this->answer->description)): ?>
 				<?php echo $this->answer->description ?>
 			<?php endif; ?>
 		</div>
-		<div class="recipes_browse_info_date">
+		<div class="answers_browse_info_date">
 			<?php if (!empty($this->answer->answer_tags)): ?>
 				<?php echo $this->translate('Tags: ');?>
 				<?php echo $this->answer->answer_tags ?>
 			<?php endif; ?>
 		</div>
-		<div class="recipes_browse_info_date">
+		<div class="answers_browse_info_date">
           	  <?php echo $this->translate('Asked by %s', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
               <?php echo $this->timestamp($this->answer->creation_date) ?>
           </div>
