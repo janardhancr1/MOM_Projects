@@ -212,10 +212,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_commented_blog
-"_EMAIL_NOTIFY_COMMENT_BLOG_TITLE";"Blog Commented"
-"_EMAIL_NOTIFY_COMMENT_BLOG_DESCRIPTION";"This email is sent to a member when someone comments on a blog the member has commented on."
-"_EMAIL_NOTIFY_COMMENT_BLOG_SUBJECT";"[sender_title] commented on blog you commented"
-"_EMAIL_NOTIFY_COMMENT_BLOG_BODY";"[header]
+"_EMAIL_NOTIFY_COMMENTED_BLOG_TITLE";"Blog Commented"
+"_EMAIL_NOTIFY_COMMENTED_BLOG_DESCRIPTION";"This email is sent to a member when someone comments on a blog the member has commented on."
+"_EMAIL_NOTIFY_COMMENTED_BLOG_SUBJECT";"[sender_title] commented on blog you commented"
+"_EMAIL_NOTIFY_COMMENTED_BLOG_BODY";"[header]
 
 [sender_title] has also commented on a blog you commented on. Please click the following link to view it:
 
@@ -224,10 +224,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_like_blog
-"_EMAIL_NOTIFY_COMMENT_BLOG_TITLE";"Blog Like"
-"_EMAIL_NOTIFY_COMMENT_BLOG_DESCRIPTION";"This email is sent to the owner of the Blog when someone likess on the blog."
-"_EMAIL_NOTIFY_COMMENT_BLOG_SUBJECT";"[sender_title] liked on blog you posted"
-"_EMAIL_NOTIFY_COMMENT_BLOG_BODY";"[header]
+"_EMAIL_NOTIFY_LIKE_BLOG_TITLE";"Blog Like"
+"_EMAIL_NOTIFY_LIKE_BLOG_DESCRIPTION";"This email is sent to the owner of the Blog when someone likess on the blog."
+"_EMAIL_NOTIFY_LIKE_BLOG_SUBJECT";"[sender_title] liked on blog you posted"
+"_EMAIL_NOTIFY_LIKE_BLOG_BODY";"[header]
 
 [sender_title] has liked one of your blog. Please click the following link to view it:
 
@@ -236,10 +236,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_liked_blog
-"_EMAIL_NOTIFY_COMMENT_BLOG_TITLE";"Blog Liked"
-"_EMAIL_NOTIFY_COMMENT_BLOG_DESCRIPTION";"This email is sent to a member when someone liked on a blog the member has liked on."
-"_EMAIL_NOTIFY_COMMENT_BLOG_SUBJECT";"[sender_title] liked on blog you liked"
-"_EMAIL_NOTIFY_COMMENT_BLOG_BODY";"[header]
+"_EMAIL_NOTIFY_LIKED_BLOG_TITLE";"Blog Liked"
+"_EMAIL_NOTIFY_LIKED_BLOG_DESCRIPTION";"This email is sent to a member when someone liked on a blog the member has liked on."
+"_EMAIL_NOTIFY_LIKED_BLOG_SUBJECT";"[sender_title] liked on blog you liked"
+"_EMAIL_NOTIFY_LIKED_BLOG_BODY";"[header]
 
 [sender_title] has also liked on a blog you liked on. Please click the following link to view it:
 

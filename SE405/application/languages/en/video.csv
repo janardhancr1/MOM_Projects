@@ -299,10 +299,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_commented_video
-"_EMAIL_NOTIFY_COMMENT_VIDEO_TITLE";"Video Commented"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_DESCRIPTION";"This email is sent to a member when someone comments on a video the member has commented on."
-"_EMAIL_NOTIFY_COMMENT_VIDEO_SUBJECT";"[sender_title] commented on video you commented"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_BODY";"[header]
+"_EMAIL_NOTIFY_COMMENTED_VIDEO_TITLE";"Video Commented"
+"_EMAIL_NOTIFY_COMMENTED_VIDEO_DESCRIPTION";"This email is sent to a member when someone comments on a video the member has commented on."
+"_EMAIL_NOTIFY_COMMENTED_VIDEO_SUBJECT";"[sender_title] commented on video you commented"
+"_EMAIL_NOTIFY_COMMENTED_VIDEO_BODY";"[header]
 
 [sender_title] has also commented on a video you commented on. Please click the following link to view it:
 
@@ -311,10 +311,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_like_video
-"_EMAIL_NOTIFY_COMMENT_VIDEO_TITLE";"Video Like"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_DESCRIPTION";"This email is sent to the owner of the video when someone likess on the video."
-"_EMAIL_NOTIFY_COMMENT_VIDEO_SUBJECT";"[sender_title] liked on video you posted"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_BODY";"[header]
+"_EMAIL_NOTIFY_LIKE_VIDEO_TITLE";"Video Like"
+"_EMAIL_NOTIFY_LIKE_VIDEO_DESCRIPTION";"This email is sent to the owner of the video when someone likess on the video."
+"_EMAIL_NOTIFY_LIKE_VIDEO_SUBJECT";"[sender_title] liked on video you posted"
+"_EMAIL_NOTIFY_LIKE_VIDEO_BODY";"[header]
 
 [sender_title] has liked one of your video. Please click the following link to view it:
 
@@ -323,10 +323,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_liked_video
-"_EMAIL_NOTIFY_COMMENT_VIDEO_TITLE";"Video Liked"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_DESCRIPTION";"This email is sent to a member when someone liked on a video the member has liked on."
-"_EMAIL_NOTIFY_COMMENT_VIDEO_SUBJECT";"[sender_title] liked on video you liked"
-"_EMAIL_NOTIFY_COMMENT_VIDEO_BODY";"[header]
+"_EMAIL_NOTIFY_LIKED_VIDEO_TITLE";"Video Liked"
+"_EMAIL_NOTIFY_LIKED_VIDEO_DESCRIPTION";"This email is sent to a member when someone liked on a video the member has liked on."
+"_EMAIL_NOTIFY_LIKED_VIDEO_SUBJECT";"[sender_title] liked on video you liked"
+"_EMAIL_NOTIFY_LIKED_VIDEO_BODY";"[header]
 
 [sender_title] has also liked on a video you liked on. Please click the following link to view it:
 

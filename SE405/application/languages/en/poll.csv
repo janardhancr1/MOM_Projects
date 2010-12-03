@@ -150,10 +150,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_commented_poll
-"_EMAIL_NOTIFY_COMMENT_POLL_TITLE";"Poll Commented"
-"_EMAIL_NOTIFY_COMMENT_POLL_DESCRIPTION";"This email is sent to a member when someone comments on a poll the member has commented on."
-"_EMAIL_NOTIFY_COMMENT_POLL_SUBJECT";"[sender_title] commented on poll you commented"
-"_EMAIL_NOTIFY_COMMENT_POLL_BODY";"[header]
+"_EMAIL_NOTIFY_COMMENTED_POLL_TITLE";"Poll Commented"
+"_EMAIL_NOTIFY_COMMENTED_POLL_DESCRIPTION";"This email is sent to a member when someone comments on a poll the member has commented on."
+"_EMAIL_NOTIFY_COMMENTED_POLL_SUBJECT";"[sender_title] commented on poll you commented"
+"_EMAIL_NOTIFY_COMMENTED_POLL_BODY";"[header]
 
 [sender_title] has also commented on a poll you commented on. Please click the following link to view it:
 
@@ -162,10 +162,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_like_poll
-"_EMAIL_NOTIFY_COMMENT_POLL_TITLE";"Poll Like"
-"_EMAIL_NOTIFY_COMMENT_POLL_DESCRIPTION";"This email is sent to the owner of the poll when someone likess on the poll."
-"_EMAIL_NOTIFY_COMMENT_POLL_SUBJECT";"[sender_title] liked on poll you posted"
-"_EMAIL_NOTIFY_COMMENT_POLL_BODY";"[header]
+"_EMAIL_NOTIFY_LIKE_POLL_TITLE";"Poll Like"
+"_EMAIL_NOTIFY_LIKE_POLL_DESCRIPTION";"This email is sent to the owner of the poll when someone likess on the poll."
+"_EMAIL_NOTIFY_LIKE_POLL_SUBJECT";"[sender_title] liked on poll you posted"
+"_EMAIL_NOTIFY_LIKE_POLL_BODY";"[header]
 
 [sender_title] has liked one of your poll. Please click the following link to view it:
 
@@ -174,10 +174,10 @@ http://[host][object_link]
 [footer]"
 
 # notify_liked_poll
-"_EMAIL_NOTIFY_COMMENT_POLL_TITLE";"Poll Liked"
-"_EMAIL_NOTIFY_COMMENT_POLL_DESCRIPTION";"This email is sent to a member when someone liked on a poll the member has liked on."
-"_EMAIL_NOTIFY_COMMENT_POLL_SUBJECT";"[sender_title] liked on poll you liked"
-"_EMAIL_NOTIFY_COMMENT_POLL_BODY";"[header]
+"_EMAIL_NOTIFY_LIKED_POLL_TITLE";"Poll Liked"
+"_EMAIL_NOTIFY_LIKED_POLL_DESCRIPTION";"This email is sent to a member when someone liked on a poll the member has liked on."
+"_EMAIL_NOTIFY_LIKED_POLL_SUBJECT";"[sender_title] liked on poll you liked"
+"_EMAIL_NOTIFY_LIKED_POLL_BODY";"[header]
 
 [sender_title] has also liked on a poll you liked on. Please click the following link to view it:
 
