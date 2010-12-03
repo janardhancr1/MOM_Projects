@@ -64,9 +64,9 @@ class Answer_Form_Index_Create extends Engine_Form
 		}
 
 		$sub_prepared[0]= "";
-		if(isset($_SESSION['catid']))
+		if(isset($_SESSION['answercatid']))
 		{
-			$catid = $_SESSION['catid'];
+			$catid = $_SESSION['answercatid'];
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{
@@ -78,6 +78,10 @@ class Answer_Form_Index_Create extends Engine_Form
             'label' => 'Sub Category',
             'multiOptions' => $sub_prepared,
       		'style' => 'width:202px',
+		));
+		
+		$this->addElement('Checkbox', 'anonymous', array(
+            'label' => 'Anonymous',
 		));
 
 
@@ -103,6 +107,7 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answer->answer_tags     	= $this->getElement('tags')->getValue();
 		$answer->answer_cat_id   	= $this->getElement('category_id')->getValue();
 		$answer->answer_sub_cat_id	= $this->getElement('sub_cat_id')->getValue();
+		$answer->anonymous	        = $this->getElement('anonymous')->getValue();
 		$answer->creation_date   	= date('Y-m-d H:i:s');
 
 		$answer->save();

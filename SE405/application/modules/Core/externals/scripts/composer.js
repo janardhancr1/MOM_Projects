@@ -180,7 +180,7 @@ var Composer = new Class( {
 
 		if (this.options.overText) {
 			new Composer.OverText(this.elements.body, $merge( {
-				textOverride : this._lang('Post Something...'),
+				textOverride : this._lang('What are you thinking today?'),
 				poll : true,
 				positionOptions : {
 					position : (en4.orientation == 'rtl' ? 'upperRight'

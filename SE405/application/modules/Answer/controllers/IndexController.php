@@ -71,7 +71,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 
 		if ($this->getRequest()->isPost() && $search_form->isValid($this->getRequest()->getPost())) {
 			// redirect to GET route to prevent POST-back-button fo-paw
-			$_SESSION['catid'] = $this->getRequest()->getPost('category_id');
+			$_SESSION['answercatid'] = $this->getRequest()->getPost('category_id');
 			$this->_helper->redirector->gotoRouteAndExit(array(
 			        'page' => 1,
 			        'sort'   => $this->getRequest()->getPost('browse_answers_by'),

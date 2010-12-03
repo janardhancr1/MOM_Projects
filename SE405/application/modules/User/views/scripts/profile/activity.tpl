@@ -22,7 +22,7 @@
 
 <form class="activity">
   <div>
-    <input type="text" value="<?php echo $this->translate('Post something...');?>" />
+    <input type="text" value="<?php echo $this->translate('What are you thinking today?');?>" />
     <p>
       <?php echo $this->htmlLink(array('route' => 'group_general', 'action' => 'create'), $this->translate('Post'), array(
         'class' => 'buttonlink icon_activity_post'

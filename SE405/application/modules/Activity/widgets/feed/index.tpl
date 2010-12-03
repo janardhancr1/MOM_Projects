@@ -123,7 +123,7 @@ endif; ?>
           menuElement : 'compose-menu',
           baseHref : '<?php echo $this->baseUrl() ?>',
           lang : {
-            'Post Something...' : '<?php echo $this->translate('Post Something...') ?>'
+            'Post Something...' : '<?php echo $this->translate('What are you thinking today?') ?>'
           }
         });
       });

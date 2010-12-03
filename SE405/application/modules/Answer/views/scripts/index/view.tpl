@@ -39,10 +39,17 @@
 				<?php echo $this->answer->answer_tags ?>
 			<?php endif; ?>
 		</div>
-		<div class="answers_browse_info_date">
+		 <?php if (!$this->answer->anonymous): ?>
+		  <div class="answers_browse_info_date">
           	  <?php echo $this->translate('Asked by %s', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
               <?php echo $this->timestamp($this->answer->creation_date) ?>
           </div>
+          <?php else: ?>
+          <div class="answers_browse_info_date">
+          	  <?php echo $this->translate('Asked by anonymous', $this->htmlLink($this->answer->getOwner(), $this->answer->getOwner()->getTitle())) ?>
+              <?php echo $this->timestamp($this->answer->creation_date) ?>
+          </div>
+         <?php endif; ?>
       </li>
     </ul>
     
