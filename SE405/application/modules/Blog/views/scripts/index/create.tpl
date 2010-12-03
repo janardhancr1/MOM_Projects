@@ -62,7 +62,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Write New Entry');?>
+    <a href='/index.php/blogs/create'><?php echo $this->translate('Write New Entry');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs/manage'>Back to My Blogs</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Compose your new blog entry below, then publish the entry to your blog.');?></div>

@@ -31,7 +31,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Create Poll');?>
+    <a href='/index.php/polls/create'><?php echo $this->translate('Create Poll');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/polls/manage'>Back to My Polls</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create your poll below, then click "Create Poll" to start your poll.');?></div>

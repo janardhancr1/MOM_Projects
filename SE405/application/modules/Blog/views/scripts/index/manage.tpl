@@ -59,7 +59,7 @@
     <div class="headline_header">
 	<img src='./application/modules/Blog/externals/images/blog_blog48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Blog Entries');?>
+    <a href='/index.php/blogs/manage'><?php echo $this->translate('My Blog Entries');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/blogs'>Back to Blogs</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Share your thoughts every day with moms.');?></div>

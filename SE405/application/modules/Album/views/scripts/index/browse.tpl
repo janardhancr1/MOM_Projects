@@ -104,7 +104,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Photo Albums');?>
+    <a href='/index.php/albums'><?php echo $this->translate('Photo Albums');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/albums/manage'>Go to My Photo Albums</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create, share and view picture albums from moms everywhere!');?></div>

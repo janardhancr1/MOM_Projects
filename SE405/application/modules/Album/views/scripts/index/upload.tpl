@@ -54,7 +54,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Add New Photos');?>
+    <a href='/index.php/albums/upload'><?php echo $this->translate('Add New Photos');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums/manage'>Back to My Albums</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Choose photos on your computer to add to this album.');?></div>

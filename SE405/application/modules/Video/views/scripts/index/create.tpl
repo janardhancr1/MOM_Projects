@@ -299,7 +299,7 @@ en4.core.runonce.add(function()
 <div class="headline_header">
 	<img src='./application/modules/Video/externals/images/video_video48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Add New Video');?><div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/videos/manage'>Back to My Videos</a></div>
+    <a href='/index.php/videos/create'><?php echo $this->translate('Add New Video');?></a><div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/videos/manage'>Back to My Videos</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Upload new video today and share it with friends.');?></div>
 </div>

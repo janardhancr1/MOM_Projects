@@ -16,7 +16,7 @@
 <div class="headerline_header">
  <img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Ask New Question');?>
+   <a href='/index.php/answers/create'> <?php echo $this->translate('Ask New Question');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Back to My Questions</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>

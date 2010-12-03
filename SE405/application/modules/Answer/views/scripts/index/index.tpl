@@ -45,7 +45,7 @@
 	<div class="headline_header">
 		<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 		<div class="mainheadline">
-	    <?php echo $this->translate('Momburbia Answers');?>
+	    <a href='/index.php/answers'><?php echo $this->translate('Momburbia Answers');?></a>
 	    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Back to My Questions</a></div>
 	    </div>
 	    <div class="smallheadline"><?php echo $this->translate('Ask, Answer and Explore. Questions and Answers on everything relating to being a mom.');?></div>

@@ -16,7 +16,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Forum/externals/images/forum_forum16_1.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Mom Conversations');?></div>
+    <a href='/index.php/forums'><?php echo $this->translate('Mom Conversations');?></a></div>
     <div class="smallheadline"><?php echo $this->translate('Share your opinion on products and services moms use daily');?></div>
 </div>
 <div style='padding-top:20px;padding-right:10px;width:680px'>

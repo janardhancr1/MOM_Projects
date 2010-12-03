@@ -58,7 +58,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Polls');?>
+    <a href='/index.php/polls/manage'><?php echo $this->translate('My Polls');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/polls'>Back to Polls</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create a Poll or Tell Others What you Think');?></div>

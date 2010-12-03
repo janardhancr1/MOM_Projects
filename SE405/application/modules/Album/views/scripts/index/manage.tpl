@@ -32,7 +32,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Album/externals/images/album_image48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Albums');?>
+    <a href='/index.php/manage'><?php echo $this->translate('My Albums');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/albums'>Back to Photos</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create a new album today and share it with friends.');?></div>

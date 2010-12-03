@@ -33,7 +33,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Events');?>
+    <a href='/index.php/events/manage'><?php echo $this->translate('My Events');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/events'>Back to Events</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Below are all of the events that you\'ve created or been invited to.');?></div>

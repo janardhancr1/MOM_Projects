@@ -52,7 +52,7 @@
   <div class="headline_header">
 	<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Groups');?>
+    <a href='/index.php/groups'><?php echo $this->translate('Groups');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/groups/manage'>Go to My Groups</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Find a group to join or create a new one and invite your friends.');?></div>

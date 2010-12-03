@@ -49,7 +49,7 @@
   <div class="headline_header">
 	<img src='./application/modules/Group/externals/images/group_group48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Groups');?>
+    <a href='/index.php/groups/manage'><?php echo $this->translate('My Groups');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/groups'>Back to Groups</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create a new group, invite moms, view all of your groups and join in on the conversation.');?></div>

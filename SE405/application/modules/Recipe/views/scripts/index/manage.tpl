@@ -33,7 +33,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Recipe/externals/images/recipe_recipe48.png' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Recipes');?>
+    <a href='/index.php/recipes/manage'><?php echo $this->translate('My Recipes');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/recipes'>Back to Recipes</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Upload new Recipe today and share it with friends.');?></div>
