@@ -64,9 +64,9 @@ class Answer_Form_Index_Create extends Engine_Form
 		}
 
 		$sub_prepared[0]= "";
-		if(isset($_SESSION['answercatid']))
+		if(isset($_SESSION['catid']))
 		{
-			$catid = $_SESSION['answercatid'];
+			$catid = $_SESSION['catid'];
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{
