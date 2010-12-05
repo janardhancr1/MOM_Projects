@@ -55,7 +55,7 @@
           </div>
           <?php else: ?>
           <div class="answers_browse_info_date">
-            <?php echo $this->translate('Asked by anonymous', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
+            <?php echo $this->translate('Asked by <font color="#D60077">anonymous</font>', $this->htmlLink($answer->getOwner(), $answer->getOwner()->getTitle())) ?>
             <?php echo $this->timestamp($answer->creation_date) ?>
           </div>
           <?php endif; ?>
