@@ -49,6 +49,12 @@ class Group_Api_Core extends Core_Api_Abstract
       $select->where('user_id IN(\''.join("', '", $params['users']).'\')');
     }
     
+    //contest group
+    if( !empty($params['ctitle']) )
+    {
+      $select->where("title LIKE '%".$params['ctitle']."%'");
+    }
+    
    // Title
     if( !empty($params['title']) )
     {

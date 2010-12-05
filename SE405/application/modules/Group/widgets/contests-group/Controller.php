@@ -21,7 +21,7 @@ class Group_Widget_ContestsGroupController extends Engine_Content_Widget_Abstrac
 	public function indexAction()
 	{
 		 
-		$values["title"] = "Momburbia Contest Group";
+		$values["ctitle"] = "Momburbia Contest Group";
 		$this->view->paginator = $paginator = Engine_Api::_()->getApi('core', 'group')
             ->getGroupPaginator($values);
       

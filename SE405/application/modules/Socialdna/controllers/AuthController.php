@@ -23,7 +23,7 @@ class Socialdna_AuthController extends Core_Controller_Action_Standard
 
     $session = new Zend_Session_Namespace('socialdna_auth');
     if($session->require_auth) {
-      $form->addError('Please sign in to continue..');
+      //$form->addError('Please sign in to continue..');
       $form->return_url->setValue($session->return_url);
       
       $session->require_auth = false;

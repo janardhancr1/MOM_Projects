@@ -68,7 +68,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Classified/externals/images/classified_classified48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('My Classified Listings');?>
+    <a href='/index.php/classifieds/manage'><?php echo $this->translate('My Classified Listings');?></a>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds'>Back to Classifieds</a></div>
 	</div>
     <div class="smallheadline"><?php echo $this->translate('Post your listing and check back regularly for responses.');?></div>
