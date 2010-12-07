@@ -25,7 +25,7 @@ class Activity_Model_DbTable_Actions extends Engine_Db_Table
   protected $_actionTypes;
 
   public function addActivity(Core_Model_Item_Abstract $subject, Core_Model_Item_Abstract $object,
-          $type, $body = null, array $params = null)
+          $type, $anonymous=FALSE, $body = null, array $params = null)
   {
     // Disabled or missing type
     $typeInfo = $this->getActionType($type);
@@ -50,7 +50,8 @@ class Activity_Model_DbTable_Actions extends Engine_Db_Table
       'object_id' => $object->getIdentity(),
       'body' => (string) $body,
       'params' => (array) $params,
-      'date' => date('Y-m-d H:i:s')
+      'date' => date('Y-m-d H:i:s'),
+      'anonymous' => $anonymous,
     ));
     $action->save();
 

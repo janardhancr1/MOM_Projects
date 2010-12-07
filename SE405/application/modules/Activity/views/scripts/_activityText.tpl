@@ -48,7 +48,10 @@
       
       <?php // Main Content ?>
       <span class="<?php echo ( empty($action->getTypeInfo()->is_generated) ? 'feed_item_posted' : 'feed_item_generated' ) ?>">
-        <?php echo $action->getContent() ?>
+        <?php if($action->anonymous)
+        	echo $this->translate('<font color="#D60077">anonymous</font> wrote new answer entry:');
+        else
+         echo $action->getContent() ?>
       </span>
 
       <?php // Attachments ?>

@@ -111,7 +111,10 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answer->creation_date   	= date('Y-m-d H:i:s');
 
 		$answer->save();
-		return $answer->answer_id;
+		$answers_array = array();
+		$answers_array[0] = $answer->answer_id;
+		$answers_array[1] = $answer->anonymous;
+		return $answers_array;
 
 	}
 }

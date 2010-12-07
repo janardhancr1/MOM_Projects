@@ -107,7 +107,9 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 			$db = Engine_Api::_()->getDbTable('answers', 'answer')->getAdapter();
 			$db->beginTransaction();
 			try {
-				$answer_id    = $this->view->form->save();
+				$answers_array    = $this->view->form->save();
+				$answer_id = $answers_array[0];
+				$anonymous = $answers_array[1];
 				if (empty($answer_id))
 				return;
 				$values = $this->view->form->getValues();
@@ -137,7 +139,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				}
 
 
-				$action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'answer_new');
+				$action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'answer_new', $anonymous);
 				if (null !== $action)
 				Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 				$db->commit();
