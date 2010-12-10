@@ -148,13 +148,13 @@ return array(
         'action' => 'facebook'
       )
     ),
-    'invite_moms' => array(
+    /*'invite_moms' => array(
       'route' => '/invite',
       'defaults' => array(
         'module' => 'user',
         'controller' => 'index',
         'action' => 'invite'
       )
-    ),
+    ),*/
   )
 ); ?>
