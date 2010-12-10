@@ -62,7 +62,11 @@
  </div>
  <div style='padding-top:20px;padding-right:10px;width:680px'>
     <?php if( count($this->paginator) > 0 ): ?>
-
+	<div class="tip">
+      <span>
+        <?php echo $this->translate('Tip: Looking for groups near you? Type in your city/town in the search!'); ?>
+      </span>
+    </div>
     <ul class='groups_browse'>
       <?php foreach( $this->paginator as $group ): ?>
         <li>
