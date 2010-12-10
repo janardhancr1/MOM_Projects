@@ -24,11 +24,14 @@ class Group_Form_Create extends Engine_Form
     
     //$this
       //->setTitle('Create New Group');
-         $content = Zend_Registry::get('Zend_Translate')->_("<div class='tip'><span>Tip: When creating a local group use your city/town name in the Group name or in the Description. This will help Moms find your group.</span></div>");
+    $content = Zend_Registry::get('Zend_Translate')->_("<div class='tip'><span>Tip: When creating a local group use your city/town name in the Group name or in the Description. This will help Moms find your group.</span></div>");
 	$this->addElement('Dummy', 'dummy', array(
       		'content' => $content,
 		));
-    $this->addElement('Text', 'title', array(
+    
+	$this->dummy->removeDecorator('label');
+	
+	$this->addElement('Text', 'title', array(
       'label' => 'Group Name',
       'allowEmpty' => false,
       'required' => true,
