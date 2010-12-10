@@ -80,7 +80,7 @@
       <div>
       
       <p>
-        <?php echo $this->translate('Your listing was successfully published. Would you like to add some photos to it?');?>
+        <?php echo $this->translate('Your listing was successfully published.  Would you like to add more photos to it?');?>
       </p>
       <br />
       <p>
