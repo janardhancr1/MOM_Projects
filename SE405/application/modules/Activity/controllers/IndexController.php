@@ -127,7 +127,7 @@ class Activity_IndexController extends Core_Controller_Action_Standard
           $viewer->status()->setStatus($body);
         }
 
-        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, 'status', $body);
+        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity1($viewer, $subject, 'status', $body);
         //$action = $this->_helper->api()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, 'status', $body);
       }
 
