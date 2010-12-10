@@ -383,7 +383,122 @@ INSERT IGNORE INTO `engine4_authorization_allow` (`resource_type`, `resource_id`
 ('forum', 5, 'topic.create', 'registered', 0, 1, NULL),
 ('forum', 5, 'post.create', 'registered', 0, 1, NULL),
 ('forum', 5, 'topic.edit', 'forum_list', 5, 1, NULL),
-('forum', 5, 'topic.delete', 'forum_list', 5, 1, NULL)
+('forum', 5, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 6, 'view', 'everyone', 0, 1, NULL),
+('forum', 6, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 6, 'post.create', 'registered', 0, 1, NULL),
+('forum', 6, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 6, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 7, 'view', 'everyone', 0, 1, NULL),
+('forum', 7, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 7, 'post.create', 'registered', 0, 1, NULL),
+('forum', 7, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 7, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 8, 'view', 'everyone', 0, 1, NULL),
+('forum', 8, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 8, 'post.create', 'registered', 0, 1, NULL),
+('forum', 8, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 8, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 9, 'view', 'everyone', 0, 1, NULL),
+('forum', 9, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 9, 'post.create', 'registered', 0, 1, NULL),
+('forum', 9, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 9, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 10, 'view', 'everyone', 0, 1, NULL),
+('forum', 10, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 10, 'post.create', 'registered', 0, 1, NULL),
+('forum', 10, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 10, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 11, 'view', 'everyone', 0, 1, NULL),
+('forum', 11, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 11, 'post.create', 'registered', 0, 1, NULL),
+('forum', 11, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 11, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 12, 'view', 'everyone', 0, 1, NULL),
+('forum', 12, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 12, 'post.create', 'registered', 0, 1, NULL),
+('forum', 12, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 12, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 13, 'view', 'everyone', 0, 1, NULL),
+('forum', 13, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 13, 'post.create', 'registered', 0, 1, NULL),
+('forum', 13, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 13, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 14, 'view', 'everyone', 0, 1, NULL),
+('forum', 14, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 14, 'post.create', 'registered', 0, 1, NULL),
+('forum', 14, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 14, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 15, 'view', 'everyone', 0, 1, NULL),
+('forum', 15, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 15, 'post.create', 'registered', 0, 1, NULL),
+('forum', 15, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 15, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 16, 'view', 'everyone', 0, 1, NULL),
+('forum', 16, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 16, 'post.create', 'registered', 0, 1, NULL),
+('forum', 16, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 16, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 17, 'view', 'everyone', 0, 1, NULL),
+('forum', 17, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 17, 'post.create', 'registered', 0, 1, NULL),
+('forum', 17, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 17, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 18, 'view', 'everyone', 0, 1, NULL),
+('forum', 18, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 18, 'post.create', 'registered', 0, 1, NULL),
+('forum', 18, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 18, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 19, 'view', 'everyone', 0, 1, NULL),
+('forum', 19, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 19, 'post.create', 'registered', 0, 1, NULL),
+('forum', 19, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 19, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 20, 'view', 'everyone', 0, 1, NULL),
+('forum', 20, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 20, 'post.create', 'registered', 0, 1, NULL),
+('forum', 20, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 20, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 21, 'view', 'everyone', 0, 1, NULL),
+('forum', 21, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 21, 'post.create', 'registered', 0, 1, NULL),
+('forum', 21, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 21, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 22, 'view', 'everyone', 0, 1, NULL),
+('forum', 22, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 22, 'post.create', 'registered', 0, 1, NULL),
+('forum', 22, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 22, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 23, 'view', 'everyone', 0, 1, NULL),
+('forum', 23, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 23, 'post.create', 'registered', 0, 1, NULL),
+('forum', 23, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 23, 'topic.delete', 'forum_list', 5, 1, NULL),
+
+('forum', 24, 'view', 'everyone', 0, 1, NULL),
+('forum', 24, 'topic.create', 'registered', 0, 1, NULL),
+('forum', 24, 'post.create', 'registered', 0, 1, NULL),
+('forum', 24, 'topic.edit', 'forum_list', 5, 1, NULL),
+('forum', 24, 'topic.delete', 'forum_list', 5, 1, NULL)
+
 ;
 
 

@@ -302,7 +302,7 @@ MAIN MENU WIDGET
 }
 .layout_core_menu_main ul a:hover
 {
-  color: $theme_topbar_menu_link_hover_color;
+  /*color: $theme_topbar_menu_link_hover_color;*/
   text-decoration: $theme_topbar_menu_link_hover_decoration;
   background: $theme_topbar_menu_link_background_color_hover;
 }
@@ -1674,7 +1674,7 @@ as an alternative to regular input select boxes in some places.
 .updates_pulldown > a.new_updates
 {
   /*+rounded(3px);*/
-  background: #f96262;
+  background: #BEB800;
   color: #fff;
 }
 .updates_pulldown > a.new_updates:hover
