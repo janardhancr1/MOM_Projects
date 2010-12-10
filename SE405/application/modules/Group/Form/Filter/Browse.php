@@ -37,19 +37,7 @@ class Group_Form_Filter_Browse extends Engine_Form
         array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
       ),
     ));
-    $this->addElement('Select', 'category_id', array(
-      'label' => 'Category:',
-      'style' => 'width:150px',
-      'multiOptions' => array(
-        '' => 'All Categories',
-      ),
-      'decorators' => array(
-        'ViewHelper',
-        array('HtmlTag', array('tag' => 'dd')),
-        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
-      ),
-      'onchange' => '$(this).getParent("form").submit();',
-    ));
+    
 
    /* $this->addElement('Select', 'view', array(
       'label' => 'View:',
@@ -77,6 +65,20 @@ class Group_Form_Filter_Browse extends Engine_Form
         array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
       ),
       'value' => 'creation_date DESC',
+      'onchange' => '$(this).getParent("form").submit();',
+    ));
+    
+    $this->addElement('Select', 'category_id', array(
+      'label' => 'Category:',
+      'style' => 'width:150px',
+      'multiOptions' => array(
+        '' => 'All Categories',
+      ),
+      'decorators' => array(
+        'ViewHelper',
+        array('HtmlTag', array('tag' => 'dd')),
+        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
+      ),
       'onchange' => '$(this).getParent("form").submit();',
     ));
    /* $content = Zend_Registry::get('Zend_Translate')->_("<img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'>&nbsp;<a href='/index.php/groups/manage'>Go to My Groups</a>");

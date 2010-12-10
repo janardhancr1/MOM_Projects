@@ -21,10 +21,18 @@ class Group_Form_Create extends Engine_Form
   public function init()
   {
     $user = Engine_Api::_()->user()->getViewer();
+    
+    $this->setTitle('');
+    $this->setDescription('Tip: When creating a local group use your city/town name in the Group name or in the Description. This will help Moms find your group.')
+       ->setAttrib(array(
+        'id' => 'tip12',
+        'class' => 'tip1',
+      ));
 
     //$this
       //->setTitle('Create New Group');
-
+         $content = Zend_Registry::get('Zend_Translate')->_("Tip: When creating a local group use your city/town name in the Group name or in the Description. This will help Moms find your group.");
+	
     $this->addElement('Text', 'title', array(
       'label' => 'Group Name',
       'allowEmpty' => false,
