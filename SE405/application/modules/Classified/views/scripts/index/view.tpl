@@ -155,9 +155,12 @@ endif; ?>
 </div>
 
 <div class='layout_middle'>
+<div class="button" style="float:right"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/classifieds'>Back to Classifieds</a></div>
   <h2>
     <?php echo $this->translate('%1$s\'s Classified Listing', $this->htmlLink($this->owner->getHref(), $this->owner->getTitle()))?>
   </h2>
+  
+
   <ul class='classifieds_entrylist'>
     <li>
       <h3>

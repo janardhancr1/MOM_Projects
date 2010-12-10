@@ -129,6 +129,11 @@
   <?php endif; ?>
 
   <?php if( $this->paginator->getTotalItemCount() > 0 ): ?>
+  <div class="tip">
+      <span>
+        <?php echo $this->translate('Tip: For items on sale near you simply type in your city/town in the search!'); ?>
+      </span>
+    </div>
     <ul class="classifieds_browse">
       <?php foreach( $this->paginator as $item ): ?>
         <li>
