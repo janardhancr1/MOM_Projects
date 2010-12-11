@@ -61,6 +61,11 @@
 </div>
 <div style='padding-top:20px;padding-right:10px;width:690px'>
   <?php if( count($this->paginator) > 0 ): ?>
+  <div class="tip">
+      <span>
+        <?php echo $this->translate('Tip: Looking for local events?  Type in your city/town in the search!'); ?>
+      </span>
+    </div>
     <ul class='events_browse'>
       <?php foreach( $this->paginator as $event ): ?>
         <li>
