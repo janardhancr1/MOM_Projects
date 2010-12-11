@@ -27,6 +27,11 @@ class Video_Form_Search extends Engine_Form
       ))
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ;
+      
+      $this->addElement('Text', 'search', array(
+	      'label' => 'Search Viedos:',
+	    ));
+	    
     // prepare categories
     $categories = Engine_Api::_()->video()->getCategories();
     $categories_prepared[0] = "All Categories";
@@ -50,6 +55,7 @@ class Video_Form_Search extends Engine_Form
     $this->addElement('Select', 'category', array(
       'label' => 'Category',
       'multiOptions' => $categories_prepared,
+    'style' => 'width:150px;',
       'onchange' => 'this.form.submit();'
     ));
     

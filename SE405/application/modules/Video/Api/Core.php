@@ -78,6 +78,20 @@ class Video_Api_Core extends Core_Api_Abstract
     {
       $select->where($rName.'.category_id = ?', $params['category']);
     }
+    if( !empty($params['search']) )
+    {
+    	$search1 = explode(" ",$params['search']);
+		$count = count($search1);
+		$search = "";
+		for($i=0; $i<$count;$i++)
+		{
+			$search .= "$rName.title LIKE '%".$search1[$i]."%' OR $rName.description LIKE '%".$search1[$i]."%'";
+			if ( end($search1) != $search1[$i] ) 
+				$search .= " OR ";
+	      }
+	      $select->where($search);
+    }
+   
 
     if( !empty($params['tag']) )
     {

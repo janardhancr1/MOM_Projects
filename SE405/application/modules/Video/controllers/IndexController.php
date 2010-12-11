@@ -59,7 +59,7 @@ class Video_IndexController extends Core_Controller_Action_Standard
     $this->view->formValues = $values = $form->getValues();
 
     $values['status'] = 1;
-    $values['search'] = 1;
+    //$values['search'] = 1;
 
     $this->view->category = $values['category'];
 
