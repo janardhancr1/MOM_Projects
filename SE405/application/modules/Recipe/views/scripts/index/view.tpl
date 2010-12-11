@@ -14,7 +14,7 @@
 <?php include './application/modules/Contests/views/scripts/index/rightside.tpl' ?>  
 
 <div class="layout_middle">
-
+<div class="button" style="float:right"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/recipes'>Back to Recipes</a></div>
 <?php if (empty($this->recipe)): ?>
   <?php echo $this->translate('The recipe you are looking for does not exist or has been deleted.') ?>
 <?php return; endif; ?>
@@ -67,7 +67,7 @@
 	<div><b><?php echo $this->translate('Ingredients: ');?></b></div>
 	<div>
 		<?php if (!empty($this->recipe->recipe_ingredients)): ?>
-			<?php echo $this->recipe->recipe_ingredients ?>
+			<p align="justify"><?php echo $this->recipe->recipe_ingredients ?></p>
 		<?php endif; ?>
 	</div>
 </div>
@@ -75,7 +75,7 @@
 	<div><b><?php echo $this->translate('Method: ');?></b></div>
 	<div>
 		<?php if (!empty($this->recipe->recipe_method)): ?>
-			<?php echo $this->recipe->recipe_method ?>
+			<p align="justify"><?php echo $this->recipe->recipe_method ?></p>
 		<?php endif; ?>
 	</div>
 </div>
