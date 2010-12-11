@@ -31,6 +31,7 @@ CREATE TABLE `engine4_activity_actions` (
   `attachment_count` smallint(3) unsigned NOT NULL default '0',
   `comment_count` mediumint(5) unsigned NOT NULL default '0',
   `like_count` mediumint(5) unsigned NOT NULL default '0',
+  `anonymous` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`action_id`),
   KEY `SUBJECT` (`subject_type`,`subject_id`),
   KEY `OBJECT` (`object_type`,`object_id`)

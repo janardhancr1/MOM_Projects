@@ -20,9 +20,9 @@ class Messages_Form_Compose extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Compose Message');
-    $this->setDescription('Create your new message with the form below. Your message can be addressed to up to 10 recipients.')
-       ->setAttrib('id', 'messages_compose');;
+    //$this->setTitle('Compose Message');
+    //$this->setDescription('Create your new message with the form below. Your message can be addressed to up to 10 recipients.')
+       $this->setAttrib('id', 'messages_compose');;
 
     // init to
     $this->addElement('Text', 'to',array(

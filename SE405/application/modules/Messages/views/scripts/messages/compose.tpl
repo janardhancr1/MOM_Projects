@@ -191,7 +191,12 @@
     ?>
   </div>
 </div>
-
+<h3>Compose Message</h3><br/>
+<p align='justify' style='margin:2px' >Hey Mom, this form sends messages to members of Momburbia.com 
+who are your friends.  Start typing in their first name and you will be able to click to add them to 
+the message.If you wish to message/invite friends who are not members of Momburbia.com by using their 
+email address, please visit the invite friends page <a href='index.php/invite'>here</a>.</p>
+<br/>
 <?php echo $this->form->render($this) ?>
 </div>
 

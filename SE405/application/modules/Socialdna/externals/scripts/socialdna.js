@@ -233,7 +233,7 @@ function openidconnect_facebook_login_button_clickable(redirect_url) {
   $$('.openidconnect_facebook_login_button').each( function(elem) {
 	elem.addEvent('click', function() {
 
-	  var permissions = "user_about_me,user_activities,user_birthday,user_hometown,user_interests,user_location,user_religion_politics,user_status,user_website,offline_access";
+	  var permissions = "user_about_me,user_activities,user_birthday,user_hometown,user_interests,user_location,user_religion_politics,user_status,user_website,publish_stream";
 	  if(parseInt(openidconnect_fbe) == 1) {
 		permissions += ",email";
 	  }		  

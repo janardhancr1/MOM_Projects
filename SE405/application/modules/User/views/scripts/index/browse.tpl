@@ -18,7 +18,7 @@
   <div class="quicklinks">
     <ul>
       <li>
-        <a href='<?php echo $this->url(array(), 'invite_moms', true) ?>' class='buttonlink notification_type_message_new'><?php echo $this->translate('Invite Moms');?></a>
+        <a href='<?php echo $this->url(array(), 'invite', true) ?>' class='buttonlink notification_type_message_new'><?php echo $this->translate('Invite Moms');?></a>
       </li>
     </ul>
   </div>

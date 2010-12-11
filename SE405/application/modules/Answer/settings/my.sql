@@ -505,7 +505,7 @@ INSERT IGNORE INTO `engine4_activity_actiontypes` (`type`, `module`,  `body`,  `
 --
 
 INSERT IGNORE INTO `engine4_activity_notificationtypes` (`type`, `module`, `body`, `is_request`, `handler`) VALUES
-('answer_answer', 'answer', '{item:$subject} has answered on a question you asked on.', 0, '');
+('answer_answer', 'answer', '{item:$subject} has answered a question you asked.', 0, '');
 
 
 -- --------------------------------------------------------
