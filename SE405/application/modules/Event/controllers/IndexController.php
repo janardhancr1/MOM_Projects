@@ -86,6 +86,22 @@ class Event_IndexController extends Core_Controller_Action_Standard
     // Prepare data
     $table = Engine_Api::_()->getItemTable('event');
     $select = $table->select()->where("search = 1");
+    
+    if(!empty($values['search']))
+    {
+    	$search1 = explode(" ",$values['search']);
+		$count = count($search1);
+		$search = "";
+		for($i=0; $i<$count;$i++)
+		{
+			$search .= "`title` LIKE '%".$search1[$i]."%' OR `description` LIKE '%".$search1[$i]."%' 
+			OR `location` LIKE '%".$search1[$i]."%'";
+			if ( end($search1) != $search1[$i] ) 
+				$search .= " OR ";
+	      }
+	      $select->where($search);
+    	
+    }
 
     // Do friends only
     if( $viewer->getIdentity() && @$values['view'] == 'friends' ) {

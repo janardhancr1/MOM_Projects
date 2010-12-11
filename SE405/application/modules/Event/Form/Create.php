@@ -40,7 +40,14 @@ class Event_Form_Create extends Engine_Form
       $this->setAttrib('id', 'event_create_form')
       ->setMethod("POST")
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
-
+      
+    $content = Zend_Registry::get('Zend_Translate')->_("<div class='tip'><span>Tip: When creating an event, classified 
+    use your city/town name in the Event name, Event Description and especially in the location. This will help Moms find your event.</span></div>");
+	$this->addElement('Dummy', 'dummy', array(
+      		'content' => $content,
+		));
+    
+	$this->dummy->removeDecorator('label');
     // Title
     $this->addElement('Text', 'title', array(
       'label' => 'Event Name',

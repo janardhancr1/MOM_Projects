@@ -29,7 +29,15 @@ class Event_Form_Filter_Browse extends Engine_Form
       ->setMethod('get')
       //->setAttrib('onchange', 'this.submit()')
       ;
-
+	$this->addElement('Text', 'search', array(
+	      'label' => 'Search Events:',
+	      'decorators' => array(
+        'ViewHelper',
+        array('HtmlTag', array('tag' => 'dd')),
+        array('Label', array('tag' => 'dt', 'placement' => 'PREPEND'))
+      ),
+	    ));
+	    
     $this->addElement('Select', 'category_id', array(
       'label' => 'Category:',
       'multiOptions' => array(
