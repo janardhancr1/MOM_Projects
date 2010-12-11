@@ -86,6 +86,7 @@
         <?php echo $this->form->title; ?>
         <?php echo $this->form->tags; ?>
         <?php if($this->form->category_id) echo $this->form->category_id; ?>
+        <?php if($this->form->sub_category_id) echo $this->form->sub_category_id; ?>
         <?php echo $this->form->body; ?>
         <?php echo $this->form->getSubForm('fields'); ?>
         <?php if($this->form->auth_view)echo $this->form->auth_view; ?>
