@@ -46,6 +46,14 @@ class Recipe_Form_Index_Create extends Engine_Form
           new Engine_Filter_StringLength(array('max' => '200'))
         ),
       ));
+      
+  // $allowed_upload = Engine_Api::_()->authorization()->getPermission($user_level, 'recipe', 'photo');
+    //if( $allowed_upload ) {
+      $this->addElement('File', 'photo', array(
+        'label' => 'Main Photo'
+      ));
+      $this->photo->addValidator('Extension', false, 'jpg,png,gif,jpeg');
+    //}
   // prepare categories
 		$categories = Engine_Api::_()->recipe()->getCategories();
 		if (count($categories)!=0){
@@ -97,7 +105,7 @@ class Recipe_Form_Index_Create extends Engine_Form
        $this->recipe_cook_tm->getDecorator('Description')->setOption('placement', 'append');
        
     $this->addElement('text', 'recipe_serve_to', array(
-        'label' => 'How many people does it serve?',
+        'label' => 'How many people does it Serves?',
         'maxlength' => 100,
         'filters' => array(
           'StripTags',

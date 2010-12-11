@@ -176,7 +176,8 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     if( !$this->_helper->requireAuth()->setAuthParams('recipe', null, 'create')->isValid()) return;
 
     $this->view->maxOptions = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.maxoptions', 15);
-    $this->view->form = new Recipe_Form_Index_Create();
+    $this->view->form = $form = new Recipe_Form_Index_Create();
+     $viewer = Engine_Api::_()->user()->getViewer();
     if ( $this->getRequest()->isPost() && $this->view->form->isValid($this->getRequest()->getPost()) ) {
       $db = Engine_Api::_()->getDbTable('recipes', 'recipe')->getAdapter();
       $db->beginTransaction();
@@ -184,16 +185,18 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
         $recipe_id    = $this->view->form->save();
         if (empty($recipe_id))
           return;
-        $values = $this->view->form->getValues();
+        $values = $from = $this->view->form->getValues();
 		
         
         // Set photo
-        if( !empty($values['photo']) ) {
-          $recipe->setPhoto($form->photo);
-        }
+        
         
         $row        = Engine_Api::_()->getItem('recipe', $recipe_id);
         $attachment = Engine_Api::_()->getItem($row->getType(), $recipe_id);
+        
+      if( !empty($values['photo']) ) {
+          $row->setPhoto($form->photo);
+        }
 
         // CREATE AUTH STUFF HERE
         $auth = Engine_Api::_()->authorization()->context;

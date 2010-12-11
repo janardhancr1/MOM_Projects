@@ -34,7 +34,7 @@
 <div style='height:200px;float:left; margin-right:50px'>
 	<div style='vertical-align:middle'>
 
-	<?php echo $this->htmlLink($this->recipe->getHref(), $this->itemPhoto($this->recipe,'thumb.normal')) ?>
+	<?php echo $this->htmlLink($this->recipe->getHref(), $this->itemPhoto($this->recipe,'thumb.profile')) ?>
 	</div>
 </div>
 <div>
