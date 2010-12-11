@@ -32,7 +32,7 @@ class User_Form_Login extends Engine_Form
     $this->getDecorator('Description')->setOption('escape', false);
     
     $this->addElement('Dummy', 'header', array(
-      'label' => 'Sign In:',
+      'label' => 'Login using Momburbia:',
     ));
     
     $email = Zend_Registry::get('Zend_Translate')->_('Email Address');

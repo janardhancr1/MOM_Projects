@@ -50,6 +50,9 @@ function openidconnect_scroll_icons_stop() {
 
 <div>
 <?php if($this->facebook_enabled): ?>
+<div style='color:#777777;font-size:18px;margin-left:15px'>
+Login using Facebook:
 <?php echo $this->partial('_facebookButton.tpl') ?>
+</div>
 <?php endif; ?>
 </div>

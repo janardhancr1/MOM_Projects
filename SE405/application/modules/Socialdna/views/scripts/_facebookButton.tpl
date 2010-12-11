@@ -14,7 +14,7 @@ $openid_facebook_landingpage = !empty($this->openid_facebook_landingpage ) ? $th
   </a>
 <?php else: ?>
 <!--<div>-->
-  <a href="javascript:void(0)" class="openidconnect_facebook_login_button">
+  <a href="javascript:void(0)" class="openidconnect_facebook_login_button" >
   <img id="fb_login_image" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Facebook Connect" border="0" />
   </a>
 <!--</div>-->
