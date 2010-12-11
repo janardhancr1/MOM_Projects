@@ -64,17 +64,17 @@ class Classified_Api_Core extends Core_Api_Abstract
       ->order( !empty($params['orderby']) ? $rName.'.'.$params['orderby'].' DESC' : $rName.'.creation_date DESC' );
     //die(print_r($customParams));
 
-    if(isset($customParams)){
+    //if(isset($customParams)){
       $select = $select
         ->setIntegrityCheck(false)
         ->from($rName)
         ->joinLeft($searchTable, "$searchTable.item_id = $rName.classified_id");
         //->group("$rName.classified_id");
 
-      $searchParts = Engine_Api::_()->fields()->getSearchQuery('classified', $customParams);
-      foreach( $searchParts as $k => $v ) {
-        $select->where("`{$searchTable}`.{$k}", $v);
-      }     
+      //$searchParts = Engine_Api::_()->fields()->getSearchQuery('classified', $customParams);
+      //foreach( $searchParts as $k => $v ) {
+        //$select->where("`{$searchTable}`.{$k}", $v);
+      //}     
 
       /*
       foreach ($customParams as $key => $param){
@@ -104,7 +104,7 @@ class Classified_Api_Core extends Core_Api_Abstract
         }
 
       */
-    }
+    //}
 
     if( !empty($params['user_id']) && is_numeric($params['user_id']) )
     {
@@ -122,14 +122,14 @@ class Classified_Api_Core extends Core_Api_Abstract
       $select->where($rName.'.owner_id in (?)', new Zend_Db_Expr($str));
     }
 
-    if( !empty($params['tag']) )
+    /*if( !empty($params['tag']) )
     {
       $select
         ->setIntegrityCheck(false)
         ->joinLeft($tmName, "$tmName.resource_id = $rName.classified_id")
         ->where($tmName.'.resource_type = ?', 'classified')
         ->where($tmName.'.tag_id = ?', $params['tag']);
-    }
+    }*/
 
     if( !empty($params['category']) )
     {
@@ -151,7 +151,9 @@ class Classified_Api_Core extends Core_Api_Abstract
 			$search = "";
 			for($i=0; $i<$count;$i++)
 			{
-				$search .= $rName.".title LIKE '%".$search1[$i]."%' OR ".$rName.".body LIKE '%".$search1[$i]."%'";
+				$search .= $rName.".title LIKE '%".$search1[$i]."%' OR ".$rName.".body LIKE '%".$search1[$i]."%' OR 
+				
+				".$searchTable.".location LIKE '%".$search1[$i]."%'";
 				if ( end($search1) != $search1[$i] ) 
 					$search .= " OR ";
       		}
@@ -175,6 +177,8 @@ class Classified_Api_Core extends Core_Api_Abstract
     }
 
    //die($params['closed'].$select);
+ 
+   
     return $select;
   }
 

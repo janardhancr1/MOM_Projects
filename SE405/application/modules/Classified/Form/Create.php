@@ -24,7 +24,14 @@ class Classified_Form_Create extends Engine_Form
     //$this->setTitle('Post New Listing')
       //->setDescription('Compose your new classified listing below, then click "Post Listing" to publish the listing.')
       $this->setAttrib('name', 'classifieds_create');
-
+      
+    $content = Zend_Registry::get('Zend_Translate')->_("<div class='tip'><span>Tip: When creating a classified use your city/town name in the Tags, Description and especially in the location. This will help Moms search for items that on sale neer them.</span></div>");
+	$this->addElement('Dummy', 'dummy', array(
+      		'content' => $content,
+		));
+		
+	$this->dummy->removeDecorator('label');
+	
     $this->addElement('Text', 'title', array(
       'label' => 'Listing Title',
       'allowEmpty' => false,
