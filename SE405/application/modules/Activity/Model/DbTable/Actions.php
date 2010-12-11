@@ -25,7 +25,7 @@ class Activity_Model_DbTable_Actions extends Engine_Db_Table
   protected $_actionTypes;
 
   public function addActivity(Core_Model_Item_Abstract $subject, Core_Model_Item_Abstract $object,
-          $type, $anonymous = FALSE, $body = null, array $params = null)
+          $type, $body = null, array $params = null, $anonymous = FALSE)
   {
     // Disabled or missing type
     $typeInfo = $this->getActionType($type);
