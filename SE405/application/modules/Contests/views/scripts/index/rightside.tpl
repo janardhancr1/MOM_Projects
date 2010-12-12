@@ -41,7 +41,7 @@
 <div class="generic_layout_container layout_user_list_signups">
 <h3>Newest Members</h3>
  <ul>
-  <?php foreach( $this->users as $user ): ?>
+  <?php foreach( $this->newusers as $user ): ?>
     <li>
       <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon'), array('class' => 'newestmembers_thumb')) ?>
       <div class='newestmembers_info'>

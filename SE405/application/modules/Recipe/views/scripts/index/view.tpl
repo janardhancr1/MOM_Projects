@@ -67,7 +67,7 @@
 	<div><b><?php echo $this->translate('Ingredients: ');?></b></div>
 	<div>
 		<?php if (!empty($this->recipe->recipe_ingredients)): ?>
-			<p align="justify"><?php echo $this->recipe->recipe_ingredients ?></p>
+			<p align="justify"><?php echo nl2br($this->recipe->recipe_ingredients) ?></p>
 		<?php endif; ?>
 	</div>
 </div>
@@ -75,7 +75,7 @@
 	<div><b><?php echo $this->translate('Method: ');?></b></div>
 	<div>
 		<?php if (!empty($this->recipe->recipe_method)): ?>
-			<p align="justify"><?php echo $this->recipe->recipe_method ?></p>
+			<p align="justify"><?php echo nl2br($this->recipe->recipe_method) ?></p>
 		<?php endif; ?>
 	</div>
 </div>

@@ -190,13 +190,12 @@ protected function getRightSideContent($adCamp1=2, $adCamp2=3)
 		->order('creation_date DESC')
 		->limit(4);
 
-		$users = $table->fetchAll($select);
-
-		if( count($users) < 1 )
+		$newusers = $table->fetchAll($select);
+		if( count($newusers) < 1 )
 		{
 			return $this->setNoRender();
 		}
 
-		$this->view->users = $users;
+		$this->view->newusers = $newusers;
 	}
 }
