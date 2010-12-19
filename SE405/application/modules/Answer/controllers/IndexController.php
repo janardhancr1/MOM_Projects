@@ -139,7 +139,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				}
 
 
-				$action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'answer_new', $anonymous);
+				$action     = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity(Engine_Api::_()->user()->getViewer(), $row, 'answer_new', null, null, $anonymous);
 				if (null !== $action)
 				Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 				$db->commit();
