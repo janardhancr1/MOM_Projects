@@ -73,6 +73,11 @@
             </div>
           <?php endif; ?>
         </div>
+        <div class="video_stats">
+          <?php if($recipe->rating>0):?>
+            <?php for($x=1; $x<=$recipe->rating; $x++): ?><span class="rating_star_generic rating_star"></span><?php endfor; ?><?php if((round($recipe->rating)-$recipe->rating)>0):?><span class="rating_star_generic rating_star_half"></span><?php endif; ?>
+          <?php endif; ?>
+        </div>
       </li>
       <?php endforeach; ?>
     </ul>

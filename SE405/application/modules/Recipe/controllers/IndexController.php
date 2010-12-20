@@ -73,6 +73,7 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
   {
     $recipe_id = $this->getRequest()->getParam('recipe_id');
     $recipe = $this->view->recipe = Engine_Api::_()->getItem('recipe', $recipe_id);
+    $viewer = $this->_helper->api()->user()->getViewer();
     if (!empty($recipe)) {
       Engine_Api::_()->core()->setSubject($recipe);
     }
@@ -100,6 +101,50 @@ class Recipe_IndexController extends Core_Controller_Action_Standard
     $this->view->recipe->save();
     $this->view->showPieChart  = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.showPieChart', false);
     $this->view->canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('recipe.canChangeVote', false);
+     $this->view->rating_count = Engine_Api::_()->recipe()->ratingCount($recipe->getIdentity());
+     $this->view->rated = Engine_Api::_()->recipe()->checkRated($recipe->getIdentity(), $viewer->getIdentity());
+  }
+  public function rateAction()
+  {
+    $viewer = Engine_Api::_()->user()->getViewer();
+    $user_id = $viewer->getIdentity();
+    
+    $rating = $this->_getParam('rating');
+    $recipe_id =  $this->_getParam('recipe_id');
+
+    
+    $table = Engine_Api::_()->getDbtable('ratings', 'recipe');
+    $db = $table->getAdapter();
+    $db->beginTransaction();
+
+    try
+    {
+      Engine_Api::_()->recipe()->setRating($recipe_id, $user_id, $rating);
+      
+      $total = Engine_Api::_()->recipe()->ratingCount($recipe_id);
+
+      $recipe = Engine_Api::_()->getItem('recipe', $recipe_id);
+      $rating = ($recipe->rating + $rating)/$total;
+      $recipe->rating = $rating;
+      $recipe->save();
+
+      $db->commit();
+    }
+
+    catch( Exception $e )
+    {
+      $db->rollBack();
+      throw $e;
+    }
+    
+    $data = array();
+    $data[] = array(
+      'total' => $total,
+      'rating' => $rating,
+    );
+    return $this->_helper->json($data);
+    $data = Zend_Json::encode($data);
+    $this->getResponse()->setBody($data);
   }
   public function voteAction()
   {

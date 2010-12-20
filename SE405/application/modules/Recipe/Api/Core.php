@@ -128,9 +128,52 @@ class Recipe_Api_Core extends Core_Api_Abstract
 
     return $recipe_votes;*/
   }
+public function setRating($recipe_id, $user_id, $rating)
+{
+    $table  = Engine_Api::_()->getDbTable('ratings', 'recipe');
+    $rName = $table->info('name');
+    $select = $table->select()
+                    ->from($rName)
+                    ->where($rName.'.recipe_id = ?', $recipe_id)
+                    ->where($rName.'.user_id = ?', $user_id);
+    $row = $table->fetchRow($select);
+    if (empty($row)) {
+      // create rating
+      Engine_Api::_()->getDbTable('ratings', 'recipe')->insert(array(
+        'recipe_id' => $recipe_id,
+        'user_id' => $user_id,
+        'rating' => $rating
+      ));
+    }
+}
+public function ratingCount($recipe_id)
+{
+    $table  = Engine_Api::_()->getDbTable('ratings', 'recipe');
+    $rName = $table->info('name');
+    $select = $table->select()
+                    ->from($rName)
+                    ->where($rName.'.recipe_id = ?', $recipe_id);
+    $row = $table->fetchAll($select);
+    $total = count($row);
+    return $total;
+  }
+public function checkRated($recipe_id, $user_id)
+{
+    $table  = Engine_Api::_()->getDbTable('ratings', 'recipe');
 
-  public function setVote($recipe_id, $option_id, $user_id=0)
-  {
+    $rName = $table->info('name');
+    $select = $table->select()
+                 ->setIntegrityCheck(false)
+                    ->where('recipe_id = ?', $recipe_id)
+                    ->where('user_id = ?', $user_id)
+                    ->limit(1);
+    $row = $table->fetchAll($select);
+    
+    if (count($row)>0) return true;
+    return false;
+}
+public function setVote($recipe_id, $option_id, $user_id=0)
+{
     if (empty($user_id))
       $user_id = Engine_Api::_()->user()->getViewer()->getIdentity();
     

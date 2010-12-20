@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `engine4_recipe_recipes` (
   `recipe_gluten` char(1) NOT NULL default '0',
   `recipe_nut` char(1) NOT NULL default '0',
   `views` int(11) unsigned NOT NULL default '0',
+  `rating` float NOT NULL,
   `comments` int(11) unsigned NOT NULL default '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
@@ -71,7 +72,15 @@ INSERT IGNORE INTO `engine4_recipe_categories` (`category_id`, `user_id`, `categ
 --
 -- Table structure for table `engine4_recipe_votes`
 --
-
+DROP TABLE IF EXISTS `engine4_recipe_ratings`;
+CREATE TABLE IF NOT EXISTS `engine4_recipe_ratings` (
+  `recipe_id` int(10) unsigned NOT NULL,
+  `user_id` int(9) unsigned NOT NULL,
+  `rating` tinyint(1) unsigned default NULL,
+  PRIMARY KEY  (`recipe_id`,`user_id`),
+  KEY `INDEX` (`recipe_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
+ 
 DROP TABLE IF EXISTS `engine4_recipe_votes`;
 CREATE TABLE IF NOT EXISTS `engine4_recipe_votes` (
   `recipe_id` int(11) unsigned NOT NULL,
