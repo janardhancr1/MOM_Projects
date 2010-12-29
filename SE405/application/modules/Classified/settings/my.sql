@@ -266,8 +266,8 @@ CREATE TABLE `engine4_classified_fields_meta` (
 --
 
 INSERT IGNORE INTO `engine4_classified_fields_meta` (`field_id`, `type`, `label`, `description`, `alias`, `required`, `config`, `validators`, `filters`, `display`, `search`) VALUES
-(2, 'currency', 'Price', '', 'price', 0, '{"unit":"USD"}', NULL, NULL, 1, 1),
-(3, 'location', 'Location', '', 'location', 0, '', NULL, NULL, 1, 1);
+(2, 'currency', 'Price', '(ie. $10.00 CDN / $10.00 U.S.)', 'price', 0, '{"unit":""}', NULL, NULL, 1, 0),
+(3, 'location', 'Location', '(ie. Address, City, ZIP/Postal Code)', 'location', 0, '', NULL, NULL, 1, 0);
 
 
 -- --------------------------------------------------------

@@ -28,7 +28,7 @@
 <?php $href = $group->getHref(); ?>
 <?php endforeach; ?>
 <center>
-	<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNERHoliday.jpg' border='0' alt='' /></a>
+	<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNERHOLIDAY.gif' border='0' alt='' /></a>
 <br />
 <br />
 <div style='text-align:center'><a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`),
   KEY `answer_cat_id` (`answer_cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 
 ALTER TABLE engine4_answer_answers ADD FULLTEXT(title, description);
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_posts` (
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `engine4_answer_categories` (
   `parent_cat_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 --
 -- Dumping data for table `engine4_question_categories`

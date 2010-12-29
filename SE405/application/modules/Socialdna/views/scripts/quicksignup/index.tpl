@@ -34,7 +34,7 @@
 
 <table cellpadding=0 cellpadding=0 Xwidth="100%">
 <tr>
-<td style="width: 500px">
+<td style="width: 550px">
 
 <div id="openid_signup" <?php if($this->task == 'signuplogin'): ?>style='display:none'<?php endif; ?>>
   
