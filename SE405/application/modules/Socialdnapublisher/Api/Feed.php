@@ -12,7 +12,6 @@ class Socialdnapublisher_Api_Feed extends Core_Api_Abstract
   public function add($params)
   {
 	
-	
 	// or by user_id -> seems will take current user if exists
 	$user = $params['subject'];
 	$user_id = $user->getIdentity();

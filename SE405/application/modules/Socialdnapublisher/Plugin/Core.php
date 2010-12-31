@@ -8,7 +8,6 @@ class Socialdnapublisher_Plugin_Core
 
     $payload = $event->getPayload();
 
-    
     $user = $payload['subject'];
     $actiontype_name = $payload['type'];
 

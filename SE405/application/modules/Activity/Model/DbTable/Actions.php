@@ -67,49 +67,6 @@ class Activity_Model_DbTable_Actions extends Engine_Db_Table
 
     return $action;
   }
-public function addActivity1(Core_Model_Item_Abstract $subject, Core_Model_Item_Abstract $object,
-          $type, $body = null, array $params = null)
-  {
-    // Disabled or missing type
-    $typeInfo = $this->getActionType($type);
-    if( !$typeInfo || !$typeInfo->enabled )
-    {
-      return;
-    }
-
-    // User disabled publishing of this type
-    $actionSettingsTable = Engine_Api::_()->getDbtable('actionSettings', 'activity');
-    if( !$actionSettingsTable->checkEnabledAction($subject, $type) ) {
-      return;
-    }
-
-    // Create action
-    $action = $this->createRow();
-    $action->setFromArray(array(
-      'type' => $type,
-      'subject_type' => $subject->getType(),
-      'subject_id' => $subject->getIdentity(),
-      'object_type' => $object->getType(),
-      'object_id' => $object->getIdentity(),
-      'body' => (string) $body,
-      'params' => (array) $params,
-      'date' => date('Y-m-d H:i:s'),
-      'anonymous' => $anonymous,
-    ));
-    $action->save();
-
-    // Add bindings
-    $this->addActivityBindings($action, $type, $subject, $object);
-
-    // We want to update the subject
-    if( isset($subject->modified_date) )
-    {
-      $subject->modified_date = date('Y-m-d H:i:s');
-      $subject->save();
-    }
-
-    return $action;
-  }
 
   public function getActivity(User_Model_User $user, array $params = array())
   {

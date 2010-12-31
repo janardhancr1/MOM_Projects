@@ -126,9 +126,7 @@ class Activity_IndexController extends Core_Controller_Action_Standard
 
           $viewer->status()->setStatus($body);
         }
-
         $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, 'status', $body);
-        //$action = $this->_helper->api()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, 'status', $body);
       }
 
       // General post
@@ -149,7 +147,7 @@ class Activity_IndexController extends Core_Controller_Action_Standard
         {
           $type = 'post_self';
         }
-        
+
         // Add notification for <del>owner</del> user
         $subjectOwner = $subject->getOwner();
         //if( !$viewer->isSelf($subjectOwner) )

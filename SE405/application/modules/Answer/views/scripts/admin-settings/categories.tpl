@@ -11,7 +11,7 @@
  */
 ?>
 
-<h2>Blogs Plugin</h2>
+<h2>Answers Plugin</h2>
 
 <?php if( count($this->navigation) ): ?>
 <div class='tabs'>
