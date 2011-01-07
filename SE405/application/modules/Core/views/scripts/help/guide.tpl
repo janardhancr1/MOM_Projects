@@ -12,9 +12,9 @@
 ?>
 <div class='layout_middle'>
 <h2><?php echo $this->translate('MOMBURBIA COMMUNITY GUIDELINES') ?></h2>
-<p>
+<!--<p>
   <?php echo $this->translate('_CORE_ABOUT_STATEMENT') ?>
-</p><br/>
+</p>-->
 <h5>LAST UPDATED: DECEMBER 13, 2010</h5>
 <br/>
 <p align="justify">Welcome to the Momburbia Community Guidelines. We created Momburbia to provide moms with a safe and unique place where they can connect with other moms, share experiences, share challenges, give and get advice, laugh, and do much more.</p><br/>

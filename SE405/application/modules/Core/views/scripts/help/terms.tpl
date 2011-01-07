@@ -12,9 +12,9 @@
 ?>
 <div class='layout_middle'>
 <h2><?php echo $this->translate('Terms of Service') ?></h2>
-<p>
+<!--<p>
   <?php echo $this->translate('_CORE_TERMS_OF_SERVICE') ?>
-</p><br/>
+</p>-->
 <h5>LAST UPDATED: DECEMBER 13, 2010</h5>
 <br/>
 <p align="justify"><b>PLEASE READ THE FOLLOWING TERMS OF SERVICE RELATING TO YOUR USE OF THE MOMBURBIA WEBSITE CAREFULLY. THESE TERMS OF SERVICE GOVERN YOUR USE OF THE MOMBURBIA WEBSITE AND ALL SERVICES OFFERED THROUGH THE WEBSITE.</b></p><br/>
