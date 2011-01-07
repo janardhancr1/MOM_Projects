@@ -14,7 +14,8 @@
 <div class='red_bar' style='margin-bottom:2px'>
 </div>
 <div style='float:left;color:#BEB800;'>
-<?php echo $this->translate('Momburbia TM C %s', date('Y')) ?>
+ &copy;/&trade;/&reg;
+<?php echo $this->translate('Momburbia Inc.') ?>
 </div>
 <?php foreach( $this->navigation as $item ): ?>
   &nbsp;&nbsp; <?php echo $this->htmlLink($item->getHref(), $this->translate($item->getLabel())) ?>

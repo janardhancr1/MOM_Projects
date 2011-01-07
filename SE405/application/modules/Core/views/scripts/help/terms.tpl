@@ -15,4 +15,5 @@
 <p>
   <?php echo $this->translate('_CORE_TERMS_OF_SERVICE') ?>
 </p>
+
 </div>
