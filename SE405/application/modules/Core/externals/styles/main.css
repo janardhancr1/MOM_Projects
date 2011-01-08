@@ -1456,3 +1456,15 @@ a.join_link:visited {
 a.join_link:hover {
 	color: #D60077;
 }
+
+.terms
+{
+	}
+.terms ul
+{
+	list-style: disc outside none; 
+	}
+.terms li
+{
+	display: list-item; margin-left: 30px; 
+}

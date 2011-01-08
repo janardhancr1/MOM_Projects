@@ -17,9 +17,10 @@
 </p>-->
 <h5>LAST UPDATED: DECEMBER 13, 2010</h5>
 <br/>
+<dir class="terms">
 <p>
 <b>Questions.</b> If you have any questions or concerns about 
-our privacy policy, contact our privacy team through this <a href='/help/contact'>Contact Page</a> 
+our privacy policy, contact our privacy team through this <a href='/index.php/help/contact'>Contact Page</a> 
 </p>
 <br/>
 <p align="justify">
@@ -31,11 +32,11 @@ our privacy policy, contact our privacy team through this <a href='/help/contact
 please do not attempt to register for Momburbia or provide any personal information about yourself to us.
 If we learn that we have collected personal information from an individual under the age of 16, 
 we will delete that information as quickly as possible. If you believe that we might have any information 
-from an individual under age 16, please contact us through this <a href='/help/contact'>Contact Page</a>
+from an individual under age 16, please contact us through this <a href='/index.php/help/contact'>Contact Page</a>
 </p>
 <br/>
 <p align="justify">
-At Momburbia&reg;, we are committed to maintaining your privacy and your trust. This Privacy Policy explains how we collect, protect, use and share information about you when you use the Momburbia website (the "Site"). We hope this information increases your confidence in Momburbia and enhances your experience on our Site. This Privacy Policy is incorporated into and subject to the <a href='/help/terms'>Momburbia Terms of Service</a>.  Each time that you use the Site, you signify that you agree to be bound by the Terms of Service and this Privacy Policy. If you do not agree to the terms of this Privacy Policy, you must discontinue using the Service and terminate your membership.
+At Momburbia&reg;, we are committed to maintaining your privacy and your trust. This Privacy Policy explains how we collect, protect, use and share information about you when you use the Momburbia website (the "Site"). We hope this information increases your confidence in Momburbia and enhances your experience on our Site. This Privacy Policy is incorporated into and subject to the <a href='/index.php/help/terms'>Momburbia Terms of Service</a>.  Each time that you use the Site, you signify that you agree to be bound by the Terms of Service and this Privacy Policy. If you do not agree to the terms of this Privacy Policy, you must discontinue using the Service and terminate your membership.
 </p>
 <br/>
 <p align="justify">
@@ -103,13 +104,18 @@ we will receive information from them, including information about actions you t
 <p align="justify"><b>Information from other websites.</b> We may institute programs with advertising partners 
 and other websites in which they share information with us:<br/><br/>
  
+<ul>
+<li>
 We may ask advertisers to tell us how our users responded to the ads we showed them (and for comparison purposes, 
 how other users who didn't see the ads acted on their site). This data sharing, commonly known as "conversion tracking," 
 helps us measure our advertising effectiveness and improve the quality of the advertisements you see.<br/><br/>
-
+</li>
+<li>
 We may receive information about whether or not you've seen or interacted with certain ads on other sites in order to 
-measure the effectiveness of those ads.</p><br/>
-
+measure the effectiveness of those ads.</p>
+</li>
+</ul>
+<br/>
 <p align="justify"><b>Information from other users.</b> We may collect information about you from other Momburbia users, 
 such as when a friend tags you in a photo or provides friend details, or indicates a relationship with you.<br/><br/>
 
@@ -138,7 +144,8 @@ comfortable with.</p><br/>
  that we can better limit your access to content and advertisements that are not age appropriate.  Because your date of 
  birth is required, you cannot delete them.</p><br/>
    
-<ul><b>Other.</b>  Here are some other things to remember: 
+<b>Other.</b>  Here are some other things to remember: 
+<ul>
 <li>Some of the content you share and the actions you take will show up on your friends' home pages and other pages they visit.
 <li>Even after you remove information from your profile or delete your account, copies of that information may remain viewable elsewhere to the extent it has been shared with others, it was otherwise distributed pursuant to your privacy settings, or it was copied or stored by other users.
 <li>You understand that information might be reshared or copied by other users.
@@ -163,7 +170,7 @@ share personal content, such as classified, blogs and photos. Please be aware th
 your personally identifiable information may be accessible to Members and non-Members, and Momburbia has no control 
 over how those users may use your personally identifiable information. We have the right, but not the obligation, 
 to monitor any activity and content associated with the public and private forums and interactive areas on our Site. 
-Please review our <a href='/help/terms'>Terms of Service</a> for more information regarding your appropriate use of these areas.</p><br/>
+Please review our <a href='/index.php/help/terms'>Terms of Service</a> for more information regarding your appropriate use of these areas.</p><br/>
 
 <p align="justify"><b>Email and Newsletters.</b> Momburbia may send you service-related announcements and emails from 
 time to time. For instance, if a friend sends you a message or someone comments on your photos or blog, you may 
@@ -260,6 +267,7 @@ to the extent permitted under their terms of service or privacy policies.  But t
 the information through our Platform after you disconnect from them.</p><br/>
 
 <p align="justify">Contacting Us. If you have any questions about this Privacy Policy, or 
-the practices of this Site, please visit our <a href='/help/contact'>Contact Page</a></p>
+the practices of this Site, please visit our <a href='/index.php/help/contact'>Contact Page</a></p>
 
+</div>
 </div>

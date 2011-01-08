@@ -17,6 +17,7 @@
 </p>-->
 <h5>LAST UPDATED: DECEMBER 13, 2010</h5>
 <br/>
+<div class="terms">
 <p align="justify">Welcome to the Momburbia Community Guidelines. We created Momburbia to provide moms with a safe and unique place where they can connect with other moms, share experiences, share challenges, give and get advice, laugh, and do much more.</p><br/>
 <p align="justify">These Guidelines are here to help Momburbia be a great place for as many moms as possible! Momburbia is a community where a mom can feel welcome and safe, and not be subjected to personal attacks or disrespectful behavior.</p><br/>
 <p align="justify">As the "owner", the Momburbia Team will do our best to enforce the Guidelines of the Community, assist members with any questions, and provide a clean place for moms to spend their time.</p><br/>
@@ -206,4 +207,5 @@ Would you give your phone number, street address or anything else to a mom you j
 	<li>Bulk email or mailing lists that contain names, addresses, phone numbers, or other personal identifying information
 
 </ul>
+</div>
 </div>
