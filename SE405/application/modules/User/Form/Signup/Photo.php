@@ -35,12 +35,12 @@ class User_Form_Signup_Photo extends Engine_Form
     Engine_Form::addDefaultDecorators($this->current);
 
     $this->addElement('File', 'Filedata', array(
-      'label' => 'Choose New Photo',
+      'label' => 'Choose New Photo (4MB Max)',
       'destination' => APPLICATION_PATH.'/public/temporary/',
       'multiFile' => 1,
       'validators' => array(
         array('Count', false, 1),
-        array('Size', false, 612000),
+        array('Size', false, 4194304),
         array('Extension', false, 'jpg,png,gif,jpeg'),
       ),
       'onchange'=>'javascript:uploadSignupPhoto();'
