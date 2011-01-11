@@ -42,7 +42,7 @@ class User_Form_Edit_Photo extends Engine_Form
       'multiFile' => 1,
       'validators' => array(
         array('Count', false, 1),
-        // array('Size', false, 612000),
+        array('Size', false, 419430),
         array('Extension', false, 'jpg,jpeg,png,gif'),
       ),
       'onchange'=>'javascript:uploadSignupPhoto();'
