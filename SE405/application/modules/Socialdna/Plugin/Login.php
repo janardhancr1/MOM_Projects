@@ -34,7 +34,7 @@ class Socialdna_Plugin_Login extends Zend_Controller_Plugin_Abstract
         $session->require_auth = true;
   
         $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
-        $url = $redirector->getFrontController()->getRouter()->assemble(array('module' => 'socialdna', 'controller' => 'auth', 'action' => 'login', 'format' => $format ), 'default', true);
+        $url = $redirector->getFrontController()->getRouter()->assemble(array('module' => 'socialdna', 'controller' => 'auth', 'action' => 'index', 'format' => $format ), 'default', true);
         $redirector->gotoUrlAndExit($url, array('prependBase' => false) );
         //$redirector->gotoSimple('login','','', array('format' => $format) );
       }

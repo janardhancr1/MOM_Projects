@@ -3,6 +3,12 @@ class Socialdna_AuthController extends Core_Controller_Action_Standard
 {
   protected $_authAdapter;
 
+  public function indexAction()
+  {
+  	// Make form
+    $this->view->form = $form = new User_Form_Login();
+  }
+  
   public function loginAction()
   {
     
