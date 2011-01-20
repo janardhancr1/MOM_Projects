@@ -73,7 +73,7 @@ The Sponsor respects each entrant's right to privacy. By entering the Promotion 
 
 <p>
 <a href="javascript:void(0);" onclick="parent.Smoothbox.close();">
-          <?php echo $this->translate("close") ?>
+          <?php echo $this->translate("Close") ?>
         </a>
 </p>
 </div>

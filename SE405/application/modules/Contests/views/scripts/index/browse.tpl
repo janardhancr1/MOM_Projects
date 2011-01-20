@@ -13,32 +13,36 @@
 <?php include 'rightside.tpl' ?>  
 
 <div class='layout_middle'>
-<div class="headline_header">
-	<img src='./application/modules/Contests/externals/images/contest_contest48.gif' border='0' class='icon_big'>
-	<div class="mainheadline">
-    <?php echo $this->translate('Momburbia has Moms in Mind... ');?>
-    <div class="smallheadline"><?php echo $this->translate('Check the contest page daily and tell other moms about the great giveaways.');?></div>
-</div>
-<br />
+	<div class="headline_header">
+		<img src='./application/modules/Contests/externals/images/contest_contest48.gif' border='0' class='icon_big'>
+		<div class="mainheadline">
+    		<?php echo $this->translate('Momburbia has Moms in Mind... ');?>
+    		<div class="smallheadline">\
+    			<?php echo $this->translate('Check the contest page daily and tell other moms about the great giveaways.');?>
+    		</div>
+		</div>
+	</div>
 
-<br />
-<br />
-<?php $href = "#"; ?>
-<?php foreach ($this->paginator as $group): ?>
-<?php $href = $group->getHref(); ?>
-<?php endforeach; ?>
-<center>
-	<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNERHOLIDAY.gif' border='0' alt='' /></a>
-<br />
-<br />
-<div style='text-align:center'><a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>
-</center>
-</div>
-<div>
-<?php echo $this->htmlLink(array('route' => 'contests_rules'), $this->translate('click here'), array(
-            'class'=>'buttonlink smoothbox'
-           )) ?> for rules and regulations
-</div>
-</center>
-</div>
+	<br />
+	<br />
+	<br />
+	
+	<?php $href = "#"; ?>
+	<?php foreach ($this->paginator as $group): ?>
+	<?php $href = $group->getHref(); ?>
+	<?php endforeach; ?>
+	<center>
+		<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNERHOLIDAY.gif' border='0' alt='' /></a>
+		<br />
+		<br />
+		<div style='text-align:center'>
+			<a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...
+		</div>
+		<br />
+		<div style='text-align:center'>
+			<?php echo $this->htmlLink(array('route' => 'contests_rules'), $this->translate('Click here'), array(
+	            'class'=>'buttonlink smoothbox'
+	           )) ?> for rules and regulations
+		</div>
+	</center>
 </div>
