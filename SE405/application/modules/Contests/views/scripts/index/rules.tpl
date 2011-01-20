@@ -10,10 +10,10 @@
  * @author     John
  */
 ?>
-<div class='layout_middle'>
+<div class='global_form_popup' style='width: 800px;'>
 <h2><?php echo $this->translate('OFFICIAL CANADIAN AND UNITED STATES "Moms 1K Holiday" PROMOTION RULES 2011') ?></h2>
 
-<h2>NO PURCHASE IS NECESSARY</h2>
+<h3>NO PURCHASE IS NECESSARY</h3>
 <br/>
 <div class="rules">
 <p align="justify">Online Entries shall be referred to herein as "Entries" collectively. Entries become the property of Sponsor and will not be returned or acknowledged. Information on how to enter and prizes form part of these official rules ("Official Rules").</p><br/><br/>
@@ -42,7 +42,7 @@ One Grand Prize is available to be won consisting of a $1000.00 cheque.  The Win
 A random draw will be conducted by an independent contest organization on March 28, 2011 (the "Draw Date") at 10:00 AM (ET) in Markham, ON, amongst all eligible entries received. Odds of being selected for the Grand Prize depends on the total number of eligible entries received during the Promotion Period. The selected entrant will be contacted by email within 10 business days of the Draw Date. If the selected entrant cannot be contacted within the time frame indicated above, his/her entry will be disqualified and another entrant will be randomly selected from the remaining eligible entries and the process above will be repeated until such time as contact is made with a selected entrant or there are no more eligible entrants. Prior to being declared a winner, the selected entrant must first correctly answer without assistance of any kind, whether mechanical or otherwise, a mathematical skill-testing question posed by mail or telephone at a mutually convenient time within 10 business days of the Draw Date. In the event that a selected entrant incorrectly answers the mathematical skill-testing question, he/she will be disqualified and another entrant will be randomly selected and the above process will be repeated until such time as there is one confirmed winner or no more eligible entries are available.
 </p><br/><br/>
 <p align="justify"><b>5. ENTRANT LICENSES/RELEASES</b><br/><br/>
-By entering the promotion, the winner grant a royalty-free, irrevocable, perpetual, non-exclusive license to Sponsor, its designees, licensees and affiliates (“Authorized Parties”), to reproduce, distribute, display and create derivative works of the photographs (along with a name credit) in connection with the Promotion and promotion of the Promotion, in any media now or hereafter known, including, but not limited to: Display at a potential exhibition of winner; publication of a book featuring select entries in the Promotion; publication online highlighting entries or winner of the Promotion. Entrants further hereby waive all moral rights in and to the entries in favor of the Sponsor. Authorized Parties will not be required to pay any additional consideration or seek any additional approval in connection with such use.
+By entering the promotion, the winner grant a royalty-free, irrevocable, perpetual, non-exclusive license to Sponsor, its designees, licensees and affiliates ("Authorized Parties"), to reproduce, distribute, display and create derivative works of the photographs (along with a name credit) in connection with the Promotion and promotion of the Promotion, in any media now or hereafter known, including, but not limited to: Display at a potential exhibition of winner; publication of a book featuring select entries in the Promotion; publication online highlighting entries or winner of the Promotion. Entrants further hereby waive all moral rights in and to the entries in favor of the Sponsor. Authorized Parties will not be required to pay any additional consideration or seek any additional approval in connection with such use.
 </p><br/><br/>
 <p align="justify"><b>6. LIMITATION OF LIABILITY</b><br/><br/>
 By participating, entrants agree to release, discharge and hold harmless Sponsor, their partners, affiliates, subsidiaries, agents and their employees, officers, directors, and representatives from any claims, losses, and damages arising out of their participation in this Contest or any Contest-related activities and the acceptance and use, misuse, or possession of any prize awarded hereunder. 
@@ -69,7 +69,12 @@ By entering the Promotion, entrants agree to read, abide and be bound by the Off
 </p><br/><br/>
 <p align="justify"><b>11. PRIVACY:</b><br/><br/>
 The Sponsor respects each entrant's right to privacy. By entering the Promotion and voluntarily providing personal information, entrants consent and agree to the Sponsor's collection and use of entrants' information for the administration of the Promotion in accordance with the applicable privacy policies of Momburbia Inc. available at http://www.momburbia.com. Personal information collected in relation to the Promotion will be destroyed following the Promotion and awarding of the Grand Prize. However, if an entrant consents to receive future information from Momburbia, Momburbia may use the information provided to initiate, maintain and develop a relationship with the entrant in connection with offering any of Momburbia Inc. products; or to promote and market to the entrant additional products and services offered by Momburbia Inc. 
-</p><br/><br/>
-<p align="justify">&copy;/&trade;/&reg; Momburbia Inc.</p><br/><br/>
+</p><br/>
+
+<p>
+<a href="javascript:void(0);" onclick="parent.Smoothbox.close();">
+          <?php echo $this->translate("close") ?>
+        </a>
+</p>
 </div>
 </div>

@@ -34,7 +34,11 @@
 <div style='text-align:center'><a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>
 </center>
 </div>
-<div style='text-align:center'><a href="/contests/rules">Click here</a> for Rules and Regulations</div>
+<div>
+<?php echo $this->htmlLink(array('route' => 'contests_rules'), $this->translate('click here'), array(
+            'class'=>'buttonlink smoothbox'
+           )) ?> for rules and regulations
+</div>
 </center>
 </div>
 </div>
