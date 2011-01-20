@@ -29,6 +29,10 @@ class Contests_IndexController extends Core_Controller_Action_Standard
       
 		$paginator->setCurrentPageNumber(1);
 	}
-
+   public function rulesAction()
+   {
+    // to change, edit language variable "_CORE_TERMS_OF_SERVICE"
+   }
+	
 	
 }

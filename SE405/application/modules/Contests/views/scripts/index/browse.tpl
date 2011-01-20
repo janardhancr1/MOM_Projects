@@ -34,5 +34,7 @@
 <div style='text-align:center'><a href="<?php echo $href ?>">Click here</a> to visit the Momburbia Contest Group and enter to win...</div>
 </center>
 </div>
-
+<div style='text-align:center'><a href="/contests/rules">Click here</a> for Rules and Regulations</div>
+</center>
+</div>
 </div>

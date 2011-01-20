@@ -57,5 +57,13 @@ return array(
         'page' => '\d+',
       )
     ),
+    'contests_rules' => array(
+      'route' => 'contests/rules',
+      'defaults' => array(
+        'module' => 'contests',
+        'controller' => 'index',
+        'action' => 'rules'
+      )
+    ), 
   ),
 );
