@@ -31,6 +31,8 @@ class Contests_IndexController extends Core_Controller_Action_Standard
 	}
    public function rulesAction()
    {
+   	    //if( null === $this->_helper->ajaxContext->getCurrentContext() )
+      $this->_helper->layout->setLayout('default-simple');
     // to change, edit language variable "_CORE_TERMS_OF_SERVICE"
    }
 	
