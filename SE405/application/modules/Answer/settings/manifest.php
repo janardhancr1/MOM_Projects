@@ -107,6 +107,17 @@ return array(
         'answer_id' => '\d+'
       )
     ),
+     'answer_edit' => array(
+      'route' => 'answer/edit/:answer_id',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'edit'
+      ),
+      'reqs' => array(
+        'answer_id' => '\d+'
+      )
+    ),
      'answer_manage' => array(
       'route' => 'answers/manage',
       'defaults' => array(

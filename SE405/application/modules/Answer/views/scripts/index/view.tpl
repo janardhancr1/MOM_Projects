@@ -34,9 +34,9 @@
 			<?php endif; ?>
 		</div>
 		<div class="answers_browse_info_date">
-			<?php if (!empty($this->answer->answer_tags)): ?>
+			<?php if (!empty($this->answer->tags)): ?>
 				<?php echo $this->translate('Tags: ');?>
-				<?php echo $this->answer->answer_tags ?>
+				<?php echo $this->answer->tags ?>
 			<?php endif; ?>
 		</div>
 		 <?php if (!$this->answer->anonymous): ?>

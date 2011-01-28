@@ -84,7 +84,7 @@ class Answer_Api_Core extends Core_Api_Abstract
 		}
 		if (!empty($params['category']))
 		{
-			$select->where("`answer_cat_id` = ?", $params['category']);
+			$select->where("`category_id` = ?", $params['category']);
 		}
 		
 		if (!empty($params['subcategory']))

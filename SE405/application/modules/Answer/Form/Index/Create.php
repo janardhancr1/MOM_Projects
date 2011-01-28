@@ -104,8 +104,8 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answer->is_closed       	= 0;
 		$answer->title    			= $this->getElement('title')->getValue();
 		$answer->description     	= $this->getElement('description')->getValue();
-		$answer->answer_tags     	= $this->getElement('tags')->getValue();
-		$answer->answer_cat_id   	= $this->getElement('category_id')->getValue();
+		$answer->tags     	        = $this->getElement('tags')->getValue();
+		$answer->category_id   	    = $this->getElement('category_id')->getValue();
 		$answer->answer_sub_cat_id	= $this->getElement('sub_cat_id')->getValue();
 		$answer->anonymous	        = $this->getElement('anonymous')->getValue();
 		$answer->creation_date   	= date('Y-m-d H:i:s');
@@ -114,6 +114,7 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answers_array = array();
 		$answers_array[0] = $answer->answer_id;
 		$answers_array[1] = $answer->anonymous;
+      
 		return $answers_array;
 
 	}

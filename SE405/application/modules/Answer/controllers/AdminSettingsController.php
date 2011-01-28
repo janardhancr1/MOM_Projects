@@ -121,7 +121,7 @@ class Answer_AdminSettingsController extends Core_Controller_Action_Admin
       {
         // go through logs and see which blog used this $id and set it to ZERO
         $answerTable = $this->_helper->api()->getDbtable('answers', 'answer');
-        $select = $answerTable->select()->where('answer_cat_id = ?', $id);
+        $select = $answerTable->select()->where('category_id = ?', $id);
         $answers = $answerTable->fetchAll($select);
 
 
@@ -129,7 +129,7 @@ class Answer_AdminSettingsController extends Core_Controller_Action_Admin
         foreach( $answers as $answer )
         {
           //this is not working
-          $answer->answer_cat_id = 0;
+          $answer->category_id = 0;
           $answer->save();
         }
 

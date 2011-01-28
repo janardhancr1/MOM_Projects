@@ -55,6 +55,7 @@
               <?php echo $this->timestamp($answer->creation_date) ?>
           </div>
       <div class="answers_browse_options">
+      <a href='<?php echo $this->url(array('answer_id' => $answer->answer_id), 'answer_edit', true) ?>' class='buttonlink icon_answer_edit'><?php echo $this->translate('Edit Question');?></a>
          <a href='<?php echo $this->url(array('answer_id' => $answer->answer_id), 'answer_delete', true) ?>' class='buttonlink icon_answer_new'><?php echo $this->translate('Delete Question');?></a>
         </div>
       </li>

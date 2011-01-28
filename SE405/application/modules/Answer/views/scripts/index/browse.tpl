@@ -41,7 +41,7 @@
       <li id="answer-item-<?php echo $answer->answer_id ?>">
         <?php echo $this->htmlLink(
                       $answer->getHref(),
-                      $this->itemPhoto($answer->getOwner(), 'thumb.icon', $answer->getOwner()->username),
+                      $this->itemPhoto($answer->getOwner(), 'thumb.icon'),
                       array('class' => 'answers_browse_photo')
         ) ?>
         <div class="answers_browse_info">

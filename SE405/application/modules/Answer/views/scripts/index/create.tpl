@@ -27,6 +27,7 @@
 <script type="text/javascript">
   //<!--
   function getSubCats(cat_id) {
+  
     (new Request.JSON({
       'format': 'json',
       'url' : '/index.php/answers/subcats',
@@ -40,6 +41,7 @@
       {
       	$('sub_cat_id').empty();
       	var subcats = responseText.split(';');
+      
       	for(var i=0; i<subcats.length-1; i++)
       	{
       		var subcat = subcats[i].split('~');

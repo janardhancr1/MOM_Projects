@@ -153,7 +153,112 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 			$this->_redirect("answers/manage");
 		}
 	}
-
+	
+	public function editAction()
+	{
+	    if( !$this->_helper->requireUser()->isValid() ) return;
+	
+	    $viewer = $this->_helper->api()->user()->getViewer();
+	    $answer = Engine_Api::_()->getItem('answer', $this->_getParam('answer_id'));
+	
+	    if( !Engine_Api::_()->core()->hasSubject('answer') )
+	    {
+	      Engine_Api::_()->core()->setSubject($answer);
+	    }
+	   $this->view->answer = $answer;
+	    if( !$this->_helper->requireSubject()->isValid() ) return;
+	    //if( !$this->_helper->requireAuth()->setAuthParams($blog, $viewer, 'edit')->isValid() ) return;
+	
+	    // Backup
+	    if( $viewer->getIdentity() != $answer->user_id && !$this->_helper->requireAuth()->setAuthParams($answer, null, 'edit')->isValid())
+	    {
+	      return $this->_forward('requireauth', 'error', 'core');
+	      //die('are you trying to edit someone elses blog?');
+	    }
+	
+	    //$navigation = $this->getNavigation(true);
+	    //$this->view->navigation = $navigation;
+	    
+	    $this->view->form = $form = new Answer_Form_Index_Edit();
+	    $saved = $this->_getParam('saved');
+	
+	    // Populate form with current settings
+	   
+	    if( !$this->getRequest()->isPost() || $saved)
+	    {
+	       $form->populate($answer->toArray());
+	       $auth = Engine_Api::_()->authorization()->context;
+	      
+	      return;
+	    }
+	
+	    if( !$form->isValid($this->getRequest()->getPost()) )
+	    {
+	      return;
+	    }
+	
+	
+	    // Process
+	
+	    $db = Engine_Db_Table::getDefaultAdapter();
+	    $db->beginTransaction();
+	    try
+	    {
+	      $values = $form->getValues();
+	      
+	      $answer->setFromArray($values);
+	      
+	    
+		  //$answer->modified_date = date('Y-m-d H:i:s');
+		  $answer->save();
+	      // CREATE AUTH STUFF HERE
+	      $auth = Engine_Api::_()->authorization()->context;
+	      $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
+	      if($values['views']) $auth_view =$values['views'];
+	      else $auth_view = "everyone";
+	      $viewMax = array_search($auth_view, $roles);
+	      foreach( $roles as $i=>$role )
+	      {
+	        $auth->setAllowed($answer, $role, 'view', ($i <= $viewMax));
+	      }
+	      $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'everyone');
+	      if($values['comments']) $auth_comment =$values['comments'];
+	      else $auth_comment = "everyone";
+	      $commentMax = array_search($auth_comment, $roles);
+	
+	      foreach ($roles as $i=>$role)
+	      {
+	        $auth->setAllowed($answer, $role, 'comment', ($i <= $commentMax));
+	      }
+	
+	      // insert new activity if blog is just getting published
+	      $action = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($answer);
+	      if (count($action->toArray())<=0 && $values['draft']=='0'){
+	        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $answer, 'answer_new');
+	          // make sure action exists before attaching the blog to the activity
+	        if($action!=null){
+	          Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $answer);
+	        }
+	      }
+	
+	      // Rebuild privacy
+	      $actionTable = Engine_Api::_()->getDbtable('actions', 'activity');
+	      foreach( $actionTable->getActionsByObject($answer) as $action ) {
+	        $actionTable->resetActivityBindings($action);
+	      }
+	
+	      $db->commit();
+	
+	      return $this->_redirect("answers/manage");
+	
+	    }
+	    catch( Exception $e )
+	    {
+	      $db->rollBack();
+	      throw $e;
+	    }
+	  }
+	
 	public function viewAction()
 	{
 		$answer_id = $this->getRequest()->getParam('answer_id');
@@ -170,6 +275,8 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		if( !$this->_helper->requireAuth()->setAuthParams($answer, null, 'view')->isValid()) return;
 
 		$this->view->owner    = $owner   = $answer->getOwner();
+
+        
 		$this->view->answer->save();
 		$this->view->form = new Answer_Form_Index_Answer();
 		$this->view->acceptform = new Answer_Form_Index_Accept();
@@ -321,6 +428,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 	{
 		$return = '0~;';
 		$catid = $this->_getParam('cat_id', null);
+
 		if($catid)
 		{
 			$_SESSION['catid'] = $catid;
