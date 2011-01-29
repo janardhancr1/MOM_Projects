@@ -60,9 +60,9 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     
   	$form->subcategory->clearMultiOptions();
 	$form->subcategory->addMultiOption("0", "");
-	if(isset($_SESSION['catid']))
+	if(isset($_SESSION['clcatid']))
 	{
-		$catid = $_SESSION['catid'];
+		$catid = $_SESSION['clcatid'];
 		$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
 		if(count($subcategories)>0)
 		{
@@ -79,7 +79,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
     	if(isset($values['category']))
 		{
 			// Populate subcategories
-			$_SESSION['catid'] = $values['category'];
+			$_SESSION['clcatid'] = $values['category'];
 			$form->subcategory->clearMultiOptions();
 	        $form->subcategory->addMultiOption("0", "");
 			$this->view->subcategories = $subcategories = Engine_Api::_()->classified()->getSubCategories($values['category']);
@@ -415,7 +415,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
       $db->rollBack();
       throw $e;
     }
-    
+    $_SESSION['clcatid'] = null;
     // Redirect
     $allowed_upload = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'classified', 'photo');
     if( $allowed_upload ) {
@@ -450,7 +450,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 
 
     // Prepare form
-    $_SESSION['catid'] = $classified->category_id;
+    $_SESSION['clcatid'] = $classified->category_id;
     $this->view->form = $form = new Classified_Form_Edit(array(
       'item' => $classified
     ));
@@ -811,7 +811,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 		$catid = $this->_getParam('cat_id', null);
 		if($catid)
 		{
-			$_SESSION['catid'] = $catid;
+			$_SESSION['clcatid'] = $catid;
 			$subcategories = Engine_Api::_()->classified()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{

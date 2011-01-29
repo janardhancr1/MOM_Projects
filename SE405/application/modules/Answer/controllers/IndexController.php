@@ -143,7 +143,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 				if (null !== $action)
 				Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $attachment);
 				$db->commit();
-				$_SESSION['catid'] = null;
+				$_SESSION['anscatid'] = null;
 			}
 			catch (Exception $e) {
 				$db->rollback();
@@ -179,6 +179,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 	    //$navigation = $this->getNavigation(true);
 	    //$this->view->navigation = $navigation;
 	    
+	    $_SESSION['anscatid'] = $answer->category_id;
 	    $this->view->form = $form = new Answer_Form_Index_Edit();
 	    $saved = $this->_getParam('saved');
 	
@@ -431,7 +432,7 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 
 		if($catid)
 		{
-			$_SESSION['catid'] = $catid;
+			$_SESSION['anscatid'] = $catid;
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{

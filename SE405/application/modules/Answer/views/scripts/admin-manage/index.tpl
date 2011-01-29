@@ -71,7 +71,7 @@
           <td><?php echo $item->creation_date ?></td>
           <td>
             <a href="<?php echo $this->url(array('user_id' => $item->getOwner()->user_id, 'answer_id' => $item->answer_id), 'answer_view') ?>">
-              <?php echo $this->translate("view") ?>
+              <?php echo $this->translate('view') ?>
             </a>
             |
             <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'answer', 'controller' => 'admin-manage', 'action' => 'delete', 'id' => $item->answer_id), $this->translate('delete'), array(

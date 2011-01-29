@@ -33,7 +33,7 @@
 <div class="headline_header">
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Edit Answer');?>
+    <?php echo $this->translate('Edit Question');?>
     <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Back to My Questions</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Edit your question below, then share with Moms!');?></div>

@@ -22,10 +22,10 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 
 ('core_admin_main_plugins_contests', 'contests', 'Contests', '', '{"route":"admin_default","module":"contests","controller":"settings"}', 'core_admin_main_plugins', '', 999),
 
-('contests_admin_main_manage', 'contests', 'View Contests', '', '{"route":"admin_default","module":"contests","controller":"manage"}', 'answer_admin_main', '', 1),
-('contests_admin_main_settings', 'contests', 'Global Settings', '', '{"route":"admin_default","module":"contests","controller":"settings"}', 'answer_admin_main', '', 2),
-('contests_admin_main_level', 'contests', 'Member Level Settings', '', '{"route":"admin_default","module":"contests","controller":"level"}', 'answer_admin_main', '', 3),
-('contests_admin_main_categories', 'contests', 'Categories', '', '{"route":"admin_default","module":"contests","controller":"settings", "action":"categories"}', 'answer_admin_main', '', 4)
+('contests_admin_main_manage', 'contests', 'View Contests', '', '{"route":"admin_default","module":"contests","controller":"manage"}', 'contest_admin_main', '', 1),
+('contests_admin_main_settings', 'contests', 'Global Settings', '', '{"route":"admin_default","module":"contests","controller":"settings"}', 'contest_admin_main', '', 2),
+('contests_admin_main_level', 'contests', 'Member Level Settings', '', '{"route":"admin_default","module":"contests","controller":"level"}', 'contest_admin_main', '', 3),
+('contests_admin_main_categories', 'contests', 'Categories', '', '{"route":"admin_default","module":"contests","controller":"settings", "action":"categories"}', 'contest_admin_main', '', 4)
 ;
 
 

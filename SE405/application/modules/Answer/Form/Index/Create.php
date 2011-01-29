@@ -64,9 +64,9 @@ class Answer_Form_Index_Create extends Engine_Form
 		}
 
 		$sub_prepared[0]= "";
-		if(isset($_SESSION['catid']))
+		if(isset($_SESSION['anscatid']))
 		{
-			$catid = $_SESSION['catid'];
+			$catid = $_SESSION['anscatid'];
 			$subcategories = Engine_Api::_()->answer()->getSubCategories($catid);
 			foreach($subcategories as $subcategory)
 			{
@@ -106,7 +106,7 @@ class Answer_Form_Index_Create extends Engine_Form
 		$answer->description     	= $this->getElement('description')->getValue();
 		$answer->tags     	        = $this->getElement('tags')->getValue();
 		$answer->category_id   	    = $this->getElement('category_id')->getValue();
-		$answer->answer_sub_cat_id	= $this->getElement('sub_cat_id')->getValue();
+		$answer->sub_cat_id			= $this->getElement('sub_cat_id')->getValue();
 		$answer->anonymous	        = $this->getElement('anonymous')->getValue();
 		$answer->creation_date   	= date('Y-m-d H:i:s');
 

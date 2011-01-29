@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   `description` text NOT NULL,
   `tags` varchar(255) NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
-  `answer_sub_cat_id` int(11) unsigned,
+  `sub_cat_id` int(11) unsigned,
   `anonymous` bool default FALSE,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY  (`answer_id`),
