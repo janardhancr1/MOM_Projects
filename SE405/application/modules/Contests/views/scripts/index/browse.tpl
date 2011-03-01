@@ -17,7 +17,7 @@
 		<img src='./application/modules/Contests/externals/images/contest_contest48.gif' border='0' class='icon_big'>
 		<div class="mainheadline">
     		<?php echo $this->translate('Momburbia has Moms in Mind... ');?>
-    		<div class="smallheadline">\
+    		<div class="smallheadline">
     			<?php echo $this->translate('Check the contest page daily and tell other moms about the great giveaways.');?>
     		</div>
 		</div>
@@ -31,7 +31,7 @@
 	<?php foreach ($this->paginator as $group): ?>
 	<?php $href = $group->getHref(); ?>
 	<?php endforeach; ?>
-	<center>
+<!--	<center>
 		<a href="<?php echo $href ?>"><img src='./application/modules/Contests/externals/images/CONTESTPAGEBANNERHOLIDAY.gif' border='0' alt='' /></a>
 		<br />
 		<br />
@@ -44,5 +44,5 @@
 	            'class'=>'buttonlink smoothbox'
 	           )) ?> for rules and regulations
 		</div>
-	</center>
+	</center> -->
 </div>
