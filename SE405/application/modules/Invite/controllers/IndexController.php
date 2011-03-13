@@ -75,6 +75,10 @@ class Invite_IndexController extends Core_Controller_Action_Standard
   
   public function inviteAction()
   {
+  	$id = $this->_getParam('id', null);
+  	
+  	$groupName = Engine_Api::_()->group()->getgroupname($id);
+
     $settings = Engine_Api::_()->getApi('settings', 'core');
 
     // Check if admins only
@@ -90,7 +94,7 @@ class Invite_IndexController extends Core_Controller_Action_Standard
     }
 
     // Make form
-    $this->view->form = $form = new Invite_Form_Invitegroup();
+    $this->view->form = $form = new Invite_Form_Invitegroup(&$groupName);
 
     if( !$this->getRequest()->isPost() ) {
       return;

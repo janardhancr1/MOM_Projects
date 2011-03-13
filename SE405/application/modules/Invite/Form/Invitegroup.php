@@ -24,9 +24,24 @@ class Invite_Form_Invitegroup extends Engine_Form
   public $already_members = array();
   
   public $emails_sent = 0;
+  
+public $groupname;
+ 
+  public function __construct($groupname) 
+    { 
+    	
+       $this->groupname = $groupname;
+      $this->init();
+    } 
 
+  
+
+  
   public function init()
   {
+  	
+      
+	//$message = "You are requested to join the group ".$this->groupname;
     // Init settings object
     $settings = Engine_Api::_()->getApi('settings', 'core');
     $translate = Zend_Registry::get('Zend_Translate');
@@ -87,6 +102,7 @@ class Invite_Form_Invitegroup extends Engine_Form
       'type' => 'submit',
       'label' => 'Send Invites',
     ));
+    
   }
   
   public function validateEmails($value)

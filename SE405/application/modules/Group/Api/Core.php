@@ -161,6 +161,15 @@ class Group_Api_Core extends Core_Api_Abstract
     $row = $table->fetchRow($table->select()->where('category_id = ?', $category_id));
     return $row;
   }
+  
+  public function getgroupname($id)
+  {
+  	$table = $this->api()->getDbtable('groups', 'group');
+    $row = $table->fetchRow($table->select()->where('group_id = ?', $id));
+    $groupname = $row['title'];
+    return $groupname;
+  	
+  }
 
 
 }

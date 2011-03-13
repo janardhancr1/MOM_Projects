@@ -134,11 +134,14 @@ return array(
     ),
     
      'group_invite' => array(
-      'route' => 'group/invite',
+      'route' => 'group/invite/:id/*',
       'defaults' => array(
         'module' => 'invite',
         'controller' => 'index',
         'action' => 'invite'
+      ),
+      'reqs' => array(
+        'id' => '\d+',
       )
     ),
   )
