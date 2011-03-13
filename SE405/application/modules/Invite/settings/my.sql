@@ -80,3 +80,12 @@ INSERT IGNORE INTO `engine4_core_settings` (`name`, `value`) VALUES
 ('invite.message', 'You are being invited to join our social network.'),
 ('invite.subject', 'Join Us')
 ;
+
+INSERT IGNORE INTO `engine4_core_settings` (`name`, `value`) VALUES
+('invite.allowCustomMessage', '1'),
+('invite.fromEmail', ''),
+('invite.fromName', ''),
+('invite.max', '10'),
+('invite.groupmessage', 'You are being invited to join the group.'),
+('invite.subject', 'Join Us')
+;

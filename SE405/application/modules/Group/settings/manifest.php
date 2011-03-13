@@ -132,5 +132,14 @@ return array(
         'action' => 'browse'
       )
     ),
+    
+     'group_invite' => array(
+      'route' => 'group/invite',
+      'defaults' => array(
+        'module' => 'invite',
+        'controller' => 'index',
+        'action' => 'invite'
+      )
+    ),
   )
 ) ?>

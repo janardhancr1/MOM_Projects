@@ -72,4 +72,57 @@ class Invite_IndexController extends Core_Controller_Action_Standard
     
     return $this->render('sent');
   }
+  
+  public function inviteAction()
+  {
+    $settings = Engine_Api::_()->getApi('settings', 'core');
+
+    // Check if admins only
+    if( $settings->getSetting('user.signup.inviteonly') == 1 ) {
+      if( !$this->_helper->requireAdmin()->isValid() ) {
+        return;
+      }
+    }
+
+    // Check for users only
+    if( !$this->_helper->requireUser()->isValid() ) {
+      return;
+    }
+
+    // Make form
+    $this->view->form = $form = new Invite_Form_Invitegroup();
+
+    if( !$this->getRequest()->isPost() ) {
+      return;
+    }
+
+    if( !$form->isValid($this->getRequest()->getPost()) ) {
+      return;
+    }
+
+    
+    // Process
+    $values = $form->getValues();
+    $viewer = Engine_Api::_()->user()->getViewer();
+    $inviteTable = Engine_Api::_()->getDbtable('invites', 'invite');
+    $db = $inviteTable->getAdapter();
+    $db->beginTransaction();
+    
+    try {
+
+      $emailsSent = $inviteTable->sendInvites($viewer, $values['recipients'], @$values['message']);
+
+      $db->commit();
+    } catch( Exception $e ) {
+      $db->rollBack();
+      if( APPLICATION_ENV == 'development' ) {
+        throw $e;
+      }
+    }
+
+    //$this->view->alreadyMembers = $alreadyMembers;
+    $this->view->emails_sent = $emailsSent;
+    
+    return $this->render('sent');
+  }
 }

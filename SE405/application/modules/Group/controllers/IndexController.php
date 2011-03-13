@@ -134,8 +134,8 @@ class Group_IndexController extends Core_Controller_Action_Standard
 
       // Add owner as member
       $group->membership()->addMember($viewer)
-          ->setUserApproved($viewer)
-          ->setResourceApproved($viewer);
+         ->setUserApproved($viewer)
+         ->setResourceApproved($viewer);
 
       // Set photo
       if( !empty($values['photo']) ) {
@@ -182,7 +182,8 @@ class Group_IndexController extends Core_Controller_Action_Standard
       $db->commit();
 
       // Redirect
-      return $this->_helper->redirector->gotoRoute(array('id' => $group->getIdentity()), 'group_profile', true);
+       return $this->_helper->redirector->gotoRoute(array( 'action' => 'invite', 'id' => $group->getIdentity()), 'group_invite', true);
+      //return $this->_helper->redirector->gotoRoute(array('id' => $group->getIdentity()), 'group_profile', true);
     } catch( Engine_Image_Exception $e ) {
       $db->rollBack();
       $form->addError(Zend_Registry::get('Zend_Translate')->_('The image you selected was too large.'));

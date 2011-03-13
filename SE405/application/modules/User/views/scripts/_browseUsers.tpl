@@ -10,9 +10,9 @@
  * @author     John
  */
 ?>
-<h3>
+<!--<h3>
   <?php echo $this->translate(array('%s member found.', '%s members found.', $this->totalUsers),$this->locale()->toNumber($this->totalUsers)) ?>
-</h3>
+</h3>-->
 
 <ul id="browsemembers_ul">
   <?php foreach( $this->users as $user ): ?>
