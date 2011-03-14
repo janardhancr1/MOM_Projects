@@ -94,7 +94,7 @@ class Invite_IndexController extends Core_Controller_Action_Standard
     }
 
     // Make form
-    $this->view->form = $form = new Invite_Form_Invitegroup(&$groupName);
+    $this->view->form = $form = new Invite_Form_Invitegroup($groupName);
 
     if( !$this->getRequest()->isPost() ) {
       return;

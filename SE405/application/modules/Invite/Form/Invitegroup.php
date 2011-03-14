@@ -17,7 +17,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Invite_Form_Invitegroup extends Engine_Form
+class Invite_Form_Invitegroup extends Engine_Form 
 {
   public $invalid_emails = array();
 
@@ -25,23 +25,19 @@ class Invite_Form_Invitegroup extends Engine_Form
   
   public $emails_sent = 0;
   
-public $groupname;
+  public $groupname;
  
-  public function __construct($groupname) 
-    { 
-    	
-       $this->groupname = $groupname;
-      $this->init();
-    } 
-
-  
+  public function __construct($groupName) 
+  { 
+     $this->groupname = $groupName;
+     parent::__construct();
+  } 
 
   
   public function init()
   {
-  	
-      
-	//$message = "You are requested to join the group ".$this->groupname;
+ 
+  	$message = "You are invited to join the group ".$this->groupname;
     // Init settings object
     $settings = Engine_Api::_()->getApi('settings', 'core');
     $translate = Zend_Registry::get('Zend_Translate');
@@ -72,7 +68,7 @@ public $groupname;
         'required' => false,
         'allowEmpty' => true,
         'description' => 'Use %invite_url% to add a link to our sign up page.',
-        'value' => $settings->getSetting('invite.groupmessage', '%invite_url%'),
+        'value' => $message,
         'filters' => array(
           new Engine_Filter_Censor(),
         )
@@ -102,7 +98,6 @@ public $groupname;
       'type' => 'submit',
       'label' => 'Send Invites',
     ));
-    
   }
   
   public function validateEmails($value)
