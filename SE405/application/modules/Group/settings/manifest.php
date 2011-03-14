@@ -144,5 +144,14 @@ return array(
         'id' => '\d+',
       )
     ),
+    
+   'group_success' => array(
+      'route' => 'group/success/:group_id',
+      'defaults' => array(
+        'module' => 'group',
+        'controller' => 'index',
+        'action' => 'success'
+      )
+    ),
   )
 ) ?>

@@ -182,7 +182,8 @@ class Group_IndexController extends Core_Controller_Action_Standard
       $db->commit();
 
       // Redirect
-       return $this->_helper->redirector->gotoRoute(array( 'action' => 'invite', 'id' => $group->getIdentity()), 'group_invite', true);
+      return $this->_helper->redirector->gotoRoute(array('group_id'=>$group->getIdentity()), 'group_success', true);
+       //return $this->_helper->redirector->gotoRoute(array(  'id' => $group->getIdentity()), 'group_invite', true);
       //return $this->_helper->redirector->gotoRoute(array('id' => $group->getIdentity()), 'group_profile', true);
     } catch( Engine_Image_Exception $e ) {
       $db->rollBack();
@@ -268,6 +269,30 @@ class Group_IndexController extends Core_Controller_Action_Standard
     }
 
     return $navigation;
+  }
+  
+  public function successAction()
+  {
+  	
+    if( !$this->_helper->requireUser()->isValid() ) return;
+
+    // Get navigation
+   $this->view->navigation = $this->getNavigation();
+    
+
+    $viewer = $this->_helper->api()->user()->getViewer();
+    $this->view->group = $group = Engine_Api::_()->getItem('group', $this->_getParam('group_id'));
+
+  
+    //if( $viewer->getIdentity() != $group->owner_id )
+    //{
+      //return $this->_forward('requireauth', 'error', 'core');
+    //}
+
+    if( $this->getRequest()->isPost() && $this->getRequest()->getPost('confirm') == true )
+    {
+      return $this->_redirect("group/invite/".$this->_getParam('group_id'));
+    }
   }
 
 }
