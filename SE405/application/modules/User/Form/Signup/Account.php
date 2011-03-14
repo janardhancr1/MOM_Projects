@@ -103,11 +103,11 @@ class User_Form_Signup_Account extends Engine_Form
     }
 
     // Element: username
-    $description = Zend_Registry::get('Zend_Translate')->_('This will be the end of your profile link, for example: <br /> <span id="profile_address">http://....%s</span>');
-    $description = sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('id' => Zend_Registry::get('Zend_Translate')->_('yourname')), 'user_profile'));
+    //$description = Zend_Registry::get('Zend_Translate')->_('This will be the end of your profile link, for example: <br /> <span id="profile_address">http://....%s</span>');
+    //$description = sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('id' => Zend_Registry::get('Zend_Translate')->_('yourname')), 'user_profile'));
 
     $this->addElement('Text', 'username', array(
-      'label' => 'Profile Address*',
+      'label' => 'Screen Name*',
       'description' => $description,
       'required' => true,
       'allowEmpty' => false,

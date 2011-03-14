@@ -74,7 +74,7 @@ class User_Model_User extends Core_Model_Item_Abstract
 
   public function setDisplayName($displayName)
   {
-    if( is_string($displayName) )
+    /*if( is_string($displayName) )
     {
       $this->displayname = $displayName;
     }
@@ -108,7 +108,9 @@ class User_Model_User extends Core_Model_Item_Abstract
       }
       
       $this->displayname = $displayName;
-    }
+    }*/
+  	$displayName = $this->username;
+  	$this->displayname = $displayName;
   }
 
   public function setPhoto($photo)
