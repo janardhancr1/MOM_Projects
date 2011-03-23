@@ -20,13 +20,13 @@ class Event_Form_Delete extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Delete Event')
-      ->setDescription('Are you sure you want to delete this event?');
+    $this->setTitle('Delete Meetup')
+      ->setDescription('Are you sure you want to delete this Meetup?');
 
     $this->addElement('Hash', 'token');
 
     $this->addElement('Button', 'submit', array(
-      'label' => 'Delete Event',
+      'label' => 'Delete Meetup',
       'type' => 'submit',
       'decorators' => array(
         'ViewHelper',

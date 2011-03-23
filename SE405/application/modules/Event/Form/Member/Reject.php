@@ -21,8 +21,8 @@ class Event_Form_Member_Reject extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Reject Event Invitation')
-      ->setDescription('Would you like to reject the invitation to this event?')
+      ->setTitle('Reject Meetup Invitation')
+      ->setDescription('Would you like to reject the invitation to this meetup?')
       ->setMethod('POST')
       ->setAction($_SERVER['REQUEST_URI'])
       ;

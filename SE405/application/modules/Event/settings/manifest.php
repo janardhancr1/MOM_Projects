@@ -89,7 +89,7 @@ return array(
       )
     ),
     'event_general' => array(
-      'route' => 'events/:action/*',
+      'route' => 'meetups/:action/*',
       'defaults' => array(
         'module' => 'event',
         'controller' => 'index',
@@ -100,7 +100,7 @@ return array(
       )
     ),
     'event_specific' => array(
-      'route' => 'events/:action/:event_id/*',
+      'route' => 'meetups/:action/:event_id/*',
       'defaults' => array(
         'module' => 'event',
         'controller' => 'event',
@@ -112,7 +112,7 @@ return array(
       )
     ),
     'event_profile' => array(
-      'route' => 'event/:id/*',
+      'route' => 'meetup/:id/*',
       'defaults' => array(
         'module' => 'event',
         'controller' => 'profile',
@@ -123,7 +123,7 @@ return array(
       )
     ),
     'event_upcoming' => array(
-      'route' => 'events/upcoming/*',
+      'route' => 'meetups/upcoming/*',
       'defaults' => array(
         'module' => 'event',
         'controller' => 'index',
@@ -132,7 +132,7 @@ return array(
       )
     ),
     'event_past' => array(
-      'route' => 'events/past/*',
+      'route' => 'meetups/past/*',
       'defaults' => array(
         'module' => 'event',
         'controller' => 'index',

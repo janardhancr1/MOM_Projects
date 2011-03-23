@@ -21,8 +21,8 @@ class Event_Form_Member_Join extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Join Event')
-      ->setDescription('Would you like to join this event?')
+      ->setTitle('Join Meetup')
+      ->setDescription('Would you like to join this Meetup?')
       ->setMethod('POST')
       ->setAction($_SERVER['REQUEST_URI'])
       ;
@@ -42,7 +42,7 @@ class Event_Form_Member_Join extends Engine_Form
     //$this->addElement('Hash', 'token');
 
     $this->addElement('Button', 'submit', array(
-      'label' => 'Join Event',
+      'label' => 'Join Meetup',
       'ignore' => true,
       'decorators' => array('ViewHelper'),
       'type' => 'submit'

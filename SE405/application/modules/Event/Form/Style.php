@@ -22,7 +22,7 @@ class Event_Form_Style extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Event Styles')
+      ->setTitle('Meetup Styles')
       ->setMethod('post')
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ->setAttrib('class', 'global_form_popup')
@@ -31,8 +31,8 @@ class Event_Form_Style extends Engine_Form
     $this->removeDecorator('FormWrapper');
 
     $this->addElement('Textarea', 'style', array(
-      'label' => 'Custom Event Styles',
-      'description' => 'You can change the colors, fonts, and styles of your event by adding CSS code below. The contents of the text area below will be output between <style> tags on your event.'
+      'label' => 'Custom Meetup Styles',
+      'description' => 'You can change the colors, fonts, and styles of your Meetup by adding CSS code below. The contents of the text area below will be output between <style> tags on your Meetup.'
     ));
     $this->style->getDecorator('Description')->setOption('placement', 'APPEND');
 

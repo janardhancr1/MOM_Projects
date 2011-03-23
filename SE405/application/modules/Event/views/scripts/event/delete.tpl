@@ -16,8 +16,8 @@
 <div class="headline_header">
 	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <?php echo $this->translate('Delete Event:');?> <?php echo $this->subject()->__toString() ?>
-    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/events/manage'>Back to My Events</a></div>
+    <?php echo $this->translate('Delete Meetup:');?> <?php echo $this->subject()->__toString() ?>
+    <div class="button"><img src='./application/modules/Core/externals/images/back16.gif' border='0' class='button'> <a href='/index.php/meetups/manage'>Back to My Meetups</a></div>
     </div>
     <div class="smallheadline"></div>
 </div>

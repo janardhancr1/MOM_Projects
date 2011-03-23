@@ -22,7 +22,7 @@ class Event_Form_Invite extends Engine_Form
   {
     $this
       ->setTitle('Invite Members')
-      ->setDescription('Choose the people you want to invite to this event.')
+      ->setDescription('Choose the people you want to invite to this Meetup.')
       ->setAttrib('id', 'event_form_invite')
       ;
 

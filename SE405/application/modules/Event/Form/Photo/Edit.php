@@ -21,7 +21,7 @@ class Event_Form_Photo_Edit extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Edit Event Photo')
+      ->setTitle('Edit Meetup Photo')
       //->setDescription('Change member title')
       ;
 

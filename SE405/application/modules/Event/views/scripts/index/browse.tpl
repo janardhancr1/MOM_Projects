@@ -14,7 +14,7 @@
 <!--
 <div class="headline">
   <h2>
-    <?php echo $this->translate('Events');?>
+    <?php echo $this->translate('Meetups');?>
   </h2>
   <div class="tabs">
     <?php
@@ -35,7 +35,7 @@
     <div class="quicklinks">
       <ul>
         <li>
-          <?php echo $this->htmlLink(array('route' => 'event_general', 'action' => 'create'), $this->translate('Create New Event'), array(
+          <?php echo $this->htmlLink(array('route' => 'event_general', 'action' => 'create'), $this->translate('Create New Meetup'), array(
             'class' => 'buttonlink icon_event_new'
           ));
           ?>
@@ -51,10 +51,10 @@
 <div class="headline_header">
 	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <a href='/index.php/events'><?php echo $this->translate('Events');?></a>
-    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/events/manage'>Go to My Events</a></div>
+    <a href='/index.php/events'><?php echo $this->translate('Meetups');?></a>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/meetups/manage'>Go to My Meetups</a></div>
     </div>
-    <div class="smallheadline"><?php echo $this->translate('Create, share and view events from moms everywhere!');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view Meetups from moms everywhere!');?></div>
 </div>
 <div>
 	<?php echo $this->formFilter->setAttrib('class', 'global_search_box')->render($this) ?>
@@ -63,7 +63,7 @@
   <?php if( count($this->paginator) > 0 ): ?>
   <div class="tip">
       <span>
-        <?php echo $this->translate('Tip: Looking for local events?  Type in your city/town in the search!'); ?>
+        <?php echo $this->translate('Tip: Looking for local Meetups?  Type in your city/town in the search!'); ?>
       </span>
     </div>
     <ul class='events_browse'>
@@ -90,20 +90,20 @@
           </div>
           <div class="events_options">
             <?php if( $this->viewer() && $event->isOwner($this->viewer()) ): ?>
-              <?php echo $this->htmlLink(array('route' => 'event_specific', 'action' => 'edit', 'event_id' => $event->getIdentity()), $this->translate('Edit Event'), array(
+              <?php echo $this->htmlLink(array('route' => 'event_specific', 'action' => 'edit', 'event_id' => $event->getIdentity()), $this->translate('Edit Meetup'), array(
                 'class' => 'buttonlink icon_event_edit'
               )) ?>
             <?php endif; ?>
             <?php if(($this->filter != "past") && $this->viewer()->getIdentity() && !$event->membership()->isMember($this->viewer(), null) ): ?>
-              <?php echo $this->htmlLink(array('route' => 'event_extended', 'controller'=>'member', 'action' => 'join', 'event_id' => $event->getIdentity()), $this->translate('Join Event'), array(
+              <?php echo $this->htmlLink(array('route' => 'event_extended', 'controller'=>'member', 'action' => 'join', 'event_id' => $event->getIdentity()), $this->translate('Join Meetup'), array(
                 'class' => 'buttonlink smoothbox icon_event_join'
               )) ?>
               <?php elseif( $this->viewer() && $event->isOwner($this->viewer()) ): ?>
-                <?php echo $this->htmlLink(array('route' => 'event_specific', 'action' => 'delete', 'event_id' => $event->getIdentity()), $this->translate('Delete Event'), array(
+                <?php echo $this->htmlLink(array('route' => 'event_specific', 'action' => 'delete', 'event_id' => $event->getIdentity()), $this->translate('Delete Meetup'), array(
                   'class' => 'buttonlink REMsmoothbox icon_event_delete'
                 )) ?>
             <?php elseif( $this->viewer() && $event->membership()->isMember($this->viewer()) ): ?>
-              <?php echo $this->htmlLink(array('route' => 'event_extended', 'controller'=>'member', 'action' => 'leave', 'event_id' => $event->getIdentity()), $this->translate('Leave Event'), array(
+              <?php echo $this->htmlLink(array('route' => 'event_extended', 'controller'=>'member', 'action' => 'leave', 'event_id' => $event->getIdentity()), $this->translate('Leave Meetup'), array(
                 'class' => 'buttonlink smoothbox icon_event_leave'
               )) ?>
             <?php endif; ?>
@@ -123,7 +123,7 @@
 
     <div class="tip">
       <span>
-        <?php echo $this->translate('Nobody has created an event yet.') ?>
+        <?php echo $this->translate('Nobody has created an Meetup yet.') ?>
         <?php if( $this->canCreate ): ?>
           <?php echo $this->translate('Be the first to %1$screate%2$s one!', '<a href="'.$this->url(array('action'=>'create'), 'event_general').'">', '</a>'); ?>
         <?php endif; ?>

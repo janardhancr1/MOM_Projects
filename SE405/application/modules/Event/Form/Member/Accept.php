@@ -20,8 +20,8 @@ class Event_Form_Member_Accept extends Engine_Form
 {
   public function init()
   {
-    $this->setTitle('Accept Event Invitation')
-      ->setDescription('Would you like to join this event?')
+    $this->setTitle('Accept Meetup Invitation')
+      ->setDescription('Would you like to join this meetup?')
       ->setMethod('POST')
       ->setAction($_SERVER['REQUEST_URI'])
       ;
@@ -29,7 +29,7 @@ class Event_Form_Member_Accept extends Engine_Form
     $this->addElement('Hash', 'token');
 
     $this->addElement('Button', 'submit', array(
-      'label' => 'Join Event',
+      'label' => 'Join Meetup',
       'ignore' => true,
       'decorators' => array('ViewHelper'),
       'type' => 'submit'

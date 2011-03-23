@@ -42,7 +42,7 @@ class Event_Form_Edit extends Engine_Form
       
     // Title
     $this->addElement('Text', 'title', array(
-      'label' => 'Event Name',
+      'label' => 'Meetup Name',
       'allowEmpty' => false,
       'required' => true,
       'validators' => array(
@@ -60,7 +60,7 @@ class Event_Form_Edit extends Engine_Form
 
     // Description
     $this->addElement('Textarea', 'description', array(
-      'label' => 'Event Description',
+      'label' => 'Meetup Description',
       'maxlength' => '512',
       'filters' => array(
         new Engine_Filter_Censor(),
@@ -103,7 +103,7 @@ class Event_Form_Edit extends Engine_Form
 
     // Category
     $this->addElement('Select', 'category_id', array(
-      'label' => 'Event Category',
+      'label' => 'Meetup Category',
       'multiOptions' => array(
         '0' => ' '
       ),
@@ -111,13 +111,13 @@ class Event_Form_Edit extends Engine_Form
 
     // Search
     $this->addElement('Checkbox', 'search', array(
-      'label' => 'People can search for this event',
+      'label' => 'People can search for this Meetup',
       'value' => 1,
     ));
 
     // Approval
     $this->addElement('Checkbox', 'approval', array(
-      'label' => 'People must be invited to RSVP for this event',
+      'label' => 'People must be invited to RSVP for this Meetup',
     ));
 
     // Invite
@@ -138,7 +138,7 @@ class Event_Form_Edit extends Engine_Form
         'owner_network'       => 'Friends and Networks',
         'owner_member_member' => 'Friends of Friends',
         'owner_member'        => 'Friends Only',
-        'member'              => 'Event Guests Only',
+        'member'              => 'Meetup Guests Only',
         'owner'               => 'Just Me'
       );
       $viewOptions = array_intersect_key($availableLabels, array_flip($viewOptions));
@@ -151,7 +151,7 @@ class Event_Form_Edit extends Engine_Form
         'everyone'      => 'Everyone',
         'registered'    => 'All Registered Members',
         'parent_member' => 'Group Members',
-        'member'        => 'Event Guests Only',
+        'member'        => 'Meetup Guests Only',
         'owner'         => 'Just Me',
       );
       $viewOptions = array_intersect_key($availableLabels, array_flip($viewOptions));
@@ -163,7 +163,7 @@ class Event_Form_Edit extends Engine_Form
     if( !empty($viewOptions) && count($viewOptions) > 1 ) {
       $this->addElement('Select', 'auth_view', array(
         'label' => 'Privacy',
-        'description' => 'Who may see this event?',
+        'description' => 'Who may see this Meetup?',
         'multiOptions' => $viewOptions,
         'value' => key($viewOptions),
       ));
@@ -173,7 +173,7 @@ class Event_Form_Edit extends Engine_Form
     if( !empty($commentOptions) && count($commentOptions) > 1 ) {
       $this->addElement('Select', 'auth_comment', array(
         'label' => 'Comment Privacy',
-        'description' => 'Who may post comments on this event?',
+        'description' => 'Who may post comments on this Meetup?',
         'multiOptions' => $commentOptions,
         'value' => key($commentOptions),
       ));
@@ -183,7 +183,7 @@ class Event_Form_Edit extends Engine_Form
     if( !empty($photoOptions) && count($photoOptions) > 1 ) {
       $this->addElement('Select', 'auth_photo', array(
         'label' => 'Photo Uploads',
-        'description' => 'Who may upload photos to this event?',
+        'description' => 'Who may upload photos to this Meetup?',
         'multiOptions' => $photoOptions,
         'value' => key($photoOptions)
       ));

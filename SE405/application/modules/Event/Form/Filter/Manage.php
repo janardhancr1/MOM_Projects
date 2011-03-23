@@ -43,8 +43,8 @@ class Event_Form_Filter_Manage extends Engine_Form
     $this->addElement('Select', 'view', array(
       'label' => 'View:',
       'multiOptions' => array(
-        '' => 'All My Events',
-        '2' => 'Only Events I Lead',
+        '' => 'All My Meetups',
+        '2' => 'Only Meetups I Lead',
       ),
       'decorators' => array(
         'ViewHelper',

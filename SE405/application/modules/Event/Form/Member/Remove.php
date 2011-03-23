@@ -23,7 +23,7 @@ class Event_Form_Member_Remove extends Engine_Form
   {
     $this
       ->setTitle('Remove Member')
-      ->setDescription('Are you sure you want to remove this member from the event?')
+      ->setDescription('Are you sure you want to remove this member from the meetup?')
       ->setAction($_SERVER['REQUEST_URI'])
       ;
 

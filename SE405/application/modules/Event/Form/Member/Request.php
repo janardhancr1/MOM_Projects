@@ -21,8 +21,8 @@ class Event_Form_Member_Request extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Request Event Membership')
-      ->setDescription('Would you like to request membership in this Event?')
+      ->setTitle('Request Meetup Membership')
+      ->setDescription('Would you like to request membership in this meetup?')
       ->setMethod('POST')
       ->setAction($_SERVER['REQUEST_URI'])
       ;

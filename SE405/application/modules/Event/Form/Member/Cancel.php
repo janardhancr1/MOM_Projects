@@ -22,7 +22,7 @@ class Event_Form_Member_Cancel extends Engine_Form
   {
     $this
       ->setTitle('Cancel Invite Request')
-      ->setDescription('Would you like to cancel your request for an invite to this event?')
+      ->setDescription('Would you like to cancel your request for an invite to this meetup?')
       ->setMethod('POST')
       ->setAction($_SERVER['REQUEST_URI'])
       ;

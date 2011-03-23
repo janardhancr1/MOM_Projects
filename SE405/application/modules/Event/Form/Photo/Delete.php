@@ -21,7 +21,7 @@ class Event_Form_Photo_Delete extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Delete Event Photo')
+      ->setTitle('Delete Meetup Photo')
       ->setDescription('Are you sure you want to delete this photo?')
       ;
 

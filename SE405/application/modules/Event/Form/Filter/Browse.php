@@ -30,7 +30,7 @@ class Event_Form_Filter_Browse extends Engine_Form
       //->setAttrib('onchange', 'this.submit()')
       ;
 	$this->addElement('Text', 'search', array(
-	      'label' => 'Search Events:',
+	      'label' => 'Search Meetups:',
 	      'decorators' => array(
         'ViewHelper',
         array('HtmlTag', array('tag' => 'dd')),

@@ -16,7 +16,7 @@
 </h2>
 
 <div class="event_discussions_options">
-  <?php echo $this->htmlLink(array('route' => 'event_profile', 'id' => $this->event->getIdentity()), $this->translate('Back to Event'), array(
+  <?php echo $this->htmlLink(array('route' => 'event_profile', 'id' => $this->event->getIdentity()), $this->translate('Back to Meetup'), array(
     'class' => 'buttonlink icon_back'
   )) ?>
   <?php if ($this->can_post) { echo $this->htmlLink(array('route' => 'event_extended', 'controller' => 'topic', 'action' => 'create', 'subject' => $this->event->getGuid()), $this->translate('Post New Topic'), array(
