@@ -20,7 +20,7 @@ class Album_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
-	if( !$this->_helper->requireUser()->isValid() ) return;
+	//if( !$this->_helper->requireUser()->isValid() ) return;
 	$this->getRightSideContent();
   }
   public function browseAction()

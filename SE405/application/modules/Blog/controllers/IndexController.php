@@ -20,7 +20,7 @@ class Blog_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
-  	if( !$this->_helper->requireUser()->isValid() ) return;
+  	//if( !$this->_helper->requireUser()->isValid() ) return;
     // only show to member_level if authorized
     if( !$this->_helper->requireAuth()->setAuthParams('blog', null, 'view')->isValid() ) return;
     $this->getRightSideContent();

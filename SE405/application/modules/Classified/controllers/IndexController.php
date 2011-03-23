@@ -20,7 +20,7 @@ class Classified_IndexController extends Core_Controller_Action_Standard
 {
   public function init()
   {
-  	if( !$this->_helper->requireUser()->isValid() ) return;
+  	//if( !$this->_helper->requireUser()->isValid() ) return;
     if( !$this->_helper->requireAuth()->setAuthParams('classified', null, 'view')->isValid() ) return;
     $this->getRightSideContent();
   }
