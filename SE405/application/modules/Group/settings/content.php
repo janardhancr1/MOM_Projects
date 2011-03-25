@@ -83,5 +83,15 @@ return array(
         'category' => 'Group',
         'type' => 'widget',
         'name' => 'group.contests-group'
-  )
+  ),
+  array(
+    'title' => 'Popular Group Entries',
+    'description' => 'Displays a list of most viewed group entries.',
+    'category' => 'Group',
+    'type' => 'widget',
+    'name' => 'group.list-popular-groups',
+    'defaultParams' => array(
+      'title' => 'Popular Group Entries',
+    ),
+  ),
 ) ?>
