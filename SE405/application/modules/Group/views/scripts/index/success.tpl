@@ -33,7 +33,7 @@
       <br />
       <p>
         <input type="hidden" name="confirm" value="true"/>
-        <button type='submit'><?php echo $this->translate('Invite your friends');?></button>
+        <button type='submit'><?php echo $this->translate('Invite your Friends');?></button>
         <?php echo $this->translate('or');?> <a href='<?php echo $this->url(array(), 'group_general', true) ?>'><?php echo $this->translate('continue to My Groups');?></a>
       </p>
     </div>
