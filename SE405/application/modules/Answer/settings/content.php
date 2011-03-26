@@ -21,4 +21,14 @@ return array(
       'titleCount' => true,
     ),
   ),
+  array(
+    'title' => 'Top Answers',
+    'description' => 'Displays a list of top answers.',
+    'category' => 'Answers',
+    'type' => 'widget',
+    'name' => 'answer.list-top-answers',
+    'defaultParams' => array(
+      'title' => 'Top answers',
+    ),
+  ),
 ) ?>

@@ -50,6 +50,15 @@ return array(
         'controller' => 'widget',
         'action' => 'profile-answers',
       ),
+    ),
+    'answer_top_answers' => array(
+      'type' => 'action',
+      'title' => 'Top Answers',
+      'route' => array(
+        'module' => 'answer',
+        'controller' => 'widget',
+        'action' => 'list-top-answers',
+      ),
     )
   ),
   // Hooks ---------------------------------------------------------------------
