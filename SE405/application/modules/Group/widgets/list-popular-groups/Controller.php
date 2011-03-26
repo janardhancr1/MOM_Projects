@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Blog_Widget_ListPopularGroupsController extends Engine_Content_Widget_Abstract
+class Group_Widget_ListPopularGroupsController extends Engine_Content_Widget_Abstract
 {
   public function indexAction()
   {

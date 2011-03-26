@@ -47,6 +47,18 @@ return array(
       'application/languages/en/group.csv',
     ),
   ),
+  // Content -------------------------------------------------------------------
+  'content'=> array(
+    'group_popular_groups' => array(
+      'type' => 'action',
+      'title' => 'Popular Groups',
+      'route' => array(
+        'module' => 'group',
+        'controller' => 'widget',
+        'action' => 'list-popular-groups',
+      ),
+    )
+    ),
   // Hooks ---------------------------------------------------------------------
   'hooks' => array(
     array(
