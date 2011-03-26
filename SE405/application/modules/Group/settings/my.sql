@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS `engine4_group_categories` ;
 CREATE TABLE IF NOT EXISTS `engine4_group_categories` (
   `category_id` int(11) unsigned NOT NULL auto_increment,
   `title` varchar(64) NOT NULL,
+  `show_home_page` bool default false,
   PRIMARY KEY  (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 

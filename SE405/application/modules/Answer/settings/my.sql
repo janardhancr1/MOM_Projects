@@ -64,6 +64,7 @@ CREATE TABLE `engine4_answer_categories` (
   `user_id` int(11) unsigned NOT NULL,
   `category_name` varchar(128) NOT NULL,
   `parent_cat_id` int(11) NOT NULL DEFAULT '0',
+  `show_home_page` bool default false,
   PRIMARY KEY (`category_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
