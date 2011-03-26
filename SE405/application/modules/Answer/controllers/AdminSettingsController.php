@@ -180,6 +180,7 @@ public function editCategoryAction()
 
         
         $row->category_name = $values["label"];
+        $row->show_home_page = $values["show_home_page"];
         $row->save();
         $db->commit();
       }

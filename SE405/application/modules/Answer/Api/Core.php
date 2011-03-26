@@ -139,8 +139,9 @@ class Answer_Api_Core extends Core_Api_Abstract
 	 */
 	public function getCategory($category_id)
 	{
-		$category = new Answer_Model_Category($category_id);
-		return $category;
+		$table = $this->api()->getDbtable('categories', 'answer');
+    $row = $table->fetchRow($table->select()->where('category_id = ?', $category_id));
+    return $row;
 	}
 
 	/**

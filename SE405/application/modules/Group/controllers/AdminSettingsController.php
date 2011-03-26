@@ -233,6 +233,7 @@ class Group_AdminSettingsController extends Core_Controller_Action_Admin
         $row = Engine_Api::_()->group()->getCategory($values["id"]);
 
         $row->title = $values["label"];
+        $row->show_home_page = $values["show_home_page"];
         $row->save();
         $db->commit();
       }

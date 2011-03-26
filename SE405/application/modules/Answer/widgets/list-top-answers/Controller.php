@@ -23,19 +23,19 @@ class Answer_Widget_ListTopAnswersController extends Engine_Content_Widget_Abstr
   	$table = Engine_Api::_()->getDbtable('answers', 'answer');
     $rName = $table->info('name');
 
-    $tmTable = Engine_Api::_()->getDbtable('posts', 'answer');
+    $tmTable = Engine_Api::_()->getDbtable('categories', 'answer');
     $tmName = $tmTable->info('name');
   	
     $select = $table->select()
+    ->where("$tmName.show_home_page = ?", 1)
      ->limit( 10 )
-     ->group("$tmName.answer_id")
+     ->group("$rName.answer_id")
       ->order( $rName.'.answer_id DESC' );
   	
       $select = $select
         ->setIntegrityCheck(false)
         ->from($rName)
-        ->joinInner($tmName, "$rName.answer_id = $tmName.answer_id");
-  
+        ->joinInner($tmName, "$rName.answer_cat_id = $tmName.category_id");
 
     $paginator = Zend_Paginator::factory($select);
 

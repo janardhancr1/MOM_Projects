@@ -44,6 +44,15 @@ class Group_Form_Admin_Category extends Engine_Form
       $label,
       $id
     ));
+    
+    $this->addElement('Radio', 'show_home_page', array(
+      'label' => 'Allow Show in Home Page?',
+      'multiOptions' => array(
+        0 => 'No, do not show in home page.',
+        1 => 'Yes, show in home page.',
+      ),
+      'value' => 0,
+    ));
     // Buttons
     $this->addElement('Button', 'submit', array(
       'label' => 'Add Category',
