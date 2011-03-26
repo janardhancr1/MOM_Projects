@@ -20,9 +20,22 @@ class Answer_Widget_ListTopAnswersController extends Engine_Content_Widget_Abstr
 {
   public function indexAction()
   {
-    $table = Engine_Api::_()->getItemTable('answer');
+  	$table = Engine_Api::_()->getDbtable('answers', 'answer');
+    $rName = $table->info('name');
+
+    $tmTable = Engine_Api::_()->getDbtable('posts', 'answer');
+    $tmName = $tmTable->info('name');
+  	
     $select = $table->select()
-      ->order('answer_id DESC LIMIT 10');
+     ->limit( 10 )
+     ->group("$tmName.answer_id")
+      ->order( $rName.'.answer_id DESC' );
+  	
+      $select = $select
+        ->setIntegrityCheck(false)
+        ->from($rName)
+        ->joinInner($tmName, "$rName.answer_id = $tmName.answer_id");
+  
 
     $paginator = Zend_Paginator::factory($select);
 

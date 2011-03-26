@@ -28,7 +28,7 @@ return array(
     'type' => 'widget',
     'name' => 'answer.list-top-answers',
     'defaultParams' => array(
-      'title' => 'Top answers',
+      'title' => 'Top Answers',
     ),
   ),
 ) ?>
