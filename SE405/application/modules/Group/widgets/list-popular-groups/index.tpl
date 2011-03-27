@@ -11,25 +11,27 @@
  */
 ?>
 
-<ul class="groups_browse">
-   <?php foreach( $this->paginator as $group ): ?>
-        <li>
-          <div class="groups_photo">
-            <?php echo $this->htmlLink($group->getHref(), $this->itemPhoto($group, 'thumb.normal')) ?>
-          </div>
-          <div class="groups_info">
-            <div class="groups_title">
-              <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
-            </div>
-            <div class="groups_members">
-              <?php echo $this->translate(array('%s member', '%s members', $group->membership()->getMemberCount()),$this->locale()->toNumber($group->membership()->getMemberCount())) ?>
-              <?php echo $this->translate('led by');?> <?php echo $this->htmlLink($group->getOwner()->getHref(), $group->getOwner()->getTitle()) ?>
-            </div>
-            <div class="groups_desc">
-              <?php echo $this->viewMore($group->getDescription()) ?>
-            </div>
-          </div>
-         
-        </li>
+
+   <?php foreach( $this->categories as $category ): ?>
+   <ul class="groups_browse">
+   <li>
+   <div class="groups_title">
+          <h4><?php echo  $category->title?></h4>
+        </div>
+     <?php foreach( $this->paginator as $group ): ?>
+	
+		<?php if($group->category_id == $category->category_id) {?>
+				<div class="groups_photo">
+		            <?php echo $this->htmlLink($group->getHref(), $this->itemPhoto($group, 'thumb.normal')) ?>
+		         </div>
+			      <div class="groups_info">
+			        <div class="groups_title">
+		              <h3><?php echo $this->htmlLink($group->getHref(), $group->getTitle()) ?></h3>
+		            </div>
+			      </div>
+         <?php } ?>
+      
+     <?php endforeach; ?>
+     </li>
+   </ul>
       <?php endforeach; ?>
-</ul>
