@@ -28,8 +28,7 @@ class Answer_Widget_ListTopAnswersController extends Engine_Content_Widget_Abstr
   	
     $select = $table->select()
     ->where("$tmName.show_home_page = ?", 1)
-     ->limit( 10 )
-     ->group("$rName.answer_id")
+     ->group("$rName.answer_cat_id")
       ->order( $rName.'.answer_id DESC' );
   	
       $select = $select
@@ -37,12 +36,17 @@ class Answer_Widget_ListTopAnswersController extends Engine_Content_Widget_Abstr
         ->from($rName)
         ->joinInner($tmName, "$rName.answer_cat_id = $tmName.category_id");
 
+           $select1 = $tmTable->select()
+    ->where("$tmName.show_home_page = ?", 1);
+    
     $paginator = Zend_Paginator::factory($select);
-
-    if( $paginator->getTotalItemCount() <= 0 ) {
+ 	$categories = Zend_Paginator::factory($select1);
+ 	
+    if( ($paginator->getTotalItemCount() <= 0) || ($categories->getTotalItemCount() <= 0)) {
       return $this->setNoRender();
     }
 
+    $this->view->categories = $categories;
     $this->view->paginator = $paginator;
   }
 }
