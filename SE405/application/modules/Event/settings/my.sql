@@ -266,14 +266,14 @@ INSERT IGNORE INTO `engine4_core_menus` (`name`, `type`, `title`) VALUES
 --
 
 INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-('core_main_event', 'event', 'Events', '', '{"route":"event_general"}', 'core_main', '', 6),
+('core_main_event', 'event', 'Meetups', '', '{"route":"event_general"}', 'core_main', '', 6),
 
-('core_sitemap_event', 'event', 'Events', '', '{"route":"event_general"}', 'core_sitemap', '', 6),
+('core_sitemap_event', 'event', 'Meetups', '', '{"route":"event_general"}', 'core_sitemap', '', 6),
 
-('event_main_upcoming', 'event', 'Upcoming Events', '', '{"route":"event_upcoming"}', 'event_main', '', 1),
-('event_main_past', 'event', 'Past Events', '', '{"route":"event_past"}', 'event_main', '', 2),
-('event_main_manage', 'event', 'My Events', 'Event_Plugin_Menus', '{"route":"event_general","action":"manage"}', 'event_main', '', 3),
-('event_main_create', 'event', 'Create New Event', 'Event_Plugin_Menus', '{"route":"event_general","action":"create"}', 'event_main', '', 4),
+('event_main_upcoming', 'event', 'Upcoming Meetups', '', '{"route":"event_upcoming"}', 'event_main', '', 1),
+('event_main_past', 'event', 'Past Meetups', '', '{"route":"event_past"}', 'event_main', '', 2),
+('event_main_manage', 'event', 'My Meetups', 'Event_Plugin_Menus', '{"route":"event_general","action":"manage"}', 'event_main', '', 3),
+('event_main_create', 'event', 'Create New Meetup', 'Event_Plugin_Menus', '{"route":"event_general","action":"create"}', 'event_main', '', 4),
 
 ('event_profile_edit', 'event', 'Edit Profile', 'Event_Plugin_Menus', '', 'event_profile', '', 1),
 ('event_profile_style', 'event', 'Edit Styles', 'Event_Plugin_Menus', '', 'event_profile', '', 2),
@@ -284,9 +284,9 @@ INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`
 ('event_profile_invite', 'event', 'Invite', 'Event_Plugin_Menus', '', 'event_profile', '', 6),
 ('event_profile_message', 'event', 'Message Members', 'Event_Plugin_Menus', '', 'event_profile', '', 7),
 
-('core_admin_main_plugins_event', 'event', 'Events', '', '{"route":"admin_default","module":"event","controller":"manage"}', 'core_admin_main_plugins', '', 999),
+('core_admin_main_plugins_event', 'event', 'Meetups', '', '{"route":"admin_default","module":"event","controller":"manage"}', 'core_admin_main_plugins', '', 999),
 
-('event_admin_main_manage', 'event', 'Manage Events', '', '{"route":"admin_default","module":"event","controller":"manage"}', 'event_admin_main', '', 1),
+('event_admin_main_manage', 'event', 'Manage Meetups', '', '{"route":"admin_default","module":"event","controller":"manage"}', 'event_admin_main', '', 1),
 ('event_admin_main_level', 'event', 'Member Level Settings', '', '{"route":"admin_default","module":"event","controller":"settings","action":"level"}', 'event_admin_main', '', 2),
 ('event_admin_main_categories', 'event', 'Categories', '', '{"route":"admin_default","module":"event","controller":"settings","action":"categories"}', 'event_admin_main', '', 3),
 

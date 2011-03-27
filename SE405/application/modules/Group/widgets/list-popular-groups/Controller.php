@@ -29,12 +29,11 @@ class Group_Widget_ListPopularGroupsController extends Engine_Content_Widget_Abs
     $select = $table->select()
     ->where("$tmName.show_home_page = ?", 1)
      ->limit( 10 )
-     ->group("$rName.group_id")
-      ->order( $rName.'.group_id DESC' );
+     ->order( $rName.'.group_id DESC' );
   	
       $select = $select
         ->setIntegrityCheck(false)
-        ->from($rName)
+        ->from($rName, array('groupname' => 'title'))
         ->joinInner($tmName, "$rName.category_id = $tmName.category_id");
 
     $paginator = Zend_Paginator::factory($select);

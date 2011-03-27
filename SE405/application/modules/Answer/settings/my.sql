@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `engine4_answer_answers` (
   KEY `user_id` (`user_id`),
   KEY `is_closed` (`is_closed`),
   KEY `creation_date` (`creation_date`),
-  KEY `answer_cat_id` (`answer_cat_id`)
+  KEY `answer_cat_id` (`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci ;
 
 

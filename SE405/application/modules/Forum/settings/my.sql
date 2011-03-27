@@ -286,10 +286,10 @@ INSERT IGNORE INTO `engine4_core_mailtemplates` (`type`, `module`, `vars`) VALUE
 --
 
 INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-('core_main_forum', 'forum', 'Forum', '', '{"route":"forum_general"}', 'core_main', '', 5),
-('core_sitemap_forum', 'forum', 'Forum', '', '{"route":"forum_general"}', 'core_sitemap', '', 5),
+('core_main_forum', 'forum', 'Converstaions', '', '{"route":"forum_general"}', 'core_main', '', 5),
+('core_sitemap_forum', 'forum', 'Converstaions', '', '{"route":"forum_general"}', 'core_sitemap', '', 5),
 
-('core_admin_main_plugins_forum', 'forum', 'Forums', '', '{"route":"admin_default","module":"forum","controller":"settings"}', 'core_admin_main_plugins', '', 999),
+('core_admin_main_plugins_forum', 'forum', 'Converstaions', '', '{"route":"admin_default","module":"forum","controller":"settings"}', 'core_admin_main_plugins', '', 999),
 
 ('forum_admin_main_manage', 'forum', 'Manage Forums', '', '{"route":"admin_default","module":"forum","controller":"manage"}', 'forum_admin_main', '', 1),
 ('forum_admin_main_settings', 'forum', 'Global Settings', '', '{"route":"admin_default","module":"forum","controller":"settings"}', 'forum_admin_main', '', 2),

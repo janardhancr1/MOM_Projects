@@ -115,9 +115,9 @@ INSERT IGNORE INTO `engine4_core_menus` (`name`, `type`, `title`) VALUES
 --
 
 INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-('core_main_album', 'album', 'Albums', '', '{"route":"album_general","action":"browse"}', 'core_main', '', 3),
+('core_main_album', 'album', 'Photos', '', '{"route":"album_general","action":"browse"}', 'core_main', '', 3),
 
-('core_sitemap_album', 'album', 'Albums', '', '{"route":"album_general","action":"browse"}', 'core_sitemap', '', 3),
+('core_sitemap_album', 'album', 'Photos', '', '{"route":"album_general","action":"browse"}', 'core_sitemap', '', 3),
 
 ('album_main_browse', 'album', 'Everyone''s Albums', 'Album_Plugin_Menus::canViewAlbums', '{"route":"album_general","action":"browse"}', 'album_main', '', 1),
 ('album_main_manage', 'album', 'My Albums', 'Album_Plugin_Menus::canCreateAlbums', '{"route":"album_general","action":"manage"}', 'album_main', '', 2),

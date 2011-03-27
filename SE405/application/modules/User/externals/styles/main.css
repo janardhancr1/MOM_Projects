@@ -14,6 +14,7 @@ diplayed on the main portal page.
 .layout_user_login_or_signup
 {
   margin-bottom: 15px;
+  height: 300px;
 }
 .layout_user_login_or_signup div.form-element input[type=text],
 .layout_user_login_or_signup div.form-element input[type=password]
