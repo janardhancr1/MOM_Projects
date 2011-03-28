@@ -442,5 +442,17 @@ class Answer_IndexController extends Core_Controller_Action_Standard
 		echo $return;
 		exit();
 	}
+	
+	public function answercategoriesAction()
+	{
+		//if( !$this->_helper->requireUser()->isValid() ) return;
+
+		//$this->view->navigation = $this->getNavigation();
+
+		//$viewer = $this->_helper->api()->user()->getViewer();
+		$categoryid = $this->_getParam('category_id');
+		$this->view->owner     = Engine_Api::_()->user()->getViewer();
+		$this->view->paginator = Engine_Api::_()->answer()->getAnswersCategories($categoryid);
+	}
 }
 

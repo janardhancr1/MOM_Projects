@@ -159,6 +159,18 @@ return array(
         'action' => 'delete'
       )
       ),
+      
+      'answer_categories' => array(
+      'route' => 'answers/categories/:category_id',
+      'defaults' => array(
+        'module' => 'answer',
+        'controller' => 'index',
+        'action' => 'answercategories'
+      ),
+      'reqs' => array(
+        'category_id' => '\d+'
+      )
+      ),
 
   ),
 );

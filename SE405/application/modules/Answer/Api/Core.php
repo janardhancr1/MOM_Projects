@@ -217,4 +217,19 @@ class Answer_Api_Core extends Core_Api_Abstract
 		// first, delete activity feed and its comments/likes
 		Engine_Api::_()->getItem('answer', $answer_id)->delete();
 	}
+	
+	public function getAnswersCategories($categoryid)
+	{
+		$p_table = Engine_Api::_()->getDbTable('answers', 'answer');
+		$p_name  = $p_table->info('name');
+		
+		$select  = $p_table->select()
+					->from($p_name)
+					->where("$p_name.category_id = ?", $categoryid)
+					->order($p_name.'.creation_date DESC');
+					
+		return Zend_Paginator::factory($select);
+					
+	}
+	
 }
