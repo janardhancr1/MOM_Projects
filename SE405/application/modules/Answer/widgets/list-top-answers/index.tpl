@@ -10,21 +10,21 @@
  * @author     John
  */
 ?>
-<?php foreach( $this->categories as $category ): ?>
+<?php foreach( $this->paginator as $categoryname => $answers ): ?>
 <ul class="answers_browse">
- 
       <li>
            <div class="answers_title">
-          		<h4><?php echo  $category->category_name?></h4>
+           <?php $temp = explode("||",$categoryname);?>
+          		<h4><a href="index.php/answers/categories/<?php echo   $temp[1]?>"><?php echo  $temp[0]?></a></h4>
     		</div>
-    	<?php foreach ($this->paginator as $answer): ?>
-    	<?php if($answer->answer_cat_id == $category->category_id) {?>
+    	<?php foreach ($answers as $answerid => $answername): ?>
+    	
         <div class="answers_browse_info">
           <h3>
-            <?php echo $this->htmlLink($answer->getHref(), $answer->title) ?>
+            <a href="index.php/answers/view/<?php echo $answerid ?>"><?php echo $answername?></a>
           </h3>
         </div>
-      <?php } ?>
+     
       <?php endforeach; ?>
        </li>
 </ul>

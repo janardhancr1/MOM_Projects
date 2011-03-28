@@ -25,28 +25,29 @@ class Answer_Widget_ListTopAnswersController extends Engine_Content_Widget_Abstr
 
     $tmTable = Engine_Api::_()->getDbtable('categories', 'answer');
     $tmName = $tmTable->info('name');
-  	
-    $select = $table->select()
-    ->where("$tmName.show_home_page = ?", 1)
-     ->group("$rName.answer_cat_id")
-      ->order( $rName.'.answer_id DESC' );
-  	
-      $select = $select
-        ->setIntegrityCheck(false)
-        ->from($rName)
-        ->joinInner($tmName, "$rName.answer_cat_id = $tmName.category_id");
-
-           $select1 = $tmTable->select()
+        
+    $select1 = $tmTable->select()
     ->where("$tmName.show_home_page = ?", 1);
-    
-    $paginator = Zend_Paginator::factory($select);
- 	$categories = Zend_Paginator::factory($select1);
- 	
-    if( ($paginator->getTotalItemCount() <= 0) || ($categories->getTotalItemCount() <= 0)) {
-      return $this->setNoRender();
-    }
-
-    $this->view->categories = $categories;
-    $this->view->paginator = $paginator;
+   
+    $CategoriesArray = array();
+  	
+   	foreach ($tmTable->fetchAll($select1) as $row)
+	 {
+	 		$AnswersArray = array();
+	 		 $select = $table->select()
+	    	->where("$rName.category_id = ?", $row->category_id)
+	    	->order("$rName.creation_date DESC")
+	    	->limit(1);
+	    	foreach ($table->fetchAll($select) as $row1)
+	    	{
+	    		$AnswersArray[$row1->answer_id] = $row1->title;
+	    		
+	    	}
+	    	$temp = $row->category_name."||".$row->category_id;
+	    	$CategoriesArray[$temp] = $AnswersArray;
+	    	
+	 }
+    //$this->view->categories = $categories;
+    $this->view->paginator = $CategoriesArray;
   }
 }
