@@ -39,7 +39,7 @@ class Answer_Model_Category extends Core_Model_Item_Abstract
     $rName = $table->info('name');
     $select = $table->select()
                     ->from($rName)
-                    ->where($rName.'.answer_cat_id = ?', $this->category_id);
+                    ->where($rName.'.category_id = ?', $this->category_id);
     $row = $table->fetchAll($select);
     $total = count($row);
     return $total;
