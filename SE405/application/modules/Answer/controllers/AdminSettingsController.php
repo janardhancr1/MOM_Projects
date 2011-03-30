@@ -158,9 +158,10 @@ class Answer_AdminSettingsController extends Core_Controller_Action_Admin
   
 public function editCategoryAction()
   {
+  	//$categoryid = $this->_getParam('id');
     // In smoothbox
     $this->_helper->layout->setLayout('admin-simple');
-    $form = $this->view->form = new Answer_Form_Admin_Category();
+    $form = $this->view->form = new Answer_Form_Admin_Category($this->_getParam('id'));
     $form->setAction($this->getFrontController()->getRouter()->assemble(array()));
 
     // Check post

@@ -19,6 +19,15 @@
 class Answer_Form_Admin_Category extends Engine_Form
 {
   protected $_field;
+  
+  public $catid;
+ 
+  public function __construct($id) 
+  { 
+     $this->catid = $id;
+     parent::__construct();
+     
+  } 
 
   public function init()
   {
@@ -33,12 +42,14 @@ class Answer_Form_Admin_Category extends Engine_Form
     */
 
     $label = new Zend_Form_Element_Text('label');
+
+   
     $label->setLabel('Category Name')
       ->addValidator('NotEmpty')
       ->setRequired(true)
       ->setAttrib('class', 'text');
 
-
+ 
     $id = new Zend_Form_Element_Hidden('id');
 
 
@@ -47,13 +58,14 @@ class Answer_Form_Admin_Category extends Engine_Form
       $label,
       $id
     ));
+    $showhomepage = Engine_Api::_()->answer()->getShowhomepage($this->catid);
     $this->addElement('Radio', 'show_home_page', array(
       'label' => 'Allow Show in Home Page?',
       'multiOptions' => array(
         0 => 'No, do not show in home page.',
         1 => 'Yes, show in home page.',
       ),
-      'value' => 0,
+      'value' => $showhomepage,
     ));
     // Buttons
     $this->addElement('Button', 'submit', array(
