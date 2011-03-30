@@ -214,7 +214,7 @@ class Group_AdminSettingsController extends Core_Controller_Action_Admin
   {
     // In smoothbox
     $this->_helper->layout->setLayout('admin-simple');
-    $form = $this->view->form = new Group_Form_Admin_Category();
+    $form = $this->view->form = new Group_Form_Admin_Category($this->_getParam('id'));
     $form->setAction($this->getFrontController()->getRouter()->assemble(array()));
 
     // Check post

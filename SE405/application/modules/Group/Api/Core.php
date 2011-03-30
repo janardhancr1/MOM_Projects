@@ -171,5 +171,23 @@ class Group_Api_Core extends Core_Api_Abstract
   	
   }
 
+	public function getShowhomepage($id)
+	{
+		$table  = Engine_Api::_()->getDbtable('categories', 'group');
+		$rName = $table->info('name');
 
+		$select = $table->select()
+		//->setIntegrityCheck(false)
+		->from($rName)
+		->where($rName.'.category_id = ?', $id);
+
+			foreach ($table->fetchAll($select) as $row1)
+	    	{
+	    		$show = $row1->show_home_page;
+	    		
+	    	}
+
+		return $show;
+		
+	}
 }
