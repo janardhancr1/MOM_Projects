@@ -834,7 +834,23 @@ on the main home page.
   background-image: url(~/application/modules/Forum/externals/images/types/forum.png);
 }
 
+/* List popular blogs */
+.layout_forum_list_recent_posts
+{
+	-moz-border-radius : 8px;
+	border : 1px solid #EAEAEA;
+	width: 300px;
+	padding: 2px;
+	margin: 2px;
+	float:left;
+}
 
+.layout_forum_list_recent_posts h3
+{
+	background-color: #D9F8F5;
+	-moz-border-radius : 8px 8px 0px 0px;
+	color : #FFFFFF;
+}
 
 
 

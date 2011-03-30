@@ -27,21 +27,45 @@ class Group_Widget_ListPopularGroupsController extends Engine_Content_Widget_Abs
     $tmName = $tmTable->info('name');
   	
     $select = $table->select()
-    ->where("$tmName.show_home_page = ?", 1)
+     ->from($rName);
+     
+     
+    /*->where("$tmName.show_home_page = ?", 1)
      ->limit( 10 )
-     ->order( $rName.'.group_id DESC' );
+     ->group("$rName.group_id")
+      ->order( $rName.'.group_id DESC' );
   	
       $select = $select
         ->setIntegrityCheck(false)
-        ->from($rName, array('groupname' => 'title'))
-        ->joinInner($tmName, "$rName.category_id = $tmName.category_id");
-
+        ->from($rName)
+        ->joinInner($tmName, "$rName.category_id = $tmName.category_id");*/
+    
+    $select1 = $tmTable->select()
+    ->where("$tmName.show_home_page = ?", 1);
+  
+    /*$CategoriesArray = array();
+	 foreach ($tmTable->fetchAll($select1) as $row)
+	 {
+	 	$GroupsArray = array();
+	 		 $select = $table->select()
+	    	->where("$rName.category_id = ?", $row->category_id);
+	    	foreach ($table->fetchAll($select) as $row1)
+	    	{
+	    		$GroupsArray[$row1->group_id] = $row1->title;
+	    		
+	    	}
+	    	$CategoriesArray[$row->title] = $GroupsArray;
+	 }	*/
+ 		
+ 		
     $paginator = Zend_Paginator::factory($select);
+    $categories = Zend_Paginator::factory($select1);
 
-    if( $paginator->getTotalItemCount() <= 0 ) {
+    if( ($paginator->getTotalItemCount() <= 0) ||  ($categories->getTotalItemCount() <= 0)) {
       return $this->setNoRender();
     }
 
+    $this->view->categories = $categories;
     $this->view->paginator = $paginator;
   }
 }

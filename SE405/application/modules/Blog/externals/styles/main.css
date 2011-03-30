@@ -178,6 +178,23 @@ div.blogs_gutter ul.blogs_gutter_options > li
 }
 
 
+/* List popular blogs */
+.layout_blog_list_popular_blogs
+{
+	-moz-border-radius : 8px;
+	border : 1px solid #EAEAEA;
+	width: 300px;
+	padding: 2px;
+	margin: 2px;
+	float:left;
+}
+
+.layout_blog_list_popular_blogs h3
+{
+	background-color: #D9F8F5;
+	-moz-border-radius : 8px 8px 0px 0px;
+	color : #FFFFFF;
+}
 
 
 /* ACTION TYPE ICONS */
