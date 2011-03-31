@@ -20,12 +20,24 @@ class Blog_Widget_ListPopularBlogsController extends Engine_Content_Widget_Abstr
 {
   public function indexAction()
   {
-    $table = Engine_Api::_()->getItemTable('blog');
+  	$table = Engine_Api::_()->getDbtable('blogs', 'blog');
+    $rName = $table->info('name');
+
+    $tmTable = Engine_Api::_()->getDbtable('users', 'user');
+    $tmName = $tmTable->info('name');
+    
     $select = $table->select()
-      ->where('search = ?', 1)
-      ->order('view_count DESC')
+      ->where("$rName.search = ?", 1)
+      ->where("$tmName.level_id = ?", 3)
+      ->order("$rName.view_count DESC")
       ;
 
+     $select = $select
+        ->setIntegrityCheck(false)
+        ->from($rName)
+        ->joinInner($tmName, "$tmName.user_id = $rName.owner_id");
+        
+      
     $paginator = Zend_Paginator::factory($select);
 
     if( $paginator->getTotalItemCount() <= 0 ) {
