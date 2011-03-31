@@ -87,6 +87,7 @@ class Group_IndexController extends Core_Controller_Action_Standard
             ->getGroupPaginator($values);
 
     $paginator->setCurrentPageNumber($this->_getParam('page'));
+     $this->view->canCreate = Engine_Api::_()->authorization()->isAllowed('group', null, 'create');
   }
 
   public function createAction()
