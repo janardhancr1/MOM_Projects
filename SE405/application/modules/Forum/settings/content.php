@@ -53,5 +53,14 @@ return array(
     'defaultParams' => array(
       'title' => 'Recent Forum Posts',
     ),
+    ),
+    
+    array(
+    'title' => 'Open Discussions',
+    'description' => 'Displays open discussions.',
+    'category' => 'Forum',
+    'type' => 'widget',
+    'name' => 'forum.open-discussions',
+
   ),
 ) ?>
