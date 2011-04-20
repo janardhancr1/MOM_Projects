@@ -47,6 +47,13 @@ return array(
     'autoEdit' => true,
     'adminForm' => 'Core_Form_Admin_Widget_Ads',
   ),
+   array(
+    'title' => 'Show Image',
+    'description' => 'Shows Image.',
+    'category' => 'Core',
+    'type' => 'widget',
+    'name' => 'core.show-image',
+  ),
   array(
     'title' => 'Tab Container',
     'description' => 'Adds a container with a tab menu. Any other blocks you drop inside it will become tabs.',
