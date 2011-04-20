@@ -21,4 +21,13 @@ return array(
       'titleCount' => true,
     ),
   ),
+  
+  array(
+    'title' => 'Photo Albums',
+    'description' => 'Displays resent albums.',
+    'category' => 'Albums',
+    'type' => 'widget',
+    'name' => 'album.resent-albums',
+    
+  ),
 ) ?>
