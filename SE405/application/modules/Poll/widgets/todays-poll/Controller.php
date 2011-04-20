@@ -26,6 +26,7 @@ class Poll_Widget_TodaysPollController extends Engine_Content_Widget_Abstract
     $this->view->paginator = $paginator = Engine_Api::_()->poll()->getPollsPaginator(array(
         'sort' => "creation_date",
         ));
+
     $this->view->paginator->setItemCountPerPage(1);
     $paginator->setCurrentPageNumber(1);
     
@@ -33,6 +34,18 @@ class Poll_Widget_TodaysPollController extends Engine_Content_Widget_Abstract
     if( $paginator->getTotalItemCount() <= 0 ) {
       return $this->setNoRender();
     }
+    
+    //$answer = Engine_Api::_()->getItem('poll', $this->_getParam('answer_id'));
+    foreach($paginator as $pol)
+    	$this->view->poll = $poll = Engine_Api::_()->getItem('poll', $pol->poll_id);
+    $this->view->owner = $owner = $poll->getOwner();
+    $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
+    $this->view->pollOptions = $poll->getOptions();
+    $this->view->hasVoted = $poll->viewerVoted();
+    $this->view->showPieChart = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.showPieChart', false);
+    $this->view->canVote = $poll->authorization()->isAllowed(null, 'vote');
+    $this->view->canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.canChangeVote', false);
+    
   }
 
   public function getChildCount()
