@@ -29,7 +29,8 @@ class Video_Widget_ListRecentVideosController extends Engine_Content_Widget_Abst
       ;
 
     $paginator = Zend_Paginator::factory($select);
-
+    $settings = Engine_Api::_()->getApi('settings', 'core');
+	$paginator->setItemCountPerPage($settings->getSetting('video_page', 3));
     if( $paginator->getTotalItemCount() <= 0 ) {
       return $this->setNoRender();
     }

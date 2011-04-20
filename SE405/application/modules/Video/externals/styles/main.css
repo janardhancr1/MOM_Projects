@@ -379,6 +379,7 @@ Lists the most recently posted videos.
   width: 100%;
   margin-bottom: 15px;
 }
+
 .layout_video_list_recent_videos > ul
 {
   +foreground;
