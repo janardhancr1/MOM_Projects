@@ -10,7 +10,7 @@
  * @author     John
  */
 ?>
-<ul class="forum_categories">
+<ul class="forum_categories" style='border: 0px; padding: 0px;'>
 
 <?php foreach( $this->categories as $category ):
   if( empty($this->forums[$category->category_id])) {
@@ -18,10 +18,10 @@
   }
   ?>
   <li>
-    <div>
+    <div style='padding: 0px;'>
       <h3 style='border:0px;'><?php echo $this->translate($category->getTitle()) ?></h3>
     </div>
-    <ul style='padding: 0px; margin: 0px; float: left;'>
+    <ul style='padding: 0px; margin: 0px; float: left; border: 0px; '>
       <?php foreach( $this->forums[$category->category_id] as $forum ):
       
 	        $last_topic = $forum->getLastUpdatedTopic();
