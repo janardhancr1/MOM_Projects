@@ -10,6 +10,7 @@
  * @author     John
  */
 ?>
+<div> &nbsp;</div>
 	<ul style='border: 0px; padding: 0px;'>
 	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px;'>
 	  <li>
@@ -20,7 +21,7 @@
 <ul style='padding:0px; margin:0px; float:left; background-color:#ffffff; border:0px;'>
   <?php foreach( $this->paginator as $item ): ?>
     <li style='display:inline; padding:0px; margin:0px;'>
-    <div style='width:160px; float:left;'>
+    <div style='width:155px; float:left;'>
       <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'normal.icon'), array('class' => 'recentvideos_thumb')) ?>
       <div class='recentvideos_info' style='width:150px; padding:0px;'>
         <div class='recentvideos_title'>
