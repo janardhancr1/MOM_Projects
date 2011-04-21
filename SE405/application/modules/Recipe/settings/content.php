@@ -27,9 +27,5 @@ return array(
     'category' => 'Recipes',
     'type' => 'widget',
     'name' => 'recipe.todays-recipe',
-    'defaultParams' => array(
-      'title' => 'Today\'s Recipe',
-    ),
-    'adminForm' => 'Recipe_Form_Admin_Widget_Today',
   ),
 ) ?>
