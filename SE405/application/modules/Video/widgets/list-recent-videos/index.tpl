@@ -10,7 +10,13 @@
  * @author     John
  */
 ?>
-
+	<ul style='border: 0px; padding: 0px;'>
+	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px;'>
+	  <li>
+      		<h3 style='border:0px;'>Recent Video's</h3>
+      </li>
+    </div></ul>
+    <div> &nbsp;</div>
 <ul style='padding:0px; margin:0px; float:left; background-color:#ffffff; border:0px;'>
   <?php foreach( $this->paginator as $item ): ?>
     <li style='display:inline; padding:0px; margin:0px;'>
