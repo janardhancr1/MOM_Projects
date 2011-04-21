@@ -21,9 +21,13 @@
 <div style='padding: 0px 3px'>
 <ul class="polls_browse">
 
-    <li>
-      <div class='polls_browse_info'>
-        
+    <li style='display:inline;'>
+      <div class='polls_browse_info' style='float:left;'>
+        <img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
+      </div>
+    </li>
+    <li style='display:inline;'>
+      <div class='polls_browse_info' style='float:left;'>
        <h3 style='border:0px;'><a href="/polls/view/<?php echo $this->poll->poll_id ?>"><?php echo $this->poll->title ?></a></h3>
        
         <script type="text/javascript">
@@ -140,4 +144,5 @@
 
 </ul>
 <?php echo $this->action("list", "comment", "core", array("type"=>"poll", "id"=>$this->poll->poll_id)) ?>
+
 </div>
