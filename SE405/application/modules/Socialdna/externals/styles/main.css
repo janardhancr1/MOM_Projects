@@ -468,10 +468,10 @@ td.socialdna_services_table_options > a + span.sep
 /* wrapper for the social login widget widgets/home-social-login */
 .openidconnect_social_login_wrapper {
   background-color:white;
-  border:1px solid #EEEEEE;
+  border:opx solid #EEEEEE;
   margin-left:-7px;
   margin-right:-7px;
-  margin-top:5px;
-  padding:3px 3px 10px;
+  margin-top:2px;
+  padding:3px 3px 3px;
 }
 

@@ -7,69 +7,11 @@
 
 <?php /* <user.widgets.login-or-signup> */ ?>
 
-<h3>
-  <?php echo $this->translate('Sign In or %1$sJoin%2$s', '<a href="'.$this->url(array(), "user_signup").'">', '</a>'); ?>
-</h3>
-
 <?php // unroll form // echo $this->form->setAttrib('class', 'global_form_box')->render($this) ?>
 
-<form method="post" action="<?php echo $this->url(array(),'user_login') ?>" class="global_form_box" enctype="application/x-www-form-urlencoded" id="user_form_login" name="user_form_login">
-  <div>
+<form method="post" action="<?php echo $this->url(array(),'user_login') ?>" class="home_login" enctype="application/x-www-form-urlencoded" id="user_form_login" name="user_form_login" style="background-color:white;padding-top:2px;">
+<div>
     <div>
-      <div class="form-elements">
-        <div class="form-wrapper" id="email-wrapper">
-          <div class="form-label" id="email-label">
-            <label class="required" for="email"><?php echo $this->translate('Email Address') ?></label>
-          </div>
-
-          <div class="form-element" id="email-element">
-            <input type="text" tabindex="1" value="" id="email" name="email">
-          </div>
-        </div>
-
-        <div class="form-wrapper" id="password-wrapper">
-          <div class="form-label" id="password-label">
-            <label class="required" for="password"><?php echo $this->translate('Password') ?></label>
-          </div>
-
-          <div class="form-element" id="password-element">
-            <input type="password" tabindex="2" value="" id="password" name="password">
-          </div>
-        </div>
-          
-        <?php if($this->form->getElement('captcha')) : ?>
-        <?php echo $this->form->getElement('captcha')->render($this) ?>
-        <?php endif; ?>
-
-        <div id="buttons-wrapper" class="form-wrapper">
-          <fieldset id="fieldset-buttons">
-            <div class="form-wrapper" id="submit-wrapper">
-              <div class="form-label" id="submit-label">
-                &nbsp;
-              </div>
-
-              <div class="form-element" id="submit-element">
-                <button tabindex="5" type="submit" id="submit" name="submit"><?php echo $this->translate('Sign In') ?></button>
-              </div>
-            </div>
-
-            <div class="form-wrapper" id="remember-wrapper">
-              <div id="remember-label" class="form-label">
-                &nbsp;
-              </div>
-
-              <div class="form-element" id="remember-element">
-                <input type="hidden" value="0" name="remember"><input type="checkbox" tabindex="4" value="1" id="remember" name="remember"> <label class="optional" for="remember"><?php echo $this->translate('Remember Me') ?></label>
-              </div>
-            </div>
-          </fieldset>
-        </div><input type="hidden" id="return_url" value="" name="return_url">
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</form>-->
-<?php /* </user.widgets.login-or-signup> */ ?>
-
 
 
 
@@ -124,7 +66,7 @@ function openidconnect_scroll_icons_stop() {
 
     <table cellspacing="0" cellpadding="0" style="" class="openid_login_block_home">
     <tr>
-      <td style="font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center; color: #777"> <?php echo $this->translate('Or Sign In Using') ?> </td>
+      <td style="font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center; color: #777"> <?php echo $this->translate('Login or Join using Facebook') ?> </td>
     </tr>
     <tr>
       <td nowrap="nowrap">
@@ -194,7 +136,7 @@ function openidconnect_scroll_icons_stop() {
 
     <table cellspacing="0" cellpadding="0" style="" class="openid_login_block_home">
     <tr>
-      <td style="font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center; color: #777"> <?php echo $this->translate('Or Sign In Using') ?> </td>
+      <td style="font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center; color: #777"> <?php echo $this->translate('Login or Join using Facebook') ?> </td>
     </tr>
     <tr>
       <td nowrap="nowrap">
@@ -262,18 +204,18 @@ function openidconnect_scroll_icons_stop() {
 
     <table cellspacing="0" cellpadding="0" style="" class="openid_login_block_home">
     <tr>
-      <td style="font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center; color: #777"> <?php echo $this->translate('Or Sign In Using') ?> </td>
+      <td style="font-weight: bold; text-align: center; color: #777"> <h3 style='border: 0px; padding-top:0px'> <?php echo $this->translate('Login or Join using Facebook:') ?> </h3></td>
     </tr>
     <tr>
       <td nowrap="nowrap">
 
         <?php if($this->facebook_enabled): ?>
-        <div style="padding-bottom: 5px; padding-left: 5px;">
+        <div style="padding-bottom: 5px; padding-left: 50px;">
           <?php echo $this->partial('_facebookButton.tpl', 'socialdna', array('openid_facebook_button_style' => 0)) ?>
         </div>
         <?php endif; ?>
       
-        <table cellspacing="0" cellpadding="0">
+<!--        <table cellspacing="0" cellpadding="0">
           <tr>
             <td style="width: 5px;">
               <div class="openidconnect_icons_scroller" style='padding: 15px 0px' onmouseover="openidconnect_scroll_icons('left')" onmouseout="openidconnect_scroll_icons_stop()">&laquo;</div>
@@ -313,7 +255,7 @@ function openidconnect_scroll_icons_stop() {
             <div class="openidconnect_icons_scroller" style='padding: 15px 0px' onmouseover="openidconnect_scroll_icons('right')"  onmouseout="openidconnect_scroll_icons_stop()">&raquo;</div>
           </td>
           </tr>
-        </table>
+        </table> -->
                         
       </td>
     </tr>
@@ -445,6 +387,66 @@ function openidconnect_scroll_icons_stop() {
   <?php endif; ?>
 </div>
 
+    <h3 style='border:0px'>
+  		<?php echo $this->translate('Login to Momburbia:'); ?>
+	</h3>
+    
+      <div class="form-elements">
+        <div class="form-wrapper" id="email-wrapper">
+          <div class="form-label" id="email-label">
+            <label class="required" for="email"><?php echo $this->translate('Email Address') ?></label>
+          </div>
+
+          <div class="form-element" id="email-element">
+            <input type="text" tabindex="1" value="" id="email" name="email">
+          </div>
+        </div>
+
+        <div class="form-wrapper" id="password-wrapper">
+          <div class="form-label" id="password-label">
+            <label class="required" for="password"><?php echo $this->translate('Password') ?></label>
+          </div>
+
+          <div class="form-element" id="password-element">
+            <input type="password" tabindex="2" value="" id="password" name="password">
+          </div>
+        </div>
+          
+        <?php if($this->form->getElement('captcha')) : ?>
+        <?php echo $this->form->getElement('captcha')->render($this) ?>
+        <?php endif; ?>
+
+		<div id="remember-wrapper2" class="form-wrapper">
+			<div class="form-label" id="remember-label">
+				&nbsp;
+			</div>
+			<div id="remember-element" class="form-element">
+				<input type="hidden" name="remember" value="0" />
+				<input type="checkbox" name="remember" id="remember" value="1" tabindex="4" />
+				<label for="remember" class="optional">Remember Me</label>
+			</div>
+		</div>
+
+		<div id="submit-wrapper" class="form-wrapper">
+			<div id="submit-label" class="form-label">&nbsp;</div>
+			<div id="submit-element" class="form-element">
+				<button name="submit" id="submit" type="submit" tabindex="5"><?php echo $this->translate('Sign In') ?></button>
+			</div>
+		</div>
+		<br/>
+		<div id="forgot-wrapper" class="form-wrapper">
+			<div id="forgot-label" class="form-label">&nbsp;</div>
+			<div id="forgot-element" class="form-element"><span><a href='/index.php/user/auth/forgot'>Forgot Password?</a></span>
+			</div>
+		</div>
+		
+		
+                <input type="hidden" id="return_url" value="" name="return_url">
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+<?php /* </user.widgets.login-or-signup> */ ?>
 
 
 

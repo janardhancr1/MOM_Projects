@@ -841,6 +841,98 @@ Examples: Signup form, member settings form, etc.
   margin-right: 3px;
 }
 
+/* Home login */
+
+.home_login
+{
+  clear: both;
+  overflow: hidden;
+  width: 300px;
+}
+
+.home_login > div > div
+{
+  +rounded(8px);
+  border: 1px solid $theme_form_border_color;
+  padding: 2px 8px 8px 8px;
+  background-color: #FFFFFF;
+}
+
+.home_login div.form-wrapper
+{
+  overflow: hidden;
+  padding: 2px;
+}
+
+/* left-side element label container */
+.home_login div.form-label
+{
+  min-width: 100px;
+  max-width: 600px;
+  text-align: right;
+  padding: 4px 10px 0px 2px;
+  float: left;
+  font-size: 10pt;
+  font-weight: normal;
+  color: $theme_form_label_font_color;
+}
+
+/* right-side form element container */
+.home_login div.form-element
+{
+  min-width: 166px;
+  max-width: 600px;
+  text-align: left;
+  float: left;
+  color: $theme_form_label_font_color;
+}
+
+/* all text inputs in form */
+.home_login input[type=text],
+.home_login input[type=password]
+{
+  padding: 2px;
+  font-size: 10pt;
+  width: 150px;
+}
+
+.home_login #remember-wrapper2
+{
+  text-align: right;
+  padding-top: 5px;
+  float: left;
+}
+
+.home_login #remember-wrapper label
+{
+  margin-top: 5px;
+}
+.home_login #remember-label
+{
+  display: none;
+}
+.home_login #forgot-element
+{
+  margin-top: 5px;
+}
+
+.home_login #remember
+{
+    float: right;
+    margin-left: 5px;
+    display: block;
+}
+
+.home_login #submit-wrapper
+{
+  padding-top: 4px;
+}
+.home_login #submit-element
+{
+  min-width: 0px;
+}
+
+/* end home login */
 
 
 

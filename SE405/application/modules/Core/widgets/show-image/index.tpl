@@ -11,7 +11,7 @@
  */
 ?>
 <div>
-      <h3 style='border:0px;'>Welcome to Momburbia</h3>
+      <h3>Welcome to Momburbia</h3>
     </div>
 <div style='float: left; width: 500px; padding: 0px 10px 0px 10px;'>
 	<div class='mom_tag_line'>
