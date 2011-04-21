@@ -137,7 +137,7 @@ GENERAL LAYOUT
 {
   float: left;
   width: $theme_content_columns_left_width;
-  padding: 5px;
+  padding-left: 5px;
   vertical-align: top;
   margin-right: 0px;
 }
