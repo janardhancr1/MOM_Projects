@@ -13,7 +13,7 @@
 <ul class="forum_categories">
 
 <?php foreach( $this->categories as $category ):
-  if( empty($this->forums[$category->category_id]) || $category->getTitle() != 'Open Discussions') {
+  if( empty($this->forums[$category->category_id])) {
     continue;
   }
   ?>
@@ -32,9 +32,6 @@
 	          $last_user = $this->user($last_post->user_id);
 	        }
 	        ?>
-	        <?php 
-	        	$title = $forum->getTitle(); 
-	        	if( $title == 'Health & Wellness' || $title == 'Parenting' || $title == 'Relationships' || $title == 'Shopping' || $title == 'Entertainment & Pop Culture'): ?>
 		        <li>
 		          <div class="forum_icon">
 		            <?php echo $this->htmlLink($forum->getHref(), $this->htmlImage('application/modules/Forum/externals/images/forum.png')) ?>
@@ -60,10 +57,8 @@
 		              <?php echo $this->translate(array('post', 'posts', $forum->post_count),$this->locale()->toNumber($forum->post_count)) ?>
 		            </span>
 		          </div>
-		          
-		          
 		        </li>
-        	<?php endif;?>
+        	
       <?php endforeach;?>
       </ul>
   </li>

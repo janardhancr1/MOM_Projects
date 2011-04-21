@@ -27,6 +27,15 @@ class Forum_Form_Category_Edit extends Engine_Form
       'label' => 'Category Title'
     ));
 
+       $this->addElement('Radio', 'show_homepage', array(
+      'label' => 'Allow Show in Home Page?',
+      'multiOptions' => array(
+        0 => 'No, do not show in home page.',
+        1 => 'Yes, show in home page.',
+      ),
+     
+    ));
+      
     // Element: submit
     $this->addElement('Button', 'submit', array(
       'label' => 'Save Changes',

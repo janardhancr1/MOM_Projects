@@ -45,7 +45,16 @@ class Forum_Form_Forum_Create extends Engine_Form
     foreach( $categories as $category ) {
       $category_id->addMultiOption($category->getIdentity(), $category->title);
     }
-
+	
+    $this->addElement('Radio', 'show_homepage', array(
+      'label' => 'Allow Show in Home Page?',
+      'multiOptions' => array(
+        0 => 'No, do not show in home page.',
+        1 => 'Yes, show in home page.',
+      ),
+      'value' => 0,
+    ));
+    
     // Element: submit
     $this->addElement('Button', 'execute', array(
       'label' => 'Save Changes',

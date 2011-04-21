@@ -105,6 +105,7 @@ class Forum_AdminManageController extends Core_Controller_Action_Admin
       $forum->setFromArray($values);
       $forum->title = htmlspecialchars($values['title']);
       $forum->description = htmlspecialchars($values['description']);
+      $forum->show_homepage = htmlspecialchars($values['show_homepage']);
       
       $forum->save();
       
@@ -158,6 +159,7 @@ class Forum_AdminManageController extends Core_Controller_Action_Admin
     $category_id = $this->getRequest()->getParam('category_id');
     $category = Engine_Api::_()->getItem('forum_category', $category_id);
     $form->title->setValue(htmlspecialchars_decode($category->title));
+    $form->show_homepage->setValue(htmlspecialchars_decode($category->show_homepage));
 
     if( !$this->getRequest()->isPost() ) {
       return;
@@ -167,6 +169,7 @@ class Forum_AdminManageController extends Core_Controller_Action_Admin
     }
     
     $category->title = htmlspecialchars($form->getValue('title'));
+    $category->show_homepage = htmlspecialchars($form->getValue('show_homepage'));
     $category->save();
 
     return $this->_forward('success', 'utility', 'core', array(
@@ -195,6 +198,7 @@ class Forum_AdminManageController extends Core_Controller_Action_Admin
       $values = $form->getValues();
       $category = $table->createRow();
       $category->title = htmlspecialchars($values['title']);
+      $category->show_homepage = htmlspecialchars($form->getValue('show_homepage'));
       $category->order = Engine_Api::_()->forum()->getMaxCategoryOrder() + 1;
       $category->save();
       $db->commit();
@@ -234,6 +238,7 @@ class Forum_AdminManageController extends Core_Controller_Action_Admin
       $forum->setFromArray($values);
       $forum->title = htmlspecialchars($values['title']);
       $forum->description = htmlspecialchars($values['description']);
+      $forum->show_homepage = htmlspecialchars($values['show_homepage']);
       $forum->order = $forum->getCollection()->getHighestOrder() + 1;
       $forum->save();
 
