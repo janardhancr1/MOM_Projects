@@ -10,13 +10,21 @@
  * @author     Steve
  */
 ?>
+
+	<ul>
+	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px;'>
+	  <li>
+      		<h3 style='border:0px; padding-left:10px;'>Today's Poll</h3>
+      </li>
+    </div></ul>
+<div> &nbsp;</div>
 <div style='padding: 0px 3px'>
 <ul class="polls_browse">
 
     <li>
       <div class='polls_browse_info'>
         
-       <h3><a href="/polls/view/<?php echo $this->poll->poll_id ?>"><?php echo $this->poll->title ?></a></h3>
+       <h3 style='border:0px;'><a href="/polls/view/<?php echo $this->poll->poll_id ?>"><?php echo $this->poll->title ?></a></h3>
        
         <script type="text/javascript">
   //<![CDATA[

@@ -39,9 +39,5 @@ return array(
     'category' => 'Polls',
     'type' => 'widget',
     'name' => 'poll.todays-poll',
-    'defaultParams' => array(
-      'title' => 'Today\'s Poll',
-    ),
-    'adminForm' => 'Poll_Form_Admin_Widget_Today',
   ),
 ) ?>
