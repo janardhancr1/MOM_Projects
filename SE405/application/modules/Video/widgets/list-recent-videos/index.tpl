@@ -11,7 +11,7 @@
  */
 ?>
 <div> &nbsp;</div>
-	<ul style='border: 0px; padding: 0px;'>
+	<ul style='border: 0px; padding: 0px; width:480px;'>
 	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px;'>
 	  <li>
       		<h3 style='border:0px;'>Recent Video's</h3>
