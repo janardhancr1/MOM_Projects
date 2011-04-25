@@ -12,7 +12,7 @@
 ?>
 
 	<ul>
-	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px;'>
+	<div style='background-color: #F2F2F2; -moz-border-radius: 3px 3px 3px 3px; width:480px;'>
 	  <li>
       		<h3 style='border:0px; padding-left:10px;'>Today's Poll</h3>
       </li>
