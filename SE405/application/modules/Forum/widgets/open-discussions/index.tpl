@@ -10,7 +10,7 @@
  * @author     John
  */
 ?>
-<ul class="forum_categories" style='border: 0px; padding: 0px;'>
+<ul class="forum_categories" style='border: 0px; padding: 0px; width:480px;'>
 
 <?php foreach( $this->categories as $category ):
   if( empty($this->forums[$category->category_id])) {
