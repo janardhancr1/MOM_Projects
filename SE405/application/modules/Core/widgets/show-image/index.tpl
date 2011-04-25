@@ -10,7 +10,7 @@
  * @author     John
  */
 ?>
-<div>
+<div style='padding-top:5px;'>
       <h3>Welcome to Momburbia</h3>
     </div>
 <div style='float: left; width: 500px; padding: 0px 10px 0px 10px;'>
