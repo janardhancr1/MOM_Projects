@@ -14,7 +14,7 @@
 <!--
 <div class="headline">
   <h2>
-    <?php echo $this->translate('Meetups');?>
+    <?php echo $this->translate('Events');?>
   </h2>
   <div class="tabs">
     <?php
@@ -51,10 +51,10 @@
 <div class="headline_header">
 	<img src='./application/modules/Event/externals/images/event_event48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
-    <a href='/index.php/events'><?php echo $this->translate('Meetups');?></a>
-    <?php if( $this->canCreate ): ?><div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/meetups/manage'>Go to My Meetups</a></div><?php endif; ?>
+    <a href='/index.php/events'><?php echo $this->translate('Events');?></a>
+    <?php if( $this->canCreate ): ?><div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/Events/manage'>Go to My Events</a></div><?php endif; ?>
     </div>
-    <div class="smallheadline"><?php echo $this->translate('Create, share and view Meetups from moms everywhere!');?></div>
+    <div class="smallheadline"><?php echo $this->translate('Create, share and view Events from moms everywhere!');?></div>
 </div>
 <div>
 	<?php echo $this->formFilter->setAttrib('class', 'global_search_box')->render($this) ?>
@@ -63,7 +63,7 @@
   <?php if( count($this->paginator) > 0 ): ?>
   <div class="tip">
       <span>
-        <?php echo $this->translate('Tip: Looking for local Meetups?  Type in your city/town in the search!'); ?>
+        <?php echo $this->translate('Tip: Looking for local Events?  Type in your city/town in the search!'); ?>
       </span>
     </div>
     <ul class='events_browse'>
