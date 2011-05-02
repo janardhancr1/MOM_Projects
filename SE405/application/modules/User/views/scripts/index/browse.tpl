@@ -14,7 +14,6 @@
 <h2>&nbsp;<?php echo $this->translate('Browse Members');?></h2>
 
 <div class='layout_left'  style='padding-left:2px'>
-  <?php echo $this->form->render($this) ?>
   <div class="quicklinks">
     <ul>
       <li>
@@ -22,6 +21,8 @@
       </li>
     </ul>
   </div>
+  <br/>
+  <?php echo $this->form->render($this) ?>
 </div>
 
 <div class='layout_middle'>

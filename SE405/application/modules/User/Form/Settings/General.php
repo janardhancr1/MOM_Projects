@@ -58,7 +58,7 @@ class User_Form_Settings_General extends Engine_Form
 
     // Init username
     $this->addElement('Text', 'username', array(
-      'label' => 'Profile Address',
+      'label' => 'Screen Name',
       'required' => true,
       'allowEmpty' => false,
       'validators' => array(
