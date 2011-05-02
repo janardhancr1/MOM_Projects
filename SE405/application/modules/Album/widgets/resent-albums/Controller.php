@@ -28,7 +28,7 @@ class Album_Widget_ResentAlbumsController extends Engine_Content_Widget_Abstract
       ;
 	$settings = Engine_Api::_()->getApi('settings', 'core');
     $paginator = Zend_Paginator::factory($select);
-	$paginator->setItemCountPerPage($settings->getSetting('album_page', 4));
+	$paginator->setItemCountPerPage(4);
     if( $paginator->getTotalItemCount() <= 0 ) {
       return $this->setNoRender();
     }
