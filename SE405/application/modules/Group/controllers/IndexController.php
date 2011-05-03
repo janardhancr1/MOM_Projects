@@ -206,6 +206,9 @@ class Group_IndexController extends Core_Controller_Action_Standard
     //    $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
     //      ->getNavigation('group_main');
     // Form
+    
+  	if( !$this->_helper->requireUser()->isValid() ) return;
+  	
     $this->view->formFilter = $formFilter = new Group_Form_Filter_Manage();
     $this->view->formValues = $values = $formFilter->getValues();
 
