@@ -51,7 +51,7 @@
 	<img src='./application/modules/Video/externals/images/video_video48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <a href='/index.php/videos'><?php echo $this->translate('Videos ');?></a>
-    <?php if($this->can_create):?><div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/videos/manage'>Go to My Videos</a></div><?php endif; ?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/videos/manage'>Go to My Videos</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Share and view videos from moms everywhere!');?></div>
 </div>

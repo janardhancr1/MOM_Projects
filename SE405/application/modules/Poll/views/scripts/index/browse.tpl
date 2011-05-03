@@ -56,7 +56,7 @@
 	<img src='./application/modules/Poll/externals/images/poll_poll48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <a href='/index.php/polls'><?php echo $this->translate('Polls');?></a>
-    <?php if( $this->canCreate): ?><div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/polls/manage'>Go to My Polls</a></div><?php endif; ?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/polls/manage'>Go to My Polls</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Create a Poll or Tell Others What you Think');?></div>
 </div>

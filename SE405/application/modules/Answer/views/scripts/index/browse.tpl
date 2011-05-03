@@ -18,7 +18,7 @@
 	<img src='./application/modules/Answer/externals/images/ans_ans48.gif' border='0' class='icon_big'>
 	<div class="mainheadline">
     <a href='/index.php/answers'><?php echo $this->translate('Momburbia Answers');?></a>
-    <?php if ($this->can_create): ?><div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Go to My Questions</a></div><?php endif; ?>
+    <div class="button"><img src='./application/modules/Core/externals/images/plus16.gif' border='0' class='button'> <a href='/index.php/answers/manage'>Go to My Questions</a></div>
     </div>
     <div class="smallheadline"><?php echo $this->translate('Questions and Answers on everything relating to being a mom.');?></div>
 </div>
