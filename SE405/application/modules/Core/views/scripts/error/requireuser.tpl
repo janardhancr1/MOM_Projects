@@ -29,7 +29,6 @@
 		<br>
 			<?php
 			// nasty
-			echo $this->content()->renderWidget('socialdna.boot');
   global $socialdna_social_login_title_text;
   $socialdna_social_login_title_text = 'socialdna_login_using';
   
