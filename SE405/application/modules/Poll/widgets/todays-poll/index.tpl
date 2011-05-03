@@ -27,7 +27,7 @@
       </div>
     </li>
     <li style='display:inline;'>
-      <div class='polls_browse_info' style='float:left;'>
+      <div class='polls_browse_info'>
        <h3 style='border:0px;'><a href="/index.php/polls/view/<?php echo $this->poll->poll_id ?>"><?php echo $this->poll->title ?></a></h3>
        
         <script type="text/javascript">
