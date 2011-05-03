@@ -72,7 +72,7 @@ class Core_HelpController extends Core_Controller_Action_Standard
       // Make params
       $mail_settings = array(
         'host' => $_SERVER['HTTP_HOST'],
-        'email' => $super_admin->email,
+        'email' => 'momburbiateam@gmail.com',
         'date' => time(),
         'recipient_title' => $super_admin->getTitle(),
         'recipient_link' => $super_admin->getHref(),
