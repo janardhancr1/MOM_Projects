@@ -50,9 +50,14 @@ function openidconnect_scroll_icons_stop() {
 
 <div>
 <?php if($this->facebook_enabled): ?>
-<div style='color:#777777;font-size:18px;margin-left:15px'>
+<div style='color:#777777;font-size:18px;margin-left:15px;'>
 Login using Facebook:
-<?php echo $this->partial('_facebookButton.tpl') ?>
+<a href="javascript:void(0)" class="openidconnect_facebook_login_button" >
+  <img id="fb_login_image" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Facebook Connect" border="0" />
+  </a>
 </div>
+<script type="text/javascript">
+openidconnect_register_facebook_login_button('<?php echo $openid_facebook_landingpage ?>');
+</script>
 <?php endif; ?>
 </div>

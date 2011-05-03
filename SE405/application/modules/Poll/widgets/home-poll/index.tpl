@@ -11,33 +11,21 @@
  */
 ?>
 
-<?php /*
-<h3>
-  <?php echo $this->poll->title ?>
-</h3>
-  */ ?>
-
-<div class="poll_desc">&nbsp;
-  <?php echo $this->poll->description ?>
+<div style='padding: 0px 3px'>
+<ul class="polls_browse">
+  <?php foreach ($this->paginator as $item): ?>
+    <li>
+      <div class='polls_browse_info'>
+        <img src="application/modules/Poll/externals/images/types/poll.png" alt="admin" border="0" /> &nbsp;
+        <?php echo $this->htmlLink(array('route'=>'poll_view', 'user_id'=>$item->user_id, 'poll_id'=>$item->poll_id), $item->getTitle()) ?>
+        <div class='polls_browse_info_date'>
+          <?php echo $this->translate('Posted') ?> <?php echo $this->timestamp($item->creation_date) ?>
+        </div>
+        <div class='polls_browse_info_desc'>
+          <?php echo $item->description ?>
+        </div>
+      </div>
+    </li>
+  <?php endforeach; ?>
+</ul>
 </div>
-
-<?php
-  // poll, pollOptions, canVote, canChangeVote, hasVoted, showPieChart
-  $this->hideStats = true;
-  echo $this->render('application/modules/Poll/views/scripts/_poll.tpl')
-?>
-
-<span class="poll_view_single">
-  <div class="poll_stats">
-    &nbsp;<?php echo $this->htmlLink($this->poll->getHref(), $this->translate('View')) ?>
-    <?php /*
-    <br />
-    <span class="poll_vote_total">
-      <?php echo $this->translate(array('%s vote', '%s votes', $this->poll->vote_count), $this->locale()->toNumber($this->poll->vote_count)) ?>
-    </span>
-    &nbsp;|&nbsp;
-    <?php echo $this->translate(array('%s view', '%s views', $this->poll->views), $this->locale()->toNumber($this->poll->views)) ?>
-     *
-     */ ?>
-  </div>
-</span>

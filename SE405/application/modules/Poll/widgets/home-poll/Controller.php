@@ -20,16 +20,21 @@ class Poll_Widget_HomePollController extends Engine_Content_Widget_Abstract
 {
   public function indexAction()
   {
-    if( !$this->_getParam('poll_id') ) {
+    $this->view->paginator = $paginator = Engine_Api::_()->poll()->getPollsPaginator(array(
+        'sort' => "creation_date",
+        ));
+
+    $this->view->paginator->setItemCountPerPage(1);
+    $paginator->setCurrentPageNumber(1);
+    
+    // Do not render if nothing to show
+    if( $paginator->getTotalItemCount() <= 0 ) {
       return $this->setNoRender();
     }
-
-    $poll = Engine_Api::_()->getItem('poll', $this->_getParam('poll_id'));
-    if( !$poll ) {
-      return $this->setNoRender();
-    }
-
-    $this->view->poll = $poll;
+    
+    //$answer = Engine_Api::_()->getItem('poll', $this->_getParam('answer_id'));
+    foreach($paginator as $pol)
+    	$this->view->poll = $poll = Engine_Api::_()->getItem('poll', $pol->poll_id);
     $this->view->owner = $owner = $poll->getOwner();
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
     $this->view->pollOptions = $poll->getOptions();
@@ -37,7 +42,6 @@ class Poll_Widget_HomePollController extends Engine_Content_Widget_Abstract
     $this->view->showPieChart = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.showPieChart', false);
     $this->view->canVote = $poll->authorization()->isAllowed(null, 'vote');
     $this->view->canChangeVote = Engine_Api::_()->getApi('settings', 'core')->getSetting('poll.canChangeVote', false);
-    $this->view->hideLinks = true;
   }
 
   public function adminAction()
