@@ -1,0 +1,69 @@
+#document {
+    margin: 0 auto;
+    min-width: 990px;
+    position: relative;
+    text-align: left;
+    width: 990px;
+    font-family:arial;
+}
+
+#pallet {
+    margin: 0;
+}
+
+#pallet {
+    height: 128px;
+    margin: 0 auto 0px;
+    width: 990px;
+}
+
+#header {
+    margin-top: 10px;
+}
+
+#header {
+    margin: 0 0 1.4em;
+}
+
+#masthead
+{
+    float: left;
+    color: red;
+}
+
+#masthead, #masthead a:link, #masthead a:active, #masthead a:visited {
+    height: 56px;
+    width: 246px;
+}
+
+#masthead {
+    background: url("images/cdlogo.png") no-repeat scroll 0 0 transparent;
+    margin: 17px 16px 17px 0;
+    padding-bottom: 10px;
+}
+.headleft{
+	float:left;
+	font-weight:bold;
+	font-size:18px;
+	text-align:center;
+	padding-top:34px;
+	padding-left:0px;
+	font-family:arial;
+}
+.headright{
+	font-weight:bold;
+	font-size:12px;
+	padding-top:20px;
+	font-family:arial;
+	color:gray;
+}
+.title{
+	font-weight:bold;
+	font-size:15px;
+	padding-top:5px;
+	font-family:arial;
+}
+A:link {text-decoration: underline; color: #014B96;}
+A:visited {text-decoration: underline; color: #014B96;}
+A:active {text-decoration: none; color: #014B96;}
+A:hover {text-decoration: none;}
