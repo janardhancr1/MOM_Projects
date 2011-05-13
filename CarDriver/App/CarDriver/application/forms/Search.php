@@ -1,46 +1,70 @@
 <?php
-class Application_Form_Search extends Zend_Form
+class Application_Form_Search extends Application_Form_MainForm
 {
 	public function init()
 	{
+		$db = $this->getDbConnection();
 		$enterid = $this->createElement('text','id');
-		$enterid->setLabel('Enter ID: ');
-		$enterid->setRequired(true);
+		$enterid->setLabel('Enter ID');
 		$enterid->setAttrib('size','20');
+		
+		
 		$this->addElement($enterid);
 		
 		
 		$submit = $this->createElement('submit','submit',array('label'=>'GO'));
 		$this->addElement($submit);
+
+		$select = $db->select()
+	             ->from('bg_year')
+	             ->where('state = ?', 'published');
+        $years = $db->query($select)->fetchAll();
+	       
+		if (count($years)!=0){
+				$years_prepared[0]= "Select or Leave blank";
+				foreach ($years as $Yea){
+						$years_prepared[$Yea[id]]= $Yea[name];
+				}
+		}
 		
-		/*$select = $db->select()
-             ->from('bg_year');
-             
-        $result = $db->query($select);
-        
-        $year = $result->fetchAll();*/
-             
 		$year = $this->createElement('select','year')
-		->setLabel('Year: ')
-		->addMultiOptions(array(
-		'0' => 'Select or Leave blank',
-		));
-		
+		->setLabel('Year')
+		->addMultiOptions($years_prepared);
 		$this->addElement($year);
 		
-		$make = $this->createElement('select','make')
-		->setLabel('Make: ')
-		->addMultiOptions(array(
-		'0' => 'Select or Leave blank',
-		));
+		$select = $db->select()
+	             ->from('bg_make')
+	             ->where('state = ?', 'published');
+        $makes = $db->query($select)->fetchAll();
+	       
+		if (count($makes)!=0){
+				$makes_prepared[0]= "Select or Leave blank";
+				foreach ($makes as $mak){
+						$makes_prepared[$mak[id]]= $mak[name];
+				}
+		}
 		
+		$make = $this->createElement('select','make')
+		->setLabel('Make')
+		->addMultiOptions($makes_prepared);
 		$this->addElement($make);
 		
+		$select = $db->select()
+	             ->from('bg_model')
+	             ->where('state = ?', 'published');
+        $result = $db->query($select);
+        $models = $result->fetchAll();
+	       
+		if (count($models)!=0){
+				$models_prepared[0]= "Select or Leave blank";
+				foreach ($models as $mod){
+						$models_prepared[$mod[id]]= $mod[name];
+				}
+		}
+		
 		$model = $this->createElement('select','model')
-		->setLabel('Model: ')
-		->addMultiOptions(array(
-		'0' => 'Select or Leave blank',
-		));
+		->setLabel('Model')
+		->addMultiOptions($models_prepared);
 		
 		$this->addElement($model);
 		
@@ -48,59 +72,57 @@ class Application_Form_Search extends Zend_Form
 		$this->addElement($submit1);
 		
 		// Code for Custom Decorators here ...
+	
 		$enterid->setDecorators(array(
 		'ViewHelper',
 		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag' =>'td','class' =>'element')),
-		array('Label',array('tag'=>'td', 'style' => 'font-family:arial; font-weight:bold; font-size:14px')),
+		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; width:150px; padding-top:5px;')),
+		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;')),
 		
 		));
+		
+		$submit->setDecorators(array(
+		'ViewHelper',
+		array(array('data'=>'HtmlTag'),array('tag'=>'div','class'=>'element' , 'style' => 'float:left;padding-top: 20px; padding-left:8px;')),
+		
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;')),
+		));
+		
 		
 		$year->setDecorators(array(
 		'ViewHelper',
 		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag'=>'td', 'class'=>'element')),
-		array('Label', array('tag'=>'td', 'style' => 'font-family:arial; font-weight:bold; font-size:14px')),
+		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
+		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
 		
 		));
 		
 		$make->setDecorators(array(
 		'ViewHelper',
 		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag'=>'td', 'class'=>'element')),
-		array('Label', array('tag'=>'td', 'style' => 'font-family:arial; font-weight:bold; font-size:14px')),
+		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
+		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
 		
 		));
 		
 		$model->setDecorators(array(
 		'ViewHelper',
 		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag'=>'td', 'class'=>'element')),
-		array('Label', array('tag'=>'td', 'style' => 'font-family:arial; font-weight:bold; font-size:14px')),
+		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
+		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
 		
-		));
-		
-		$submit->setDecorators(array(
-		'ViewHelper',
-		array(array('data'=>'HtmlTag'),array('tag'=>'td','class'=>'element')),
 		));
 		
 		$submit1->setDecorators(array(
 		'ViewHelper',
-		array(array('data'=>'HtmlTag'),array('tag'=>'td','class'=>'element')),
+		array(array('data'=>'HtmlTag'),array('tag'=>'div','class'=>'element' , 'style' => 'float:left;padding-top: 20px; padding-left:8px;')),
+		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;')),
 		));
 		
-		$this->setDecorators(array(
-		'FormElements',
-		array('HtmlTag',array('tag'=>'tr')),
-		'Form',
-		));
-		
-		$this->setDecorators(array(
-		'FormElements',
-		array('HtmlTag',array('tag'=>'table')),
-		'Form',
-		));
 		
 	}
 	    
