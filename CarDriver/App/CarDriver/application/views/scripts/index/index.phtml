@@ -39,7 +39,7 @@
 }
 
 #masthead {
-    background: url("images/cdlogo.png") no-repeat scroll 0 0 transparent;
+    background: url("./Cardriver/public/images/cdlogo.png") no-repeat scroll 0 0 transparent;
     margin: 17px 16px 17px 0;
     padding-bottom: 10px;
 }
@@ -91,11 +91,15 @@ A:hover {text-decoration: none;}
 	<div style="width:1050px;">
 	<?php echo $this->form?>
 	</div>
+	<div style="padding-top:20px; padding-left:25px;font-weight:bold; font-family:arial; float:left;">-or-</div>
+	<div style="width:1050px;">
+	<?php echo $this->formright?>
+	</div>
 	<div style="float:left">
 	&nbsp;<br><br></br>
 	</div>
 	
-	<table  cellpadding="5" cellspacing="0">
+	<table  cellpadding="5" cellspacing="0" style="font-size:12px; width:100%">
 		<tr bgcolor="#9E9A9A">
 			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">id</td>
 			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_published</td>
@@ -113,7 +117,7 @@ A:hover {text-decoration: none;}
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_published']))echo $row['rt_published']; else echo "-";?></td>
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model_year']))echo $row['rt_model_year']; else echo "-";?></td>
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_controlled_make']))echo $row['rt_controlled_make']; else echo "-";?></td>
-				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model']))echo $row['rt_model']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A;"><?php if(!empty($row['rt_model']))echo $row['rt_model']; else echo "-";?></td>
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_make_id']))echo $row['bg_make_id']; else echo "-";?></td>
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_model_id']))echo $row['bg_make_id']; else echo "-";?></td>
 				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
