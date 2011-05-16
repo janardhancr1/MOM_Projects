@@ -97,29 +97,30 @@ A:hover {text-decoration: none;}
 	
 	<table  cellpadding="5" cellspacing="0">
 		<tr bgcolor="#9E9A9A">
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">id</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_published</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_model_year</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_controlled_make</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_model</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_make_id</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_model_id</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_submodel_id</td>
-			<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A; border-right:1px solid #9E9A9A">bg_year_id</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">id</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_published</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_model_year</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_controlled_make</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">rt_model</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_make_id</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_model_id</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">bg_submodel_id</td>
+			<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A; border-right:1px solid #9E9A9A">bg_year_id</td>
 		</tr>
 		<?php foreach ($this->paginator as $row): ?>
 			<tr>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php echo $row['id']?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_published']))echo $row['rt_published']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model_year']))echo $row['rt_model_year']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_controlled_make']))echo $row['rt_controlled_make']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model']))echo $row['rt_model']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_make_id']))echo $row['bg_make_id']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_model_id']))echo $row['bg_make_id']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
-				<td style="border-top:1px solid #9E9A9A; border-left:1px solid #9E9A9A; border-right:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php echo $row['id']?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_published']))echo $row['rt_published']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model_year']))echo $row['rt_model_year']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_controlled_make']))echo $row['rt_controlled_make']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['rt_model']))echo $row['rt_model']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_make_id']))echo $row['bg_make_id']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_model_id']))echo $row['bg_make_id']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A; border-right:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
 				</tr>
 		<?php endforeach; ?>
 	</table>
-	
+
+<?php echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml'); ?>
 </div>
