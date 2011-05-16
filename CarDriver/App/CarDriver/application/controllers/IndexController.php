@@ -18,7 +18,6 @@ class IndexController extends Zend_Controller_Action
          
          $select = $db->select()
              ->from('rt_results_main');
-        //$result = $db->query($select)->fetchAll();
         $result = Zend_Paginator::factory($db->query($select)->fetchAll());
         $this->view->paginator = $result;
    		$this->view->paginator->setItemCountPerPage(25);
