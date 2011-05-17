@@ -1,12 +1,23 @@
 <?php
 class Application_Form_SearchRight extends Application_Form_MainForm
 {
+	public $makeid;
+ 
+  	public function __construct($id) 
+  	{ 
+     	$this->makeid = $id;
+     	parent::__construct();
+     
+  	} 
+  	
 	public function init()
 	{
 		$db = $this->getDbConnection();
+		
 		$select = $db->select()
 	             ->from('bg_year')
-	             ->where('state = ?', 'published');
+	             ->where('state = ?', 'published')
+	             ->order('name DESC');
         $years = $db->query($select)->fetchAll();
 	       
 		if (count($years)!=0){
@@ -22,34 +33,46 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$this->addElement($year);
 		
 		$select = $db->select()
-	             ->from('bg_make')
-	             ->where('state = ?', 'published');
+	             ->from(array('bg'=>'bg_make'),array('bg.id As makeid', 'bg.name As makename'))
+	             ->joinInner(array('rt'=>'rt_results_main'),'bg.id=rt.bg_make_id')
+	             ->where('bg.state = ?', 'published')
+	             ->group('bg.name')
+	             ->order('bg.name ASC');
+	             
         $makes = $db->query($select)->fetchAll();
 	       
 		if (count($makes)!=0){
 				$makes_prepared[0]= "Select or Leave blank";
 				foreach ($makes as $mak){
-						$makes_prepared[$mak['id']]= $mak['name'];
+						$makes_prepared[$mak['makeid']]= $mak['makename'];
 				}
 		}
 		
 		$make = $this->createElement('select','make')
 		->setLabel('Make')
-		->addMultiOptions($makes_prepared);
+		->addMultiOptions($makes_prepared)
+		->setAttrib('onChange', 'this.form.submit();');
 		$this->addElement($make);
-		
-		$select = $db->select()
-	             ->from('bg_model')
-	             ->where('state = ?', 'published');
-        $result = $db->query($select);
-        $models = $result->fetchAll();
-	       
-		if (count($models)!=0){
-				$models_prepared[0]= "Select or Leave blank";
-				foreach ($models as $mod){
-						$models_prepared[$mod['id']]= $mod['name'];
-				}
-		}
+	             
+	    if($this->makeid != 0)
+	    {		
+    		$select = $db->select()
+             ->from('bg_model')
+             ->where('state = ?', 'published')
+             ->where('make_id = ?', $this->makeid)
+             ->order('name ASC');
+	        $result = $db->query($select);
+	        $models = $result->fetchAll();
+		       
+			if (count($models)!=0){
+					$models_prepared[0]= "Select or Leave blank";
+					foreach ($models as $mod){
+							$models_prepared[$mod['id']]= $mod['name'];
+					}
+			}
+	    }
+	    else
+	     $models_prepared[0]= "Select or Leave blank";
 		
 		$model = $this->createElement('select','model')
 		->setLabel('Model')
