@@ -12,7 +12,13 @@ class Application_Form_SearchRight extends Application_Form_MainForm
   	
 	public function init()
 	{
-		$db = $this->getDbConnection();
+		$this
+		->setAttribs(array(
+        'id' => 'search_form',
+        'class' => 'global_search_form',
+		));
+		
+		$db = Zend_Db_Table::getDefaultAdapter(); 
 		
 		$select = $db->select()
 	             ->from('bg_year')
@@ -83,40 +89,20 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$submit1 = $this->createElement('submit','submit1',array('label'=>'GO'));
 		$this->addElement($submit1);
 		
-		// Code for Custom Decorators here ...
-		
-		$year->setDecorators(array(
-		'ViewHelper',
-		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
-		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
-		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
-		
+		$this->setElementDecorators(array(
+			'ViewHelper',
+			'Errors',
+			array(array('data'=>'HtmlTag'),array('tag'=>'div', 'class'=>'form_element')),
+			array('Label',array('tag'=>'div')),
+			array(array('row'=>'HtmlTag'),array('tag'=>'div', 'class'=>'form_wrapper'))
 		));
 		
-		$make->setDecorators(array(
-		'ViewHelper',
-		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
-		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
-		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
-		
+		$this->setDecorators(array(
+			'FormElements',
+			array(array('data'=>'HtmlTag'),array('tag'=>'div')),
+			'Form'
 		));
-		
-		$model->setDecorators(array(
-		'ViewHelper',
-		'Errors',
-		array(array('data'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left; padding-top:5px;')),
-		array('Label',array('tag'=>'div', 'style' => 'font-family:arial; font-weight:bold; font-size:14px;')),
-		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;padding-left:50px; ')),
-		
-		));
-		
-		$submit1->setDecorators(array(
-		'ViewHelper',
-		array(array('data'=>'HtmlTag'),array('tag'=>'div','class'=>'element' , 'style' => 'float:left;padding-top: 20px; padding-left:8px;')),
-		array(array('row'=>'HtmlTag'), array('tag' =>'div','class' =>'element', 'style' => 'float:left;')),
-		));
+
 	}
 }
 ?>

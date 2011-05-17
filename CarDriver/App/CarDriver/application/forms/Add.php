@@ -3,7 +3,7 @@ class Application_Form_Add extends Application_Form_MainForm
 {
 	public function init()
 	{
-		$db = $this->getDbConnection();
+		$db = Zend_Db_Table::getDefaultAdapter(); 
 		$enterid = $this->createElement('text','id');
 		$enterid->setLabel('id');
 		$enterid->setAttrib('size','20');

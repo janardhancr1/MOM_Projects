@@ -3,7 +3,12 @@ class Application_Form_Search extends Application_Form_MainForm
 {
 	public function init()
 	{
-		$db = $this->getDbConnection();
+		$this
+		->setAttribs(array(
+        'id' => 'search_form',
+        'class' => 'global_search_form',
+		));
+		$db = Zend_Db_Table::getDefaultAdapter(); 
 		$enterid = $this->createElement('text','id');
 		$enterid->setLabel('Enter ID');
 		$enterid->setAttrib('size','20');

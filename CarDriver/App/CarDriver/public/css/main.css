@@ -1,69 +1,157 @@
-#document {
+#content {
     margin: 0 auto;
-    min-width: 990px;
-    position: relative;
+    min-width: 1000px;
     text-align: left;
-    width: 990px;
+    width: 1000px;
     font-family:arial;
 }
 
-#pallet {
-    margin: 0;
-}
-
-#pallet {
-    height: 110px;
-    margin: 0 auto 0px;
-    width: 990px;
-}
-
-#header {
-    margin-top: 10px;
-}
-
-#header {
-    margin: 0 0 1.4em;
-}
-
-#masthead
+#top
 {
-    float: left;
-    color: red;
+	width: 1000px;
+	float:left;
 }
 
-#masthead, #masthead a:link, #masthead a:active, #masthead a:visited {
+#logo {
+    background: url("/app/public/images/cdlogo.png") no-repeat scroll 0 0 transparent;
+    margin: 10px 10px 10px 0;
+    padding-bottom: 10px;
     height: 56px;
     width: 246px;
+    float: left;
 }
 
-#masthead {
-    background: url("images/cdlogo.png") no-repeat scroll 0 0 transparent;
-    margin: 17px 16px 17px 0;
-    padding-bottom: 10px;
-}
-.headleft{
+.headTitle{
 	float:left;
 	font-weight:bold;
 	font-size:18px;
 	text-align:center;
-	padding-top:34px;
+	padding-top:25px;
 	padding-left:0px;
 	font-family:arial;
 }
-.headright{
-	font-weight:bold;
-	font-size:12px;
+
+.headRight
+{
+	float: right;
+	text-align: right;
 	padding-top:20px;
-	font-family:arial;
-	color:gray;
 }
-.title{
+
+.headLink
+{
+	color: gray;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+#middle
+{
+	width: 1000px;
+	float:left;
+	padding-top: 20px;
+}
+
+.middletitle{
 	font-weight:bold;
 	font-size:15px;
 	padding-top:5px;
+	padding-bottom:15px;
 	font-family:arial;
 }
+
+.middleLeft
+{
+	height : 50px;
+	width: 220px;
+	float:left;
+}
+
+.middleSeperator
+{
+	padding:10px; 
+	font-weight:bold; 
+	font-family:arial; 
+	float:left;
+	width: 50px;
+}
+
+.middleRight
+{
+	width: 710px;
+	height:75px;
+	float:left;
+}
+
+.form_wrapper
+{
+	width:175px;
+	float:left;
+}
+
+.form_wrapper div label
+{
+	font-size: 14px;
+	font-weight:bold; 
+}
+
+.form_element
+{
+	padding-top: 5px;
+}
+
+#submit1
+{
+	margin-left:10px;
+	padding-top:0px;
+}
+
+#submit1-label
+{
+	padding: 6px;
+}
+
+#submit1-label .optional
+{
+	display:none;
+}
+
+.results
+{
+	height: 500px;
+	width: 1000px;
+	float:left;
+}
+
+#bottom
+{
+	width: 1000px;
+	float:left;
+}
+
+
+
+
 A:link {text-decoration: underline; color: #014B96;}
 A:visited {text-decoration: underline; color: #014B96;}
 A:active {text-decoration: none; color: #014B96;}
 A:hover {text-decoration: none;}
+
+.dataTable
+{
+	font-size:12px; 
+	width:100%;
+}
+
+.dataTable td
+{
+	border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A
+}
+
+
+
+
+
+

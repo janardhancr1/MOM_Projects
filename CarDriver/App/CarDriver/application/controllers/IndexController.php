@@ -17,7 +17,7 @@ class IndexController extends Zend_Controller_Action
          $this->view->formright = $formright;
          
          $conn = new Application_Form_MainForm();
-         $db = $conn->getDbConnection();
+         $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
              ->from('rt_results_main');
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))

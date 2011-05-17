@@ -12,7 +12,7 @@ class Application_Form_MainForm extends Zend_Form
           'host'     => 'localhost',
           'username' => 'root',
           'password' => 'kamflex',
-          'dbname'   => 'cardriver'
+          'dbname'   => 'perfdata'
         ));
         
         return $db;
@@ -35,5 +35,25 @@ class Application_Form_MainForm extends Zend_Form
       ->addDecorator('Label', array('tag' => 'div', 'tagOptions' => array('id' => $fqName . '-label', 'class' => 'form-label')))
       ->addDecorator('HtmlTag2', array('tag' => 'div', 'id'  => $fqName . '-wrapper', 'class' => 'form-wrapper'));
   }
+  
+    /**
+     * Load the default decorators
+     *
+     * @return void
+     */
+    public function loadDefaultDecorators()
+    {
+        if ($this->loadDefaultDecoratorsIsDisabled()) {
+            return;
+        }
+ 
+        $decorators = $this->getDecorators();
+        if (empty($decorators)) {
+            $this->addDecorator('FormElements')
+                 ->addDecorator('Form')
+                 ;
+        }
+    }
+  
 }
 ?>
