@@ -13,7 +13,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
 		$select = $db->select()
@@ -37,7 +37,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
@@ -62,7 +62,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		
 		));
 		
@@ -73,7 +73,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
@@ -98,7 +98,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
 		$rt_issue = new Zend_Form_Element_Text('rt_issue');
@@ -108,7 +108,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
@@ -121,7 +121,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
 		$rt_issue_year = new Zend_Form_Element_Text('rt_issue_year');
@@ -131,7 +131,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
@@ -156,7 +156,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
 		$rt_percent_on_year = new Zend_Form_Element_Text('rt_percent_on_year');
@@ -166,7 +166,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td', 'style' => 'text-align:right;')),
+		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
