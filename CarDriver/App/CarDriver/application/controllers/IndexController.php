@@ -13,7 +13,7 @@ class IndexController extends Zend_Controller_Action
          $form = new Application_Form_Search();
          $this->view->form = $form;
          
-         $formright = new Application_Form_SearchRight();
+         $formright = new Application_Form_SearchRight($this->_getParam('make'));
          $this->view->formright = $formright;
          
          $conn = new Application_Form_MainForm();
@@ -54,6 +54,13 @@ class IndexController extends Zend_Controller_Action
         $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
         $this->view->paginator->setPageRange(5);
        
+    }
+    
+    public function addAction()
+    {
+    	 $form = new Application_Form_Add();
+    	 $this->view->form = $form;
+    	
     }
     
 
