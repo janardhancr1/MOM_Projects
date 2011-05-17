@@ -1,17 +1,4 @@
-<link href="/app/public/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
-
-<div id="content">
-	<div id="top">
-		<div id="logo">
-		</div>
-		<div class="headTitle">Adminstration Interface</div>
-		<div class="headRight">
-				<div class="headLink">User: <a href="#">Admin</a>&nbsp;|&nbsp;<a href="#">Signout</a></div>
-				<div class="headLink"><a href="/app/public/index/">Find Vehicle</a>&nbsp;|&nbsp;<a href="/app/public/index/add/">Add Vehicle</a>
-				&nbsp;|&nbsp;<a href="#">Manage Controlled List</a>
-				</div>
-			</div>
-	</div>
+<?php include 'header.phtml' ?> 
 	<div id="middle">
 		<div class="middletitle">Find Vehicle</div>
 		<div class="middleLeft">
@@ -53,8 +40,4 @@
 		<?php echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml'); ?>
 		</div>
 	</div>
-	<div id="bottom">
-	</div>
-	
-	
-</div>
+<?php include 'footer.phtml' ?> 	
