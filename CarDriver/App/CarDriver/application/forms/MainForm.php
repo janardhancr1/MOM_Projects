@@ -12,7 +12,7 @@ class Application_Form_MainForm extends Zend_Form
           'host'     => 'localhost',
           'username' => 'root',
           'password' => 'kamflex',
-          'dbname'   => 'perfdata'
+          'dbname'   => 'cardriver'
         ));
         
         return $db;
