@@ -3,6 +3,8 @@
 class IndexController extends Zend_Controller_Action
 {
 
+	public $form_values;
+	
     public function init()
     {
       
@@ -58,11 +60,38 @@ class IndexController extends Zend_Controller_Action
     
     public function addAction()
     {
+    	
     	 $form = new Application_Form_Add();
     	 $this->view->form = $form;
+    	 
+    	 if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+    	 {
+    	 	$form_values = $this->view->form->getValues();
+    	 	$this->_redirect("index/add1/");
+    	 	
+    	 }
     	
     }
     
+    public function add1Action()
+    {
+    	$form = new Application_Form_Add1();
+    	$this->view->form = $form;
+    	
+    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+    	 {
+    	 	$form_values = $this->view->form->getValues();
+    	 	$this->_redirect("index/add2/");
+    	 	
+    	 }
+    	
+    }
+    
+    public function add2Action()
+    {
+    	$form = new Application_Form_Add2();
+    	$this->view->form = $form;
+    }
 
 
 }
