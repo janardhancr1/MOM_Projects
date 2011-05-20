@@ -1,9 +1,8 @@
 <?php
 class Application_Form_Add2 extends Application_Form_MainForm
 {
-public function init()
+	public function init()
 	{
-		
 		$rt3_final_drive_ratio = new Zend_Form_Element_Text('rt3_final_drive_ratio');
 		$rt3_final_drive_ratio->setLabel('rt3_final_drive_ratio');
 		
@@ -430,16 +429,25 @@ public function init()
 		$rt3_valve_gear->setDecorators(array(
 		'ViewHelper',
 		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
+		array(array('data'=>'HtmlTag'), array('tag' => 'td','colspan' => 2)),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$submit1 = new Zend_Form_Element_Submit('submit1','Next');
+		$submit1 = new Zend_Form_Element_Submit('submit1','Review');
 		
 		$submit1->setDecorators(array(
 		'ViewHelper',
 		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 2, 'align' => 'right')),
+		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 3,'align' => 'right')),
+		));
+		
+		$submit2 = new Zend_Form_Element_Submit('submit2','Cancel');
+		
+		$submit2->setDecorators(array(
+		'ViewHelper',
+		'Description',
+		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 4, 'align' => 'left')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
@@ -485,9 +493,9 @@ public function init()
 		$rt3_trunk,
 		$rt3_200mph,
 		$rt3_valve_gear,
-		$submit1
+		$submit1,
+		$submit2
 		));
-		
 		
 		
 		$this->setDecorators(array(

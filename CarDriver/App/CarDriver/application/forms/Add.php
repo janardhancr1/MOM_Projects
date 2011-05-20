@@ -62,7 +62,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_make_id = new Zend_Form_Element_Select('bg_make_id',array('style'=>'width:150px;'));
 		$bg_make_id->setLabel('bg_make_id')
-					->addMultiOptions($bg_make_ids_prepared);;
+					->addMultiOptions($bg_make_ids_prepared);
 	
 		$bg_make_id->setDecorators(array(
 		'ViewHelper',
@@ -165,10 +165,10 @@ class Application_Form_Add extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt_percent_on_year = new Zend_Form_Element_Text('rt_percent_on_year');
-		$rt_percent_on_year->setLabel('rt_percent_on_year');
+		$rt_percent_on_rear = new Zend_Form_Element_Text('rt_percent_on_rear');
+		$rt_percent_on_rear->setLabel('rt_percent_on_rear');
 	
-		$rt_percent_on_year->setDecorators(array(
+		$rt_percent_on_rear->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
@@ -538,7 +538,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$bg_submodel_id,
 		$rt_issue_year,
 		$bg_year_id,
-		$rt_percent_on_year,
+		$rt_percent_on_rear,
 		$bg_controlled_make_id,
 		$rt_percent_on_front,
 		$bg_controlled_model_id,
