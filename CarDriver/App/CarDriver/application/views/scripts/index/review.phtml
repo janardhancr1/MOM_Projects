@@ -1,0 +1,30 @@
+<?php include 'header.phtml' ?> 
+<div id="middle">
+		<div class="middletitle">Review Changes</div>
+		<div class="middletitle">id <input type="text" id="text" value=<?php echo $this->id ?> readonly = "readonly" ></div>
+		<div class="middletitle">Please review the changes you've made. When finished reviewing, choose Save below.</div>
+		<div>
+		<table cellpadding="0" cellspacing="0" width="110%">
+			<tr bgcolor="#9E9A9A" style="color:white; font-size:13px; font-weight:bold;">
+			<td align="center" width="33%">&nbsp;</td>
+				<td align="center">Before</td>
+				<td align="center" style="border-right:1px solid #9E9A9A;">After</td>
+			</tr>
+		</table>
+		<!--  <table width="100%" cellpadding="0" cellspacing="0" >
+			<tr>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">asdad</td>
+				<td style="border-bottom:1px solid #9E9A9A">asdad</td>
+				<td style="border-bottom:1px solid #9E9A9A; border-right:1px solid #9E9A9A">asdad</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A">asdad</td>
+				<td style="border-bottom:1px solid #9E9A9A">asdad</td>
+				<td style="border-bottom:1px solid #9E9A9A; border-right:1px solid #9E9A9A">asdad</td>
+			</tr>
+		</table> -->
+		<?php echo $this->form?>
+		</div>
+	
+</div>
+<?php include 'footer.phtml' ?> 
