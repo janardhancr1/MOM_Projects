@@ -631,7 +631,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			->setValue($form2_Values['rt2_turning_cir']);
 			$this->addElement($rt2_turning_cir);
 		}
-		if(!empty($form2_Values['rt2_turning_cir']))
+		if(!empty($form2_Values['rt2_30_mph']))
 		{
 			$rt2_30_mph = new Zend_Form_Element_Text('rt2_30_mph');
 			$rt2_30_mph->setLabel('rt2_30_mph')
