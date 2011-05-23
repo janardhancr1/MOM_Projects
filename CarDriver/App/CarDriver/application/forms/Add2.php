@@ -442,7 +442,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 3,'align' => 'right')),
 		));
 		
-		$submit2 = new Zend_Form_Element_Submit('submit2','Cancel');
+		$submit2 = new Zend_Form_Element_Submit('submit2','Cancel',array('onclick' => 'history.go(-1);return false;'));
 		
 		$submit2->setDecorators(array(
 		'ViewHelper',
