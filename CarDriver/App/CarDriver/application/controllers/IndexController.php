@@ -314,6 +314,124 @@ class IndexController extends Zend_Controller_Action
 			
 	    }
     }
+    
+    public function editAction()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter();
+    	
+    	$select = $db->select()
+            ->from('rt_results_main')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_main = $db->query($select)->fetchAll();
+        
+        // Prepare form
+    	$form = new Application_Form_Edit();
+    	
+    	// Populate form
+    	$form->populate($results_main[0]);
+    	
+    	$this->view->form = $form;
+    	
+     	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+    	{
+    	 	$form_values = $this->view->form->getValues();
+    	 	
+    	    require_once('Zend/Session.php');
+    	 	$session1 = new Zend_Session_Namespace('form1');
+    	    $session1->form1 = $form_values;
+    	    
+    	 	$this->_redirect("index/edit1?id=".$this->_getParam('id'));
+    	 	
+    	}
+        
+    }
+    
+    public function edit1Action()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter();
+    	
+    	$select = $db->select()
+            ->from('rt_results_main')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_main = $db->query($select)->fetchAll();
+        
+    	$select = $db->select()
+            ->from('rt_results_level_2')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_level_2 = $db->query($select)->fetchAll();
+        
+        $session1 = new Zend_Session_Namespace('form1');
+        $form1_Values = $session1->form1;
+        
+        $results2 = array_merge($results_main[0], $results_level_2[0]);
+        
+        // Prepare form
+    	$form = new Application_Form_Edit1();
+    	
+    	$form->populate($results2);
+    	
+    	$this->view->form = $form;
+    	
+    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+    	{
+    	 	$form_values = $this->view->form->getValues();
+    	 	
+    	    require_once('Zend/Session.php');
+    	 	$session2 = new Zend_Session_Namespace('form2');
+    	    $session2->form1 = $form_values;
+    	    
+    	 	$this->_redirect("index/edit2?id=".$this->_getParam('id'));
+    	 	
+    	}
+    	
+    }
+    
+    public function edit2Action()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter();
+    	
+    	$select = $db->select()
+            ->from('rt_results_level_2')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_level_2 = $db->query($select)->fetchAll();
+        
+    	$select = $db->select()
+            ->from('rt_results_level_3')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_level_3 = $db->query($select)->fetchAll();
+        
+        $session2 = new Zend_Session_Namespace('form2');
+        $form2_Values = $session2->form1;
+        
+        $results3 = array_merge($results_level_2[0], $results_level_3[0]);
+        
+        // Prepare form
+    	$form = new Application_Form_Edit2();
+    	
+    	$form->populate($results3);
+    	
+    	$this->view->form = $form;
+    	
+    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+    	 {
+    	 	$form_values = $this->view->form->getValues();
+    	 	
+    	 	require_once('Zend/Session.php');
+    	 	$session3 = new Zend_Session_Namespace('form3');
+    	 	$session3->form3 = $form_values;
+    	 	
+    	 	$this->_redirect("index/review/");
+    	 	
+    	 }
+    	
+    }
+    
+    
 
 
 }
