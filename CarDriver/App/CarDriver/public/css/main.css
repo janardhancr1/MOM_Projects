@@ -150,6 +150,18 @@ A:hover {text-decoration: none;}
 	border-bottom:1px solid #9E9A9A; border-left:1px solid #9E9A9A
 }
 
+.reviewTable
+{
+	font-weight:bold; font-family:arial; font-size:14px;border:1px solid #9E9A9A;
+	
+}
+.reviewTable td
+{
+	border-bottom:1px solid #9E9A9A; 
+	border-left:1px solid #9E9A9A;
+	border-right:1px solid #9E9A9A;
+	width:33%;
+}
 
 
 
