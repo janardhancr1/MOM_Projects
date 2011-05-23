@@ -341,7 +341,7 @@ class IndexController extends Zend_Controller_Action
     	 	$session1 = new Zend_Session_Namespace('form1');
     	    $session1->form1 = $form_values;
     	    
-    	 	$this->_redirect("index/edit1?id=".$this->_getParam('id'));
+    	 	$this->_redirect("index/edit1/id/".$this->_getParam('id'));
     	 	
     	}
         
@@ -381,9 +381,9 @@ class IndexController extends Zend_Controller_Action
     	 	
     	    require_once('Zend/Session.php');
     	 	$session2 = new Zend_Session_Namespace('form2');
-    	    $session2->form1 = $form_values;
+    	    $session2->form2 = $form_values;
     	    
-    	 	$this->_redirect("index/edit2?id=".$this->_getParam('id'));
+    	 	$this->_redirect("index/edit2/id/".$this->_getParam('id'));
     	 	
     	}
     	
