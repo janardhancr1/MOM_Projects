@@ -392,25 +392,25 @@ class Application_Form_Review extends Application_Form_MainForm
 			->setValue($form1_Values['rt_peak_hp_notes']);
 			$this->addElement($rt_peak_hp_notes);
 		}
-		if(!empty($form1_Values['rt_peak_torque']))
+		if(!empty($form2_Values['rt_peak_torque']))
 		{
 			$rt_peak_torque = new Zend_Form_Element_Text('rt_peak_torque');
 			$rt_peak_torque->setLabel('rt_peak_torque')
-			->setValue($form1_Values['rt_peak_torque']);
+			->setValue($form2_Values['rt_peak_torque']);
 			$this->addElement($rt_peak_torque);
 		}
-		if(!empty($form1_Values['rt2_anti_lock']))
+		if(!empty($form2_Values['rt2_anti_lock']))
 		{
 			$rt2_anti_lock = new Zend_Form_Element_Text('rt2_anti_lock');
 			$rt2_anti_lock->setLabel('rt2_anti_lock')
 			->setValue($form1_Values['rt2_anti_lock']);
 			$this->addElement($rt2_anti_lock);
 		}
-		if(!empty($form1_Values['rt_peak_torque_notes']))
+		if(!empty($form2_Values['rt_peak_torque_notes']))
 		{
 			$rt_peak_torque_notes = new Zend_Form_Element_Text('rt_peak_torque_notes');
 			$rt_peak_torque_notes->setLabel('rt_peak_torque_notes')
-			->setValue($form1_Values['rt_peak_torque_notes']);
+			->setValue($form2_Values['rt_peak_torque_notes']);
 			$this->addElement($rt_peak_torque_notes);
 		}
 		if(!empty($form2_Values['rt2_epa_city_fe']))
@@ -652,11 +652,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			->setValue($form2_Values['rt2_50-70TG']);
 			$this->addElement($rt2_50_70TG);
 		}
-		if(!empty($form3_Values['rt3_boost_psi']))
+		if(!empty($form2_Values['rt3_boost_psi']))
 		{
 			$rt3_boost_psi = new Zend_Form_Element_Text('rt3_boost_psi');
 			$rt3_boost_psi->setLabel('rt3_boost_psi')
-			->setValue($form3_Values['rt3_boost_psi']);
+			->setValue($form2_Values['rt3_boost_psi']);
 			$this->addElement($rt3_boost_psi);
 		}
 		if(!empty($form2_Values['rt2_50_mph']))
@@ -667,11 +667,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			$this->addElement($rt2_50_mph);
 			
 		}
-		if(!empty($form3_Values['rt3_bore_mm']))
+		if(!empty($form2_Values['rt3_bore_mm']))
 		{
 			$rt3_bore_mm = new Zend_Form_Element_Text('rt3_bore_mm');
 			$rt3_bore_mm->setLabel('rt3_bore_mm')
-			->setValue($form3_Values['rt3_bore_mm']);
+			->setValue($form2_Values['rt3_bore_mm']);
 			$this->addElement($rt3_bore_mm);
 		}
 		if(!empty($form2_Values['rt2_70cr']))
@@ -681,11 +681,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			->setValue($form2_Values['rt2_70cr']);
 			$this->addElement($rt2_70cr);
 		}
-		if(!empty($form3_Values['rt3_cd']))
+		if(!empty($form2_Values['rt3_cd']))
 		{
 			$rt3_cd = new Zend_Form_Element_Text('rt3_cd');
 			$rt3_cd->setLabel('rt3_cd')
-			->setValue($form3_Values['rt3_cd']);
+			->setValue($form2_Values['rt3_cd']);
 			$this->addElement($rt3_cd);
 		}
 		if(!empty($form2_Values['rt2_70_mph']))
@@ -695,11 +695,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			->setValue($form2_Values['rt2_70_mph']);
 			$this->addElement($rt2_70_mph);
 		}
-		if(!empty($form3_Values['rt3_comp_ratio']))
+		if(!empty($form2_Values['rt3_comp_ratio']))
 		{
 			$rt3_comp_ratio = new Zend_Form_Element_Text('rt3_comp_ratio');
 			$rt3_comp_ratio->setLabel('rt3_comp_ratio')
-			->setValue($form3_Values['rt3_comp_ratio']);
+			->setValue($form2_Values['rt3_comp_ratio']);
 			$this->addElement($rt3_comp_ratio);
 		}
 		if(!empty($form2_Values['rt2_controlled_airbags']))
@@ -712,11 +712,11 @@ class Application_Form_Review extends Application_Form_MainForm
 						->setValue($form2_Values['rt2_controlled_airbags']);
 			$this->addElement($rt2_controlled_airbags);
 		}
-		if(!empty($form3_Values['rt3_et_factor']))
+		if(!empty($form2_Values['rt3_et_factor']))
 		{
 			$rt3_et_factor = new Zend_Form_Element_Text('rt3_et_factor');
 			$rt3_et_factor->setLabel('rt3_et_factor')
-			->setValue($form3_Values['rt3_et_factor']);
+			->setValue($form2_Values['rt3_et_factor']);
 			$this->addElement($rt3_et_factor);
 		}
 		if(!empty($form3_Values['rt3_final_drive_ratio']))
