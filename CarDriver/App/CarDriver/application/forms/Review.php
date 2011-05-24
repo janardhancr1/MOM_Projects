@@ -3272,24 +3272,26 @@ class Application_Form_Review extends Application_Form_MainForm
 		
 		
 		
-		$submit1 = new Zend_Form_Element_Submit('submit1','Save');
+		$save_changes = new Zend_Form_Element_Submit('save_changes');
+		$save_changes->setLabel('Save');
 		
-		$submit1->setDecorators(array(
+		$save_changes->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'right','border' => '0', 'colspan' => '2')),
 		));
 		
-		$submit2 = new Zend_Form_Element_Submit('submit2','Cancel');
+		$cancel = new Zend_Form_Element_Submit('cancel');
+		$cancel->setLabel('Cancel');
 		
-		$submit2->setDecorators(array(
+		$cancel->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'left','border' => '0')),
 		));
 		
-		$this->addElement($submit1);
-		$this->addElement($submit2);
+		$this->addElement($save_changes);
+		$this->addElement($cancel);
 		
 		$this->setDecorators(array(
 		'FormElements',

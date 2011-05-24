@@ -434,17 +434,19 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$submit1 = new Zend_Form_Element_Submit('submit1','Review');
+		$review_changes = new Zend_Form_Element_Submit('review_cganges');
+		$review_changes->setLabel('Review');
 		
-		$submit1->setDecorators(array(
+		$review_changes->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 3,'align' => 'right')),
 		));
 		
-		$submit2 = new Zend_Form_Element_Submit('submit2','Cancel',array('onclick' => 'history.go(-1);return false;'));
+		$cancel = new Zend_Form_Element_Submit('cancel');
+		$cancel->setLabel('Cancel');
 		
-		$submit2->setDecorators(array(
+		$cancel->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'colspan' => 4, 'align' => 'left')),
@@ -493,8 +495,8 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		$rt3_trunk,
 		$rt3_200mph,
 		$rt3_valve_gear,
-		$submit1,
-		$submit2
+		$review_changes,
+		$cancel
 		));
 		
 		
