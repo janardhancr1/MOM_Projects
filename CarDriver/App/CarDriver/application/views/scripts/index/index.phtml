@@ -27,13 +27,13 @@
 					<td> <a href="<?php echo $this->url(array(
               'action' => 'edit',
               'id' => $row['id']));?>"><?php echo $row['id']?></a></td>
-					<td><?php if(!empty($row['rt_published']))echo $row['rt_published']; else echo "-";?></td>
-					<td><?php if(!empty($row['rt_model_year']))echo $row['rt_model_year']; else echo "-";?></td>
-					<td><?php if(!empty($row['rt_controlled_make']))echo $row['rt_controlled_make']; else echo "-";?></td>
-					<td><?php if(!empty($row['rt_model']))echo $row['rt_model']; else echo "-";?></td>
-					<td><?php if(!empty($row['bg_make_id']))echo $row['bg_make_id']; else echo "-";?></td>
-					<td><?php if(!empty($row['bg_model_id']))echo $row['bg_make_id']; else echo "-";?></td>
-					<td><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['rt_published']) > 0)echo $row['rt_published']; else echo "-";?></td>
+					<td><?php if(strlen($row['rt_model_year']) > 0)echo $row['rt_model_year']; else echo "-";?></td>
+					<td><?php if(strlen($row['rt_controlled_make']) > 0)echo $row['rt_controlled_make']; else echo "-";?></td>
+					<td><?php if(strlen($row['rt_model']) > 0)echo $row['rt_model']; else echo "-";?></td>
+					<td><?php if(strlen($row['bg_make_id']) > 0)echo $row['bg_make_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['bg_model_id']) > 0)echo $row['bg_model_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['bg_submodel_id']) > 0)echo $row['bg_submodel_id']; else echo "-";?></td>
 					<td style="border-right:1px solid #9E9A9A"><?php if(!empty($row['bg_submodel_id']))echo $row['bg_submodel_id']; else echo "-";?></td>
 					</tr>
 			<?php endforeach; ?>
