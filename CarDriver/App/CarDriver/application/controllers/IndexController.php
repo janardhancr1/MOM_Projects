@@ -425,12 +425,22 @@ class IndexController extends Zend_Controller_Action
     	 	$session3 = new Zend_Session_Namespace('form3');
     	 	$session3->form3 = $form_values;
     	 	
-    	 	$this->_redirect("index/review/");
+    	 	$this->_redirect("index/reviewedit/id/".$this->_getParam('id'));
     	 	
     	 }
     	
     }
     
+    public function revieweditAction()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter(); 
+		
+		$this->view->id = $this->_getParam('id');
+		
+    	$review = new Application_Form_Review($this->_getParam('id'));
+    	
+    	$this->view->form = $review;
+    }
     
 
 
