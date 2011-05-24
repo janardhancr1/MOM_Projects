@@ -104,6 +104,11 @@ class IndexController extends Zend_Controller_Action
     	
     	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
     	 {
+    	 	if(isset($_POST['cancel']))
+    	 	{
+    	 		$this->_redirect("index/");
+    	 	}
+    	 		
     	 	$form_values = $this->view->form->getValues();
     	 	
     	 	require_once('Zend/Session.php');
@@ -129,6 +134,10 @@ class IndexController extends Zend_Controller_Action
 		$this->view->form = $review;
 		if ($this->getRequest()->isPost() && $review->isValid($this->getRequest()->getPost()))
 	    {
+	    	if(isset($_POST['cancel']))
+    	 	{
+    	 		$this->_redirect("index/");
+    	 	}
 			$rt_results_main = array();
 			$rt_results_level_2 = array();
 			$rt_results_level_3 = array();
@@ -419,6 +428,10 @@ class IndexController extends Zend_Controller_Action
     	
     	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
     	 {
+    	 	if(isset($_POST['cancel']))
+    	 	{
+    	 		$this->_redirect("index/");
+    	 	}
     	 	$form_values = $this->view->form->getValues();
     	 	
     	 	require_once('Zend/Session.php');
@@ -440,6 +453,17 @@ class IndexController extends Zend_Controller_Action
     	$review = new Application_Form_Review($this->_getParam('id'));
     	
     	$this->view->form = $review;
+    	
+    	if ($this->getRequest()->isPost() && $review->isValid($this->getRequest()->getPost()))
+    	{
+    		if(isset($_POST['cancel']))
+    	 	{
+    	 		$this->_redirect("index/");
+    	 	}
+    	 	
+    	 	echo "Need to Implement";
+    	 	exit;
+    	}
     }
     
 
