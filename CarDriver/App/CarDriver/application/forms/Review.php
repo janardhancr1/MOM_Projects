@@ -2594,14 +2594,14 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			$this->addElements(array($before_rt3_40mph,$rt3_40mph));
 		}
-		if(!empty($form3_Values['rt3_lt_repiar']))
+		if(!empty($form3_Values['rt3_lt_repair']))
 		{
-			$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repiar');
-			$rt3_lt_repiar->setValue($form3_Values['rt3_lt_repiar']);
+			$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
+			$rt3_lt_repiar->setValue($form3_Values['rt3_lt_repair']);
 			
-			$before_rt3_lt_repiar = new Zend_Form_Element_Text('before_rt3_lt_repiar',array("readonly" => "readonly"));
-			$before_rt3_lt_repiar->setLabel('rt3_lt_repiar')
-								 ->setValue($rt_results_level_3[0]['rt3_lt_repiar']);
+			$before_rt3_lt_repiar = new Zend_Form_Element_Text('before_rt3_lt_repair',array("readonly" => "readonly"));
+			$before_rt3_lt_repiar->setLabel('rt3_lt_repair')
+								 ->setValue($rt_results_level_3[0]['rt3_lt_repair']);
 			
 			$rt3_lt_repiar->setDecorators(array(
 			'ViewHelper',

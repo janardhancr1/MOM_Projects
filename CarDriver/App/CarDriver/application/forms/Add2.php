@@ -150,8 +150,8 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repiar');
-		$rt3_lt_repiar->setLabel('rt3_lt_repiar');
+		$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
+		$rt3_lt_repiar->setLabel('rt3_lt_repair');
 		
 		$rt3_lt_repiar->setDecorators(array(
 		'ViewHelper',
