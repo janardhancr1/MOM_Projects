@@ -17,8 +17,7 @@ class IndexController extends Zend_Controller_Action
          
          $formright = new Application_Form_SearchRight($this->_getParam('make'));
          $this->view->formright = $formright;
-         
-         $conn = new Application_Form_MainForm();
+        
          $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
              ->from('rt_results_main');
