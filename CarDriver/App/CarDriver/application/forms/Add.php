@@ -36,7 +36,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		}
 		
 		$rt_model_year = new Zend_Form_Element_Select('rt_model_year',array('style'=>'width:150px;'));
-		$rt_model_year->setLabel('rt_model_year')
+		$rt_model_year->setLabel('Year')
 					  ->addMultiOptions($rt_model_years_prepared);
 		
 		$rt_model_year->setDecorators(array(
@@ -61,7 +61,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		}
 		
 		$bg_make_id = new Zend_Form_Element_Select('bg_make_id',array('style'=>'width:150px;'));
-		$bg_make_id->setLabel('bg_make_id')
+		$bg_make_id->setLabel('Mapped BG Make ID')
 					->addMultiOptions($bg_make_ids_prepared);
 	
 		$bg_make_id->setDecorators(array(
@@ -73,7 +73,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_published = new Zend_Form_Element_Text('rt_published');
-		$rt_published->setLabel('rt_published');
+		$rt_published->setLabel('Publish Date');
 	
 		$rt_published->setDecorators(array(
 		'ViewHelper',
@@ -97,7 +97,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		}
 		
 		$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
-		$bg_model_id->setLabel('bg_model_id')
+		$bg_model_id->setLabel('Mapped BG Model ID')
 					->addMultiOptions($bg_model_ids_prepared);
 	
 		$bg_model_id->setDecorators(array(
@@ -108,7 +108,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_issue = new Zend_Form_Element_Text('rt_issue');
-		$rt_issue->setLabel('rt_issue');
+		$rt_issue->setLabel('Magazine Issue Month');
 	
 		$rt_issue->setDecorators(array(
 		'ViewHelper',
@@ -120,7 +120,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-		$bg_submodel_id->setLabel('bg_submodel_id')
+		$bg_submodel_id->setLabel('Mapped BG Submodel ID')
 					->addMultiOptions($bg_submodel_ids_prepared);
 	
 		$bg_submodel_id->setDecorators(array(
@@ -131,7 +131,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_issue_year = new Zend_Form_Element_Text('rt_issue_year');
-		$rt_issue_year->setLabel('rt_issue_year');
+		$rt_issue_year->setLabel('Magazine Issue Year');
 	
 		$rt_issue_year->setDecorators(array(
 		'ViewHelper',
@@ -155,7 +155,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		}
 		
 		$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
-		$bg_year_id->setLabel('bg_year_id')
+		$bg_year_id->setLabel('Mapped BG Year')
 					->addMultiOptions($bg_year_ids_prepared);
 	
 		$bg_year_id->setDecorators(array(
@@ -166,7 +166,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_percent_on_rear = new Zend_Form_Element_Text('rt_percent_on_rear');
-		$rt_percent_on_rear->setLabel('rt_percent_on_rear');
+		$rt_percent_on_rear->setLabel('Percent of Weight on Back Axle');
 	
 		$rt_percent_on_rear->setDecorators(array(
 		'ViewHelper',
@@ -178,7 +178,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_controlled_make_ids_prepared[0]= "Select from list";
 		$bg_controlled_make_id = new Zend_Form_Element_Select('bg_controlled_make_id',array('style'=>'width:150px;'));
-		$bg_controlled_make_id->setLabel('bg_controlled_make_id')
+		$bg_controlled_make_id->setLabel('Mapped BG Controlled Make')
 					->addMultiOptions($bg_controlled_make_ids_prepared);
 	
 		$bg_controlled_make_id->setDecorators(array(
@@ -189,7 +189,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_percent_on_front = new Zend_Form_Element_Text('rt_percent_on_front');
-		$rt_percent_on_front->setLabel('rt_percent_on_front');
+		$rt_percent_on_front->setLabel('Percent of Weight on Front Axle');
 	
 		$rt_percent_on_front->setDecorators(array(
 		'ViewHelper',
@@ -201,7 +201,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_controlled_model_ids_prepared[0]= "Select from list";
 		$bg_controlled_model_id = new Zend_Form_Element_Select('bg_controlled_model_id',array('style'=>'width:150px;'));
-		$bg_controlled_model_id->setLabel('bg_controlled_model_id')
+		$bg_controlled_model_id->setLabel('Mapped BG Controlled Model')
 					->addMultiOptions($bg_controlled_model_ids_prepared);
 	
 		$bg_controlled_model_id->setDecorators(array(
@@ -212,7 +212,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_60_mph = new Zend_Form_Element_Text('rt_60_mph');
-		$rt_60_mph->setLabel('rt_60_mph');
+		$rt_60_mph->setLabel('Acceleration to 60 MPH');
 	
 		$rt_60_mph->setDecorators(array(
 		'ViewHelper',
@@ -224,7 +224,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$rt_original_table_ids_prepared[0]= "Select from list";
 		$rt_original_table_id = new Zend_Form_Element_Select('rt_original_table_id',array('style'=>'width:150px;'));
-		$rt_original_table_id->setLabel('rt_original_table_id')
+		$rt_original_table_id->setLabel('Original Year')
 					->addMultiOptions($rt_original_table_ids_prepared);
 	
 		$rt_original_table_id->setDecorators(array(
@@ -235,7 +235,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_70_mph_braking = new Zend_Form_Element_Text('rt_70_mph_braking');
-		$rt_70_mph_braking->setLabel('rt_70_mph_braking');
+		$rt_70_mph_braking->setLabel('Braking from 70 MPH');
 	
 		$rt_70_mph_braking->setDecorators(array(
 		'ViewHelper',
@@ -248,7 +248,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_body_prepared = $this->gatMultioptions("Body");
 		
 		$rt_controlled_body = new Zend_Form_Element_Select('rt_controlled_body',array('style'=>'width:150px;'));
-		$rt_controlled_body->setLabel('rt_controlled_body')
+		$rt_controlled_body->setLabel('Body Style')
 					->addMultiOptions($rt_controlled_body_prepared);
 	
 		$rt_controlled_body->setDecorators(array(
@@ -259,7 +259,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_top_speed = new Zend_Form_Element_Text('rt_top_speed');
-		$rt_top_speed->setLabel('rt_top_speed');
+		$rt_top_speed->setLabel('Top Speed');
 	
 		$rt_top_speed->setDecorators(array(
 		'ViewHelper',
@@ -272,7 +272,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
 		
 		$rt_controlled_engine = new Zend_Form_Element_Select('rt_controlled_engine',array('style'=>'width:150px;'));
-		$rt_controlled_engine->setLabel('rt_controlled_engine')
+		$rt_controlled_engine->setLabel('Engine Placement')
 					->addMultiOptions($rt_controlled_engine_prepared);
 	
 		$rt_controlled_engine->setDecorators(array(
@@ -283,7 +283,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_top_speed_notes = new Zend_Form_Element_Text('rt_top_speed_notes');
-		$rt_top_speed_notes->setLabel('rt_top_speed_notes');
+		$rt_top_speed_notes->setLabel('Top Speed Notes');
 	
 		$rt_top_speed_notes->setDecorators(array(
 		'ViewHelper',
@@ -296,7 +296,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_fuel_prepared = $this->gatMultioptions("Fuel");
 		
 		$rt_controlled_fuel = new Zend_Form_Element_Select('rt_controlled_fuel',array('style'=>'width:150px;'));
-		$rt_controlled_fuel->setLabel('rt_controlled_fuel')
+		$rt_controlled_fuel->setLabel('Fuel Type')
 					->addMultiOptions($rt_controlled_fuel_prepared);
 	
 		$rt_controlled_fuel->setDecorators(array(
@@ -307,7 +307,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_base_price = new Zend_Form_Element_Text('rt_base_price');
-		$rt_base_price->setLabel('rt_base_price');
+		$rt_base_price->setLabel('Base Price');
 	
 		$rt_base_price->setDecorators(array(
 		'ViewHelper',
@@ -320,7 +320,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_make_prepared = $this->gatMultioptions("Make");
 		
 		$rt_controlled_make = new Zend_Form_Element_Select('rt_controlled_make',array('style'=>'width:150px;'));
-		$rt_controlled_make->setLabel('rt_controlled_make')
+		$rt_controlled_make->setLabel('Make')
 					->addMultiOptions($rt_controlled_make_prepared);
 	
 		$rt_controlled_make->setDecorators(array(
@@ -331,7 +331,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_base_price_notes = new Zend_Form_Element_Text('rt_base_price_notes');
-		$rt_base_price_notes->setLabel('rt_base_price_notes');
+		$rt_base_price_notes->setLabel('Base Price Notes');
 	
 		$rt_base_price_notes->setDecorators(array(
 		'ViewHelper',
@@ -345,7 +345,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
 		
 		$rt_controlled_sort = new Zend_Form_Element_Select('rt_controlled_sort',array('style'=>'width:150px;'));
-		$rt_controlled_sort->setLabel('rt_controlled_sort')
+		$rt_controlled_sort->setLabel('Production Type (Limited)')
 					->addMultiOptions($rt_controlled_sort_prepared);
 	
 		$rt_controlled_sort->setDecorators(array(
@@ -356,7 +356,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_speed_qtr_mile_speed_trap = new Zend_Form_Element_Text('rt_speed_qtr_mile_speed_trap');
-		$rt_speed_qtr_mile_speed_trap->setLabel('rt_speed_qtr_mile_speed_trap');
+		$rt_speed_qtr_mile_speed_trap->setLabel('Speed At End of Quarter Mile');
 	
 		$rt_speed_qtr_mile_speed_trap->setDecorators(array(
 		'ViewHelper',
@@ -369,7 +369,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_transmission_prepared= $this->gatMultioptions("Transmission");
 		
 		$rt_controlled_transmission = new Zend_Form_Element_Select('rt_controlled_transmission',array('style'=>'width:150px;'));
-		$rt_controlled_transmission->setLabel('rt_controlled_transmission')
+		$rt_controlled_transmission->setLabel('Transmission Type')
 					->addMultiOptions($rt_controlled_transmission_prepared);
 	
 		$rt_controlled_transmission->setDecorators(array(
@@ -380,7 +380,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_quarter_time = new Zend_Form_Element_Text('rt_quarter_time');
-		$rt_quarter_time->setLabel('rt_quarter_time');
+		$rt_quarter_time->setLabel('Quarter Mile Time');
 	
 		$rt_quarter_time->setDecorators(array(
 		'ViewHelper',
@@ -393,7 +393,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_drive_prepared = $this->gatMultioptions("Drive");
 		
 		$rt_controlled_drive = new Zend_Form_Element_Select('rt_controlled_drive',array('style'=>'width:150px;'));
-		$rt_controlled_drive->setLabel('rt_controlled_drive')
+		$rt_controlled_drive->setLabel('Drivetrain Type')
 					->addMultiOptions($rt_controlled_drive_prepared);
 	
 		$rt_controlled_drive->setDecorators(array(
@@ -404,7 +404,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_doors = new Zend_Form_Element_Text('rt_doors');
-		$rt_doors->setLabel('rt_doors');
+		$rt_doors->setLabel('Number of Doors');
 	
 		$rt_doors->setDecorators(array(
 		'ViewHelper',
@@ -417,7 +417,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_ts_limit_prepared = $this->gatMultioptions("TS limit");
 		
 		$rt_controlled_ts_limit = new Zend_Form_Element_Select('rt_controlled_ts_limit',array('style'=>'width:150px;'));
-		$rt_controlled_ts_limit->setLabel('rt_controlled_ts_limit')
+		$rt_controlled_ts_limit->setLabel('Top Speed Limiter')
 					->addMultiOptions($rt_controlled_ts_limit_prepared);
 	
 		$rt_controlled_ts_limit->setDecorators(array(
@@ -428,7 +428,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_cd_observed_fe = new Zend_Form_Element_Text('rt_cd_observed_fe');
-		$rt_cd_observed_fe->setLabel('rt_cd_observed_fe');
+		$rt_cd_observed_fe->setLabel('Observed Fuel Economy');
 	
 		$rt_cd_observed_fe->setDecorators(array(
 		'ViewHelper',
@@ -441,7 +441,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_turbo_superchg_prepared = $this->gatMultioptions("Turbo/Superchg");
 		
 		$rt_controlled_turbo_superchg = new Zend_Form_Element_Select('rt_controlled_turbo_superchg',array('style'=>'width:150px;'));
-		$rt_controlled_turbo_superchg->setLabel('rt_controlled_turbo_superchg')
+		$rt_controlled_turbo_superchg->setLabel('Forced Induction Type')
 					->addMultiOptions($rt_controlled_turbo_superchg_prepared);
 	
 		$rt_controlled_turbo_superchg->setDecorators(array(
@@ -452,7 +452,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_no_cyl = new Zend_Form_Element_Text('rt_no_cyl');
-		$rt_no_cyl->setLabel('rt_no_cyl');
+		$rt_no_cyl->setLabel('Number of Cylinders');
 	
 		$rt_no_cyl->setDecorators(array(
 		'ViewHelper',
@@ -465,7 +465,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt_controlled_type_prepared = $this->gatMultioptions("Type");
 		
 		$rt_controlled_type = new Zend_Form_Element_Select('rt_controlled_type',array('style'=>'width:150px;'));
-		$rt_controlled_type->setLabel('rt_controlled_type')
+		$rt_controlled_type->setLabel('Engine Cylinder Configuration')
 					->addMultiOptions($rt_controlled_type_prepared);
 	
 		$rt_controlled_type->setDecorators(array(
@@ -476,7 +476,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_peak_hp = new Zend_Form_Element_Text('rt_peak_hp');
-		$rt_peak_hp->setLabel('rt_peak_hp');
+		$rt_peak_hp->setLabel('Peak Horsepower');
 	
 		$rt_peak_hp->setDecorators(array(
 		'ViewHelper',
@@ -498,7 +498,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		}
 		
 		$rt_model = new Zend_Form_Element_Select('rt_model',array('style'=>'width:150px;'));
-		$rt_model->setLabel('rt_model')
+		$rt_model->setLabel('Model')
 					->addMultiOptions($rt_model_prepared);
 	
 		$rt_model->setDecorators(array(
@@ -509,7 +509,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_peak_hp_notes = new Zend_Form_Element_Text('rt_peak_hp_notes');
-		$rt_peak_hp_notes->setLabel('rt_peak_hp_notes');
+		$rt_peak_hp_notes->setLabel('Peak Horsepower Notes');
 	
 		$rt_peak_hp_notes->setDecorators(array(
 		'ViewHelper',

@@ -4,7 +4,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 	public function init()
 	{
 		$rt3_final_drive_ratio = new Zend_Form_Element_Text('rt3_final_drive_ratio');
-		$rt3_final_drive_ratio->setLabel('rt3_final_drive_ratio');
+		$rt3_final_drive_ratio->setLabel('Final Drive Ratio');
 		
 		$rt3_final_drive_ratio->setDecorators(array(
 		'ViewHelper',
@@ -14,7 +14,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_width = new Zend_Form_Element_Text('rt3_width');
-		$rt3_width->setLabel('rt3_width');
+		$rt3_width->setLabel('Vehicle Width');
 	
 		$rt3_width->setDecorators(array(
 		'ViewHelper',
@@ -25,7 +25,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_frontal_area = new Zend_Form_Element_Text('rt3_frontal_area');
-		$rt3_frontal_area->setLabel('rt3_frontal_area');
+		$rt3_frontal_area->setLabel('Vehicle Frontal Area');
 		
 		$rt3_frontal_area->setDecorators(array(
 		'ViewHelper',
@@ -35,7 +35,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_valves_per_cyl = new Zend_Form_Element_Text('rt3_valves_per_cyl');
-		$rt3_valves_per_cyl->setLabel('rt3_valves_per_cyl');
+		$rt3_valves_per_cyl->setLabel('Valves Per Cylinder');
 	
 		$rt3_valves_per_cyl->setDecorators(array(
 		'ViewHelper',
@@ -46,7 +46,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_frontal_area_notes = new Zend_Form_Element_Text('rt3_frontal_area_notes');
-		$rt3_frontal_area_notes->setLabel('rt3_frontal_area_notes');
+		$rt3_frontal_area_notes->setLabel('Vehicle Frontal Area Notes');
 		
 		$rt3_frontal_area_notes->setDecorators(array(
 		'ViewHelper',
@@ -56,7 +56,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_wheelbase = new Zend_Form_Element_Text('rt3_wheelbase');
-		$rt3_wheelbase->setLabel('rt3_wheelbase');
+		$rt3_wheelbase->setLabel('Wheelbase Length');
 	
 		$rt3_wheelbase->setDecorators(array(
 		'ViewHelper',
@@ -67,7 +67,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_fuel_cap = new Zend_Form_Element_Text('rt3_fuel_cap');
-		$rt3_fuel_cap->setLabel('rt3_fuel_cap');
+		$rt3_fuel_cap->setLabel('Fuel Capacity');
 		
 		$rt3_fuel_cap->setDecorators(array(
 		'ViewHelper',
@@ -77,7 +77,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_70co = new Zend_Form_Element_Text('rt3_70co');
-		$rt3_70co->setLabel('rt3_70co');
+		$rt3_70co->setLabel('Sound at 70 MPH Coasting');
 	
 		$rt3_70co->setDecorators(array(
 		'ViewHelper',
@@ -88,7 +88,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_height = new Zend_Form_Element_Text('rt3_height');
-		$rt3_height->setLabel('rt3_height');
+		$rt3_height->setLabel('Vehicle Height');
 		
 		$rt3_height->setDecorators(array(
 		'ViewHelper',
@@ -109,7 +109,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_length = new Zend_Form_Element_Text('rt3_length');
-		$rt3_length->setLabel('rt3_length');
+		$rt3_length->setLabel('Vehicle Length');
 		
 		$rt3_length->setDecorators(array(
 		'ViewHelper',
@@ -130,7 +130,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_oil = new Zend_Form_Element_Text('rt3_lt_oil');
-		$rt3_lt_oil->setLabel('rt3_lt_oil');
+		$rt3_lt_oil->setLabel('Long-term Oil Used');
 		
 		$rt3_lt_oil->setDecorators(array(
 		'ViewHelper',
@@ -151,7 +151,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
-		$rt3_lt_repiar->setLabel('rt3_lt_repair');
+		$rt3_lt_repiar->setLabel('Long-term Costs for Repair');
 		
 		$rt3_lt_repiar->setDecorators(array(
 		'ViewHelper',
@@ -172,7 +172,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_serv = new Zend_Form_Element_Text('rt3_lt_serv');
-		$rt3_lt_serv->setLabel('rt3_lt_serv');
+		$rt3_lt_serv->setLabel('Long-term Costs for Service');
 		
 		$rt3_lt_serv->setDecorators(array(
 		'ViewHelper',
@@ -193,7 +193,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_stps_sched = new Zend_Form_Element_Text('rt3_lt_stps_sched');
-		$rt3_lt_stps_sched->setLabel('rt3_lt_stps_sched');
+		$rt3_lt_stps_sched->setLabel('Long-term Scheduled Stops');
 		
 		$rt3_lt_stps_sched->setDecorators(array(
 		'ViewHelper',
@@ -214,7 +214,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_stps_unsched = new Zend_Form_Element_Text('rt3_lt_stps_unsched');
-		$rt3_lt_stps_unsched->setLabel('rt3_lt_stps_unsched');
+		$rt3_lt_stps_unsched->setLabel('Long-term Unscheduled Stops');
 		
 		$rt3_lt_stps_unsched->setDecorators(array(
 		'ViewHelper',
@@ -235,7 +235,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_lt_wear = new Zend_Form_Element_Text('rt3_lt_wear');
-		$rt3_lt_wear->setLabel('rt3_lt_wear');
+		$rt3_lt_wear->setLabel('Long-term Costs for Wear');
 		
 		$rt3_lt_wear->setDecorators(array(
 		'ViewHelper',
@@ -256,7 +256,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_max_mph_1000_rpm = new Zend_Form_Element_Text('rt3_max_mph_1000_rpm');
-		$rt3_max_mph_1000_rpm->setLabel('rt3_max_mph_1000_rpm');
+		$rt3_max_mph_1000_rpm->setLabel('Top Gear MPH per 1000 RPM');
 		
 		$rt3_max_mph_1000_rpm->setDecorators(array(
 		'ViewHelper',
@@ -361,7 +361,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_specific_power = new Zend_Form_Element_Text('rt3_specific_power');
-		$rt3_specific_power->setLabel('rt3_specific_power');
+		$rt3_specific_power->setLabel('Horsepower per Liter');
 		
 		$rt3_specific_power->setDecorators(array(
 		'ViewHelper',
@@ -382,7 +382,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_stroke_mm = new Zend_Form_Element_Text('rt3_stroke_mm');
-		$rt3_stroke_mm->setLabel('rt3_stroke_mm');
+		$rt3_stroke_mm->setLabel('Cylinder Stroke');
 		
 		$rt3_stroke_mm->setDecorators(array(
 		'ViewHelper',
@@ -403,7 +403,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_trunk = new Zend_Form_Element_Text('rt3_trunk');
-		$rt3_trunk->setLabel('rt3_trunk');
+		$rt3_trunk->setLabel('Trunk Volume');
 		
 		$rt3_trunk->setDecorators(array(
 		'ViewHelper',
@@ -424,7 +424,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		));
 		
 		$rt3_valve_gear = new Zend_Form_Element_Text('rt3_valve_gear');
-		$rt3_valve_gear->setLabel('rt3_valve_gear');
+		$rt3_valve_gear->setLabel('Valve Setup');
 		
 		$rt3_valve_gear->setDecorators(array(
 		'ViewHelper',

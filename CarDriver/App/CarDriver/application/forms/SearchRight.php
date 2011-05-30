@@ -39,18 +39,20 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$this->addElement($year);
 		
 		$select = $db->select()
-	             ->from(array('bg'=>'bg_make'),array('bg.id As makeid', 'bg.name As makename'))
+				->from('bg_make')
+             	->where('state = ?', 'published');
+	             /*->from(array('bg'=>'bg_make'),array('bg.id As makeid', 'bg.name As makename'))
 	             ->joinInner(array('rt'=>'rt_results_main'),'bg.id=rt.bg_make_id')
 	             ->where('bg.state = ?', 'published')
 	             ->group('bg.name')
-	             ->order('bg.name ASC');
+	             ->order('bg.name ASC');*/
 	             
         $makes = $db->query($select)->fetchAll();
 	       
 		if (count($makes)!=0){
 				$makes_prepared[0]= "Select or Leave blank";
 				foreach ($makes as $mak){
-						$makes_prepared[$mak['makeid']]= $mak['makename'];
+						$makes_prepared[$mak['id']]= $mak['name'];
 				}
 		}
 		
