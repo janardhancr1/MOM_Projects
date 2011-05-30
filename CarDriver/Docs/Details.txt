@@ -1,0 +1,14 @@
+http://cardriver:8080/
+
+http://ec2-174-129-75-24.compute-1.amazonaws.com
+jana
+Ut4ZWc2DEn
+
+
+
+mysqladmin -u root password C@rDriver
+
+sudo /sbin/service httpd restart
+
+
+
