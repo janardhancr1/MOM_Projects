@@ -13,28 +13,28 @@
 		<table  cellpadding="5" cellspacing="0" class="dataTable">
 			<tr bgcolor="#9E9A9A">
 				<td>ID</td>
-				<td>Published</td>
+				<td>Publish Date</td>
 				<td>Year</td>
 				<td>Make</td>
 				<td>Model</td>
-				<td>bg_make_id</td>
-				<td>bg_model_id</td>
-				<td>bg_submodel_id</td>
-				<td style="border-right:1px solid #9E9A9A">bg_year_id</td>
+				<td>Mapped BG Make ID</td>
+				<td>Mapped BG Model ID</td>
+				<td>Mapped BG Submodel ID</td>
+				<td style="border-right:1px solid #9E9A9A">Mapped BG Year</td>
 			</tr>
 			<?php foreach ($this->paginator as $row): ?>
 				<tr>
 					<td> <a href="<?php echo $this->url(array(
               'action' => 'edit',
-              'id' => $row['id']));?>"><?php echo $row['id']?></a></td>
-					<td><?php if(strlen($row['rt_published']) > 0)echo $row['rt_published']; else echo "-";?></td>
-					<td><?php if(strlen($row['rt_model_year']) > 0)echo $row['rt_model_year']; else echo "-";?></td>
-					<td><?php if(strlen($row['rt_controlled_make']) > 0)echo $row['rt_controlled_make']; else echo "-";?></td>
-					<td><?php if(strlen($row['rt_model']) > 0)echo $row['rt_model']; else echo "-";?></td>
-					<td><?php if(strlen($row['bg_make_id']) > 0)echo $row['bg_make_id']; else echo "-";?></td>
-					<td><?php if(strlen($row['bg_model_id']) > 0)echo $row['bg_model_id']; else echo "-";?></td>
-					<td><?php if(strlen($row['bg_submodel_id']) > 0)echo $row['bg_submodel_id']; else echo "-";?></td>
-					<td style="border-right:1px solid #9E9A9A"><?php if(strlen($row['bg_submodel_id']) > 0)echo $row['bg_submodel_id']; else echo "-";?></td>
+              'id' => $row['main_results_id']));?>"><?php echo $row['main_results_id']?></a></td>
+					<td><?php if(strlen($row['publish_date']) > 0)echo $row['publish_date']; else echo "-";?></td>
+					<td><?php if(strlen($row['year']) > 0)echo $row['year']; else echo "-";?></td>
+					<td><?php if(strlen($row['make']) > 0)echo $row['make']; else echo "-";?></td>
+					<td><?php if(strlen($row['model']) > 0)echo $row['model']; else echo "-";?></td>
+					<td><?php if(strlen($row['mapped_bg_make_id']) > 0)echo $row['mapped_bg_make_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['mapped_bg_model_id']) > 0)echo $row['mapped_bg_model_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['mapped_bg_submodel_id']) > 0)echo $row['mapped_bg_submodel_id']; else echo "-";?></td>
+					<td style="border-right:1px solid #9E9A9A"><?php if(strlen($row['bg_year_id']) > 0)echo $row['bg_year_id']; else echo "-";?></td>
 					</tr>
 			<?php endforeach; ?>
 		</table>
