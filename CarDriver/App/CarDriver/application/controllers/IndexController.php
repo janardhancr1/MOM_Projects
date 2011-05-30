@@ -20,7 +20,14 @@ class IndexController extends Zend_Controller_Action
         
          $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
-             ->from('rt_results_main');
+         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 'rrm.rt_published As publish_date', 
+             'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model', 
+             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id','rrm.bg_year_id As bg_year_id'));
+            /* ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 'rrm.rt_published As publish_date', 
+             'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model', 
+             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id'))
+             ->joinInner(array('by'=>'bg_year'),'by.id=rrm.bg_year_id');*/
+ 
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
          	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost())))
           {
@@ -41,13 +48,13 @@ class IndexController extends Zend_Controller_Action
          	
          }
          if(($this->_getParam('id')))
-        		$select->where('id =?', $this->_getParam('id'));
+        		$select->where('rrm.id =?', $this->_getParam('id'));
          if(($this->_getParam('year')))
-        		$select->where('bg_year_id =?', $this->_getParam('year'));
+        		$select->where('rrm.bg_year_id =?', $this->_getParam('year'));
          if(($this->_getParam('model')))
-        		$select->where('bg_model_id =?', $this->_getParam('model'));
+        		$select->where('rrm.bg_model_id =?', $this->_getParam('model'));
          if(($this->_getParam('make')))
-        		$select->where('bg_make_id =?', $this->_getParam('make'));
+        		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
         		
         $result = Zend_Paginator::factory($db->query($select)->fetchAll());
         $this->view->paginator = $result;
