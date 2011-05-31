@@ -640,6 +640,53 @@ class IndexController extends Zend_Controller_Action
     	}
     }
     
+    public function manageconrolledlistAction()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter(); 
+    	
+    	$select = $db->select()
+			->from('bg_year',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_bg_year = $res[0]['total'];
+		
+		$select = $db->select()
+			->from('bg_make',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_bg_make = $res[0]['total'];
+		
+		$select = $db->select()
+			->from('bg_model',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_bg_model = $res[0]['total'];
+		
+		$select = $db->select()
+			->from('rt_dropdown_types',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_rt_dropdown_types = $res[0]['total'];
+		
+		$select = $db->select()
+			->from('rt_dropdown_lookup',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_rt_dropdown_lookup = $res[0]['total'];
+		
+		$select = $db->select()
+			->from('rt_dropdown_descriptions',array(new Zend_Db_Expr('count(*) as total')));
+			
+		$res = $db->query($select)->fetchAll();
+		
+		$this->view->total_rt_dropdown_descriptions = $res[0]['total'];
+    }
+    
 
 
 }

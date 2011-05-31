@@ -1,0 +1,53 @@
+<?php include 'header.phtml' ?> 
+<div id="middle">
+		<div class="middletitle">Manage Controlled Lists</div>
+		<div>
+		<table cellpadding="1" cellspacing="0" width="80%" class="manageTable">
+			<tr bgcolor="#9E9A9A" class="tableHeader">
+				<td>Action</td>
+				<td>List Name</td>
+				<td>No. Records</td>
+				<td>In Use</td>
+			</tr>
+			<tr>
+				<td><a href="#">Edit</a></td>
+				<td>bg_year</td>
+				<td><?php echo $this->total_bg_year?></td>
+				<td><?php if($this->total_bg_year > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+			<tr>
+				<td><a href="#">Edit</a></td>
+				<td>bg_make</td>
+				<td><?php echo $this->total_bg_make?></td>
+				<td><?php if($this->total_bg_make > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+			<tr>
+				<td><a href="#">Edit</a></td>
+				<td>bg_model</td>
+				<td><?php echo $this->total_bg_model?></td>
+				<td><?php if($this->total_bg_model > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+			<tr>
+				<td><a href="#">Edit</a></td>
+				<td>rt_dropdown_types</td>
+				<td><?php echo $this->total_rt_dropdown_types?></td>
+				<td><?php if($this->total_rt_dropdown_types > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+			<tr>
+				<td><a href="#">Edit</a></td>
+				<td>rt_dropdown_lookup</td>
+				<td><?php echo $this->total_rt_dropdown_lookup?></td>
+				<td><?php if($this->total_rt_dropdown_lookup > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:0px;"><a href="#">Edit</a></td>
+				<td style="border-bottom:0px;">rt_dropdown_descriptions</td>
+				<td style="border-bottom:0px;"><?php echo $this->total_rt_dropdown_descriptions?></td>
+				<td style="border-bottom:0px;"><?php if($this->total_rt_dropdown_descriptions > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
+			</tr>
+		</table>
+		
+		</div>
+	
+</div>
+<?php include 'footer.phtml' ?> 
