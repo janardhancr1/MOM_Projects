@@ -160,7 +160,27 @@ A:hover {text-decoration: none;}
 	border-bottom:1px solid #9E9A9A; 
 	width:33%;
 }
-
+.manageTable
+{
+	font-weight:bold; 
+	font-family:arial; 
+	font-size:13px;
+	border:1px solid #9E9A9A;
+	
+}
+.manageTable td
+{
+	border-bottom:1px solid #9E9A9A; 
+	width:25%;
+	text-align:left;
+	padding-left:50px;
+}
+.tableHeader
+{
+	color:white; 
+	font-size:13px; 
+	font-weight:bold;
+]
 
 
 
