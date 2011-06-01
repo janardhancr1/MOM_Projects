@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Buyers Guide API</title>
+	<meta name="generator" content="BBEdit 9.2">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<style>
+	@media screen, projection, print {
+		/* =Structure Reset */
+		html { overflow-y: scroll; }
+		html, body { height: 100%; }
+		blockquote, body, caption, div, dl, dt, dd, form, fieldset, h1, h2, h3, h4, h5, h6, html, li, ul, ol, p, pre, textarea, table, td, th  {
+			margin: 0;
+			padding: 0;
+		}
+		* { font-size: 100%; }
+		body {
+			background-color: #e9e9e9;
+			color: #333;
+			font: 75%/1.4 arial, helvetica, verdana, sans-serif;
+		}
+		blockquote, p, ul, ol, dl, address, fieldset, table { margin: 0 0 1em; }
+	
+		/* =Screen Reader */
+		#skip, .access {
+			position: absolute;
+			overflow: hidden;
+			top: -999em;
+			left: 0;
+			width: 0;
+			height: 0;
+			font-size: 0;
+		}
+		/* Hide from Screen Readers */
+		.hide {
+			display: none;
+			visibility: hidden;
+		}
+	
+		/* =Headers */
+		h1, h2, h3, h4, h5, h6 { 
+			margin: 0 0 0.5em; 
+			line-height: normal;
+			font-weight: normal;
+		}
+		h1 { font-size: 2em; }
+		h2 { font-size: 1.17em; }
+		h3 { font-size: 1.17em; }
+		h4 { font-size: 1em; }
+		h5 { font-size: 1em; }
+		h6 { font-size: 1em; }
+	
+		/* =Lists */
+		ol, ul { list-style: none; }
+		ol.list, ul.list { padding-left: 1.3em; }
+		* html ol.list { padding-left: 2.4em; }
+		*+html ol.list { padding-left: 2.4em; }
+		ol.list { list-style: outside decimal; }
+		ul.list { list-style: outside disc; } 
+		ol.list-alt { list-style: inside decimal; }
+		ul.list-alt { list-style: inside disc; }
+			.list  li { margin: 0 0 0.2em; }
+	
+		/* =Image */
+		img { vertical-align: bottom; }
+	
+		/* =Anchors/Misc */
+		img, a img, fieldset { border: 0; }
+		a, button { 
+			outline: 0;
+			color: #006dbc;
+			text-decoration: none; 
+		}
+		a, button, label { cursor: pointer; }
+		button { 
+			font-family: arial, sans-serif;
+			font-size: 100%;
+			border: 0; 
+		}
+		a:hover { text-decoration: underline; }
+		address { font-style: normal; }
+	
+		/* =Self Closed Tags*/
+		hr { 
+			overflow: hidden;
+			height: 1px;
+			border: 1px solid #666;
+			border-width: 1px 0 0;
+		}
+	
+		/* =Code */
+		pre, code { 
+			font-family: arial, sans-serif; 
+			white-space: normal;
+		}
+	
+		/* =group */	
+		.group:after {
+			clear: both;
+			display: block;
+			content: " ";
+			visibility: hidden;
+			height: 0;
+		}
+		* html .group { height: 1%; }
+		.group { display: inline-block; }
+		.group { display: block; }
+		.group-alt { margin: 0 0 1.5em; }
+
+	}
+	
+	@media screen, projection {
+
+		.head h2 {
+			position: absolute;
+			padding: 0;
+			margin: 0;
+			top: -12px;
+			right: 0;
+			font-size: 50px;
+			color: #A6A6A6;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+	}
+	
+	.content {
+		padding: 10px;
+	}
+
+	li dl {
+		padding: 2px 0;
+		margin: 0 0 0 20px;
+	}
+	li dl dd {
+		margin: 0 0 0 20px;
+	}
+
+	.api_block {
+		background-color: white;
+		border-top: 1px solid silver;
+		padding: 4px;
+		margin: 2px 0 2px 10px;
+	}
+
+	.api_method {
+		display: block;
+	}
+
+	.api_call {
+		padding: 4px;
+		border: 1px solid silver;
+	}
+
+	.api_call li:before {
+		font-weight: bold;
+		color: gray;
+	}
+	.api_name { font-weight: bold; }
+	.api_name:before { content: 'api name: '; }
+	.api_methodname {
+		float: left;
+		font-weight: bold;
+	}
+	.api_methodname:before {
+		color: gray;
+		content: 'method name: ';
+	}
+	.api_toggle {
+		display: none;
+		color: silver;
+		font-weight: bold;
+		float: right;
+	}
+	.api_toggle:hover {
+		cursor: pointer;
+		color: orange;
+	}
+	
+	.api_url:before { content: 'sample url: '; }
+	.api_required:before { content: 'required parameter(s): '; }
+	.api_optional:before { content: 'optional parameter(s): '; }
+	.api_returns:before { content: 'returns: '; }
+	
+	.ptype {
+		font-family: 'monaco', 'courier', 'courier new';
+		font-size: 0.9em;
+		color: orange;
+	}
+	.optlist {
+		font-family: 'monaco', 'courier', 'courier new';
+		font-size: 0.9em;
+		color: blue;
+	}
+	
+	.head {
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+
+<div class="head group">
+	<h1>HFMUS Automobile Group API</h1>
+	<h2>Not for redistribution</h2>
+	<h3>Last Updated: 6 August 2009</h3>
+</div>
+
+<ul class="content">
+	<li>
+		<ul class="api_call">
+			<li class="api_name">bgmakes</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bgmakes by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/bgmakes/id?id=12&mode=xml">http://buyersguide.caranddriver.com/api/bgmakes/id?id=12&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>make <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+							<dd>marketSegment <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<ul class="api_call">
+			<li class="api_name">bgmodels</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bgmodels by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/bgmodels/id?id=42&mode=xml">http://buyersguide.caranddriver.com/api/bgmodels/id?id=42&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>make <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+						<dt>model <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<ul class="api_call">
+			<li class="api_name">bgsubmodels</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bgsubmodels by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/bgsubmodels/id?id=2616&mode=xml">http://buyersguide.caranddriver.com/api/bgsubmodels/id?id=2616&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>year <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>urlAlias <span class="ptype">(string)</span></dd>
+						<dt>make <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+						<dt>model <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+						<dt>submodel <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+							<dd>manufacturingstatus <span class="ptype">(int)</span></dd>
+						<dt>bodystyle <span class="ptype">(object)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+						<dt>competitors <span class="ptype">(list)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+						<dt>shoppingsegments <span class="ptype">(list)</span></dt>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>link <span class="ptype">(url)</span></dd>
+							<dd>urlalias <span class="ptype">(string)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">bodystyles</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bodystyles overview</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/bodystyles?mode=xml">http://buyersguide.caranddriver.com/api/bodystyles?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>row <span class="ptype">(object)</span></dt>
+							<dd>id <span class="ptype">(int)</span></dd>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>url_alias <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bodystyle by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://devbg.cd.com/api/bodystyles/id?id=7&mode=xml">
+						http://devbg.cd.com/api/bodystyles/id?id=7&mode=xml
+					</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>row <span class="ptype">(object)</span></dt>
+							<dd>id <span class="ptype">(int)</span></dd>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>url_alias <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">bodystyle by range</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://devbg.cd.com/api/bodystyles/range?range=7:8:9&mode=xml">
+						http://devbg.cd.com/api/bodystyles/range?range=7:8:9&mode=xml
+					</a></li>
+					<li class="api_required"><dl>
+						<dt>range <span class="ptype">(colon ":" separated list)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+						<dt>row <span class="ptype">(object)</span></dt>
+							<dd>id <span class="ptype">(int)</span></dd>
+							<dd>name <span class="ptype">(string)</span></dd>
+							<dd>url_alias <span class="ptype">(string)</span></dd>
+							<dd>state <span class="ptype">(string)</span></dd>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">editorschoice</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">editor's choice</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/editorschoice?mode=xml">http://buyersguide.caranddriver.com/api/editorschoice?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<ul class="api_call">
+			<li class="api_name">mostresearched</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">most researched</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/mostresearched?mode=xml">http://buyersguide.caranddriver.com/api/mostresearched?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">makes</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">makes overview</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/makes?mode=xml">http://buyersguide.caranddriver.com/api/makes?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">makes by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/makes/id?id=1&mode=xml">http://buyersguide.caranddriver.com/api/makes/id?id=1&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">makes by range</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/makes/range?range=1:2:3&mode=xml">http://buyersguide.caranddriver.com/api/makes/range?range=1:2:3&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>range <span class="ptype">(colon separated list)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">models</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">models overview</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/models?mode=xml">http://buyersguide.caranddriver.com/api/models?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">models by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/models/id?id=1&mode=xml">http://buyersguide.caranddriver.com/api/models/id?id=1&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">models by range</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/models/range?range=1:2:3&mode=xml">http://buyersguide.caranddriver.com/api/models/range?range=1:2:3&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>range <span class="ptype">(colon separated list)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">years</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">years overview</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/years?mode=xml">http://buyersguide.caranddriver.com/api/years?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">years by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/years/id?id=1&mode=xml">http://buyersguide.caranddriver.com/api/years/id?id=1&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">years by range</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/years/range?range=1:2:3&mode=xml">http://buyersguide.caranddriver.com/api/years/range?range=1:2:3&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>range <span class="ptype">(colon separated list)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">submodels</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">submodels overview</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/submodels?mode=xml">http://buyersguide.caranddriver.com/api/submodels?mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt><i>None</i></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">submodels by id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/submodels/id?id=1&mode=xml">http://buyersguide.caranddriver.com/api/submodels/id?id=1&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">submodels by model id</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=1&mode=xml">http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=1&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>id <span class="ptype">(int)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">submodels by range</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/submodels/range?range=1:2:3&mode=xml">http://buyersguide.caranddriver.com/api/submodels/range?range=1:2:3&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>range <span class="ptype">(colon separated list)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>mode <span class="optlist">(xml|json)</span></dt>
+						<dt>order <span class="optlist">(ASC|DESC)</span></dt>
+						<dt>sort <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li>
+		<ul class="api_call">
+			<li class="api_name">search</li>
+			<li class="api_block group">
+				<div class="group">
+					<span class="api_methodname">search</span>
+					<span class="api_toggle">hide</span>
+				</div>
+				<ul class="api_method">
+					<li class="api_url"><a href="http://buyersguide.caranddriver.com/api/search?q=hatchback&mode=xml">http://buyersguide.caranddriver.com/api/search?q=hatchback&mode=xml</a></li>
+					<li class="api_required"><dl>
+						<dt>q <span class="ptype">(string)</span></dt>
+					</dl></li>
+					<li class="api_optional"><dl>
+						<dt>start <span class="optlist">(int)</span></dt>
+						<dt>number <span class="optlist">(int)</span></dt>
+						<dt>sensitivity <span class="ptype">(float 0-1)</span></dt>
+						<dt>mode <span class="ptype">(xml|json)</span></dt>
+						<dt>fuzzy <span class="ptype">(boolean y|n)</span></dt>
+					</dl></li>
+					<li class="api_returns"><dl>
+					</dl></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<script type="text/javascript">
+$().ready(function(){
+//	$('.api_method').hide();
+	$('.api_toggle').show();
+});
+$('.api_toggle').click(function(){
+	switch ($(this).text()) {
+		case 'show':
+			$(this).text('hide');
+			$(this).parent().parent().children('.api_method').show(500);
+			break;
+		
+		case 'hide':
+			$(this).text('show');
+			$(this).parent().parent().children('.api_method').hide(500);
+			break;
+	}
+});
+</script>   
+
+
+</body>
+</html>
+ 
