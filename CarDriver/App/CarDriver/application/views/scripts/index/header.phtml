@@ -4,6 +4,8 @@
 <script type="text/javascript">
 function AutoFillModel(value)
 {
+	$('bg_model_id').empty();
+	$('bg_model_id').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatemodel",
             {
@@ -25,6 +27,8 @@ function FillModel(rsp)
 }
 function AutoFillSubModel(value)
 {
+	$('bg_submodel_id').empty();
+	$('bg_submodel_id').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatesubmodel",
             {
