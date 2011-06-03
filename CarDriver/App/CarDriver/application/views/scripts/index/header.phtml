@@ -1,5 +1,50 @@
 <link href="/app/public/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/app/public/js/prototype.js">
+</script>
+<script type="text/javascript">
+function AutoFillModel(value)
+{
+        new Ajax.Request(
+        "/app/public/index/populatemodel",
+            {
+                method:'get',
+                parameters: {id: value},
+                onSuccess: FillModel
+        });
+}
 
+function FillModel(rsp)
+{
+	$('bg_model_id').empty();
+  	var models = rsp.responseText.split(';');
+  	for(var i=0; i<models.length-1; i++)
+  	{
+  		var model = models[i].split('~');
+  		$('bg_model_id').options[i] = new Option(model[1], model[0]);
+  	}
+}
+function AutoFillSubModel(value)
+{
+        new Ajax.Request(
+        "/app/public/index/populatesubmodel",
+            {
+                method:'get',
+                parameters: {id: value},
+                onSuccess: FillSubModel
+        });
+}
+
+function FillSubModel(rsp)
+{
+	$('bg_submodel_id').empty();
+  	var sub_models = rsp.responseText.split(';');
+  	for(var i=0; i<sub_models.length-1; i++)
+  	{
+  		var sub_model = sub_models[i].split('~');
+  		$('bg_submodel_id').options[i] = new Option(sub_model[1], sub_model[0]);
+  	}
+} 
+</script>
 <div id="content">
 	<div id="top">
 		<div id="logo">
