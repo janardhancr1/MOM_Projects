@@ -47,22 +47,25 @@ class Application_Form_Add extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$select = $db->select()
-	             ->from('bg_make')
-	             ->where('state = ?', 'published')
-	             ->order('name ASC');
-        $makeids = $db->query($select)->fetchAll();
-	       
-		if (count($makeids)!=0){
-				$bg_make_ids_prepared[0]= "Select from list";
-				foreach ($makeids as $makeid){
-						$bg_make_ids_prepared[$makeid['id']]= $makeid['name'];
-				}
-		}
+		$bg_make_ids_prepared[0]= "Select from list";
+		$objDOM = new DOMDocument(); 
+		$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
+		$row = $objDOM->getElementsByTagName("row"); 
+		foreach( $row as $value )
+		{
+		    $names = $value->getElementsByTagName("name");
+		    $name  = $names->item(0)->nodeValue;
+			
+			$ids = $value->getElementsByTagName("id");
+		    $id  = $ids->item(0)->nodeValue;
+			
+		    $bg_make_ids_prepared[$id]= $name;
+		 }
 		
 		$bg_make_id = new Zend_Form_Element_Select('bg_make_id',array('style'=>'width:150px;'));
 		$bg_make_id->setLabel('Mapped BG Make ID')
 					->addMultiOptions($bg_make_ids_prepared);
+		$bg_make_id->setAttrib('onchange','AutoFillModel(this.value)');
 	
 		$bg_make_id->setDecorators(array(
 		'ViewHelper',
@@ -83,22 +86,10 @@ class Application_Form_Add extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$select = $db->select()
-	             ->from('bg_model')
-	             ->where('state = ?', 'published')
-	             ->order('name ASC');
-        $modelids = $db->query($select)->fetchAll();
-	       
-		if (count($modelids)!=0){
-				$bg_model_ids_prepared[0]= "Select from list";
-				foreach ($modelids as $modelid){
-						$bg_model_ids_prepared[$modelid['id']]= $modelid['name'];
-				}
-		}
 		
 		$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
-		$bg_model_id->setLabel('Mapped BG Model ID')
-					->addMultiOptions($bg_model_ids_prepared);
+		$bg_model_id->setLabel('Mapped BG Model ID');
+		$bg_model_id->setAttrib('onchange','AutoFillSubModel(this.value)');
 	
 		$bg_model_id->setDecorators(array(
 		'ViewHelper',
@@ -120,8 +111,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-		$bg_submodel_id->setLabel('Mapped BG Submodel ID')
-					->addMultiOptions($bg_submodel_ids_prepared);
+		$bg_submodel_id->setLabel('Mapped BG Submodel ID');
 	
 		$bg_submodel_id->setDecorators(array(
 		'ViewHelper',
