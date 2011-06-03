@@ -56,7 +56,12 @@ class IndexController extends Zend_Controller_Action
          if(($this->_getParam('make')))
         		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
         		
-        $result = Zend_Paginator::factory($db->query($select)->fetchAll());
+        $export_result = $db->query($select)->fetchAll();
+        require_once('Zend/Session.php');
+     	$session_export = new Zend_Session_Namespace('export');
+        $session_export->export = $export_result;	
+        	
+        $result = Zend_Paginator::factory($export_result);
         $this->view->paginator = $result;
    		$this->view->paginator->setItemCountPerPage(25);
         $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
@@ -675,7 +680,110 @@ class IndexController extends Zend_Controller_Action
 		$this->view->total_rt_dropdown_descriptions = $res[0]['total'];
     }
     
+    public function populatemodelAction()
+    {
+    	$return = '0~select from list;';
+    	$makeid = $this->_getParam('id');
+     	$models_prepared[0]= "Select or Leave blank";
+		$objDOM = new DOMDocument(); 
+		$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
+		$row = $objDOM->getElementsByTagName("row"); 
+		foreach( $row as $value )
+		{
+		    $names = $value->getElementsByTagName("name");
+		    $name  = $names->item(0)->nodeValue;
+			
+		    $makeids = $value->getElementsByTagName("make_id");
+		    $make_id  = $makeids->item(0)->nodeValue;
+		    
+			$ids = $value->getElementsByTagName("id");
+		    $id  = $ids->item(0)->nodeValue;
+			
+		    if($makeid == $make_id)
+		    	$return .= $id.'~'.$name.';';
+		 }
+		echo $return;
+    }
+    
+ 	public function populatesubmodelAction()
+    {
+    	$return = '0~select from list;';
+    	$modelid = $this->_getParam('id');
+		$objDOM = new DOMDocument(); 
+		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+		$row = $objDOM->getElementsByTagName("row"); 
+		foreach( $row as $value )
+		{
+		    $names = $value->getElementsByTagName("name");
+		    $name  = $names->item(0)->nodeValue;
+			
+		    $modelids = $value->getElementsByTagName("model_id");
+		    $model_id  = $modelids->item(0)->nodeValue;
+		    
+			$ids = $value->getElementsByTagName("id");
+		    $id  = $ids->item(0)->nodeValue;
+			
+		    if($modelid == $model_id)
+		    	$return .= $id.'~'.$name.';';
+		 }
+		echo $return;
+    }
+    
+	public function csvexportAction()
+	{
+		
+		$session_export = new Zend_Session_Namespace('export');
+        $result = $session_export->export;
 
+	    header("Content-type:text/octect-stream");
+	    header("Content-Disposition:attachment;filename=data.csv");
+	    print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mapped BG Make ID\",\"Mapped BG Model ID\",\"Mapped BG Submodel ID\",\"Mapped BG Year\"\n";
+	    foreach ($result as $row) {
+	        print '"' . stripslashes(implode('","',$row)) . "\"\n";
+	    }
+	    exit;
+	}
+	
+	public function excelexportAction()
+	{
+		
+		$session_export = new Zend_Session_Namespace('export');
+        $result = $session_export->export;
+		
+	   	header("Content-type: application/x-msdownload");
+		header("Content-Disposition: attachment; filename=data.xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+    	$contents = $this->getExcelData($result);
+        echo $contents;
+	    exit;
+	}
+	
+	private function getExcelData($data)
+	{
+	    $retval = "";
+	    if (is_array($data)  && !empty($data))
+	    {
+	     $row = 0;
+	     foreach(array_values($data) as $_data){
+	      if (is_array($_data) && !empty($_data))
+	      {
+	          if ($row == 0)
+	          {
+	              // write the column headers
+	              $retval = implode("\t",array_keys($_data));
+	              $retval .= "\n";
+	          }
+	           //create a line of values for this row...
+	              $retval .= implode("\t",array_values($_data));
+	              $retval .= "\n";
+	              //increment the row so we don't create headers all over again
+	              $row++;
+	       }
+	     }
+	    }
+	  return $retval;
+ 	}
 
 }
 
