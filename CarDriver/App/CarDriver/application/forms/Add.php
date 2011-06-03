@@ -131,18 +131,20 @@ class Application_Form_Add extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$select = $db->select()
-	             ->from('bg_year')
-	             ->where('state = ?', 'published')
-	             ->order('name DESC');
-        $bgyearids = $db->query($select)->fetchAll();
-	       
-		if (count($bgyearids)!=0){
-				$bg_year_ids_prepared[0]= "Select from list";
-				foreach ($bgyearids as $bgyearid){
-						$bg_year_ids_prepared[$bgyearid['id']]= $bgyearid['name'];
-				}
-		}
+		$bg_year_ids_prepared[0]= "Select from list";
+		$objDOM = new DOMDocument(); 
+		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
+		$row = $objDOM->getElementsByTagName("row"); 
+		foreach( $row as $value )
+		{
+		    $names = $value->getElementsByTagName("name");
+		    $name  = $names->item(0)->nodeValue;
+			
+			$ids = $value->getElementsByTagName("id");
+		    $id  = $ids->item(0)->nodeValue;
+			
+		    $bg_year_ids_prepared[$id]= $name;
+		 }
 		
 		$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
 		$bg_year_id->setLabel('Mapped BG Year')

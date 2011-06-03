@@ -97,16 +97,6 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_10mph = new Zend_Form_Element_Text('rt3_10mph');
-		$rt3_10mph->setLabel('rt3_10mph');
-	
-		$rt3_10mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
 		
 		$rt3_length = new Zend_Form_Element_Text('rt3_length');
 		$rt3_length->setLabel('Vehicle Length');
@@ -116,18 +106,9 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_20mph = new Zend_Form_Element_Text('rt3_20mph');
-		$rt3_20mph->setLabel('rt3_20mph');
-	
-		$rt3_20mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
 		
 		$rt3_lt_oil = new Zend_Form_Element_Text('rt3_lt_oil');
 		$rt3_lt_oil->setLabel('Long-term Oil Used');
@@ -139,16 +120,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_40mph = new Zend_Form_Element_Text('rt3_40mph');
-		$rt3_40mph->setLabel('rt3_40mph');
-	
-		$rt3_40mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
+		
 		
 		$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
 		$rt3_lt_repiar->setLabel('Long-term Costs for Repair');
@@ -158,18 +130,10 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_50mph = new Zend_Form_Element_Text('rt3_50mph');
-		$rt3_50mph->setLabel('rt3_50mph');
-	
-		$rt3_50mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
+		
 		
 		$rt3_lt_serv = new Zend_Form_Element_Text('rt3_lt_serv');
 		$rt3_lt_serv->setLabel('Long-term Costs for Service');
@@ -181,16 +145,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_70mph = new Zend_Form_Element_Text('rt3_70mph');
-		$rt3_70mph->setLabel('rt3_70mph');
-	
-		$rt3_70mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
+		
 		
 		$rt3_lt_stps_sched = new Zend_Form_Element_Text('rt3_lt_stps_sched');
 		$rt3_lt_stps_sched->setLabel('Long-term Scheduled Stops');
@@ -200,18 +155,9 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_80mph = new Zend_Form_Element_Text('rt3_80mph');
-		$rt3_80mph->setLabel('rt3_80mph');
-	
-		$rt3_80mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
 		
 		$rt3_lt_stps_unsched = new Zend_Form_Element_Text('rt3_lt_stps_unsched');
 		$rt3_lt_stps_unsched->setLabel('Long-term Unscheduled Stops');
@@ -223,31 +169,12 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_90mph = new Zend_Form_Element_Text('rt3_90mph');
-		$rt3_90mph->setLabel('rt3_90mph');
-	
-		$rt3_90mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
+		
 		
 		$rt3_lt_wear = new Zend_Form_Element_Text('rt3_lt_wear');
 		$rt3_lt_wear->setLabel('Long-term Costs for Wear');
 		
 		$rt3_lt_wear->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_110mph = new Zend_Form_Element_Text('rt3_110mph');
-		$rt3_110mph->setLabel('rt3_110mph');
-	
-		$rt3_110mph->setDecorators(array(
 		'ViewHelper',
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
@@ -265,100 +192,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_120mph = new Zend_Form_Element_Text('rt3_120mph');
-		$rt3_120mph->setLabel('rt3_120mph');
-	
-		$rt3_120mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
 		
-		$rt3_peak_bmep = new Zend_Form_Element_Text('rt3_peak_bmep');
-		$rt3_peak_bmep->setLabel('rt3_peak_bmep');
-		
-		$rt3_peak_bmep->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_140mph = new Zend_Form_Element_Text('rt3_140mph');
-		$rt3_140mph->setLabel('rt3_140mph');
-	
-		$rt3_140mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_peal_bmep = new Zend_Form_Element_Text('rt3_peal_bmep');
-		$rt3_peal_bmep->setLabel('rt3_peal_bmep');
-		
-		$rt3_peal_bmep->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_150mph = new Zend_Form_Element_Text('rt3_150mph');
-		$rt3_150mph->setLabel('rt3_150mph');
-	
-		$rt3_150mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_road_hp_30mph = new Zend_Form_Element_Text('rt3_road_hp_30mph');
-		$rt3_road_hp_30mph->setLabel('rt3_road_hp_30mph');
-		
-		$rt3_road_hp_30mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_160mph = new Zend_Form_Element_Text('rt3_160mph');
-		$rt3_160mph->setLabel('rt3_160mph');
-	
-		$rt3_160mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_sp_factor = new Zend_Form_Element_Text('rt3_sp_factor');
-		$rt3_sp_factor->setLabel('rt3_sp_factor');
-		
-		$rt3_sp_factor->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_170mph = new Zend_Form_Element_Text('rt3_170mph');
-		$rt3_170mph->setLabel('rt3_170mph');
-	
-		$rt3_170mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
 		
 		$rt3_specific_power = new Zend_Form_Element_Text('rt3_specific_power');
 		$rt3_specific_power->setLabel('Horsepower per Liter');
@@ -368,18 +202,9 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_180mph = new Zend_Form_Element_Text('rt3_180mph');
-		$rt3_180mph->setLabel('rt3_180mph');
-	
-		$rt3_180mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
 		
 		$rt3_stroke_mm = new Zend_Form_Element_Text('rt3_stroke_mm');
 		$rt3_stroke_mm->setLabel('Cylinder Stroke');
@@ -391,16 +216,7 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
-		$rt3_190mph = new Zend_Form_Element_Text('rt3_190mph');
-		$rt3_190mph->setLabel('rt3_190mph');
-	
-		$rt3_190mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
+		
 		
 		$rt3_trunk = new Zend_Form_Element_Text('rt3_trunk');
 		$rt3_trunk->setLabel('Trunk Volume');
@@ -410,18 +226,10 @@ class Application_Form_Add2 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_200mph = new Zend_Form_Element_Text('rt3_200mph');
-		$rt3_200mph->setLabel('rt3_200mph');
-	
-		$rt3_200mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
+		
 		
 		$rt3_valve_gear = new Zend_Form_Element_Text('rt3_valve_gear');
 		$rt3_valve_gear->setLabel('Valve Setup');

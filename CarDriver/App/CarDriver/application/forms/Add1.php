@@ -298,16 +298,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
-		
-		$rt2_100_mph = new Zend_Form_Element_Text('rt2_100_mph');
-		$rt2_100_mph->setLabel('rt2_100_mph');
-		
-		$rt2_100_mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
+	
 		
 		$rt2_trac_defeatable = new Zend_Form_Element_Text('rt2_trac_defeatable');
 		$rt2_trac_defeatable->setLabel('Traction Control Fully Defeatable');
@@ -317,7 +308,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		
 		));
 		
 		$rt2_130_mph = new Zend_Form_Element_Text('rt2_130_mph');
@@ -328,6 +319,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
 		$rt2_traction_control = new Zend_Form_Element_Text('rt2_traction_control');
@@ -338,7 +330,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		
 		));
 		
 		$rt2_30_50TG = new Zend_Form_Element_Text('rt2_30_50TG');
@@ -349,6 +341,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
 		$rt2_turning_cirl = new Zend_Form_Element_Text('rt2_turning_cir');
@@ -359,7 +352,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		
 		));
 		
 		$rt2_30_mph = new Zend_Form_Element_Text('rt2_30_mph');
@@ -370,6 +363,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
 		$rt2_wot = new Zend_Form_Element_Text('rt2_wot');
@@ -380,7 +374,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		
 		));
 		
 		$rt2_50_70TG = new Zend_Form_Element_Text('rt2_50-70TG');
@@ -391,6 +385,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
 		$rt3_boost_psi = new Zend_Form_Element_Text('rt3_boost_psi');
@@ -401,17 +396,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
 		
-		$rt2_50_mph = new Zend_Form_Element_Text('rt2_50_mph');
-		$rt2_50_mph->setLabel('rt2_50_mph');
-		
-		$rt2_50_mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		));
 		
 		$rt3_bore_mm = new Zend_Form_Element_Text('rt3_bore_mm');
@@ -446,15 +431,6 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		$rt2_70_mph = new Zend_Form_Element_Text('rt2_70_mph');
-		$rt2_70_mph->setLabel('rt2_70_mph');
-		
-		$rt2_70_mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
 		
 		$rt3_comp_ratio = new Zend_Form_Element_Text('rt3_comp_ratio');
 		$rt3_comp_ratio->setLabel('Engine Compression Ratio');
@@ -464,7 +440,7 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		
 		));
 		
 		$select = $db->select()
@@ -494,18 +470,9 @@ class Application_Form_Add1 extends Application_Form_MainForm
 		'Description',
 		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
 		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_et_factor = new Zend_Form_Element_Text('rt3_et_factor');
-		$rt3_et_factor->setLabel('rt3_et_factor');
-	
-		$rt3_et_factor->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
+		
 		
 		$submit1 = new Zend_Form_Element_Submit('submit1','Next');
 		
