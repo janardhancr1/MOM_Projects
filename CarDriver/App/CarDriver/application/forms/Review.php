@@ -124,28 +124,53 @@ class Application_Form_Review extends Application_Form_MainForm
 			$this->addElements(array($before_bg_make_id,$bg_make_id));
 			
 			$bg_model_ids_prepared[0]= "Select from list";
-				//if(isset($_SESSION['makid']))
-				//{
-					//$makeid = $_SESSION['makid'];
-					$bg_model_ids_prepared[0]= "Select from list";
-					$objDOM = new DOMDocument(); 
-					$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-					$row = $objDOM->getElementsByTagName("row"); 
-					foreach( $row as $value )
+			
+			if(!empty($form1_Values['bg_make_id']))
+			{
+					if(isset($_SESSION['makid']))
 					{
-					    $names = $value->getElementsByTagName("name");
-					    $name  = $names->item(0)->nodeValue;
-						
-					    $makeids = $value->getElementsByTagName("make_id");
-					    $make_id  = $makeids->item(0)->nodeValue;
-					    
-						$ids = $value->getElementsByTagName("id");
-					    $id  = $ids->item(0)->nodeValue;
-						
-					    if($form1_Values['bg_make_id'] == $make_id)
-					    	$bg_model_ids_prepared[$id]= $name;
-					 }
-				//}
+						$makeid = $_SESSION['makid'];
+						$bg_model_ids_prepared[0]= "Select from list";
+						$objDOM = new DOMDocument(); 
+						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
+						$row = $objDOM->getElementsByTagName("row"); 
+						foreach( $row as $value )
+						{
+						    $names = $value->getElementsByTagName("name");
+						    $name  = $names->item(0)->nodeValue;
+							
+						    $makeids = $value->getElementsByTagName("make_id");
+						    $make_id  = $makeids->item(0)->nodeValue;
+						    
+							$ids = $value->getElementsByTagName("id");
+						    $id  = $ids->item(0)->nodeValue;
+							
+						    if($makeid == $make_id)
+						    	$bg_model_ids_prepared[$id]= $name;
+						 }
+					}
+					else
+					{
+						$bg_model_ids_prepared[0]= "Select from list";
+						$objDOM = new DOMDocument(); 
+						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
+						$row = $objDOM->getElementsByTagName("row"); 
+						foreach( $row as $value )
+						{
+						    $names = $value->getElementsByTagName("name");
+						    $name  = $names->item(0)->nodeValue;
+							
+						    $makeids = $value->getElementsByTagName("make_id");
+						    $make_id  = $makeids->item(0)->nodeValue;
+						    
+							$ids = $value->getElementsByTagName("id");
+						    $id  = $ids->item(0)->nodeValue;
+							
+						    if($form1_Values['bg_make_id'] == $make_id)
+						    	$bg_model_ids_prepared[$id]= $name;
+						 }
+					}
+			}
 			
 				$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 				$bg_model_id->addMultiOptions($bg_model_ids_prepared)
@@ -175,28 +200,52 @@ class Application_Form_Review extends Application_Form_MainForm
 				$this->addElements(array($before_bg_model_id,$bg_model_id));
 				
 				$bg_submodel_ids_prepared[0]= "Select from list";
-				//if(isset($_SESSION['modid']))
-				//{
-					//$modid = $_SESSION['modid'];
-					$bg_submodel_ids_prepared[0]= "Select from list";
-					$objDOM = new DOMDocument(); 
-					$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-					$row = $objDOM->getElementsByTagName("row"); 
-					foreach( $row as $value )
+				if(!empty($form1_Values['bg_model_id']))
+				{
+					if(isset($_SESSION['modid']))
 					{
-					    $names = $value->getElementsByTagName("name");
-					    $name  = $names->item(0)->nodeValue;
-						
-					    $modelids = $value->getElementsByTagName("model_id");
-					    $model_id  = $modelids->item(0)->nodeValue;
-					    
-						$ids = $value->getElementsByTagName("id");
-					    $id  = $ids->item(0)->nodeValue;
+						$modid = $_SESSION['modid'];
+						$bg_submodel_ids_prepared[0]= "Select from list";
+						$objDOM = new DOMDocument(); 
+						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+						$row = $objDOM->getElementsByTagName("row"); 
+						foreach( $row as $value )
+						{
+						    $names = $value->getElementsByTagName("name");
+						    $name  = $names->item(0)->nodeValue;
 							
-						    if($form1_Values['bg_model_id'] == $model_id)
-						    	$bg_submodel_ids_prepared[$id]= $name;
-					 }
-				//}
+						    $modelids = $value->getElementsByTagName("model_id");
+						    $model_id  = $modelids->item(0)->nodeValue;
+						    
+							$ids = $value->getElementsByTagName("id");
+						    $id  = $ids->item(0)->nodeValue;
+								
+							    if($modid == $model_id)
+							    	$bg_submodel_ids_prepared[$id]= $name;
+						 }
+					}
+					else
+					{
+						$bg_submodel_ids_prepared[0]= "Select from list";
+						$objDOM = new DOMDocument(); 
+						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+						$row = $objDOM->getElementsByTagName("row"); 
+						foreach( $row as $value )
+						{
+						    $names = $value->getElementsByTagName("name");
+						    $name  = $names->item(0)->nodeValue;
+							
+						    $modelids = $value->getElementsByTagName("model_id");
+						    $model_id  = $modelids->item(0)->nodeValue;
+						    
+							$ids = $value->getElementsByTagName("id");
+						    $id  = $ids->item(0)->nodeValue;
+								
+							    if($form1_Values['bg_model_id'] == $model_id)
+							    	$bg_submodel_ids_prepared[$id]= $name;
+						 }
+					}
+				}
 				$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
 				$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
 							->setValue($form1_Values['bg_submodel_id']);
