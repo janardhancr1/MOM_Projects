@@ -172,6 +172,7 @@ class Application_Form_Review extends Application_Form_MainForm
 					}
 			}
 			
+			
 				$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 				$bg_model_id->addMultiOptions($bg_model_ids_prepared)
 							->setValue($form1_Values['bg_model_id']);
@@ -246,6 +247,7 @@ class Application_Form_Review extends Application_Form_MainForm
 						 }
 					}
 				}
+				
 				$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
 				$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
 							->setValue($form1_Values['bg_submodel_id']);
