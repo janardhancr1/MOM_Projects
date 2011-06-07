@@ -684,6 +684,11 @@ class IndexController extends Zend_Controller_Action
     {
     	$return = '0~select from list;';
     	$makeid = $this->_getParam('id');
+    	
+    	if($makeid)
+    	{
+    		$_SESSION['makid'] = $makeid;
+    	}
      	$models_prepared[0]= "Select or Leave blank";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
@@ -709,6 +714,10 @@ class IndexController extends Zend_Controller_Action
     {
     	$return = '0~select from list;';
     	$modelid = $this->_getParam('id');
+    	if($modelid)
+    	{
+    		$_SESSION['modid'] = $modelid;
+    	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
 		$row = $objDOM->getElementsByTagName("row"); 
