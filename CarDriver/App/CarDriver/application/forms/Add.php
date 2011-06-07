@@ -50,15 +50,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		$bg_make_ids_prepared[0]= "Select from list";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
-		$row = $objDOM->getElementsByTagName("row"); 
-		foreach( $row as $value )
+		$xpath = new DOMXPath($objDOM);
+		$query = '//response/data/row/name';
+		$entries = $xpath->query($query);
+		foreach( $entries as $entry )
 		{
-		    $names = $value->getElementsByTagName("name");
-		    $name  = $names->item(0)->nodeValue;
-			
-			$ids = $value->getElementsByTagName("id");
-		    $id  = $ids->item(0)->nodeValue;
-			
+		    $name  = $entry->nodeValue;
+		    $id  = $entry->previousSibling->nodeValue;
 		    $bg_make_ids_prepared[$id]= $name;
 		 }
 		
@@ -87,31 +85,32 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$bg_model_ids_prepared[0]= "Select from list";
+		$makeid = 0;
 		if(isset($_SESSION['makid']))
 		{
 			$makeid = $_SESSION['makid'];
 			$bg_model_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-			$row = $objDOM->getElementsByTagName("row"); 
-			foreach( $row as $value )
+			$xpath = new DOMXPath($objDOM);
+			$query = '//response/data/row/make_id';
+		
+			$entries = $xpath->query($query); 
+			foreach( $entries as $entry )
 			{
-			    $names = $value->getElementsByTagName("name");
-			    $name  = $names->item(0)->nodeValue;
-				
-			    $makeids = $value->getElementsByTagName("make_id");
-			    $make_id  = $makeids->item(0)->nodeValue;
-			    
-				$ids = $value->getElementsByTagName("id");
-			    $id  = $ids->item(0)->nodeValue;
-				
+				$make_id = $entry->nodeValue;
 			    if($makeid == $make_id)
+			    {
+			    	$name  = $entry->previousSibling->nodeValue;
+			    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 			    	$bg_model_ids_prepared[$id]= $name;
+			    }
 			 }
 		}
 		$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 		$bg_model_id->setLabel('Mapped BG Model ID')
-		->addMultiOptions($bg_model_ids_prepared);
+		->addMultiOptions($bg_model_ids_prepared)
+		->setValue($makeid);
 		$bg_model_id->setAttrib('onchange','AutoFillSubModel(this.value)');
 	
 		$bg_model_id->setDecorators(array(
@@ -133,33 +132,34 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
+		$modid = 0;
 		if(isset($_SESSION['modid']))
 		{
 			$modid = $_SESSION['modid'];
 			$bg_submodel_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-			$row = $objDOM->getElementsByTagName("row"); 
-			foreach( $row as $value )
+			$xpath = new DOMXPath($objDOM);
+			$query = '//response/data/row/model_id';
+	        
+	        $entries = $xpath->query($query);
+	        
+			foreach( $entries as $entry)
 			{
-			    $names = $value->getElementsByTagName("name");
-			    $name  = $names->item(0)->nodeValue;
-				
-			    $modelids = $value->getElementsByTagName("model_id");
-			    $model_id  = $modelids->item(0)->nodeValue;
-			    
-				$ids = $value->getElementsByTagName("id");
-			    $id  = $ids->item(0)->nodeValue;
-					
-				    if($modid == $model_id)
-				    	$bg_submodel_ids_prepared[$id]= $name;
+			    if($modid == $entry->nodeValue)
+			    { 	
+			    	$name  = $entry->previousSibling->nodeValue;
+			    	$id  = $entry->previousSibling->previousSibling->nodeValue;
+			    	$bg_submodel_ids_prepared[$id]= $name;
+			    }
 			 }
 		}
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
 		$bg_submodel_id->setLabel('Mapped BG Submodel ID')
-		->addMultiOptions($bg_submodel_ids_prepared);
+		->addMultiOptions($bg_submodel_ids_prepared)
+		->setValue($modid);
 	
 		$bg_submodel_id->setDecorators(array(
 		'ViewHelper',

@@ -85,15 +85,13 @@ class Application_Form_Review extends Application_Form_MainForm
 			$bg_make_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
-			$row = $objDOM->getElementsByTagName("row"); 
-			foreach( $row as $value )
+			$xpath = new DOMXPath($objDOM);
+			$query = '//response/data/row/name';
+			$entries = $xpath->query($query);
+			foreach( $entries as $entry )
 			{
-			    $names = $value->getElementsByTagName("name");
-			    $name  = $names->item(0)->nodeValue;
-				
-				$ids = $value->getElementsByTagName("id");
-			    $id  = $ids->item(0)->nodeValue;
-				
+			    $name  = $entry->nodeValue;
+			    $id  = $entry->previousSibling->nodeValue;
 			    $bg_make_ids_prepared[$id]= $name;
 			 }
 		
@@ -133,20 +131,19 @@ class Application_Form_Review extends Application_Form_MainForm
 						$bg_model_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-						$row = $objDOM->getElementsByTagName("row"); 
-						foreach( $row as $value )
+						$xpath = new DOMXPath($objDOM);
+						$query = '//response/data/row/make_id';
+					
+						$entries = $xpath->query($query); 
+						foreach( $entries as $entry )
 						{
-						    $names = $value->getElementsByTagName("name");
-						    $name  = $names->item(0)->nodeValue;
-							
-						    $makeids = $value->getElementsByTagName("make_id");
-						    $make_id  = $makeids->item(0)->nodeValue;
-						    
-							$ids = $value->getElementsByTagName("id");
-						    $id  = $ids->item(0)->nodeValue;
-							
+							$make_id = $entry->nodeValue;
 						    if($makeid == $make_id)
+						    {
+						    	$name  = $entry->previousSibling->nodeValue;
+						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 						    	$bg_model_ids_prepared[$id]= $name;
+						    }
 						 }
 					}
 					else
@@ -154,20 +151,19 @@ class Application_Form_Review extends Application_Form_MainForm
 						$bg_model_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-						$row = $objDOM->getElementsByTagName("row"); 
-						foreach( $row as $value )
+						$xpath = new DOMXPath($objDOM);
+						$query = '//response/data/row/make_id';
+					
+						$entries = $xpath->query($query); 
+						foreach( $entries as $entry )
 						{
-						    $names = $value->getElementsByTagName("name");
-						    $name  = $names->item(0)->nodeValue;
-							
-						    $makeids = $value->getElementsByTagName("make_id");
-						    $make_id  = $makeids->item(0)->nodeValue;
-						    
-							$ids = $value->getElementsByTagName("id");
-						    $id  = $ids->item(0)->nodeValue;
-							
-						    if($form1_Values['bg_make_id'] == $make_id)
+							$make_id = $entry->nodeValue;
+						    if($makeid == $make_id)
+						    {
+						    	$name  = $entry->previousSibling->nodeValue;
+						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 						    	$bg_model_ids_prepared[$id]= $name;
+						    }
 						 }
 					}
 			}
@@ -209,20 +205,18 @@ class Application_Form_Review extends Application_Form_MainForm
 						$bg_submodel_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-						$row = $objDOM->getElementsByTagName("row"); 
-						foreach( $row as $value )
+						$xpath = new DOMXPath($objDOM);
+						$query = '//response/data/row/model_id';
+				        
+				        $entries = $xpath->query($query);
+						foreach( $entries as $entry)
 						{
-						    $names = $value->getElementsByTagName("name");
-						    $name  = $names->item(0)->nodeValue;
-							
-						    $modelids = $value->getElementsByTagName("model_id");
-						    $model_id  = $modelids->item(0)->nodeValue;
-						    
-							$ids = $value->getElementsByTagName("id");
-						    $id  = $ids->item(0)->nodeValue;
-								
-							    if($modid == $model_id)
-							    	$bg_submodel_ids_prepared[$id]= $name;
+						    if($modid == $entry->nodeValue)
+						    { 	
+						    	$name  = $entry->previousSibling->nodeValue;
+						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
+						    	$bg_submodel_ids_prepared[$id]= $name;
+						    }
 						 }
 					}
 					else
@@ -230,20 +224,18 @@ class Application_Form_Review extends Application_Form_MainForm
 						$bg_submodel_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-						$row = $objDOM->getElementsByTagName("row"); 
-						foreach( $row as $value )
+						$xpath = new DOMXPath($objDOM);
+						$query = '//response/data/row/model_id';
+				        
+				        $entries = $xpath->query($query);
+						foreach( $entries as $entry)
 						{
-						    $names = $value->getElementsByTagName("name");
-						    $name  = $names->item(0)->nodeValue;
-							
-						    $modelids = $value->getElementsByTagName("model_id");
-						    $model_id  = $modelids->item(0)->nodeValue;
-						    
-							$ids = $value->getElementsByTagName("id");
-						    $id  = $ids->item(0)->nodeValue;
-								
-							    if($form1_Values['bg_model_id'] == $model_id)
-							    	$bg_submodel_ids_prepared[$id]= $name;
+						    if($modid == $entry->nodeValue)
+						    { 	
+						    	$name  = $entry->previousSibling->nodeValue;
+						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
+						    	$bg_submodel_ids_prepared[$id]= $name;
+						    }
 						 }
 					}
 				}
