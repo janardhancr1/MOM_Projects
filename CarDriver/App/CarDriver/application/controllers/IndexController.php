@@ -162,7 +162,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_issue'] = $review_values['rt_issue'];
 			$rt_results_main['bg_submodel_id'] = $review_values['bg_submodel_id'];
 			$rt_results_main['rt_issue_year'] = $review_values['rt_issue_year'];
-			$rt_results_main['bg_year_id'] = $review_values['bg_year_id 	'];
+			$rt_results_main['bg_year_id'] = $review_values['bg_year_id'];
 			$rt_results_main['rt_percent_on_rear'] = $review_values['rt_percent_on_rear'];
 			$rt_results_main['bg_controlled_make_id'] = $review_values['bg_controlled_make_id'];
 			$rt_results_main['rt_percent_on_front'] = $review_values['rt_percent_on_front'];
@@ -490,7 +490,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_issue'] = $review_values['rt_issue'];
 			$rt_results_main['bg_submodel_id'] = $review_values['bg_submodel_id'];
 			$rt_results_main['rt_issue_year'] = $review_values['rt_issue_year'];
-			$rt_results_main['bg_year_id'] = $review_values['bg_year_id 	'];
+			$rt_results_main['bg_year_id'] = $review_values['bg_year_id'];
 			$rt_results_main['rt_percent_on_rear'] = $review_values['rt_percent_on_rear'];
 			$rt_results_main['bg_controlled_make_id'] = $review_values['bg_controlled_make_id'];
 			$rt_results_main['rt_percent_on_front'] = $review_values['rt_percent_on_front'];
@@ -692,20 +692,19 @@ class IndexController extends Zend_Controller_Action
      	$models_prepared[0]= "Select or Leave blank";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-		$row = $objDOM->getElementsByTagName("row"); 
-		foreach( $row as $value )
+		$xpath = new DOMXPath($objDOM);
+		$query = '//response/data/row/make_id';
+		
+		$entries = $xpath->query($query);
+		foreach( $entries as $entry )
 		{
-		    $names = $value->getElementsByTagName("name");
-		    $name  = $names->item(0)->nodeValue;
-			
-		    $makeids = $value->getElementsByTagName("make_id");
-		    $make_id  = $makeids->item(0)->nodeValue;
-		    
-			$ids = $value->getElementsByTagName("id");
-		    $id  = $ids->item(0)->nodeValue;
-			
+			$make_id = $entry->nodeValue;
 		    if($makeid == $make_id)
+		    {
+		    	$name  = $entry->previousSibling->nodeValue;
+		    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 		    	$return .= $id.'~'.$name.';';
+		    }
 		 }
 		echo $return;
     }
@@ -713,27 +712,25 @@ class IndexController extends Zend_Controller_Action
  	public function populatesubmodelAction()
     {
     	$return = '0~select from list;';
-    	$modelid = $this->_getParam('id');
+    	$modelid = $this->_getParam('modid');
     	if($modelid)
     	{
     		$_SESSION['modid'] = $modelid;
     	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-		$row = $objDOM->getElementsByTagName("row"); 
-		foreach( $row as $value )
+		$xpath = new DOMXPath($objDOM);
+		$query = '//response/data/row/model_id';
+        
+        $entries = $xpath->query($query);
+		foreach( $entries as $entry)
 		{
-		    $names = $value->getElementsByTagName("name");
-		    $name  = $names->item(0)->nodeValue;
-			
-		    $modelids = $value->getElementsByTagName("model_id");
-		    $model_id  = $modelids->item(0)->nodeValue;
-		    
-			$ids = $value->getElementsByTagName("id");
-		    $id  = $ids->item(0)->nodeValue;
-			
-		    if($modelid == $model_id)
+		    if($modelid == $entry->nodeValue)
+		    { 	
+		    	$name  = $entry->previousSibling->nodeValue;
+		    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 		    	$return .= $id.'~'.$name.';';
+		    }
 		 }
 		echo $return;
     }
