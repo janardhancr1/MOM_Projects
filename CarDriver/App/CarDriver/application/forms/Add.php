@@ -87,7 +87,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$bg_model_ids_prepared[0]= "Select from list";
 		
 		$session_makeid = new Zend_Session_Namespace('makeid');
-    	//$makeid = $session_makeid->makeid;
+    	$makeid = "0";
 		if(isset($session_makeid->makeid))
 		{
 			//$makeid = $_SESSION['makid'];
@@ -136,7 +136,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$session_modelid = new Zend_Session_Namespace('modelid');
-    	//$modelid = $session_modelid->modelid;
+    	$modid = "0";
 		if(isset($session_modelid->modelid))
 		{
 			$modid =$session_modelid->modelid;

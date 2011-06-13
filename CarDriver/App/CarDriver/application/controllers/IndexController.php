@@ -74,7 +74,6 @@ class IndexController extends Zend_Controller_Action
     	
     	 $form = new Application_Form_Add();
     	 $this->view->form = $form;
-    	 
     	 if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
     	 {
     	 	$form_values = $this->view->form->getValues();
@@ -82,7 +81,6 @@ class IndexController extends Zend_Controller_Action
     	    require_once('Zend/Session.php');
     	 	$session1 = new Zend_Session_Namespace('form1');
     	    $session1->form1 = $form_values;
-    	    
     	 	$this->_redirect("index/add1/");
     	 	
     	 }
