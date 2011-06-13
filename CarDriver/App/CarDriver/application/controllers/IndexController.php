@@ -211,6 +211,12 @@ class IndexController extends Zend_Controller_Action
 			      $results1->setFromArray($rt_results_main);
 			      $results1->save();
 			      $db->commit();
+			      //$session_makeid = new Zend_Session_Namespace('makeid');
+			      //$session_modelid = new Zend_Session_Namespace('modelid');
+			      //unset($session_makeid->makeid);
+			      //unset($session_modelid->modelid);
+			      //Zend_Session:: namespaceUnset('makeid');
+			      //Zend_Session:: namespaceUnset('makeid');
 		    }
 		    catch(Exception $e)
 		    {
@@ -329,8 +335,13 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-		    
+		    /*require_once('Zend/Session.php');
+			$session_makeid = new Zend_Session_Namespace('makeid');
+			$session_modelid = new Zend_Session_Namespace('modelid');
+			unset($session_makeid->makeid);
+			unset($session_modelid->modelid);*/
 			$this->_redirect("index/");
+			
 			
 	    }
     }
@@ -687,7 +698,10 @@ class IndexController extends Zend_Controller_Action
     	
     	if($makeid)
     	{
-    		$_SESSION['makid'] = $makeid;
+    		require_once('Zend/Session.php');
+    	 	$session_makeid = new Zend_Session_Namespace('makeid');
+    	 	$session_makeid->makeid = $makeid;
+    		//$_SESSION['makid'] = $makeid;
     	}
      	$models_prepared[0]= "Select or Leave blank";
 		$objDOM = new DOMDocument(); 
@@ -715,7 +729,9 @@ class IndexController extends Zend_Controller_Action
     	$modelid = $this->_getParam('modid');
     	if($modelid)
     	{
-    		$_SESSION['modid'] = $modelid;
+    		require_once('Zend/Session.php');
+    	 	$session_modelid = new Zend_Session_Namespace('modelid');
+    	 	$session_modelid->modelid = $modelid;
     	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
