@@ -125,9 +125,10 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			if(!empty($form1_Values['bg_make_id']))
 			{
-					if(isset($_SESSION['makid']))
+				    $session_makeid = new Zend_Session_Namespace('makeid');
+					if(isset($session_makeid->makeid))
 					{
-						$makeid = $_SESSION['makid'];
+						$makeid = $session_makeid->makeid;
 						$bg_model_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
@@ -199,9 +200,10 @@ class Application_Form_Review extends Application_Form_MainForm
 				$bg_submodel_ids_prepared[0]= "Select from list";
 				if(!empty($form1_Values['bg_model_id']))
 				{
-					if(isset($_SESSION['modid']))
+					$session_modelid = new Zend_Session_Namespace('modelid');
+					if(isset($session_modelid->modelid))
 					{
-						$modid = $_SESSION['modid'];
+						$modid = $session_modelid->modelid;
 						$bg_submodel_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 

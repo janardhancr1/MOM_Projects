@@ -85,10 +85,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$bg_model_ids_prepared[0]= "Select from list";
-		$makeid = 0;
-		if(isset($_SESSION['makid']))
+		
+		$session_makeid = new Zend_Session_Namespace('makeid');
+    	//$makeid = $session_makeid->makeid;
+		if(isset($session_makeid->makeid))
 		{
-			$makeid = $_SESSION['makid'];
+			//$makeid = $_SESSION['makid'];
+			$makeid = $session_makeid->makeid;
 			$bg_model_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
@@ -132,10 +135,11 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
-		$modid = 0;
-		if(isset($_SESSION['modid']))
+		$session_modelid = new Zend_Session_Namespace('modelid');
+    	//$modelid = $session_modelid->modelid;
+		if(isset($session_modelid->modelid))
 		{
-			$modid = $_SESSION['modid'];
+			$modid =$session_modelid->modelid;
 			$bg_submodel_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
