@@ -20,14 +20,16 @@ class IndexController extends Zend_Controller_Action
         
          $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
-         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 'rrm.rt_published As publish_date', 
-             'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model', 
-             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id','rrm.bg_year_id As bg_year_id'));
+         ->from(array('rrm'=>'rt_results_main', 'bg' => 'bg_make'),array('rrm.id As main_results_id', 
+         		'rrm.rt_published As publish_date', 
+             'rrm.rt_model_year As year', 'bg.name As make', 'rrm.rt_model As model', 
+             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id','rrm.bg_year_id As bg_year_id'))
+         ->joinInner(array('bg'=>'bg_make'),'bg.id=rrm.bg_make_id');
             /* ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 'rrm.rt_published As publish_date', 
              'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model', 
              'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id'))
              ->joinInner(array('by'=>'bg_year'),'by.id=rrm.bg_year_id');*/
- 
+
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
          	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost())))
           {
