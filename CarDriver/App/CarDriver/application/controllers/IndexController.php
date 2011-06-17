@@ -81,15 +81,15 @@ class IndexController extends Zend_Controller_Action
     	 	$form_values = $this->view->form->getValues();
     	 	
     	    require_once('Zend/Session.php');
-    	 	$session1 = new Zend_Session_Namespace('form1');
-    	    $session1->form1 = $form_values;
-    	 	$this->_redirect("index/add1/");
+    	 	$session_formvalues = new Zend_Session_Namespace('FormValues');
+    	    $session_formvalues->FormValues = $form_values;
+    	 	$this->_redirect("index/review/");
     	 	
     	 }
     	
     }
     
-    public function add1Action()
+   /* public function add1Action()
     {
     	$form = new Application_Form_Add1();
     	$this->view->form = $form;
@@ -129,7 +129,7 @@ class IndexController extends Zend_Controller_Action
     	 	$this->_redirect("index/review/");
     	 	
     	 }
-    }
+    }*/
     
     public function reviewAction()
     {
@@ -356,11 +356,25 @@ class IndexController extends Zend_Controller_Action
        
         $results_main = $db->query($select)->fetchAll();
         
+        $select = $db->select()
+            ->from('rt_results_level_2')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_level_2 = $db->query($select)->fetchAll();
+        
+        $select = $db->select()
+            ->from('rt_results_level_3')
+            ->where('id = ?', $this->_getParam('id'));
+       
+        $results_level_3 = $db->query($select)->fetchAll();
+        
+        $results = array_merge($results_main[0], $results_level_2[0], $results_level_3[0]);
+        
         // Prepare form
     	$form = new Application_Form_Edit();
     	
     	// Populate form
-    	$form->populate($results_main[0]);
+    	$form->populate($results);
     	
     	$this->view->form = $form;
     	
@@ -372,13 +386,13 @@ class IndexController extends Zend_Controller_Action
     	 	$session1 = new Zend_Session_Namespace('form1');
     	    $session1->form1 = $form_values;
     	    
-    	 	$this->_redirect("index/edit1/id/".$this->_getParam('id'));
+    	 	$this->_redirect("index/reviewedit/id/".$this->_getParam('id'));
     	 	
     	}
         
     }
     
-    public function edit1Action()
+    /*public function edit1Action()
     {
     	$db = Zend_Db_Table::getDefaultAdapter();
     	
@@ -470,7 +484,7 @@ class IndexController extends Zend_Controller_Action
     	 	
     	 }
     	
-    }
+    }*/
     
     public function revieweditAction()
     {
@@ -726,25 +740,25 @@ class IndexController extends Zend_Controller_Action
  	public function populatesubmodelAction()
     {
     	$return = '0~select from list;';
-    	$modelid = $this->_getParam('modid');
+    	$yearid = $this->_getParam('yearid');
     	if($modelid)
     	{
     		require_once('Zend/Session.php');
-    	 	$session_modelid = new Zend_Session_Namespace('modelid');
-    	 	$session_modelid->modelid = $modelid;
+    	 	$session_yearid = new Zend_Session_Namespace('yearid');
+    	 	$session_yearid->yearid = $yearid;
     	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
-		$query = '//response/data/row/model_id';
+		$query = '//response/data/row/year_id';
         
         $entries = $xpath->query($query);
 		foreach( $entries as $entry)
 		{
 		    if($modelid == $entry->nodeValue)
 		    { 	
-		    	$name  = $entry->previousSibling->nodeValue;
-		    	$id  = $entry->previousSibling->previousSibling->nodeValue;
+		    	$name  = $entry->previousSibling->previousSibling->nodeValue;
+		    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
 		    	$return .= $id.'~'.$name.';';
 		    }
 		 }
