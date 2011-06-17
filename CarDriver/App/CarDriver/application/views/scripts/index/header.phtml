@@ -33,7 +33,7 @@ function AutoFillSubModel(value)
         "/app/public/index/populatesubmodel",
             {
                 method:'get',
-                parameters: {modid: value},
+                parameters: {yearid: value},
                 onSuccess: FillSubModel
         });
 }
