@@ -85,7 +85,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 	    else
 	     $models_prepared[0]= "Select or Leave blank";
 		
-		$model = $this->createElement('select','model')
+		$model = $this->createElement('select','model',array('style'=>'width:170px;'))
 		->setLabel('Model')
 		->addMultiOptions($models_prepared);
 		
