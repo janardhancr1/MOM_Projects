@@ -89,48 +89,6 @@ class IndexController extends Zend_Controller_Action
     	
     }
     
-   /* public function add1Action()
-    {
-    	$form = new Application_Form_Add1();
-    	$this->view->form = $form;
-    	
-    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-    	 {
-    	 	$form_values = $this->view->form->getValues();
-    	 	
-    	 	require_once('Zend/Session.php');
-    	 	$session2 = new Zend_Session_Namespace('form2');
-    	 	$session2->form2 = $form_values;
-    	 	
-    	 	$this->_redirect("index/add2/");
-    	 	
-    	 }
-    	
-    }
-    
-    public function add2Action()
-    {
-    	$form = new Application_Form_Add2();
-    	$this->view->form = $form;
-    	
-    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-    	 {
-    	 	if(isset($_POST['cancel']))
-    	 	{
-    	 		$this->_redirect("index/");
-    	 	}
-    	 		
-    	 	$form_values = $this->view->form->getValues();
-    	 	
-    	 	require_once('Zend/Session.php');
-    	 	$session3 = new Zend_Session_Namespace('form3');
-    	 	$session3->form3 = $form_values;
-    	 	
-    	 	$this->_redirect("index/review/");
-    	 	
-    	 }
-    }*/
-    
     public function reviewAction()
     {
     	$db = Zend_Db_Table::getDefaultAdapter(); 
@@ -211,12 +169,6 @@ class IndexController extends Zend_Controller_Action
 			      $results1->setFromArray($rt_results_main);
 			      $results1->save();
 			      $db->commit();
-			      //$session_makeid = new Zend_Session_Namespace('makeid');
-			      //$session_modelid = new Zend_Session_Namespace('modelid');
-			      //unset($session_makeid->makeid);
-			      //unset($session_modelid->modelid);
-			      //Zend_Session:: namespaceUnset('makeid');
-			      //Zend_Session:: namespaceUnset('makeid');
 		    }
 		    catch(Exception $e)
 		    {
@@ -232,9 +184,7 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_2['rt2_30_50TG'] = $review_values['rt2_30_50TG'];
 		    $rt_results_level_2['rt2_30_mph'] = $review_values['rt2_30_mph'];
 		    $rt_results_level_2['rt2_50_70TG'] = $review_values['rt2_50_70TG'];
-		    $rt_results_level_2['rt2_50_mph'] = $review_values['rt2_50_mph'];
 		    $rt_results_level_2['rt2_70cr'] = $review_values['rt2_70cr'];
-		    $rt_results_level_2['rt2_70_mph'] = $review_values['rt2_70_mph'];
 		    $rt_results_level_2['rt2_controlled_airbags'] = $review_values['rt2_controlled_airbags'];
 		    $rt_results_level_2['rt2_anti_lock'] = $review_values['rt2_anti_lock'];
 		    $rt_results_level_2['rt2_epa_city_fe'] = $review_values['rt2_epa_city_fe'];
@@ -276,7 +226,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_bore_mm'] = $review_values['rt3_bore_mm'];
 		    $rt_results_level_3['rt3_cd'] = $review_values['rt3_cd'];
 		    $rt_results_level_3['rt3_comp_ratio'] = $review_values['rt3_comp_ratio'];
-		    $rt_results_level_3['rt3_et_factor'] = $review_values['rt3_et_factor'];
 		    $rt_results_level_3['rt3_final_drive_ratio'] = $review_values['rt3_final_drive_ratio'];
 		    $rt_results_level_3['rt3_frontal_area'] = $review_values['rt3_frontal_area'];
 		    $rt_results_level_3['rt3_frontal_area_notes'] = $review_values['rt3_frontal_area_notes'];
@@ -290,10 +239,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_lt_stps_unsched'] = $review_values['rt3_lt_stps_unsched'];
 		    $rt_results_level_3['rt3_lt_wear'] = $review_values['rt3_lt_wear'];
 		    $rt_results_level_3['rt3_max_mph_1000_rpm'] = $review_values['rt3_max_mph_1000_rpm'];
-		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
-		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
-		    $rt_results_level_3['rt3_road_hp_30mph'] = $review_values['rt3_road_hp_30mph'];
-		    $rt_results_level_3['rt3_sp_factor'] = $review_values['rt3_sp_factor'];
 		    $rt_results_level_3['rt3_specific_power'] = $review_values['rt3_specific_power'];
 		    $rt_results_level_3['rt3_stroke_mm'] = $review_values['rt3_stroke_mm'];
 		    $rt_results_level_3['rt3_trunk'] = $review_values['rt3_trunk'];
@@ -302,22 +247,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_valves_per_cyl'] = $review_values['rt3_valves_per_cyl'];
 		    $rt_results_level_3['rt3_wheelbase'] = $review_values['rt3_wheelbase'];
 		    $rt_results_level_3['rt3_70co'] = $review_values['rt3_70co'];
-		    $rt_results_level_3['rt3_10mph'] = $review_values['rt3_10mph'];
-		    $rt_results_level_3['rt3_20mph'] = $review_values['rt3_20mph'];
-		    $rt_results_level_3['rt3_40mph'] = $review_values['rt3_40mph'];
-		    $rt_results_level_3['rt3_50mph'] = $review_values['rt3_50mph'];
-		    $rt_results_level_3['rt3_70mph'] = $review_values['rt3_70mph'];
-		    $rt_results_level_3['rt3_80mph'] = $review_values['rt3_80mph'];
-		    $rt_results_level_3['rt3_90mph'] = $review_values['rt3_90mph'];
-		    $rt_results_level_3['rt3_110mph'] = $review_values['rt3_110mph'];
-		    $rt_results_level_3['rt3_120mph'] = $review_values['rt3_120mph'];
-		    $rt_results_level_3['rt3_140mph'] = $review_values['rt3_140mph'];
-		    $rt_results_level_3['rt3_150mph'] = $review_values['rt3_150mph'];
-		    $rt_results_level_3['rt3_160mph'] = $review_values['rt3_160mph'];
-		    $rt_results_level_3['rt3_170mph'] = $review_values['rt3_170mph'];
-		    $rt_results_level_3['rt3_180mph'] = $review_values['rt3_180mph'];
-		    $rt_results_level_3['rt3_190mph'] = $review_values['rt3_190mph'];
-		    $rt_results_level_3['rt3_200mph'] = $review_values['rt3_200mph'];
 		    
 	    	$table = new Application_Model_ResultsLevel3();
 			$db = $table->getAdapter();
@@ -335,13 +264,12 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-		    /*require_once('Zend/Session.php');
-			$session_makeid = new Zend_Session_Namespace('makeid');
-			$session_modelid = new Zend_Session_Namespace('modelid');
-			unset($session_makeid->makeid);
-			unset($session_modelid->modelid);*/
-			$this->_redirect("index/");
 			
+		    $session_makeid = new Zend_Session_Namespace('makeid');
+			unset($session_makeid->make_id);
+			$session_yearid = new Zend_Session_Namespace('yearid');
+			unset($session_yearid->year_id);
+			$this->_redirect("index/");
 			
 	    }
     }
@@ -370,6 +298,12 @@ class IndexController extends Zend_Controller_Action
         
         $results = array_merge($results_main[0], $results_level_2[0], $results_level_3[0]);
         
+        require_once('Zend/Session.php');
+        $session_makeid = new Zend_Session_Namespace('makeid');
+    	$session_makeid->make_id = $results_main[0]['bg_make_id'];
+    	$session_yearid = new Zend_Session_Namespace('yearid');
+    	$session_yearid->year_id = $results_main[0]['bg_year_id'];
+     	
         // Prepare form
     	$form = new Application_Form_Edit();
     	
@@ -383,8 +317,8 @@ class IndexController extends Zend_Controller_Action
     	 	$form_values = $this->view->form->getValues();
     	 	
     	    require_once('Zend/Session.php');
-    	 	$session1 = new Zend_Session_Namespace('form1');
-    	    $session1->form1 = $form_values;
+    	 	$session1 = new Zend_Session_Namespace('FormValues');
+    	    $session1->FormValues = $form_values;
     	    
     	 	$this->_redirect("index/reviewedit/id/".$this->_getParam('id'));
     	 	
@@ -392,99 +326,6 @@ class IndexController extends Zend_Controller_Action
         
     }
     
-    /*public function edit1Action()
-    {
-    	$db = Zend_Db_Table::getDefaultAdapter();
-    	
-    	$select = $db->select()
-            ->from('rt_results_main')
-            ->where('id = ?', $this->_getParam('id'));
-       
-        $results_main = $db->query($select)->fetchAll();
-        
-    	$select = $db->select()
-            ->from('rt_results_level_2')
-            ->where('id = ?', $this->_getParam('id'));
-       
-        $results_level_2 = $db->query($select)->fetchAll();
-        
-        $select = $db->select()
-            ->from('rt_results_level_3')
-            ->where('id = ?', $this->_getParam('id'));
-       
-        $results_level_3 = $db->query($select)->fetchAll();
-        
-        $session1 = new Zend_Session_Namespace('form1');
-        $form1_Values = $session1->form1;
-        
-        $results2 = array_merge($results_main[0], $results_level_2[0], $results_level_3[0]);
-        
-        // Prepare form
-    	$form = new Application_Form_Edit1();
-    	
-    	$form->populate($results2);
-    	
-    	$this->view->form = $form;
-    	
-    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-    	{
-    	 	$form_values = $this->view->form->getValues();
-    	 	
-    	    require_once('Zend/Session.php');
-    	 	$session2 = new Zend_Session_Namespace('form2');
-    	    $session2->form2 = $form_values;
-    	    
-    	 	$this->_redirect("index/edit2/id/".$this->_getParam('id'));
-    	 	
-    	}
-    	
-    }
-    
-    public function edit2Action()
-    {
-    	$db = Zend_Db_Table::getDefaultAdapter();
-    	
-    	$select = $db->select()
-            ->from('rt_results_level_2')
-            ->where('id = ?', $this->_getParam('id'));
-       
-        $results_level_2 = $db->query($select)->fetchAll();
-        
-    	$select = $db->select()
-            ->from('rt_results_level_3')
-            ->where('id = ?', $this->_getParam('id'));
-       
-        $results_level_3 = $db->query($select)->fetchAll();
-        
-        $session2 = new Zend_Session_Namespace('form2');
-        $form2_Values = $session2->form1;
-        
-        $results3 = array_merge($results_level_2[0], $results_level_3[0]);
-        
-        // Prepare form
-    	$form = new Application_Form_Edit2();
-    	
-    	$form->populate($results3);
-    	
-    	$this->view->form = $form;
-    	
-    	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-    	 {
-    	 	if(isset($_POST['cancel']))
-    	 	{
-    	 		$this->_redirect("index/");
-    	 	}
-    	 	$form_values = $this->view->form->getValues();
-    	 	
-    	 	require_once('Zend/Session.php');
-    	 	$session3 = new Zend_Session_Namespace('form3');
-    	 	$session3->form3 = $form_values;
-    	 	
-    	 	$this->_redirect("index/reviewedit/id/".$this->_getParam('id'));
-    	 	
-    	 }
-    	
-    }*/
     
     public function revieweditAction()
     {
@@ -500,8 +341,13 @@ class IndexController extends Zend_Controller_Action
     	{
     		if(isset($_POST['cancel']))
     	 	{
+    	 		$session_makeid = new Zend_Session_Namespace('makeid');
+				unset($session_makeid->make_id);
+				$session_yearid = new Zend_Session_Namespace('yearid');
+				unset($session_yearid->year_id);
     	 		$this->_redirect("index/");
     	 	}
+    	
     		$rt_results_main = array();
 			$rt_results_level_2 = array();
 			$rt_results_level_3 = array();
@@ -575,9 +421,7 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_2['rt2_30_50TG'] = $review_values['rt2_30_50TG'];
 		    $rt_results_level_2['rt2_30_mph'] = $review_values['rt2_30_mph'];
 		    $rt_results_level_2['rt2_50_70TG'] = $review_values['rt2_50_70TG'];
-		    $rt_results_level_2['rt2_50_mph'] = $review_values['rt2_50_mph'];
 		    $rt_results_level_2['rt2_70cr'] = $review_values['rt2_70cr'];
-		    $rt_results_level_2['rt2_70_mph'] = $review_values['rt2_70_mph'];
 		    $rt_results_level_2['rt2_controlled_airbags'] = $review_values['rt2_controlled_airbags'];
 		    $rt_results_level_2['rt2_anti_lock'] = $review_values['rt2_anti_lock'];
 		    $rt_results_level_2['rt2_epa_city_fe'] = $review_values['rt2_epa_city_fe'];
@@ -613,7 +457,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_bore_mm'] = $review_values['rt3_bore_mm'];
 		    $rt_results_level_3['rt3_cd'] = $review_values['rt3_cd'];
 		    $rt_results_level_3['rt3_comp_ratio'] = $review_values['rt3_comp_ratio'];
-		    $rt_results_level_3['rt3_et_factor'] = $review_values['rt3_et_factor'];
 		    $rt_results_level_3['rt3_final_drive_ratio'] = $review_values['rt3_final_drive_ratio'];
 		    $rt_results_level_3['rt3_frontal_area'] = $review_values['rt3_frontal_area'];
 		    $rt_results_level_3['rt3_frontal_area_notes'] = $review_values['rt3_frontal_area_notes'];
@@ -627,10 +470,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_lt_stps_unsched'] = $review_values['rt3_lt_stps_unsched'];
 		    $rt_results_level_3['rt3_lt_wear'] = $review_values['rt3_lt_wear'];
 		    $rt_results_level_3['rt3_max_mph_1000_rpm'] = $review_values['rt3_max_mph_1000_rpm'];
-		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
-		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
-		    $rt_results_level_3['rt3_road_hp_30mph'] = $review_values['rt3_road_hp_30mph'];
-		    $rt_results_level_3['rt3_sp_factor'] = $review_values['rt3_sp_factor'];
 		    $rt_results_level_3['rt3_specific_power'] = $review_values['rt3_specific_power'];
 		    $rt_results_level_3['rt3_stroke_mm'] = $review_values['rt3_stroke_mm'];
 		    $rt_results_level_3['rt3_trunk'] = $review_values['rt3_trunk'];
@@ -639,22 +478,6 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_valves_per_cyl'] = $review_values['rt3_valves_per_cyl'];
 		    $rt_results_level_3['rt3_wheelbase'] = $review_values['rt3_wheelbase'];
 		    $rt_results_level_3['rt3_70co'] = $review_values['rt3_70co'];
-		    $rt_results_level_3['rt3_10mph'] = $review_values['rt3_10mph'];
-		    $rt_results_level_3['rt3_20mph'] = $review_values['rt3_20mph'];
-		    $rt_results_level_3['rt3_40mph'] = $review_values['rt3_40mph'];
-		    $rt_results_level_3['rt3_50mph'] = $review_values['rt3_50mph'];
-		    $rt_results_level_3['rt3_70mph'] = $review_values['rt3_70mph'];
-		    $rt_results_level_3['rt3_80mph'] = $review_values['rt3_80mph'];
-		    $rt_results_level_3['rt3_90mph'] = $review_values['rt3_90mph'];
-		    $rt_results_level_3['rt3_110mph'] = $review_values['rt3_110mph'];
-		    $rt_results_level_3['rt3_120mph'] = $review_values['rt3_120mph'];
-		    $rt_results_level_3['rt3_140mph'] = $review_values['rt3_140mph'];
-		    $rt_results_level_3['rt3_150mph'] = $review_values['rt3_150mph'];
-		    $rt_results_level_3['rt3_160mph'] = $review_values['rt3_160mph'];
-		    $rt_results_level_3['rt3_170mph'] = $review_values['rt3_170mph'];
-		    $rt_results_level_3['rt3_180mph'] = $review_values['rt3_180mph'];
-		    $rt_results_level_3['rt3_190mph'] = $review_values['rt3_190mph'];
-		    $rt_results_level_3['rt3_200mph'] = $review_values['rt3_200mph'];
 		    
     		try
 		    {
@@ -666,7 +489,11 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-		    $this->_redirect("index/");
+		        $session_makeid = new Zend_Session_Namespace('makeid');
+				unset($session_makeid->make_id);
+				$session_yearid = new Zend_Session_Namespace('yearid');
+				unset($session_yearid->year_id);
+		    	$this->_redirect("index/");
     	}
     }
     
@@ -714,7 +541,7 @@ class IndexController extends Zend_Controller_Action
     	{
     		require_once('Zend/Session.php');
     	 	$session_makeid = new Zend_Session_Namespace('makeid');
-    	 	$session_makeid->makeid = $makeid;
+    	 	$session_makeid->make_id = $makeid;
     		//$_SESSION['makid'] = $makeid;
     	}
      	$models_prepared[0]= "Select or Leave blank";
@@ -741,11 +568,11 @@ class IndexController extends Zend_Controller_Action
     {
     	$return = '0~select from list;';
     	$yearid = $this->_getParam('yearid');
-    	if($modelid)
+    	if($yearid)
     	{
     		require_once('Zend/Session.php');
     	 	$session_yearid = new Zend_Session_Namespace('yearid');
-    	 	$session_yearid->yearid = $yearid;
+    	 	$session_yearid->year_id = $yearid;
     	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
@@ -755,7 +582,7 @@ class IndexController extends Zend_Controller_Action
         $entries = $xpath->query($query);
 		foreach( $entries as $entry)
 		{
-		    if($modelid == $entry->nodeValue)
+		    if($yearid == $entry->nodeValue)
 		    { 	
 		    	$name  = $entry->previousSibling->previousSibling->nodeValue;
 		    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
