@@ -87,11 +87,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$bg_model_ids_prepared[0]= "Select from list";
 		
 		$session_makeid = new Zend_Session_Namespace('makeid');
+		$session_global = new Zend_Session_Namespace('global');
     	$makeid = "0";
-		if(isset($session_makeid->makeid))
+		if(isset($session_makeid->make_id))
 		{
 			//$makeid = $_SESSION['makid'];
-			$makeid = $session_makeid->makeid;
+			$makeid = $session_makeid->make_id;
 			$bg_model_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
@@ -110,10 +111,10 @@ class Application_Form_Add extends Application_Form_MainForm
 			    }
 			 }
 		}
+		
 		$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 		$bg_model_id->setLabel('Mapped BG Model ID')
-		->addMultiOptions($bg_model_ids_prepared)
-		->setValue($makeid);
+		->addMultiOptions($bg_model_ids_prepared);
 		
 	
 		$bg_model_id->setDecorators(array(
@@ -134,30 +135,6 @@ class Application_Form_Add extends Application_Form_MainForm
 		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 		));
 		
-		/*$bg_submodel_ids_prepared[0]= "Select from list";
-		$session_modelid = new Zend_Session_Namespace('modelid');
-    	$modid = "0";
-		if(isset($session_modelid->modelid))
-		{
-			$modid =$session_modelid->modelid;
-			$bg_submodel_ids_prepared[0]= "Select from list";
-			$objDOM = new DOMDocument(); 
-			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-			$xpath = new DOMXPath($objDOM);
-			$query = '//response/data/row/model_id';
-	        
-	        $entries = $xpath->query($query);
-	        
-			foreach( $entries as $entry)
-			{
-			    if($modid == $entry->nodeValue)
-			    { 	
-			    	$name  = $entry->previousSibling->nodeValue;
-			    	$id  = $entry->previousSibling->previousSibling->nodeValue;
-			    	$bg_submodel_ids_prepared[$id]= $name;
-			    }
-			 }
-		}*/
 		$bg_year_ids_prepared[0]= "Select from list";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
@@ -172,7 +149,7 @@ class Application_Form_Add extends Application_Form_MainForm
 			
 		    $bg_year_ids_prepared[$id]= $name;
 		 }
-		
+		rsort($bg_year_ids_prepared);
 		$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
 		$bg_year_id->setLabel('Mapped BG Year')
 					->addMultiOptions($bg_year_ids_prepared);
@@ -199,10 +176,11 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$session_yearid = new Zend_Session_Namespace('yearid');
+		$session_global_year = new Zend_Session_Namespace('global_year');
     	//$modelid = $session_modelid->modelid;
-		if(isset($session_yearid->yearid))
+		if(isset($session_yearid->year_id))
 		{
-			$yearid =$session_yearid->yearid;
+			$yearid =$session_yearid->year_id;
 			$bg_submodel_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
@@ -221,10 +199,11 @@ class Application_Form_Add extends Application_Form_MainForm
 			    }
 			 }
 		}
+		
+		
 		$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
 		$bg_submodel_id->setLabel('Mapped BG Submodel ID')
-		->addMultiOptions($bg_submodel_ids_prepared)
-		->setValue($modid);
+		->addMultiOptions($bg_submodel_ids_prepared);
 	
 		$bg_submodel_id->setDecorators(array(
 		'ViewHelper',
@@ -1315,133 +1294,23 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$this->addElements(array(
-		$enterId,
-		$rt_model_year,
-		$bg_make_id,
-		$rt_published,
-		$bg_model_id,
-		$rt_issue,
-		$bg_year_id,
-		$rt_issue_year,
-		$bg_submodel_id,
-		$rt_percent_on_rear,
-		$bg_controlled_make_id,
-		$rt_percent_on_front,
-		$bg_controlled_model_id,
-		$rt_60_mph,
-		$rt_original_table_id,
-		$rt_70_mph_braking,
-		$rt_controlled_body,
-		$rt_top_speed,
-		$rt_controlled_engine,
-		$rt_top_speed_notes,
-		$rt_controlled_fuel,
-		$rt_base_price,
-		$rt_controlled_make,
-		$rt_base_price_notes,
-		$rt_controlled_sort,
-		$rt_speed_qtr_mile_speed_trap,
-		$rt_controlled_transmission,
-		$rt_quarter_time,
-		$rt_controlled_drive,
-		$rt_doors,
-		$rt_controlled_ts_limit,
-		$rt_cd_observed_fe,
-		$rt_controlled_turbo_superchg,
-		$rt_no_cyl,
-		$rt_controlled_type,
-		$rt_peak_hp,
-		$rt_model,
-		$rt_peak_hp_notes,
-		$rt_peak_torque,
-		$rt2_anti_lock,
-		$rt_peak_torque_notes,
-		$rt2_epa_city_fe,
-		$rt_power_to_weight,
-		$rt2_epa_city_fe_notes,
-		$rt_price_as_tested,
-		$rt2_fuel_sys,
-		$rt_price_as_tested_notes,
-		$rt2_highway_fe,
-		$rt_redline,
-		$rt2_highway_fe_notes,
-		$rt_disp_cc,
-		$rt2_int_vol_front,
-		$rt_rpm,
-		$rt2_mid,
-		$rt_rpmt,
-		$rt2_passengers,
-		$rt_slalom,
-		$rt2_rear,
-		$rt_ss60,
-		$rt2_sound_level_idle,
-		$rt_weight,
-		$rt2_stab_defeatable,
-		$rt2_emergency_lane_change,
-		$rt2_stability_control,
-		$rt2_skidpad,
-		$rt2_sum_of_tg_times,
-		$rt2_100_mph,
-		$rt2_trac_defeatable,
-		$rt2_130_mph,
-		$rt2_traction_control,
-		$rt2_30_50TG,
-		$rt2_turning_cirl,
-		$rt2_30_mph,
-		$rt2_wot,
-		$rt2_50_70TG,
-		$rt3_boost_psi,
-		$rt2_50_mph,
-		$rt3_bore_mm,
-		$rt2_70cr,
-		$rt3_cd,
-		$rt2_70_mph,
-		$rt3_comp_ratio,
-		$rt2_controlled_airbags,
-		$rt3_et_factor,
-		$rt3_final_drive_ratio,
-		$rt3_width,
-		$rt3_frontal_area,
-		$rt3_valves_per_cyl,
-		$rt3_frontal_area_notes,
-		$rt3_wheelbase,
-		$rt3_fuel_cap,
-		$rt3_70co,
-		$rt3_height,
-		$rt3_10mph,
-		$rt3_length,
-		$rt3_20mph,
-		$rt3_lt_oil,
-		$rt3_40mph,
-		$rt3_lt_repiar,
-		$rt3_50mph,
-		$rt3_lt_serv,
-		$rt3_70mph,
-		$rt3_lt_stps_sched,
-		$rt3_80mph,
-		$rt3_lt_stps_unsched,
-		$rt3_90mph,
-		$rt3_lt_wear,
-		$rt3_110mph,
-		$rt3_max_mph_1000_rpm,
-		$rt3_120mph,
-		$rt3_peak_bmep,
-		$rt3_140mph,
-		$rt3_peal_bmep,
-		$rt3_150mph,
-		$rt3_road_hp_30mph,
-		$rt3_160mph,
-		$rt3_sp_factor,
-		$rt3_170mph,
-		$rt3_specific_power,
-		$rt3_180mph,
-		$rt3_stroke_mm,
-		$rt3_190mph,
-		$rt3_trunk,
-		$rt3_200mph,
-		$rt3_valve_gear,
-		$review_changes,
-		$cancel
+		$enterId,$rt_model_year,$bg_make_id,$rt_published,$bg_model_id,$rt_issue,$bg_year_id,$rt_issue_year,
+		$bg_submodel_id,$rt_percent_on_rear,$bg_controlled_make_id,$rt_percent_on_front,$bg_controlled_model_id,
+		$rt_60_mph,$rt_original_table_id,$rt_70_mph_braking,$rt_controlled_body,$rt_top_speed,$rt_controlled_engine,
+		$rt_top_speed_notes,$rt_controlled_fuel,$rt_base_price,$rt_controlled_make,$rt_base_price_notes,$rt_controlled_sort,
+		$rt_speed_qtr_mile_speed_trap,$rt_controlled_transmission,$rt_quarter_time,$rt_controlled_drive,$rt_doors,
+		$rt_controlled_ts_limit,$rt_cd_observed_fe,$rt_controlled_turbo_superchg,$rt_no_cyl,$rt_controlled_type,
+		$rt_peak_hp,$rt_model,$rt_peak_hp_notes,$rt_peak_torque,$rt2_anti_lock,$rt_peak_torque_notes,$rt2_epa_city_fe,
+		$rt_power_to_weight,$rt2_epa_city_fe_notes,$rt_price_as_tested,$rt2_fuel_sys,$rt_price_as_tested_notes,$rt2_highway_fe,
+		$rt_redline,$rt2_highway_fe_notes,$rt_disp_cc,$rt2_int_vol_front,$rt_rpm,$rt2_mid,$rt_rpmt,$rt2_passengers,
+		$rt_slalom,$rt2_rear,$rt_ss60,$rt2_sound_level_idle,$rt_weight,$rt2_stab_defeatable,$rt2_emergency_lane_change,
+		$rt2_stability_control,$rt2_skidpad,$rt2_sum_of_tg_times,$rt2_100_mph,$rt2_trac_defeatable,$rt2_130_mph,
+		$rt2_traction_control,$rt2_30_50TG,$rt2_turning_cirl,$rt2_30_mph,$rt2_wot,$rt2_50_70TG,$rt3_boost_psi,
+		$rt3_bore_mm,$rt2_70cr,$rt3_cd,$rt3_comp_ratio,$rt2_controlled_airbags,$rt3_final_drive_ratio,$rt3_width,
+		$rt3_frontal_area,$rt3_valves_per_cyl,$rt3_frontal_area_notes,$rt3_wheelbase,$rt3_fuel_cap,$rt3_70co,
+		$rt3_height,$rt3_length,$rt3_lt_oil,$rt3_lt_repiar,$rt3_lt_serv,$rt3_lt_stps_sched,$rt3_lt_stps_unsched,
+		$rt3_lt_wear,$rt3_max_mph_1000_rpm,$rt3_specific_power,$rt3_stroke_mm,$rt3_trunk,$rt3_valve_gear,
+		$review_changes,$cancel
 		));
 		
 		$this->setDecorators(array(

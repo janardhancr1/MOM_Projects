@@ -122,9 +122,9 @@ class Application_Form_Review extends Application_Form_MainForm
 			if(!empty($form1_Values['bg_make_id']))
 			{
 				    $session_makeid = new Zend_Session_Namespace('makeid');
-					if(isset($session_makeid->makeid))
+					if(isset($session_makeid->make_id))
 					{
-						$makeid = $session_makeid->makeid;
+						$makeid = $session_makeid->make_id;
 						$bg_model_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
@@ -143,7 +143,7 @@ class Application_Form_Review extends Application_Form_MainForm
 						    }
 						 }
 					}
-					else
+					/*else
 					{
 						$bg_model_ids_prepared[0]= "Select from list";
 						$objDOM = new DOMDocument(); 
@@ -162,14 +162,14 @@ class Application_Form_Review extends Application_Form_MainForm
 						    	$bg_model_ids_prepared[$id]= $name;
 						    }
 						 }
-					}
+					}*/
 			}
 			
 			
 				$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 				$bg_model_id->addMultiOptions($bg_model_ids_prepared)
 							->setValue($form1_Values['bg_model_id']);
-				$bg_model_id->setAttrib('onchange','AutoFillSubModel(this.value)');
+				
 							
 				$before_bg_model_id = new Zend_Form_Element_Text('before_bg_model_id',array("readonly" => "readonly"));
 				$before_bg_model_id->setLabel('Mapped BG Model ID')
@@ -193,74 +193,6 @@ class Application_Form_Review extends Application_Form_MainForm
 				
 				$this->addElements(array($before_bg_model_id,$bg_model_id));
 				
-				$bg_submodel_ids_prepared[0]= "Select from list";
-				if(!empty($form1_Values['bg_model_id']))
-				{
-					$session_modelid = new Zend_Session_Namespace('modelid');
-					if(isset($session_modelid->modelid))
-					{
-						$modid = $session_modelid->modelid;
-						$bg_submodel_ids_prepared[0]= "Select from list";
-						$objDOM = new DOMDocument(); 
-						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-						$xpath = new DOMXPath($objDOM);
-						$query = '//response/data/row/model_id';
-				        
-				        $entries = $xpath->query($query);
-						foreach( $entries as $entry)
-						{
-						    if($modid == $entry->nodeValue)
-						    { 	
-						    	$name  = $entry->previousSibling->nodeValue;
-						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
-						    	$bg_submodel_ids_prepared[$id]= $name;
-						    }
-						 }
-					}
-					else
-					{
-						$bg_submodel_ids_prepared[0]= "Select from list";
-						$objDOM = new DOMDocument(); 
-						$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-						$xpath = new DOMXPath($objDOM);
-						$query = '//response/data/row/model_id';
-				        
-				        $entries = $xpath->query($query);
-						foreach( $entries as $entry)
-						{
-						    if($modid == $entry->nodeValue)
-						    { 	
-						    	$name  = $entry->previousSibling->nodeValue;
-						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
-						    	$bg_submodel_ids_prepared[$id]= $name;
-						    }
-						 }
-					}
-				}
-				
-				$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-				$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
-							->setValue($form1_Values['bg_submodel_id']);
-							
-				$before_bg_submodel_id = new Zend_Form_Element_Text('before_bg_submodel_id',array("readonly" => "readonly"));
-				$before_bg_submodel_id->setLabel('Mapped BG Submodel ID')
-									->setValue($rt_results_main[0]['bg_submodel_id']);
-				
-				$bg_submodel_id->setDecorators(array(
-				'ViewHelper',
-				'Description',
-				array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-				array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-				));
-				
-				$before_bg_submodel_id->setDecorators(array(
-				'ViewHelper',
-				'Description',
-				array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-				array('Label', array('tag' => 'td','style' => 'float:right;')),
-				));
-				
-				$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));
 		}
 		
 		if(!empty($form1_Values['rt_published']))
@@ -290,59 +222,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			$this->addElements(array($before_rt_published,$rt_published));
 		}
 		
-			/*if(!empty($form1_Values['bg_model_id']))
-			{
-				$bg_model_ids_prepared[0]= "Select from list";
-				if(isset($_SESSION['makid']))
-				{
-					$makeid = $_SESSION['makid'];
-					$bg_model_ids_prepared[0]= "Select from list";
-					$objDOM = new DOMDocument(); 
-					$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
-					$row = $objDOM->getElementsByTagName("row"); 
-					foreach( $row as $value )
-					{
-					    $names = $value->getElementsByTagName("name");
-					    $name  = $names->item(0)->nodeValue;
-						
-					    $makeids = $value->getElementsByTagName("make_id");
-					    $make_id  = $makeids->item(0)->nodeValue;
-					    
-						$ids = $value->getElementsByTagName("id");
-					    $id  = $ids->item(0)->nodeValue;
-						
-					    if($makeid == $make_id)
-					    	$bg_model_ids_prepared[$id]= $name;
-					 }
-				}
-			
-				$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
-				$bg_model_id->addMultiOptions($bg_model_ids_prepared)
-							->setValue($form1_Values['bg_model_id']);
-				$bg_model_id->setAttrib('onchange','AutoFillSubModel(this.value)');
-							
-				$before_bg_model_id = new Zend_Form_Element_Text('before_bg_model_id',array("readonly" => "readonly"));
-				$before_bg_model_id->setLabel('Mapped BG Model ID')
-									->setValue($rt_results_main[0]['bg_model_id']);
-				
-				$bg_model_id->setDecorators(array(
-				'ViewHelper',
-				'Description',
-				array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-				array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-				
-				));
-				
-				$before_bg_model_id->setDecorators(array(
-				'ViewHelper',
-				'Description',
-				array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-				array('Label', array('tag' => 'td','style' => 'float:right;')),
-				
-				));
-				
-				$this->addElements(array($before_bg_model_id,$bg_model_id));
-		}*/
+		
 		
 		if(!empty($form1_Values['rt_issue']))
 		{
@@ -373,55 +253,6 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 		}
 		
-		/*if(!empty($form1_Values['bg_submodel_id']))
-		{
-			$bg_submodel_ids_prepared[0]= "Select from list";
-			if(isset($_SESSION['modid']))
-			{
-				$modid = $_SESSION['modid'];
-				$bg_submodel_ids_prepared[0]= "Select from list";
-				$objDOM = new DOMDocument(); 
-				$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-				$row = $objDOM->getElementsByTagName("row"); 
-				foreach( $row as $value )
-				{
-				    $names = $value->getElementsByTagName("name");
-				    $name  = $names->item(0)->nodeValue;
-					
-				    $modelids = $value->getElementsByTagName("model_id");
-				    $model_id  = $modelids->item(0)->nodeValue;
-				    
-					$ids = $value->getElementsByTagName("id");
-				    $id  = $ids->item(0)->nodeValue;
-						
-					    if($modid == $model_id)
-					    	$bg_submodel_ids_prepared[$id]= $name;
-				 }
-			}
-			$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-			$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
-						->setValue($form1_Values['bg_submodel_id']);
-						
-			$before_bg_submodel_id = new Zend_Form_Element_Text('before_bg_submodel_id',array("readonly" => "readonly"));
-			$before_bg_submodel_id->setLabel('Mapped BG Submodel ID')
-								->setValue($rt_results_main[0]['bg_submodel_id']);
-			
-			$bg_submodel_id->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));
-			
-			$before_bg_submodel_id->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array('Label', array('tag' => 'td','style' => 'float:right;')),
-			));
-			
-			$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));
-		}*/
 		if(!empty($form1_Values['rt_issue_year']))
 		{
 			$rt_issue_year = new Zend_Form_Element_Text('rt_issue_year');
@@ -468,6 +299,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
 			$bg_year_id->addMultiOptions($bg_year_ids_prepared)
 					->setValue($form1_Values['bg_year_id']);
+					$bg_year_id->setAttrib('onchange','AutoFillSubModel(this.value)');
 		
 			$before_bg_year_id = new Zend_Form_Element_Text('before_bg_year_id',array("readonly" => "readonly"));
 			$before_bg_year_id->setLabel('Mapped BG Year')
@@ -487,7 +319,76 @@ class Application_Form_Review extends Application_Form_MainForm
 			array('Label', array('tag' => 'td','style' => 'float:right;')),
 			));
 			
-			$this->addElements(array($before_bg_year_id,$bg_year_id));		
+			$this->addElements(array($before_bg_year_id,$bg_year_id));
+			
+			$bg_submodel_ids_prepared[0]= "Select from list";
+			if(!empty($form1_Values['bg_year_id']))
+			{
+				$session_yearid = new Zend_Session_Namespace('yearid');
+				if(isset($session_yearid->year_id))
+				{
+					$yearid = $session_yearid->year_id;
+					$bg_submodel_ids_prepared[0]= "Select from list";
+					$objDOM = new DOMDocument(); 
+					$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+					$xpath = new DOMXPath($objDOM);
+					$query = '//response/data/row/year_id';
+			        
+			        $entries = $xpath->query($query);
+					foreach( $entries as $entry)
+					{
+					    if($yearid == $entry->nodeValue)
+					    { 	
+					    	$name  = $entry->previousSibling->previousSibling->nodeValue;
+	    					$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
+					    	$bg_submodel_ids_prepared[$id]= $name;
+					    }
+					 }
+				}
+				/*else
+				{
+					$bg_submodel_ids_prepared[0]= "Select from list";
+					$objDOM = new DOMDocument(); 
+					$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+					$xpath = new DOMXPath($objDOM);
+					$query = '//response/data/row/year_id';
+			        
+			        $entries = $xpath->query($query);
+					foreach( $entries as $entry)
+					{
+					    if($yearid == $entry->nodeValue)
+					    { 	
+					    	$name  = $entry->previousSibling->previousSibling->nodeValue;
+	    					$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
+					    	$bg_submodel_ids_prepared[$id]= $name;
+					    }
+					 }
+				}*/
+			}
+				
+			$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
+			$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
+						->setValue($form1_Values['bg_submodel_id']);
+						
+			$before_bg_submodel_id = new Zend_Form_Element_Text('before_bg_submodel_id',array("readonly" => "readonly"));
+			$before_bg_submodel_id->setLabel('Mapped BG Submodel ID')
+								->setValue($rt_results_main[0]['bg_submodel_id']);
+			
+			$bg_submodel_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_bg_submodel_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));		
 		}
 		if(!empty($form1_Values['rt_percent_on_rear']))
 		{

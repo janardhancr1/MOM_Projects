@@ -34,7 +34,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			
 		    $years_prepared[$id]= $name;
 		 }
-		
+		rsort($years_prepared);
 		$year = $this->createElement('select','year')
 		->setLabel('Year')
 		->addMultiOptions($years_prepared);
