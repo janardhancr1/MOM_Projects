@@ -225,7 +225,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$rt_issue = new Zend_Form_Element_Text('rt_issue');
-		$rt_issue->setLabel('Maga Issue Month');
+		$rt_issue->setLabel('Mag Issue Month');
 	
 		$rt_issue->setDecorators(array(
 		'ViewHelper',
