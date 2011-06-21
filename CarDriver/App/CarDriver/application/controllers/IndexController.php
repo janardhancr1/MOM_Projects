@@ -159,6 +159,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_slalom'] = $review_values['rt_slalom'];
 			$rt_results_main['rt_ss60'] = $review_values['rt_ss60'];
 			$rt_results_main['rt_weight'] = $review_values['rt_weight'];
+			$rt_results_main['rt_60_mph'] = $review_values['rt_60_mph'];
 			
 			$table = new Application_Model_ResultsMain();
 			$db = $table->getAdapter();
@@ -204,6 +205,8 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_2['rt2_traction_control'] = $review_values['rt2_traction_control'];
 		    $rt_results_level_2['rt2_turning_cir'] = $review_values['rt2_turning_cir'];
 		    $rt_results_level_2['rt2_wot'] = $review_values['rt2_wot'];
+		    $rt_results_level_2['rt2_50_mph'] = $review_values['rt2_50_mph'];
+		    $rt_results_level_2['rt2_70_mph'] = $review_values['rt2_70_mph'];
 		    
 	   		$table = new Application_Model_ResultsLevel2();
 			$db = $table->getAdapter();
@@ -247,6 +250,28 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_valves_per_cyl'] = $review_values['rt3_valves_per_cyl'];
 		    $rt_results_level_3['rt3_wheelbase'] = $review_values['rt3_wheelbase'];
 		    $rt_results_level_3['rt3_70co'] = $review_values['rt3_70co'];
+		    $rt_results_level_3['rt3_10mph'] = $review_values['rt3_10mph'];
+		    $rt_results_level_3['rt3_20mph'] = $review_values['rt3_20mph'];
+		    $rt_results_level_3['rt3_40mph'] = $review_values['rt3_40mph'];
+		    $rt_results_level_3['rt3_50mph'] = $review_values['rt3_50mph'];
+		    $rt_results_level_3['rt3_70mph'] = $review_values['rt3_70mph'];
+		    $rt_results_level_3['rt3_80mph'] = $review_values['rt3_80mph'];
+		    $rt_results_level_3['rt3_90mph'] = $review_values['rt3_90mph'];
+		    $rt_results_level_3['rt3_110mph'] = $review_values['rt3_110mph'];
+		    $rt_results_level_3['rt3_120mph'] = $review_values['rt3_120mph'];
+		    $rt_results_level_3['rt3_140mph'] = $review_values['rt3_140mph'];
+		    $rt_results_level_3['rt3_150mph'] = $review_values['rt3_150mph'];
+		    $rt_results_level_3['rt3_160mph'] = $review_values['rt3_160mph'];
+		    $rt_results_level_3['rt3_170mph'] = $review_values['rt3_170mph'];
+		    $rt_results_level_3['rt3_180mph'] = $review_values['rt3_180mph'];
+		    $rt_results_level_3['rt3_190mph'] = $review_values['rt3_190mph'];
+		    $rt_results_level_3['rt3_200mph'] = $review_values['rt3_200mph'];
+		    $rt_results_level_3['rt3_et_factor'] = $review_values['rt3_et_factor'];
+		    $rt_results_level_3['rt3_road_hp_30mph'] = $review_values['rt3_road_hp_30mph'];
+		    $rt_results_level_3['rt3_sp_factor'] = $review_values['rt3_sp_factor'];
+		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
+		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
+		    
 		    
 	    	$table = new Application_Model_ResultsLevel3();
 			$db = $table->getAdapter();
@@ -400,6 +425,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_slalom'] = $review_values['rt_slalom'];
 			$rt_results_main['rt_ss60'] = $review_values['rt_ss60'];
 			$rt_results_main['rt_weight'] = $review_values['rt_weight'];
+			$rt_results_main['rt_60_mph'] = $review_values['rt_60_mph'];
 			
 			$where[] = "id = ".$this->_getParam('id');
 
@@ -441,6 +467,8 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_2['rt2_traction_control'] = $review_values['rt2_traction_control'];
 		    $rt_results_level_2['rt2_turning_cir'] = $review_values['rt2_turning_cir'];
 		    $rt_results_level_2['rt2_wot'] = $review_values['rt2_wot'];
+		    $rt_results_level_2['rt2_50_mph'] = $review_values['rt2_50_mph'];
+		    $rt_results_level_2['rt2_70_mph'] = $review_values['rt2_70_mph'];
 		    
     		try
 		    {
@@ -478,6 +506,27 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_valves_per_cyl'] = $review_values['rt3_valves_per_cyl'];
 		    $rt_results_level_3['rt3_wheelbase'] = $review_values['rt3_wheelbase'];
 		    $rt_results_level_3['rt3_70co'] = $review_values['rt3_70co'];
+		    $rt_results_level_3['rt3_10mph'] = $review_values['rt3_10mph'];
+		    $rt_results_level_3['rt3_20mph'] = $review_values['rt3_20mph'];
+		    $rt_results_level_3['rt3_40mph'] = $review_values['rt3_40mph'];
+		    $rt_results_level_3['rt3_50mph'] = $review_values['rt3_50mph'];
+		    $rt_results_level_3['rt3_70mph'] = $review_values['rt3_70mph'];
+		    $rt_results_level_3['rt3_80mph'] = $review_values['rt3_80mph'];
+		    $rt_results_level_3['rt3_90mph'] = $review_values['rt3_90mph'];
+		    $rt_results_level_3['rt3_110mph'] = $review_values['rt3_110mph'];
+		    $rt_results_level_3['rt3_120mph'] = $review_values['rt3_120mph'];
+		    $rt_results_level_3['rt3_140mph'] = $review_values['rt3_140mph'];
+		    $rt_results_level_3['rt3_150mph'] = $review_values['rt3_150mph'];
+		    $rt_results_level_3['rt3_160mph'] = $review_values['rt3_160mph'];
+		    $rt_results_level_3['rt3_170mph'] = $review_values['rt3_170mph'];
+		    $rt_results_level_3['rt3_180mph'] = $review_values['rt3_180mph'];
+		    $rt_results_level_3['rt3_190mph'] = $review_values['rt3_190mph'];
+		    $rt_results_level_3['rt3_200mph'] = $review_values['rt3_200mph'];
+		    $rt_results_level_3['rt3_et_factor'] = $review_values['rt3_et_factor'];
+		    $rt_results_level_3['rt3_road_hp_30mph'] = $review_values['rt3_road_hp_30mph'];
+		    $rt_results_level_3['rt3_sp_factor'] = $review_values['rt3_sp_factor'];
+		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
+		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
 		    
     		try
 		    {
