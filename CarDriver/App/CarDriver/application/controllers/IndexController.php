@@ -643,15 +643,17 @@ class IndexController extends Zend_Controller_Action
 		$session_export = new Zend_Session_Namespace('export');
         $result = $session_export->export;
 
-	    //header("Content-type:text/octect-stream");
-	   // header("Content-Disposition:attachment;filename=data.csv");
-	   // print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\", \"Peak Horsepower\"\n";
+	   header("Content-type:text/octect-stream");
+	   header("Content-Disposition:attachment;filename=data.csv");
+	   print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\", \"Peak Horsepower\"\n";
 	    foreach ($result as $row) {
-	        //print '"' . stripslashes(implode('","',$row)) . "\"\n";
-	        $val = $this->getData($row['make']);
-	        		echo $val."\n";
-	        	
-	       // print_r($row) ;
+	        $make = $this->getData($row['make']);
+	        $body_style = $this->getData($row['body_style']);
+	        $production_type = $this->getData($row['production_type']);
+	        $final = str_replace($row['make'], $make, $row);
+	        $final = str_replace($row['body_style'], $body_style, $final);
+	        $final = str_replace($row['production_type'], $production_type, $final);
+	        print '"' . stripslashes(implode('","',$final)) . "\"\n";
 	    }
 
 	    exit;
@@ -667,8 +669,16 @@ class IndexController extends Zend_Controller_Action
 		header("Content-Disposition: attachment; filename=data.xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-    	$contents = $this->getExcelData($result);
-        echo $contents;
+		 print "ID\tPublish Date\tYear\tMake\tModel\tMag Issue Year\tMag Issue Month\tProduction Type\tNumber of Doors\tBody Style\tPeak Horsepower\n";
+		foreach ($result as $row) {
+	        $make = $this->getData($row['make']);
+	        $body_style = $this->getData($row['body_style']);
+	        $production_type = $this->getData($row['production_type']);
+	        $final = str_replace($row['make'], $make, $row);
+	        $final = str_replace($row['body_style'], $body_style, $final);
+	        $final = str_replace($row['production_type'], $production_type, $final);
+	        print stripslashes(implode("\t",$final)) . "\n";
+	    }
 	    exit;
 	}
 	
@@ -679,16 +689,23 @@ class IndexController extends Zend_Controller_Action
 	    {
 	     $row = 0;
 	     foreach(array_values($data) as $_data){
-	      if (is_array($_data) && !empty($_data))
+	     
+	      $make = $this->getData($_data['make']);
+	      $body_style = $this->getData($_data['body_style']);
+	      $production_type = $this->getData($_data['production_type']);
+	      $final = str_replace($row['make'], $make, $_data);
+	      $final = str_replace($row['body_style'], $body_style, $final);
+	      $final = str_replace($row['production_type'], $production_type, $final);
+	      if (is_array($final) && !empty($final))
 	      {
 	          if ($row == 0)
 	          {
 	              // write the column headers
-	              $retval = implode("\t",array_keys($_data));
+	              $retval = implode("\t",array_keys($final));
 	              $retval .= "\n";
 	          }
 	           //create a line of values for this row...
-	              $retval .= implode("\t",array_values($_data));
+	              $retval .= implode("\t",array_values($final));
 	              $retval .= "\n";
 	              //increment the row so we don't create headers all over again
 	              $row++;
@@ -714,7 +731,13 @@ class IndexController extends Zend_Controller_Action
 	         	return "-";
 		}
 		else
-		return "";
+		return "-";
+	}
+	
+	public function editdropdowntypesAction()
+	{
+		$form = new Application_Form_DropdownTypes();
+		$this->view->form = $form;
 	}
 	
 }
