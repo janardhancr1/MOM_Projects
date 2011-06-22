@@ -1,4 +1,16 @@
 <?php include 'header.phtml' ?> 
+<?php   
+function getData($id)
+{
+	 $db = Zend_Db_Table::getDefaultAdapter(); 
+	
+	 $select = $db->select()
+         ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
+         ->where('rdd.id_descriptions =?', $id);
+         $result = $db->query($select)->fetchAll();
+         return $result[0]['desp'];
+}
+?>
 	<div id="middle">
 		<div class="middletitle">Find Vehicle</div>
 		<div class="middleLeft">
@@ -19,24 +31,27 @@
 				<td>Year</td>
 				<td>Make</td>
 				<td>Model</td>
-				<td>Mapped BG Make ID</td>
-				<td>Mapped BG Model ID</td>
-				<td>Mapped BG Submodel ID</td>
-				<td style="border-right:1px solid #9E9A9A">Mapped BG Year</td>
+				<td>Mag Issue Year</td>
+				<td>Mag Issue Month</td>
+				<td>Production Type</td>
+				<td>Number of Doors</td>
+				<td>Body Style</td>
+				<td style="border-right:1px solid #9E9A9A">Peak Horsepower</td>
 			</tr>
 			<?php foreach ($this->paginator as $row): ?>
 				<tr>
 					<td> <a href="<?php echo $this->url(array(
-              'action' => 'edit',
-              'id' => $row['main_results_id']));?>"><?php echo $row['main_results_id']?></a></td>
-					<td><?php if(strlen($row['publish_date']) > 0)echo $row['publish_date']; else echo "-";?></td>
+              'action' => 'edit','id' => $row['main_results_id']));?>"><?php echo $row['main_results_id']?></a></td>
+					<td><?php if(strlen($row['publish']) > 0)echo $row['publish']; else echo "-";?></td>
 					<td><?php if(strlen($row['year']) > 0)echo $row['year']; else echo "-";?></td>
-					<td><?php if(strlen($row['make']) > 0)echo $row['make']; else echo "-";?></td>
+					<td><?php if(strlen($row['make']) > 0){$val = getData($row['make']);if(strlen($val) > 0) echo $val; else echo "-";} else echo "-";?></td>
 					<td><?php if(strlen($row['model']) > 0)echo $row['model']; else echo "-";?></td>
-					<td><?php if(strlen($row['mapped_bg_make_id']) > 0)echo $row['mapped_bg_make_id']; else echo "-";?></td>
-					<td><?php if(strlen($row['mapped_bg_model_id']) > 0)echo $row['mapped_bg_model_id']; else echo "-";?></td>
-					<td><?php if(strlen($row['mapped_bg_submodel_id']) > 0)echo $row['mapped_bg_submodel_id']; else echo "-";?></td>
-					<td style="border-right:1px solid #9E9A9A"><?php if(strlen($row['bg_year_id']) > 0)echo $row['bg_year_id']; else echo "-";?></td>
+					<td><?php if(strlen($row['issue_year']) > 0)echo $row['issue_year']; else echo "-";?></td>
+					<td><?php if(strlen($row['issue_month']) > 0)echo $row['issue_month']; else echo "-";?></td>
+					<td><?php if(strlen($row['production_type']) > 0){$val = getData($row['production_type']);if(strlen($val) > 0) echo $val; else echo "-";}else echo "-";?></td>
+					<td><?php if(strlen($row['doors']) > 0)echo $row['doors']; else echo "-";?></td>
+					<td><?php if(strlen($row['body_style']) > 0){$val = getData($row['body_style']); if(strlen($val) > 0) echo $val; else echo "-";} else echo "-";?></td>
+					<td style="border-right:1px solid #9E9A9A"><?php if(strlen($row['peak_horse_power']) > 0)echo $row['peak_horse_power']; else echo "-";?></td>
 					</tr>
 			<?php endforeach; ?>
 		</table>
