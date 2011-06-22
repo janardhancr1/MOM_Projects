@@ -702,15 +702,19 @@ class IndexController extends Zend_Controller_Action
  	public function getData($id)
 	{
 		 $db = Zend_Db_Table::getDefaultAdapter(); 
-		
+		if(isset($id))
+		{
 		 $select = $db->select()
 	         ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
 	         ->where('rdd.id_descriptions =?', $id);
 	         $result = $db->query($select)->fetchAll();
-	         if($result)
+	         if(isset($result[0]))
 	         	return $result[0]['desp'];
 	         else
 	         	return "-";
+		}
+		else
+		return "";
 	}
 	
 }
