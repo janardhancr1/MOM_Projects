@@ -20,16 +20,12 @@ class IndexController extends Zend_Controller_Action
         
          $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
-         ->from(array('rrm'=>'rt_results_main', 'bg' => 'bg_make'),array('rrm.id As main_results_id', 
-         		'rrm.rt_published As publish_date', 
-             'rrm.rt_model_year As year', 'bg.name As make', 'rrm.rt_model As model', 
-             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id','rrm.bg_year_id As bg_year_id'))
-         ->joinInner(array('bg'=>'bg_make'),'bg.id=rrm.bg_make_id');
-            /* ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 'rrm.rt_published As publish_date', 
-             'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model', 
-             'rrm.bg_make_id As mapped_bg_make_id','rrm.bg_model_id As mapped_bg_model_id','rrm.bg_submodel_id As mapped_bg_submodel_id'))
-             ->joinInner(array('by'=>'bg_year'),'by.id=rrm.bg_year_id');*/
-
+         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 
+         		'rrm.rt_published As publish', 
+             	'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model','rrm.rt_issue_year As issue_year',
+         		'rrm.rt_issue As issue_month', 'rrm.rt_controlled_sort As production_type', 'rrm.rt_doors As doors', 'rrm.rt_controlled_body As body_style',
+         		'rrm.rt_peak_hp As peak_horse_power'));
+         
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
          	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost())))
           {
@@ -59,6 +55,7 @@ class IndexController extends Zend_Controller_Action
         		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
         		
         $export_result = $db->query($select)->fetchAll();
+
         require_once('Zend/Session.php');
      	$session_export = new Zend_Session_Namespace('export');
         $session_export->export = $export_result;	
@@ -643,16 +640,20 @@ class IndexController extends Zend_Controller_Action
     
 	public function csvexportAction()
 	{
-		
 		$session_export = new Zend_Session_Namespace('export');
         $result = $session_export->export;
 
-	    header("Content-type:text/octect-stream");
-	    header("Content-Disposition:attachment;filename=data.csv");
-	    print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mapped BG Make ID\",\"Mapped BG Model ID\",\"Mapped BG Submodel ID\",\"Mapped BG Year\"\n";
+	    //header("Content-type:text/octect-stream");
+	   // header("Content-Disposition:attachment;filename=data.csv");
+	   // print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\", \"Peak Horsepower\"\n";
 	    foreach ($result as $row) {
-	        print '"' . stripslashes(implode('","',$row)) . "\"\n";
+	        //print '"' . stripslashes(implode('","',$row)) . "\"\n";
+	        $val = $this->getData($row['make']);
+	        		echo $val."\n";
+	        	
+	       // print_r($row) ;
 	    }
+
 	    exit;
 	}
 	
@@ -694,8 +695,23 @@ class IndexController extends Zend_Controller_Action
 	       }
 	     }
 	    }
+	    exit;
 	  return $retval;
  	}
-
+ 	
+ 	public function getData($id)
+	{
+		 $db = Zend_Db_Table::getDefaultAdapter(); 
+		
+		 $select = $db->select()
+	         ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
+	         ->where('rdd.id_descriptions =?', $id);
+	         $result = $db->query($select)->fetchAll();
+	         if($result)
+	         	return $result[0]['desp'];
+	         else
+	         	return "-";
+	}
+	
 }
 
