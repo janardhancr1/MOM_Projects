@@ -48,6 +48,34 @@ function FillSubModel(rsp)
   		$('bg_submodel_id').options[i] = new Option(sub_model[1], sub_model[0]);
   	}
 } 
+function addNewItem()
+{
+	// Retrieve the elements from the document body
+	var textbox = document.getElementById('rt_types');
+	var listbox = document.getElementById('existing');
+
+	if(textbox.value != '')
+	{
+		// Now we need to create a new 'option' tag to add to MyListbox
+		var newOption = document.createElement('option');
+		newOption.value = textbox.value; // The value that this option will have
+		newOption.innerHTML = textbox.value; // The displayed text inside of the <option> tags
+	 
+		// Finally, add the new option to the listbox
+
+		listbox.appendChild(newOption);
+		textbox.value = null;
+	}
+}
+function removeItem(selectbox)
+{
+	var i;
+	for(i=selectbox.options.length-1;i>=0;i--)
+	{
+		if(selectbox.options[i].selected)
+		selectbox.remove(i);
+	}
+}
 </script>
 <div id="content">
 	<div id="top">

@@ -28,7 +28,8 @@
 				<td><?php if($this->total_bg_model > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
 			</tr> -->
 			<tr>
-				<td><a href="#">Edit</a></td>
+				<td><a href="<?php echo $this->url(array(
+              'action' => 'editdropdowntypes'));?>">Edit</a></td>
 				<td>rt_dropdown_types</td>
 				<td><?php echo $this->total_rt_dropdown_types?></td>
 				<td><?php if($this->total_rt_dropdown_types > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
