@@ -109,5 +109,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		));
 
 	}
+	
+	
 }
 ?>
