@@ -96,7 +96,7 @@ class IndexController extends Zend_Controller_Action
 		$id = $res[0]['maxId'] + 1;
 		$this->view->id = $id;
 		
-		$review = new Application_Form_Review();
+		$review = new Application_Form_Review($id);
 		$this->view->form = $review;
 		if ($this->getRequest()->isPost() && $review->isValid($this->getRequest()->getPost()))
 	    {

@@ -8,7 +8,10 @@ function getData($id)
          ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
          ->where('rdd.id_descriptions =?', $id);
          $result = $db->query($select)->fetchAll();
+         if(isset($result[0]))
          return $result[0]['desp'];
+         else
+         return "";
 }
 ?>
 	<div id="middle">

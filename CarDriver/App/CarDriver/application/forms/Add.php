@@ -1619,7 +1619,6 @@ class Application_Form_Add extends Application_Form_MainForm
 		$rt2_rear,
 		$rt3_trunk,
 		$rt2_turning_cirl,
-		$rt2_turning_cir,
 		$rt2_anti_lock,
 		$rt2_traction_control,
 		$rt2_trac_defeatable,
