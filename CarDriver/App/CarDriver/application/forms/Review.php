@@ -57,12 +57,19 @@ class Application_Form_Review extends Application_Form_MainForm
 			$before_rt_model_year->setLabel('Year')
 								->setValue($rt_results_main[0]['rt_model_year']);
 			
-			$rt_model_year->setDecorators(array(
+			$model_year_delete = new Zend_Form_Element_Anchor("modelyear_Delete", array('href'=>'#'));
+
+			$model_year_delete->setDecorators(array(
 			'ViewHelper',
 			'Description',
 			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
 			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
 			
+			$rt_model_year->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
 			));
 			
 			$before_rt_model_year->setDecorators(array(
@@ -72,7 +79,9 @@ class Application_Form_Review extends Application_Form_MainForm
 			array('Label', array('tag' => 'td','style' => 'float:right;')),
 			));
 			
-			$this->addElements(array($before_rt_model_year,$rt_model_year));
+			
+			
+			$this->addElements(array($before_rt_model_year,$rt_model_year, $model_year_delete));
 		}
 		
 		if(!empty($form1_Values['bg_make_id']))
