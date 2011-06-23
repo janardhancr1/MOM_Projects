@@ -2,7 +2,7 @@
 	<div id="middle">
 		<div class="middletitle">Edit Controlled List</div>
 		<div class="middletitle">Field Name <input type="text" id="text" value="rt_dropdown_types" readonly = "readonly" ></div>
-		<div class="middletitle" style='height:50px'>
+		<div class="middletitle" style='height:100px'>
 			<?php echo $this->form?>
 		</div>
 		<div class="middletitle">
@@ -17,14 +17,16 @@
 		<?php foreach ($this->results as $row): ?>
 		<tr>
 			<td>
-				<?php echo $row['rt_types'];?>
+				<?php echo $row['description'];?>
 			</td>
-			<td><a href="<?php echo $this->url(array('action' => 'editdropdown','id' => $row['id_types']));?>">Edit</a></td>
-			<td><a href="<?php echo $this->url(array('action' => 'deletedropdown','id' => $row['id_types']));?>">Delete</a></td>
+			<td><a href="<?php echo $this->url(array('action' => 'editdropdowndescription','id' => $row['id_desp']));?>">Edit</a></td>
+			<td><a href="<?php echo $this->url(array('action' => 'deletedropdowndescription','id' => $row['id_desp']));?>">Delete</a></td>
 		</tr>
 		<?php endforeach; ?>
 		</table>
-		</div>
+		</div> 
+		<div style="height:20px;">&nbsp;</div>
+		
 	</div>
 
 <?php include 'footer.phtml' ?> 

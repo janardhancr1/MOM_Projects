@@ -41,7 +41,8 @@
 				<td><?php if($this->total_rt_dropdown_lookup > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
 			</tr>
 			<tr>
-				<td style="border-bottom:0px;"><a href="#">Edit</a></td>
+				<td style="border-bottom:0px;"><a href="<?php echo $this->url(array(
+              'action' => 'editdropdowndescriptions'));?>">Edit</a></td>
 				<td style="border-bottom:0px;">rt_dropdown_descriptions</td>
 				<td style="border-bottom:0px;"><?php echo $this->total_rt_dropdown_descriptions?></td>
 				<td style="border-bottom:0px;"><?php if($this->total_rt_dropdown_descriptions > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>

@@ -1,0 +1,32 @@
+<?php include 'header.phtml' ?> 
+	<div id="middle">
+		<div class="middletitle">Delete Dropdown</div>
+		<div style="height:20px;">&nbsp;</div>
+		<div>
+			<form method="POST" action="<?php echo $this->url() ?>">
+			    <div>
+			      <h3><?php echo $this->translate("Delete Dropdown?") ?></h3>
+			      <p class="middletitle">
+			        <?php echo $this->translate("Are you sure that you want to delete this Dropdown? This action cannot be undone.") ?>
+			      </p>
+			
+			      <p>&nbsp;</p>
+			
+			      <p class="middletitle">
+			        <button type='submit'><?php echo $this->translate("Delete") ?></button>
+			        <?php echo $this->translate("or") ?>
+			        <a href="/app/public/index/editdropdowntypes">
+			          <?php echo $this->translate("cancel") ?>
+			        </a>
+			      </p>
+			    </div>
+		  </form>
+		</div>
+	</div>
+
+<?php include 'footer.phtml' ?> 
+ 
+ 
+
+
+

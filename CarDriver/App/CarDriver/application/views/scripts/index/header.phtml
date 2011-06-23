@@ -1,6 +1,8 @@
 <link href="/app/public/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/app/public/js/prototype.js">
 </script>
+<script type="text/javascript" src="/app/public/js/smoothbox.js">
+</script>
 <script type="text/javascript">
 function AutoFillModel(value)
 {
@@ -51,8 +53,8 @@ function FillSubModel(rsp)
 function addNewItem()
 {
 	// Retrieve the elements from the document body
-	var textbox = document.getElementById('rt_types');
-	var listbox = document.getElementById('existing');
+	var textbox = document.getElementById('types');
+	var listbox = document.getElementById('rt_types');
 
 	if(textbox.value != '')
 	{
