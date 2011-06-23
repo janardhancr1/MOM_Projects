@@ -131,7 +131,34 @@
 {
 	display:none;
 }
+#submit12
+{
+	margin-left:10px;
+	padding-top:0px;
+}
 
+#submit12-label
+{
+	padding: 6px;
+}
+#submit12-label .optional
+{
+	display:none;
+}
+#submit13
+{
+	margin-left:10px;
+	padding-top:0px;
+}
+
+#submit13-label
+{
+	padding: 6px;
+}
+#submit13-label .optional
+{
+	display:none;
+}
 .results
 {
 	height: 500px;
@@ -196,6 +223,38 @@ A:hover {text-decoration: none;}
 	font-weight:bold;
 ]
 
-
+/*
+POPUP FORM
+These are used to style popup (i.e. smoothbox) forms.
+Also used to style popup response messages, etc.
+*/
+.global_form_popup
+{
+  background-color: #fff;
+  padding: 10px 10px 10px 13px;
+  float: left;
+  overflow: hidden;
+}
+.global_form_popup #submit-wrapper,
+.global_form_popup #cancel-wrapper
+{
+  float: left;
+  overflow: hidden;
+}
+.global_form_popup #buttons-wrapper
+{
+  margin-top: 10px;
+}
+.global_form_popup #buttons-wrapper button
+{
+  margin-right: 4px;
+}
+.global_form_popup_message
+{
+  padding: 5px;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: bold;
+}
 
 
