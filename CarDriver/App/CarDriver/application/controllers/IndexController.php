@@ -736,8 +736,140 @@ class IndexController extends Zend_Controller_Action
 	
 	public function editdropdowntypesAction()
 	{
+		$db = Zend_Db_Table::getDefaultAdapter(); 
+		$select = $db->select()
+			->from('rt_dropdown_types');
+		$res = $db->query($select)->fetchAll();
+		$this->view->results = $res;
+		
 		$form = new Application_Form_DropdownTypes();
 		$this->view->form = $form;
+		
+	 	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+     	{
+     		if(isset($_POST['submit13']))
+    	 	{
+    	 		$this->_redirect("index/manageconrolledlist/");
+    	 	}
+     		$form_values = $this->view->form->getValues();
+     			$select = $db->select()
+			->from('rt_dropdown_types')
+			->where('rt_types =?', $form_values['rt_types']);
+			
+			$res = $db->query($select)->fetchAll();
+			
+			if(!$res)
+			{
+				$table = new Application_Model_DropdownTypes();
+				$db = $table->getAdapter();
+	    		$db->beginTransaction();
+			    try
+			    {
+			    	  $results1 = $table->createRow();
+				      $results1->setFromArray($form_values);
+				      $results1->save();
+				      $db->commit();
+			    }
+			    catch(Exception $e)
+			    {
+			    	$db->rollBack();
+	      			throw $e;
+			    	
+			    }
+				
+			}
+				$this->_redirect("index/editdropdowntypes/");
+    
+     	}
+	}
+	public function deletedropdownAction()
+  	{
+  		$db = Zend_Db_Table::getDefaultAdapter(); 
+  		
+  		if (!$this->getRequest()->isPost())
+      	return;
+      	
+      	$id = $this->_getParam('id');
+      	
+      	try
+      	{
+      		$db->delete('rt_dropdown_types', 'id_types = '.$this->_getParam('id'));
+      	}
+  	 	catch(Exception $e)
+	    {
+	    	$db->rollBack();
+      		throw $e;
+	    	
+	    }
+	    $this->_redirect("index/editdropdowntypes/");
+  	}
+  	
+  	public function editdropdownAction()
+  	{
+  		$id = $this->_getParam('id');
+  		
+  		$db = Zend_Db_Table::getDefaultAdapter();
+  		
+  		$select = $db->select()
+			->from('rt_dropdown_types')
+			->where('id_types =?', $id); 
+			
+  		$res = $db->query($select)->fetchAll();
+  		
+  		$this->view->dtype = $res[0];
+  		
+  		if (!$this->getRequest()->isPost())
+      	return;
+      	
+      	$rt_types['rt_types'] = $_POST['rt_types'];
+      
+      	$where[] = 'id_types = '.$id;
+      	try
+      	{
+      		$res = $db->update('rt_dropdown_types', $rt_types, $where);
+      		
+      	}
+  	 	catch(Exception $e)
+	    {
+	    	$db->rollBack();
+      		throw $e;
+	    }
+	    $this->_redirect("index/editdropdowntypes/");
+      
+  	}
+  	
+	public function editdropdowndescriptionsAction()
+	{
+		$db = Zend_Db_Table::getDefaultAdapter(); 
+		$select = $db->select()
+			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'));
+		
+		$form = new Application_Form_DropdownDescriptions();
+		$this->view->form = $form;
+		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+     	{
+     		 $form_values = $this->view->form->getValues();
+		     if(isset($form_values['rt_descriptions']))
+		     {
+		     	
+		     }
+     		$this->_helper->redirector->gotoRouteAndExit(array(
+          	    'rt_types' => $this->getRequest()->getPost('rt_types'),
+		     ));
+     	}
+		else
+        {
+         	$form->getElement('rt_types')->setValue($this->_getParam('rt_types'));
+        }
+        if($this->_getParam('rt_types'))
+        {
+         	$select = $db->select()
+			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'))
+			->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
+			->where('rdl.id_types =?', $this->_getParam('rt_types'));
+        }
+        $res = $db->query($select)->fetchAll();
+		$this->view->results = $res;
 	}
 	
 }
