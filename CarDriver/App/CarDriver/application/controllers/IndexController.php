@@ -546,36 +546,90 @@ class IndexController extends Zend_Controller_Action
     public function manageconrolledlistAction()
     {
     	$db = Zend_Db_Table::getDefaultAdapter(); 
-    	
-    	$select = $db->select()
-			->from('bg_year',array(new Zend_Db_Expr('count(*) as total')));
-		$res = $db->query($select)->fetchAll();
-		$this->view->total_bg_year = $res[0]['total'];
+		$db1 = Zend_Db_Table::getDefaultAdapter();
+		$form = new Application_Form_DropdownDescriptions();
+		$this->view->form = $form;
+		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+     	{
+     		 $form_values = $this->view->form->getValues();
+     		 if(isset($_POST['submit13']))
+    	 	 {
+    	 		 $this->_redirect("index/manageconrolledlist/rt_types/".$form_values['rt_types']);
+    	 		
+    	 	 }
+		     if(isset($form_values['description']) && (trim($form_values['description']) != '') 
+		     	&& $form_values['rt_types'] > 0)
+		     {	
+		     	$table = new Application_Model_DropdownDescriptions();
+				$db = $table->getAdapter();
+	    		$db->beginTransaction();
+			    try
+			    {
+			    	  $vals['description'] = $form_values['description'];
+			    	  $results1 = $table->createRow();
+				      $results1->setFromArray($vals);
+				      $results1->save();
+				      $db->commit();
+				      
+			    }
+			    catch(Exception $e)
+			    {
+			    	$db->rollBack();
+	      			throw $e;
+			    	
+			    }
+			     $values['id_descriptions'] = $this->gatLastInseredId();
+				 $values['id_types'] = $form_values['rt_types'];
+			    if( isset($values['id_descriptions']))
+			    {
+				    $table = new Application_Model_DropdownLookup();
+					$db = $table->getAdapter();
+		    		$db->beginTransaction();
+			     	try
+				    {
+				    	  $results1 = $table->createRow();
+					      $results1->setFromArray($values);
+					      $results1->save();
+					      $db->commit();
+				    }
+				    catch(Exception $e)
+				    {
+				    	$db->rollBack();
+		      			throw $e;
+				    	
+				    }
+			    }
+			   $this->_redirect("index/manageconrolledlist/rt_types/".$form_values['rt_types']);
+		     }
+     		$this->_helper->redirector->gotoRouteAndExit(array(
+          	    'rt_types' => $this->getRequest()->getPost('rt_types'),
+		     ));
+     	}
+		else
+        {
+         	$form->getElement('rt_types')->setValue($this->_getParam('rt_types'));
+        }
+        if($this->_getParam('rt_types'))
+        {
+         	$select = $db->select()
+			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'))
+			->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
+			->where('rdl.id_types =?', $this->_getParam('rt_types'));
+			$res = $db->query($select)->fetchAll();
+		    $this->view->results = $res;
+        }
+        
+    }
+    
+    private function gatLastInseredId()
+    {
+    	$db = Zend_Db_Table::getDefaultAdapter(); 
 		
 		$select = $db->select()
-			->from('bg_make',array(new Zend_Db_Expr('count(*) as total')));
+			->from('rt_dropdown_descriptions',array(new Zend_Db_Expr('max(id_descriptions) as maxId')));
 		$res = $db->query($select)->fetchAll();
-		$this->view->total_bg_make = $res[0]['total'];
-		
-		$select = $db->select()
-			->from('bg_model',array(new Zend_Db_Expr('count(*) as total')));
-		$res = $db->query($select)->fetchAll();
-		$this->view->total_bg_model = $res[0]['total'];
-		
-		$select = $db->select()
-			->from('rt_dropdown_types',array(new Zend_Db_Expr('count(*) as total')));
-		$res = $db->query($select)->fetchAll();
-		$this->view->total_rt_dropdown_types = $res[0]['total'];
-		
-		$select = $db->select()
-			->from('rt_dropdown_lookup',array(new Zend_Db_Expr('count(*) as total')));
-		$res = $db->query($select)->fetchAll();
-		$this->view->total_rt_dropdown_lookup = $res[0]['total'];
-		
-		$select = $db->select()
-			->from('rt_dropdown_descriptions',array(new Zend_Db_Expr('count(*) as total')));
-		$res = $db->query($select)->fetchAll();
-		$this->view->total_rt_dropdown_descriptions = $res[0]['total'];
+		$id = $res[0]['maxId'];
+		return $id;
     }
     
     public function populatemodelAction()
@@ -734,99 +788,62 @@ class IndexController extends Zend_Controller_Action
 		return "-";
 	}
 	
-	public function editdropdowntypesAction()
-	{
-		$db = Zend_Db_Table::getDefaultAdapter(); 
-		$select = $db->select()
-			->from('rt_dropdown_types');
-		$res = $db->query($select)->fetchAll();
-		$this->view->results = $res;
-		
-		$form = new Application_Form_DropdownTypes();
-		$this->view->form = $form;
-		
-	 	if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-     	{
-     		if(isset($_POST['submit13']))
-    	 	{
-    	 		$this->_redirect("index/manageconrolledlist/");
-    	 	}
-     		$form_values = $this->view->form->getValues();
-     			$select = $db->select()
-			->from('rt_dropdown_types')
-			->where('rt_types =?', $form_values['rt_types']);
-			
-			$res = $db->query($select)->fetchAll();
-			
-			if(!$res)
-			{
-				$table = new Application_Model_DropdownTypes();
-				$db = $table->getAdapter();
-	    		$db->beginTransaction();
-			    try
-			    {
-			    	  $results1 = $table->createRow();
-				      $results1->setFromArray($form_values);
-				      $results1->save();
-				      $db->commit();
-			    }
-			    catch(Exception $e)
-			    {
-			    	$db->rollBack();
-	      			throw $e;
-			    	
-			    }
-				
-			}
-				$this->_redirect("index/editdropdowntypes/");
-    
-     	}
-	}
-	public function deletedropdownAction()
+	
+	public function deletedropdowndescriptionAction()
   	{
   		$db = Zend_Db_Table::getDefaultAdapter(); 
   		
+  		$id = $this->_getParam('id');
+      	$id_types = $this->_getParam('rt_types');
+      	
+  		$this->view->rt_types = $id_types;
+  		$this->view->id = $id;
   		if (!$this->getRequest()->isPost())
       	return;
       	
-      	$id = $this->_getParam('id');
-      	
+
       	try
       	{
-      		$db->delete('rt_dropdown_types', 'id_types = '.$this->_getParam('id'));
+      		$db->delete('rt_dropdown_descriptions', 'id_descriptions = '.$this->_getParam('id'));
+      		$db->delete('rt_dropdown_lookup','id_descriptions = '.$id);
       	}
   	 	catch(Exception $e)
 	    {
+	    	echo $e;
+	    	exit;
 	    	$db->rollBack();
       		throw $e;
 	    	
 	    }
-	    $this->_redirect("index/editdropdowntypes/");
+	    $this->_redirect("index/manageconrolledlist/rt_types/".$id_types);
   	}
   	
-  	public function editdropdownAction()
+  	public function editdropdowndescriptionAction()
   	{
   		$id = $this->_getParam('id');
+  		$rt_types = $this->_getParam('rt_types');
   		
   		$db = Zend_Db_Table::getDefaultAdapter();
   		
   		$select = $db->select()
-			->from('rt_dropdown_types')
-			->where('id_types =?', $id); 
+			->from('rt_dropdown_descriptions')
+			->where('id_descriptions =?', $id); 
 			
   		$res = $db->query($select)->fetchAll();
   		
-  		$this->view->dtype = $res[0];
+  		$this->view->description = $res[0];
+  		$this->view->rt_types = $rt_types;
+  		$this->view->id = $id;
   		
   		if (!$this->getRequest()->isPost())
       	return;
       	
-      	$rt_types['rt_types'] = $_POST['rt_types'];
+      	$dropdown_descriptions['description'] = $_POST['description'];
       
-      	$where[] = 'id_types = '.$id;
+      	$where[] = 'id_descriptions = '.$id;
       	try
       	{
-      		$res = $db->update('rt_dropdown_types', $rt_types, $where);
+      		$res = $db->update('rt_dropdown_descriptions', $dropdown_descriptions, $where);
       		
       	}
   	 	catch(Exception $e)
@@ -834,43 +851,9 @@ class IndexController extends Zend_Controller_Action
 	    	$db->rollBack();
       		throw $e;
 	    }
-	    $this->_redirect("index/editdropdowntypes/");
+	    $this->_redirect("index/manageconrolledlist/rt_types/".$rt_types);
       
   	}
-  	
-	public function editdropdowndescriptionsAction()
-	{
-		$db = Zend_Db_Table::getDefaultAdapter(); 
-		$select = $db->select()
-			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'));
-		
-		$form = new Application_Form_DropdownDescriptions();
-		$this->view->form = $form;
-		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-     	{
-     		 $form_values = $this->view->form->getValues();
-		     if(isset($form_values['rt_descriptions']))
-		     {
-		     	
-		     }
-     		$this->_helper->redirector->gotoRouteAndExit(array(
-          	    'rt_types' => $this->getRequest()->getPost('rt_types'),
-		     ));
-     	}
-		else
-        {
-         	$form->getElement('rt_types')->setValue($this->_getParam('rt_types'));
-        }
-        if($this->_getParam('rt_types'))
-        {
-         	$select = $db->select()
-			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'))
-			->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
-			->where('rdl.id_types =?', $this->_getParam('rt_types'));
-        }
-        $res = $db->query($select)->fetchAll();
-		$this->view->results = $res;
-	}
 	
 }
 
