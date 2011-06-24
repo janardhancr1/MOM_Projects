@@ -1,0 +1,21 @@
+<?php include 'header.phtml' ?> 
+	<div id="middle">
+		<div class="middletitle">Edit Dropdown Descriptions</div>
+		<div style="height:20px;">&nbsp;</div>
+		<div>
+			<form method="POST" action="<?php echo $this->url() ?>">
+			    <div>
+			      <p class="middletitle">
+			        <input type="text" name="description" value="<?php echo $this->description['description'];?>"/>
+			        <button type='submit'><?php echo $this->translate("Save") ?></button>
+			        <?php echo $this->translate("or") ?>
+			        <a href="/app/public/index/manageconrolledlist/rt_types/<?php echo $this->rt_types;?>/id/<?php echo $this->id;?>">
+			          <?php echo $this->translate("cancel") ?>
+			        </a>
+			      </p>
+			    </div>
+		  </form>
+		</div>
+	</div>
+
+<?php include 'footer.phtml' ?> 

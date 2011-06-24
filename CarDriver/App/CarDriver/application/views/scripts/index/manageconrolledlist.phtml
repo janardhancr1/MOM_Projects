@@ -1,55 +1,33 @@
 <?php include 'header.phtml' ?> 
-<div id="middle">
-		<div class="middletitle">Manage Controlled Lists</div>
-		<div>
-		<table cellpadding="1" cellspacing="0" width="80%" class="manageTable">
-			<tr bgcolor="#9E9A9A" class="tableHeader">
-				<td>Action</td>
-				<td>List Name</td>
-				<td>No. Records</td>
-				<td>In Use</td>
-			</tr>
-			<!--  <tr>
-				<td><a href="#">Edit</a></td>
-				<td>bg_year</td>
-				<td><?php echo $this->total_bg_year?></td>
-				<td><?php if($this->total_bg_year > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr>
-			<tr>
-				<td><a href="#">Edit</a></td>
-				<td>bg_make</td>
-				<td><?php echo $this->total_bg_make?></td>
-				<td><?php if($this->total_bg_make > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr>
-			<tr>
-				<td><a href="#">Edit</a></td>
-				<td>bg_model</td>
-				<td><?php echo $this->total_bg_model?></td>
-				<td><?php if($this->total_bg_model > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr> -->
-			<tr>
-				<td><a href="<?php echo $this->url(array(
-              'action' => 'editdropdowntypes'));?>">Edit</a></td>
-				<td>rt_dropdown_types</td>
-				<td><?php echo $this->total_rt_dropdown_types?></td>
-				<td><?php if($this->total_rt_dropdown_types > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr>
-			<tr>
-				<td><a href="#">Edit</a></td>
-				<td>rt_dropdown_lookup</td>
-				<td><?php echo $this->total_rt_dropdown_lookup?></td>
-				<td><?php if($this->total_rt_dropdown_lookup > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr>
-			<tr>
-				<td style="border-bottom:0px;"><a href="<?php echo $this->url(array(
-              'action' => 'editdropdowndescriptions'));?>">Edit</a></td>
-				<td style="border-bottom:0px;">rt_dropdown_descriptions</td>
-				<td style="border-bottom:0px;"><?php echo $this->total_rt_dropdown_descriptions?></td>
-				<td style="border-bottom:0px;"><?php if($this->total_rt_dropdown_descriptions > 0) {?> <img src="/app/public/images/right-icon1.gif"><?php } else ?> &nbsp;</td>
-			</tr>
-		</table>
-		
+	<div id="middle">
+		<div class="middletitle">Manage Controlled List</div>
+		<div class="middletitle" style='height:100px'>
+			<?php echo $this->form?>
 		</div>
-	
-</div>
+		<?php if($this->results):?>
+		<div class="middletitle">
+		<br />
+		<span >Existing Values</span>
+		<table cellpadding="2" cellspacing="0" width="50%" class="manageTable">
+			<tr bgcolor="#9E9A9A" class="tableHeader">
+				<td>Types</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		<?php foreach ($this->results as $row): ?>
+		<tr>
+			<td>
+				<?php echo $row['description'];?>
+			</td>
+			<td><a href="<?php echo $this->url(array('action' => 'editdropdowndescription','id' => $row['id_desp']));?>">Edit</a></td>
+			<td><a href="<?php echo $this->url(array('action' => 'deletedropdowndescription','id' => $row['id_desp']));?>">Delete</a></td>
+		</tr>
+		<?php endforeach; ?>
+		</table>
+		</div> 
+		<?php endif;?>
+		<div style="height:20px;">&nbsp;</div>
+		
+	</div>
+
 <?php include 'footer.phtml' ?> 
