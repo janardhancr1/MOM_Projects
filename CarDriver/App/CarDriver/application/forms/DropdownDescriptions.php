@@ -38,7 +38,7 @@ class Application_Form_DropdownDescriptions extends Application_Form_MainForm
 			array(array('row'=>'HtmlTag'),array('tag'=>'tr'))
 		));
 		
-		$new_value = $this->createElement('Text','rt_descriptions')
+		$new_value = $this->createElement('Text','description')
 		->setLabel('Add a New value');
 		$this->addElement($new_value);
 		
@@ -59,17 +59,7 @@ class Application_Form_DropdownDescriptions extends Application_Form_MainForm
 			array('Label',array('tag'=>'td')),
 		));
 		
-		$cancel = new Zend_Form_Element_Submit('submit13');
-		$cancel->setLabel('Cancel');
-		$this->addElement($cancel);
 		
-		$cancel->setDecorators(array(
-			'ViewHelper',
-			'Errors',
-			array(array('data'=>'HtmlTag'),array('tag'=>'td')),
-			array('Label',array('tag'=>'td')),
-			
-		));
 		
 		$this->setDecorators(array(
 		'FormElements',
