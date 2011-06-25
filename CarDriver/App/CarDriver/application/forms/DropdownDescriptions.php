@@ -25,7 +25,7 @@ class Application_Form_DropdownDescriptions extends Application_Form_MainForm
 		}
 		
 		$rt_types = new Zend_Form_Element_Select('rt_types');
-		$rt_types->setLabel('Related Field')
+		$rt_types->setLabel('List Name')
 					->addMultiOptions($rt_types_prepared);
 		$rt_types->setAttrib('onchange','this.form.submit();');
 		$this->addElement($rt_types);

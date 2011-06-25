@@ -798,6 +798,15 @@ class IndexController extends Zend_Controller_Action
       	
   		$this->view->rt_types = $id_types;
   		$this->view->id = $id;
+  		
+  		$select = $db->select()
+			->from('rt_dropdown_descriptions')
+			->where('id_descriptions =?', $id); 
+			
+  		$res = $db->query($select)->fetchAll();
+  		
+  		$this->view->description = $res[0];
+  		
   		if (!$this->getRequest()->isPost())
       	return;
       	
