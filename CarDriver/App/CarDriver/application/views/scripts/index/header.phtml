@@ -17,6 +17,28 @@ function AutoFillModel(value)
         });
 }
 
+function AutoFillModelSearch(value)
+{
+	$('model').empty();
+	$('model').options[0] = new Option("Loading...", "0");
+        new Ajax.Request(
+        "/app/public/index/populatemodel",
+            {
+                method:'get',
+                parameters: {id: value},
+                onSuccess: FillModelSearch
+        });
+}
+function FillModelSearch(rsp)
+{
+	$('model').empty();
+  	var models = rsp.responseText.split(';');
+  	for(var i=0; i<models.length-1; i++)
+  	{
+  		var model = models[i].split('~');
+  		$('model').options[i] = new Option(model[1], model[0]);
+  	}
+}
 function FillModel(rsp)
 {
 	$('bg_model_id').empty();
@@ -50,33 +72,27 @@ function FillSubModel(rsp)
   		$('bg_submodel_id').options[i] = new Option(sub_model[1], sub_model[0]);
   	}
 } 
-function addNewItem()
+function AutoFillSubModelSearch(value)
 {
-	// Retrieve the elements from the document body
-	var textbox = document.getElementById('types');
-	var listbox = document.getElementById('rt_types');
-
-	if(textbox.value != '')
-	{
-		// Now we need to create a new 'option' tag to add to MyListbox
-		var newOption = document.createElement('option');
-		newOption.value = textbox.value; // The value that this option will have
-		newOption.innerHTML = textbox.value; // The displayed text inside of the <option> tags
-	 
-		// Finally, add the new option to the listbox
-
-		listbox.appendChild(newOption);
-		textbox.value = null;
-	}
+	$('submodel').empty();
+	$('submodel').options[0] = new Option("Loading...", "0");
+        new Ajax.Request(
+        "/app/public/index/populatesubmodel",
+            {
+                method:'get',
+                parameters: {yearid: value},
+                onSuccess: FillSubModelSearch
+        });
 }
-function removeItem(selectbox)
+function FillSubModelSearch(rsp)
 {
-	var i;
-	for(i=selectbox.options.length-1;i>=0;i--)
-	{
-		if(selectbox.options[i].selected)
-		selectbox.remove(i);
-	}
+	$('submodel').empty();
+  	var sub_models = rsp.responseText.split(';');
+  	for(var i=0; i<sub_models.length-1; i++)
+  	{
+  		var sub_model = sub_models[i].split('~');
+  		$('submodel').options[i] = new Option(sub_model[1], sub_model[0]);
+  	}
 }
 </script>
 <div id="content">
