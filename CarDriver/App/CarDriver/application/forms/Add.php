@@ -1,6 +1,21 @@
 <?php
 class Application_Form_Add extends Application_Form_MainForm
 {
+ 	public  $elementDecoratorsTr = array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			);
+	
+	public 	$elementDecoratorsTd = array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			);
+    
 	public function init()
 	{
 		$db = Zend_Db_Table::getDefaultAdapter(); 
@@ -9,42 +24,20 @@ class Application_Form_Add extends Application_Form_MainForm
 			->from('rt_results_main',array(new Zend_Db_Expr('max(id) as maxId')));
 		$res = $db->query($select)->fetchAll();
 		
-		$enterId = new Zend_Form_Element_Text('id', array("readonly" => "readonly"));
-		$enterId->setLabel('id')
-		->setAttrib('class', 'inputbar')
-		->setValue($res[0]['maxId'] + 1) ;
-		
-	
-		$enterId->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'id',
+		'value' => $res[0]['maxId'] + 1,
+		'tabindex' => 1,
+		"readonly" => "readonly"
 		));
 		
-		$select = $db->select()
-	             ->from('rt_results_main')
-	             ->where('rt_model_year IS NOT NULL')
-	             ->order('rt_model_year DESC');
-        $rt_model_years = $db->query($select)->fetchAll();
-	       
-		if (count($rt_model_years)!=0){
-				$rt_model_years_prepared[0]= "Select from list";
-				foreach ($rt_model_years as $Yea){
-						$rt_model_years_prepared[$Yea['rt_model_year']]= $Yea['rt_model_year'];
-				}
-		}
-		
-		$rt_model_year = new Zend_Form_Element_Select('rt_model_year',array('style'=>'width:150px;'));
-		$rt_model_year->setLabel('Year')
-					  ->addMultiOptions($rt_model_years_prepared);
-		
-		$rt_model_year->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_10mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-10 Accel',
+		'tabindex' => 66,
 		));
 		
 		$bg_year_ids_prepared[0]= "Select from list";
@@ -60,31 +53,23 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $bg_year_ids_prepared[$id]= $name;
 		 }
 		rsort($bg_year_ids_prepared);
-		$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
-		$bg_year_id->setLabel('Mapped BG Year')
-					->addMultiOptions($bg_year_ids_prepared);
-		$bg_year_id->setAttrib('onchange','AutoFillSubModel(this.value)');
-	
-		$bg_year_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-	
-		$rt_controlled_make_prepared = $this->gatMultioptions("Make");
 		
-		$rt_controlled_make = new Zend_Form_Element_Select('rt_controlled_make',array('style'=>'width:150px;'));
-		$rt_controlled_make->setLabel('Make')
-					->addMultiOptions($rt_controlled_make_prepared);
-	
-		$rt_controlled_make->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'bg_year_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Year(BG)',
+		'tabindex' => 2,
+		'MultiOptions' => $bg_year_ids_prepared,
+		'onchange' => 'AutoFillSubModel(this.value)'
 		));
+		
+		$this->addElement('Text', 'rt3_20mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-20 Accel',
+		'tabindex' => 67,
+		));
+		
 		
 		$bg_make_ids_prepared[0]= "Select from list";
 		$objDOM = new DOMDocument(); 
@@ -99,39 +84,20 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $bg_make_ids_prepared[$id]= $name;
 		 }
 		
-		$bg_make_id = new Zend_Form_Element_Select('bg_make_id',array('style'=>'width:150px;'));
-		$bg_make_id->setLabel('Mapped BG Make ID')
-					->addMultiOptions($bg_make_ids_prepared);
-		$bg_make_id->setAttrib('onchange','AutoFillModel(this.value)');
-	
-		$bg_make_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		 $this->addElement('Select', 'bg_make_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Make(BG)',
+		'tabindex' => 3,
+		'MultiOptions' => $bg_make_ids_prepared,
+		'onchange' => 'AutoFillModel(this.value);'
 		));
 		
-		$select = $db->select()
-	             ->from('rt_results_main');
-        $rt_models = $db->query($select)->fetchAll();
-	       
-        $rt_model_prepared[0]= "Select from list";
-		if (count($rt_models)!=0){
-				foreach ($rt_models as $rt_mod){
-						$rt_model_prepared[$rt_mod['rt_model']]= $rt_mod['rt_model'];
-				}
-		}
-		
-		$rt_model = new Zend_Form_Element_Select('rt_model',array('style'=>'width:150px;'));
-		$rt_model->setLabel('Model')
-					->addMultiOptions($rt_model_prepared);
-	
-		$rt_model->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_30mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-30 Accel',
+		'tabindex' => 68,
 		));
 		
 		
@@ -161,19 +127,24 @@ class Application_Form_Add extends Application_Form_MainForm
 			    	$bg_model_ids_prepared[$id]= $name;
 			    }
 			 }
+			
 		}
 		
-		$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
-		$bg_model_id->setLabel('Mapped BG Model ID')
-		->addMultiOptions($bg_model_ids_prepared);
-		
-	
-		$bg_model_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'bg_model_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Model(BG)',
+		'tabindex' => 4,
+		'MultiOptions' => $bg_model_ids_prepared
 		));
+			
+		$this->addElement('Text', 'rt3_40mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-40 Accel',
+		'tabindex' => 69,
+		));
+		 
 		
 		$bg_submodel_ids_prepared[0]= "Select from list";
 		$session_yearid = new Zend_Session_Namespace('yearid');
@@ -201,542 +172,762 @@ class Application_Form_Add extends Application_Form_MainForm
 			 }
 		}
 		
-		
-		$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-		$bg_submodel_id->setLabel('Mapped BG Submodel ID')
-		->addMultiOptions($bg_submodel_ids_prepared);
-	
-		$bg_submodel_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'bg_submodel_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Sub-Model(BG)',
+		'tabindex' => 5,
+		'MultiOptions' => $bg_submodel_ids_prepared
 		));
 		
-		$rt_issue_year = new Zend_Form_Element_Text('rt_issue_year');
-		$rt_issue_year->setLabel('Mag Issue Year');
-	
-		$rt_issue_year->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_50mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-50 Accel',
+		'tabindex' => 70,
 		));
 		
-		$rt_issue = new Zend_Form_Element_Text('rt_issue');
-		$rt_issue->setLabel('Mag Issue Month');
-	
-		$rt_issue->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$select = $db->select()
+	             ->from('rt_results_main')
+	             ->where('rt_model_year IS NOT NULL')
+	             ->order('rt_model_year DESC');
+        $rt_model_years = $db->query($select)->fetchAll();
+	       
+		if (count($rt_model_years)!=0){
+				$rt_model_years_prepared[0]= "Select from list";
+				foreach ($rt_model_years as $Yea){
+						$rt_model_years_prepared[$Yea['rt_model_year']]= $Yea['rt_model_year'];
+				}
+		}
+		
+		$this->addElement('Select', 'rt_model_year', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Year',
+		'tabindex' => 6,
+		'MultiOptions' => $rt_model_years_prepared
 		));
 		
-		
-		$rt_published = new Zend_Form_Element_Text('rt_published');
-		$rt_published->setLabel('Web or Print');
-	
-		$rt_published->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_60mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-60 Accel',
+		'tabindex' => 71,
 		));
 		
-		 
+		$rt_controlled_make_prepared = $this->gatMultioptions("Make");
+
+		$this->addElement('Select', 'rt_controlled_make', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Make',
+		'tabindex' => 7,
+		'MultiOptions' => $rt_controlled_make_prepared
+		));
+		
+		$this->addElement('Text', 'rt3_70mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-70 Accel',
+		'tabindex' => 72,
+		));
+		
+		$select = $db->select()
+	             ->from('rt_results_main');
+        $rt_models = $db->query($select)->fetchAll();
+	       
+        $rt_model_prepared[0]= "Select from list";
+		if (count($rt_models)!=0){
+				foreach ($rt_models as $rt_mod){
+						$rt_model_prepared[$rt_mod['rt_model']]= $rt_mod['rt_model'];
+				}
+		}
+		
+		$this->addElement('Select', 'rt_model', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Model',
+		'tabindex' => 8,
+		'MultiOptions' => $rt_model_prepared
+		));
+		
+		$this->addElement('Text', 'rt3_80mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-80 Accel',
+		'tabindex' => 73,
+		));
+		
+		$this->addElement('Text', 'rt_issue_year', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Mag Issue Year',
+		'tabindex' => 9,
+		));
+
+		$this->addElement('Text', 'rt3_90mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-90 Accel',
+		'tabindex' => 74,
+		));
+		
+		$this->addElement('Text', 'rt_issue', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Mag Issue Month',
+		'tabindex' => 10,
+		));
+		
+		$this->addElement('Text', 'rt2_100mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-100 Accel',
+		'tabindex' => 75,
+		));
+		
+		$this->addElement('Text', 'rt_published', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Web or Print',
+		'tabindex' => 11,
+		));
+		
+		$this->addElement('Text', 'rt3_110mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-110 Accel',
+		'tabindex' => 76,
+		));
+		
 		$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
 		
-		$rt_controlled_sort = new Zend_Form_Element_Select('rt_controlled_sort',array('style'=>'width:150px;'));
-		$rt_controlled_sort->setLabel('Production Type')
-					->addMultiOptions($rt_controlled_sort_prepared);
-	
-		$rt_controlled_sort->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_controlled_sort', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Production Type',
+		'tabindex' => 12,
+		'MultiOptions' => $rt_controlled_sort_prepared
+		));
+		
+		$this->addElement('Text', 'rt3_120mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-120 Accel',
+		'tabindex' => 77,
 		));
 		
 		$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
 		
-		$rt_controlled_engine = new Zend_Form_Element_Select('rt_controlled_engine',array('style'=>'width:150px;'));
-		$rt_controlled_engine->setLabel('Engine Location')
-					->addMultiOptions($rt_controlled_engine_prepared);
-	
-		$rt_controlled_engine->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'rt_controlled_engine', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Engine Location',
+		'tabindex' => 13,
+		'MultiOptions' => $rt_controlled_engine_prepared
 		));
 		
+		$this->addElement('Text', 'rt2_130mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-130 Accel',
+		'tabindex' => 78,
+		));
 		
 		$rt_controlled_drive_prepared = $this->gatMultioptions("Drive");
 		
-		$rt_controlled_drive = new Zend_Form_Element_Select('rt_controlled_drive',array('style'=>'width:150px;'));
-		$rt_controlled_drive->setLabel('Driven Wheels')
-					->addMultiOptions($rt_controlled_drive_prepared);
-	
-		$rt_controlled_drive->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_controlled_drive', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Driven Wheels',
+		'tabindex' => 14,
+		'MultiOptions' => $rt_controlled_drive_prepared
 		));
 		
-		
-		$rt2_passengers = new Zend_Form_Element_Text('rt2_passengers');
-		$rt2_passengers->setLabel('Number of Passengers');
-	
-		$rt2_passengers->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_140mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-140 Accel',
+		'tabindex' => 79,
 		));
 		
-		
-		$rt_doors = new Zend_Form_Element_Text('rt_doors');
-		$rt_doors->setLabel('Number of Doors');
-	
-		$rt_doors->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_passengers', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Number of Passengers',
+		'tabindex' => 15,
 		));
 		
+		$this->addElement('Text', 'rt3_150mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-150 Accel',
+		'tabindex' => 80,
+		));
+		
+		$this->addElement('Text', 'rt_doors', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Number of Doors',
+		'tabindex' => 16,
+		));
+		
+		$this->addElement('Text', 'rt3_160mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-160 Accel',
+		'tabindex' => 81,
+		));
 		
 		$rt_controlled_body_prepared = $this->gatMultioptions("Body");
 		
-		$rt_controlled_body = new Zend_Form_Element_Select('rt_controlled_body',array('style'=>'width:150px;'));
-		$rt_controlled_body->setLabel('Body Style')
-					->addMultiOptions($rt_controlled_body_prepared);
-	
-		$rt_controlled_body->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'rt_controlled_body', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Driven Wheels',
+		'tabindex' => 17,
+		'MultiOptions' => $rt_controlled_body_prepared
 		));
 		
-		
-		$rt_base_price = new Zend_Form_Element_Text('rt_base_price');
-		$rt_base_price->setLabel('Base Price');
-	
-		$rt_base_price->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_170mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-170 Accel',
+		'tabindex' => 82,
 		));
 		
-		
-		$rt_base_price_notes = new Zend_Form_Element_Text('rt_base_price_notes');
-		$rt_base_price_notes->setLabel('Base Price Notes');
-	
-		$rt_base_price_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_base_price', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Base Price',
+		'tabindex' => 18,
 		));
 		
-		
-		$rt_price_as_tested = new Zend_Form_Element_Text('rt_price_as_tested');
-		$rt_price_as_tested->setLabel('Price as Tested');
-		
-		$rt_price_as_tested->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_180mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-180 Accel',
+		'tabindex' => 83,
 		));
 		
+		$this->addElement('Text', 'rt_base_price_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Base Price Notes',
+		'tabindex' => 19,
+		));
 		
-		$rt_price_as_tested_notes = new Zend_Form_Element_Text('rt_price_as_tested_notes');
-		$rt_price_as_tested_notes->setLabel('Price as Tested Notes');
+		$this->addElement('Text', 'rt3_190mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-190 Accel',
+		'tabindex' => 84,
+		));
 		
-		$rt_price_as_tested_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_price_as_tested', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Price as Tested',
+		'tabindex' => 20,
+		));
+		
+		$this->addElement('Text', 'rt3_200mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-200 Accel',
+		'tabindex' => 85,
+		));
+		
+		$this->addElement('Text', 'rt_price_as_tested_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Price as Tested Notes',
+		'tabindex' => 21,
+		));
+		
+		$this->addElement('Text', 'rt_ss60', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '5-60 ss accel',
+		'tabindex' => 86,
 		));
 		
 		$rt_controlled_type_prepared = $this->gatMultioptions("Type");
-		$rt_controlled_type = new Zend_Form_Element_Select('rt_controlled_type',array('style'=>'width:150px;'));
-		$rt_controlled_type->setLabel('Engine Type')
-					->addMultiOptions($rt_controlled_type_prepared);
+		
+		$this->addElement('Select', 'rt_controlled_type', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Engine Type',
+		'tabindex' => 22,
+		'MultiOptions' => $rt_controlled_type_prepared
+		));
+		
+		$this->addElement('Text', 'rt2_30-50TG', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Top-Gear Accel 30-50l',
+		'tabindex' => 87,
+		));
+		
+		$this->addElement('Text', 'rt_no_cyl', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Number of Cylinders',
+		'tabindex' => 23,
+		));
+		
+		$this->addElement('Text', 'rt2_50-70TG', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Top-Gear Accel 50-70l',
+		'tabindex' => 88,
+		));
+		
+		$this->addElement('Text', 'rt3_bore_mm', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Cylinder Bore',
+		'tabindex' => 24,
+		));
+		
+		$this->addElement('Text', 'rt2_sum_of_tg_times', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Sum of the above 2',
+		'tabindex' => 89,
+		));
+		
+		$this->addElement('Text', 'rt3_stroke_mm', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Cylinder Stroke',
+		'tabindex' => 25,
+		));
+		
+		$this->addElement('Text', 'rt_quarter_time', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Quarter Mile Time',
+		'tabindex' => 90,
+		));
+		
+		$this->addElement('Text', 'rt_disp_cc', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Engine Disp',
+		'tabindex' => 26,
+		));
+		
+		$this->addElement('Text', 'rt_speed_qtr_mile_speed_trap', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Quarter Trap Speed',
+		'tabindex' => 91,
+		));
+		
+		$this->addElement('Text', 'rt3_comp_ratio', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Compression Ratio',
+		'tabindex' => 27,
+		));
 	
-		$rt_controlled_type->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt_top_speed', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Top Speed',
+		'tabindex' => 92,
 		));
 		
-		
-		$rt_no_cyl = new Zend_Form_Element_Text('rt_no_cyl');
-		$rt_no_cyl->setLabel('Number of Cylinders');
-	
-		$rt_no_cyl->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt2_fuel_sys', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Fuel System',
+		'tabindex' => 28,
 		));
 		
+		$rt_controlled_ts_limit_prepared = $this->gatMultioptions("TS limit");
 		
-		$rt3_bore_mm = new Zend_Form_Element_Text('rt3_bore_mm');
-		$rt3_bore_mm->setLabel('Cylinder Bore');
-	
-		$rt3_bore_mm->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_controlled_ts_limit', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Top Speed Limit',
+		'tabindex' => 93,
+		'MultiOptions' => $rt_controlled_ts_limit_prepared
 		));
 		
-		$rt3_stroke_mm = new Zend_Form_Element_Text('rt3_stroke_mm');
-		$rt3_stroke_mm->setLabel('Cylinder Stroke');
-		
-		$rt3_stroke_mm->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_valve_gear', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Valve Setup',
+		'tabindex' => 29,
 		));
 		
-		$rt_disp_cc = new Zend_Form_Element_Text('rt_disp_cc');
-		$rt_disp_cc->setLabel('Engine Disp');
-		
-		$rt_disp_cc->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt_top_speed_notes', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Top Speed Notes',
+		'tabindex' => 94,
+		));
+
+		$this->addElement('Text', 'rt3_valves_per_cyl', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Valves Per Cylinder',
+		'tabindex' => 30,
 		));
 		
-		$rt3_comp_ratio = new Zend_Form_Element_Text('rt3_comp_ratio');
-		$rt3_comp_ratio->setLabel('Compression Ratio');
-	
-		$rt3_comp_ratio->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_70_mph_braking', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Braking from 70',
+		'tabindex' => 95,
 		));
-		
-		
-		$rt2_fuel_sys = new Zend_Form_Element_Text('rt2_fuel_sys');
-		$rt2_fuel_sys->setLabel('Fuel System');
-	
-		$rt2_fuel_sys->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_valve_gear = new Zend_Form_Element_Text('rt3_valve_gear');
-		$rt3_valve_gear->setLabel('Valve Setup');
-		
-		$rt3_valve_gear->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt3_valves_per_cyl = new Zend_Form_Element_Text('rt3_valves_per_cyl');
-		$rt3_valves_per_cyl->setLabel('Valves Per Cylinder');
-	
-		$rt3_valves_per_cyl->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
+
 		$rt_controlled_turbo_superchg_prepared = $this->gatMultioptions("Turbo/Superchg");
 		
-		$rt_controlled_turbo_superchg = new Zend_Form_Element_Select('rt_controlled_turbo_superchg',array('style'=>'width:150px;'));
-		$rt_controlled_turbo_superchg->setLabel('Forced Induction')
-					->addMultiOptions($rt_controlled_turbo_superchg_prepared);
-	
-		$rt_controlled_turbo_superchg->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'rt_controlled_turbo_superchg', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Forced Induction',
+		'tabindex' => 31,
+		'MultiOptions' => $rt_controlled_turbo_superchg_prepared
 		));
 		
-		
-		$rt3_boost_psi = new Zend_Form_Element_Text('rt3_boost_psi');
-		$rt3_boost_psi->setLabel('Boost in psi');
-	
-		$rt3_boost_psi->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_skidpad', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Skidpad Grip',
+		'tabindex' => 96,
 		));
 		
-		$rt_peak_hp = new Zend_Form_Element_Text('rt_peak_hp');
-		$rt_peak_hp->setLabel('Peak Horsepower');
-	
-		$rt_peak_hp->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_boost_psi', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Boost in psi',
+		'tabindex' => 32,
 		));
 		
-		$rt_rpm = new Zend_Form_Element_Text('rt_rpm');
-		$rt_rpm->setLabel('Peak Horsepower RPM');
-		
-		$rt_rpm->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_emergency_lane_change', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'MPH in Lane Change',
+		'tabindex' => 97,
 		));
 		
-		$rt_peak_hp_notes = new Zend_Form_Element_Text('rt_peak_hp_notes');
-		$rt_peak_hp_notes->setLabel('Peak Horsepower Notes');
-	
-		$rt_peak_hp_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_peak_hp', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Horsepower',
+		'tabindex' => 33,
 		));
 		
-		$rt_peak_torque = new Zend_Form_Element_Text('rt_peak_torque');
-		$rt_peak_torque->setLabel('Peak Torque');
-		
-		$rt_peak_torque->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt_slalom', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Slalom Speed',
+		'tabindex' => 98,
 		));
 		
-		$rt_rpmt = new Zend_Form_Element_Text('rt_rpmt');
-		$rt_rpmt->setLabel('Peak Torque RPM');
-		
-		$rt_rpmt->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_rpm', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Horsepower RPM',
+		'tabindex' => 34,
 		));
 		
-		$rt_peak_torque_notes = new Zend_Form_Element_Text('rt_peak_torque_notes');
-		$rt_peak_torque_notes->setLabel('Peak Torque Notes');
+		$rt_controlled_fuel_prepared = $this->gatMultioptions("Fuel");
 		
-		$rt_peak_torque_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_controlled_fuel', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Fuel Type',
+		'tabindex' => 99,
+		'MultiOptions' => $rt_controlled_fuel_prepared
+		));
+
+		$this->addElement('Text', 'rt_peak_hp_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Horsepower Notes',
+		'tabindex' => 35,
 		));
 		
-		$rt_redline = new Zend_Form_Element_Text('rt_redline');
-		$rt_redline->setLabel('Redline');
-		
-		$rt_redline->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_fuel_cap', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Fuel Capacity',
+		'tabindex' => 100,
+		));
+
+		$this->addElement('Text', 'rt_peak_torque', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Torque',
+		'tabindex' => 36,
 		));
 		
-		$rt3_specific_power = new Zend_Form_Element_Text('rt3_specific_power');
-		$rt3_specific_power->setLabel('Spec pow (hp/liter)');
-		
-		$rt3_specific_power->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_epa_city_fe', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'EPA City',
+		'tabindex' => 101,
 		));
 		
+		$this->addElement('Text', 'rt_rpmt', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Torque RPM',
+		'tabindex' => 37,
+		));
 		
-		$rt_power_to_weight = new Zend_Form_Element_Text('rt_power_to_weight');
-		$rt_power_to_weight->setLabel('Power/Weight (hp/lb)');
+		$this->addElement('Text', 'rt2_epa_city_fe_notes', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'EPA City Notes',
+		'tabindex' => 102,
+		));
 		
-		$rt_power_to_weight->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt_peak_torque_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Peak Torque Notes',
+		'tabindex' => 38,
+		));
+		
+		$this->addElement('Text', 'rt2_highway_fe', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'EPA Highway',
+		'tabindex' => 103,
+		));
+		
+		$this->addElement('Text', 'rt_redline', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Redline',
+		'tabindex' => 39,
+		));
+		
+		$this->addElement('Text', 'rt2_highway_fe_notes', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'EPA HIghway Notes',
+		'tabindex' => 104,
+		));
+		
+		$this->addElement('Text', 'rt3_specific_power', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Spec pow (hp/liter)',
+		'tabindex' => 40,
+		));
+		
+		$this->addElement('Text', 'rt_cd_observed_fe', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'C/D Observed Economy',
+		'tabindex' => 105,
+		));
+		
+		$this->addElement('Text', 'rt_power_to_weight', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Power/Weight (hp/lb)',
+		'tabindex' => 41,
+		));
+		
+		$this->addElement('Text', 'rt2_sound_level_idle', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Sound Level Idle',
+		'tabindex' => 106,
 		));
 		
 		$rt_controlled_transmission_prepared= $this->gatMultioptions("Transmission");
 		
-		$rt_controlled_transmission = new Zend_Form_Element_Select('rt_controlled_transmission',array('style'=>'width:150px;'));
-		$rt_controlled_transmission->setLabel('Transmission Type')
-					->addMultiOptions($rt_controlled_transmission_prepared);
-	
-		$rt_controlled_transmission->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_controlled_transmission', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Transmission Type',
+		'tabindex' => 42,
+		'MultiOptions' => $rt_controlled_transmission_prepared
 		));
 		
-		
-		$rt3_final_drive_ratio = new Zend_Form_Element_Text('rt3_final_drive_ratio');
-		$rt3_final_drive_ratio->setLabel('Final Drive');
-		
-		$rt3_final_drive_ratio->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt2_wot', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'DB at Wot',
+		'tabindex' => 107,
+		));
+
+		$this->addElement('Text', 'rt3_final_drive_ratio', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Final Drive',
+		'tabindex' => 43
 		));
 		
-		$rt3_max_mph_1000_rpm = new Zend_Form_Element_Text('rt3_max_mph_1000_rpm');
-		$rt3_max_mph_1000_rpm->setLabel('Top Gear mph/1000rpm');
-		
-		$rt3_max_mph_1000_rpm->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_70cr', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'DB at 70 MPH Cruise',
+		'tabindex' => 108,
 		));
 		
-		$rt3_wheelbase = new Zend_Form_Element_Text('rt3_wheelbase');
-		$rt3_wheelbase->setLabel('Wheelbase');
-	
-		$rt3_wheelbase->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_max_mph_1000_rpm', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Top Gear mph/1000rpm',
+		'tabindex' => 44
 		));
 		
-		$rt3_length = new Zend_Form_Element_Text('rt3_length');
-		$rt3_length->setLabel('Length');
-		
-		$rt3_length->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_70co', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'DB at 70 Coast',
+		'tabindex' => 109,
+		));
+
+		$this->addElement('Text', 'rt3_wheelbase', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Wheelbase',
+		'tabindex' => 45
 		));
 		
-		$rt3_width = new Zend_Form_Element_Text('rt3_width');
-		$rt3_width->setLabel('Width');
-	
-		$rt3_width->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_lt_oil', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Long-term Oil Used',
+		'tabindex' => 110,
 		));
 		
-		
-		$rt3_height = new Zend_Form_Element_Text('rt3_height');
-		$rt3_height->setLabel('Height');
-		
-		$rt3_height->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_length', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Length',
+		'tabindex' => 46
 		));
 		
-		$rt3_frontal_area = new Zend_Form_Element_Text('rt3_frontal_area');
-		$rt3_frontal_area->setLabel('Frontal Area');
-		
-		$rt3_frontal_area->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_lt_stps_sched', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'LT Scheduled Stops',
+		'tabindex' => 111,
 		));
 		
-		
-		$rt3_frontal_area_notes = new Zend_Form_Element_Text('rt3_frontal_area_notes');
-		$rt3_frontal_area_notes->setLabel('Frontal Area Notes');
-		
-		$rt3_frontal_area_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_width', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Width',
+		'tabindex' => 47
 		));
 		
-		$rt3_cd = new Zend_Form_Element_Text('rt3_cd');
-		$rt3_cd->setLabel('Coefficient of Drag');
-	
-		$rt3_cd->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_lt_stps_unsched', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'LT Unscheduled Stops',
+		'tabindex' => 112,
 		));
 		
-		$rt_weight = new Zend_Form_Element_Text('rt_weight');
-		$rt_weight->setLabel('Curb Weight');
-		
-		$rt_weight->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_height', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Height',
+		'tabindex' => 48
 		));
 		
-		
-		$rt_percent_on_front = new Zend_Form_Element_Text('rt_percent_on_front');
-		$rt_percent_on_front->setLabel('Pct. Weight on Front');
-	
-		$rt_percent_on_front->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_lt_serv', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Costs for LT Service',
+		'tabindex' => 113,
 		));
 		
-		$rt_percent_on_rear = new Zend_Form_Element_Text('rt_percent_on_rear');
-		$rt_percent_on_rear->setLabel('Pct. Weight on Rear');
-	
-		$rt_percent_on_rear->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_frontal_area', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Frontal Area',
+		'tabindex' => 49
 		));
 		
+		$this->addElement('Text', 'rt3_lt_wear', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Costs for LT Wear',
+		'tabindex' => 114,
+		));
+		
+		$this->addElement('Text', 'rt3_frontal_area_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Frontal Area Notes',
+		'tabindex' => 50
+		));
+		
+		$this->addElement('Text', 'rt3_lt_repair', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Costs for LT Repair',
+		'tabindex' => 115,
+		));
+		
+		$this->addElement('Text', 'rt3_cd', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Coefficient of Drag',
+		'tabindex' => 51
+		));
+		
+		$this->addElement('Text', 'rt2_50_mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt2_50_mph',
+		'tabindex' => 116,
+		));
+		
+		$this->addElement('Text', 'rt_weight', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Curb Weight',
+		'tabindex' => 52
+		));
+		
+		$this->addElement('Text', 'rt2_70_mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt2_70_mph',
+		'tabindex' => 117,
+		));
+		
+		$this->addElement('Text', 'rt_percent_on_front', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Pct. Weight on Front',
+		'tabindex' => 53
+		));
+		
+		$this->addElement('Text', 'rt3_et_factor', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_et_factor',
+		'tabindex' => 118,
+		));
+		
+		$this->addElement('Text', 'rt_percent_on_rear', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Pct. Weight on Rear',
+		'tabindex' => 54
+		));
+		
+		$this->addElement('Text', 'rt3_road_hp_30mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_road_hp_30mph',
+		'tabindex' => 119,
+		));
 		
 		$select = $db->select()
 	             ->from(array('rtd'=>'rt_dropdown_descriptions'),array('rtd.id_descriptions As dropdownid', 'rtd.description As description'))
@@ -756,787 +947,130 @@ class Application_Form_Add extends Application_Form_MainForm
 				}
 		}
 		
-		$rt2_controlled_airbags = new Zend_Form_Element_Select('rt2_controlled_airbags',array('style'=>'width:150px;'));
-		$rt2_controlled_airbags->setLabel('Listing of Airbag Positions')
-					->addMultiOptions($rt_controlled_airbags_prepared);
-	
-		$rt2_controlled_airbags->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'rt2_controlled_airbags', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Pct. Weight on Rear',
+		'tabindex' => 55,
+		'MultiOptions' => $rt_controlled_airbags_prepared
 		));
 		
-		
-		$rt2_int_vol_front = new Zend_Form_Element_Text('rt2_int_vol_front');
-		$rt2_int_vol_front->setLabel('Interior Volume');
-	
-		$rt2_int_vol_front->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_mid = new Zend_Form_Element_Text('rt2_mid');
-		$rt2_mid->setLabel('Vol Behind Mid Row');
-	
-		$rt2_mid->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_rear = new Zend_Form_Element_Text('rt2_rear');
-		$rt2_rear->setLabel('Vol Behind Rear Row');
-	
-		$rt2_rear->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt3_trunk = new Zend_Form_Element_Text('rt3_trunk');
-		$rt3_trunk->setLabel('Trunk Volume');
-		
-		$rt3_trunk->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt2_turning_cirl = new Zend_Form_Element_Text('rt2_turning_cir');
-		$rt2_turning_cirl->setLabel('Turning Radius');
-	
-		$rt2_turning_cirl->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt2_anti_lock = new Zend_Form_Element_Text('rt2_anti_lock');
-		$rt2_anti_lock->setLabel('Anti-Lock Brakes?');
-	
-		$rt2_anti_lock->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_traction_control = new Zend_Form_Element_Text('rt2_traction_control');
-		$rt2_traction_control->setLabel('Traction Control?');
-	
-		$rt2_traction_control->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_trac_defeatable = new Zend_Form_Element_Text('rt2_trac_defeatable');
-		$rt2_trac_defeatable->setLabel('Tc Defeatable?');
-	
-		$rt2_trac_defeatable->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt2_stability_control = new Zend_Form_Element_Text('rt2_stability_control');
-		$rt2_stability_control->setLabel('Stability Control');
-	
-		$rt2_stability_control->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt2_stab_defeatable = new Zend_Form_Element_Text('rt2_stab_defeatable');
-		$rt2_stab_defeatable->setLabel('Esc Defeatable?');
-	
-		$rt2_stab_defeatable->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt3_10mph = new Zend_Form_Element_Text('rt3_10mph');
-		$rt3_10mph->setLabel('0-10 Accel');
-	
-		$rt3_10mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_20mph = new Zend_Form_Element_Text('rt3_20mph');
-		$rt3_20mph->setLabel('0-20 Accel');
-	
-		$rt3_20mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_30mph = new Zend_Form_Element_Text('rt2_30mph');
-		$rt2_30mph->setLabel('0-30 Accel');
-	
-		$rt2_30mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_40mph = new Zend_Form_Element_Text('rt3_40mph');
-		$rt3_40mph->setLabel('0-40 Accel');
-	
-		$rt3_40mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_50mph = new Zend_Form_Element_Text('rt3_50mph');
-		$rt3_50mph->setLabel('0-50 Accel');
-	
-		$rt3_50mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt_60mph = new Zend_Form_Element_Text('rt_60mph');
-		$rt_60mph->setLabel('0-60 Accel');
-	
-		$rt_60mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_70mph = new Zend_Form_Element_Text('rt3_70mph');
-		$rt3_70mph->setLabel('0-70 Accel');
-	
-		$rt3_70mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt3_80mph = new Zend_Form_Element_Text('rt3_80mph');
-		$rt3_80mph->setLabel('0-80 Accel');
-	
-		$rt3_80mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_90mph = new Zend_Form_Element_Text('rt3_90mph');
-		$rt3_90mph->setLabel('0-90 Accel');
-	
-		$rt3_90mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_100mph = new Zend_Form_Element_Text('rt2_100mph');
-		$rt2_100mph->setLabel('0-100 Accel');
-	
-		$rt2_100mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_110mph = new Zend_Form_Element_Text('rt3_110mph');
-		$rt3_110mph->setLabel('0-110 Accel');
-	
-		$rt3_110mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_120mph = new Zend_Form_Element_Text('rt3_120mph');
-		$rt3_120mph->setLabel('0-120 Accel');
-	
-		$rt3_120mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_130mph = new Zend_Form_Element_Text('rt2_130mph');
-		$rt2_130mph->setLabel('0-130 Accel');
-	
-		$rt2_130mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_140mph = new Zend_Form_Element_Text('rt3_140mph');
-		$rt3_140mph->setLabel('0-140 Accel');
-	
-		$rt3_140mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_150mph = new Zend_Form_Element_Text('rt3_150mph');
-		$rt3_150mph->setLabel('0-150 Accel');
-	
-		$rt3_150mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_160mph = new Zend_Form_Element_Text('rt3_160mph');
-		$rt3_160mph->setLabel('0-160 Accel');
-	
-		$rt3_160mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_170mph = new Zend_Form_Element_Text('rt3_170mph');
-		$rt3_170mph->setLabel('0-170 Accel');
-	
-		$rt3_170mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_180mph = new Zend_Form_Element_Text('rt3_180mph');
-		$rt3_180mph->setLabel('0-180 Accel');
-	
-		$rt3_180mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_190mph = new Zend_Form_Element_Text('rt3_190mph');
-		$rt3_190mph->setLabel('0-190 Accel');
-	
-		$rt3_190mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_200mph = new Zend_Form_Element_Text('rt3_200mph');
-		$rt3_200mph->setLabel('0-200 Accel');
-	
-		$rt3_200mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt_ss60 = new Zend_Form_Element_Text('rt_ss60');
-		$rt_ss60->setLabel('5-60 ss Accel');
-		
-		$rt_ss60->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt2_30_50TG = new Zend_Form_Element_Text('rt2_30_50TG');
-		$rt2_30_50TG->setLabel('Top-Gear Accel 30-50');
-		
-		$rt2_30_50TG->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_50_70TG = new Zend_Form_Element_Text('rt2_50-70TG');
-		$rt2_50_70TG->setLabel('Top-Gear Accel 50-70');
-		
-		$rt2_50_70TG->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_sum_of_tg_times = new Zend_Form_Element_Text('rt2_sum_of_tg_times');
-		$rt2_sum_of_tg_times->setLabel('Sum of the above 2');
-	
-		$rt2_sum_of_tg_times->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt_quarter_time = new Zend_Form_Element_Text('rt_quarter_time');
-		$rt_quarter_time->setLabel('Quarter Mile Time');
-	
-		$rt_quarter_time->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt_speed_qtr_mile_speed_trap = new Zend_Form_Element_Text('rt_speed_qtr_mile_speed_trap');
-		$rt_speed_qtr_mile_speed_trap->setLabel('Quarter Trap Speed');
-	
-		$rt_speed_qtr_mile_speed_trap->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt_top_speed = new Zend_Form_Element_Text('rt_top_speed');
-		$rt_top_speed->setLabel('Top Speed');
-	
-		$rt_top_speed->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt_controlled_ts_limit_prepared = $this->gatMultioptions("TS limit");
-		
-		$rt_controlled_ts_limit = new Zend_Form_Element_Select('rt_controlled_ts_limit',array('style'=>'width:150px;'));
-		$rt_controlled_ts_limit->setLabel('Top Speed Limit')
-					->addMultiOptions($rt_controlled_ts_limit_prepared);
-	
-		$rt_controlled_ts_limit->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt_top_speed_notes = new Zend_Form_Element_Text('rt_top_speed_notes');
-		$rt_top_speed_notes->setLabel('Top Speed Notes');
-	
-		$rt_top_speed_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt_70_mph_braking = new Zend_Form_Element_Text('rt_70_mph_braking');
-		$rt_70_mph_braking->setLabel('Braking from 70');
-	
-		$rt_70_mph_braking->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_skidpad = new Zend_Form_Element_Text('rt2_skidpad');
-		$rt2_skidpad->setLabel('Skidpad Grip');
-		
-		$rt2_skidpad->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_emergency_lane_change = new Zend_Form_Element_Text('rt2_emergency_lane_change');
-		$rt2_emergency_lane_change->setLabel('MPH in Lane Change');
-		
-		$rt2_emergency_lane_change->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt_slalom = new Zend_Form_Element_Text('rt_slalom');
-		$rt_slalom->setLabel('Slalom Speed');
-		
-		$rt_slalom->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt_controlled_fuel_prepared = $this->gatMultioptions("Fuel");
-		
-		$rt_controlled_fuel = new Zend_Form_Element_Select('rt_controlled_fuel',array('style'=>'width:150px;'));
-		$rt_controlled_fuel->setLabel('Fuel Type')
-					->addMultiOptions($rt_controlled_fuel_prepared);
-	
-		$rt_controlled_fuel->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_fuel_cap = new Zend_Form_Element_Text('rt3_fuel_cap');
-		$rt3_fuel_cap->setLabel('Fuel Capacity');
-		
-		$rt3_fuel_cap->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt2_epa_city_fe = new Zend_Form_Element_Text('rt2_epa_city_fe');
-		$rt2_epa_city_fe->setLabel('EPA City');
-	
-		$rt2_epa_city_fe->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_epa_city_fe_notes = new Zend_Form_Element_Text('rt2_epa_city_fe_notes');
-		$rt2_epa_city_fe_notes->setLabel('EPA City Notes');
-	
-		$rt2_epa_city_fe_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt2_highway_fe = new Zend_Form_Element_Text('rt2_highway_fe');
-		$rt2_highway_fe->setLabel('EPA Highway');
-	
-		$rt2_highway_fe->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_highway_fe_notes = new Zend_Form_Element_Text('rt2_highway_fe_notes');
-		$rt2_highway_fe_notes->setLabel('EPA HIghway Notes');
-	
-		$rt2_highway_fe_notes->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt_cd_observed_fe = new Zend_Form_Element_Text('rt_cd_observed_fe');
-		$rt_cd_observed_fe->setLabel('C/D Observed Economy');
-	
-		$rt_cd_observed_fe->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_sound_level_idle = new Zend_Form_Element_Text('rt2_sound_level_idle');
-		$rt2_sound_level_idle->setLabel('Sound Level Idle');
-	
-		$rt2_sound_level_idle->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		$rt2_wot = new Zend_Form_Element_Text('rt2_wot');
-		$rt2_wot->setLabel('DB at Wot');
-	
-		$rt2_wot->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt2_70cr = new Zend_Form_Element_Text('rt2_70cr');
-		$rt2_70cr->setLabel('DB at 70 MPH Cruise');
-		
-		$rt2_70cr->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_70co = new Zend_Form_Element_Text('rt3_70co');
-		$rt3_70co->setLabel('BD at 70 Coast');
-	
-		$rt3_70co->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_lt_oil = new Zend_Form_Element_Text('rt3_lt_oil');
-		$rt3_lt_oil->setLabel('Long-term Oil Used');
-		
-		$rt3_lt_oil->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		
-		
-		$rt3_lt_stps_sched = new Zend_Form_Element_Text('rt3_lt_stps_sched');
-		$rt3_lt_stps_sched->setLabel('LT Scheduled Stops');
-		
-		$rt3_lt_stps_sched->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_lt_stps_unsched = new Zend_Form_Element_Text('rt3_lt_stps_unsched');
-		$rt3_lt_stps_unsched->setLabel('LT Unscheduled Stops');
-		
-		$rt3_lt_stps_unsched->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt3_sp_factor', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_sp_factor',
+		'tabindex' => 120,
 		));
 		
-		$rt3_lt_serv = new Zend_Form_Element_Text('rt3_lt_serv');
-		$rt3_lt_serv->setLabel('Costs for LT Service');
-		
-		$rt3_lt_serv->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		
-		$rt3_lt_wear = new Zend_Form_Element_Text('rt3_lt_wear');
-		$rt3_lt_wear->setLabel('Costs for LT Wear');
-		
-		$rt3_lt_wear->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
-		$rt3_lt_repiar->setLabel('Costs for LT Repair');
-		
-		$rt3_lt_repiar->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt2_50_mph = new Zend_Form_Element_Text('rt2_50_mph');
-		$rt2_50_mph->setLabel('rt2_50_mph');
-		
-		$rt2_50_mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_int_vol_front', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Interior Volume',
+		'tabindex' => 56
 		));
 		
-		$rt2_70_mph = new Zend_Form_Element_Text('rt2_70_mph');
-		$rt2_70_mph->setLabel('rt2_70_mph');
-		
-		$rt2_70_mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		));
-		
-		$rt3_et_factor = new Zend_Form_Element_Text('rt3_et_factor');
-		$rt3_et_factor->setLabel('rt3_et_factor');
-		
-		$rt3_et_factor->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-		));
-		
-		$rt3_road_hp_30mph = new Zend_Form_Element_Text('rt3_road_hp_30mph');
-		$rt3_road_hp_30mph->setLabel('rt3_road_hp_30mph');
-		
-		$rt3_road_hp_30mph->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_peak_bmep', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_peak_bmep',
+		'tabindex' => 121,
 		));
-		
-		$rt3_sp_factor = new Zend_Form_Element_Text('rt3_sp_factor');
-		$rt3_sp_factor->setLabel('rt3_sp_factor');
 		
-		$rt3_sp_factor->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_mid', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Vol Behind Mid Row',
+		'tabindex' => 57
 		));
 		
-		$rt3_peak_bmep = new Zend_Form_Element_Text('rt3_peak_bmep');
-		$rt3_peak_bmep->setLabel('rt3_peak_bmep');
-		
-		$rt3_peak_bmep->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Text', 'rt3_peal_bmep', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_peal_bmep',
+		'tabindex' => 122,
 		));
-		
-		
-		$rt3_peal_bmep = new Zend_Form_Element_Text('rt3_peal_bmep');
-		$rt3_peal_bmep->setLabel('rt3_peal_bmep');
 		
-		$rt3_peal_bmep->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Text', 'rt2_rear', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Vol Behind Rear Row',
+		'tabindex' => 58
 		));
 		
 		$bg_controlled_make_ids_prepared[0]= "Select from list";
-		$bg_controlled_make_id = new Zend_Form_Element_Select('bg_controlled_make_id',array('style'=>'width:150px;'));
-		$bg_controlled_make_id->setLabel('bg_cont_make_id')
-					->addMultiOptions($bg_controlled_make_ids_prepared);
-	
-		$bg_controlled_make_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
+		$this->addElement('Select', 'bg_controlled_make_id', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'bg_controlled_make_id',
+		'tabindex' => 123,
+		'MultiOptions' => $bg_controlled_make_ids_prepared
+		));
+		
+		$this->addElement('Text', 'rt3_trunk', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Trunk Volume',
+		'tabindex' => 59
 		));
 		
 		$bg_controlled_model_ids_prepared[0]= "Select from list";
-		$bg_controlled_model_id = new Zend_Form_Element_Select('bg_controlled_model_id',array('style'=>'width:150px;'));
-		$bg_controlled_model_id->setLabel('bg_cont_model_id')
-					->addMultiOptions($bg_controlled_model_ids_prepared);
-	
-		$bg_controlled_model_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td')),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'bg_controlled_model_id', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'bg_controlled_model_id',
+		'tabindex' => 124,
+		'MultiOptions' => $bg_controlled_model_ids_prepared
 		));
 		
+		$this->addElement('Text', 'rt2_turning_cir', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'urning Radius',
+		'tabindex' => 60
+		));
 		
 		$rt_original_table_ids_prepared[0]= "Select from list";
-		$rt_original_table_id = new Zend_Form_Element_Select('rt_original_table_id',array('style'=>'width:150px;'));
-		$rt_original_table_id->setLabel('Original Year')
-					->addMultiOptions($rt_original_table_ids_prepared);
-	
-		$rt_original_table_id->setDecorators(array(
-		'ViewHelper',
-		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td','colspan' => 4)),
-		array('Label', array('tag' => 'td','style' => 'float:right;')),
-		array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+		$this->addElement('Select', 'rt_original_table_id', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'rt_original_table_id',
+		'tabindex' => 125,
+		'MultiOptions' => $rt_original_table_ids_prepared
+		));
+		
+		$this->addElement('Text', 'rt2_anti_lock', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Anti-Lock Brakes?',
+		'tabindex' => 61,
+		));
+		
+		$this->addElement('Text', 'rt2_traction_control', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Traction Control?',
+		'tabindex' => 62,
+		));
+		
+		$this->addElement('Text', 'rt2_trac_defeatable', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Tc Defeatable?',
+		'tabindex' => 63,
+		));
+		
+		$this->addElement('Text', 'rt2_stability_control', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Stability Control',
+		'tabindex' => 64,
+		));
+		
+		$this->addElement('Text', 'rt2_stab_defeatable', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Esc Defeatable?',
+		'tabindex' => 65,
 		));
 		
 		$review_changes = new Zend_Form_Element_Submit('review_cganges');
@@ -1559,134 +1093,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		$this->addElements(array(
-		$enterId,
-		$rt_model_year,
-		$bg_year_id, 
-		$rt_controlled_make,
-		$bg_make_id,
-		$rt_model,
-		$bg_model_id,
-		$bg_submodel_id,
-		$rt_issue_year,
-		$rt_issue,
-		$rt_published,
-		$rt_controlled_sort,
-		$rt_controlled_engine,
-		$rt_controlled_drive,
-		$rt2_passengers,
-		$rt_doors,
-		$rt_controlled_body,
-		$rt_base_price,
-		$rt_base_price_notes,
-		$rt_price_as_tested,
-		$rt_price_as_tested_notes,
-		$rt_controlled_type,
-		$rt_no_cyl,
-		$rt3_bore_mm,
-		$rt3_stroke_mm,
-		$rt_disp_cc,
-		$rt3_comp_ratio,
-		$rt2_fuel_sys,
-		$rt3_valve_gear,
-		$rt3_valves_per_cyl,
-		$rt_controlled_turbo_superchg,
-		$rt3_boost_psi,
-		$rt_peak_hp,
-		$rt_rpm,
-		$rt_peak_hp_notes,
-		$rt_peak_torque,
-		$rt_rpmt,
-		$rt_peak_torque_notes,
-		$rt_redline,
-		$rt3_specific_power,
-		$rt_power_to_weight,
-		$rt_controlled_transmission,
-		$rt3_final_drive_ratio,
-		$rt3_max_mph_1000_rpm,
-		$rt3_wheelbase,
-		$rt3_length,
-		$rt3_width,
-		$rt3_height,
-		$rt3_frontal_area,
-		$rt3_frontal_area_notes,
-		$rt3_cd,
-		$rt_weight,
-		$rt_percent_on_front,
-		$rt_percent_on_rear,
-		$rt2_controlled_airbags,
-		$rt2_int_vol_front,
-		$rt2_mid,
-		$rt2_rear,
-		$rt3_trunk,
-		$rt2_turning_cirl,
-		$rt2_anti_lock,
-		$rt2_traction_control,
-		$rt2_trac_defeatable,
-		$rt2_stability_control,
-		$rt2_stab_defeatable,
-		$rt3_10mph,
-		$rt3_20mph,
-		$rt2_30mph,
-		$rt3_40mph,
-		$rt3_50mph,
-		$rt_60mph,
-		$rt3_70mph,
-		$rt3_80mph,
-		$rt3_90mph,
-		$rt2_100mph,
-		$rt3_110mph,
-		$rt3_120mph,
-		$rt2_130mph,
-		$rt3_140mph,
-		$rt3_150mph,
-		$rt3_160mph,
-		$rt3_170mph,
-		$rt3_180mph,
-		$rt3_190mph,
-		$rt3_200mph,
-		$rt_ss60,
-		$rt2_30_50TG,
-		$rt2_50_70TG,
-		$rt2_sum_of_tg_times,
-		$rt_quarter_time,
-		$rt_speed_qtr_mile_speed_trap,
-		$rt_top_speed,
-		$rt_controlled_ts_limit,
-		$rt_top_speed_notes,
-		$rt_70_mph_braking,
-		$rt2_skidpad,
-		$rt2_emergency_lane_change,
-		$rt_slalom,
-		$rt_controlled_fuel,
-		$rt3_fuel_cap,
-		$rt2_epa_city_fe,
-		$rt2_epa_city_fe_notes,
-		$rt2_highway_fe,
-		$rt2_highway_fe_notes,
-		$rt_cd_observed_fe,
-		$rt2_sound_level_idle,
-		$rt2_wot,
-		$rt2_70cr,
-		$rt3_70co,
-		$rt3_lt_oil,
-		$rt3_lt_stps_sched,
-		$rt3_lt_stps_unsched,
-		$rt3_lt_serv,
-		$rt3_lt_wear,
-		$rt3_lt_repiar,
-		$rt2_50_mph,
-		$rt2_70_mph,
-		$rt3_et_factor,
-		$rt3_road_hp_30mph,
-		$rt3_sp_factor,
-		$rt3_peak_bmep,
-		$rt3_peal_bmep,
-		$bg_controlled_make_id,
-		$bg_controlled_model_id,
-		$rt_original_table_id,
 		$review_changes,
-		$cancel
-		));
+		$cancel));
 		
 		$this->setDecorators(array(
 		'FormElements',

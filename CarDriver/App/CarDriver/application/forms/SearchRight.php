@@ -1,14 +1,6 @@
 <?php
 class Application_Form_SearchRight extends Application_Form_MainForm
 {
-	public $makeid;
- 
-  	public function __construct($id) 
-  	{ 
-     	$this->makeid = $id;
-     	parent::__construct();
-     
-  	} 
   	
 	public function init()
 	{
@@ -35,9 +27,11 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		    $years_prepared[$id]= $name;
 		 }
 		rsort($years_prepared);
-		$year = $this->createElement('select','year')
+		$year = $this->createElement('select','year',array('style'=>'width:130px;'))
 		->setLabel('Year')
 		->addMultiOptions($years_prepared);
+		$year->setAttrib('onchange','AutoFillSubModelSearch(this.value)');
+		
 		$this->addElement($year);
         
 		$makes_prepared[0]= "Select or Leave blank";
@@ -55,13 +49,15 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		    $makes_prepared[$id]= $name;
 		 }
 		
-		$make = $this->createElement('select','make')
+		$make = $this->createElement('select','make',array('style'=>'width:130px;'))
 		->setLabel('Make')
-		->addMultiOptions($makes_prepared)
-		->setAttrib('onChange', 'this.form.submit();');
+		->addMultiOptions($makes_prepared);
+		$make->setAttrib('onchange','AutoFillModelSearch(this.value)');
+		
 		$this->addElement($make);
-	             
-	    if($this->makeid != 0)
+
+		$session_makeid = new Zend_Session_Namespace('makeid');
+	    if(isset($session_makeid->make_id))
 	    {		
 		    $models_prepared[0]= "Select or Leave blank";
 			$objDOM = new DOMDocument(); 
@@ -78,18 +74,50 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 				$ids = $value->getElementsByTagName("id");
 			    $id  = $ids->item(0)->nodeValue;
 				
-			    if($this->makeid == $make_id)
+			    if($session_makeid->make_id == $make_id)
 			    	$models_prepared[$id]= $name;
 			 }
 	    }
 	    else
 	     $models_prepared[0]= "Select or Leave blank";
 		
-		$model = $this->createElement('select','model',array('style'=>'width:170px;'))
+		$model = $this->createElement('select','model',array('style'=>'width:130px;'))
 		->setLabel('Model')
 		->addMultiOptions($models_prepared);
 		
 		$this->addElement($model);
+		
+		$bg_submodel_ids_prepared[0]= "Select or Leave blank";
+		$session_yearid = new Zend_Session_Namespace('yearid');
+		
+    	//$modelid = $session_modelid->modelid;
+		if(isset($session_yearid->year_id))
+		{
+			$yearid =$session_yearid->year_id;
+			$bg_submodel_ids_prepared[0]= "Select or Leave blank";
+			$objDOM = new DOMDocument(); 
+			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+			$xpath = new DOMXPath($objDOM);
+			$query = '//response/data/row/year_id';
+	        
+	        $entries = $xpath->query($query);
+	        
+			foreach( $entries as $entry)
+			{
+			    if($yearid == $entry->nodeValue)
+			    { 	
+			    	$name  = $entry->previousSibling->previousSibling->nodeValue;
+			    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
+			    	$bg_submodel_ids_prepared[$id]= $name;
+			    }
+			 }
+		}
+		
+		$subModel = $this->createElement('select','submodel',array('style'=>'width:130px;'))
+		->setLabel('Sub Model')
+		->addMultiOptions($bg_submodel_ids_prepared);
+		
+		$this->addElement($subModel);
 		
 		$submit1 = $this->createElement('submit','submit1',array('label'=>'GO'));
 		$this->addElement($submit1);
