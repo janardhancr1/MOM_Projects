@@ -35,6 +35,7 @@ class IndexController extends Zend_Controller_Action
 		        'year' => $this->getRequest()->getPost('year'),
 		      	'make' => $this->getRequest()->getPost('make'),
           	    'model' => $this->getRequest()->getPost('model'),
+          	    'submodel' => $this->getRequest()->getPost('submodel'),
 		      ));
           }
          else
@@ -43,6 +44,7 @@ class IndexController extends Zend_Controller_Action
          	$formright->getElement('year')->setValue($this->_getParam('year'));
          	$formright->getElement('make')->setValue($this->_getParam('make'));
          	$formright->getElement('model')->setValue($this->_getParam('model'));
+         	$formright->getElement('submodel')->setValue($this->_getParam('submodel'));
          	
          }
          if(($this->_getParam('id')))
@@ -53,6 +55,8 @@ class IndexController extends Zend_Controller_Action
         		$select->where('rrm.bg_model_id =?', $this->_getParam('model'));
          if(($this->_getParam('make')))
         		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
+         if(($this->_getParam('submodel')))
+        		$select->where('rrm.bg_submodel_id =?', $this->_getParam('submodel'));
         		
         $export_result = $db->query($select)->fetchAll();
 
