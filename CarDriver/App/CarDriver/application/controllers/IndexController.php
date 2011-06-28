@@ -670,13 +670,15 @@ class IndexController extends Zend_Controller_Action
     
  	public function populatesubmodelAction()
     {
-    	$return = '0~select from list;';
+    	$return = '0~Select or Leave blank;';
     	$yearid = $this->_getParam('yearid');
-    	if($yearid)
+    	$modelid = $this->_getParam('modelid');
+    	if($yearid && $modelid)
     	{
     		require_once('Zend/Session.php');
     	 	$session_yearid = new Zend_Session_Namespace('yearid');
     	 	$session_yearid->year_id = $yearid;
+    	 	$session_yearid->model_id = $modelid;
     	}
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
@@ -686,7 +688,7 @@ class IndexController extends Zend_Controller_Action
         $entries = $xpath->query($query);
 		foreach( $entries as $entry)
 		{
-		    if($yearid == $entry->nodeValue)
+		    if($yearid == $entry->nodeValue && $modelid == $entry->previousSibling->nodeValue)
 		    { 	
 		    	$name  = $entry->previousSibling->previousSibling->nodeValue;
 		    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
