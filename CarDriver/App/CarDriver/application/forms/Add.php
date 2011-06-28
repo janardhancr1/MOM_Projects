@@ -222,10 +222,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_make', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Make',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/5">Make</a>',
 		'tabindex' => 7,
 		'MultiOptions' => $rt_controlled_make_prepared
 		));
+		
+		$this->rt_controlled_make->getDecorator('Label')->setOption('escape', false); 
+		
 		
 		$this->addElement('Text', 'rt3_70mph', array(
 		'decorators' => $this->elementDecoratorsTr,
