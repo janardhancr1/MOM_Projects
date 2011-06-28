@@ -327,10 +327,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_engine', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Engine Location',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/3">Engine Location</a>',
 		'tabindex' => 13,
 		'MultiOptions' => $rt_controlled_engine_prepared
 		));
+		
+		$this->rt_controlled_engine->getDecorator('Label')->setOption('escape', false); 
 		
 		$this->addElement('Text', 'rt2_130mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -344,10 +346,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_drive', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Driven Wheels',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/2">Driven Wheels</a>',
 		'tabindex' => 14,
 		'MultiOptions' => $rt_controlled_drive_prepared
 		));
+		
+		$this->rt_controlled_drive->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_140mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -389,10 +393,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_body', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Driven Wheels',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/1">Body Style</a>',
 		'tabindex' => 17,
 		'MultiOptions' => $rt_controlled_body_prepared
 		));
+		
+		$this->rt_controlled_body->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_170mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -462,10 +468,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_type', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Engine Type',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/11">Engine Type</a>',
 		'tabindex' => 22,
 		'MultiOptions' => $rt_controlled_type_prepared
 		));
+		
+		$this->rt_controlled_type->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt2_30-50TG', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -556,10 +564,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_ts_limit', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Top Speed Limit',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/9">Top Speed Limit</a>',
 		'tabindex' => 93,
 		'MultiOptions' => $rt_controlled_ts_limit_prepared
 		));
+		
+		$this->rt_controlled_ts_limit->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_valve_gear', array(
 		'decorators' => $this->elementDecoratorsTd,
@@ -594,10 +604,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_turbo_superchg', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Forced Induction',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/10">Forced Induction</a>',
 		'tabindex' => 31,
 		'MultiOptions' => $rt_controlled_turbo_superchg_prepared
 		));
+		
+		$this->rt_controlled_turbo_superchg->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt2_skidpad', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -646,11 +658,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_fuel', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Fuel Type',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/4">Fuel Type</a>',
 		'tabindex' => 99,
 		'MultiOptions' => $rt_controlled_fuel_prepared
 		));
-
+		
+		$this->rt_controlled_fuel->getDecorator('Label')->setOption('escape', false);
+		
 		$this->addElement('Text', 'rt_peak_hp_notes', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
@@ -754,10 +768,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_transmission', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Transmission Type',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/8">Transmission Type</a>',
 		'tabindex' => 42,
 		'MultiOptions' => $rt_controlled_transmission_prepared
 		));
+		
+		$this->rt_controlled_transmission->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt2_wot', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -927,6 +943,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 54
 		));
 		
+		
 		$this->addElement('Text', 'rt3_road_hp_30mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
@@ -955,10 +972,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt2_controlled_airbags', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Pct. Weight on Rear',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/6">Airbags</a>',
 		'tabindex' => 55,
 		'MultiOptions' => $rt_controlled_airbags_prepared
 		));
+		
+		$this->rt2_controlled_airbags->getDecorator('Label')->setOption('escape', false);
+		
 		
 		$this->addElement('Text', 'rt3_sp_factor', array(
 		'decorators' => $this->elementDecoratorsTr,
