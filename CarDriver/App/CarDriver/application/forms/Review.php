@@ -57,14 +57,14 @@ class Application_Form_Review extends Application_Form_MainForm
 			$before_rt_model_year->setLabel('Year')
 								->setValue($rt_results_main[0]['rt_model_year']);
 			
-			$model_year_delete = new Zend_Form_Element_Anchor("modelyear_Delete", array('href'=>'#'));
+			/*$model_year_delete = new Zend_Form_Element_Anchor("modelyear_Delete", array('href'=>'#'));
 
 			$model_year_delete->setDecorators(array(
 			'ViewHelper',
 			'Description',
 			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
 			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));
+			));*/
 			
 			$rt_model_year->setDecorators(array(
 			'ViewHelper',
@@ -157,6 +157,7 @@ class Application_Form_Review extends Application_Form_MainForm
 				$bg_model_id = new Zend_Form_Element_Select('bg_model_id',array('style'=>'width:150px;'));
 				$bg_model_id->addMultiOptions($bg_model_ids_prepared)
 							->setValue($form1_Values['bg_model_id']);
+				$bg_model_id->setAttrib('onchange','AutoFillSubModel(this.value)');
 				
 							
 				$before_bg_model_id = new Zend_Form_Element_Text('before_bg_model_id',array("readonly" => "readonly"));
@@ -180,6 +181,58 @@ class Application_Form_Review extends Application_Form_MainForm
 				));
 				
 				$this->addElements(array($before_bg_model_id,$bg_model_id));
+				
+				$bg_submodel_ids_prepared[0]= "Select from list";
+			if(!empty($form1_Values['bg_year_id']))
+			{
+				$session_yearid = new Zend_Session_Namespace('yearid');
+				if(isset($session_yearid->year_id) && isset($session_yearid->model_id))
+				{
+					$yearid = $session_yearid->year_id;
+					$modelid = $session_yearid->model_id;
+					$bg_submodel_ids_prepared[0]= "Select from list";
+					$objDOM = new DOMDocument(); 
+					$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
+					$xpath = new DOMXPath($objDOM);
+					$query = '//response/data/row/year_id';
+			        
+			        $entries = $xpath->query($query);
+					foreach( $entries as $entry)
+					{
+					    if($yearid == $entry->nodeValue && $modelid == $entry->previousSibling->nodeValue)
+					    { 	
+					    	$name  = $entry->previousSibling->previousSibling->nodeValue;
+	    					$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
+					    	$bg_submodel_ids_prepared[$id]= $name;
+					    }
+					 }
+				}
+				
+			}
+				
+			$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
+			$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
+						->setValue($form1_Values['bg_submodel_id']);
+						
+			$before_bg_submodel_id = new Zend_Form_Element_Text('before_bg_submodel_id',array("readonly" => "readonly"));
+			$before_bg_submodel_id->setLabel('Mapped BG Submodel ID')
+								->setValue($rt_results_main[0]['bg_submodel_id']);
+			
+			$bg_submodel_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_bg_submodel_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));
 				
 		}
 		
@@ -281,11 +334,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			    $id  = $entry->previousSibling->nodeValue;
 			    $bg_year_ids_prepared[$id]= $name;
 			}
-		    rsort($bg_year_ids_prepared);
+		    arsort($bg_year_ids_prepared);
 			$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
 			$bg_year_id->addMultiOptions($bg_year_ids_prepared)
 					->setValue($form1_Values['bg_year_id']);
-					$bg_year_id->setAttrib('onchange','AutoFillSubModel(this.value)');
+					
 		
 			$before_bg_year_id = new Zend_Form_Element_Text('before_bg_year_id',array("readonly" => "readonly"));
 			$before_bg_year_id->setLabel('Mapped BG Year')
@@ -307,56 +360,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			$this->addElements(array($before_bg_year_id,$bg_year_id));
 			
-			$bg_submodel_ids_prepared[0]= "Select from list";
-			if(!empty($form1_Values['bg_year_id']))
-			{
-				$session_yearid = new Zend_Session_Namespace('yearid');
-				if(isset($session_yearid->year_id))
-				{
-					$yearid = $session_yearid->year_id;
-					$bg_submodel_ids_prepared[0]= "Select from list";
-					$objDOM = new DOMDocument(); 
-					$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
-					$xpath = new DOMXPath($objDOM);
-					$query = '//response/data/row/year_id';
-			        
-			        $entries = $xpath->query($query);
-					foreach( $entries as $entry)
-					{
-					    if($yearid == $entry->nodeValue)
-					    { 	
-					    	$name  = $entry->previousSibling->previousSibling->nodeValue;
-	    					$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
-					    	$bg_submodel_ids_prepared[$id]= $name;
-					    }
-					 }
-				}
-				
-			}
-				
-			$bg_submodel_id = new Zend_Form_Element_Select('bg_submodel_id',array('style'=>'width:150px;'));
-			$bg_submodel_id->addMultiOptions($bg_submodel_ids_prepared)
-						->setValue($form1_Values['bg_submodel_id']);
-						
-			$before_bg_submodel_id = new Zend_Form_Element_Text('before_bg_submodel_id',array("readonly" => "readonly"));
-			$before_bg_submodel_id->setLabel('Mapped BG Submodel ID')
-								->setValue($rt_results_main[0]['bg_submodel_id']);
-			
-			$bg_submodel_id->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));
-			
-			$before_bg_submodel_id->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array('Label', array('tag' => 'td','style' => 'float:right;')),
-			));
-			
-			$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));		
+					
 		}
 		if(!empty($form1_Values['rt_percent_on_rear']))
 		{

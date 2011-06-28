@@ -15,22 +15,25 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$years_prepared[0]= "Select or Leave blank";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
-		$row = $objDOM->getElementsByTagName("row"); 
-		foreach( $row as $value )
+		$xpath = new DOMXPath($objDOM);
+		$query = '//response/data/row/name';
+        
+        $entries = $xpath->query($query);
+        
+		foreach( $entries as $entry)
 		{
-		    $names = $value->getElementsByTagName("name");
-		    $name  = $names->item(0)->nodeValue;
-			
-			$ids = $value->getElementsByTagName("id");
-		    $id  = $ids->item(0)->nodeValue;
-			
-		    $years_prepared[$id]= $name;
-		 }
-		rsort($years_prepared);
+			$name  = $entry->nodeValue;
+			$id  = $entry->previousSibling->nodeValue;
+			$years_prepared[$id]= $name;
+		
+		}
+		
+		arsort($years_prepared);
+		
 		$year = $this->createElement('select','year',array('style'=>'width:130px;'))
 		->setLabel('Year')
 		->addMultiOptions($years_prepared);
-		$year->setAttrib('onchange','AutoFillSubModelSearch(this.value)');
+		
 		
 		$this->addElement($year);
         
@@ -84,6 +87,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$model = $this->createElement('select','model',array('style'=>'width:130px;'))
 		->setLabel('Model')
 		->addMultiOptions($models_prepared);
+		$model->setAttrib('onchange','AutoFillSubModelSearch(this.value)');
 		
 		$this->addElement($model);
 		
@@ -91,9 +95,10 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$session_yearid = new Zend_Session_Namespace('yearid');
 		
     	//$modelid = $session_modelid->modelid;
-		if(isset($session_yearid->year_id))
+		if(isset($session_yearid->year_id) && isset($session_yearid->model_id))
 		{
 			$yearid =$session_yearid->year_id;
+			$modelid = $session_yearid->model_id;
 			$bg_submodel_ids_prepared[0]= "Select or Leave blank";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
@@ -104,7 +109,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 	        
 			foreach( $entries as $entry)
 			{
-			    if($yearid == $entry->nodeValue)
+			    if($yearid == $entry->nodeValue && $modelid == $entry->previousSibling->nodeValue)
 			    { 	
 			    	$name  = $entry->previousSibling->previousSibling->nodeValue;
 			    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;

@@ -52,7 +52,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $id  = $entry->previousSibling->nodeValue;
 		    $bg_year_ids_prepared[$id]= $name;
 		 }
-		rsort($bg_year_ids_prepared);
+		arsort($bg_year_ids_prepared);
 		
 		$this->addElement('Select', 'bg_year_id', array(
 		'decorators' => $this->elementDecoratorsTd,
@@ -60,7 +60,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'label' => 'Year(BG)',
 		'tabindex' => 2,
 		'MultiOptions' => $bg_year_ids_prepared,
-		'onchange' => 'AutoFillSubModel(this.value)'
+		
 		));
 		
 		$this->addElement('Text', 'rt3_20mph', array(
@@ -135,7 +135,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model(BG)',
 		'tabindex' => 4,
-		'MultiOptions' => $bg_model_ids_prepared
+		'MultiOptions' => $bg_model_ids_prepared,
+		'onchange' => 'AutoFillSubModel(this.value)'
 		));
 			
 		$this->addElement('Text', 'rt3_40mph', array(
@@ -150,9 +151,10 @@ class Application_Form_Add extends Application_Form_MainForm
 		$session_yearid = new Zend_Session_Namespace('yearid');
 		$session_global_year = new Zend_Session_Namespace('global_year');
     	//$modelid = $session_modelid->modelid;
-		if(isset($session_yearid->year_id))
+		if(isset($session_yearid->year_id) && isset($session_yearid->model_id))
 		{
 			$yearid =$session_yearid->year_id;
+			$modelid = $session_yearid->model_id;
 			$bg_submodel_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
@@ -163,7 +165,7 @@ class Application_Form_Add extends Application_Form_MainForm
 	        
 			foreach( $entries as $entry)
 			{
-			    if($yearid == $entry->nodeValue)
+			    if($yearid == $entry->nodeValue && $modelid == $entry->previousSibling->nodeValue)
 			    { 	
 			    	$name  = $entry->previousSibling->previousSibling->nodeValue;
 			    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
