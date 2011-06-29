@@ -11,4 +11,5 @@ mysqladmin -u root password C@rDriver
 sudo /sbin/service httpd restart
 
 
+ALTER TABLE rt_results_main  ADD CONSTRAINT PK_ID PRIMARY KEY (ID)
 
