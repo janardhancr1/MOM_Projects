@@ -33,6 +33,12 @@ class Application_Form_Review extends Application_Form_MainForm
 		             ->where('id = ?', $this->id);
 			$rt_results_level_3 =  $db->query($select)->fetchAll();
 		}
+		else
+		{
+			$rt_results_main[0] = array();
+			$rt_results_level_2[0] = array();
+			$rt_results_level_3[0] = array();
+		}
 	
 		if(!empty($form1_Values['rt_model_year']))
 		{
