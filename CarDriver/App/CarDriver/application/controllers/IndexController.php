@@ -329,6 +329,7 @@ class IndexController extends Zend_Controller_Action
     	$session_makeid->make_id = $results_main[0]['bg_make_id'];
     	$session_yearid = new Zend_Session_Namespace('yearid');
     	$session_yearid->year_id = $results_main[0]['bg_year_id'];
+    	$session_yearid->model_id = $results_main[0]['bg_model_id'];
      	
         // Prepare form
     	$form = new Application_Form_Edit();
