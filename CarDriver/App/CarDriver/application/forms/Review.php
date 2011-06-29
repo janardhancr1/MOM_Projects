@@ -1173,7 +1173,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			$before_rt2_anti_lock = new Zend_Form_Element_Text('before_rt2_anti_lock',array("readonly" => "readonly"));
 			$before_rt2_anti_lock->setLabel('Anti-Lock Brakes?')
-								->setValue($rt_results_main[0]['rt2_anti_lock']);
+								->setValue($rt_results_level_2[0]['rt2_anti_lock']);
 			
 			$rt2_anti_lock->setDecorators(array(
 			'ViewHelper',
