@@ -70,6 +70,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			'ViewHelper',
 			'Description',
 			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 			));
 			
 			$before_rt_model_year->setDecorators(array(
