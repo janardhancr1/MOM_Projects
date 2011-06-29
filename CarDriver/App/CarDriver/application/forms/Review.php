@@ -82,7 +82,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			
 			
-			$this->addElements(array($before_rt_model_year,$rt_model_year, $model_year_delete));
+			$this->addElements(array($before_rt_model_year,$rt_model_year));
 		}
 		
 		if(!empty($form1_Values['bg_make_id']))
