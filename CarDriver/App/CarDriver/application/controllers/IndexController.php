@@ -322,22 +322,32 @@ class IndexController extends Zend_Controller_Action
        
         $results_level_3 = $db->query($select)->fetchAll();
         
-        if(is_array($results_main))
+        $results = array();
+        if(isset($results_main[0]))
+        {
         	$res1 = $results_main[0];
+        	$results = $res1;
+        }
         else
         	$res1 = array();
         	
-        if(is_array($results_level_2))
+        if(isset($results_level_2[0]))
+        {
         	$res2 = $results_level_2[0];
+        	$results = array_merge($res1, $res2);
+        }
         else
         	$res2 = array();
         	
-        if(is_array($results_level_3))
+        if(isset($results_level_3[0]))
+        {
         	$res3 = $results_level_3[0];
+        	$results = array_merge($res1, $res2, $res3);
+        }
         else
         	$res3 = array();
         
-        $results = array_merge($res1, $res2, $res3);
+        
         
         require_once('Zend/Session.php');
         $session_makeid = new Zend_Session_Namespace('makeid');

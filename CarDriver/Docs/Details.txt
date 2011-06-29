@@ -13,3 +13,13 @@ sudo /sbin/service httpd restart
 
 ALTER TABLE rt_results_main  ADD CONSTRAINT PK_ID PRIMARY KEY (ID)
 
+ALTER TABLE rt_results_main  DROP PRIMARY KEY
+
+alter table  rt_results_main
+change id id int auto_increment primary key;
+
+alter table  rt_results_level_2
+change id id int auto_increment primary key;
+
+alter table  rt_results_level_3
+change id id int auto_increment primary key;
