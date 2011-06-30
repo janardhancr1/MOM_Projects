@@ -29,6 +29,7 @@ class IndexController extends Zend_Controller_Action
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
          	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost())))
           {
+				
           	 $this->_helper->redirector->gotoRouteAndExit(array(
 		        'page' => 1,
 		        'id'   => $this->getRequest()->getPost('id'),
@@ -37,6 +38,7 @@ class IndexController extends Zend_Controller_Action
           	    'model' => $this->getRequest()->getPost('model'),
           	    'submodel' => $this->getRequest()->getPost('submodel'),
 		      ));
+	            
           }
          else
          {
@@ -69,7 +71,6 @@ class IndexController extends Zend_Controller_Action
    		$this->view->paginator->setItemCountPerPage(25);
         $this->view->paginator->setCurrentPageNumber( $this->_getParam('page',1) );
         $this->view->paginator->setPageRange(5);
-       
     }
     
     public function addAction()
@@ -106,6 +107,10 @@ class IndexController extends Zend_Controller_Action
 	    {
 	    	if(isset($_POST['cancel']))
     	 	{
+    	 		$session_makeid = new Zend_Session_Namespace('makeid');
+				unset($session_makeid->make_id);
+				$session_yearid = new Zend_Session_Namespace('yearid');
+				unset($session_yearid->year_id);
     	 		$this->_redirect("index/");
     	 	}
 			$rt_results_main = array();
@@ -658,6 +663,7 @@ class IndexController extends Zend_Controller_Action
 			->where('rdl.id_types =?', $this->_getParam('rt_types'));
 			$res = $db->query($select)->fetchAll();
 		    $this->view->results = $res;
+		    $this->view->rt_type = $this->_getParam('rt_types');
         }
         
     }
