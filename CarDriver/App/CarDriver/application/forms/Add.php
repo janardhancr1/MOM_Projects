@@ -310,10 +310,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Select', 'rt_controlled_sort', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Production Type',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/7">Production Type</a>',
 		'tabindex' => 12,
 		'MultiOptions' => $rt_controlled_sort_prepared
 		));
+		
+		$this->rt_controlled_sort->getDecorator('Label')->setOption('escape', false); 
 		
 		$this->addElement('Text', 'rt3_120mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -1022,13 +1024,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 58
 		));
 		
-		$bg_controlled_make_ids_prepared[0]= "Select from list";
-		$this->addElement('Select', 'bg_controlled_make_id', array(
+		//$bg_controlled_make_ids_prepared[0]= "Select from list";
+		$this->addElement('Text', 'bg_controlled_make_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'bg_controlled_make_id',
 		'tabindex' => 123,
-		'MultiOptions' => $bg_controlled_make_ids_prepared
+		//'MultiOptions' => $bg_controlled_make_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt3_trunk', array(
@@ -1038,13 +1040,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 59
 		));
 		
-		$bg_controlled_model_ids_prepared[0]= "Select from list";
-		$this->addElement('Select', 'bg_controlled_model_id', array(
+		//$bg_controlled_model_ids_prepared[0]= "Select from list";
+		$this->addElement('Text', 'bg_controlled_model_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'bg_controlled_model_id',
 		'tabindex' => 124,
-		'MultiOptions' => $bg_controlled_model_ids_prepared
+		//'MultiOptions' => $bg_controlled_model_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt2_turning_cir', array(
@@ -1054,13 +1056,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 60
 		));
 		
-		$rt_original_table_ids_prepared[0]= "Select from list";
-		$this->addElement('Select', 'rt_original_table_id', array(
+		//$rt_original_table_ids_prepared[0]= "Select from list";
+		$this->addElement('Text', 'rt_original_table_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'rt_original_table_id',
 		'tabindex' => 125,
-		'MultiOptions' => $rt_original_table_ids_prepared
+		//'MultiOptions' => $rt_original_table_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt2_anti_lock', array(

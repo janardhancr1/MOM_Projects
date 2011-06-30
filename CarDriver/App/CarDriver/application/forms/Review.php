@@ -409,10 +409,9 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['bg_controlled_make_id']))
 		{
-			$bg_controlled_make_ids_prepared[0]= "Select from list";
-			$bg_controlled_make_id = new Zend_Form_Element_Select('bg_controlled_make_id',array('style'=>'width:150px;'));
-			$bg_controlled_make_id->addMultiOptions($bg_controlled_make_ids_prepared)
-						->setValue($form1_Values['bg_controlled_make_id']);
+			//$bg_controlled_make_ids_prepared[0]= "Select from list";
+			$bg_controlled_make_id = new Zend_Form_Element_Text('bg_controlled_make_id',array('style'=>'width:150px;'));
+			$bg_controlled_make_id->setValue($form1_Values['bg_controlled_make_id']);
 			
 			$before_bg_controlled_make_id = new Zend_Form_Element_Text('before_bg_controlled_make_id',array("readonly" => "readonly"));
 			$before_bg_controlled_make_id->setLabel('bg_cont_make_id');
@@ -466,10 +465,9 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['bg_controlled_model_id']))
 		{
-			$bg_controlled_model_ids_prepared[0]= "Select from list";
-			$bg_controlled_model_id = new Zend_Form_Element_Select('bg_controlled_model_id',array('style'=>'width:150px;'));
-			$bg_controlled_model_id->addMultiOptions($bg_controlled_model_ids_prepared)
-						->setValue($form1_Values['bg_controlled_model_id']);
+			//$bg_controlled_model_ids_prepared[0]= "Select from list";
+			$bg_controlled_model_id = new Zend_Form_Element_Text('bg_controlled_model_id',array('style'=>'width:150px;'));
+			$bg_controlled_model_id->setValue($form1_Values['bg_controlled_model_id']);
 						
 			$before_bg_controlled_model_id = new Zend_Form_Element_Text('before_bg_controlled_model_id',array("readonly" => "readonly"));
 			$before_bg_controlled_model_id->setLabel('bg_cont_model_id');
@@ -523,10 +521,9 @@ class Application_Form_Review extends Application_Form_MainForm
 		
 		if(!empty($form1_Values['rt_original_table_id']))
 		{
-			$rt_original_table_ids_prepared[0]= "Select from list";
-			$rt_original_table_id = new Zend_Form_Element_Select('rt_original_table_id',array('style'=>'width:150px;'));
-			$rt_original_table_id->addMultiOptions($rt_original_table_ids_prepared)
-						->setValue($form1_Values['rt_original_table_id']);
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$rt_original_table_id = new Zend_Form_Element_Text('rt_original_table_id',array('style'=>'width:150px;'));
+			$rt_original_table_id->setValue($form1_Values['rt_original_table_id']);
 						
 			$before_rt_original_table_id = new Zend_Form_Element_Text('before_rt_original_table_id',array("readonly" => "readonly"));
 			$before_rt_original_table_id->setLabel('Original Year');
