@@ -93,7 +93,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onchange' => 'AutoFillModel(this.value);'
 		));
 		
-		$this->addElement('Text', 'rt2_30mph', array(
+		$this->addElement('Text', 'rt2_30_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-30 Accel',
@@ -210,7 +210,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'MultiOptions' => $rt_model_years_prepared
 		));
 		
-		$this->addElement('Text', 'rt_60mph', array(
+		$this->addElement('Text', 'rt_60_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-60 Accel',
@@ -284,7 +284,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 10,
 		));
 		
-		$this->addElement('Text', 'rt2_100mph', array(
+		$this->addElement('Text', 'rt2_100_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-100 Accel',
@@ -334,7 +334,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$this->rt_controlled_engine->getDecorator('Label')->setOption('escape', false); 
 		
-		$this->addElement('Text', 'rt2_130mph', array(
+		$this->addElement('Text', 'rt2_130_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-130 Accel',
@@ -475,7 +475,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$this->rt_controlled_type->getDecorator('Label')->setOption('escape', false);
 		
-		$this->addElement('Text', 'rt2_30-50TG', array(
+		$this->addElement('Text', 'rt2_30_50TG', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Top-Gear Accel 30-50l',
@@ -489,7 +489,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 23,
 		));
 		
-		$this->addElement('Text', 'rt2_50-70TG', array(
+		$this->addElement('Text', 'rt2_50_70TG', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Top-Gear Accel 50-70l',

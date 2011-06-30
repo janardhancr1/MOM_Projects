@@ -2189,16 +2189,16 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			$this->addElements(array($before_rt2_wot,$rt2_wot));
 		}
-		if(!empty($form1_Values['rt2_50-70TG']))
+		if(!empty($form1_Values['rt2_50_70TG']))
 		{
-			$rt2_50_70TG = new Zend_Form_Element_Text('rt2_50-70TG');
-			$rt2_50_70TG->setValue($form1_Values['rt2_50-70TG']);
+			$rt2_50_70TG = new Zend_Form_Element_Text('rt2_50_70TG');
+			$rt2_50_70TG->setValue($form1_Values['rt2_50_70TG']);
 			
-			$before_rt2_50_70TG = new Zend_Form_Element_Text('before_rt2_50-70TG',array("readonly" => "readonly"));
+			$before_rt2_50_70TG = new Zend_Form_Element_Text('before_rt2_50_70TG',array("readonly" => "readonly"));
 			$before_rt2_50_70TG->setLabel('Top-Gear Accel 50-70');
 			
 			if($rt_results_level_2)
-										$before_rt2_50_70TG->setValue($rt_results_level_2[0]['rt2_50-70TG']);
+										$before_rt2_50_70TG->setValue($rt_results_level_2[0]['rt2_50_70TG']);
 			
 			$rt2_50_70TG->setDecorators(array(
 			'ViewHelper',
@@ -3120,7 +3120,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			$before_rt2_100mph->setLabel('0-100Accel');
 			
 			if($rt_results_level_2)
-								 $before_rt2_100mph->setValue($rt_results_level_2[0]['rt2_100mph']);
+								 $before_rt2_100mph->setValue($rt_results_level_2[0]['rt2_100_mph']);
 			
 			$rt2_100mph->setDecorators(array(
 			'ViewHelper',
@@ -3248,14 +3248,14 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['rt2_130mph']))
 		{
-			$rt2_130mph = new Zend_Form_Element_Text('rt2_130mph');
-			$rt2_130mph->setValue($form1_Values['rt2_130mph']);
+			$rt2_130mph = new Zend_Form_Element_Text('rt2_130_mph');
+			$rt2_130mph->setValue($form1_Values['rt2_130_mph']);
 			
 			$before_rt2_130mph = new Zend_Form_Element_Text('before_rt2_130mph',array("readonly" => "readonly"));
 			$before_rt2_130mph->setLabel('0-130 Accel');
 			
 			if($rt_results_level_2)
-								 $before_rt2_130mph->setValue($rt_results_level_2[0]['rt2_130mph']);
+								 $before_rt2_130mph->setValue($rt_results_level_2[0]['rt2_130_mph']);
 			
 			$rt2_130mph->setDecorators(array(
 			'ViewHelper',
