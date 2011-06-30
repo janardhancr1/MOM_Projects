@@ -23,3 +23,5 @@ change id id int auto_increment primary key;
 
 alter table  rt_results_level_3
 change id id int auto_increment primary key;
+
+select * from rt_results_level_2 where id=5315

@@ -248,12 +248,12 @@ class Application_Form_Add extends Application_Form_MainForm
 				}
 		}
 		
-		$this->addElement('Select', 'rt_model', array(
+		$this->addElement('Text', 'rt_model', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model',
 		'tabindex' => 8,
-		'MultiOptions' => $rt_model_prepared
+		//'MultiOptions' => $rt_model_prepared
 		));
 		
 		$this->addElement('Text', 'rt3_80mph', array(
@@ -1024,7 +1024,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 58
 		));
 		
-		//$bg_controlled_make_ids_prepared[0]= "Select from list";
+		$bg_controlled_make_ids_prepared[0]= "Select from list";
 		$this->addElement('Text', 'bg_controlled_make_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
@@ -1040,7 +1040,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 59
 		));
 		
-		//$bg_controlled_model_ids_prepared[0]= "Select from list";
+
+		$bg_controlled_model_ids_prepared[0]= "Select from list";
 		$this->addElement('Text', 'bg_controlled_model_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
@@ -1056,7 +1057,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 60
 		));
 		
-		//$rt_original_table_ids_prepared[0]= "Select from list";
+		$rt_original_table_ids_prepared[0]= "Select from list";
 		$this->addElement('Text', 'rt_original_table_id', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
