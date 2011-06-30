@@ -1,4 +1,45 @@
 <?php include 'header.phtml' ?> 
+<?php   
+function getCountMain($id)
+{
+	 $db = Zend_Db_Table::getDefaultAdapter(); 
+	
+	$select = $db->select()
+			->from('rt_results_main',array(new Zend_Db_Expr('count(*) as count')))
+			->where('rt_controlled_sort = ?', $id)
+			->orWhere('rt_controlled_engine = ?', $id)
+			->orWhere('rt_controlled_drive = ?', $id)
+			->orWhere('rt_controlled_body = ?', $id)
+			->orWhere('rt_controlled_type = ?', $id)
+			->orWhere('rt_controlled_turbo_superchg = ?', $id)
+			->orWhere('rt_controlled_transmission = ?', $id)
+			->orWhere('rt_controlled_fuel = ?', $id)
+			->orWhere('rt_controlled_ts_limit = ?', $id)
+			->orWhere('rt_controlled_make = ?', $id);
+			
+		$res = $db->query($select)->fetchAll();
+		
+		If($res[0]['count'] > 0)
+			return false;
+		else
+			return true;
+}
+
+function getCountLevel2($id)
+{
+	 $db = Zend_Db_Table::getDefaultAdapter(); 
+	
+	$select = $db->select()
+			->from('rt_results_level_2',array(new Zend_Db_Expr('count(*) as count')))
+			->where('rt2_controlled_airbags = ?', $id);
+		$res = $db->query($select)->fetchAll();
+		
+		If($res[0]['count'] > 0)
+			return false;
+		else
+			return true;
+}
+?>
 	<div id="middle">
 		<div class="middletitle">Manage Controlled List</div>
 		<div class="middletitle" style='height:100px'>
@@ -20,7 +61,8 @@
 				<?php echo $row['description'];?>
 			</td>
 			<td><a href="<?php echo $this->url(array('action' => 'editdropdowndescription','id' => $row['id_desp']));?>">Edit</a></td>
-			<td><a href="<?php echo $this->url(array('action' => 'deletedropdowndescription','id' => $row['id_desp']));?>">Delete</a></td>
+			<td><?php if($this->rt_type == 6) $flag = getCountLevel2($row['id_desp']); else $flag = getCountMain($row['id_desp']); 
+			if($flag){?><a href="<?php echo $this->url(array('action' => 'deletedropdowndescription','id' => $row['id_desp']));?>">Delete</a><?php }else ?>&nbsp;</td>
 		</tr>
 		<?php endforeach; ?>
 		</table>
