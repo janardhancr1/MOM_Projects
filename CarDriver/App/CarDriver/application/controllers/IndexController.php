@@ -136,6 +136,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_controlled_fuel'] = $review_values['rt_controlled_fuel'];
 			$rt_results_main['rt_controlled_make'] = $review_values['rt_controlled_make'];
 			$rt_results_main['rt_base_price_notes'] = $review_values['rt_base_price_notes'];
+			$rt_results_main['rt_base_price'] = $review_values['rt_base_price'];
 			$rt_results_main['rt_controlled_sort'] = $review_values['rt_controlled_sort'];
 			$rt_results_main['rt_speed_qtr_mile_speed_trap'] = $review_values['rt_speed_qtr_mile_speed_trap'];
 			$rt_results_main['rt_controlled_transmission'] = $review_values['rt_controlled_transmission'];
@@ -160,7 +161,9 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_slalom'] = $review_values['rt_slalom'];
 			$rt_results_main['rt_ss60'] = $review_values['rt_ss60'];
 			$rt_results_main['rt_weight'] = $review_values['rt_weight'];
-			$rt_results_main['rt_60_mph'] = $review_values['rt_60_mph'];
+			$rt_results_main['rt_peak_torque'] = $review_values['rt_peak_torque'];
+			$rt_results_main['rt_peak_torque_notes'] = $review_values['rt_peak_torque_notes'];
+			
 			
 			$table = new Application_Model_ResultsMain();
 			$db = $table->getAdapter();
@@ -179,6 +182,11 @@ class IndexController extends Zend_Controller_Action
 		    	
 		    }
 		    
+		    $select = $db->select()
+			->from('rt_results_main',array(new Zend_Db_Expr('max(id) as maxId')));
+			$res = $db->query($select)->fetchAll();
+		    
+			$rt_results_level_2['id'] = $res[0]['maxId'];
 		    $rt_results_level_2['rt2_emergency_lane_change'] = $review_values['rt2_emergency_lane_change'];
 		    $rt_results_level_2['rt2_skidpad'] = $review_values['rt2_skidpad'];
 		    $rt_results_level_2['rt2_100_mph'] = $review_values['rt2_100_mph'];
@@ -226,6 +234,7 @@ class IndexController extends Zend_Controller_Action
 		    	
 		    }
 		    
+		    $rt_results_level_3['id'] = $res[0]['maxId'];
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
 		    $rt_results_level_3['rt3_bore_mm'] = $review_values['rt3_bore_mm'];
 		    $rt_results_level_3['rt3_cd'] = $review_values['rt3_cd'];
@@ -237,7 +246,7 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_height'] = $review_values['rt3_height'];
 		    $rt_results_level_3['rt3_length'] = $review_values['rt3_length'];
 		    $rt_results_level_3['rt3_lt_oil'] = $review_values['rt3_lt_oil'];
-		    $rt_results_level_3['rt3_lt_repiar'] = $review_values['rt3_lt_repiar'];
+		    $rt_results_level_3['rt3_lt_repair'] = $review_values['rt3_lt_repair'];
 		    $rt_results_level_3['rt3_lt_serv'] = $review_values['rt3_lt_serv'];
 		    $rt_results_level_3['rt3_lt_stps_sched'] = $review_values['rt3_lt_stps_sched'];
 		    $rt_results_level_3['rt3_lt_stps_unsched'] = $review_values['rt3_lt_stps_unsched'];
@@ -358,7 +367,7 @@ class IndexController extends Zend_Controller_Action
      	
         // Prepare form
     	$form = new Application_Form_Edit();
-    	
+
     	// Populate form
     	$form->populate($results);
     	
@@ -428,6 +437,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_controlled_fuel'] = $review_values['rt_controlled_fuel'];
 			$rt_results_main['rt_controlled_make'] = $review_values['rt_controlled_make'];
 			$rt_results_main['rt_base_price_notes'] = $review_values['rt_base_price_notes'];
+			$rt_results_main['rt_base_price'] = $review_values['rt_base_price'];
 			$rt_results_main['rt_controlled_sort'] = $review_values['rt_controlled_sort'];
 			$rt_results_main['rt_speed_qtr_mile_speed_trap'] = $review_values['rt_speed_qtr_mile_speed_trap'];
 			$rt_results_main['rt_controlled_transmission'] = $review_values['rt_controlled_transmission'];
@@ -452,7 +462,8 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_main['rt_slalom'] = $review_values['rt_slalom'];
 			$rt_results_main['rt_ss60'] = $review_values['rt_ss60'];
 			$rt_results_main['rt_weight'] = $review_values['rt_weight'];
-			$rt_results_main['rt_60_mph'] = $review_values['rt_60_mph'];
+			$rt_results_main['rt_peak_torque'] = $review_values['rt_peak_torque'];
+			$rt_results_main['rt_peak_torque_notes'] = $review_values['rt_peak_torque_notes'];
 			
 			$where[] = "id = ".$this->_getParam('id');
 
