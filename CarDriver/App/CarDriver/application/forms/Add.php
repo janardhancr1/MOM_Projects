@@ -1052,7 +1052,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$this->addElement('Text', 'rt2_turning_cir', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'urning Radius',
+		'label' => 'Turning Radius',
 		'tabindex' => 60
 		));
 		
