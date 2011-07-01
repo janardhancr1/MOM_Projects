@@ -1,12 +1,24 @@
 <link href="/app/public/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/app/public/js/prototype.js">
-</script>
-<script type="text/javascript" src="/app/public/js/smoothbox.js">
-</script>
+</script> 
+
+
 <script type="text/javascript">
 function AutoFillModel(value)
 {
 	$('bg_model_id').empty();
+
+	var elSel = document.getElementById('bg_model_id');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	var elSel = document.getElementById('bg_submodel_id');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	$('bg_submodel_id').options[0] = new Option("Select or Leave blank", "0");
 	$('bg_model_id').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatemodel",
@@ -19,7 +31,21 @@ function AutoFillModel(value)
 
 function AutoFillModelSearch(value)
 {
-	$('model').empty();
+	$('model').empty;
+	$('submodel').empty();
+
+	var elSel = document.getElementById('model');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	var elSel = document.getElementById('submodel');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	$('submodel').options[0] = new Option("Select or Leave blank", "0");   
+  	
 	$('model').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatemodel",
@@ -32,6 +58,7 @@ function AutoFillModelSearch(value)
 function FillModelSearch(rsp)
 {
 	$('model').empty();
+	$('submodel').empty();
   	var models = rsp.responseText.split(';');
   	for(var i=0; i<models.length-1; i++)
   	{
@@ -53,6 +80,13 @@ function AutoFillSubModel(value)
 {
 	var year_id = $('bg_year_id').value;
 	$('bg_submodel_id').empty();
+
+	var elSel = document.getElementById('bg_submodel_id');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	
 	$('bg_submodel_id').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatesubmodel",
@@ -78,6 +112,13 @@ function AutoFillSubModelSearch(value)
 	var year_id = $('year').value;
 	
 	$('submodel').empty();
+
+	var elSel = document.getElementById('submodel');
+	var i;
+	for (i = elSel.length - 1; i>=0; i--) {
+	      elSel.remove(i);
+	}
+	
 	$('submodel').options[0] = new Option("Loading...", "0");
         new Ajax.Request(
         "/app/public/index/populatesubmodel",
