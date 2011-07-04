@@ -399,7 +399,7 @@ class IndexController extends Zend_Controller_Action
 		
 		$this->view->id = $this->_getParam('id');
 		
-    	$review = new Application_Form_Review($this->_getParam('id'));
+    	$review = new Application_Form_Reviewedit($this->_getParam('id'));
     	
     	$this->view->form = $review;
     	
@@ -419,7 +419,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_level_3 = array();
 			
 			$review_values = $this->view->form->getValues();
-			
+	
 			$rt_results_main['rt_model_year'] = $review_values['rt_model_year'];
 			$rt_results_main['bg_make_id'] = $review_values['bg_make_id'];
 			$rt_results_main['rt_published'] = $review_values['rt_published'];
