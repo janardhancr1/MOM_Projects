@@ -18,8 +18,8 @@ function AutoFillModel(value)
 	for (i = elSel.length - 1; i>=0; i--) {
 	      elSel.remove(i);
 	}
-	$('bg_submodel_id').options[0] = new Option("Select or Leave blank", "0");
-	$('bg_model_id').options[0] = new Option("Loading...", "0");
+	$('bg_submodel_id').options[0] = new Option("Select or Leave blank", "");
+	$('bg_model_id').options[0] = new Option("Loading...", "");
         new Ajax.Request(
         "/app/public/index/populatemodel",
             {
@@ -44,9 +44,9 @@ function AutoFillModelSearch(value)
 	for (i = elSel.length - 1; i>=0; i--) {
 	      elSel.remove(i);
 	}
-	$('submodel').options[0] = new Option("Select or Leave blank", "0");   
+	$('submodel').options[0] = new Option("Select or Leave blank", "");   
   	
-	$('model').options[0] = new Option("Loading...", "0");
+	$('model').options[0] = new Option("Loading...", "");
         new Ajax.Request(
         "/app/public/index/populatemodel",
             {
@@ -87,7 +87,7 @@ function AutoFillSubModel(value)
 	      elSel.remove(i);
 	}
 	
-	$('bg_submodel_id').options[0] = new Option("Loading...", "0");
+	$('bg_submodel_id').options[0] = new Option("Loading...", "");
         new Ajax.Request(
         "/app/public/index/populatesubmodel",
             {
@@ -119,7 +119,7 @@ function AutoFillSubModelSearch(value)
 	      elSel.remove(i);
 	}
 	
-	$('submodel').options[0] = new Option("Loading...", "0");
+	$('submodel').options[0] = new Option("Loading...", "");
         new Ajax.Request(
         "/app/public/index/populatesubmodel",
             {
@@ -145,7 +145,7 @@ function FillSubModelSearch(rsp)
 		</div>
 		<div class="headTitle">Road Test Adminstration Interface</div>
 		<div class="headRight">
-				<div class="headLink">User: <a href="#">Admin</a>&nbsp;|&nbsp;<a href="#">Signout</a></div>
+				<div class="headLink">User: <a href="#">Admin</a>&nbsp;|&nbsp;<a href="/app/public/index/signout/">Signout</a></div>
 				<div class="headLink"><a href="/app/public/index/">Find Vehicle</a>&nbsp;|&nbsp;<a href="/app/public/index/add/">Add Vehicle</a>
 				&nbsp;|&nbsp;<a href="/app/public/index/manageconrolledlist/">Manage Controlled List</a>
 				</div>
