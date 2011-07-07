@@ -24,7 +24,7 @@ class Application_Form_Login extends Application_Form_MainForm
 		'label' => 'User Name:',
 		));
 		
-		$this->addElement('Text', 'password', array(
+		$this->addElement('Password', 'password', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar;',
 		'label' => 'Password:',
