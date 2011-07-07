@@ -40,7 +40,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 66,
 		));
 		
-		$bg_year_ids_prepared[0]= "Select from list";
+		$bg_year_ids_prepared[]= "Select from list";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
@@ -71,7 +71,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		
-		$bg_make_ids_prepared[0]= "Select from list";
+		$bg_make_ids_prepared[]= "Select from list";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
@@ -101,7 +101,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		
-		$bg_model_ids_prepared[0]= "Select from list";
+		$bg_model_ids_prepared[]= "Select from list";
 		
 		$session_makeid = new Zend_Session_Namespace('makeid');
 		$session_global = new Zend_Session_Namespace('global');
@@ -110,7 +110,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		{
 			//$makeid = $_SESSION['makid'];
 			$makeid = $session_makeid->make_id;
-			$bg_model_ids_prepared[0]= "Select from list";
+			$bg_model_ids_prepared[]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
@@ -147,7 +147,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		 
 		
-		$bg_submodel_ids_prepared[0]= "Select from list";
+		$bg_submodel_ids_prepared[]= "Select from list";
 		$session_yearid = new Zend_Session_Namespace('yearid');
 		$session_global_year = new Zend_Session_Namespace('global_year');
     	//$modelid = $session_modelid->modelid;
@@ -155,7 +155,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		{
 			$yearid =$session_yearid->year_id;
 			$modelid = $session_yearid->model_id;
-			$bg_submodel_ids_prepared[0]= "Select from list";
+			$bg_submodel_ids_prepared[]= "Select from list";
 			$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
@@ -196,7 +196,7 @@ class Application_Form_Add extends Application_Form_MainForm
         $rt_model_years = $db->query($select)->fetchAll();
 	       
 		if (count($rt_model_years)!=0){
-				$rt_model_years_prepared[0]= "Select from list";
+				$rt_model_years_prepared[]= "Select from list";
 				foreach ($rt_model_years as $Yea){
 						$rt_model_years_prepared[$Yea['rt_model_year']]= $Yea['rt_model_year'];
 				}
@@ -241,19 +241,19 @@ class Application_Form_Add extends Application_Form_MainForm
 	             ->from('rt_results_main');
         $rt_models = $db->query($select)->fetchAll();
 	       
-        $rt_model_prepared[0]= "Select from list";
+        $rt_model_prepared[]= "Select from list";
 		if (count($rt_models)!=0){
 				foreach ($rt_models as $rt_mod){
 						$rt_model_prepared[$rt_mod['rt_model']]= $rt_mod['rt_model'];
 				}
 		}
 		
-		$this->addElement('Text', 'rt_model', array(
+		$this->addElement('Select', 'rt_model', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model',
 		'tabindex' => 8,
-		//'MultiOptions' => $rt_model_prepared
+		'MultiOptions' => $rt_model_prepared
 		));
 		
 		$this->addElement('Text', 'rt3_80mph', array(
