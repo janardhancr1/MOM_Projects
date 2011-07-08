@@ -290,12 +290,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		'label' => '0-100 Accel',
 		'tabindex' => 75,
 		));
-		
-		$this->addElement('Text', 'rt_published', array(
+						
+		$this->addElement('Select', 'rt_published', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
+		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Web or Print',
 		'tabindex' => 11,
+		'MultiOptions' => array('Web'=>'Web','Print'=>'Print')
 		));
 		
 		$this->addElement('Text', 'rt3_110mph', array(
@@ -1137,7 +1138,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		$db = Zend_Db_Table::getDefaultAdapter(); 
 		
 		$select = $db->select()
-	             ->from(array('rtd'=>'rt_dropdown_descriptions'),array('rtd.id_descriptions As dropdownid', 'rtd.description As description'))
+	             ->from(array('rtd'=>'rt_dropdown_descriptions'),array('rtl.id As dropdownid', 'rtd.description As description'))
 	             ->joinInner(array('rtl'=>'rt_dropdown_lookup'),'rtl.id_descriptions=rtd.id_descriptions')
 	             ->joinInner(array('rtdt'=>'rt_dropdown_types'),'rtdt.id_types=rtl.id_types')
 	             ->where('rtdt.rt_types = ?', $type)

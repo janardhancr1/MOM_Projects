@@ -362,8 +362,9 @@ class Application_Form_Review extends Application_Form_MainForm
 		
 		if(!empty($form1_Values['rt_published']))
 		{
-			$rt_published = new Zend_Form_Element_Text('rt_published');
-			$rt_published->setValue($form1_Values['rt_published']);
+			$rt_published = new Zend_Form_Element_Select('rt_published');
+			$rt_published->addMultioptions(array('Web'=>'Web','Print'=>'Print'))
+			->setValue($form1_Values['rt_published']);
 			
 			
 			$before_rt_published = new Zend_Form_Element_Text('before_rt_published',array("readonly" => "readonly"));

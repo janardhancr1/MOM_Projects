@@ -37,7 +37,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		}
 		
 	
-		if($form1_Values['bg_year_id'] != $rt_results_main[0]['bg_year_id'])
+		if($form1_Values['bg_year_id'] != $rt_results_main[0]['bg_year_id'] && $form1_Values['bg_year_id'] != 0)
 		{	
 			$bg_year_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
@@ -82,7 +82,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 					
 		}
 		
-		if($form1_Values['bg_make_id'] != $rt_results_main[0]['bg_make_id'])
+		if($form1_Values['bg_make_id'] != $rt_results_main[0]['bg_make_id'] && $form1_Values['bg_make_id'] != 0)
 		{
 			$bg_make_ids_prepared[0]= "Select from list";
 			$objDOM = new DOMDocument(); 
@@ -126,7 +126,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_bg_make_id,$bg_make_id));
 		}
 		
-		if($form1_Values['bg_model_id'] != $rt_results_main[0]['bg_model_id'])
+		if($form1_Values['bg_model_id'] != $rt_results_main[0]['bg_model_id'] && $form1_Values['bg_model_id'] != 0)
 		{
 			$bg_model_ids_prepared[0]= "Select from list";
 		    $session_makeid = new Zend_Session_Namespace('makeid');
@@ -186,7 +186,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		}
 		
 		
-		if($form1_Values['bg_submodel_id'] != $rt_results_main[0]['bg_submodel_id'])
+		if($form1_Values['bg_submodel_id'] != $rt_results_main[0]['bg_submodel_id'] && $form1_Values['bg_submodel_id'] != 0)
 		{
 			$bg_submodel_ids_prepared[0]= "Select from list";
 			$session_yearid = new Zend_Session_Namespace('yearid');
@@ -294,7 +294,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_model_year,$rt_model_year));
 		}
 		
-		if($form1_Values['rt_controlled_make'] != $rt_results_main[0]['rt_controlled_make'])
+		if($form1_Values['rt_controlled_make'] != $rt_results_main[0]['rt_controlled_make'] && $form1_Values['rt_controlled_make'] != 0)
 		{
 			$rt_controlled_make_prepared = $this->gatMultioptions("Make");
 		
@@ -417,8 +417,9 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt_published'] != $rt_results_main[0]['rt_published'])
 		{
-			$rt_published = new Zend_Form_Element_Text('rt_published');
-			$rt_published->setValue($form1_Values['rt_published']);
+			$rt_published = new Zend_Form_Element_Select('rt_published');
+			$rt_published->addMultioptions(array('Web'=>'Web','Print'=>'Print'))
+			->setValue($form1_Values['rt_published']);
 			
 			
 			$before_rt_published = new Zend_Form_Element_Text('before_rt_published',array("readonly" => "readonly"));
@@ -444,7 +445,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_published,$rt_published));
 		}
 		
-		if($form1_Values['rt_controlled_sort'] != $rt_results_main[0]['rt_controlled_sort'])
+		if($form1_Values['rt_controlled_sort'] != $rt_results_main[0]['rt_controlled_sort'] && $form1_Values['rt_controlled_sort'] != 0)
 		{
 			$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
 		
@@ -475,7 +476,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_controlled_sort,$rt_controlled_sort));
 		}
 		
-		if($form1_Values['rt_controlled_engine'] != $rt_results_main[0]['rt_controlled_engine'])
+		if($form1_Values['rt_controlled_engine'] != $rt_results_main[0]['rt_controlled_engine'] && $form1_Values['rt_controlled_engine'] != 0)
 		{
 			$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
 		
@@ -506,7 +507,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_controlled_engine,$rt_controlled_engine));
 		}
 		
-		if($form1_Values['rt_controlled_drive'] != $rt_results_main[0]['rt_controlled_drive'])
+		if($form1_Values['rt_controlled_drive'] != $rt_results_main[0]['rt_controlled_drive'] && $form1_Values['rt_controlled_drive'] != 0)
 		{
 			$rt_controlled_drive_prepared = $this->gatMultioptions("Drive");
 		
@@ -593,7 +594,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_doors,$rt_doors));
 		}
 		
-		if($form1_Values['rt_controlled_body'] != $rt_results_main[0]['rt_controlled_body'])
+		if($form1_Values['rt_controlled_body'] != $rt_results_main[0]['rt_controlled_body'] && $form1_Values['rt_controlled_body'] != 0)
 		{
 			$rt_controlled_body_prepared = $this->gatMultioptions("Body");
 		
@@ -738,7 +739,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		}
 		
 		
-		if($form1_Values['rt_controlled_type'] != $rt_results_main[0]['rt_controlled_type'])
+		if($form1_Values['rt_controlled_type'] != $rt_results_main[0]['rt_controlled_type'] && $form1_Values['rt_controlled_type'] != 0)
 		{
 			$rt_controlled_type_prepared = $this->gatMultioptions("Type");
 		
@@ -995,7 +996,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt3_valves_per_cyl,$rt3_valves_per_cyl));
 		}
 		
-		if($form1_Values['rt_controlled_turbo_superchg'] != $rt_results_main[0]['rt_controlled_turbo_superchg'])
+		if($form1_Values['rt_controlled_turbo_superchg'] != $rt_results_main[0]['rt_controlled_turbo_superchg'] && $form1_Values['rt_controlled_turbo_superchg'] != 0)
 		{
 			$rt_controlled_turbo_superchg_prepared = $this->gatMultioptions("Turbo/Superchg");
 		
@@ -1306,7 +1307,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_power_to_weight,$rt_power_to_weight));
 		}
 		
-		if($form1_Values['rt_controlled_transmission'] != $rt_results_main[0]['rt_controlled_transmission'])
+		if($form1_Values['rt_controlled_transmission'] != $rt_results_main[0]['rt_controlled_transmission'] && $form1_Values['rt_controlled_transmission'] != 0)
 		{
 			$rt_controlled_transmission_prepared= $this->gatMultioptions("Transmission");
 		
@@ -1674,7 +1675,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_percent_on_rear,$rt_percent_on_rear));			
 		}
 		
-		if($form1_Values['rt2_controlled_airbags'] != $rt_results_level_2[0]['rt2_controlled_airbags'])
+		if($form1_Values['rt2_controlled_airbags'] != $rt_results_level_2[0]['rt2_controlled_airbags'] && $form1_Values['rt2_controlled_airbags'] != 0)
 		{
 			$rt_controlled_airbags_prepared = $this->gatMultioptions("Airbags");
 			
@@ -2742,7 +2743,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 		}
 		
-		if($form1_Values['rt_controlled_ts_limit'] != $rt_results_main[0]['rt_controlled_ts_limit'])
+		if($form1_Values['rt_controlled_ts_limit'] != $rt_results_main[0]['rt_controlled_ts_limit'] && $form1_Values['rt_controlled_ts_limit'] != 0)
 		{
 			$rt_controlled_ts_limit_prepared = $this->gatMultioptions("TS limit");
 		
@@ -2913,7 +2914,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$this->addElements(array($before_rt_slalom,$rt_slalom));
 		}
 		
-		if($form1_Values['rt_controlled_fuel'] != $rt_results_main[0]['rt_controlled_fuel'])
+		if($form1_Values['rt_controlled_fuel'] != $rt_results_main[0]['rt_controlled_fuel'] && $form1_Values['rt_controlled_fuel'] != 0)
 		{
 			$rt_controlled_fuel_prepared = $this->gatMultioptions("Fuel");
 		
