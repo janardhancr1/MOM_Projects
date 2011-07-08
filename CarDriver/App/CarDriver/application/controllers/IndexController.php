@@ -532,49 +532,49 @@ class IndexController extends Zend_Controller_Action
 			if($review_values['bg_model_id'] != $rt_results_main_before['bg_model_id'])
 			$rt_results_main['bg_model_id'] = $review_values['bg_model_id'];
 			
-			if($review_values['rt_issue'] != $rt_results_main_before['rt_issue'])
+			if(isset($review_values['rt_issue']) || $review_values['rt_issue'] != $rt_results_main_before['rt_issue'])
 			$rt_results_main['rt_issue'] = $review_values['rt_issue'];
 			
 			if($review_values['bg_submodel_id'] != $rt_results_main_before['bg_submodel_id'])
 			$rt_results_main['bg_submodel_id'] = $review_values['bg_submodel_id'];
 			
-			if($review_values['rt_issue_year'] != $rt_results_main_before['rt_issue_year'])
+			if(isset($review_values['rt_issue_year']) || $review_values['rt_issue_year'] != $rt_results_main_before['rt_issue_year'])
 			$rt_results_main['rt_issue_year'] = $review_values['rt_issue_year'];
 			
 			if($review_values['bg_year_id'] != $rt_results_main_before['bg_year_id'])
 			$rt_results_main['bg_year_id'] = $review_values['bg_year_id'];
 			
-			if($review_values['rt_percent_on_rear'] != $rt_results_main_before['rt_percent_on_rear'])
+			if(isset($review_values['rt_percent_on_rear']) || $review_values['rt_percent_on_rear'] != $rt_results_main_before['rt_percent_on_rear'])
 			$rt_results_main['rt_percent_on_rear'] = $review_values['rt_percent_on_rear'];
 			
-			if($review_values['bg_controlled_make_id'] != $rt_results_main_before['bg_controlled_make_id'])
+			if(isset($review_values['bg_controlled_make_id']) || $review_values['bg_controlled_make_id'] != $rt_results_main_before['bg_controlled_make_id'])
 			$rt_results_main['bg_controlled_make_id'] = $review_values['bg_controlled_make_id'];
 			
-			if($review_values['rt_percent_on_front'] != $rt_results_main_before['rt_percent_on_front'])
+			if(isset($review_values['rt_percent_on_front']) || $review_values['rt_percent_on_front'] != $rt_results_main_before['rt_percent_on_front'])
 			$rt_results_main['rt_percent_on_front'] = $review_values['rt_percent_on_front'];
 			
-			if($review_values['bg_controlled_model_id'] != $rt_results_main_before['bg_controlled_model_id'])
+			if(isset($review_values['bg_controlled_model_id']) || $review_values['bg_controlled_model_id'] != $rt_results_main_before['bg_controlled_model_id'])
 			$rt_results_main['bg_controlled_model_id'] = $review_values['bg_controlled_model_id'];
 			
-			if($review_values['rt_60_mph'] != $rt_results_main_before['rt_60_mph'])
+			if(isset($review_values['rt_60_mph']) || $review_values['rt_60_mph'] != $rt_results_main_before['rt_60_mph'])
 			$rt_results_main['rt_60_mph'] = $review_values['rt_60_mph'];
 			
-			if($review_values['rt_original_table_id'] != $rt_results_main_before['rt_original_table_id'])
+			if(isset($review_values['rt_original_table_id']) || $review_values['rt_original_table_id'] != $rt_results_main_before['rt_original_table_id'])
 			$rt_results_main['rt_original_table_id'] = $review_values['rt_original_table_id'];
 			
-			if($review_values['rt_70_mph_braking'] != $rt_results_main_before['rt_70_mph_braking'])
+			if(isset($review_values['rt_70_mph_braking']) || $review_values['rt_70_mph_braking'] != $rt_results_main_before['rt_70_mph_braking'])
 			$rt_results_main['rt_70_mph_braking'] = $review_values['rt_70_mph_braking'];
 			
 			if($review_values['rt_controlled_body'] != $rt_results_main_before['rt_controlled_body'])
 			$rt_results_main['rt_controlled_body'] = $review_values['rt_controlled_body'];
 			
-			if($review_values['rt_top_speed'] != $rt_results_main_before['rt_top_speed'])
+			if( isset($review_values['rt_top_speed']) || $review_values['rt_top_speed'] != $rt_results_main_before['rt_top_speed'])
 			$rt_results_main['rt_top_speed'] = $review_values['rt_top_speed'];
 			
 			if($review_values['rt_controlled_engine'] != $rt_results_main_before['rt_controlled_engine'])
 			$rt_results_main['rt_controlled_engine'] = $review_values['rt_controlled_engine'];
 			
-			if($review_values['rt_top_speed_notes'] != $rt_results_main_before['rt_top_speed_notes'])
+			if(isset($review_values['rt_top_speed_notes']) || $review_values['rt_top_speed_notes'] != $rt_results_main_before['rt_top_speed_notes'])
 			$rt_results_main['rt_top_speed_notes'] = $review_values['rt_top_speed_notes'];
 			
 			if($review_values['rt_controlled_fuel'] != $rt_results_main_before['rt_controlled_fuel'])
@@ -583,92 +583,91 @@ class IndexController extends Zend_Controller_Action
 			if($review_values['rt_controlled_make'] != $rt_results_main_before['rt_controlled_make'])
 			$rt_results_main['rt_controlled_make'] = $review_values['rt_controlled_make'];
 			
-			if($review_values['rt_base_price_notes'] != $rt_results_main_before['rt_base_price_notes'])
+			if(isset($review_values['rt_base_price_notes']) || $review_values['rt_base_price_notes'] != $rt_results_main_before['rt_base_price_notes'])
 			$rt_results_main['rt_base_price_notes'] = $review_values['rt_base_price_notes'];
 			
-			if($review_values['rt_base_price'] != $rt_results_main_before['rt_base_price'])
+			if(isset($review_values['rt_base_price']) || $review_values['rt_base_price'] != $rt_results_main_before['rt_base_price'])
 			$rt_results_main['rt_base_price'] = $review_values['rt_base_price'];
 			
 			if($review_values['rt_controlled_sort'] != $rt_results_main_before['rt_controlled_sort'])
 			$rt_results_main['rt_controlled_sort'] = $review_values['rt_controlled_sort'];
 			
-			if($review_values['rt_speed_qtr_mile_speed_trap'] != $rt_results_main_before['rt_speed_qtr_mile_speed_trap'])
+			if(isset($review_values['rt_speed_qtr_mile_speed_trap']) || $review_values['rt_speed_qtr_mile_speed_trap'] != $rt_results_main_before['rt_speed_qtr_mile_speed_trap'])
 			$rt_results_main['rt_speed_qtr_mile_speed_trap'] = $review_values['rt_speed_qtr_mile_speed_trap'];
 			
 			if($review_values['rt_controlled_transmission'] != $rt_results_main_before['rt_controlled_transmission'])
 			$rt_results_main['rt_controlled_transmission'] = $review_values['rt_controlled_transmission'];
 			
-			if($review_values['rt_quarter_time'] != $rt_results_main_before['rt_quarter_time'])
+			if(isset($review_values['rt_quarter_time']) || $review_values['rt_quarter_time'] != $rt_results_main_before['rt_quarter_time'])
 			$rt_results_main['rt_quarter_time'] = $review_values['rt_quarter_time'];
 			
 			if($review_values['rt_controlled_drive'] != $rt_results_main_before['rt_controlled_drive'])
 			$rt_results_main['rt_controlled_drive'] = $review_values['rt_controlled_drive'];
 			
-			if($review_values['rt_doors'] != $rt_results_main_before['rt_doors'])
+			if(isset($review_values['rt_doors']) || $review_values['rt_doors'] != $rt_results_main_before['rt_doors'])
 			$rt_results_main['rt_doors'] = $review_values['rt_doors'];
 			
 			if($review_values['rt_controlled_ts_limit'] != $rt_results_main_before['rt_controlled_ts_limit'])
 			$rt_results_main['rt_controlled_ts_limit'] = $review_values['rt_controlled_ts_limit'];
 			
-			if($review_values['rt_cd_observed_fe'] != $rt_results_main_before['rt_cd_observed_fe'])
+			if(isset($review_values['rt_cd_observed_fe']) || $review_values['rt_cd_observed_fe'] != $rt_results_main_before['rt_cd_observed_fe'])
 			$rt_results_main['rt_cd_observed_fe'] = $review_values['rt_cd_observed_fe'];
 			
 			if($review_values['rt_controlled_turbo_superchg'] != $rt_results_main_before['rt_controlled_turbo_superchg'])
 			$rt_results_main['rt_controlled_turbo_superchg'] = $review_values['rt_controlled_turbo_superchg'];
 			
-			if($review_values['rt_no_cyl'] != $rt_results_main_before['rt_no_cyl'])
+			if(isset($review_values['rt_no_cyl']) || $review_values['rt_no_cyl'] != $rt_results_main_before['rt_no_cyl'])
 			$rt_results_main['rt_no_cyl'] = $review_values['rt_no_cyl'];
 			
 			if($review_values['rt_controlled_type'] != $rt_results_main_before['rt_controlled_type'])
 			$rt_results_main['rt_controlled_type'] = $review_values['rt_controlled_type'];
 			
-			if($review_values['rt_peak_hp'] != $rt_results_main_before['rt_peak_hp'])
+			if(isset($review_values['rt_peak_hp']) || $review_values['rt_peak_hp'] != $rt_results_main_before['rt_peak_hp'])
 			$rt_results_main['rt_peak_hp'] = $review_values['rt_peak_hp'];
 			
-			if($review_values['rt_model'] != $rt_results_main_before['rt_model'])
+			if(isset($review_values['rt_model']) || $review_values['rt_model'] != $rt_results_main_before['rt_model'])
 			$rt_results_main['rt_model'] = $review_values['rt_model'];
 			
-			if($review_values['rt_peak_hp_notes'] != $rt_results_main_before['rt_peak_hp_notes'])
+			if(isset($review_values['rt_peak_hp_notes']) || $review_values['rt_peak_hp_notes'] != $rt_results_main_before['rt_peak_hp_notes'])
 			$rt_results_main['rt_peak_hp_notes'] = $review_values['rt_peak_hp_notes'];
 			
-			if($review_values['rt_power_to_weight'] != $rt_results_main_before['rt_power_to_weight'])
+			if(isset($review_values['rt_power_to_weight']) || $review_values['rt_power_to_weight'] != $rt_results_main_before['rt_power_to_weight'])
 			$rt_results_main['rt_power_to_weight'] = $review_values['rt_power_to_weight'];
 			
-			if($review_values['rt_price_as_tested'] != $rt_results_main_before['rt_price_as_tested'])
+			if(isset($review_values['rt_price_as_tested']) || $review_values['rt_price_as_tested'] != $rt_results_main_before['rt_price_as_tested'])
 			$rt_results_main['rt_price_as_tested'] = $review_values['rt_price_as_tested'];
 			
-			if($review_values['rt_price_as_tested_notes'] != $rt_results_main_before['rt_price_as_tested_notes'])
+			if(isset($review_values['rt_price_as_tested_notes']) || $review_values['rt_price_as_tested_notes'] != $rt_results_main_before['rt_price_as_tested_notes'])
 			$rt_results_main['rt_price_as_tested_notes'] = $review_values['rt_price_as_tested_notes'];
 			
-			if($review_values['rt_redline'] != $rt_results_main_before['rt_redline'])
+			if(isset($review_values['rt_redline']) || $review_values['rt_redline'] != $rt_results_main_before['rt_redline'])
 			$rt_results_main['rt_redline'] = $review_values['rt_redline'];
 			
-			if($review_values['rt_disp_cc'] != $rt_results_main_before['rt_disp_cc'])
+			if(isset($review_values['rt_disp_cc']) || $review_values['rt_disp_cc'] != $rt_results_main_before['rt_disp_cc'])
 			$rt_results_main['rt_disp_cc'] = $review_values['rt_disp_cc'];
 			
-			if($review_values['rt_rpm'] != $rt_results_main_before['rt_rpm'])
+			if(isset($review_values['rt_rpm']) || $review_values['rt_rpm'] != $rt_results_main_before['rt_rpm'])
 			$rt_results_main['rt_rpm'] = $review_values['rt_rpm'];
 			
-			if($review_values['rt_rpmt'] != $rt_results_main_before['rt_rpmt'])
+			if(isset($review_values['rt_rpmt']) || $review_values['rt_rpmt'] != $rt_results_main_before['rt_rpmt'])
 			$rt_results_main['rt_rpmt'] = $review_values['rt_rpmt'];
 			
-			if($review_values['rt_slalom'] != $rt_results_main_before['rt_slalom'])
+			if(isset($review_values['rt_slalom']) || $review_values['rt_slalom'] != $rt_results_main_before['rt_slalom'])
 			$rt_results_main['rt_slalom'] = $review_values['rt_slalom'];
 			
-			if($review_values['rt_ss60'] != $rt_results_main_before['rt_ss60'])
+			if(isset($review_values['rt_ss60']) || $review_values['rt_ss60'] != $rt_results_main_before['rt_ss60'])
 			$rt_results_main['rt_ss60'] = $review_values['rt_ss60'];
 			
-			if($review_values['rt_weight'] != $rt_results_main_before['rt_weight'])
+			if(isset($review_values['rt_weight']) || $review_values['rt_weight'] != $rt_results_main_before['rt_weight'])
 			$rt_results_main['rt_weight'] = $review_values['rt_weight'];
 			
-			if($review_values['rt_peak_torque'] != $rt_results_main_before['rt_peak_torque'])
+			if(isset($review_values['rt_peak_torque']) || $review_values['rt_peak_torque'] != $rt_results_main_before['rt_peak_torque'])
 			$rt_results_main['rt_peak_torque'] = $review_values['rt_peak_torque'];
 			
-			if($review_values['rt_peak_torque_notes'] != $rt_results_main_before['rt_peak_torque_notes'])
+			if(isset($review_values['rt_peak_torque_notes']) || $review_values['rt_peak_torque_notes'] != $rt_results_main_before['rt_peak_torque_notes'])
 			$rt_results_main['rt_peak_torque_notes'] = $review_values['rt_peak_torque_notes'];
 			
 			$where[] = "id = ".$this->_getParam('id');
-
 
 			if(sizeof($rt_results_main) > 0)
 			{ 
@@ -684,91 +683,91 @@ class IndexController extends Zend_Controller_Action
 			    }
 			}
 		    
-		    if($review_values['rt2_emergency_lane_change'] != $rt_results_level_2_before['rt2_emergency_lane_change'])
+		    if(isset($review_values['rt2_emergency_lane_change']) || $review_values['rt2_emergency_lane_change'] != $rt_results_level_2_before['rt2_emergency_lane_change'])
 		    $rt_results_level_2['rt2_emergency_lane_change'] = $review_values['rt2_emergency_lane_change'];
 		    
-		    if($review_values['rt2_skidpad'] != $rt_results_level_2_before['rt2_skidpad'])
+		    if(isset($review_values['rt2_skidpad']) || $review_values['rt2_skidpad'] != $rt_results_level_2_before['rt2_skidpad'])
 		    $rt_results_level_2['rt2_skidpad'] = $review_values['rt2_skidpad'];
 		    
-		    if($review_values['rt2_100_mph'] != $rt_results_level_2_before['rt2_100_mph'])
+		    if(isset($review_values['rt2_100_mph']) || $review_values['rt2_100_mph'] != $rt_results_level_2_before['rt2_100_mph'])
 		    $rt_results_level_2['rt2_100_mph'] = $review_values['rt2_100_mph'];
 		    
-		    if($review_values['rt2_130_mph'] != $rt_results_level_2_before['rt2_130_mph'])
+		    if(isset($review_values['rt2_130_mph']) || $review_values['rt2_130_mph'] != $rt_results_level_2_before['rt2_130_mph'])
 		    $rt_results_level_2['rt2_130_mph'] = $review_values['rt2_130_mph'];
 		    
-		    if($review_values['rt2_30_50TG'] != $rt_results_level_2_before['rt2_30_50TG'])
+		    if(isset($review_values['rt2_30_50TG']) || $review_values['rt2_30_50TG'] != $rt_results_level_2_before['rt2_30_50TG'])
 		    $rt_results_level_2['rt2_30_50TG'] = $review_values['rt2_30_50TG'];
 		    
-		    if($review_values['rt2_30_mph'] != $rt_results_level_2_before['rt2_30_mph'])
+		    if(isset($review_values['rt2_30_mph']) || $review_values['rt2_30_mph'] != $rt_results_level_2_before['rt2_30_mph'])
 		    $rt_results_level_2['rt2_30_mph'] = $review_values['rt2_30_mph'];
 		    
-		    if($review_values['rt2_50_70TG'] != $rt_results_level_2_before['rt2_50_70TG'])
+		    if(isset($review_values['rt2_50_70TG']) || $review_values['rt2_50_70TG'] != $rt_results_level_2_before['rt2_50_70TG'])
 		    $rt_results_level_2['rt2_50_70TG'] = $review_values['rt2_50_70TG'];
 		    
-		    if($review_values['rt2_70cr'] != $rt_results_level_2_before['rt2_70cr'])
+		    if(isset($review_values['rt2_70cr']) || $review_values['rt2_70cr'] != $rt_results_level_2_before['rt2_70cr'])
 		    $rt_results_level_2['rt2_70cr'] = $review_values['rt2_70cr'];
 		    
 		    if($review_values['rt2_controlled_airbags'] != $rt_results_level_2_before['rt2_controlled_airbags'])
 		    $rt_results_level_2['rt2_controlled_airbags'] = $review_values['rt2_controlled_airbags'];
 		    
-		    if($review_values['rt2_anti_lock'] != $rt_results_level_2_before['rt2_anti_lock'])
+		    if(isset($review_values['rt2_anti_lock']) || $review_values['rt2_anti_lock'] != $rt_results_level_2_before['rt2_anti_lock'])
 		    $rt_results_level_2['rt2_anti_lock'] = $review_values['rt2_anti_lock'];
 		    
-		    if($review_values['rt2_epa_city_fe'] != $rt_results_level_2_before['rt2_epa_city_fe'])
+		    if(isset($review_values['rt2_epa_city_fe']) || $review_values['rt2_epa_city_fe'] != $rt_results_level_2_before['rt2_epa_city_fe'])
 		    $rt_results_level_2['rt2_epa_city_fe'] = $review_values['rt2_epa_city_fe'];
 		    
-		    if($review_values['rt2_epa_city_fe_notes'] != $rt_results_level_2_before['rt2_epa_city_fe_notes'])
+		    if(isset($review_values['rt2_epa_city_fe_notes']) || $review_values['rt2_epa_city_fe_notes'] != $rt_results_level_2_before['rt2_epa_city_fe_notes'])
 		    $rt_results_level_2['rt2_epa_city_fe_notes'] = $review_values['rt2_epa_city_fe_notes'];
 		    
-		    if($review_values['rt2_fuel_sys'] != $rt_results_level_2_before['rt2_fuel_sys'])
+		    if(isset($review_values['rt2_fuel_sys']) || $review_values['rt2_fuel_sys'] != $rt_results_level_2_before['rt2_fuel_sys'])
 		    $rt_results_level_2['rt2_fuel_sys'] = $review_values['rt2_fuel_sys'];
 		    
-		    if($review_values['rt2_highway_fe'] != $rt_results_level_2_before['rt2_highway_fe'])
+		    if(isset($review_values['rt2_highway_fe']) || $review_values['rt2_highway_fe'] != $rt_results_level_2_before['rt2_highway_fe'])
 		    $rt_results_level_2['rt2_highway_fe'] = $review_values['rt2_highway_fe'];
 		    
-		    if($review_values['rt2_highway_fe_notes'] != $rt_results_level_2_before['rt2_highway_fe_notes'])
+		    if(isset($review_values['rt2_highway_fe_notes']) || $review_values['rt2_highway_fe_notes'] != $rt_results_level_2_before['rt2_highway_fe_notes'])
 		    $rt_results_level_2['rt2_highway_fe_notes'] = $review_values['rt2_highway_fe_notes'];
 		    
-		    if($review_values['rt2_int_vol_front'] != $rt_results_level_2_before['rt2_int_vol_front'])
+		    if(isset($review_values['rt2_int_vol_front']) || $review_values['rt2_int_vol_front'] != $rt_results_level_2_before['rt2_int_vol_front'])
 		    $rt_results_level_2['rt2_int_vol_front'] = $review_values['rt2_int_vol_front'];
 		    
-		    if($review_values['rt2_mid'] != $rt_results_level_2_before['rt2_mid'])
+		    if(isset($review_values['rt2_mid']) || $review_values['rt2_mid'] != $rt_results_level_2_before['rt2_mid'])
 		    $rt_results_level_2['rt2_mid'] = $review_values['rt2_mid'];
 		    
-		    if($review_values['rt2_passengers'] != $rt_results_level_2_before['rt2_passengers'])
+		    if(isset($review_values['rt2_passengers']) || $review_values['rt2_passengers'] != $rt_results_level_2_before['rt2_passengers'])
 		    $rt_results_level_2['rt2_passengers'] = $review_values['rt2_passengers'];
 		    
-		    if($review_values['rt2_rear'] != $rt_results_level_2_before['rt2_rear'])
+		    if(isset($review_values['rt2_rear']) || $review_values['rt2_rear'] != $rt_results_level_2_before['rt2_rear'])
 		    $rt_results_level_2['rt2_rear'] = $review_values['rt2_rear'];
 		    
-		    if($review_values['rt2_sound_level_idle'] != $rt_results_level_2_before['rt2_sound_level_idle'])
+		    if(isset($review_values['rt2_sound_level_idle']) || $review_values['rt2_sound_level_idle'] != $rt_results_level_2_before['rt2_sound_level_idle'])
 		    $rt_results_level_2['rt2_sound_level_idle'] = $review_values['rt2_sound_level_idle'];
 		    
-		    if($review_values['rt2_stab_defeatable'] != $rt_results_level_2_before['rt2_stab_defeatable'])
+		    if(isset($review_values['rt2_stab_defeatable']) || $review_values['rt2_stab_defeatable'] != $rt_results_level_2_before['rt2_stab_defeatable'])
 		    $rt_results_level_2['rt2_stab_defeatable'] = $review_values['rt2_stab_defeatable'];
 		    
-		    if($review_values['rt2_stability_control'] != $rt_results_level_2_before['rt2_stability_control'])
+		    if(isset($review_values['rt2_stability_control']) || $review_values['rt2_stability_control'] != $rt_results_level_2_before['rt2_stability_control'])
 		    $rt_results_level_2['rt2_stability_control'] = $review_values['rt2_stability_control'];
 		    
-		    if($review_values['rt2_sum_of_tg_times'] != $rt_results_level_2_before['rt2_sum_of_tg_times'])
+		    if(isset($review_values['rt2_sum_of_tg_times']) || $review_values['rt2_sum_of_tg_times'] != $rt_results_level_2_before['rt2_sum_of_tg_times'])
 		    $rt_results_level_2['rt2_sum_of_tg_times'] = $review_values['rt2_sum_of_tg_times'];
 		    
-		    if($review_values['rt2_trac_defeatable'] != $rt_results_level_2_before['rt2_trac_defeatable'])
+		    if(isset($review_values['rt2_trac_defeatable']) || $review_values['rt2_trac_defeatable'] != $rt_results_level_2_before['rt2_trac_defeatable'])
 		    $rt_results_level_2['rt2_trac_defeatable'] = $review_values['rt2_trac_defeatable'];
 		    
-		    if($review_values['rt2_traction_control'] != $rt_results_level_2_before['rt2_traction_control'])
+		    if(isset($review_values['rt2_traction_control']) || $review_values['rt2_traction_control'] != $rt_results_level_2_before['rt2_traction_control'])
 		    $rt_results_level_2['rt2_traction_control'] = $review_values['rt2_traction_control'];
 		    
-		    if($review_values['rt2_turning_cir'] != $rt_results_level_2_before['rt2_turning_cir'])
+		    if(isset($review_values['rt2_turning_cir']) || $review_values['rt2_turning_cir'] != $rt_results_level_2_before['rt2_turning_cir'])
 		    $rt_results_level_2['rt2_turning_cir'] = $review_values['rt2_turning_cir'];
 		    
-		    if($review_values['rt2_wot'] != $rt_results_level_2_before['rt2_wot'])
+		    if(isset($review_values['rt2_wot']) || $review_values['rt2_wot'] != $rt_results_level_2_before['rt2_wot'])
 		    $rt_results_level_2['rt2_wot'] = $review_values['rt2_wot'];
 		    
-		    if($review_values['rt2_50_mph'] != $rt_results_level_2_before['rt2_50_mph'])
+		    if(isset($review_values['rt2_50_mph']) || $review_values['rt2_50_mph'] != $rt_results_level_2_before['rt2_50_mph'])
 		    $rt_results_level_2['rt2_50_mph'] = $review_values['rt2_50_mph'];
 		    
-		    if($review_values['rt2_70_mph'] != $rt_results_level_2_before['rt2_70_mph'])
+		    if(isset($review_values['rt2_70_mph']) || $review_values['rt2_70_mph'] != $rt_results_level_2_before['rt2_70_mph'])
 		    $rt_results_level_2['rt2_70_mph'] = $review_values['rt2_70_mph'];
 		    
 		    if(sizeof($rt_results_level_2) > 0)
@@ -785,142 +784,142 @@ class IndexController extends Zend_Controller_Action
 			    }
 		    }
 		    
-		    if($review_values['rt3_boost_psi'] != $rt_results_level_3_before['rt3_boost_psi'])
+		    if(isset($review_values['rt3_boost_psi']) || $review_values['rt3_boost_psi'] != $rt_results_level_3_before['rt3_boost_psi'])
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
 		    
-		    if($review_values['rt3_bore_mm'] != $rt_results_level_3_before['rt3_bore_mm'])
+		    if(isset($review_values['rt3_bore_mm']) || $review_values['rt3_bore_mm'] != $rt_results_level_3_before['rt3_bore_mm'])
 		    $rt_results_level_3['rt3_bore_mm'] = $review_values['rt3_bore_mm'];
 		    
-		    if($review_values['rt3_cd'] != $rt_results_level_3_before['rt3_cd'])
+		    if(isset($review_values['rt3_cd']) || $review_values['rt3_cd'] != $rt_results_level_3_before['rt3_cd'])
 		    $rt_results_level_3['rt3_cd'] = $review_values['rt3_cd'];
 		    
-		    if($review_values['rt3_comp_ratio'] != $rt_results_level_3_before['rt3_comp_ratio'])
+		    if(isset($review_values['rt3_comp_ratio']) || $review_values['rt3_comp_ratio'] != $rt_results_level_3_before['rt3_comp_ratio'])
 		    $rt_results_level_3['rt3_comp_ratio'] = $review_values['rt3_comp_ratio'];
 		    
-		    if($review_values['rt3_final_drive_ratio'] != $rt_results_level_3_before['rt3_final_drive_ratio'])
+		    if(isset($review_values['rt3_final_drive_ratio']) || $review_values['rt3_final_drive_ratio'] != $rt_results_level_3_before['rt3_final_drive_ratio'])
 		    $rt_results_level_3['rt3_final_drive_ratio'] = $review_values['rt3_final_drive_ratio'];
 		    
-		    if($review_values['rt3_frontal_area'] != $rt_results_level_3_before['rt3_frontal_area'])
+		    if(isset($review_values['rt3_frontal_area']) || $review_values['rt3_frontal_area'] != $rt_results_level_3_before['rt3_frontal_area'])
 		    $rt_results_level_3['rt3_frontal_area'] = $review_values['rt3_frontal_area'];
 		    
-		    if($review_values['rt3_frontal_area_notes'] != $rt_results_level_3_before['rt3_frontal_area_notes'])
+		    if(isset($review_values['rt3_frontal_area_notes']) || $review_values['rt3_frontal_area_notes'] != $rt_results_level_3_before['rt3_frontal_area_notes'])
 		    $rt_results_level_3['rt3_frontal_area_notes'] = $review_values['rt3_frontal_area_notes'];
 		    
-		    if($review_values['rt3_fuel_cap'] != $rt_results_level_3_before['rt3_fuel_cap'])
+		    if(isset($review_values['rt3_fuel_cap']) || $review_values['rt3_fuel_cap'] != $rt_results_level_3_before['rt3_fuel_cap'])
 		    $rt_results_level_3['rt3_fuel_cap'] = $review_values['rt3_fuel_cap'];
 		    
-		    if($review_values['rt3_height'] != $rt_results_level_3_before['rt3_height'])
+		    if(isset($review_values['rt3_height']) || $review_values['rt3_height'] != $rt_results_level_3_before['rt3_height'])
 		    $rt_results_level_3['rt3_height'] = $review_values['rt3_height'];
 		    
-		    if($review_values['rt3_length'] != $rt_results_level_3_before['rt3_length'])
+		    if(isset($review_values['rt3_length']) || $review_values['rt3_length'] != $rt_results_level_3_before['rt3_length'])
 		    $rt_results_level_3['rt3_length'] = $review_values['rt3_length'];
 		    
-		    if($review_values['rt3_lt_oil'] != $rt_results_level_3_before['rt3_lt_oil'])
+		    if(isset($review_values['rt3_lt_oil']) || $review_values['rt3_lt_oil'] != $rt_results_level_3_before['rt3_lt_oil'])
 		    $rt_results_level_3['rt3_lt_oil'] = $review_values['rt3_lt_oil'];
 		    
-		    if($review_values['rt3_lt_repair'] != $rt_results_level_3_before['rt3_lt_repair'])
+		    if(isset($review_values['rt3_lt_repair']) || $review_values['rt3_lt_repair'] != $rt_results_level_3_before['rt3_lt_repair'])
 		    $rt_results_level_3['rt3_lt_repair'] = $review_values['rt3_lt_repair'];
 		    
-		    if($review_values['rt3_lt_serv'] != $rt_results_level_3_before['rt3_lt_serv'])
+		    if(isset($review_values['rt3_lt_serv']) || $review_values['rt3_lt_serv'] != $rt_results_level_3_before['rt3_lt_serv'])
 		    $rt_results_level_3['rt3_lt_serv'] = $review_values['rt3_lt_serv'];
 		    
-		    if($review_values['rt3_lt_stps_sched'] != $rt_results_level_3_before['rt3_lt_stps_sched'])
+		    if(isset($review_values['rt3_lt_stps_sched']) || $review_values['rt3_lt_stps_sched'] != $rt_results_level_3_before['rt3_lt_stps_sched'])
 		    $rt_results_level_3['rt3_lt_stps_sched'] = $review_values['rt3_lt_stps_sched'];
 		    
-		    if($review_values['rt3_lt_stps_sched'] != $rt_results_level_3_before['rt3_lt_stps_sched'])
+		    if(isset($review_values['rt3_lt_stps_sched']) || $review_values['rt3_lt_stps_sched'] != $rt_results_level_3_before['rt3_lt_stps_sched'])
 		    $rt_results_level_3['rt3_lt_stps_unsched'] = $review_values['rt3_lt_stps_unsched'];
 		    
-		    if($review_values['rt3_lt_wear'] != $rt_results_level_3_before['rt3_lt_wear'])
+		    if(isset($review_values['rt3_lt_wear']) || $review_values['rt3_lt_wear'] != $rt_results_level_3_before['rt3_lt_wear'])
 		    $rt_results_level_3['rt3_lt_wear'] = $review_values['rt3_lt_wear'];
 		    
-		    if($review_values['rt3_max_mph_1000_rpm'] != $rt_results_level_3_before['rt3_max_mph_1000_rpm'])
+		    if(isset($review_values['rt3_max_mph_1000_rpm']) || $review_values['rt3_max_mph_1000_rpm'] != $rt_results_level_3_before['rt3_max_mph_1000_rpm'])
 		    $rt_results_level_3['rt3_max_mph_1000_rpm'] = $review_values['rt3_max_mph_1000_rpm'];
 		    
-		    if($review_values['rt3_specific_power'] != $rt_results_level_3_before['rt3_specific_power'])
+		    if(isset($review_values['rt3_specific_power']) || $review_values['rt3_specific_power'] != $rt_results_level_3_before['rt3_specific_power'])
 		    $rt_results_level_3['rt3_specific_power'] = $review_values['rt3_specific_power'];
 		    
-		    if($review_values['rt3_stroke_mm'] != $rt_results_level_3_before['rt3_stroke_mm'])
+		    if(isset($review_values['rt3_stroke_mm']) || $review_values['rt3_stroke_mm'] != $rt_results_level_3_before['rt3_stroke_mm'])
 		    $rt_results_level_3['rt3_stroke_mm'] = $review_values['rt3_stroke_mm'];
 		    
-		    if($review_values['rt3_trunk'] != $rt_results_level_3_before['rt3_trunk'])
+		    if(isset($review_values['rt3_trunk']) || $review_values['rt3_trunk'] != $rt_results_level_3_before['rt3_trunk'])
 		    $rt_results_level_3['rt3_trunk'] = $review_values['rt3_trunk'];
 		    
-		    if($review_values['rt3_valve_gear'] != $rt_results_level_3_before['rt3_valve_gear'])
+		    if(isset($review_values['rt3_valve_gear']) || $review_values['rt3_valve_gear'] != $rt_results_level_3_before['rt3_valve_gear'])
 		    $rt_results_level_3['rt3_valve_gear'] = $review_values['rt3_valve_gear'];
 		    
-		    if($review_values['rt3_width'] != $rt_results_level_3_before['rt3_width'])
+		    if(isset($review_values['rt3_width']) || $review_values['rt3_width'] != $rt_results_level_3_before['rt3_width'])
 		    $rt_results_level_3['rt3_width'] = $review_values['rt3_width'];
 		    
-		    if($review_values['rt3_valves_per_cyl'] != $rt_results_level_3_before['rt3_valves_per_cyl'])
+		    if(isset($review_values['rt3_valves_per_cyl']) || $review_values['rt3_valves_per_cyl'] != $rt_results_level_3_before['rt3_valves_per_cyl'])
 		    $rt_results_level_3['rt3_valves_per_cyl'] = $review_values['rt3_valves_per_cyl'];
 		    
-		    if($review_values['rt3_wheelbase'] != $rt_results_level_3_before['rt3_wheelbase'])
+		    if(isset($review_values['rt3_wheelbase']) || $review_values['rt3_wheelbase'] != $rt_results_level_3_before['rt3_wheelbase'])
 		    $rt_results_level_3['rt3_wheelbase'] = $review_values['rt3_wheelbase'];
 		    
-		    if($review_values['rt3_70co'] != $rt_results_level_3_before['rt3_70co'])
+		    if(isset($review_values['rt3_70co']) || $review_values['rt3_70co'] != $rt_results_level_3_before['rt3_70co'])
 		    $rt_results_level_3['rt3_70co'] = $review_values['rt3_70co'];
 		    
-		    if($review_values['rt3_10mph'] != $rt_results_level_3_before['rt3_10mph'])
+		    if(isset($review_values['rt3_10mph']) || $review_values['rt3_10mph'] != $rt_results_level_3_before['rt3_10mph'])
 		    $rt_results_level_3['rt3_10mph'] = $review_values['rt3_10mph'];
 		    
-		    if($review_values['rt3_20mph'] != $rt_results_level_3_before['rt3_20mph'])
+		    if(isset($review_values['rt3_20mph']) || $review_values['rt3_20mph'] != $rt_results_level_3_before['rt3_20mph'])
 		    $rt_results_level_3['rt3_20mph'] = $review_values['rt3_20mph'];
 		    
-		    if($review_values['rt3_40mph'] != $rt_results_level_3_before['rt3_40mph'])
+		    if(isset($review_values['rt3_40mph']) || $review_values['rt3_40mph'] != $rt_results_level_3_before['rt3_40mph'])
 		    $rt_results_level_3['rt3_40mph'] = $review_values['rt3_40mph'];
 		    
-		    if($review_values['rt3_50mph'] != $rt_results_level_3_before['rt3_50mph'])
+		    if(isset($review_values['rt3_50mph']) || $review_values['rt3_50mph'] != $rt_results_level_3_before['rt3_50mph'])
 		    $rt_results_level_3['rt3_50mph'] = $review_values['rt3_50mph'];
 		    
-		    if($review_values['rt3_70mph'] != $rt_results_level_3_before['rt3_70mph'])
+		    if(isset($review_values['rt3_70mph']) || $review_values['rt3_70mph'] != $rt_results_level_3_before['rt3_70mph'])
 		    $rt_results_level_3['rt3_70mph'] = $review_values['rt3_70mph'];
 		    
-		    if($review_values['rt3_80mph'] != $rt_results_level_3_before['rt3_80mph'])
+		    if(isset($review_values['rt3_80mph']) || $review_values['rt3_80mph'] != $rt_results_level_3_before['rt3_80mph'])
 		    $rt_results_level_3['rt3_80mph'] = $review_values['rt3_80mph'];
 		    
-		    if($review_values['rt3_90mph'] != $rt_results_level_3_before['rt3_90mph'])
+		    if(isset($review_values['rt3_90mph']) || $review_values['rt3_90mph'] != $rt_results_level_3_before['rt3_90mph'])
 		    $rt_results_level_3['rt3_90mph'] = $review_values['rt3_90mph'];
 		    
-		    if($review_values['rt3_110mph'] != $rt_results_level_3_before['rt3_110mph'])
+		    if(isset($review_values['rt3_110mph']) || $review_values['rt3_110mph'] != $rt_results_level_3_before['rt3_110mph'])
 		    $rt_results_level_3['rt3_110mph'] = $review_values['rt3_110mph'];
 		    
-		    if($review_values['rt3_120mph'] != $rt_results_level_3_before['rt3_120mph'])
+		    if(isset($review_values['rt3_120mph']) || $review_values['rt3_120mph'] != $rt_results_level_3_before['rt3_120mph'])
 		    $rt_results_level_3['rt3_120mph'] = $review_values['rt3_120mph'];
 		    
-		    if($review_values['rt3_140mph'] != $rt_results_level_3_before['rt3_140mph'])
+		    if(isset($review_values['rt3_140mph']) || $review_values['rt3_140mph'] != $rt_results_level_3_before['rt3_140mph'])
 		    $rt_results_level_3['rt3_140mph'] = $review_values['rt3_140mph'];
 		    
-		    if($review_values['rt3_150mph'] != $rt_results_level_3_before['rt3_150mph'])
+		    if(isset($review_values['rt3_150mph']) || $review_values['rt3_150mph'] != $rt_results_level_3_before['rt3_150mph'])
 		    $rt_results_level_3['rt3_150mph'] = $review_values['rt3_150mph'];
 		    
-		    if($review_values['rt3_160mph'] != $rt_results_level_3_before['rt3_160mph'])
+		    if(isset($review_values['rt3_160mph']) || $review_values['rt3_160mph'] != $rt_results_level_3_before['rt3_160mph'])
 		    $rt_results_level_3['rt3_160mph'] = $review_values['rt3_160mph'];
 		    
-		    if($review_values['rt3_170mph'] != $rt_results_level_3_before['rt3_170mph'])
+		    if(isset($review_values['rt3_170mph']) || $review_values['rt3_170mph'] != $rt_results_level_3_before['rt3_170mph'])
 		    $rt_results_level_3['rt3_170mph'] = $review_values['rt3_170mph'];
 		    
-		    if($review_values['rt3_180mph'] != $rt_results_level_3_before['rt3_180mph'])
+		    if(isset($review_values['rt3_180mph']) || $review_values['rt3_180mph'] != $rt_results_level_3_before['rt3_180mph'])
 		    $rt_results_level_3['rt3_180mph'] = $review_values['rt3_180mph'];
 		    
-		    if($review_values['rt3_190mph'] != $rt_results_level_3_before['rt3_190mph'])
+		    if(isset($review_values['rt3_190mph']) || $review_values['rt3_190mph'] != $rt_results_level_3_before['rt3_190mph'])
 		    $rt_results_level_3['rt3_190mph'] = $review_values['rt3_190mph'];
 		    
-		    if($review_values['rt3_200mph'] != $rt_results_level_3_before['rt3_200mph'])
+		    if(isset($review_values['rt3_200mph']) || $review_values['rt3_200mph'] != $rt_results_level_3_before['rt3_200mph'])
 		    $rt_results_level_3['rt3_200mph'] = $review_values['rt3_200mph'];
 		    
-		    if($review_values['rt3_et_factor'] != $rt_results_level_3_before['rt3_et_factor'])
+		    if(isset($review_values['rt3_et_factor']) || $review_values['rt3_et_factor'] != $rt_results_level_3_before['rt3_et_factor'])
 		    $rt_results_level_3['rt3_et_factor'] = $review_values['rt3_et_factor'];
 		    
-		    if($review_values['rt3_road_hp_30mph'] != $rt_results_level_3_before['rt3_road_hp_30mph'])
+		    if(isset($review_values['rt3_road_hp_30mph']) || $review_values['rt3_road_hp_30mph'] != $rt_results_level_3_before['rt3_road_hp_30mph'])
 		    $rt_results_level_3['rt3_road_hp_30mph'] = $review_values['rt3_road_hp_30mph'];
 		    
-		    if($review_values['rt3_sp_factor'] != $rt_results_level_3_before['rt3_sp_factor'])
+		    if(isset($review_values['rt3_sp_factor']) || $review_values['rt3_sp_factor'] != $rt_results_level_3_before['rt3_sp_factor'])
 		    $rt_results_level_3['rt3_sp_factor'] = $review_values['rt3_sp_factor'];
 		    
-		    if($review_values['rt3_peak_bmep'] != $rt_results_level_3_before['rt3_peak_bmep'])
+		    if(isset($review_values['rt3_peak_bmep']) || $review_values['rt3_peak_bmep'] != $rt_results_level_3_before['rt3_peak_bmep'])
 		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
 		    
-		    if($review_values['rt3_peal_bmep'] != $rt_results_level_3_before['rt3_peal_bmep'])
+		    if(isset($review_values['rt3_peal_bmep']) || $review_values['rt3_peal_bmep'] != $rt_results_level_3_before['rt3_peal_bmep'])
 		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
 		  
 		    if(sizeof($rt_results_level_3) > 0)
