@@ -6,7 +6,8 @@ function getData($id)
 	
 	 $select = $db->select()
          ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
-         ->where('rdd.id_descriptions =?', $id);
+         ->joinInner(array('rtl'=>'rt_dropdown_lookup'),'rtl.id_descriptions=rdd.id_descriptions')
+         ->where('rtl.id =?', $id);
          $result = $db->query($select)->fetchAll();
          if(isset($result[0]))
          return $result[0]['desp'];
