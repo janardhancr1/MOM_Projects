@@ -328,20 +328,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt_model'] != $rt_results_main[0]['rt_model'])
 		{
-			 $select = $db->select()
-	             ->from('rt_results_main');
-	        $rt_models = $db->query($select)->fetchAll();
-		       
-			if (count($rt_models)!=0){
-					$rt_model_prepared[0]= "Select from list";
-					foreach ($rt_models as $rt_mod){
-							$rt_model_prepared[$rt_mod['rt_model']]= $rt_mod['rt_model'];
-					}
-			}
-		
-			$rt_model = new Zend_Form_Element_Select('rt_model',array('style'=>'width:150px;'));
-			$rt_model->addMultiOptions($rt_model_prepared)
-						->setValue($form1_Values['rt_model']);
+			$rt_model = new Zend_Form_Element_Text('rt_model',array('style'=>'width:150px;'));
+			$rt_model->setValue($form1_Values['rt_model']);
 						
 			$before_rt_model = new Zend_Form_Element_Text('before_rt_model',array("readonly" => "readonly"));
 			$before_rt_model->setLabel('Model');

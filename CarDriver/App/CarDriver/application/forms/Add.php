@@ -248,12 +248,12 @@ class Application_Form_Add extends Application_Form_MainForm
 				}
 		}
 		
-		$this->addElement('Select', 'rt_model', array(
+		$this->addElement('Text', 'rt_model', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model',
 		'tabindex' => 8,
-		'MultiOptions' => $rt_model_prepared
+		//'MultiOptions' => $rt_model_prepared
 		));
 		
 		$this->addElement('Text', 'rt3_80mph', array(
