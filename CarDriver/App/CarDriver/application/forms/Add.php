@@ -98,6 +98,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-30 Accel',
 		'tabindex' => 68,
+		'onkeydown' => 'return onlyDigits(event);',
 		));
 		
 		
