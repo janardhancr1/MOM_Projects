@@ -1017,7 +1017,7 @@ class IndexController extends Zend_Controller_Action
         if($this->_getParam('rt_types'))
         {
          	$select = $db->select()
-			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdd.id_descriptions As id_desp', 'rdd.description As description'))
+			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdl.id As id_desp', 'rdd.description As description'))
 			->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
 			->where('rdl.id_types =?', $this->_getParam('rt_types'));
 			$res = $db->query($select)->fetchAll();
