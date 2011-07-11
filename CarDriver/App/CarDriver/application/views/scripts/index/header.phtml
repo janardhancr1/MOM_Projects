@@ -138,6 +138,88 @@ function FillSubModelSearch(rsp)
   		$('submodel').options[i] = new Option(sub_model[1], sub_model[0]);
   	}
 }
+var isIE = document.all?true:false;
+
+if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)){ //test for Firefox/x.x or Firefox x.x (ignoring remaining digits);
+	isNS = true;
+}
+
+function onlyDigits(e) 
+{
+    var _ret = true;
+
+    if(e.keyCode == 8)
+        	return true;
+    if (e.keyCode < 48 || e.keyCode > 57 ) {
+    _ret = false;
+    }
+   
+    return (_ret); 
+}
+function onlyFloat(e)
+{
+	var floatPoint = false;
+    var _ret = true;
+	for(var i=0; i<=e.value.length; i++)
+	{
+		var c = e.value.charAt(i);
+		if(c == ".")
+		{
+			floatPoint = true;
+			break;
+		}
+	}
+
+    if (isIE) 
+	{
+		if(window.event.keyCode == 46)
+		{
+			if(floatPoint == false)
+			{
+				_ret = true;
+			}
+			else
+			{
+				window.event.keyCode = 0;
+				_ret = false
+			}
+		}
+		else
+		{
+			if (window.event.keyCode < 48 || window.event.keyCode > 57) 
+			{
+				window.event.keyCode = 0;
+				_ret = false;
+			}
+		}
+    }
+
+    if (isNS) 
+	{
+		if(e.which == 46)
+		{
+			if(floatPoint == false)
+			{
+				_ret = true;
+			}
+			else
+			{
+				window.event.keyCode = 0;
+				_ret = false
+			}
+		}
+		else
+		{
+			if (e.which < 48 || e.which > 57) 
+			{
+				e.which = 0;
+				_ret = false;
+			}
+		}
+    }
+    return (_ret); 
+}
+
 </script>
 <div id="content">
 	<div id="top">
