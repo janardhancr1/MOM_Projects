@@ -156,69 +156,31 @@ function onlyDigits(e)
    
     return (_ret); 
 }
-function onlyFloat(e)
-{
+
+function onlyFloat(e, val)
+{ 
 	var floatPoint = false;
-    var _ret = true;
-	for(var i=0; i<=e.value.length; i++)
+	for(var i=0; i<=val.length; i++)
 	{
-		var c = e.value.charAt(i);
+		var c = val.charAt(i);
+		
 		if(c == ".")
 		{
 			floatPoint = true;
 			break;
 		}
 	}
-
-    if (isIE) 
+	if(e.keyCode == 190)
 	{
-		if(window.event.keyCode == 46)
-		{
-			if(floatPoint == false)
-			{
-				_ret = true;
-			}
-			else
-			{
-				window.event.keyCode = 0;
-				_ret = false
-			}
-		}
+		if(floatPoint == false)
+			return true;
 		else
-		{
-			if (window.event.keyCode < 48 || window.event.keyCode > 57) 
-			{
-				window.event.keyCode = 0;
-				_ret = false;
-			}
-		}
-    }
-
-    if (isNS) 
-	{
-		if(e.which == 46)
-		{
-			if(floatPoint == false)
-			{
-				_ret = true;
-			}
-			else
-			{
-				window.event.keyCode = 0;
-				_ret = false
-			}
-		}
-		else
-		{
-			if (e.which < 48 || e.which > 57) 
-			{
-				e.which = 0;
-				_ret = false;
-			}
-		}
-    }
-    return (_ret); 
-}
+			return false;  
+	}
+	if (e.keyCode < 48 || e.keyCode > 57) {
+	    return false;
+	 }
+} 
 
 </script>
 <div id="content">
