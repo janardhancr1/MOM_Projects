@@ -1019,7 +1019,8 @@ class IndexController extends Zend_Controller_Action
          	$select = $db->select()
 			->from(array('rdd' => 'rt_dropdown_descriptions'), array('rdl.id As id_desp', 'rdd.description As description'))
 			->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
-			->where('rdl.id_types =?', $this->_getParam('rt_types'));
+			->where('rdl.id_types =?', $this->_getParam('rt_types'))
+			->order('rdd.description ASC');
 			$res = $db->query($select)->fetchAll();
 		    $this->view->results = $res;
 		    $this->view->rt_type = $this->_getParam('rt_types');
@@ -1222,8 +1223,14 @@ class IndexController extends Zend_Controller_Action
   		$this->view->id = $id;
   		
   		$select = $db->select()
+			->from('rt_dropdown_lookup')
+			->where('id =?', $id);
+			
+  		$reslt = $db->query($select)->fetchAll();
+  		
+  		$select = $db->select()
 			->from('rt_dropdown_descriptions')
-			->where('id_descriptions =?', $id); 
+			->where('id_descriptions =?', $reslt[0]['id_descriptions']); 
 			
   		$res = $db->query($select)->fetchAll();
   		
@@ -1231,17 +1238,14 @@ class IndexController extends Zend_Controller_Action
   		
   		if (!$this->getRequest()->isPost())
       	return;
-      	
-
+  		
       	try
       	{
-      		$db->delete('rt_dropdown_descriptions', 'id_descriptions = '.$this->_getParam('id'));
-      		$db->delete('rt_dropdown_lookup','id_descriptions = '.$id);
+      		$db->delete('rt_dropdown_descriptions', 'id_descriptions = '.$reslt[0]['id_descriptions']);
+      		$db->delete('rt_dropdown_lookup','id = '.$id);
       	}
   	 	catch(Exception $e)
 	    {
-	    	echo $e;
-	    	exit;
 	    	$db->rollBack();
       		throw $e;
 	    	
