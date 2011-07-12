@@ -1266,8 +1266,14 @@ class IndexController extends Zend_Controller_Action
   		$db = Zend_Db_Table::getDefaultAdapter();
   		
   		$select = $db->select()
+			->from('rt_dropdown_lookup')
+			->where('id =?', $id);
+			
+  		$reslt = $db->query($select)->fetchAll();
+  		
+  		$select = $db->select()
 			->from('rt_dropdown_descriptions')
-			->where('id_descriptions =?', $id); 
+			->where('id_descriptions =?', $reslt[0]['id_descriptions']); 
 			
   		$res = $db->query($select)->fetchAll();
   		
@@ -1280,7 +1286,7 @@ class IndexController extends Zend_Controller_Action
       	
       	$dropdown_descriptions['description'] = $_POST['description'];
       
-      	$where[] = 'id_descriptions = '.$id;
+      	$where[] = 'id_descriptions = '.$reslt[0]['id_descriptions'];
       	try
       	{
       		$res = $db->update('rt_dropdown_descriptions', $dropdown_descriptions, $where);
