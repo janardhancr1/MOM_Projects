@@ -148,7 +148,7 @@ function onlyDigits(e)
 {
     var _ret = true;
 
-    if(e.keyCode == 8)
+    if(e.keyCode == 8 || e.keyCode == 9)
         	return true;
     if (e.keyCode < 48 || e.keyCode > 57 ) {
     _ret = false;
@@ -177,6 +177,8 @@ function onlyFloat(e, val)
 		else
 			return false;  
 	}
+	if(e.keyCode == 8 || e.keyCode == 9)
+        	return true;
 	if (e.keyCode < 48 || e.keyCode > 57) {
 	    return false;
 	 }
