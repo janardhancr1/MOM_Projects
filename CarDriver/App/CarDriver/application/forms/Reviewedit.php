@@ -357,7 +357,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_issue_year'] != $rt_results_main[0]['rt_issue_year'])
 		{
 			$rt_issue_year = new Zend_Form_Element_Text('rt_issue_year');
-			$rt_issue_year->setValue($form1_Values['rt_issue_year']);
+			$rt_issue_year->setValue($form1_Values['rt_issue_year'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 
 			$before_rt_issue_year = new Zend_Form_Element_Text('before_rt_issue_year',array("readonly" => "readonly"));
 			$before_rt_issue_year->setLabel('Mag Issue Year');
@@ -417,7 +418,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt_published'] != $rt_results_main[0]['rt_published'])
 		{
-			$rt_published = new Zend_Form_Element_Select('rt_published');
+			$rt_published = new Zend_Form_Element_Select('rt_published',array('style'=>'width:150px;'));
 			$rt_published->addMultioptions(array('Web'=>'Web','Print'=>'Print'))
 			->setValue($form1_Values['rt_published']);
 			
@@ -541,7 +542,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_passengers'] != $rt_results_level_2[0]['rt2_passengers'])
 		{
 			$rt2_passengers = new Zend_Form_Element_Text('rt2_passengers');
-			$rt2_passengers->setValue($form1_Values['rt2_passengers']);
+			$rt2_passengers->setValue($form1_Values['rt2_passengers'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_passengers = new Zend_Form_Element_Text('before_rt2_passengers',array("readonly" => "readonly"));
 			$before_rt2_passengers->setLabel('Number of Passengers');
@@ -802,7 +804,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_bore_mm'] != $rt_results_level_3[0]['rt3_bore_mm'])
 		{
 			$rt3_bore_mm = new Zend_Form_Element_Text('rt3_bore_mm');
-			$rt3_bore_mm->setValue($form1_Values['rt3_bore_mm']);
+			$rt3_bore_mm->setValue($form1_Values['rt3_bore_mm'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_bore_mm = new Zend_Form_Element_Text('before_rt3_bore_mm',array("readonly" => "readonly"));
 			$before_rt3_bore_mm->setLabel('Cylinder Bore');
@@ -831,7 +834,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_stroke_mm'] != $rt_results_level_3[0]['rt3_stroke_mm'])
 		{
 			$rt3_stroke_mm = new Zend_Form_Element_Text('rt3_stroke_mm');
-			$rt3_stroke_mm->setValue($form1_Values['rt3_stroke_mm']);
+			$rt3_stroke_mm->setValue($form1_Values['rt3_stroke_mm'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_stroke_mm = new Zend_Form_Element_Text('before_rt3_stroke_mm',array("readonly" => "readonly"));
 			$before_rt3_stroke_mm->setLabel('Cylinder Stroke');
@@ -859,7 +863,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_disp_cc'] != $rt_results_main[0]['rt_disp_cc'])
 		{
 			$rt_disp_cc = new Zend_Form_Element_Text('rt_disp_cc');
-			$rt_disp_cc->setValue($form1_Values['rt_disp_cc']);
+			$rt_disp_cc->setValue($form1_Values['rt_disp_cc'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_disp_cc = new Zend_Form_Element_Text('before_rt_disp_cc',array("readonly" => "readonly"));
 			$before_rt_disp_cc->setLabel('Engine Disp');
@@ -887,7 +892,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_comp_ratio'] != $rt_results_level_3[0]['rt3_comp_ratio'])
 		{
 			$rt3_comp_ratio = new Zend_Form_Element_Text('rt3_comp_ratio');
-			$rt3_comp_ratio->setValue($form1_Values['rt3_comp_ratio']);
+			$rt3_comp_ratio->setValue($form1_Values['rt3_comp_ratio'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_comp_ratio = new Zend_Form_Element_Text('before_rt3_comp_ratio',array("readonly" => "readonly"));
 			$before_rt3_comp_ratio->setLabel('Compression Ratio');
@@ -971,7 +977,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_valves_per_cyl'] != $rt_results_level_3[0]['rt3_valves_per_cyl'])
 		{
 			$rt3_valves_per_cyl = new Zend_Form_Element_Text('rt3_valves_per_cyl');
-			$rt3_valves_per_cyl->setValue($form1_Values['rt3_valves_per_cyl']);
+			$rt3_valves_per_cyl->setValue($form1_Values['rt3_valves_per_cyl'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_valves_per_cyl = new Zend_Form_Element_Text('before_rt3_valves_per_cyl',array("readonly" => "readonly"));
 			$before_rt3_valves_per_cyl->setLabel('Valves Per Cylinder');
@@ -1030,7 +1037,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_boost_psi'] != $rt_results_level_3[0]['rt3_boost_psi'])
 		{
 			$rt3_boost_psi = new Zend_Form_Element_Text('rt3_boost_psi');
-			$rt3_boost_psi->setValue($form1_Values['rt3_boost_psi']);
+			$rt3_boost_psi->setValue($form1_Values['rt3_boost_psi'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_boost_psi = new Zend_Form_Element_Text('before_rt3_boost_psi',array("readonly" => "readonly"));
 			$before_rt3_boost_psi->setLabel('Boost in psi');
@@ -1086,7 +1094,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_rpm'] != $rt_results_main[0]['rt_rpm'])
 		{
 			$rt_rpm = new Zend_Form_Element_Text('rt_rpm');
-			$rt_rpm->setValue($form1_Values['rt_rpm']);
+			$rt_rpm->setValue($form1_Values['rt_rpm'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_rpm = new Zend_Form_Element_Text('before_rt_rpm',array("readonly" => "readonly"));
 			$before_rt_rpm->setLabel('Peak Horsepower RPM');
@@ -1254,7 +1263,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_specific_power'] != $rt_results_level_3[0]['rt3_specific_power'])
 		{
 			$rt3_specific_power = new Zend_Form_Element_Text('rt3_specific_power');
-			$rt3_specific_power->setValue($form1_Values['rt3_specific_power']);
+			$rt3_specific_power->setValue($form1_Values['rt3_specific_power'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_specific_power = new Zend_Form_Element_Text('before_rt3_specific_power',array("readonly" => "readonly"));
 			$before_rt3_specific_power->setLabel('Spec pow (hp/liter)');
@@ -1282,7 +1292,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_power_to_weight'] != $rt_results_main[0]['rt_power_to_weight'])
 		{
 			$rt_power_to_weight = new Zend_Form_Element_Text('rt_power_to_weight');
-			$rt_power_to_weight->setValue($form1_Values['rt_power_to_weight']);
+			$rt_power_to_weight->setValue($form1_Values['rt_power_to_weight'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt_power_to_weight = new Zend_Form_Element_Text('before_rt_power_to_weight',array("readonly" => "readonly"));
 			$before_rt_power_to_weight->setLabel('Power/Weight (hp/lb)');
@@ -1369,7 +1380,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_max_mph_1000_rpm'] != $rt_results_level_3[0]['rt3_max_mph_1000_rpm'])
 		{
 			$rt3_max_mph_1000_rpm = new Zend_Form_Element_Text('rt3_max_mph_1000_rpm');
-			$rt3_max_mph_1000_rpm->setValue($form1_Values['rt3_max_mph_1000_rpm']);
+			$rt3_max_mph_1000_rpm->setValue($form1_Values['rt3_max_mph_1000_rpm'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_max_mph_1000_rpm = new Zend_Form_Element_Text('before_rt3_max_mph_1000_rpm',array("readonly" => "readonly"));
 			$before_rt3_max_mph_1000_rpm->setLabel('Top Gear mph/1000rpm');
@@ -1397,7 +1409,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_wheelbase'] != $rt_results_level_3[0]['rt3_wheelbase'])
 		{
 			$rt3_wheelbase = new Zend_Form_Element_Text('rt3_wheelbase');
-			$rt3_wheelbase->setValue($form1_Values['rt3_wheelbase']);
+			$rt3_wheelbase->setValue($form1_Values['rt3_wheelbase'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_wheelbase = new Zend_Form_Element_Text('before_rt3_wheelbase',array("readonly" => "readonly"));
 			$before_rt3_wheelbase->setLabel('Wheelbase');
@@ -1426,7 +1439,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_length'] != $rt_results_level_3[0]['rt3_length'])
 		{
 			$rt3_length = new Zend_Form_Element_Text('rt3_length');
-			$rt3_length->setValue($form1_Values['rt3_length']);
+			$rt3_length->setValue($form1_Values['rt3_length'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_length = new Zend_Form_Element_Text('before_rt3_length',array("readonly" => "readonly"));
 			$before_rt3_length->setLabel('Length');
@@ -1454,7 +1468,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_width'] != $rt_results_level_3[0]['rt3_width'])
 		{
 			$rt3_width = new Zend_Form_Element_Text('rt3_width');
-			$rt3_width->setValue($form1_Values['rt3_width']);
+			$rt3_width->setValue($form1_Values['rt3_width'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_width = new Zend_Form_Element_Text('before_rt3_width',array("readonly" => "readonly"));
 			$before_rt3_width->setLabel('Width');
@@ -1594,7 +1609,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_weight'] != $rt_results_main[0]['rt_weight'])
 		{
 			$rt_weight = new Zend_Form_Element_Text('rt_weight');
-			$rt_weight->setValue($form1_Values['rt_weight']);
+			$rt_weight->setValue($form1_Values['rt_weight'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_weight = new Zend_Form_Element_Text('before_rt_weight',array("readonly" => "readonly"));
 			$before_rt_weight->setLabel('Curb Weight');
@@ -1622,7 +1638,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_percent_on_front'] != $rt_results_main[0]['rt_percent_on_front'])
 		{
 			$rt_percent_on_front = new Zend_Form_Element_Text('rt_percent_on_front');
-			$rt_percent_on_front->setValue($form1_Values['rt_percent_on_front']);
+			$rt_percent_on_front->setValue($form1_Values['rt_percent_on_front'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 
 			$before_rt_percent_on_front = new Zend_Form_Element_Text('before_rt_percent_on_front',array("readonly" => "readonly"));
 			$before_rt_percent_on_front->setLabel('Pct. Weight on Front');
@@ -1650,7 +1667,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_percent_on_rear'] != $rt_results_main[0]['rt_percent_on_rear'])
 		{
 			$rt_percent_on_rear = new Zend_Form_Element_Text('rt_percent_on_rear');
-			$rt_percent_on_rear->setValue($form1_Values['rt_percent_on_rear']);
+			$rt_percent_on_rear->setValue($form1_Values['rt_percent_on_rear'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 
 			$before_rt_percent_on_rear = new Zend_Form_Element_Text('before_rt_percent_on_rear',array("readonly" => "readonly"));
 			$before_rt_percent_on_rear->setLabel('Pct. Weight on Rear');
@@ -1737,7 +1755,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_mid'] != $rt_results_level_2[0]['rt2_mid'])
 		{
 			$rt2_mid = new Zend_Form_Element_Text('rt2_mid');
-			$rt2_mid->setValue($form1_Values['rt2_mid']);
+			$rt2_mid->setValue($form1_Values['rt2_mid'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_mid = new Zend_Form_Element_Text('before_rt2_mid',array("readonly" => "readonly"));
 			$before_rt2_mid->setLabel('Vol Behind Mid Row');
@@ -1821,7 +1840,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_turning_cir'] != $rt_results_level_2[0]['rt2_turning_cir'])
 		{
 			$rt2_turning_cir = new Zend_Form_Element_Text('rt2_turning_cir');
-			$rt2_turning_cir->setValue($form1_Values['rt2_turning_cir']);
+			$rt2_turning_cir->setValue($form1_Values['rt2_turning_cir'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_turning_cir = new Zend_Form_Element_Text('before_rt2_turning_cir',array("readonly" => "readonly"));
 			$before_rt2_turning_cir->setLabel('Turning Radius');
@@ -1989,7 +2009,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_10mph'] != $rt_results_level_3[0]['rt3_10mph'])
 		{
 			$rt3_10mph = new Zend_Form_Element_Text('rt3_10mph');
-			$rt3_10mph->setValue($form1_Values['rt3_10mph']);
+			$rt3_10mph->setValue($form1_Values['rt3_10mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_10mph = new Zend_Form_Element_Text('before_rt3_10mph',array("readonly" => "readonly"));
 			$before_rt3_10mph->setLabel('0-10 Accel');
@@ -2017,7 +2038,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_20mph'] != $rt_results_level_3[0]['rt3_20mph'])
 		{
 			$rt3_20mph = new Zend_Form_Element_Text('rt3_20mph');
-			$rt3_20mph->setValue($form1_Values['rt3_20mph']);
+			$rt3_20mph->setValue($form1_Values['rt3_20mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_20mph = new Zend_Form_Element_Text('before_rt3_20mph',array("readonly" => "readonly"));
 			$before_rt3_20mph->setLabel('0-20 Accel');
@@ -2045,7 +2067,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if( $form1_Values['rt2_30_mph'] != $rt_results_level_2[0]['rt2_30_mph'])
 		{
 			$rt2_30mph = new Zend_Form_Element_Text('rt2_30_mph');
-			$rt2_30mph->setValue($form1_Values['rt2_30_mph']);
+			$rt2_30mph->setValue($form1_Values['rt2_30_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_30mph = new Zend_Form_Element_Text('before_rt2_30_mph',array("readonly" => "readonly"));
 			$before_rt2_30mph->setLabel('0-30 Accel');
@@ -2073,7 +2096,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_40mph'] != $rt_results_level_3[0]['rt3_40mph'])
 		{
 			$rt3_40mph = new Zend_Form_Element_Text('rt3_40mph');
-			$rt3_40mph->setValue($form1_Values['rt3_40mph']);
+			$rt3_40mph->setValue($form1_Values['rt3_40mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_40mph = new Zend_Form_Element_Text('before_rt3_40mph',array("readonly" => "readonly"));
 			$before_rt3_40mph->setLabel('0-40 Accel');
@@ -2101,7 +2125,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_50mph'] != $rt_results_level_3[0]['rt3_50mph'])
 		{
 			$rt3_50mph = new Zend_Form_Element_Text('rt3_50mph');
-			$rt3_50mph->setValue($form1_Values['rt3_50mph']);
+			$rt3_50mph->setValue($form1_Values['rt3_50mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_50mph = new Zend_Form_Element_Text('before_rt3_50mph',array("readonly" => "readonly"));
 			$before_rt3_50mph->setLabel('0-50 Accel');
@@ -2129,7 +2154,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_60_mph'] != $rt_results_main[0]['rt_60_mph'])
 		{
 			$rt_60mph = new Zend_Form_Element_Text('rt_60_mph');
-			$rt_60mph->setValue($form1_Values['rt_60_mph']);
+			$rt_60mph->setValue($form1_Values['rt_60_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt_60mph = new Zend_Form_Element_Text('before_rt_60mph',array("readonly" => "readonly"));
 			$before_rt_60mph->setLabel('0-50 Accel');
@@ -2157,7 +2183,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_70mph'] != $rt_results_level_3[0]['rt3_70mph'])
 		{
 			$rt3_70mph = new Zend_Form_Element_Text('rt3_70mph');
-			$rt3_70mph->setValue($form1_Values['rt3_70mph']);
+			$rt3_70mph->setValue($form1_Values['rt3_70mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_70mph = new Zend_Form_Element_Text('before_rt3_70mph',array("readonly" => "readonly"));
 			$before_rt3_70mph->setLabel('0-70 Accel');
@@ -2185,7 +2212,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_80mph'] != $rt_results_level_3[0]['rt3_80mph'])
 		{
 			$rt3_80mph = new Zend_Form_Element_Text('rt3_80mph');
-			$rt3_80mph->setValue($form1_Values['rt3_80mph']);
+			$rt3_80mph->setValue($form1_Values['rt3_80mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_80mph = new Zend_Form_Element_Text('before_rt3_80mph',array("readonly" => "readonly"));
 			$before_rt3_80mph->setLabel('0-80 Accel');
@@ -2213,7 +2241,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_90mph'] != $rt_results_level_3[0]['rt3_90mph'])
 		{
 			$rt3_90mph = new Zend_Form_Element_Text('rt3_90mph');
-			$rt3_90mph->setValue($form1_Values['rt3_90mph']);
+			$rt3_90mph->setValue($form1_Values['rt3_90mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_90mph = new Zend_Form_Element_Text('before_rt3_90mph',array("readonly" => "readonly"));
 			$before_rt3_90mph->setLabel('0-90Accel');
@@ -2241,7 +2270,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_100_mph'] != $rt_results_level_2[0]['rt2_100_mph'])
 		{
 			$rt2_100mph = new Zend_Form_Element_Text('rt2_100_mph');
-			$rt2_100mph->setValue($form1_Values['rt2_100_mph']);
+			$rt2_100mph->setValue($form1_Values['rt2_100_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_100mph = new Zend_Form_Element_Text('before_rt2_100mph',array("readonly" => "readonly"));
 			$before_rt2_100mph->setLabel('0-100Accel');
@@ -2269,7 +2299,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_110mph'] != $rt_results_level_3[0]['rt3_110mph'])
 		{
 			$rt3_110mph = new Zend_Form_Element_Text('rt3_110mph');
-			$rt3_110mph->setValue($form1_Values['rt3_110mph']);
+			$rt3_110mph->setValue($form1_Values['rt3_110mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_110mph = new Zend_Form_Element_Text('before_rt3_110mph',array("readonly" => "readonly"));
 			$before_rt3_110mph->setLabel('0-110Accel');
@@ -2297,7 +2328,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_120mph'] != $rt_results_level_3[0]['rt3_120mph'])
 		{
 			$rt3_120mph = new Zend_Form_Element_Text('rt3_120mph');
-			$rt3_120mph->setValue($form1_Values['rt3_120mph']);
+			$rt3_120mph->setValue($form1_Values['rt3_120mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_120mph = new Zend_Form_Element_Text('before_rt3_120mph',array("readonly" => "readonly"));
 			$before_rt3_120mph->setLabel('0-120Accel');
@@ -2325,7 +2357,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_130_mph'] != $rt_results_level_2[0]['rt2_130_mph'])
 		{
 			$rt2_130mph = new Zend_Form_Element_Text('rt2_130_mph');
-			$rt2_130mph->setValue($form1_Values['rt2_130_mph']);
+			$rt2_130mph->setValue($form1_Values['rt2_130_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_130mph = new Zend_Form_Element_Text('before_rt2_130mph',array("readonly" => "readonly"));
 			$before_rt2_130mph->setLabel('0-130 Accel');
@@ -2353,7 +2386,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_140mph'] != $rt_results_level_3[0]['rt3_140mph'])
 		{
 			$rt3_140mph = new Zend_Form_Element_Text('rt3_140mph');
-			$rt3_140mph->setValue($form1_Values['rt3_140mph']);
+			$rt3_140mph->setValue($form1_Values['rt3_140mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_140mph = new Zend_Form_Element_Text('before_rt3_140mph',array("readonly" => "readonly"));
 			$before_rt3_140mph->setLabel('0-140 Accel');
@@ -2381,7 +2415,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_150mph'] != $rt_results_level_3[0]['rt3_150mph'])
 		{
 			$rt3_150mph = new Zend_Form_Element_Text('rt3_150mph');
-			$rt3_150mph->setValue($form1_Values['rt3_150mph']);
+			$rt3_150mph->setValue($form1_Values['rt3_150mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_150mph = new Zend_Form_Element_Text('before_rt3_150mph',array("readonly" => "readonly"));
 			$before_rt3_150mph->setLabel('0-150 Accel');
@@ -2409,7 +2444,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_160mph'] != $rt_results_level_3[0]['rt3_160mph'])
 		{
 			$rt3_160mph = new Zend_Form_Element_Text('rt3_160mph');
-			$rt3_160mph->setValue($form1_Values['rt3_160mph']);
+			$rt3_160mph->setValue($form1_Values['rt3_160mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_160mph = new Zend_Form_Element_Text('before_rt3_160mph',array("readonly" => "readonly"));
 			$before_rt3_160mph->setLabel('0-160 Accel');
@@ -2437,7 +2473,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_170mph'] != $rt_results_level_3[0]['rt3_170mph'])
 		{
 			$rt3_170mph = new Zend_Form_Element_Text('rt3_170mph');
-			$rt3_170mph->setValue($form1_Values['rt3_170mph']);
+			$rt3_170mph->setValue($form1_Values['rt3_170mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_170mph = new Zend_Form_Element_Text('before_rt3_170mph',array("readonly" => "readonly"));
 			$before_rt3_170mph->setLabel('0-170 Accel');
@@ -2465,7 +2502,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_180mph'] != $rt_results_level_3[0]['rt3_180mph'])
 		{
 			$rt3_180mph = new Zend_Form_Element_Text('rt3_180mph');
-			$rt3_180mph->setValue($form1_Values['rt3_180mph']);
+			$rt3_180mph->setValue($form1_Values['rt3_180mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_180mph = new Zend_Form_Element_Text('before_rt3_180mph',array("readonly" => "readonly"));
 			$before_rt3_180mph->setLabel('0-180 Accel');
@@ -2493,7 +2531,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_190mph'] != $rt_results_level_3[0]['rt3_190mph'])
 		{
 			$rt3_190mph = new Zend_Form_Element_Text('rt3_190mph');
-			$rt3_190mph->setValue($form1_Values['rt3_190mph']);
+			$rt3_190mph->setValue($form1_Values['rt3_190mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_190mph = new Zend_Form_Element_Text('before_rt3_190mph',array("readonly" => "readonly"));
 			$before_rt3_190mph->setLabel('0-190 Accel');
@@ -2521,7 +2560,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_200mph'] != $rt_results_level_3[0]['rt3_200mph'])
 		{
 			$rt3_200mph = new Zend_Form_Element_Text('rt3_200mph');
-			$rt3_200mph->setValue($form1_Values['rt3_200mph']);
+			$rt3_200mph->setValue($form1_Values['rt3_200mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_200mph = new Zend_Form_Element_Text('before_rt3_200mph',array("readonly" => "readonly"));
 			$before_rt3_200mph->setLabel('0-200 Accel');
@@ -2549,7 +2589,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_ss60'] != $rt_results_main[0]['rt_ss60'])
 		{
 			$rt_ss60 = new Zend_Form_Element_Text('rt_ss60');
-			$rt_ss60->setValue($form1_Values['rt_ss60']);
+			$rt_ss60->setValue($form1_Values['rt_ss60'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt_ss60 = new Zend_Form_Element_Text('before_rt_ss60',array("readonly" => "readonly"));
 			$before_rt_ss60->setLabel('5-60 ss Accel');
@@ -2577,7 +2618,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_30_50TG'] != $rt_results_level_2[0]['rt2_30_50TG'])
 		{
 			$rt2_30_50TG = new Zend_Form_Element_Text('rt2_30_50TG');
-			$rt2_30_50TG->setValue($form1_Values['rt2_30_50TG']);
+			$rt2_30_50TG->setValue($form1_Values['rt2_30_50TG'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_30_50TG = new Zend_Form_Element_Text('before_rt2_30_50TG',array("readonly" => "readonly"));
 			$before_rt2_30_50TG->setLabel('Top-Gear Accel 30-50');
@@ -2605,7 +2647,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_50_70TG'] != $rt_results_level_2[0]['rt2_50_70TG'])
 		{
 			$rt2_50_70TG = new Zend_Form_Element_Text('rt2_50_70TG');
-			$rt2_50_70TG->setValue($form1_Values['rt2_50_70TG']);
+			$rt2_50_70TG->setValue($form1_Values['rt2_50_70TG'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_50_70TG = new Zend_Form_Element_Text('before_rt2_50_70TG',array("readonly" => "readonly"));
 			$before_rt2_50_70TG->setLabel('Top-Gear Accel 50-70');
@@ -2633,7 +2676,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_sum_of_tg_times'] != $rt_results_level_2[0]['rt2_sum_of_tg_times'])
 		{
 			$rt2_sum_of_tg_times = new Zend_Form_Element_Text('rt2_sum_of_tg_times');
-			$rt2_sum_of_tg_times->setValue($form1_Values['rt2_sum_of_tg_times']);
+			$rt2_sum_of_tg_times->setValue($form1_Values['rt2_sum_of_tg_times'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_sum_of_tg_times = new Zend_Form_Element_Text('before_rt2_sum_of_tg_times',array("readonly" => "readonly"));
 			$before_rt2_sum_of_tg_times->setLabel('Sum of the above 2');
@@ -2661,7 +2705,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_quarter_time'] != $rt_results_main[0]['rt_quarter_time'])
 		{
 			$rt_quarter_time = new Zend_Form_Element_Text('rt_quarter_time');
-			$rt_quarter_time->setValue($form1_Values['rt_quarter_time']);
+			$rt_quarter_time->setValue($form1_Values['rt_quarter_time'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt_quarter_time = new Zend_Form_Element_Text('before_rt_quarter_time',array("readonly" => "readonly"));
 			$before_rt_quarter_time->setLabel('Quarter Mile Time');
@@ -2689,7 +2734,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_speed_qtr_mile_speed_trap'] != $rt_results_main[0]['rt_speed_qtr_mile_speed_trap'])
 		{
 			$rt_speed_qtr_mile_speed_trap = new Zend_Form_Element_Text('rt_speed_qtr_mile_speed_trap');
-			$rt_speed_qtr_mile_speed_trap->setValue($form1_Values['rt_speed_qtr_mile_speed_trap']);
+			$rt_speed_qtr_mile_speed_trap->setValue($form1_Values['rt_speed_qtr_mile_speed_trap'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_speed_qtr_mile_speed_trap = new Zend_Form_Element_Text('before_rt_speed_qtr_mile_speed_trap',array("readonly" => "readonly"));
 			$before_rt_speed_qtr_mile_speed_trap->setLabel('Quarter Trap Speed');
@@ -2805,7 +2851,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_70_mph_braking'] != $rt_results_main[0]['rt_70_mph_braking'])
 		{
 			$rt_70_mph_braking = new Zend_Form_Element_Text('rt_70_mph_braking');
-			$rt_70_mph_braking->setValue($form1_Values['rt_70_mph_braking']);
+			$rt_70_mph_braking->setValue($form1_Values['rt_70_mph_braking'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_70_mph_braking = new Zend_Form_Element_Text('before_rt_70_mph_braking',array("readonly" => "readonly"));
 			$before_rt_70_mph_braking->setLabel('Braking from 70');
@@ -2861,7 +2908,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_emergency_lane_change'] != $rt_results_level_2[0]['rt2_emergency_lane_change'])
 		{
 			$rt2_emergency_lane_change = new Zend_Form_Element_Text('rt2_emergency_lane_change');
-			$rt2_emergency_lane_change->setValue($form1_Values['rt2_emergency_lane_change']);
+			$rt2_emergency_lane_change->setValue($form1_Values['rt2_emergency_lane_change'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_emergency_lane_change = new Zend_Form_Element_Text('before_rt2_emergency_lane_change',array("readonly" => "readonly"));
 			$before_rt2_emergency_lane_change->setLabel('MPH in Lane Change');
@@ -2889,7 +2937,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_slalom'] != $rt_results_main[0]['rt_slalom'])
 		{
 			$rt_slalom = new Zend_Form_Element_Text('rt_slalom');
-			$rt_slalom->setValue($form1_Values['rt_slalom']);
+			$rt_slalom->setValue($form1_Values['rt_slalom'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt_slalom = new Zend_Form_Element_Text('before_rt_slalom',array("readonly" => "readonly"));
 			$before_rt_slalom->setLabel('Slalom Speed');
@@ -2948,7 +2997,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_fuel_cap'] != $rt_results_level_3[0]['rt3_fuel_cap'])
 		{
 			$rt3_fuel_cap = new Zend_Form_Element_Text('rt3_fuel_cap');
-			$rt3_fuel_cap->setValue($form1_Values['rt3_fuel_cap']);
+			$rt3_fuel_cap->setValue($form1_Values['rt3_fuel_cap'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_fuel_cap = new Zend_Form_Element_Text('before_rt3_fuel_cap',array("readonly" => "readonly"));
 			$before_rt3_fuel_cap->setLabel('Fuel Capacity');
@@ -3089,7 +3139,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_cd_observed_fe'] != $rt_results_main[0]['rt_cd_observed_fe'])
 		{
 			$rt_cd_observed_fe = new Zend_Form_Element_Text('rt_cd_observed_fe');
-			$rt_cd_observed_fe->setValue($form1_Values['rt_cd_observed_fe']);
+			$rt_cd_observed_fe->setValue($form1_Values['rt_cd_observed_fe'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_cd_observed_fe = new Zend_Form_Element_Text('before_rt_cd_observed_fe',array("readonly" => "readonly"));
 			$before_rt_cd_observed_fe->setLabel('C/D Observed Economy');
@@ -3118,7 +3169,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_sound_level_idle'] != $rt_results_level_2[0]['rt2_sound_level_idle'])
 		{
 			$rt2_sound_level_idle = new Zend_Form_Element_Text('rt2_sound_level_idle');
-			$rt2_sound_level_idle->setValue($form1_Values['rt2_sound_level_idle']);
+			$rt2_sound_level_idle->setValue($form1_Values['rt2_sound_level_idle'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_sound_level_idle = new Zend_Form_Element_Text('before_rt2_sound_level_idle',array("readonly" => "readonly"));
 			$before_rt2_sound_level_idle->setLabel('Sound Level Idle');
@@ -3149,7 +3201,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$rt2_wot->setValue($form1_Values['rt2_wot']);
 			
 			$before_rt2_wot = new Zend_Form_Element_Text('before_rt2_wot',array("readonly" => "readonly"));
-			$before_rt2_wot->setLabel('DB at Wot');
+			$before_rt2_wot->setLabel('DB at Wot')
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			if($rt_results_level_2)
 										$before_rt2_wot->setValue($rt_results_level_2[0]['rt2_wot']);
@@ -3174,7 +3227,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_70cr'] != $rt_results_level_2[0]['rt2_70cr'])
 		{
 			$rt2_70cr = new Zend_Form_Element_Text('rt2_70cr');
-			$rt2_70cr->setValue($form1_Values['rt2_70cr']);
+			$rt2_70cr->setValue($form1_Values['rt2_70cr'])
+               ->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_70cr = new Zend_Form_Element_Text('before_rt2_70cr',array("readonly" => "readonly"));
 			$before_rt2_70cr->setLabel('DB at 70 MPH Cruise');
@@ -3202,7 +3256,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_70co'] != $rt_results_level_3[0]['rt3_70co'])
 		{
 			$rt3_70co = new Zend_Form_Element_Text('rt3_70co');
-			$rt3_70co->setValue($form1_Values['rt3_70co']);
+			$rt3_70co->setValue($form1_Values['rt3_70co'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt3_70co = new Zend_Form_Element_Text('before_rt3_70co',array("readonly" => "readonly"));
 			$before_rt3_70co->setLabel('BD at 70 Coast');
@@ -3230,7 +3285,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_oil'] != $rt_results_level_3[0]['rt3_lt_oil'])
 		{
 			$rt3_lt_oil = new Zend_Form_Element_Text('rt3_lt_oil');
-			$rt3_lt_oil->setValue($form1_Values['rt3_lt_oil']);
+			$rt3_lt_oil->setValue($form1_Values['rt3_lt_oil'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_oil = new Zend_Form_Element_Text('before_rt3_lt_oil',array("readonly" => "readonly"));
 			$before_rt3_lt_oil->setLabel('Long-term Oil Used');
@@ -3258,7 +3314,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_stps_sched'] != $rt_results_level_3[0]['rt3_lt_stps_sched'])
 		{
 			$rt3_lt_stps_sched = new Zend_Form_Element_Text('rt3_lt_stps_sched');
-			$rt3_lt_stps_sched->setValue($form1_Values['rt3_lt_stps_sched']);
+			$rt3_lt_stps_sched->setValue($form1_Values['rt3_lt_stps_sched'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_stps_sched = new Zend_Form_Element_Text('before_rt3_lt_stps_sched',array("readonly" => "readonly"));
 			$before_rt3_lt_stps_sched->setLabel('LT Scheduled Stops');
@@ -3286,7 +3343,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_stps_unsched'] != $rt_results_level_3[0]['rt3_lt_stps_unsched'])
 		{
 			$rt3_lt_stps_unsched = new Zend_Form_Element_Text('rt3_lt_stps_unsched');
-			$rt3_lt_stps_unsched->setValue($form1_Values['rt3_lt_stps_unsched']);
+			$rt3_lt_stps_unsched->setValue($form1_Values['rt3_lt_stps_unsched'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_stps_unsched = new Zend_Form_Element_Text('before_rt3_lt_stps_unsched',array("readonly" => "readonly"));
 			$before_rt3_lt_stps_unsched->setLabel('LT Unscheduled Stops');
@@ -3314,7 +3372,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_serv'] != $rt_results_level_3[0]['rt3_lt_serv'])
 		{
 			$rt3_lt_serv = new Zend_Form_Element_Text('rt3_lt_serv');
-			$rt3_lt_serv->setValue($form1_Values['rt3_lt_serv']);
+			$rt3_lt_serv->setValue($form1_Values['rt3_lt_serv'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_serv = new Zend_Form_Element_Text('before_rt3_lt_serv',array("readonly" => "readonly"));
 			$before_rt3_lt_serv->setLabel('Costs for LT Service');
@@ -3342,7 +3401,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_wear'] != $rt_results_level_3[0]['rt3_lt_wear'])
 		{
 			$rt3_lt_wear = new Zend_Form_Element_Text('rt3_lt_wear');
-			$rt3_lt_wear->setValue($form1_Values['rt3_lt_wear']);
+			$rt3_lt_wear->setValue($form1_Values['rt3_lt_wear'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_wear = new Zend_Form_Element_Text('before_rt3_lt_wear',array("readonly" => "readonly"));
 			$before_rt3_lt_wear->setLabel('Costs for LT Wear');
@@ -3371,7 +3431,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt3_lt_repair'] != $rt_results_level_3[0]['rt3_lt_repair'])
 		{
 			$rt3_lt_repiar = new Zend_Form_Element_Text('rt3_lt_repair');
-			$rt3_lt_repiar->setValue($form1_Values['rt3_lt_repair']);
+			$rt3_lt_repiar->setValue($form1_Values['rt3_lt_repair'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt3_lt_repiar = new Zend_Form_Element_Text('before_rt3_lt_repair',array("readonly" => "readonly"));
 			$before_rt3_lt_repiar->setLabel('Costs for LT Repair');
@@ -3399,7 +3460,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_50_mph'] != $rt_results_level_2[0]['rt2_50_mph'])
 		{
 			$rt2_50_mph = new Zend_Form_Element_Text('rt2_50_mph');
-			$rt2_50_mph->setValue($form1_Values['rt2_50_mph']);
+			$rt2_50_mph->setValue($form1_Values['rt2_50_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_50_mph = new Zend_Form_Element_Text('before_rt2_50_mph',array("readonly" => "readonly"));
 			$before_rt2_50_mph->setLabel('rt2_50_mph');
@@ -3430,7 +3492,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_70_mph'] != $rt_results_level_2[0]['rt2_70_mph'])
 		{
 			$rt2_70_mph = new Zend_Form_Element_Text('rt2_70_mph');
-			$rt2_70_mph->setValue($form1_Values['rt2_70_mph']);
+			$rt2_70_mph->setValue($form1_Values['rt2_70_mph'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
 			
 			$before_rt2_70_mph = new Zend_Form_Element_Text('before_rt2_70_mph',array("readonly" => "readonly"));
 			$before_rt2_70_mph->setLabel('rt2_70_mph');
@@ -3718,7 +3781,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		$db = Zend_Db_Table::getDefaultAdapter(); 
 		
 		$select = $db->select()
-	             ->from(array('rtd'=>'rt_dropdown_descriptions'),array('rtd.id_descriptions As dropdownid', 'rtd.description As description'))
+	             ->from(array('rtd'=>'rt_dropdown_descriptions'),array('rtl.id As dropdownid', 'rtd.description As description'))
 	             ->joinInner(array('rtl'=>'rt_dropdown_lookup'),'rtl.id_descriptions=rtd.id_descriptions')
 	             ->joinInner(array('rtdt'=>'rt_dropdown_types'),'rtdt.id_types=rtl.id_types')
 	             ->where('rtdt.rt_types = ?', $type)

@@ -38,6 +38,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-10 Accel',
 		'tabindex' => 66,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$bg_year_ids_prepared[]= "Select from list";
@@ -68,6 +69,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-20 Accel',
 		'tabindex' => 67,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		
@@ -98,7 +100,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-30 Accel',
 		'tabindex' => 68,
-		'onkeydown' => 'return onlyDigits(event);',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		));
 		
 		
@@ -145,6 +147,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-40 Accel',
 		'tabindex' => 69,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		 
 		
@@ -188,6 +191,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-50 Accel',
 		'tabindex' => 70,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$select = $db->select()
@@ -215,6 +219,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-60 Accel',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 71,
 		));
 		
@@ -236,6 +241,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-70 Accel',
 		'tabindex' => 72,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$select = $db->select()
@@ -262,6 +268,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-80 Accel',
 		'tabindex' => 73,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_issue_year', array(
@@ -269,6 +276,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Mag Issue Year',
 		'tabindex' => 9,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 
 		$this->addElement('Text', 'rt3_90mph', array(
@@ -276,6 +284,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-90 Accel',
 		'tabindex' => 74,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_issue', array(
@@ -289,6 +298,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-100 Accel',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 75,
 		));
 						
@@ -305,6 +315,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-110 Accel',
 		'tabindex' => 76,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
@@ -324,6 +335,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-120 Accel',
 		'tabindex' => 77,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
@@ -342,6 +354,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '0-130 Accel',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 78,
 		));
 		
@@ -362,6 +375,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-140 Accel',
 		'tabindex' => 79,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt2_passengers', array(
@@ -369,6 +383,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Number of Passengers',
 		'tabindex' => 15,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_150mph', array(
@@ -376,6 +391,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-150 Accel',
 		'tabindex' => 80,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_doors', array(
@@ -390,6 +406,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-160 Accel',
 		'tabindex' => 81,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$rt_controlled_body_prepared = $this->gatMultioptions("Body");
@@ -409,6 +426,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-170 Accel',
 		'tabindex' => 82,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_base_price', array(
@@ -423,6 +441,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-180 Accel',
 		'tabindex' => 83,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_base_price_notes', array(
@@ -437,6 +456,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-190 Accel',
 		'tabindex' => 84,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_price_as_tested', array(
@@ -451,6 +471,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => '0-200 Accel',
 		'tabindex' => 85,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_price_as_tested_notes', array(
@@ -464,6 +485,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => '5-60 ss accel',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 86,
 		));
 		
@@ -483,6 +505,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Top-Gear Accel 30-50l',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 87,
 		));
 		
@@ -497,6 +520,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Top-Gear Accel 50-70l',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 88,
 		));
 		
@@ -505,6 +529,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Cylinder Bore',
 		'tabindex' => 24,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt2_sum_of_tg_times', array(
@@ -512,6 +537,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Sum of the above 2',
 		'tabindex' => 89,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt3_stroke_mm', array(
@@ -519,12 +545,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Cylinder Stroke',
 		'tabindex' => 25,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt_quarter_time', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Quarter Mile Time',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 90,
 		));
 		
@@ -532,6 +560,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Engine Disp',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 26,
 		));
 		
@@ -539,6 +568,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Quarter Trap Speed',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 91,
 		));
 		
@@ -547,6 +577,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Compression Ratio',
 		'tabindex' => 27,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 	
 		$this->addElement('Text', 'rt_top_speed', array(
@@ -594,12 +625,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Valves Per Cylinder',
 		'tabindex' => 30,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt_70_mph_braking', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Braking from 70',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 95,
 		));
 
@@ -627,12 +660,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Boost in psi',
 		'tabindex' => 32,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt2_emergency_lane_change', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'MPH in Lane Change',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 97,
 		));
 		
@@ -647,6 +682,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Slalom Speed',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 98,
 		));
 		
@@ -654,6 +690,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Peak Horsepower RPM',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 34,
 		));
 		
@@ -681,6 +718,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Fuel Capacity',
 		'tabindex' => 100,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 
 		$this->addElement('Text', 'rt_peak_torque', array(
@@ -744,12 +782,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Spec pow (hp/liter)',
 		'tabindex' => 40,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_cd_observed_fe', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'C/D Observed Economy',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 105,
 		));
 		
@@ -757,6 +797,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Power/Weight (hp/lb)',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 41,
 		));
 		
@@ -765,6 +806,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Sound Level Idle',
 		'tabindex' => 106,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$rt_controlled_transmission_prepared= $this->gatMultioptions("Transmission");
@@ -784,6 +826,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'DB at Wot',
 		'tabindex' => 107,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 
 		$this->addElement('Text', 'rt3_final_drive_ratio', array(
@@ -798,13 +841,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'DB at 70 MPH Cruise',
 		'tabindex' => 108,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_max_mph_1000_rpm', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Top Gear mph/1000rpm',
-		'tabindex' => 44
+		'tabindex' => 44,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt3_70co', array(
@@ -812,13 +857,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'DB at 70 Coast',
 		'tabindex' => 109,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 
 		$this->addElement('Text', 'rt3_wheelbase', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Wheelbase',
-		'tabindex' => 45
+		'tabindex' => 45,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt3_lt_oil', array(
@@ -826,13 +873,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Long-term Oil Used',
 		'tabindex' => 110,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_length', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Length',
-		'tabindex' => 46
+		'tabindex' => 46,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt3_lt_stps_sched', array(
@@ -840,13 +889,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'LT Scheduled Stops',
 		'tabindex' => 111,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_width', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Width',
-		'tabindex' => 47
+		'tabindex' => 47,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt3_lt_stps_unsched', array(
@@ -854,6 +905,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'LT Unscheduled Stops',
 		'tabindex' => 112,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_height', array(
@@ -868,6 +920,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Costs for LT Service',
 		'tabindex' => 113,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_frontal_area', array(
@@ -882,6 +935,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Costs for LT Wear',
 		'tabindex' => 114,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_frontal_area_notes', array(
@@ -896,6 +950,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Costs for LT Repair',
 		'tabindex' => 115,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_cd', array(
@@ -909,6 +964,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'rt2_50_mph',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 116,
 		));
 		
@@ -916,6 +972,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Curb Weight',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 52
 		));
 		
@@ -924,12 +981,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'rt2_70_mph',
 		'tabindex' => 117,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt_percent_on_front', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Pct. Weight on Front',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 53
 		));
 		
@@ -944,6 +1003,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Pct. Weight on Rear',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 54
 		));
 		
@@ -1009,6 +1069,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Vol Behind Mid Row',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 57
 		));
 		
@@ -1056,7 +1117,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Turning Radius',
-		'tabindex' => 60
+		'tabindex' => 60,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$rt_original_table_ids_prepared[0]= "Select from list";
