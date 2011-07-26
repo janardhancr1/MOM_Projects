@@ -306,7 +306,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_make->setLabel('Make');
 			
 			if($rt_results_main)
-								$before_rt_controlled_make->setValue($rt_results_main[0]['rt_controlled_make']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_make']);
+				$before_rt_controlled_make->setValue($val);
+			}
 			
 			$rt_controlled_make->setDecorators(array(
 			'ViewHelper',
@@ -386,7 +389,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt_issue'] != $rt_results_main[0]['rt_issue'])
 		{
-			$rt_issue = new Zend_Form_Element_Text('rt_issue');
+			$rt_issue = new Zend_Form_Element_Select('rt_issue',array('style'=>'width:150px;'));
+			$rt_issue->addMultioptions(array('0'=>'Select from list','01'=>'January', '02' => 'February',
+								'03'=>'March','4'=>'April','05'=>'May','06'=>'June','07'=>'July',
+								'08'=>'August','09'=>'September','10'=>'October','11'=>'November','12'=>'December'));
 			$rt_issue->setValue($form1_Values['rt_issue']);
 			
 			$before_rt_issue = new Zend_Form_Element_Text('before_rt_issue',array("readonly" => "readonly"));
@@ -458,7 +464,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_sort->setLabel('Production Type');
 			
 			if($rt_results_main)
-								$before_rt_controlled_sort->setValue($rt_results_main[0]['rt_controlled_sort']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_sort']);
+				$before_rt_controlled_sort->setValue($val);
+			}
 			
 			$rt_controlled_sort->setDecorators(array(
 			'ViewHelper',
@@ -489,7 +498,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_engine->setLabel('Engine Location');
 			
 			if($rt_results_main)
-								$before_rt_controlled_engine->setValue($rt_results_main[0]['rt_controlled_engine']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_engine']);
+				$before_rt_controlled_engine->setValue($val);
+			}
 			
 			$rt_controlled_engine->setDecorators(array(
 			'ViewHelper',
@@ -520,7 +532,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_drive->setLabel('Driven Wheels');
 			
 			if($rt_results_main)
-								$before_rt_controlled_drive->setValue($rt_results_main[0]['rt_controlled_drive']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_drive']);
+				$before_rt_controlled_drive->setValue($val);
+			}
 			
 			$rt_controlled_drive->setDecorators(array(
 			'ViewHelper',
@@ -571,7 +586,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_doors'] != $rt_results_main[0]['rt_doors'])
 		{
 			$rt_doors = new Zend_Form_Element_Text('rt_doors');
-			$rt_doors->setValue($form1_Values['rt_doors']);
+			$rt_doors->setValue($form1_Values['rt_doors'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_doors = new Zend_Form_Element_Text('before_rt_doors',array("readonly" => "readonly"));
 			$before_rt_doors->setLabel('Number of Doors');
@@ -608,7 +624,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_body->setLabel('Body Style');
 			
 			if($rt_results_main)
-								$before_rt_controlled_body->setValue($rt_results_main[0]['rt_controlled_body']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_body']);
+				$before_rt_controlled_body->setValue($val);
+			}
 			
 			$rt_controlled_body->setDecorators(array(
 			'ViewHelper',
@@ -630,7 +649,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_base_price'] != $rt_results_main[0]['rt_base_price'])
 		{
 			$rt_base_price = new Zend_Form_Element_Text('rt_base_price');
-			$rt_base_price->setValue($form1_Values['rt_base_price']);
+			$rt_base_price->setValue($form1_Values['rt_base_price'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_base_price = new Zend_Form_Element_Text('before_rt_base_price',array("readonly" => "readonly"));
 			$before_rt_base_price->setLabel('Base Price');
@@ -686,7 +706,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_price_as_tested'] != $rt_results_main[0]['rt_price_as_tested'])
 		{
 			$rt_price_as_tested = new Zend_Form_Element_Text('rt_price_as_tested');
-			$rt_price_as_tested->setValue($form1_Values['rt_price_as_tested']);
+			$rt_price_as_tested->setValue($form1_Values['rt_price_as_tested'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_price_as_tested = new Zend_Form_Element_Text('before_rt_price_as_tested',array("readonly" => "readonly"));
 			$before_rt_price_as_tested->setLabel('Price as Tested');
@@ -752,8 +773,12 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_type = new Zend_Form_Element_Text('before_rt_controlled_type',array("readonly" => "readonly"));
 			$before_rt_controlled_type->setLabel('Engine Type');
 			
+			
 			if($rt_results_main)
-								$before_rt_controlled_type->setValue($rt_results_main[0]['rt_controlled_type']);
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_type']);
+				$before_rt_controlled_type->setValue($val);
+			}
 			
 			$rt_controlled_type->setDecorators(array(
 			'ViewHelper',
@@ -1015,8 +1040,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_turbo_superchg->setLabel('Forced Induction');
 			
 			if($rt_results_main)
-								$before_rt_controlled_turbo_superchg->setValue($rt_results_main[0]['rt_controlled_turbo_superchg']);
-			
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_turbo_superchg']);
+				$before_rt_controlled_turbo_superchg->setValue($val);
+			}
+											
 			$rt_controlled_turbo_superchg->setDecorators(array(
 			'ViewHelper',
 			'Description',
@@ -1066,7 +1094,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_peak_hp'] != $rt_results_main[0]['rt_peak_hp'])
 		{
 			$rt_peak_hp = new Zend_Form_Element_Text('rt_peak_hp');
-			$rt_peak_hp->setValue($form1_Values['rt_peak_hp']);
+			$rt_peak_hp->setValue($form1_Values['rt_peak_hp'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_peak_hp = new Zend_Form_Element_Text('before_rt_peak_hp',array("readonly" => "readonly"));
 			$before_rt_peak_hp->setLabel('Peak Horsepower');
@@ -1151,7 +1180,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_peak_torque'] != $rt_results_main[0]['rt_peak_torque'])
 		{
 			$rt_peak_torque = new Zend_Form_Element_Text('rt_peak_torque');
-			$rt_peak_torque->setValue($form1_Values['rt_peak_torque']);
+			$rt_peak_torque->setValue($form1_Values['rt_peak_torque'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_peak_torque = new Zend_Form_Element_Text('before_rt_peak_torque',array("readonly" => "readonly"));
 			$before_rt_peak_torque->setLabel('Peak Torque');
@@ -1330,8 +1360,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_transmission->setLabel('Transmission Type');
 			
 			if($rt_results_main)
-								$before_rt_controlled_transmission->setValue($rt_results_main[0]['rt_controlled_transmission']);
-			
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_transmission']);
+				$before_rt_controlled_transmission->setValue($val);
+			}
+											
 			$rt_controlled_transmission->setDecorators(array(
 			'ViewHelper',
 			'Description',
@@ -1705,7 +1738,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt2_controlled_airbags->setLabel('Listing of Airbag Positions');
 			
 			if($rt_results_level_2)
-										$before_rt2_controlled_airbags->setValue($rt_results_level_2[0]['rt2_controlled_airbags']);
+			{
+				$val = $this->getData($rt_results_level_2[0]['rt2_controlled_airbags']);
+				$before_rt2_controlled_airbags->setValue($val);
+			}
 			
 			$rt2_controlled_airbags->setDecorators(array(
 			'ViewHelper',
@@ -1730,7 +1766,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$rt2_int_vol_front->setValue($form1_Values['rt2_int_vol_front']);
 			
 			$before_rt2_int_vol_front = new Zend_Form_Element_Text('before_rt2_int_vol_front',array("readonly" => "readonly"));
-			$before_rt2_int_vol_front->setLabel('Interior Volume');
+			$before_rt2_int_vol_front->setLabel('Interior Volume Front');
 			
 			if($rt_results_level_2)
 									  $before_rt2_int_vol_front->setValue($rt_results_level_2[0]['rt2_int_vol_front']);
@@ -1868,7 +1904,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt2_anti_lock'] != $rt_results_level_2[0]['rt2_anti_lock'])
 		{
-			$rt2_anti_lock = new Zend_Form_Element_Text('rt2_anti_lock');
+			$rt2_anti_lock = new Zend_Form_Element_Select('rt2_anti_lock',array('style'=>'width:150px;'));
+			$rt2_anti_lock->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_anti_lock->setValue($form1_Values['rt2_anti_lock']);
 			
 			$before_rt2_anti_lock = new Zend_Form_Element_Text('before_rt2_anti_lock',array("readonly" => "readonly"));
@@ -1896,7 +1933,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt2_traction_control'] != $rt_results_level_2[0]['rt2_traction_control'])
 		{
-			$rt2_traction_control = new Zend_Form_Element_Text('rt2_traction_control');
+			$rt2_traction_control = new Zend_Form_Element_Select('rt2_traction_control',array('style'=>'width:150px;'));
+			$rt2_traction_control->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_traction_control->setValue($form1_Values['rt2_traction_control']);
 			
 			$before_rt2_traction_control = new Zend_Form_Element_Text('before_rt2_traction_control',array("readonly" => "readonly"));
@@ -1924,7 +1962,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt2_trac_defeatable'] != $rt_results_level_2[0]['rt2_trac_defeatable'])
 		{
-			$rt2_trac_defeatable = new Zend_Form_Element_Text('rt2_trac_defeatable');
+			$rt2_trac_defeatable = new Zend_Form_Element_Select('rt2_trac_defeatable',array('style'=>'width:150px;'));
+			$rt2_trac_defeatable->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_trac_defeatable->setValue($form1_Values['rt2_trac_defeatable']);
 			
 			$before_rt2_trac_defeatable = new Zend_Form_Element_Text('before_rt2_trac_defeatable',array("readonly" => "readonly"));
@@ -1952,7 +1991,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		if($form1_Values['rt2_stability_control'] != $rt_results_level_2[0]['rt2_stability_control'])
 		{
-			$rt2_stability_control = new Zend_Form_Element_Text('rt2_stability_control');
+			$rt2_stability_control = new Zend_Form_Element_Select('rt2_stability_control',array('style'=>'width:150px;'));
+			$rt2_stability_control->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_stability_control->setValue($form1_Values['rt2_stability_control']);
 			
 			$before_rt2_stability_control = new Zend_Form_Element_Text('before_rt2_stability_control',array("readonly" => "readonly"));
@@ -2763,7 +2803,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt_top_speed'] != $rt_results_main[0]['rt_top_speed'])
 		{
 			$rt_top_speed = new Zend_Form_Element_Text('rt_top_speed');
-			$rt_top_speed->setValue($form1_Values['rt_top_speed']);
+			$rt_top_speed->setValue($form1_Values['rt_top_speed'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_top_speed = new Zend_Form_Element_Text('before_rt_top_speed',array("readonly" => "readonly"));
 			$before_rt_top_speed->setLabel('Top Speed');
@@ -2801,8 +2842,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_ts_limit->setLabel('Top Speed Limit');
 			
 			if($rt_results_main)
-								$before_rt_controlled_ts_limit->setValue($rt_results_main[0]['rt_controlled_ts_limit']);
-			
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_ts_limit']);
+				$before_rt_controlled_ts_limit->setValue($val);
+			}
+											
 			$rt_controlled_ts_limit->setDecorators(array(
 			'ViewHelper',
 			'Description',
@@ -2974,9 +3018,13 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_rt_controlled_fuel = new Zend_Form_Element_Text('before_rt_controlled_fuel',array("readonly" => "readonly"));
 			$before_rt_controlled_fuel->setLabel('Fuel Type');
 			
-			if($rt_results_main)
-								$before_rt_controlled_fuel->setValue($rt_results_main[0]['rt_controlled_fuel']);
 			
+			if($rt_results_main)
+			{
+				$val = $this->getData($rt_results_main[0]['rt_controlled_fuel']);
+				$before_rt_controlled_fuel->setValue($val);
+			}
+											
 			$rt_controlled_fuel->setDecorators(array(
 			'ViewHelper',
 			'Description',
@@ -3026,7 +3074,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_epa_city_fe'] != $rt_results_level_2[0]['rt2_epa_city_fe'])
 		{
 			$rt2_epa_city_fe = new Zend_Form_Element_Text('rt2_epa_city_fe');
-			$rt2_epa_city_fe->setValue($form1_Values['rt2_epa_city_fe']);
+			$rt2_epa_city_fe->setValue($form1_Values['rt2_epa_city_fe'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_epa_city_fe = new Zend_Form_Element_Text('before_rt2_epa_city_fe',array("readonly" => "readonly"));
 			$before_rt2_epa_city_fe->setLabel('EPA City');
@@ -3083,7 +3132,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['rt2_highway_fe'] != $rt_results_level_2[0]['rt2_highway_fe'])
 		{
 			$rt2_highway_fe = new Zend_Form_Element_Text('rt2_highway_fe');
-			$rt2_highway_fe->setValue($form1_Values['rt2_highway_fe']);
+			$rt2_highway_fe->setValue($form1_Values['rt2_highway_fe'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_highway_fe = new Zend_Form_Element_Text('before_rt2_highway_fe',array("readonly" => "readonly"));
 			$before_rt2_highway_fe->setLabel('EPA Highway');
@@ -3798,6 +3848,21 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 				}
 		}
 		return $multioptions_prepared;
+	}
+	
+	private function getData($id)
+	{
+		 $db = Zend_Db_Table::getDefaultAdapter(); 
+		
+		 $select = $db->select()
+	         ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
+	         ->joinInner(array('rtl'=>'rt_dropdown_lookup'),'rtl.id_descriptions=rdd.id_descriptions')
+	         ->where('rtl.id =?', $id);
+	         $result = $db->query($select)->fetchAll();
+	         if(isset($result[0]))
+	         return $result[0]['desp'];
+	         else
+	         return "";
 	}
 }
 ?>

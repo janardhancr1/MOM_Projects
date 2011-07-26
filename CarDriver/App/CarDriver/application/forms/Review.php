@@ -335,7 +335,10 @@ class Application_Form_Review extends Application_Form_MainForm
 		
 		if(!empty($form1_Values['rt_issue']))
 		{
-			$rt_issue = new Zend_Form_Element_Text('rt_issue');
+			$rt_issue = new Zend_Form_Element_Select('rt_issue',array('style'=>'width:150px;'));
+			$rt_issue->addMultioptions(array('0'=>'Select from list','01'=>'January', '02' => 'February',
+								'03'=>'March','4'=>'April','05'=>'May','06'=>'June','07'=>'July',
+								'08'=>'August','09'=>'September','10'=>'October','11'=>'November','12'=>'December'));
 			$rt_issue->setValue($form1_Values['rt_issue']);
 			
 			$before_rt_issue = new Zend_Form_Element_Text('before_rt_issue',array("readonly" => "readonly"));
@@ -497,7 +500,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_doors']))
 		{
 			$rt_doors = new Zend_Form_Element_Text('rt_doors');
-			$rt_doors->setValue($form1_Values['rt_doors']);
+			$rt_doors->setValue($form1_Values['rt_doors'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_doors = new Zend_Form_Element_Text('before_rt_doors',array("readonly" => "readonly"));
 			$before_rt_doors->setLabel('Number of Doors');
@@ -549,7 +553,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_base_price']))
 		{
 			$rt_base_price = new Zend_Form_Element_Text('rt_base_price');
-			$rt_base_price->setValue($form1_Values['rt_base_price']);
+			$rt_base_price->setValue($form1_Values['rt_base_price'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_base_price = new Zend_Form_Element_Text('before_rt_base_price',array("readonly" => "readonly"));
 			$before_rt_base_price->setLabel('Base Price');
@@ -598,7 +603,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_price_as_tested']))
 		{
 			$rt_price_as_tested = new Zend_Form_Element_Text('rt_price_as_tested');
-			$rt_price_as_tested->setValue($form1_Values['rt_price_as_tested']);
+			$rt_price_as_tested->setValue($form1_Values['rt_price_as_tested'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_price_as_tested = new Zend_Form_Element_Text('before_rt_price_as_tested',array("readonly" => "readonly"));
 			$before_rt_price_as_tested->setLabel('Price as Tested');
@@ -930,7 +936,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_peak_hp']))
 		{
 			$rt_peak_hp = new Zend_Form_Element_Text('rt_peak_hp');
-			$rt_peak_hp->setValue($form1_Values['rt_peak_hp']);
+			$rt_peak_hp->setValue($form1_Values['rt_peak_hp'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_peak_hp = new Zend_Form_Element_Text('before_rt_peak_hp',array("readonly" => "readonly"));
 			$before_rt_peak_hp->setLabel('Peak Horsepower');
@@ -1003,7 +1010,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_peak_torque']))
 		{
 			$rt_peak_torque = new Zend_Form_Element_Text('rt_peak_torque');
-			$rt_peak_torque->setValue($form1_Values['rt_peak_torque']);
+			$rt_peak_torque->setValue($form1_Values['rt_peak_torque'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_peak_torque = new Zend_Form_Element_Text('before_rt_peak_torque',array("readonly" => "readonly"));
 			$before_rt_peak_torque->setLabel('Peak Torque');
@@ -1505,7 +1513,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			$rt2_int_vol_front->setValue($form1_Values['rt2_int_vol_front']);
 			
 			$before_rt2_int_vol_front = new Zend_Form_Element_Text('before_rt2_int_vol_front',array("readonly" => "readonly"));
-			$before_rt2_int_vol_front->setLabel('Interior Volume');
+			$before_rt2_int_vol_front->setLabel('Interior Volume Front');
 			
 			$rt2_int_vol_front->setDecorators(array(
 			'ViewHelper',
@@ -1623,7 +1631,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['rt2_anti_lock']))
 		{
-			$rt2_anti_lock = new Zend_Form_Element_Text('rt2_anti_lock');
+			$rt2_anti_lock = new Zend_Form_Element_Select('rt2_anti_lock',array('style'=>'width:150px;'));
+			$rt2_anti_lock->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_anti_lock->setValue($form1_Values['rt2_anti_lock']);
 			
 			$before_rt2_anti_lock = new Zend_Form_Element_Text('before_rt2_anti_lock',array("readonly" => "readonly"));
@@ -1647,7 +1656,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['rt2_traction_control']))
 		{
-			$rt2_traction_control = new Zend_Form_Element_Text('rt2_traction_control');
+			$rt2_traction_control = new Zend_Form_Element_Select('rt2_traction_control',array('style'=>'width:150px;'));
+			$rt2_traction_control->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_traction_control->setValue($form1_Values['rt2_traction_control']);
 			
 			$before_rt2_traction_control = new Zend_Form_Element_Text('before_rt2_traction_control',array("readonly" => "readonly"));
@@ -1671,7 +1681,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['rt2_trac_defeatable']))
 		{
-			$rt2_trac_defeatable = new Zend_Form_Element_Text('rt2_trac_defeatable');
+			$rt2_trac_defeatable = new Zend_Form_Element_Select('rt2_trac_defeatable',array('style'=>'width:150px;'));
+			$rt2_trac_defeatable->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_trac_defeatable->setValue($form1_Values['rt2_trac_defeatable']);
 			
 			$before_rt2_trac_defeatable = new Zend_Form_Element_Text('before_rt2_trac_defeatable',array("readonly" => "readonly"));
@@ -1695,7 +1706,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		}
 		if(!empty($form1_Values['rt2_stability_control']))
 		{
-			$rt2_stability_control = new Zend_Form_Element_Text('rt2_stability_control');
+			$rt2_stability_control = new Zend_Form_Element_Select('rt2_stability_control',array('style'=>'width:150px;'));
+			$rt2_stability_control->addMultioptions(array('0'=>'No','1'=>'Yes'));
 			$rt2_stability_control->setValue($form1_Values['rt2_stability_control']);
 			
 			$before_rt2_stability_control = new Zend_Form_Element_Text('before_rt2_stability_control',array("readonly" => "readonly"));
@@ -2401,7 +2413,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt_top_speed']))
 		{
 			$rt_top_speed = new Zend_Form_Element_Text('rt_top_speed');
-			$rt_top_speed->setValue($form1_Values['rt_top_speed']);
+			$rt_top_speed->setValue($form1_Values['rt_top_speed'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt_top_speed = new Zend_Form_Element_Text('before_rt_top_speed',array("readonly" => "readonly"));
 			$before_rt_top_speed->setLabel('Top Speed');
@@ -2630,7 +2643,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt2_epa_city_fe']))
 		{
 			$rt2_epa_city_fe = new Zend_Form_Element_Text('rt2_epa_city_fe');
-			$rt2_epa_city_fe->setValue($form1_Values['rt2_epa_city_fe']);
+			$rt2_epa_city_fe->setValue($form1_Values['rt2_epa_city_fe'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_epa_city_fe = new Zend_Form_Element_Text('before_rt2_epa_city_fe',array("readonly" => "readonly"));
 			$before_rt2_epa_city_fe->setLabel('EPA City');
@@ -2681,7 +2695,8 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['rt2_highway_fe']))
 		{
 			$rt2_highway_fe = new Zend_Form_Element_Text('rt2_highway_fe');
-			$rt2_highway_fe->setValue($form1_Values['rt2_highway_fe']);
+			$rt2_highway_fe->setValue($form1_Values['rt2_highway_fe'])
+			->setAttrib('onkeydown' ,'return onlyDigits(event);');
 			
 			$before_rt2_highway_fe = new Zend_Form_Element_Text('before_rt2_highway_fe',array("readonly" => "readonly"));
 			$before_rt2_highway_fe->setLabel('EPA Highway');
