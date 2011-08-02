@@ -133,7 +133,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			$yearid =$session_yearid->year_id;
 			$modelid = $session_yearid->model_id;
 			$bg_submodel_ids_prepared[0]= "Select or Leave blank";
-			$objDOM = new DOMDocument(); 
+			/*$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
 			$query = '//response/data/row/year_id';
@@ -148,7 +148,26 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
 			    	$bg_submodel_ids_prepared[$id]= $name;
 			    }
-			 }
+			 }*/
+			
+			$xml = file_get_contents("http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=".$modelid."&mode=xml"); 
+			$xml = str_replace("10best", "best10", $xml); 
+			 
+			$objDOM = new DOMDocument(); 
+			$objDOM->loadXML($xml);  
+			$xpath = new DOMXPath($objDOM); 
+			$query = '//response/data/row/model_id'; 
+			 
+			$entries = $xpath->query($query); 
+			foreach( $entries as $entry) 
+			{ 
+				    if($yearid == $entry->nextSibling->nodeValue)
+				    { 	
+				    	$name  = $entry->previousSibling->nodeValue;
+				    	$id  = $entry->previousSibling->previousSibling->nodeValue;
+				    	$bg_submodel_ids_prepared[$id]= $name;
+				    }
+			 } 
 		}
 		
 		$subModel = $this->createElement('select','submodel',array('style'=>'width:130px;'))
