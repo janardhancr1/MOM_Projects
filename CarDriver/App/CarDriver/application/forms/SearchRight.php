@@ -13,7 +13,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$db = Zend_Db_Table::getDefaultAdapter(); 
 		
 		$years_prepared[0]= "Select or Leave blank";
-		$objDOM = new DOMDocument(); 
+		/*$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
 		$query = '//response/data/row/name';
@@ -28,7 +28,18 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		
 		}
 		
-		arsort($years_prepared);
+		arsort($years_prepared);*/
+		
+		$select = $db->select()
+	             ->from('bg_year')
+	             ->order('name DESC');
+        $bg_year_ids = $db->query($select)->fetchAll();
+	       
+		if (count($bg_year_ids)!=0){
+				foreach ($bg_year_ids as $Yea){
+						$years_prepared[$Yea['id']]= $Yea['name'];
+				}
+		} 
 		
 		$year = $this->createElement('select','year',array('style'=>'width:130px;'))
 		->setLabel('Year')
@@ -38,7 +49,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		$this->addElement($year);
         
 		$makes_prepared[0]= "Select or Leave blank";
-		$objDOM = new DOMDocument(); 
+		/*$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
 		$row = $objDOM->getElementsByTagName("row"); 
 		foreach( $row as $value )
@@ -50,7 +61,17 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		    $id  = $ids->item(0)->nodeValue;
 			
 		    $makes_prepared[$id]= $name;
-		 }
+		 }*/
+		$select = $db->select()
+	             ->from('bg_make')
+	             ->order('name ASC');
+        $bg_make_ids = $db->query($select)->fetchAll();
+	       
+		if (count($bg_make_ids)!=0){
+				foreach ($bg_make_ids as $Mak){
+						$makes_prepared[$Mak['id']]= $Mak['name'];
+				}
+		} 
 		
 		$make = $this->createElement('select','make',array('style'=>'width:130px;'))
 		->setLabel('Make')
@@ -63,7 +84,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 	    if(isset($session_makeid->make_id))
 	    {		
 		    $models_prepared[0]= "Select or Leave blank";
-			$objDOM = new DOMDocument(); 
+			/*$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
 			$row = $objDOM->getElementsByTagName("row"); 
 			foreach( $row as $value )
@@ -79,7 +100,19 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 				
 			    if($session_makeid->make_id == $make_id)
 			    	$models_prepared[$id]= $name;
-			 }
+			 }*/
+		    
+	    	$select = $db->select()
+		             ->from('bg_model')
+		             ->where('make_id = ?', $session_makeid->make_id)
+		             ->order('name ASC');
+	        $bg_model_ids = $db->query($select)->fetchAll();
+		       
+			if (count($bg_model_ids)!=0){
+					foreach ($bg_model_ids as $Mod){
+							$models_prepared[$Mod['id']]= $Mod['name'];
+					}
+			}
 	    }
 	    else
 	     $models_prepared[0]= "Select or Leave blank";

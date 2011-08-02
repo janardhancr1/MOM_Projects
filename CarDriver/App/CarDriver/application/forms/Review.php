@@ -14,7 +14,7 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['bg_year_id']))
 		{	
 			$bg_year_ids_prepared[0]= "Select from list";
-			$objDOM = new DOMDocument(); 
+			/*$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
 			$query = '//response/data/row/name';
@@ -25,7 +25,19 @@ class Application_Form_Review extends Application_Form_MainForm
 			    $id  = $entry->previousSibling->nodeValue;
 			    $bg_year_ids_prepared[$id]= $name;
 			}
-		    arsort($bg_year_ids_prepared);
+		    arsort($bg_year_ids_prepared);*/
+			$select = $db->select()
+	             ->from('bg_year')
+	             ->order('name DESC');
+	        $bg_year_ids = $db->query($select)->fetchAll();
+		       
+			if (count($bg_year_ids)!=0){
+					//$bg_year_ids_prepared[]= "Select from list";
+					foreach ($bg_year_ids as $Yea){
+							$bg_year_ids_prepared[$Yea['id']]= $Yea['name'];
+					}
+			} 
+			
 			$bg_year_id = new Zend_Form_Element_Select('bg_year_id',array('style'=>'width:150px;'));
 			$bg_year_id->addMultiOptions($bg_year_ids_prepared)
 					->setValue($form1_Values['bg_year_id']);
@@ -57,7 +69,7 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['bg_make_id']))
 		{
 			$bg_make_ids_prepared[0]= "Select from list";
-			$objDOM = new DOMDocument(); 
+			/*$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
 			$query = '//response/data/row/name';
@@ -67,7 +79,19 @@ class Application_Form_Review extends Application_Form_MainForm
 			    $name  = $entry->nodeValue;
 			    $id  = $entry->previousSibling->nodeValue;
 			    $bg_make_ids_prepared[$id]= $name;
-			 }
+			 }*/
+			
+			$select = $db->select()
+	             ->from('bg_make')
+	             ->order('name ASC');
+	        $bg_make_ids = $db->query($select)->fetchAll();
+		       
+			if (count($bg_make_ids)!=0){
+					//$bg_make_ids_prepared[]= "Select from list";
+					foreach ($bg_make_ids as $Mak){
+							$bg_make_ids_prepared[$Mak['id']]= $Mak['name'];
+					}
+			} 
 		
 			$bg_make_id = new Zend_Form_Element_Select('bg_make_id',array('style'=>'width:150px;'));
 			$bg_make_id->addMultiOptions($bg_make_ids_prepared)
@@ -103,7 +127,7 @@ class Application_Form_Review extends Application_Form_MainForm
 					{
 						$makeid = $session_makeid->make_id;
 						$bg_model_ids_prepared[0]= "Select from list";
-						$objDOM = new DOMDocument(); 
+						/*$objDOM = new DOMDocument(); 
 						$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
 						$xpath = new DOMXPath($objDOM);
 						$query = '//response/data/row/make_id';
@@ -118,7 +142,19 @@ class Application_Form_Review extends Application_Form_MainForm
 						    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 						    	$bg_model_ids_prepared[$id]= $name;
 						    }
-						 }
+						 }*/
+						
+						 $select = $db->select()
+			             ->from('bg_model')
+			             ->where('make_id = ?', $makeid)
+			             ->order('name ASC');
+				        $bg_model_ids = $db->query($select)->fetchAll();
+					       
+						if (count($bg_model_ids)!=0){
+								foreach ($bg_model_ids as $Mod){
+										$bg_model_ids_prepared[$Mod['id']]= $Mod['name'];
+								}
+						}
 					}
 			}
 			

@@ -41,8 +41,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$bg_year_ids_prepared[]= "Select from list";
-		$objDOM = new DOMDocument(); 
+		//$bg_year_ids_prepared[]= "Select from list";
+		/*$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
 		$query = '//response/data/row/name';
@@ -52,8 +52,19 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $name  = $entry->nodeValue;
 		    $id  = $entry->previousSibling->nodeValue;
 		    $bg_year_ids_prepared[$id]= $name;
-		 }
-		arsort($bg_year_ids_prepared);
+		 }*/
+		$select = $db->select()
+	             ->from('bg_year')
+	             ->order('name DESC');
+        $bg_year_ids = $db->query($select)->fetchAll();
+	       
+		if (count($bg_year_ids)!=0){
+				$bg_year_ids_prepared[]= "Select from list";
+				foreach ($bg_year_ids as $Yea){
+						$bg_year_ids_prepared[$Yea['id']]= $Yea['name'];
+				}
+		} 
+		//arsort($bg_year_ids_prepared);
 		
 		$this->addElement('Select', 'bg_year_id', array(
 		'decorators' => $this->elementDecoratorsTd,
@@ -73,7 +84,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 		
 		
-		$bg_make_ids_prepared[]= "Select from list";
+		/*$bg_make_ids_prepared[]= "Select from list";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/makes?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
@@ -84,8 +95,20 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $name  = $entry->nodeValue;
 		    $id  = $entry->previousSibling->nodeValue;
 		    $bg_make_ids_prepared[$id]= $name;
-		 }
+		 }*/
 		
+		 $select = $db->select()
+	             ->from('bg_make')
+	             ->order('name ASC');
+        $bg_make_ids = $db->query($select)->fetchAll();
+	       
+		if (count($bg_make_ids)!=0){
+				$bg_make_ids_prepared[]= "Select from list";
+				foreach ($bg_make_ids as $Mak){
+						$bg_make_ids_prepared[$Mak['id']]= $Mak['name'];
+				}
+		} 
+		 
 		 $this->addElement('Select', 'bg_make_id', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
@@ -114,7 +137,7 @@ class Application_Form_Add extends Application_Form_MainForm
 			//$makeid = $_SESSION['makid'];
 			$makeid = $session_makeid->make_id;
 			$bg_model_ids_prepared[]= "Select from list";
-			$objDOM = new DOMDocument(); 
+			/*$objDOM = new DOMDocument(); 
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
 			$xpath = new DOMXPath($objDOM);
 			$query = '//response/data/row/make_id';
@@ -129,7 +152,19 @@ class Application_Form_Add extends Application_Form_MainForm
 			    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 			    	$bg_model_ids_prepared[$id]= $name;
 			    }
-			 }
+			 }*/
+			
+			$select = $db->select()
+		             ->from('bg_model')
+		             ->where('make_id = ?', $makeid)
+		             ->order('name ASC');
+	        $bg_model_ids = $db->query($select)->fetchAll();
+		       
+			if (count($bg_model_ids)!=0){
+					foreach ($bg_model_ids as $Mod){
+							$bg_model_ids_prepared[$Mod['id']]= $Mod['name'];
+					}
+			}
 			
 		}
 		
