@@ -1043,6 +1043,7 @@ class IndexController extends Zend_Controller_Action
     {
     	$return = '0~select from list;';
     	$makeid = $this->_getParam('id');
+    	$db = Zend_Db_Table::getDefaultAdapter(); 
     	
     	if($makeid)
     	{
@@ -1051,7 +1052,22 @@ class IndexController extends Zend_Controller_Action
     	 	$session_makeid->make_id = $makeid;
     		//$_SESSION['makid'] = $makeid;
     	}
-     	$models_prepared[0]= "Select or Leave blank";
+    	
+    	$select = $db->select()
+	             ->from('bg_model')
+	             ->where('make_id = ?', $makeid)
+	             ->order('name ASC');
+
+        $bg_model_ids = $db->query($select)->fetchAll();
+	       
+		//if (count($bg_model_ids)!=0){
+				foreach ($bg_model_ids as $Mod){
+					$name = $Mod['name'];
+					$id = $Mod['id'];
+					$return .= $id.'~'.$name.';';
+				//}
+		} 
+     	/*$models_prepared[0]= "Select or Leave blank";
 		$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml"); 
 		$xpath = new DOMXPath($objDOM);
@@ -1067,7 +1083,7 @@ class IndexController extends Zend_Controller_Action
 		    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 		    	$return .= $id.'~'.$name.';';
 		    }
-		 }
+		 }*/
 		echo $return;
     }
     
