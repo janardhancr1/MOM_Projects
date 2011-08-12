@@ -8,14 +8,16 @@ class Application_Form_MainForm extends Zend_Form
      */
 	public function getDbConnection()
 	{
-	   $db = new Zend_Db_Adapter_Pdo_Mysql(array(
-          'host'     => 'localhost',
-          'username' => 'root',
-          'password' => 'kamflex',
-          'dbname'   => 'cardriver'
+		$config = new Zend_Config_Ini(APPLICATION_PATH.'/configs/application.ini', 'production');
+
+		$db_remote = new Zend_Db_Adapter_Pdo_Mysql(array(
+          'host'     => $config->external->db->params->host,
+          'username' => $config->external->db->params->username,
+          'password' => $config->external->db->params->password,
+          'dbname'   => $config->external->db->params->dbname
         ));
         
-        return $db;
+        return $db_remote;
 	}
 	
 /**

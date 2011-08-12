@@ -11,7 +11,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		));
 		
 		$db = Zend_Db_Table::getDefaultAdapter(); 
-		
+		$db_remote = $this->getDbConnection();
 		$years_prepared[0]= "Select or Leave blank";
 		/*$objDOM = new DOMDocument(); 
 		$objDOM->load("http://buyersguide.caranddriver.com/api/years?mode=xml"); 
@@ -30,10 +30,10 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 		
 		arsort($years_prepared);*/
 		
-		$select = $db->select()
+		$select = $db_remote->select()
 	             ->from('bg_year')
 	             ->order('name DESC');
-        $bg_year_ids = $db->query($select)->fetchAll();
+        $bg_year_ids = $db_remote->query($select)->fetchAll();
 	       
 		if (count($bg_year_ids)!=0){
 				foreach ($bg_year_ids as $Yea){
@@ -62,10 +62,10 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			
 		    $makes_prepared[$id]= $name;
 		 }*/
-		$select = $db->select()
+		$select = $db_remote->select()
 	             ->from('bg_make')
 	             ->order('name ASC');
-        $bg_make_ids = $db->query($select)->fetchAll();
+        $bg_make_ids = $db_remote->query($select)->fetchAll();
 	       
 		if (count($bg_make_ids)!=0){
 				foreach ($bg_make_ids as $Mak){
@@ -102,11 +102,11 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			    	$models_prepared[$id]= $name;
 			 }*/
 		    
-	    	$select = $db->select()
+	    	$select = $db_remote->select()
 		             ->from('bg_model')
 		             ->where('make_id = ?', $session_makeid->make_id)
 		             ->order('name ASC');
-	        $bg_model_ids = $db->query($select)->fetchAll();
+	        $bg_model_ids = $db_remote->query($select)->fetchAll();
 		       
 			if (count($bg_model_ids)!=0){
 					foreach ($bg_model_ids as $Mod){
@@ -148,7 +148,7 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 			    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
 			    	$bg_submodel_ids_prepared[$id]= $name;
 			    }
-			 }*/
+			 }
 			
 			$xml = file_get_contents("http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=".$modelid."&mode=xml"); 
 			$xml = str_replace("10best", "best10", $xml); 
@@ -167,7 +167,20 @@ class Application_Form_SearchRight extends Application_Form_MainForm
 				    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 				    	$bg_submodel_ids_prepared[$id]= $name;
 				    }
-			 } 
+			 } */
+			
+			$select = $db_remote->select()
+		             ->from('bg_submodel')
+		             ->where('model_id = ?', $modelid)
+		             ->where('year_id = ?', $yearid)
+		             ->order('name ASC');
+	        $bg_submodel_ids = $db_remote->query($select)->fetchAll();
+	        
+		if (count($bg_submodel_ids)!=0){
+					foreach ($bg_submodel_ids as $Mod){
+							$bg_submodel_ids_prepared[$Mod['id']]= $Mod['name'];
+					}
+			}
 		}
 		
 		$subModel = $this->createElement('select','submodel',array('style'=>'width:130px;'))

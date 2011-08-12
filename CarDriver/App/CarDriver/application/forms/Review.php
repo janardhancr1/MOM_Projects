@@ -9,7 +9,7 @@ class Application_Form_Review extends Application_Form_MainForm
 		$form1_Values = $session_formvalues->FormValues;
 		
 		$db = Zend_Db_Table::getDefaultAdapter(); 
-		
+		$db_remote = $this->getDbConnection();
 	
 		if(!empty($form1_Values['bg_year_id']))
 		{	
@@ -26,10 +26,10 @@ class Application_Form_Review extends Application_Form_MainForm
 			    $bg_year_ids_prepared[$id]= $name;
 			}
 		    arsort($bg_year_ids_prepared);*/
-			$select = $db->select()
+			$select = $db_remote->select()
 	             ->from('bg_year')
 	             ->order('name DESC');
-	        $bg_year_ids = $db->query($select)->fetchAll();
+	        $bg_year_ids = $db_remote->query($select)->fetchAll();
 		       
 			if (count($bg_year_ids)!=0){
 					//$bg_year_ids_prepared[]= "Select from list";
@@ -81,10 +81,10 @@ class Application_Form_Review extends Application_Form_MainForm
 			    $bg_make_ids_prepared[$id]= $name;
 			 }*/
 			
-			$select = $db->select()
+			$select = $db_remote->select()
 	             ->from('bg_make')
 	             ->order('name ASC');
-	        $bg_make_ids = $db->query($select)->fetchAll();
+	        $bg_make_ids = $db_remote->query($select)->fetchAll();
 		       
 			if (count($bg_make_ids)!=0){
 					//$bg_make_ids_prepared[]= "Select from list";
@@ -144,11 +144,11 @@ class Application_Form_Review extends Application_Form_MainForm
 						    }
 						 }*/
 						
-						 $select = $db->select()
+						 $select = $db_remote->select()
 			             ->from('bg_model')
 			             ->where('make_id = ?', $makeid)
 			             ->order('name ASC');
-				        $bg_model_ids = $db->query($select)->fetchAll();
+				        $bg_model_ids = $db_remote->query($select)->fetchAll();
 					       
 						if (count($bg_model_ids)!=0){
 								foreach ($bg_model_ids as $Mod){
@@ -209,7 +209,7 @@ class Application_Form_Review extends Application_Form_MainForm
 	    					$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
 					    	$bg_submodel_ids_prepared[$id]= $name;
 					    }
-					 }*/
+					 }
 					
 					$xml = file_get_contents("http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=".$modelid."&mode=xml"); 
 					$xml = str_replace("10best", "best10", $xml); 
@@ -229,7 +229,20 @@ class Application_Form_Review extends Application_Form_MainForm
 						    	$bg_submodel_ids_prepared[$id]= $name;
 						    }
 					 } 
-				}
+				}*/
+					
+				$select = $db_remote->select()
+		             ->from('bg_submodel')
+		             ->where('model_id = ?', $modelid)
+		             ->where('year_id = ?', $yearid)
+		             ->order('name ASC');
+	        $bg_submodel_ids = $db_remote->query($select)->fetchAll();
+	        
+		if (count($bg_submodel_ids)!=0){
+					foreach ($bg_submodel_ids as $Mod){
+							$bg_submodel_ids_prepared[$Mod['id']]= $Mod['name'];
+					}
+			}
 				
 			}
 				
@@ -256,6 +269,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			
 			$this->addElements(array($before_bg_submodel_id,$bg_submodel_id));
 				
+		}
 		}
 		
 		if(!empty($form1_Values['rt_model_year']))

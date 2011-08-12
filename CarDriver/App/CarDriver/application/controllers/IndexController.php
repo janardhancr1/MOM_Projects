@@ -1043,7 +1043,7 @@ class IndexController extends Zend_Controller_Action
     {
     	$return = '0~select from list;';
     	$makeid = $this->_getParam('id');
-    	$db = Zend_Db_Table::getDefaultAdapter(); 
+    	$db_remote = $this->getDbConnection(); 
     	
     	if($makeid)
     	{
@@ -1053,12 +1053,12 @@ class IndexController extends Zend_Controller_Action
     		//$_SESSION['makid'] = $makeid;
     	}
     	
-    	$select = $db->select()
+    	$select = $db_remote->select()
 	             ->from('bg_model')
 	             ->where('make_id = ?', $makeid)
 	             ->order('name ASC');
 
-        $bg_model_ids = $db->query($select)->fetchAll();
+        $bg_model_ids = $db_remote->query($select)->fetchAll();
 	       
 		//if (count($bg_model_ids)!=0){
 				foreach ($bg_model_ids as $Mod){
@@ -1092,6 +1092,7 @@ class IndexController extends Zend_Controller_Action
     	$return = '0~Select or Leave blank;';
     	$yearid = $this->_getParam('yearid');
     	$modelid = $this->_getParam('modelid');
+    	$db_remote = $this->getDbConnection(); 
     	if($yearid && $modelid)
     	{
     		require_once('Zend/Session.php');
@@ -1113,7 +1114,7 @@ class IndexController extends Zend_Controller_Action
 		    	$id  = $entry->previousSibling->previousSibling->previousSibling->nodeValue;
 		    	$return .= $id.'~'.$name.';';
 		    }
-		 }*/
+		 }
     	$xml = file_get_contents("http://buyersguide.caranddriver.com/api/submodels/bymodelid?id=".$modelid."&mode=xml"); 
 		$xml = str_replace("10best", "best10", $xml); 
 		 
@@ -1131,7 +1132,22 @@ class IndexController extends Zend_Controller_Action
 			    	$id  = $entry->previousSibling->previousSibling->nodeValue;
 			    	$return .= $id.'~'.$name.';';
 			    }
-		 } 
+		 }*/
+
+    	$select = $db_remote->select()
+		             ->from('bg_submodel')
+		             ->where('model_id = ?', $modelid)
+		             ->where('year_id = ?', $yearid)
+		             ->order('name ASC');
+	    $bg_submodel_ids = $db_remote->query($select)->fetchAll();
+
+		//if (count($bg_model_ids)!=0){
+				foreach ($bg_submodel_ids as $Mod){
+					$name = $Mod['name'];
+					$id = $Mod['id'];
+					$return .= $id.'~'.$name.';';
+				//}
+		} 
     	
 		echo $return;
     }
@@ -1335,6 +1351,20 @@ class IndexController extends Zend_Controller_Action
 	    $this->_redirect("index/manageconrolledlist/rt_types/".$rt_types);
       
   	}
+  	
+	public function getDbConnection()
+	{
+		$config = new Zend_Config_Ini(APPLICATION_PATH.'/configs/application.ini', 'production');
+
+		$db_remote = new Zend_Db_Adapter_Pdo_Mysql(array(
+          'host'     => $config->external->db->params->host,
+          'username' => $config->external->db->params->username,
+          'password' => $config->external->db->params->password,
+          'dbname'   => $config->external->db->params->dbname
+        ));
+        
+        return $db_remote;
+	}
 	
 }
 
