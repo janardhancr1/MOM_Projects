@@ -77,23 +77,33 @@ class IndexController extends Zend_Controller_Action
     	    
         if(!$result)
         	$this->_redirect("index/login");
-    	    	
+
          $form = new Application_Form_Search();
          $this->view->form = $form;
          
          $formright = new Application_Form_SearchRight();
          $this->view->formright = $formright;
+         
+         $form2 = new Application_Form_Search2();
+         $this->view->form2 = $form2;
         
          $db = Zend_Db_Table::getDefaultAdapter(); 
          $select = $db->select()
-         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id', 
-         		'rrm.rt_published As publish', 
-             	'rrm.rt_model_year As year', 'rrm.rt_controlled_make As make', 'rrm.rt_model As model','rrm.rt_issue_year As issue_year',
-         		'rrm.rt_issue As issue_month', 'rrm.rt_controlled_sort As production_type', 'rrm.rt_doors As doors', 'rrm.rt_controlled_body As body_style',
-         		'rrm.rt_peak_hp As peak_horse_power'));
+         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id',
+				'rrm.rt_published As publish', 
+				'rrm.rt_model_year As year', 
+				'rrm.rt_controlled_make As make', 
+				'rrm.rt_model As model',
+				'rrm.rt_issue_year As issue_year',
+				'rrm.rt_issue As issue_month', 
+				'rrm.rt_controlled_sort As production_type', 
+				'rrm.rt_doors As doors', 
+				'rrm.rt_controlled_body As body_style',
+				'rrm.rt_peak_hp As peak_horse_power'));
          
          if (($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
-         	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost())))
+         	  || ($this->getRequest()->isPost() && $formright->isValid($this->getRequest()->getPost()))
+         	  || ($this->getRequest()->isPost() && $form2->isValid($this->getRequest()->getPost())))
           {
 				
           	 $this->_helper->redirector->gotoRouteAndExit(array(
@@ -103,6 +113,7 @@ class IndexController extends Zend_Controller_Action
 		      	'make' => $this->getRequest()->getPost('make'),
           	    'model' => $this->getRequest()->getPost('model'),
           	    'submodel' => $this->getRequest()->getPost('submodel'),
+          	 	'name' => $this->getRequest()->getPost('name'),
 		      ));
 	            
           }
@@ -113,24 +124,61 @@ class IndexController extends Zend_Controller_Action
          	$formright->getElement('make')->setValue($this->_getParam('make'));
          	$formright->getElement('model')->setValue($this->_getParam('model'));
          	$formright->getElement('submodel')->setValue($this->_getParam('submodel'));
+         	$form2->getElement('name')->setValue($this->_getParam('name'));
          	
          }
+         $export_array = array();
+         $export_array['id'] = '';
+         $export_array['year'] = '';
+         $export_array['make'] = '';
+         $export_array['model'] = '';
+         $export_array['submodel'] = '';
+         $export_array['name'] = '';
          if(($this->_getParam('id')))
+         {
         		$select->where('rrm.id =?', $this->_getParam('id'));
-         if(($this->_getParam('year')))
-        		$select->where('rrm.bg_year_id =?', $this->_getParam('year'));
-         if(($this->_getParam('model')))
-        		$select->where('rrm.bg_model_id =?', $this->_getParam('model'));
-         if(($this->_getParam('make')))
-        		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
-         if(($this->_getParam('submodel')))
-        		$select->where('rrm.bg_submodel_id =?', $this->_getParam('submodel'));
+        		$export_array['id'] = $this->_getParam('id');
         		
-        $export_result = $db->query($select)->fetchAll();
+         }
+         if(($this->_getParam('year')))
+         {
+        		$select->where('rrm.bg_year_id =?', $this->_getParam('year'));
+        		$export_array['year'] = $this->_getParam('year');
+         }
+         if(($this->_getParam('model')))
+         {
+        		$select->where('rrm.bg_model_id =?', $this->_getParam('model'));
+        		$export_array['model'] = $this->_getParam('model');
+         }
+         if(($this->_getParam('make')))
+         {
+        		$select->where('rrm.bg_make_id =?', $this->_getParam('make'));
+        		$export_array['make'] = $this->_getParam('make');
+         }
+         if(($this->_getParam('submodel')))
+         {
+        		$select->where('rrm.bg_submodel_id =?', $this->_getParam('submodel'));
+        		$export_array['submodel'] = $this->_getParam('submodel');
+         }
+         if(($this->_getParam('name')))
+         {		
+         		$export_array['name'] = $this->_getParam('name');
+         		$select1 = $db->select()
+	         ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.id_descriptions As id'))
+	         ->where('rdd.description =?', $this->_getParam('name'));
+	         $result = $db->query($select1)->fetchAll();
+	         if(!empty($result))
+	         $select->orWhere('rrm.rt_controlled_make =?', $result[0]['id']);
+         		$select->orWhere('rrm.rt_model =?', $this->_getParam('name'));
+        		$select->orWhere('rrm.rt_model_year =?', $this->_getParam('name')); 
+          }
+
+        		//$select->where('rrm.bg_year_id =?', '1956');
+       $export_result = $db->query($select)->fetchAll();
 
         require_once('Zend/Session.php');
      	$session_export = new Zend_Session_Namespace('export');
-        $session_export->export = $export_result;	
+        $session_export->export = $export_array;	
         	
         $result = Zend_Paginator::factory($export_result);
         $this->view->paginator = $result;
@@ -1160,23 +1208,243 @@ class IndexController extends Zend_Controller_Action
         	$this->_redirect("index/login");
         	
 		$session_export = new Zend_Session_Namespace('export');
-        $result = $session_export->export;
+        $export_array = $session_export->export;
+        
+        $db = Zend_Db_Table::getDefaultAdapter(); 
+         $select = $db->select()
+         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id',
+         'rrm.rt_published As publish', 
+'rrm.rt_model_year As year', 
+'rrm.rt_controlled_make As make', 
+'rrm.rt_model As model',
+'rrm.rt_issue_year As issue_year',
+'rrm.rt_issue As issue_month', 
+'rrm.rt_controlled_sort As production_type', 
+'rrm.rt_doors As doors', 
+'rrm.rt_controlled_body As body_style',
+'rrm.rt_peak_hp As peak_horse_power',
+'rrm.bg_make_id As Make(BG)',
+'rrm.bg_model_id As Model(BG)',
+'rrm.bg_submodel_id As Sub-Model(BG)',
+'rrm.bg_year_id AS Year(BG)',
+'rrm.bg_controlled_make_id AS bg_controlled_make_id ',
+'rrm.bg_controlled_model_id AS bg_controlled_model_id',
+'rrm.rt_original_table_id As rt_original_table_id',
+'rrm.rt_controlled_engine AS Engine_Location',
+'rrm.rt_controlled_fuel As Fuel_Type',
+'rrm.rt_controlled_transmission As Transmission_Type',
+'rrm.rt_controlled_drive As Driven_Wheels',
+'rrm.rt_controlled_ts_limit As Top_Speed_Limit',
+'rrm.rt_controlled_turbo_superchg As Forced_Induction',
+'rrm.rt_controlled_type As Engine_Type',
+'rrm.rt_percent_on_rear As Pct_Weight_on_Rear',
+'rrm.rt_percent_on_front As Pct_Weight_on_Front',
+'rrm.rt_60_mph As 0-60_Accel',
+'rrm.rt_70_mph_braking As Braking_from_70',
+'rrm.rt_top_speed As Top_Speed',
+'rrm.rt_top_speed_notes As Top_Speed_Notes',
+'rrm.rt_base_price As Base_Price',
+'rrm.rt_base_price_notes As Base_Price_Notes',
+'rrm.rt_speed_qtr_mile_speed_trap As Quarter_Trap_Speed',
+'rrm.rt_quarter_time As Quarter_Mile_Time',
+'rrm.rt_cd_observed_fe As CD_Observed_Economy',
+'rrm.rt_no_cyl As Number_of_Cylinders',
+'rrm.rt_peak_hp_notes As Peak_Horsepower_Notes',
+'rrm.rt_peak_torque As Peak_Torque',
+'rrm.rt_peak_torque_notes As Peak_Torque_Notes',
+'rrm.rt_power_to_weight As Power_Weight_hp_lb',
+'rrm.rt_price_as_tested As Price_as_Tested',
+'rrm.rt_price_as_tested_notes As Price_as_Tested_Notes',
+'rrm.rt_redline As Readline',
+'rrm.rt_disp_cc As Engine_Disp',
+'rrm.rt_rpm As Peak_Horsepower_RPM',
+'rrm.rt_rpmt As Peak_Torque_RPM',
+'rrm.rt_slalom As Slalom_Speed',
+'rrm.rt_ss60 As 5-60_ss_accel',
+'rrm.rt_weight As Curb_Weight'
+
+         
+))
+ 
+ ->join(array('rr2' => 'rt_results_level_2'), 'rr2.id = rrm.id', array('rr2.rt2_emergency_lane_change As MPH_in_Lane_Change',
+'rr2.rt2_skidpad As Skidpad_Grip',
+'rr2.rt2_100_mph As 0-100_Accel',
+'rr2.rt2_130_mph As 0-130_Accel',
+'rr2.rt2_30_50TG As Top-Gear_Accel_30-50',
+'rr2.rt2_30_mph As 0-30_Accel',
+'rr2.rt2_50_70TG As Top-Gear_Accel_50-70',
+'rr2.rt2_50_mph As 0-50_Accel',
+'rr2.rt2_70cr As DB_at_70_MPH_Cruise',
+'rr2.rt2_70_mph As 0-70_Accel',
+'rr2.rt2_controlled_airbags As Airbags',
+'rr2.rt2_anti_lock As Anti-Lock_Brakes',
+'rr2.rt2_epa_city_fe As EPA_Citys',
+'rr2.rt2_epa_city_fe_notes As EPA_City_Notes',
+'rr2.rt2_fuel_sys As Fuel_System',
+'rr2.rt2_highway_fe As EPA_Highway',
+'rr2.rt2_highway_fe_notes As EPA_Highway_Notes',
+'rr2.rt2_int_vol_front As Interior_Volume_Front',
+'rr2.rt2_mid As Vol_Behind_Mid_Row',
+'rr2.rt2_passengers As Number_of_Passengers',
+'rr2.rt2_rear As Vol_Behind_Rear_Row',
+'rr2.rt2_sound_level_idle As Sound_Level_Idle',
+'rr2.rt2_stab_defeatable As Esc_Defeatable',
+'rr2.rt2_stability_control As Stability_Control',
+'rr2.rt2_sum_of_tg_times As Sum_of_the_above_2',
+'rr2.rt2_trac_defeatable As Tc_Defeatable',
+'rr2.rt2_traction_control As Traction_Control',
+'rr2.rt2_turning_cir As Turning_Radius',
+'rr2.rt2_wot As DB_at_Wot'))
+ ->joininner(array('rr3' => 'rt_results_level_3'), 'rr3.id = rr2.id', array('rr3.rt3_boost_psi As Boost_in_psi',
+         'rr3.rt3_bore_mm As Cylinder_bore',
+         'rr3.rt3_cd As Coefficient_of_drag',
+         'rr3.rt3_comp_ratio As Compression_ratio',
+         'rr3.rt3_et_factor As rt3_et_factor',
+         'rr3.rt3_final_drive_ratio As Final_drive',
+         'rr3.rt3_frontal_area As Frontal_area',
+         'rr3.rt3_frontal_area_notes As Frontal_area_notes',
+         'rr3.rt3_fuel_cap As Fual_capacity',
+         'rr3.rt3_height As Height',
+         'rr3.rt3_length As Length',
+         'rr3.rt3_lt_oil As Long_tem_oil_used',
+         'rr3.rt3_lt_repair As Costs_for_lt_repair',
+         'rr3.rt3_lt_serv As Costs_for_lt_service',
+         'rr3.rt3_lt_stps_sched As LT_scheduled_stops',
+         'rr3.rt3_lt_stps_unsched As LT_unscheduled_stops',
+         'rr3.rt3_lt_wear As Costs_for_LT_wear',
+         'rr3.rt3_max_mph_1000_rpm As Top_gear_mph_1000rpm',
+         'rr3.rt3_peak_bmep As rt3_peak_bmep',
+         'rr3.rt3_peal_bmep As rt3_peal_bmep',
+         'rr3.rt3_road_hp_30mph As rt3_road_hp_30mph',
+         'rr3.rt3_sp_factor As rt3_sp_factor',
+         'rr3.rt3_specific_power As Spec_pow_hp_liter)',
+         'rr3.rt3_stroke_mm As Cylinder_stroke',
+         'rr3.rt3_trunk As Trunk_volume',
+         'rr3.rt3_valve_gear As Valve_setup',
+         'rr3.rt3_valves_per_cyl As Valves Per Cylinder',
+         'rr3.rt3_wheelbase As Valves_per_cylinder',
+         'rr3.rt3_width As Width',
+         'rr3.rt3_70co As DB_at_70_coast',
+         'rr3.rt3_10mph As 0-10_Accel',
+         'rr3.rt3_20mph As 0-20_Accel',
+         'rr3.rt3_40mph As 0-40_Accel',
+         'rr3.rt3_50mph As 0-50_Accel',
+         'rr3.rt3_70mph As 0-70_Accel',
+         'rr3.rt3_80mph As 0-80_Accel',
+         'rr3.rt3_90mph As 0-90_Accel' ,
+         'rr3.rt3_110mph As 0-110_Accel',
+         'rr3.rt3_120mph As 0-120_Accel',
+         'rr3.rt3_140mph As 0-140_Accel',
+         'rr3.rt3_150mph As 0-150_Accel',
+         'rr3.rt3_160mph As 0-160_Accel',
+         'rr3.rt3_170mph As 0-170_Accel',
+         'rr3.rt3_180mph As 0-180_Accel',
+         'rr3.rt3_190mph As 0-190_Accel',
+         'rr3.rt3_200mph As 0-200_Accel'));
+
+
+ if(!empty($export_array))
+ {
+	if(!empty($export_array['id']))
+		$select->where('rrm.id =?',$export_array['id']);
+	if(!empty($export_array['year']))
+		$select->where('rrm.bg_year_id =?',$export_array['year']);
+	if(!empty($export_array['model']))
+		$select->where('rrm.bg_model_id =?',$export_array['model']);
+	if(!empty($export_array['make']))
+		$select->where('rrm.bg_make_id =?',$export_array['make']);
+	if(!empty($export_array['submodel']))
+		$select->where('rrm.bg_submodel_id =?',$export_array['submodel']);
+	if(!empty($export_array['name']))
+	{
+		$db_remote = $this->getDbConnection();
+		
+		$bgMakeIdSelect = $db_remote->select()
+				->from(array('bgmk' => 'bg_make'), array('bgmk.id As id'))
+				->where('bgmk.name=?', $export_array['name']);
+		$bgMakeId = $db_remote->query($bgMakeIdSelect)->fetchAll();
+		
+		$bgModelIdSelect = $db_remote->select()
+				->from(array('bgmd' => 'bg_model'), array('bgmd.id As id'))
+				->where('bgmd.name=?', $export_array['name']);
+		$bgModelId = $db_remote->query($bgModelIdSelect)->fetchAll();
+		
+		
+		$bgYearIdSelect = $db_remote->select()
+				->from(array('bgyr' => 'bg_year'), array('bgyr.id As id'))
+				->where('bgyr.name=?', $export_array['name']);
+		$bgYearId = $db_remote->query($bgYearIdSelect)->fetchAll();
+		
+		if(!empty($bgMakeId))
+			$select->where('rrm.bg_make_id =?', $bgMakeId[0]['id']);
+		if(!empty($bgModelId[0]['id']))
+			$select->where('rrm.bg_model_id =?', $bgModelId[0]['id']);
+		if(!empty($bgYearId[0]['id']))
+			$select->where('rrm.bg_Year_id =?', $bgYearId[0]['id']);
+
+	}
+ }
+ //$select->where('rrm.id =?',1);
+	 $export_result = $db->query($select)->fetchAll();
+
+	//$db_remote = $this->getDbConnection();
 
 	   header("Content-type:text/octect-stream");
 	   header("Content-Disposition:attachment;filename=data.csv");
-	   print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\", \"Peak Horsepower\"\n";
-	    foreach ($result as $row) {
+	  print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\",\"Peak Horsepower\",\"Make(BG)\",\"Model(BG)\",\"Sub-Model(BG)\",\"Year(BG)\",\"bg_controlled_make_id\",\"bg_controlled_model_id\",\"rt_original_table_id\",\"Engine Location\",\"Fuel Type\",\"Transmission Type\",\"Driven Wheels\",\"Top Speed Limit\",\"Forced Induction\",\"Engine Type\",\"Pct. weight on Rear\",\"Pct. Weight on Front\",\"0-60 Accel\",\"Breaking from 70\",\"Top Speed\",\"Top Speed otes\",\"Base Price\",\"Base Price Notes\",\"Quarter Trap Speed\",\"Quarter Mile Time\",\"CD Observed Economy\",\"Number of Cylinders\",\"Peak Horsepower Notes\",\"Peak Torque\",\"Peak Torque notes\",\"Power Weight hp lb\",\"Price as Tested\",\"Price as Tested Notes\",\"Read Linr\",\"Engine Disp\",\"Peak Horsepower RMP\",\"Peak Torque RMP\",\"Salalom Speed\",\"5-60 as accel\",\"Curb Weight\,\"MPH in Lane Change\",\"\Skidpad Grip\",\"0-100 Accel\",\"0-130 Accel\",\"\Top Gear Accel 30-50\",\"0-30 Accel\",\"\Top Gear Accel 50-70\",\"0-50 Accel\",\"DB at 70 MPH Cruise\",\"0-70 Accel\",\"Airbags\",\"Anti Lock Breaks\",\"EPA Citys\",\"EPA City Notes\",\"Fuel system\",\"EPA Highway\",\"EPA Highway Notes\",\"Interior Voume Front\",\"Vol Behind Mid Row\",\"Number of Passwngers\",\"Vol Behind Rear Row\",\"Sound Level Idel\",\"ESC Defeatable\",\"Stability Control\",\"Sum Of 2\",\"TC Defeatable\",\"Trancaction control\",\"Turning Radius\",\"DB at Wot\",\"Boost in psi\",\"Cylinder Bore\",\"Coefficient of Drag\",\"Compression Ratio\",\"rt3_et_factor\",\"Final Drive\",\"Frontal Area\",\"Frontal Area Notes\",\"Fual Capacity\",\"height\",\"Length\",\"Long Term Used\",\"Costs for lt Repair\",\"costs for lt service\",\"Lt Scheduled Stops\",\"Lt Unscheduled Stops\",\"Costs for lt ware\",\"Top Gear MPH 1000rmp\",\"rt3_peak_bmep\",\"rt3_peal_bmep\",\"rt3_road_hp_30mph\",\"rt3_sp_factor\",\"Spec Pow hp Liter\",\"Cylinder Stroke\",\"Trunk Volume\",\"Valve Setup\",\"Valves Per Cylinder\",\"Width\",\" DB at 70 coast\",\"0-10 Accel\",\"0-20 Accel\",\"0-40 Accel\",\"0-50 Accel\",\"0-70 Accel\",\"0-80 Accel\",\"0-90 Accel\",\"0-110 Accel\",\"0-120 Accel\",\"0-140 Accel\",\"0-150 Accel\",\"0-160 Accel\",\"0-170 Accel\",\"0-180 Accel\",\"0-190 Accel\",\"0-200 Accel\"\n";
+	    foreach ($export_result as $row) {
 	        $make = $this->getData($row['make']);
 	        $body_style = $this->getData($row['body_style']);
 	        $production_type = $this->getData($row['production_type']);
+		    $engine_location = $this->getData($row['Engine_Location']);
+		    $driven_wheels = $this->getData($row['Driven_Wheels']);
+		    $engine_type = $this->getData($row['Engine_Type']);
+	        $forced_induction = $this->getData($row['Forced_Induction']);
+		    $transmission_type = $this->getData($row['Transmission_Type']);
+		    $airbags = $this->getData($row['Airbags']);
+	        $top_speed_limit = $this->getData($row['Top_Speed_Limit']);
+	        $fuel_type = $this->getData($row['Fuel_Type']);
 	        $final = str_replace($row['make'], $make, $row);
 	        $final = str_replace($row['body_style'], $body_style, $final);
 	        $final = str_replace($row['production_type'], $production_type, $final);
+	        $final = str_replace($row['Engine_Location'], $engine_location, $final);
+	        $final = str_replace($row['Driven_Wheels'], $driven_wheels, $final);
+	        $final = str_replace($row['Engine_Type'], $engine_type, $final);
+	        $final = str_replace($row['Forced_Induction'], $forced_induction, $final);
+	        $final = str_replace($row['Transmission_Type'], $transmission_type, $final);
+	        $final = str_replace($row['Airbags'], $airbags, $final);
+	        $final = str_replace($row['Top_Speed_Limit'], $top_speed_limit, $final);
+	        $final = str_replace($row['Fuel_Type'], $fuel_type, $final);
+	        /*$bgMakes = $db_remote->select()
+					->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
+					->where('bgmk.name=?', $row['Make(BG)']);
+			$bgMake = $db_remote->query($bgMakes)->fetchAll();
+			
+			$bgModels = $db_remote->select()
+					->from(array('bgmd' => 'bg_model'), array('bgmd.name As bg_model'))
+					->where('bgmd.name=?', $row['Model(BG)']);
+			$bgModel = $db_remote->query($bgModels)->fetchAll();
+			
+			
+			$bgYears = $db_remote->select()
+					->from(array('bgyr' => 'bg_year'), array('bgyr.name As bg_year'))
+					->where('bgyr.name=?', $row['Year(BG)']);
+			$bgYear = $db_remote->query($bgYears)->fetchAll();
+			
+			$bgSubmodels = $db_remote->select()
+					->from(array('bgsm' => 'bg_submodel'), array('bgsm.name As bg_submodel'))
+					->where('bgyr.name=?', $row['Sub-Model(BG)']);
+					
+			$bgSubmodel = $db_remote->query($bgSubmodels)->fetchAll();
+			$final = str_replace($row['Make(BG)'], $bgMake[0]['bg_make'], $final);
+			$final = str_replace($row['Model(BG'], $bgModel[0]['bg_model'], $final);
+			$final = str_replace($row['Year(BG)'], $bgYear[0]['bg_year'], $final);
+			$final = str_replace($row['Sub-Model(BG)'], $bgSubmodels[0]['bg_submodel'], $final);*/
 	        print '"' . stripslashes(implode('","',$final)) . "\"\n";
 	    }
 
 	    exit;
-	}
+}
 	
 	public function excelexportAction()
 	{
@@ -1186,20 +1454,238 @@ class IndexController extends Zend_Controller_Action
         	$this->_redirect("index/login");
         	
 		$session_export = new Zend_Session_Namespace('export');
-        $result = $session_export->export;
+        $export_array = $session_export->export;
+        
+        $db = Zend_Db_Table::getDefaultAdapter(); 
+         $select = $db->select()
+         ->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id',
+         'rrm.rt_published As publish', 
+'rrm.rt_model_year As year', 
+'rrm.rt_controlled_make As make', 
+'rrm.rt_model As model',
+'rrm.rt_issue_year As issue_year',
+'rrm.rt_issue As issue_month', 
+'rrm.rt_controlled_sort As production_type', 
+'rrm.rt_doors As doors', 
+'rrm.rt_controlled_body As body_style',
+'rrm.rt_peak_hp As peak_horse_power',
+'rrm.bg_make_id As Make(BG)',
+'rrm.bg_model_id As Model(BG)',
+'rrm.bg_submodel_id As Sub-Model(BG)',
+'rrm.bg_year_id AS Year(BG)',
+'rrm.bg_controlled_make_id AS bg_controlled_make_id ',
+'rrm.bg_controlled_model_id AS bg_controlled_model_id',
+'rrm.rt_original_table_id As rt_original_table_id',
+'rrm.rt_controlled_engine AS Engine_Location',
+'rrm.rt_controlled_fuel As Fuel_Type',
+'rrm.rt_controlled_transmission As Transmission_Type',
+'rrm.rt_controlled_drive As Driven_Wheels',
+'rrm.rt_controlled_ts_limit As Top_Speed_Limit',
+'rrm.rt_controlled_turbo_superchg As Forced_Induction',
+'rrm.rt_controlled_type As Engine_Type',
+'rrm.rt_percent_on_rear As Pct_Weight_on_Rear',
+'rrm.rt_percent_on_front As Pct_Weight_on_Front',
+'rrm.rt_60_mph As 0-60_Accel',
+'rrm.rt_70_mph_braking As Braking_from_70',
+'rrm.rt_top_speed As Top_Speed',
+'rrm.rt_top_speed_notes As Top_Speed_Notes',
+'rrm.rt_base_price As Base_Price',
+'rrm.rt_base_price_notes As Base_Price_Notes',
+'rrm.rt_speed_qtr_mile_speed_trap As Quarter_Trap_Speed',
+'rrm.rt_quarter_time As Quarter_Mile_Time',
+'rrm.rt_cd_observed_fe As CD_Observed_Economy',
+'rrm.rt_no_cyl As Number_of_Cylinders',
+'rrm.rt_peak_hp_notes As Peak_Horsepower_Notes',
+'rrm.rt_peak_torque As Peak_Torque',
+'rrm.rt_peak_torque_notes As Peak_Torque_Notes',
+'rrm.rt_power_to_weight As Power_Weight_hp_lb',
+'rrm.rt_price_as_tested As Price_as_Tested',
+'rrm.rt_price_as_tested_notes As Price_as_Tested_Notes',
+'rrm.rt_redline As Readline',
+'rrm.rt_disp_cc As Engine_Disp',
+'rrm.rt_rpm As Peak_Horsepower_RPM',
+'rrm.rt_rpmt As Peak_Torque_RPM',
+'rrm.rt_slalom As Slalom_Speed',
+'rrm.rt_ss60 As 5-60_ss_accel',
+'rrm.rt_weight As Curb_Weight'
+
+         
+))
+ 
+ ->join(array('rr2' => 'rt_results_level_2'), 'rr2.id = rrm.id', array('rr2.rt2_emergency_lane_change As MPH_in_Lane_Change',
+'rr2.rt2_skidpad As Skidpad_Grip',
+'rr2.rt2_100_mph As 0-100_Accel',
+'rr2.rt2_130_mph As 0-130_Accel',
+'rr2.rt2_30_50TG As Top-Gear_Accel_30-50',
+'rr2.rt2_30_mph As 0-30_Accel',
+'rr2.rt2_50_70TG As Top-Gear_Accel_50-70',
+'rr2.rt2_50_mph As 0-50_Accel',
+'rr2.rt2_70cr As DB_at_70_MPH_Cruise',
+'rr2.rt2_70_mph As 0-70_Accel',
+'rr2.rt2_controlled_airbags As Airbags',
+'rr2.rt2_anti_lock As Anti-Lock_Brakes',
+'rr2.rt2_epa_city_fe As EPA_Citys',
+'rr2.rt2_epa_city_fe_notes As EPA_City_Notes',
+'rr2.rt2_fuel_sys As Fuel_System',
+'rr2.rt2_highway_fe As EPA_Highway',
+'rr2.rt2_highway_fe_notes As EPA_Highway_Notes',
+'rr2.rt2_int_vol_front As Interior_Volume_Front',
+'rr2.rt2_mid As Vol_Behind_Mid_Row',
+'rr2.rt2_passengers As Number_of_Passengers',
+'rr2.rt2_rear As Vol_Behind_Rear_Row',
+'rr2.rt2_sound_level_idle As Sound_Level_Idle',
+'rr2.rt2_stab_defeatable As Esc_Defeatable',
+'rr2.rt2_stability_control As Stability_Control',
+'rr2.rt2_sum_of_tg_times As Sum_of_the_above_2',
+'rr2.rt2_trac_defeatable As Tc_Defeatable',
+'rr2.rt2_traction_control As Traction_Control',
+'rr2.rt2_turning_cir As Turning_Radius',
+'rr2.rt2_wot As DB_at_Wot'))
+ ->joininner(array('rr3' => 'rt_results_level_3'), 'rr3.id = rr2.id', array('rr3.rt3_boost_psi As Boost_in_psi',
+         'rr3.rt3_bore_mm As Cylinder_bore',
+         'rr3.rt3_cd As Coefficient_of_drag',
+         'rr3.rt3_comp_ratio As Compression_ratio',
+         'rr3.rt3_et_factor As rt3_et_factor',
+         'rr3.rt3_final_drive_ratio As Final_drive',
+         'rr3.rt3_frontal_area As Frontal_area',
+         'rr3.rt3_frontal_area_notes As Frontal_area_notes',
+         'rr3.rt3_fuel_cap As Fual_capacity',
+         'rr3.rt3_height As Height',
+         'rr3.rt3_length As Length',
+         'rr3.rt3_lt_oil As Long_tem_oil_used',
+         'rr3.rt3_lt_repair As Costs_for_lt_repair',
+         'rr3.rt3_lt_serv As Costs_for_lt_service',
+         'rr3.rt3_lt_stps_sched As LT_scheduled_stops',
+         'rr3.rt3_lt_stps_unsched As LT_unscheduled_stops',
+         'rr3.rt3_lt_wear As Costs_for_LT_wear',
+         'rr3.rt3_max_mph_1000_rpm As Top_gear_mph_1000rpm',
+         'rr3.rt3_peak_bmep As rt3_peak_bmep',
+         'rr3.rt3_peal_bmep As rt3_peal_bmep',
+         'rr3.rt3_road_hp_30mph As rt3_road_hp_30mph',
+         'rr3.rt3_sp_factor As rt3_sp_factor',
+         'rr3.rt3_specific_power As Spec_pow_hp_liter)',
+         'rr3.rt3_stroke_mm As Cylinder_stroke',
+         'rr3.rt3_trunk As Trunk_volume',
+         'rr3.rt3_valve_gear As Valve_setup',
+         'rr3.rt3_valves_per_cyl As Valves Per Cylinder',
+         'rr3.rt3_wheelbase As Valves_per_cylinder',
+         'rr3.rt3_width As Width',
+         'rr3.rt3_70co As DB_at_70_coast',
+         'rr3.rt3_10mph As 0-10_Accel',
+         'rr3.rt3_20mph As 0-20_Accel',
+         'rr3.rt3_40mph As 0-40_Accel',
+         'rr3.rt3_50mph As 0-50_Accel',
+         'rr3.rt3_70mph As 0-70_Accel',
+         'rr3.rt3_80mph As 0-80_Accel',
+         'rr3.rt3_90mph As 0-90_Accel' ,
+         'rr3.rt3_110mph As 0-110_Accel',
+         'rr3.rt3_120mph As 0-120_Accel',
+         'rr3.rt3_140mph As 0-140_Accel',
+         'rr3.rt3_150mph As 0-150_Accel',
+         'rr3.rt3_160mph As 0-160_Accel',
+         'rr3.rt3_170mph As 0-170_Accel',
+         'rr3.rt3_180mph As 0-180_Accel',
+         'rr3.rt3_190mph As 0-190_Accel',
+         'rr3.rt3_200mph As 0-200_Accel'));
+
+
+ if(!empty($export_array))
+ {
+	if(!empty($export_array['id']))
+		$select->where('rrm.id =?',$export_array['id']);
+	if(!empty($export_array['year']))
+		$select->where('rrm.bg_year_id =?',$export_array['year']);
+	if(!empty($export_array['model']))
+		$select->where('rrm.bg_model_id =?',$export_array['model']);
+	if(!empty($export_array['make']))
+		$select->where('rrm.bg_make_id =?',$export_array['make']);
+	if(!empty($export_array['submodel']))
+		$select->where('rrm.bg_submodel_id =?',$export_array['submodel']);
+	if(!empty($export_array['name']))
+	{
+		$db_remote = $this->getDbConnection();
+		
+		$bgMakeIdSelect = $db_remote->select()
+				->from(array('bgmk' => 'bg_make'), array('bgmk.id As id'))
+				->where('bgmk.name=?', $export_array['name']);
+		$bgMakeId = $db_remote->query($bgMakeIdSelect)->fetchAll();
+		
+		$bgModelIdSelect = $db_remote->select()
+				->from(array('bgmd' => 'bg_model'), array('bgmd.id As id'))
+				->where('bgmd.name=?', $export_array['name']);
+		$bgModelId = $db_remote->query($bgModelIdSelect)->fetchAll();
+		
+		
+		$bgYearIdSelect = $db_remote->select()
+				->from(array('bgyr' => 'bg_year'), array('bgyr.id As id'))
+				->where('bgyr.name=?', $export_array['name']);
+		$bgYearId = $db_remote->query($bgYearIdSelect)->fetchAll();
+		
+		if(!empty($bgMakeId))
+			$select->where('rrm.bg_make_id =?', $bgMakeId[0]['id']);
+		if(!empty($bgModelId[0]['id']))
+			$select->where('rrm.bg_model_id =?', $bgModelId[0]['id']);
+		if(!empty($bgYearId[0]['id']))
+			$select->where('rrm.bg_Year_id =?', $bgYearId[0]['id']);
+
+	}
+ }
+ //$select->where('rrm.id =?',1);
+	 $export_result = $db->query($select)->fetchAll();
 		
 	   	header("Content-type: application/x-msdownload");
 		header("Content-Disposition: attachment; filename=data.xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-		 print "ID\tPublish Date\tYear\tMake\tModel\tMag Issue Year\tMag Issue Month\tProduction Type\tNumber of Doors\tBody Style\tPeak Horsepower\n";
-		foreach ($result as $row) {
+		 print "\"ID\"\t\"Publish Date\"\t\"Year\"\t\"Make\"\t\"Model\"\t\"Mag Issue Year\"\t\"Mag Issue Month\"\t\"Production Type\"\t\"Number of Doors\"\t \"Body Style\"\t\"Peak Horsepower\"\t\"Make(BG)\"\t\"Model(BG)\"\t\"Sub-Model(BG)\"\t\"Year(BG)\"\t\"bg_controlled_make_id\"\t\"bg_controlled_model_id\"\t\"rt_original_table_id\"\t\"Engine Location\"\t\"Fuel Type\"\t\"Transmission Type\"\t\"Driven Wheels\"\t\"Top Speed Limit\"\t\"Forced Induction\"\t\"Engine Type\"\t\"Pct. weight on Rear\"\t\"Pct. Weight on Front\"\t\"0-60 Accel\"\t\"Breaking from 70\"\t\"Top Speed\"\t\"Top Speed otes\"\t\"Base Price\"\t\"Base Price Notes\"\t\"Quarter Trap Speed\"\t\"Quarter Mile Time\"\t\"CD Observed Economy\"\t\"Number of Cylinders\"\t\"Peak Horsepower Notes\"\t\"Peak Torque\"\t\"Peak Torque notes\"\t\"Power Weight hp lb\"\t\"Price as Tested\"\t\"Price as Tested Notes\"\t\"Read Linr\"\t\"Engine Disp\"\t\"Peak Horsepower RMP\"\t\"Peak Torque RMP\"\t\"Salalom Speed\"\t\"5-60 as accel\"\t\"Curb Weight\"\t\"MPH in Lane Change\"\t\"\Skidpad Grip\"\t\"0-100 Accel\"\t\"0-130 Accel\"\t\"\Top Gear Accel 30-50\"\t\"0-30 Accel\"\t\"\Top Gear Accel 50-70\"\t\"0-50 Accel\"\t\"DB at 70 MPH Cruise\"\t\"0-70 Accel\"\t\"Airbags\"\t\"Anti Lock Breaks\"\t\"EPA Citys\"\t\"EPA City Notes\"\t\"Fuel system\"\t\"EPA Highway\"\t\"EPA Highway Notes\"\t\"Interior Voume Front\"\t\"Vol Behind Mid Row\"\t\"Number of Passwngers\"\t\"Vol Behind Rear Row\"\t\"Sound Level Idel\"\t\"ESC Defeatable\"\t\"Stability Control\"\t\"Sum Of 2\"\t\"TC Defeatable\"\t\"Trancaction control\"\t\"Turning Radius\"\t\"DB at Wot\"\t\"Boost in psi\"\t\"Cylinder Bore\"\t\"Coefficient of Drag\"\t\"Compression Ratio\"\t\"rt3_et_factor\"\t\"Final Drive\"\t\"Frontal Area\"\t\"Frontal Area Notes\"\t\"Fual Capacity\"\t\"height\"\t\"Length\"\t\"Long Term Used\"\t\"Costs for lt Repair\"\t\"costs for lt service\"\t\"Lt Scheduled Stops\"\t\"Lt Unscheduled Stops\"\t\"Costs for lt ware\"\t\"Top Gear MPH 1000rmp\"\t\"rt3_peak_bmep\"\t\"rt3_peal_bmep\"\t\"rt3_road_hp_30mph\"\t\"rt3_sp_factor\"\t\"Spec Pow hp Liter\"\t\"Cylinder Stroke\"\t\"Trunk Volume\"\t\"Valve Setup\"\t\"Valves Per Cylinder\"\t\"Width\"\t\" DB at 70 coast\"\t\"0-10 Accel\"\t\"0-20 Accel\"\t\"0-40 Accel\"\t\"0-50 Accel\"\t\"0-70 Accel\"\t\"0-80 Accel\"\t\"0-90 Accel\"\t\"0-110 Accel\"\t\"0-120 Accel\"\t\"0-140 Accel\"\t\"0-150 Accel\"\t\"0-160 Accel\"\t\"0-170 Accel\"\t\"0-180 Accel\"\t\"0-190 Accel\"\t\"0-200 Accel\"\n";
+		foreach ($export_result as $row) {
 	        $make = $this->getData($row['make']);
 	        $body_style = $this->getData($row['body_style']);
 	        $production_type = $this->getData($row['production_type']);
+	        $engine_location = $this->getData($row['Engine_Location']);
+		    $driven_wheels = $this->getData($row['Driven_Wheels']);
+		    $engine_type = $this->getData($row['Engine_Type']);
+	        $forced_induction = $this->getData($row['Forced_Induction']);
+		    $transmission_type = $this->getData($row['Transmission_Type']);
+		    $airbags = $this->getData($row['Airbags']);
+	        $top_speed_limit = $this->getData($row['Top_Speed_Limit']);
+	        $fuel_type = $this->getData($row['Fuel_Type']);
 	        $final = str_replace($row['make'], $make, $row);
 	        $final = str_replace($row['body_style'], $body_style, $final);
 	        $final = str_replace($row['production_type'], $production_type, $final);
+	        $final = str_replace($row['Engine_Location'], $engine_location, $final);
+	        $final = str_replace($row['Driven_Wheels'], $driven_wheels, $final);
+	        $final = str_replace($row['Engine_Type'], $engine_type, $final);
+	        $final = str_replace($row['Forced_Induction'], $forced_induction, $final);
+	        $final = str_replace($row['Transmission_Type'], $transmission_type, $final);
+	        $final = str_replace($row['Airbags'], $airbags, $final);
+	        $final = str_replace($row['Top_Speed_Limit'], $top_speed_limit, $final);
+	        $final = str_replace($row['Fuel_Type'], $fuel_type, $final);
+	        /*$bgMakes = $db_remote->select()
+				->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
+				->where('bgmk.name=?', $row['Make(BG)']);
+			$bgMake = $db_remote->query($bgMakes)->fetchAll();
+			
+			$bgModels = $db_remote->select()
+					->from(array('bgmd' => 'bg_model'), array('bgmd.name As bg_model'))
+					->where('bgmd.name=?', $row['Model(BG)']);
+			$bgModel = $db_remote->query($bgModels)->fetchAll();
+			
+			
+			$bgYears = $db_remote->select()
+					->from(array('bgyr' => 'bg_year'), array('bgyr.name As bg_year'))
+					->where('bgyr.name=?', $row['Year(BG)']);
+			$bgYear = $db_remote->query($bgYears)->fetchAll();
+			
+			$bgSubmodels = $db_remote->select()
+					->from(array('bgsm' => 'bg_submodel'), array('bgsm.name As bg_submodel'))
+					->where('bgyr.name=?', $row['Sub-Model(BG)']);
+					
+			$bgSubmodel = $db_remote->query($bgSubmodels)->fetchAll();
+			$final = str_replace($row['Make(BG)'], $bgMake[0]['bg_make'], $final);
+			$final = str_replace($row['Model(BG'], $bgModel[0]['bg_model'], $final);
+			$final = str_replace($row['Year(BG)'], $bgYear[0]['bg_yrar'], $final);
+			$final = str_replace($row['Sub-Model(BG)'], $bgSubmodels[0]['bg_submodel'], $final);*/
 	        print stripslashes(implode("\t",$final)) . "\n";
 	    }
 	    exit;
@@ -1215,7 +1701,7 @@ class IndexController extends Zend_Controller_Action
 	     
 	      $make = $this->getData($_data['make']);
 	      $body_style = $this->getData($_data['body_style']);
-	      $production_type = $this->getData($_data['production_type']);
+	      
 	      $final = str_replace($row['make'], $make, $_data);
 	      $final = str_replace($row['body_style'], $body_style, $final);
 	      $final = str_replace($row['production_type'], $production_type, $final);
