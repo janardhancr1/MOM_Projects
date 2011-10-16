@@ -1385,7 +1385,7 @@ class IndexController extends Zend_Controller_Action
 	}
  }
  //$select->where('rrm.id =?',1);
-	 $export_result = $db->query($select)->fetchAll();
+ 	 $export_result = $db->query($select)->fetchAll();
 
 	//$db_remote = $this->getDbConnection();
 
@@ -1393,28 +1393,17 @@ class IndexController extends Zend_Controller_Action
 	   header("Content-Disposition:attachment;filename=data.csv");
 	  print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\",\"Peak Horsepower\",\"Make(BG)\",\"Model(BG)\",\"Sub-Model(BG)\",\"Year(BG)\",\"bg_controlled_make_id\",\"bg_controlled_model_id\",\"rt_original_table_id\",\"Engine Location\",\"Fuel Type\",\"Transmission Type\",\"Driven Wheels\",\"Top Speed Limit\",\"Forced Induction\",\"Engine Type\",\"Pct. weight on Rear\",\"Pct. Weight on Front\",\"0-60 Accel\",\"Breaking from 70\",\"Top Speed\",\"Top Speed otes\",\"Base Price\",\"Base Price Notes\",\"Quarter Trap Speed\",\"Quarter Mile Time\",\"CD Observed Economy\",\"Number of Cylinders\",\"Peak Horsepower Notes\",\"Peak Torque\",\"Peak Torque notes\",\"Power Weight hp lb\",\"Price as Tested\",\"Price as Tested Notes\",\"Read Linr\",\"Engine Disp\",\"Peak Horsepower RMP\",\"Peak Torque RMP\",\"Salalom Speed\",\"5-60 as accel\",\"Curb Weight\,\"MPH in Lane Change\",\"\Skidpad Grip\",\"0-100 Accel\",\"0-130 Accel\",\"\Top Gear Accel 30-50\",\"0-30 Accel\",\"\Top Gear Accel 50-70\",\"0-50 Accel\",\"DB at 70 MPH Cruise\",\"0-70 Accel\",\"Airbags\",\"Anti Lock Breaks\",\"EPA Citys\",\"EPA City Notes\",\"Fuel system\",\"EPA Highway\",\"EPA Highway Notes\",\"Interior Voume Front\",\"Vol Behind Mid Row\",\"Number of Passwngers\",\"Vol Behind Rear Row\",\"Sound Level Idel\",\"ESC Defeatable\",\"Stability Control\",\"Sum Of 2\",\"TC Defeatable\",\"Trancaction control\",\"Turning Radius\",\"DB at Wot\",\"Boost in psi\",\"Cylinder Bore\",\"Coefficient of Drag\",\"Compression Ratio\",\"rt3_et_factor\",\"Final Drive\",\"Frontal Area\",\"Frontal Area Notes\",\"Fual Capacity\",\"height\",\"Length\",\"Long Term Used\",\"Costs for lt Repair\",\"costs for lt service\",\"Lt Scheduled Stops\",\"Lt Unscheduled Stops\",\"Costs for lt ware\",\"Top Gear MPH 1000rmp\",\"rt3_peak_bmep\",\"rt3_peal_bmep\",\"rt3_road_hp_30mph\",\"rt3_sp_factor\",\"Spec Pow hp Liter\",\"Cylinder Stroke\",\"Trunk Volume\",\"Valve Setup\",\"Valves Per Cylinder\",\"Width\",\" DB at 70 coast\",\"0-10 Accel\",\"0-20 Accel\",\"0-40 Accel\",\"0-50 Accel\",\"0-70 Accel\",\"0-80 Accel\",\"0-90 Accel\",\"0-110 Accel\",\"0-120 Accel\",\"0-140 Accel\",\"0-150 Accel\",\"0-160 Accel\",\"0-170 Accel\",\"0-180 Accel\",\"0-190 Accel\",\"0-200 Accel\"\n";
 	    foreach ($export_result as $row) {
-	        $make = $this->getData($row['make']);
-	        $body_style = $this->getData($row['body_style']);
-	        $production_type = $this->getData($row['production_type']);
-		    $engine_location = $this->getData($row['Engine_Location']);
-		    $driven_wheels = $this->getData($row['Driven_Wheels']);
-		    $engine_type = $this->getData($row['Engine_Type']);
-	        $forced_induction = $this->getData($row['Forced_Induction']);
-		    $transmission_type = $this->getData($row['Transmission_Type']);
-		    $airbags = $this->getData($row['Airbags']);
-	        $top_speed_limit = $this->getData($row['Top_Speed_Limit']);
-	        $fuel_type = $this->getData($row['Fuel_Type']);
-	        $final = str_replace($row['make'], $make, $row);
-	        $final = str_replace($row['body_style'], $body_style, $final);
-	        $final = str_replace($row['production_type'], $production_type, $final);
-	        $final = str_replace($row['Engine_Location'], $engine_location, $final);
-	        $final = str_replace($row['Driven_Wheels'], $driven_wheels, $final);
-	        $final = str_replace($row['Engine_Type'], $engine_type, $final);
-	        $final = str_replace($row['Forced_Induction'], $forced_induction, $final);
-	        $final = str_replace($row['Transmission_Type'], $transmission_type, $final);
-	        $final = str_replace($row['Airbags'], $airbags, $final);
-	        $final = str_replace($row['Top_Speed_Limit'], $top_speed_limit, $final);
-	        $final = str_replace($row['Fuel_Type'], $fuel_type, $final);
+	        $row['make'] = $this->getData($row['make']);
+	        $row['body_style'] = $this->getData($row['body_style']);
+	        $row['production_type'] = $this->getData($row['production_type']);
+		    $row['Engine_Location'] = $this->getData($row['Engine_Location']);
+		    $row['Driven_Wheels'] = $this->getData($row['Driven_Wheels']);
+		    $row['Engine_Type'] = $this->getData($row['Engine_Type']);
+	        $row['Forced_Induction'] = $this->getData($row['Forced_Induction']);
+		    $row['Transmission_Type'] = $this->getData($row['Transmission_Type']);
+		    $row['Airbags'] = $this->getData($row['Airbags']);
+	        $row['Top_Speed_Limit'] = $this->getData($row['Top_Speed_Limit']);
+	        $row['Fuel_Type'] = $this->getData($row['Fuel_Type']);
 	        /*$bgMakes = $db_remote->select()
 					->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
 					->where('bgmk.name=?', $row['Make(BG)']);
@@ -1440,7 +1429,7 @@ class IndexController extends Zend_Controller_Action
 			$final = str_replace($row['Model(BG'], $bgModel[0]['bg_model'], $final);
 			$final = str_replace($row['Year(BG)'], $bgYear[0]['bg_year'], $final);
 			$final = str_replace($row['Sub-Model(BG)'], $bgSubmodels[0]['bg_submodel'], $final);*/
-	        print '"' . stripslashes(implode('","',$final)) . "\"\n";
+	        print '"' . stripslashes(implode('","',$row)) . "\"\n";
 	    }
 
 	    exit;
@@ -1639,28 +1628,17 @@ class IndexController extends Zend_Controller_Action
 		header("Expires: 0");
 		 print "\"ID\"\t\"Publish Date\"\t\"Year\"\t\"Make\"\t\"Model\"\t\"Mag Issue Year\"\t\"Mag Issue Month\"\t\"Production Type\"\t\"Number of Doors\"\t \"Body Style\"\t\"Peak Horsepower\"\t\"Make(BG)\"\t\"Model(BG)\"\t\"Sub-Model(BG)\"\t\"Year(BG)\"\t\"bg_controlled_make_id\"\t\"bg_controlled_model_id\"\t\"rt_original_table_id\"\t\"Engine Location\"\t\"Fuel Type\"\t\"Transmission Type\"\t\"Driven Wheels\"\t\"Top Speed Limit\"\t\"Forced Induction\"\t\"Engine Type\"\t\"Pct. weight on Rear\"\t\"Pct. Weight on Front\"\t\"0-60 Accel\"\t\"Breaking from 70\"\t\"Top Speed\"\t\"Top Speed otes\"\t\"Base Price\"\t\"Base Price Notes\"\t\"Quarter Trap Speed\"\t\"Quarter Mile Time\"\t\"CD Observed Economy\"\t\"Number of Cylinders\"\t\"Peak Horsepower Notes\"\t\"Peak Torque\"\t\"Peak Torque notes\"\t\"Power Weight hp lb\"\t\"Price as Tested\"\t\"Price as Tested Notes\"\t\"Read Linr\"\t\"Engine Disp\"\t\"Peak Horsepower RMP\"\t\"Peak Torque RMP\"\t\"Salalom Speed\"\t\"5-60 as accel\"\t\"Curb Weight\"\t\"MPH in Lane Change\"\t\"\Skidpad Grip\"\t\"0-100 Accel\"\t\"0-130 Accel\"\t\"\Top Gear Accel 30-50\"\t\"0-30 Accel\"\t\"\Top Gear Accel 50-70\"\t\"0-50 Accel\"\t\"DB at 70 MPH Cruise\"\t\"0-70 Accel\"\t\"Airbags\"\t\"Anti Lock Breaks\"\t\"EPA Citys\"\t\"EPA City Notes\"\t\"Fuel system\"\t\"EPA Highway\"\t\"EPA Highway Notes\"\t\"Interior Voume Front\"\t\"Vol Behind Mid Row\"\t\"Number of Passwngers\"\t\"Vol Behind Rear Row\"\t\"Sound Level Idel\"\t\"ESC Defeatable\"\t\"Stability Control\"\t\"Sum Of 2\"\t\"TC Defeatable\"\t\"Trancaction control\"\t\"Turning Radius\"\t\"DB at Wot\"\t\"Boost in psi\"\t\"Cylinder Bore\"\t\"Coefficient of Drag\"\t\"Compression Ratio\"\t\"rt3_et_factor\"\t\"Final Drive\"\t\"Frontal Area\"\t\"Frontal Area Notes\"\t\"Fual Capacity\"\t\"height\"\t\"Length\"\t\"Long Term Used\"\t\"Costs for lt Repair\"\t\"costs for lt service\"\t\"Lt Scheduled Stops\"\t\"Lt Unscheduled Stops\"\t\"Costs for lt ware\"\t\"Top Gear MPH 1000rmp\"\t\"rt3_peak_bmep\"\t\"rt3_peal_bmep\"\t\"rt3_road_hp_30mph\"\t\"rt3_sp_factor\"\t\"Spec Pow hp Liter\"\t\"Cylinder Stroke\"\t\"Trunk Volume\"\t\"Valve Setup\"\t\"Valves Per Cylinder\"\t\"Width\"\t\" DB at 70 coast\"\t\"0-10 Accel\"\t\"0-20 Accel\"\t\"0-40 Accel\"\t\"0-50 Accel\"\t\"0-70 Accel\"\t\"0-80 Accel\"\t\"0-90 Accel\"\t\"0-110 Accel\"\t\"0-120 Accel\"\t\"0-140 Accel\"\t\"0-150 Accel\"\t\"0-160 Accel\"\t\"0-170 Accel\"\t\"0-180 Accel\"\t\"0-190 Accel\"\t\"0-200 Accel\"\n";
 		foreach ($export_result as $row) {
-	        $make = $this->getData($row['make']);
-	        $body_style = $this->getData($row['body_style']);
-	        $production_type = $this->getData($row['production_type']);
-	        $engine_location = $this->getData($row['Engine_Location']);
-		    $driven_wheels = $this->getData($row['Driven_Wheels']);
-		    $engine_type = $this->getData($row['Engine_Type']);
-	        $forced_induction = $this->getData($row['Forced_Induction']);
-		    $transmission_type = $this->getData($row['Transmission_Type']);
-		    $airbags = $this->getData($row['Airbags']);
-	        $top_speed_limit = $this->getData($row['Top_Speed_Limit']);
-	        $fuel_type = $this->getData($row['Fuel_Type']);
-	        $final = str_replace($row['make'], $make, $row);
-	        $final = str_replace($row['body_style'], $body_style, $final);
-	        $final = str_replace($row['production_type'], $production_type, $final);
-	        $final = str_replace($row['Engine_Location'], $engine_location, $final);
-	        $final = str_replace($row['Driven_Wheels'], $driven_wheels, $final);
-	        $final = str_replace($row['Engine_Type'], $engine_type, $final);
-	        $final = str_replace($row['Forced_Induction'], $forced_induction, $final);
-	        $final = str_replace($row['Transmission_Type'], $transmission_type, $final);
-	        $final = str_replace($row['Airbags'], $airbags, $final);
-	        $final = str_replace($row['Top_Speed_Limit'], $top_speed_limit, $final);
-	        $final = str_replace($row['Fuel_Type'], $fuel_type, $final);
+	        $row['make'] = $this->getData($row['make']);
+	        $row['body_style'] = $this->getData($row['body_style']);
+	        $row['production_type'] = $this->getData($row['production_type']);
+		    $row['Engine_Location'] = $this->getData($row['Engine_Location']);
+		    $row['Driven_Wheels'] = $this->getData($row['Driven_Wheels']);
+		    $row['Engine_Type'] = $this->getData($row['Engine_Type']);
+	        $row['Forced_Induction'] = $this->getData($row['Forced_Induction']);
+		    $row['Transmission_Type'] = $this->getData($row['Transmission_Type']);
+		    $row['Airbags'] = $this->getData($row['Airbags']);
+	        $row['Top_Speed_Limit'] = $this->getData($row['Top_Speed_Limit']);
+	        $row['Fuel_Type'] = $this->getData($row['Fuel_Type']);
 	        /*$bgMakes = $db_remote->select()
 				->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
 				->where('bgmk.name=?', $row['Make(BG)']);
@@ -1686,7 +1664,7 @@ class IndexController extends Zend_Controller_Action
 			$final = str_replace($row['Model(BG'], $bgModel[0]['bg_model'], $final);
 			$final = str_replace($row['Year(BG)'], $bgYear[0]['bg_yrar'], $final);
 			$final = str_replace($row['Sub-Model(BG)'], $bgSubmodels[0]['bg_submodel'], $final);*/
-	        print stripslashes(implode("\t",$final)) . "\n";
+	        print stripslashes(implode("\t",$row)) . "\n";
 	    }
 	    exit;
 	}
