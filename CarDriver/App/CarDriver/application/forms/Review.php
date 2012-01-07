@@ -3348,6 +3348,485 @@ class Application_Form_Review extends Application_Form_MainForm
 			$this->addElements(array($before_rt_original_table_id,$rt_original_table_id));
 		}
 		
+		if(!empty($form1_Values['first_stop_70']))
+		{
+			$first_stop_70 = new Zend_Form_Element_Text('first_stop_70');
+			$first_stop_70->setValue($form1_Values['first_stop_70'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event);');
+			
+			$before_first_stop_70 = new Zend_Form_Element_Text('before_first_stop_70',array("readonly" => "readonly"));
+			$before_first_stop_70->setLabel('First stop 70');
+			
+			$first_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_first_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_first_stop_70,$first_stop_70));
+		}
+		
+		if(!empty($form1_Values['longest_stop_70']))
+		{
+			$longest_stop_70 = new Zend_Form_Element_Text('longest_stop_70');
+			$longest_stop_70->setValue($form1_Values['longest_stop_70'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event);');
+			
+			$before_longest_stop_70 = new Zend_Form_Element_Text('before_longest_stop_70',array("readonly" => "readonly"));
+			$before_longest_stop_70->setLabel('Longest stop 70');
+			
+			$longest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_longest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_longest_stop_70,$longest_stop_70));
+		}
+		
+		if(!empty($form1_Values['shortest_stop_70']))
+		{
+			$shortest_stop_70 = new Zend_Form_Element_Text('shortest_stop_70');
+			$shortest_stop_70->setValue($form1_Values['shortest_stop_70'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event);');
+			
+			$before_shortest_stop_70 = new Zend_Form_Element_Text('before_shortest_stop_70',array("readonly" => "readonly"));
+			$before_shortest_stop_70->setLabel('Shortest stop 70');
+			
+			$shortest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_shortest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_shortest_stop_70,$shortest_stop_70));
+		}
+		
+		if(!empty($form1_Values['transaction_off']))
+		{
+			$transaction_off = new Zend_Form_Element_Text('transaction_off');
+			$transaction_off->setValue($form1_Values['transaction_off']);
+			
+			$before_transaction_off = new Zend_Form_Element_Text('before_transaction_off',array("readonly" => "readonly"));
+			$before_transaction_off->setLabel('Transaction off');
+		
+			$transaction_off->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_transaction_off->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_transaction_off,$transaction_off));
+		}
+		
+		if(!empty($form1_Values['partially_defeatable']))
+		{
+			$partially_defeatable = new Zend_Form_Element_Text('partially_defeatable');
+			$partially_defeatable->setValue($form1_Values['partially_defeatable']);
+			
+			$before_partially_defeatable = new Zend_Form_Element_Text('before_partially_defeatable',array("readonly" => "readonly"));
+			$before_partially_defeatable->setLabel('Partially defeatable');
+		
+			$partially_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_partially_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_partially_defeatable,$partially_defeatable));
+		}
+		
+		if(!empty($form1_Values['fully_defeatable']))
+		{
+			$fully_defeatable = new Zend_Form_Element_Text('fully_defeatable');
+			$fully_defeatable->setValue($form1_Values['fully_defeatable']);
+			
+			$before_fully_defeatable = new Zend_Form_Element_Text('before_fully_defeatable',array("readonly" => "readonly"));
+			$before_fully_defeatable->setLabel('Fully defeatable');
+		
+			$fully_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_fully_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_fully_defeatable,$fully_defeatable));
+		}
+		
+		if(!empty($form1_Values['competition_mode']))
+		{
+			$competition_mode = new Zend_Form_Element_Text('competition_mode');
+			$competition_mode->setValue($form1_Values['competition_mode']);
+			
+			$before_competition_mode = new Zend_Form_Element_Text('before_competition_mode',array("readonly" => "readonly"));
+			$before_competition_mode->setLabel('Competition mode');
+		
+			$competition_mode->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_competition_mode->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_competition_mode,$competition_mode));
+		}
+		
+	    if(!empty($form1_Values['launch_control']))
+		{
+			$launch_control = new Zend_Form_Element_Text('launch_control');
+			$launch_control->setValue($form1_Values['launch_control']);
+			
+			$before_launch_control = new Zend_Form_Element_Text('before_launch_control',array("readonly" => "readonly"));
+			$before_launch_control->setLabel('Launch control');
+		
+			$launch_control->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_launch_control->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_launch_control,$launch_control));
+		}
+		
+	    if(!empty($form1_Values['permanent']))
+		{
+			$permanent = new Zend_Form_Element_Text('permanent');
+			$permanent->setValue($form1_Values['permanent']);
+			
+			$before_permanent = new Zend_Form_Element_Text('before_permanent',array("readonly" => "readonly"));
+			$before_permanent->setLabel('Permanent');
+		
+			$permanent->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_permanent->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_permanent,$permanent));
+		}
+		
+		if(!empty($form1_Values['center_of_gravity_height']))
+		{
+			$center_of_gravity_height = new Zend_Form_Element_Text('center_of_gravity_height');
+			$center_of_gravity_height->setValue($form1_Values['center_of_gravity_height'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event);');
+			
+			$before_center_of_gravity_height = new Zend_Form_Element_Text('before_center_of_gravity_height',array("readonly" => "readonly"));
+			$before_center_of_gravity_height->setLabel('Center of Gravity Height');
+			
+			$center_of_gravity_height->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_center_of_gravity_height->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_center_of_gravity_height,$center_of_gravity_height));
+		}
+		
+		if(!empty($form1_Values['skidpad_diameter']))
+		{
+			$skidpad_diameter = new Zend_Form_Element_Text('skidpad_diameter');
+			$skidpad_diameter->setValue($form1_Values['skidpad_diameter'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event);');
+			
+			$before_skidpad_diameter = new Zend_Form_Element_Text('before_skidpad_diameter',array("readonly" => "readonly"));
+			$before_skidpad_diameter->setLabel('Skidpad diameter');
+			
+			$skidpad_diameter->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_skidpad_diameter->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_skidpad_diameter,$skidpad_diameter));
+		}
+		
+		if(!empty($form1_Values['test_notes']))
+		{
+			$test_notes = new Zend_Form_Element_Text('test_notes');
+			$test_notes->setValue($form1_Values['test_notes']);
+			
+			$before_test_notes = new Zend_Form_Element_Text('before_test_notes',array("readonly" => "readonly"));
+			$before_test_notes->setLabel('Test notes');
+		
+			$test_notes->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_notes->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_notes,$test_notes));
+		}
+		if(!empty($form1_Values['test_location']))
+		{
+			$test_location = new Zend_Form_Element_Select('test_location',array('style'=>'width:150px;'));
+			$test_location->addMultioptions(array(''=>'','willow'=>'willow','Milan'=>'Milan','Chelsea'=>'Chelsea'));
+			$test_location->setValue($form1_Values['test_location']);
+			
+			$before_test_location = new Zend_Form_Element_Text('before_test_location',array("readonly" => "readonly"));
+			$before_test_location->setLabel('Test location');
+			
+			$test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_location,$test_location));
+		}
+		
+		if(!empty($form1_Values['test_location_detail']))
+		{
+			$test_location_detail = new Zend_Form_Element_Text('test_location_detail');
+			$test_location_detail->setValue($form1_Values['test_location_detail']);
+			
+			$before_test_location_detail = new Zend_Form_Element_Text('before_test_location_detail',array("readonly" => "readonly"));
+			$before_test_location_detail->setLabel('Test location detail');
+		
+			$test_location_detail->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_location_detail->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_location_detail,$test_location_detail));
+		}
+		
+		if(!empty($form1_Values['tester']))
+		{
+			$tester = new Zend_Form_Element_Text('tester');
+			$tester->setValue($form1_Values['tester']);
+			
+			$before_tester = new Zend_Form_Element_Text('before_tester',array("readonly" => "readonly"));
+			$before_tester->setLabel('Tester');
+		
+			$tester->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_tester->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_tester,$tester));
+		}
+		
+		if(!empty($form1_Values['image']))
+		{
+			$image = new Zend_Form_Element_Text('image');
+			$image->setValue($form1_Values['image']);
+			
+			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
+			$before_image->setLabel('Image');
+		
+			$image->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_image->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_image,$image));
+		}
+		
+		if(!empty($form1_Values['url_for_story_relationship']))
+		{
+			$url_for_story_relationship = new Zend_Form_Element_Text('url_for_story_relationship');
+			$url_for_story_relationship->setValue($form1_Values['url_for_story_relationship']);
+			
+			$before_url_for_story_relationship = new Zend_Form_Element_Text('before_url_for_story_relationship',array("readonly" => "readonly"));
+			$before_url_for_story_relationship->setLabel('URL for story relationship');
+		
+			$url_for_story_relationship->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_url_for_story_relationship->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_url_for_story_relationship,$url_for_story_relationship));
+		}
+		
+		if(!empty($form1_Values['ez_id']))
+		{
+			$ez_id = new Zend_Form_Element_Text('ez_id');
+			$ez_id->setValue($form1_Values['ez_id']);
+			
+			$before_ez_id = new Zend_Form_Element_Text('before_ez_id',array("readonly" => "readonly"));
+			$before_ez_id->setLabel('EZ ID');
+		
+			$ez_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_ez_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_ez_id,$ez_id));
+		}
+		
+		if(!empty($form1_Values['suppress_public_display']))
+		{
+			$suppress_public_display = new Zend_Form_Element_Text('suppress_public_display');
+			$suppress_public_display->setValue($form1_Values['suppress_public_display']);
+			
+			$before_suppress_public_display = new Zend_Form_Element_Text('before_suppress_public_display',array("readonly" => "readonly"));
+			$before_suppress_public_display->setLabel('Suppress public display');
+		
+			$suppress_public_display->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_suppress_public_display->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_suppress_public_display,$suppress_public_display));
+		}
 		
 		$save_changes = new Zend_Form_Element_Submit('save_changes');
 		$save_changes->setLabel('Save');

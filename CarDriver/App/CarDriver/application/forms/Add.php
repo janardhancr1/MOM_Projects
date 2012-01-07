@@ -1208,44 +1208,184 @@ class Application_Form_Add extends Application_Form_MainForm
 		));
 			
 		$this->addElement('Select', 'rt2_anti_lock', array(
-		'decorators' => $this->elementDecoratorsTr,
+		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Anti-Lock Brakes?',
 		'tabindex' => 61,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
 		));
 		
-		$this->addElement('Select', 'rt2_traction_control', array(
+		$this->addElement('Text', 'first_stop_70', array(
 		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'First stop 70',
+		'tabindex' => 126,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Select', 'rt2_traction_control', array(
+		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Traction Control?',
-		'tabindex' => 62,
+		'tabindex' => 127,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
+		));
+		
+		$this->addElement('Text', 'longest_stop_70', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Longest stop 70',
+		'tabindex' => 128,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Select', 'rt2_trac_defeatable', array(
-		'decorators' => $this->elementDecoratorsTr,
+		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Tc Defeatable?',
-		'tabindex' => 63,
+		'tabindex' => 129,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
+		));
+		
+		$this->addElement('Text', 'shortest_stop_70', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Shortest stop 70',
+		'tabindex' => 130,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Select', 'rt2_stability_control', array(
-		'decorators' => $this->elementDecoratorsTr,
+		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Stability Control',
-		'tabindex' => 64,
+		'tabindex' => 131,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
 		));
 		
-		$this->addElement('Text', 'rt2_stab_defeatable', array(
+		$this->addElement('Text', 'transaction_off', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'Esc Defeatable?',
-		'tabindex' => 65,
+		'label' => 'Transaction off',
+		'tabindex' => 132
 		));
 		
+		
+		$this->addElement('Text', 'rt2_stab_defeatable', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Esc Defeatable?',
+		'tabindex' => 133,
+		));
+		
+		$this->addElement('Text', 'partially_defeatable', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Partially defeatable',
+		'tabindex' => 134
+		));
+		
+		$this->addElement('Text', 'fully_defeatable', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Pully defeatable',
+		'tabindex' => 135,
+		));
+		
+		$this->addElement('Text', 'competition_mode', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Competition mode',
+		'tabindex' => 136,
+		));
+		
+		$this->addElement('Text', 'launch_control', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Launch control',
+		'tabindex' => 137
+		));
+		
+		
+		$this->addElement('Text', 'permanent', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Permanent',
+		'tabindex' => 138,
+		));
+		
+		$this->addElement('Text', 'center_of_gravity_height', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Center of Gravity Height',
+		'tabindex' => 139,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'skidpad_diameter', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Skidpad diameter',
+		'tabindex' => 140,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'test_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Test notes',
+		'tabindex' => 141,
+		));
+		
+		$this->addElement('Select', 'test_location', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Test location',
+		'tabindex' => 142,
+		'MultiOptions' => array(''=>'','willow'=>'willow','Milan'=>'Milan','Chelsea'=>'Chelsea')
+		));
+		
+		$this->addElement('Text', 'test_location_detail', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Test location detail',
+		'tabindex' => 143,
+		));
+		
+		$this->addElement('Text', 'tester', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Tester',
+		'tabindex' => 144,
+		));
+		
+		$this->addElement('Text', 'image', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Image',
+		'tabindex' => 145,
+		));
+		
+		$this->addElement('Text', 'url_for_story_relationship', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'URL for story relationship',
+		'tabindex' => 146,
+		));
+		
+		$this->addElement('Text', 'ez_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'EZ ID',
+		'tabindex' => 147,
+		));
+		
+		$this->addElement('Text', 'suppress_public_display', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Suppress public display',
+		'tabindex' => 148,
+		));
 		$review_changes = new Zend_Form_Element_Submit('review_cganges');
 		$review_changes->setLabel('Review');
 		

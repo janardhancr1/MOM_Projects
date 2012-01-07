@@ -410,6 +410,26 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_peak_bmep'] = $review_values['rt3_peak_bmep'];
 		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
 		    
+		    $rt_results_level_3['first_stop_70'] = $review_values['first_stop_70'];
+		    $rt_results_level_3['longest_stop_70'] = $review_values['longest_stop_70'];
+		    $rt_results_level_3['shortest_stop_70'] = $review_values['shortest_stop_70'];
+		    $rt_results_level_3['transaction_off'] = $review_values['transaction_off'];
+		    $rt_results_level_3['partially_defeatable'] = $review_values['partially_defeatable'];
+		    $rt_results_level_3['fully_defeatable'] = $review_values['fully_defeatable'];
+		    $rt_results_level_3['competition_mode'] = $review_values['competition_mode'];
+		    $rt_results_level_3['launch_control'] = $review_values['launch_control'];
+		    $rt_results_level_3['permanent'] = $review_values['permanent'];
+		    $rt_results_level_3['center_of_gravity_height'] = $review_values['center_of_gravity_height'];
+		    $rt_results_level_3['skidpad_diameter'] = $review_values['skidpad_diameter'];
+		    $rt_results_level_3['test_notes'] = $review_values['test_notes'];
+		    $rt_results_level_3['test_location'] = $review_values['test_location'];
+		    $rt_results_level_3['test_location_detail'] = $review_values['test_location_detail'];
+		    $rt_results_level_3['tester'] = $review_values['tester'];
+		    $rt_results_level_3['image'] = $review_values['image'];
+		    $rt_results_level_3['url_for_story_relationship'] = $review_values['url_for_story_relationship'];
+		    $rt_results_level_3['ez_id'] = $review_values['ez_id'];
+		    $rt_results_level_3['suppress_public_display'] = $review_values['suppress_public_display'];
+		    
 		    
 	    	$table = new Application_Model_ResultsLevel3();
 			$db = $table->getAdapter();
