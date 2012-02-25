@@ -3864,8 +3864,569 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$this->addElements(array($before_rt_original_table_id,$rt_original_table_id));
 		}
-		
-		
+		if($form1_Values['first_stop_70'] != $rt_results_level_3[0]['first_stop_70'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$first_stop_70 = new Zend_Form_Element_Text('first_stop_70',array('style'=>'width:150px;'));
+			$first_stop_70->setValue($form1_Values['first_stop_70']);
+						
+			$before_first_stop_70 = new Zend_Form_Element_Text('before_first_stop_70',array("readonly" => "readonly"));
+			$before_first_stop_70->setLabel('First stop 70');
+			
+			if($rt_results_level_3)
+								$before_first_stop_70->setValue($rt_results_level_3[0]['first_stop_70']);
+			
+			$first_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_first_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_first_stop_70,$first_stop_70));
+		}
+		if($form1_Values['shortest_stop_70'] != $rt_results_level_3[0]['shortest_stop_70'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$shortest_stop_70 = new Zend_Form_Element_Text('shortest_stop_70',array('style'=>'width:150px;'));
+			$shortest_stop_70->setValue($form1_Values['shortest_stop_70']);
+						
+			$before_shortest_stop_70 = new Zend_Form_Element_Text('before_shortest_stop_70',array("readonly" => "readonly"));
+			$before_shortest_stop_70->setLabel('Shortest stop 70');
+			
+			if($rt_results_level_3)
+								$before_shortest_stop_70->setValue($rt_results_level_3[0]['shortest_stop_70']);
+			
+			$shortest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_shortest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_shortest_stop_70,$shortest_stop_70));
+		}
+		if($form1_Values['longest_stop_70'] != $rt_results_level_3[0]['longest_stop_70'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$longest_stop_70 = new Zend_Form_Element_Text('longest_stop_70',array('style'=>'width:150px;'));
+			$longest_stop_70->setValue($form1_Values['longest_stop_70']);
+						
+			$before_longest_stop_70 = new Zend_Form_Element_Text('before_longest_stop_70',array("readonly" => "readonly"));
+			$before_longest_stop_70->setLabel('longest stop 70');
+			
+			if($rt_results_level_3)
+								$before_longest_stop_70->setValue($rt_results_level_3[0]['longest_stop_70']);
+			
+			$longest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_longest_stop_70->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_longest_stop_70,$longest_stop_70));
+		}
+	if($form1_Values['transaction_off'] != $rt_results_level_3[0]['transaction_off'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$transaction_off = new Zend_Form_Element_Text('transaction_off',array('style'=>'width:150px;'));
+			$transaction_off->setValue($form1_Values['transaction_off']);
+						
+			$before_transaction_off = new Zend_Form_Element_Text('before_transaction_off',array("readonly" => "readonly"));
+			$before_transaction_off->setLabel('Transaction off');
+			
+			if($rt_results_level_3)
+								$before_transaction_off->setValue($rt_results_level_3[0]['transaction_off']);
+			
+			$transaction_off->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_transaction_off->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_transaction_off,$transaction_off));
+		}
+	if($form1_Values['partially_defeatable'] != $rt_results_level_3[0]['partially_defeatable'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$partially_defeatable = new Zend_Form_Element_Text('partially_defeatable',array('style'=>'width:150px;'));
+			$partially_defeatable->setValue($form1_Values['partially_defeatable']);
+						
+			$before_partially_defeatable = new Zend_Form_Element_Text('before_partially_defeatable',array("readonly" => "readonly"));
+			$before_partially_defeatable->setLabel('Partially defeatable');
+			
+			if($rt_results_level_3)
+								$before_partially_defeatable->setValue($rt_results_level_3[0]['partially_defeatable']);
+			
+			$partially_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_partially_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_partially_defeatable,$partially_defeatable));
+		}
+		if($form1_Values['fully_defeatable'] != $rt_results_level_3[0]['fully_defeatable'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$fully_defeatable = new Zend_Form_Element_Text('fully_defeatable',array('style'=>'width:150px;'));
+			$fully_defeatable->setValue($form1_Values['fully_defeatable']);
+						
+			$before_fully_defeatable = new Zend_Form_Element_Text('before_fully_defeatable',array("readonly" => "readonly"));
+			$before_fully_defeatable->setLabel('Fully defeatable');
+			
+			if($rt_results_level_3)
+								$before_fully_defeatable->setValue($rt_results_level_3[0]['fully_defeatable']);
+			
+			$fully_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_fully_defeatable->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_fully_defeatable,$fully_defeatable));
+		}
+		if($form1_Values['competition_mode'] != $rt_results_level_3[0]['competition_mode'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$competition_mode = new Zend_Form_Element_Text('competition_mode',array('style'=>'width:150px;'));
+			$competition_mode->setValue($form1_Values['competition_mode']);
+						
+			$before_competition_mode = new Zend_Form_Element_Text('before_competition_mode',array("readonly" => "readonly"));
+			$before_competition_mode->setLabel('Competition mode');
+			
+			if($rt_results_level_3)
+								$before_competition_mode->setValue($rt_results_level_3[0]['competition_mode']);
+			
+			$competition_mode->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_competition_mode->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_competition_mode,$competition_mode));
+		}
+	if($form1_Values['launch_control'] != $rt_results_level_3[0]['launch_control'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$launch_control = new Zend_Form_Element_Text('launch_control',array('style'=>'width:150px;'));
+			$launch_control->setValue($form1_Values['launch_control']);
+						
+			$before_launch_control = new Zend_Form_Element_Text('before_launch_control',array("readonly" => "readonly"));
+			$before_launch_control->setLabel('Launch control');
+			
+			if($rt_results_level_3)
+								$before_launch_control->setValue($rt_results_level_3[0]['launch_control']);
+			
+			$launch_control->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_launch_control->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_launch_control,$launch_control));
+		}
+	if($form1_Values['permanent'] != $rt_results_level_3[0]['permanent'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$permanent = new Zend_Form_Element_Text('permanent',array('style'=>'width:150px;'));
+			$permanent->setValue($form1_Values['permanent']);
+						
+			$before_permanent = new Zend_Form_Element_Text('before_permanent',array("readonly" => "readonly"));
+			$before_permanent->setLabel('Permanent');
+			
+			if($rt_results_level_3)
+								$before_permanent->setValue($rt_results_level_3[0]['permanent']);
+			
+			$permanent->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_permanent->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_permanent,$permanent));
+		}
+	if($form1_Values['center_of_gravity_height'] != $rt_results_level_3[0]['center_of_gravity_height'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$center_of_gravity_height = new Zend_Form_Element_Text('center_of_gravity_height',array('style'=>'width:150px;'));
+			$center_of_gravity_height->setValue($form1_Values['center_of_gravity_height'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
+						
+			$before_center_of_gravity_height = new Zend_Form_Element_Text('before_center_of_gravity_height',array("readonly" => "readonly"));
+			$before_center_of_gravity_height->setLabel('Center of gravity height');
+			
+			if($rt_results_level_3)
+								$before_center_of_gravity_height->setValue($rt_results_level_3[0]['center_of_gravity_height']);
+			
+			$center_of_gravity_height->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_center_of_gravity_height->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_center_of_gravity_height,$center_of_gravity_height));
+		}
+	if($form1_Values['skidpad_diameter'] != $rt_results_level_3[0]['skidpad_diameter'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$skidpad_diameter = new Zend_Form_Element_Text('skidpad_diameter',array('style'=>'width:150px;'));
+			$skidpad_diameter->setValue($form1_Values['skidpad_diameter'])
+			->setAttrib('onkeydown' ,'return onlyFloat(event, this.value);');
+						
+			$before_skidpad_diameter = new Zend_Form_Element_Text('before_skidpad_diameter',array("readonly" => "readonly"));
+			$before_skidpad_diameter->setLabel('Skidpad diameter');
+			
+			if($rt_results_level_3)
+								$before_skidpad_diameter->setValue($rt_results_level_3[0]['skidpad_diameter']);
+			
+			$skidpad_diameter->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_skidpad_diameter->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_skidpad_diameter,$skidpad_diameter));
+		}
+		if($form1_Values['test_notes'] != $rt_results_level_3[0]['test_notes'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$test_notes = new Zend_Form_Element_Text('test_notes',array('style'=>'width:150px;'));
+			$test_notes->setValue($form1_Values['test_notes']);
+						
+			$before_test_notes = new Zend_Form_Element_Text('before_test_notes',array("readonly" => "readonly"));
+			$before_test_notes->setLabel('Test notes');
+			
+			if($rt_results_level_3)
+								$before_test_notes->setValue($rt_results_level_3[0]['test_notes']);
+			
+			$test_notes->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_notes->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_notes,$test_notes));
+		}
+	if($form1_Values['test_location'] != $rt_results_level_3[0]['test_location'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$test_location = new Zend_Form_Element_Text('test_location',array('style'=>'width:150px;'));
+			$test_location->setValue($form1_Values['test_location']);
+						
+			$before_test_location = new Zend_Form_Element_Text('before_test_location',array("readonly" => "readonly"));
+			$before_test_location->setLabel('Test location');
+			
+			if($rt_results_level_3)
+								$before_test_location->setValue($rt_results_level_3[0]['test_location']);
+			
+			$test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_location,$test_location));
+		}
+	if($form1_Values['test_location'] != $rt_results_level_3[0]['test_location'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$test_location = new Zend_Form_Element_Select('test_location',array('style'=>'width:150px;'));
+			$test_location->addMultiOptions(array(''=>'','willow'=>'willow','Milan'=>'Milan','Chelsea'=>'Chelsea'))
+			->setValue($form1_Values['test_location']);
+						
+			$before_test_location = new Zend_Form_Element_Text('before_test_location',array("readonly" => "readonly"));
+			$before_test_location->setLabel('Test location');
+			
+			if($rt_results_level_3)
+								$before_test_location->setValue($rt_results_level_3[0]['test_location']);
+			
+			$test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_location->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_location,$test_location));
+		}
+	if($form1_Values['test_location_detail'] != $rt_results_level_3[0]['test_location_detail'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$test_location_detail = new Zend_Form_Element_Text('test_location_detail',array('style'=>'width:150px;'));
+			$test_location_detail->setValue($form1_Values['test_location_detail']);
+						
+			$before_test_location_detail = new Zend_Form_Element_Text('before_test_location_detail',array("readonly" => "readonly"));
+			$before_test_location_detail->setLabel('Test location detail');
+			
+			if($rt_results_level_3)
+								$before_test_location_detail->setValue($rt_results_level_3[0]['test_notes']);
+			
+			$test_location_detail->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_test_location_detail->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_test_location_detail,$test_location_detail));
+		}
+	if($form1_Values['tester'] != $rt_results_level_3[0]['tester'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$tester = new Zend_Form_Element_Text('tester',array('style'=>'width:150px;'));
+			$tester->setValue($form1_Values['tester']);
+						
+			$before_tester = new Zend_Form_Element_Text('before_tester',array("readonly" => "readonly"));
+			$before_tester->setLabel('Tester');
+			
+			if($rt_results_level_3)
+								$before_tester->setValue($rt_results_level_3[0]['tester']);
+			
+			$tester->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_tester->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_tester,$tester));
+		}
+	if($form1_Values['image'] != $rt_results_level_3[0]['image'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$image = new Zend_Form_Element_File('image',array('style'=>'width:150px;'));
+			$image->setValue($form1_Values['image']);
+						
+			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
+			$before_image->setLabel('Image');
+			
+			if($rt_results_level_3)
+								$before_image->setValue($rt_results_level_3[0]['image']);
+			
+			/*$image->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_image->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));*/
+			
+			$this->addElements(array($before_image,$image));
+		}
+	if($form1_Values['url_for_story_relationship'] != $rt_results_level_3[0]['url_for_story_relationship'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$url_for_story_relationship = new Zend_Form_Element_Text('url_for_story_relationship',array('style'=>'width:150px;'));
+			$url_for_story_relationship->setValue($form1_Values['url_for_story_relationship']);
+						
+			$before_url_for_story_relationship = new Zend_Form_Element_Text('before_url_for_story_relationship',array("readonly" => "readonly"));
+			$before_url_for_story_relationship->setLabel('URL for story relationship');
+			
+			if($rt_results_level_3)
+								$before_url_for_story_relationship->setValue($rt_results_level_3[0]['url_for_story_relationship']);
+			
+			$url_for_story_relationship->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_url_for_story_relationship->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_url_for_story_relationship,$url_for_story_relationship));
+		}
+	if($form1_Values['ez_id'] != $rt_results_level_3[0]['ez_id'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$ez_id = new Zend_Form_Element_Text('ez_id',array('style'=>'width:150px;'));
+			$ez_id->setValue($form1_Values['ez_id']);
+						
+			$before_ez_id = new Zend_Form_Element_Text('before_ez_id',array("readonly" => "readonly"));
+			$before_ez_id->setLabel('EZ ID');
+			
+			if($rt_results_level_3)
+								$before_ez_id->setValue($rt_results_level_3[0]['ez_id']);
+			
+			$ez_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_ez_id->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_ez_id,$ez_id));
+		}
+	if($form1_Values['suppress_public_display'] != $rt_results_level_3[0]['suppress_public_display'])
+		{
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$suppress_public_display = new Zend_Form_Element_Checkbox('suppress_public_display',array('style'=>'width:150px;'));
+			$suppress_public_display->setValue($form1_Values['suppress_public_display']);
+						
+			$before_suppress_public_display = new Zend_Form_Element_Text('suppress_public_display',array("readonly" => "readonly"));
+			$before_suppress_public_display->setLabel('Suppress public display');
+			
+			if($rt_results_level_3)
+								$before_suppress_public_display->setValue($rt_results_level_3[0]['suppress_public_display']);
+			
+			$suppress_public_display->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			));
+			
+			$before_suppress_public_display->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_suppress_public_display,$suppress_public_display));
+		}
 		$save_changes = new Zend_Form_Element_Submit('save_changes');
 		$save_changes->setLabel('Save');
 		

@@ -53,6 +53,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		    $id  = $entry->previousSibling->nodeValue;
 		    $bg_year_ids_prepared[$id]= $name;
 		 }*/
+		
+		$this->addElement('Text', 'url_for_story_relationship', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'URL for story relationship',
+		'tabindex' => 2,
+		));
+		
 		$select = $db_remote->select()
 	             ->from('bg_year')
 	             ->order('name DESC');
@@ -66,15 +74,6 @@ class Application_Form_Add extends Application_Form_MainForm
 		} 
 		//arsort($bg_year_ids_prepared);
 		
-		$this->addElement('Select', 'bg_year_id', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Year(BG)',
-		'tabindex' => 2,
-		'MultiOptions' => $bg_year_ids_prepared,
-		
-		));
-		
 		$this->addElement('Text', 'rt3_20mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
@@ -83,6 +82,54 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
+		$this->addElement('Text', 'ez_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'EZ ID',
+		'tabindex' => 3,
+		));
+		
+		$this->addElement('Text', 'rt2_30_mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-30 Accel',
+		'tabindex' => 68,
+		'onkeydown' => 'return onlyFloat(event, this.value);',
+		));
+		
+		
+		$this->addElement('checkbox', 'suppress_public_display', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Suppress public display',
+		'tabindex' => 4,
+		));
+		
+		$this->addElement('Text', 'rt3_40mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-40 Accel',
+		'tabindex' => 69,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		
+		$this->addElement('Select', 'bg_year_id', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Year(BG)',
+		'tabindex' => 5,
+		'MultiOptions' => $bg_year_ids_prepared,
+		
+		));
+		
+		$this->addElement('Text', 'rt3_50mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => '0-50 Accel',
+		'tabindex' => 70,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
 		
 		/*$bg_make_ids_prepared[]= "Select from list";
 		$objDOM = new DOMDocument(); 
@@ -113,17 +160,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Make(BG)',
-		'tabindex' => 3,
+		'tabindex' => 6,
 		'MultiOptions' => $bg_make_ids_prepared,
 		'onchange' => 'AutoFillModel(this.value);'
 		));
 		
-		$this->addElement('Text', 'rt2_30_mph', array(
+		$this->addElement('Text', 'rt_60_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => '0-30 Accel',
-		'tabindex' => 68,
+		'label' => '0-60 Accel',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
+		'tabindex' => 71,
 		));
 		
 		
@@ -172,18 +219,21 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model(BG)',
-		'tabindex' => 4,
+		'tabindex' => 7,
 		'MultiOptions' => $bg_model_ids_prepared,
 		'onchange' => 'AutoFillSubModel(this.value)'
 		));
-			
-		$this->addElement('Text', 'rt3_40mph', array(
+		
+		$this->addElement('Text', 'rt3_70mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => '0-40 Accel',
-		'tabindex' => 69,
+		'label' => '0-70 Accel',
+		'tabindex' => 72,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
+		
+			
+		
 		 
 		
 		$bg_submodel_ids_prepared[]= "Select from list";
@@ -249,15 +299,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Sub-Model(BG)',
-		'tabindex' => 5,
+		'tabindex' => 8,
 		'MultiOptions' => $bg_submodel_ids_prepared
 		));
 		
-		$this->addElement('Text', 'rt3_50mph', array(
+		$this->addElement('Text', 'rt3_80mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => '0-50 Accel',
-		'tabindex' => 70,
+		'label' => '0-80 Accel',
+		'tabindex' => 73,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
@@ -278,17 +328,19 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Year',
-		'tabindex' => 6,
+		'tabindex' => 9,
 		'MultiOptions' => $rt_model_years_prepared
 		));
 		
-		$this->addElement('Text', 'rt_60_mph', array(
+		$this->addElement('Text', 'rt3_90mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => '0-60 Accel',
-		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 71,
+		'label' => '0-90 Accel',
+		'tabindex' => 74,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
+		
+		
 		
 		$rt_controlled_make_prepared = $this->gatMultioptions("Make");
 
@@ -296,20 +348,20 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/5">Make</a>',
-		'tabindex' => 7,
+		'tabindex' => 10,
 		'MultiOptions' => $rt_controlled_make_prepared
 		));
 		
 		$this->rt_controlled_make->getDecorator('Label')->setOption('escape', false); 
 		
-		
-		$this->addElement('Text', 'rt3_70mph', array(
+		$this->addElement('Text', 'rt2_100_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => '0-70 Accel',
-		'tabindex' => 72,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'label' => '0-100 Accel',
+		'onkeydown' => 'return onlyFloat(event, this.value);',
+		'tabindex' => 75,
 		));
+		
 		
 		$select = $db->select()
 	             ->from('rt_results_main');
@@ -326,58 +378,8 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Model',
-		'tabindex' => 8,
-		//'MultiOptions' => $rt_model_prepared
-		));
-		
-		$this->addElement('Text', 'rt3_80mph', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => '0-80 Accel',
-		'tabindex' => 73,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
-		
-		$this->addElement('Text', 'rt_issue_year', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Mag Issue Year',
-		'tabindex' => 9,
-		'onkeydown' => 'return onlyDigits(event);'
-		));
-
-		$this->addElement('Text', 'rt3_90mph', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => '0-90 Accel',
-		'tabindex' => 74,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
-		
-		$this->addElement('Select', 'rt_issue', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Mag Issue Month',
-		'tabindex' => 10,
-		'MultiOptions' => array('0'=>'Select from list','01'=>'January', '02' => 'February',
-								'03'=>'March','4'=>'April','05'=>'May','06'=>'June','07'=>'July',
-								'08'=>'August','09'=>'September','10'=>'October','11'=>'November','12'=>'December')
-		));
-		
-		$this->addElement('Text', 'rt2_100_mph', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => '0-100 Accel',
-		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 75,
-		));
-						
-		$this->addElement('Select', 'rt_published', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Web or Print',
 		'tabindex' => 11,
-		'MultiOptions' => array('Web'=>'Web','Print'=>'Print')
+		//'MultiOptions' => $rt_model_prepared
 		));
 		
 		$this->addElement('Text', 'rt3_110mph', array(
@@ -388,18 +390,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
-		
-		$this->addElement('Select', 'rt_controlled_sort', array(
+		$this->addElement('Text', 'rt_issue_year', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/7">Production Type</a>',
+		'style' => 'class:inputbar',
+		'label' => 'Mag Issue Year',
 		'tabindex' => 12,
-		'MultiOptions' => $rt_controlled_sort_prepared
+		'onkeydown' => 'return onlyDigits(event);'
 		));
-		
-		$this->rt_controlled_sort->getDecorator('Label')->setOption('escape', false); 
-		
+
 		$this->addElement('Text', 'rt3_120mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
@@ -408,17 +406,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
-		
-		$this->addElement('Select', 'rt_controlled_engine', array(
+		$this->addElement('Select', 'rt_issue', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/3">Engine Location</a>',
+		'label' => 'Mag Issue Month',
 		'tabindex' => 13,
-		'MultiOptions' => $rt_controlled_engine_prepared
+		'MultiOptions' => array('0'=>'Select from list','01'=>'January', '02' => 'February',
+								'03'=>'March','4'=>'April','05'=>'May','06'=>'June','07'=>'July',
+								'08'=>'August','09'=>'September','10'=>'October','11'=>'November','12'=>'December')
 		));
-		
-		$this->rt_controlled_engine->getDecorator('Label')->setOption('escape', false); 
 		
 		$this->addElement('Text', 'rt2_130_mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -427,18 +423,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);',
 		'tabindex' => 78,
 		));
-		
-		$rt_controlled_drive_prepared = $this->gatMultioptions("Drive");
-		
-		$this->addElement('Select', 'rt_controlled_drive', array(
+						
+		$this->addElement('Select', 'rt_published', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/2">Driven Wheels</a>',
+		'label' => 'Web or Print',
 		'tabindex' => 14,
-		'MultiOptions' => $rt_controlled_drive_prepared
+		'MultiOptions' => array('Web'=>'Web','Print'=>'Print')
 		));
-		
-		$this->rt_controlled_drive->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_140mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -448,13 +440,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt2_passengers', array(
+		$rt_controlled_sort_prepared = $this->gatMultioptions("Sort");
+		
+		$this->addElement('Select', 'rt_controlled_sort', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Number of Passengers',
+		'style' => 'class:inputbar; width:150px;',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/7">Production Type</a>',
 		'tabindex' => 15,
-		'onkeydown' => 'return onlyDigits(event);'
+		'MultiOptions' => $rt_controlled_sort_prepared
 		));
+		
+		$this->rt_controlled_sort->getDecorator('Label')->setOption('escape', false); 
 		
 		$this->addElement('Text', 'rt3_150mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -464,13 +460,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt_doors', array(
+		$rt_controlled_engine_prepared = $this->gatMultioptions("Engine");
+		
+		$this->addElement('Select', 'rt_controlled_engine', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Number of Doors',
+		'style' => 'class:inputbar; width:150px;',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/3">Engine Location</a>',
 		'tabindex' => 16,
-		'onkeydown' => 'return onlyDigits(event);'
+		'MultiOptions' => $rt_controlled_engine_prepared
 		));
+		
+		$this->rt_controlled_engine->getDecorator('Label')->setOption('escape', false); 
 		
 		$this->addElement('Text', 'rt3_160mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -480,17 +480,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$rt_controlled_body_prepared = $this->gatMultioptions("Body");
+		$rt_controlled_drive_prepared = $this->gatMultioptions("Drive");
 		
-		$this->addElement('Select', 'rt_controlled_body', array(
+		$this->addElement('Select', 'rt_controlled_drive', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/1">Body Style</a>',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/2">Driven Wheels</a>',
 		'tabindex' => 17,
-		'MultiOptions' => $rt_controlled_body_prepared
+		'MultiOptions' => $rt_controlled_drive_prepared
 		));
 		
-		$this->rt_controlled_body->getDecorator('Label')->setOption('escape', false);
+		$this->rt_controlled_drive->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_170mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -500,10 +500,10 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt_base_price', array(
+		$this->addElement('Text', 'rt2_passengers', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Base Price',
+		'label' => 'Number of Passengers',
 		'tabindex' => 18,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
@@ -516,11 +516,13 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt_base_price_notes', array(
+		
+		$this->addElement('Text', 'rt_doors', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Base Price Notes',
+		'label' => 'Number of Doors',
 		'tabindex' => 19,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_190mph', array(
@@ -531,13 +533,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt_price_as_tested', array(
+		$rt_controlled_body_prepared = $this->gatMultioptions("Body");
+		
+		$this->addElement('Select', 'rt_controlled_body', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Price as Tested',
+		'style' => 'class:inputbar; width:150px;',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/1">Body Style</a>',
 		'tabindex' => 20,
-		'onkeydown' => 'return onlyDigits(event);'
+		'MultiOptions' => $rt_controlled_body_prepared
 		));
+		
+		$this->rt_controlled_body->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt3_200mph', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -547,11 +553,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt_price_as_tested_notes', array(
+		$this->addElement('Text', 'rt_base_price', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Price as Tested Notes',
+		'label' => 'Base Price',
 		'tabindex' => 21,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt_ss60', array(
@@ -562,17 +569,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 86,
 		));
 		
-		$rt_controlled_type_prepared = $this->gatMultioptions("Type");
-		
-		$this->addElement('Select', 'rt_controlled_type', array(
+		$this->addElement('Text', 'rt_base_price_notes', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/11">Engine Type</a>',
+		'style' => 'class:inputbar',
+		'label' => 'Base Price Notes',
 		'tabindex' => 22,
-		'MultiOptions' => $rt_controlled_type_prepared
 		));
-		
-		$this->rt_controlled_type->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt2_30_50TG', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -582,11 +584,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 87,
 		));
 		
-		$this->addElement('Text', 'rt_no_cyl', array(
+		$this->addElement('Text', 'rt_price_as_tested', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Number of Cylinders',
+		'label' => 'Price as Tested',
 		'tabindex' => 23,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt2_50_70TG', array(
@@ -597,12 +600,11 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 88,
 		));
 		
-		$this->addElement('Text', 'rt3_bore_mm', array(
+		$this->addElement('Text', 'rt_price_as_tested_notes', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Cylinder Bore',
+		'label' => 'Price as Tested Notes',
 		'tabindex' => 24,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'rt2_sum_of_tg_times', array(
@@ -613,13 +615,17 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
-		$this->addElement('Text', 'rt3_stroke_mm', array(
+		$rt_controlled_type_prepared = $this->gatMultioptions("Type");
+		
+		$this->addElement('Select', 'rt_controlled_type', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Cylinder Stroke',
+		'style' => 'class:inputbar; width:150px;',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/11">Engine Type</a>',
 		'tabindex' => 25,
-		'onkeydown' => 'return onlyDigits(event);'
+		'MultiOptions' => $rt_controlled_type_prepared
 		));
+		
+		$this->rt_controlled_type->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt_quarter_time', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -629,11 +635,10 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 90,
 		));
 		
-		$this->addElement('Text', 'rt_disp_cc', array(
+		$this->addElement('Text', 'rt_no_cyl', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Engine Disp',
-		'onkeydown' => 'return onlyDigits(event);',
+		'label' => 'Number of Cylinders',
 		'tabindex' => 26,
 		));
 		
@@ -645,14 +650,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 91,
 		));
 		
-		$this->addElement('Text', 'rt3_comp_ratio', array(
+		
+		$this->addElement('Text', 'rt3_bore_mm', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Compression Ratio',
+		'label' => 'Cylinder Bore',
 		'tabindex' => 27,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
-	
+		
 		$this->addElement('Text', 'rt_top_speed', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
@@ -661,12 +667,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
-		$this->addElement('Text', 'rt2_fuel_sys', array(
+		$this->addElement('Text', 'rt3_stroke_mm', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Fuel System',
+		'label' => 'Cylinder Stroke',
 		'tabindex' => 28,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
+		
 		
 		$rt_controlled_ts_limit_prepared = $this->gatMultioptions("TS limit");
 		
@@ -680,10 +688,11 @@ class Application_Form_Add extends Application_Form_MainForm
 		
 		$this->rt_controlled_ts_limit->getDecorator('Label')->setOption('escape', false);
 		
-		$this->addElement('Text', 'rt3_valve_gear', array(
+		$this->addElement('Text', 'rt_disp_cc', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Valve Setup',
+		'label' => 'Engine Disp',
+		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 29,
 		));
 		
@@ -693,34 +702,30 @@ class Application_Form_Add extends Application_Form_MainForm
 		'label' => 'Top Speed Notes',
 		'tabindex' => 94,
 		));
-
-		$this->addElement('Text', 'rt3_valves_per_cyl', array(
+		
+		$this->addElement('Text', 'rt3_comp_ratio', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Valves Per Cylinder',
+		'label' => 'Compression Ratio',
 		'tabindex' => 30,
-		'onkeydown' => 'return onlyDigits(event);'
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
+	
 		
 		$this->addElement('Text', 'rt_70_mph_braking', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'Braking from 70',
+		'label' => 'Shortest 70',
 		'onkeydown' => 'return onlyDigits(event);',
 		'tabindex' => 95,
 		));
-
-		$rt_controlled_turbo_superchg_prepared = $this->gatMultioptions("Turbo/Superchg");
 		
-		$this->addElement('Select', 'rt_controlled_turbo_superchg', array(
+		$this->addElement('Text', 'rt2_fuel_sys', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/10">Forced Induction</a>',
+		'style' => 'class:inputbar',
+		'label' => 'Fuel System',
 		'tabindex' => 31,
-		'MultiOptions' => $rt_controlled_turbo_superchg_prepared
 		));
-		
-		$this->rt_controlled_turbo_superchg->getDecorator('Label')->setOption('escape', false);
 		
 		$this->addElement('Text', 'rt2_skidpad', array(
 		'decorators' => $this->elementDecoratorsTr,
@@ -729,12 +734,28 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 96,
 		));
 		
-		$this->addElement('Text', 'rt3_boost_psi', array(
+		
+		$this->addElement('Text', 'rt3_valve_gear', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Boost in psi',
+		'label' => 'Valve Setup',
 		'tabindex' => 32,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'skidpad_diameter', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Skidpad diameter',
+		'tabindex' => 97,
+		'onkeydown' => 'return onlyDigits(event);'
+		));
+		
+		$this->addElement('Text', 'rt3_valves_per_cyl', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Valves Per Cylinder',
+		'tabindex' => 33,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt2_emergency_lane_change', array(
@@ -742,31 +763,37 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'MPH in Lane Change',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 97,
+		'tabindex' => 98,
 		));
 		
-		$this->addElement('Text', 'rt_peak_hp', array(
+		$rt_controlled_turbo_superchg_prepared = $this->gatMultioptions("Turbo/Superchg");
+		
+		$this->addElement('Select', 'rt_controlled_turbo_superchg', array(
 		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Peak Horsepower',
-		'tabindex' => 33,
-		'onkeydown' => 'return onlyDigits(event);'
+		'style' => 'class:inputbar; width:150px;',
+		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/10">Forced Induction</a>',
+		'tabindex' => 34,
+		'MultiOptions' => $rt_controlled_turbo_superchg_prepared
 		));
+		
+		$this->rt_controlled_turbo_superchg->getDecorator('Label')->setOption('escape', false);
+		
+		
 		
 		$this->addElement('Text', 'rt_slalom', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Slalom Speed',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 98,
+		'tabindex' => 99,
 		));
 		
-		$this->addElement('Text', 'rt_rpm', array(
+		$this->addElement('Text', 'rt3_boost_psi', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Peak Horsepower RPM',
-		'onkeydown' => 'return onlyDigits(event);',
-		'tabindex' => 34,
+		'label' => 'Boost in psi',
+		'tabindex' => 35,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$rt_controlled_fuel_prepared = $this->gatMultioptions("Fuel");
@@ -775,92 +802,93 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/4">Fuel Type</a>',
-		'tabindex' => 99,
+		'tabindex' => 100,
 		'MultiOptions' => $rt_controlled_fuel_prepared
 		));
 		
 		$this->rt_controlled_fuel->getDecorator('Label')->setOption('escape', false);
 		
-		$this->addElement('Text', 'rt_peak_hp_notes', array(
+		$this->addElement('Text', 'rt_peak_hp', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Peak Horsepower Notes',
-		'tabindex' => 35,
+		'label' => 'Peak Horsepower',
+		'tabindex' => 36,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt3_fuel_cap', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Fuel Capacity',
-		'tabindex' => 100,
+		'tabindex' => 101,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
-
-		$this->addElement('Text', 'rt_peak_torque', array(
+		
+		$this->addElement('Text', 'rt_rpm', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Peak Torque',
-		'tabindex' => 36,
-		'onkeydown' => 'return onlyDigits(event);'
+		'label' => 'Peak Horsepower RPM',
+		'onkeydown' => 'return onlyDigits(event);',
+		'tabindex' => 37,
 		));
 		
 		$this->addElement('Text', 'rt2_epa_city_fe', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'EPA City',
-		'tabindex' => 101,
+		'tabindex' => 102,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
-		$this->addElement('Text', 'rt_rpmt', array(
+		$this->addElement('Text', 'rt_peak_hp_notes', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Peak Torque RPM',
-		'tabindex' => 37,
+		'label' => 'Peak Horsepower Notes',
+		'tabindex' => 38,
 		));
 		
 		$this->addElement('Text', 'rt2_epa_city_fe_notes', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'EPA City Notes',
-		'tabindex' => 102,
+		'tabindex' => 103,
 		));
 		
-		$this->addElement('Text', 'rt_peak_torque_notes', array(
+		$this->addElement('Text', 'rt_peak_torque', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Peak Torque Notes',
-		'tabindex' => 38,
+		'label' => 'Peak Torque',
+		'tabindex' => 39,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt2_highway_fe', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'EPA Highway',
-		'tabindex' => 103,
+		'tabindex' => 104,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
-		
-		$this->addElement('Text', 'rt_redline', array(
+
+		$this->addElement('Text', 'rt_rpmt', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Redline',
-		'tabindex' => 39,
+		'label' => 'Peak Torque RPM',
+		'tabindex' => 40,
 		));
 		
 		$this->addElement('Text', 'rt2_highway_fe_notes', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'EPA HIghway Notes',
-		'tabindex' => 104,
+		'tabindex' => 105,
 		));
 		
-		$this->addElement('Text', 'rt3_specific_power', array(
+		$this->addElement('Text', 'rt_peak_torque_notes', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Spec pow (hp/liter)',
-		'tabindex' => 40,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'label' => 'Peak Torque Notes',
+		'tabindex' => 41,
 		));
 		
 		$this->addElement('Text', 'rt_cd_observed_fe', array(
@@ -868,7 +896,38 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'C/D Observed Economy',
 		'onkeydown' => 'return onlyDigits(event);',
-		'tabindex' => 105,
+		'tabindex' => 106,
+		));
+		
+		$this->addElement('Text', 'rt_redline', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Redline',
+		'tabindex' => 42,
+		));
+		
+		$this->addElement('Text', 'rt2_sound_level_idle', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Sound Level Idle',
+		'tabindex' => 107,
+		'onkeydown' => 'return onlyDigits(event);'
+		));
+		
+		$this->addElement('Text', 'rt3_specific_power', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Spec pow (hp/liter)',
+		'tabindex' => 43,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'rt2_wot', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'DB at Wot',
+		'tabindex' => 108,
+		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
 		$this->addElement('Text', 'rt_power_to_weight', array(
@@ -876,14 +935,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Power/Weight (hp/lb)',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 41,
+		'tabindex' => 44,
 		));
 		
-		$this->addElement('Text', 'rt2_sound_level_idle', array(
+		$this->addElement('Text', 'rt2_70cr', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'Sound Level Idle',
-		'tabindex' => 106,
+		'label' => 'DB at 70 MPH Cruise',
+		'tabindex' => 109,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
@@ -893,72 +952,40 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/8">Transmission Type</a>',
-		'tabindex' => 42,
+		'tabindex' => 45,
 		'MultiOptions' => $rt_controlled_transmission_prepared
 		));
 		
 		$this->rt_controlled_transmission->getDecorator('Label')->setOption('escape', false);
 		
-		$this->addElement('Text', 'rt2_wot', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'DB at Wot',
-		'tabindex' => 107,
-		'onkeydown' => 'return onlyDigits(event);'
-		));
-
-		$this->addElement('Text', 'rt3_final_drive_ratio', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Final Drive',
-		'tabindex' => 43
-		));
-		
-		$this->addElement('Text', 'rt2_70cr', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'DB at 70 MPH Cruise',
-		'tabindex' => 108,
-		'onkeydown' => 'return onlyDigits(event);'
-		));
-		
-		$this->addElement('Text', 'rt3_max_mph_1000_rpm', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Top Gear mph/1000rpm',
-		'tabindex' => 44,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
-		
 		$this->addElement('Text', 'rt3_70co', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'DB at 70 Coast',
-		'tabindex' => 109,
+		'tabindex' => 110,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
-
-		$this->addElement('Text', 'rt3_wheelbase', array(
+		
+		$this->addElement('Text', 'rt3_final_drive_ratio', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Wheelbase',
-		'tabindex' => 45,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'label' => 'Final Drive',
+		'tabindex' => 46
 		));
 		
 		$this->addElement('Text', 'rt3_lt_oil', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Long-term Oil Used',
-		'tabindex' => 110,
+		'tabindex' => 111,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
-		
-		$this->addElement('Text', 'rt3_length', array(
+
+		$this->addElement('Text', 'rt3_max_mph_1000_rpm', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Length',
-		'tabindex' => 46,
+		'label' => 'Top Gear mph/1000rpm',
+		'tabindex' => 47,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
@@ -966,15 +993,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'LT Scheduled Stops',
-		'tabindex' => 111,
+		'tabindex' => 112,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
-		$this->addElement('Text', 'rt3_width', array(
+		$this->addElement('Text', 'rt3_wheelbase', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Width',
-		'tabindex' => 47,
+		'label' => 'Wheelbase',
+		'tabindex' => 48,
 		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
@@ -982,7 +1009,39 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'LT Unscheduled Stops',
-		'tabindex' => 112,
+		'tabindex' => 113,
+		'onkeydown' => 'return onlyDigits(event);'
+		));
+
+		$this->addElement('Text', 'rt3_length', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Length',
+		'tabindex' => 49,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'rt3_lt_serv', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Costs for LT Service',
+		'tabindex' => 114,
+		'onkeydown' => 'return onlyDigits(event);'
+		));
+		
+		$this->addElement('Text', 'rt3_width', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Width',
+		'tabindex' => 50,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'rt3_lt_wear', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'Costs for LT Wear',
+		'tabindex' => 115,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
@@ -990,14 +1049,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Height',
-		'tabindex' => 48
+		'tabindex' => 51
 		));
 		
-		$this->addElement('Text', 'rt3_lt_serv', array(
+		$this->addElement('Text', 'rt3_lt_repair', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'Costs for LT Service',
-		'tabindex' => 113,
+		'label' => 'Costs for LT Repair',
+		'tabindex' => 116,
 		'onkeydown' => 'return onlyDigits(event);'
 		));
 		
@@ -1005,37 +1064,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Frontal Area',
-		'tabindex' => 49
-		));
-		
-		$this->addElement('Text', 'rt3_lt_wear', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'Costs for LT Wear',
-		'tabindex' => 114,
-		'onkeydown' => 'return onlyDigits(event);'
-		));
-		
-		$this->addElement('Text', 'rt3_frontal_area_notes', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Frontal Area Notes',
-		'tabindex' => 50
-		));
-		
-		$this->addElement('Text', 'rt3_lt_repair', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'Costs for LT Repair',
-		'tabindex' => 115,
-		'onkeydown' => 'return onlyDigits(event);'
-		));
-		
-		$this->addElement('Text', 'rt3_cd', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Coefficient of Drag',
-		'tabindex' => 51
+		'tabindex' => 52
 		));
 		
 		$this->addElement('Text', 'rt2_50_mph', array(
@@ -1043,7 +1072,37 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'rt2_50_mph',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 116,
+		'tabindex' => 117,
+		));
+		
+		$this->addElement('Text', 'rt3_frontal_area_notes', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Frontal Area Notes',
+		'tabindex' => 53
+		));
+		
+		
+		$this->addElement('Text', 'rt2_70_mph', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt2_70_mph',
+		'tabindex' => 118,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'rt3_cd', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Coefficient of Drag',
+		'tabindex' => 54
+		));
+		
+		$this->addElement('Text', 'rt3_et_factor', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_et_factor',
+		'tabindex' => 119,
 		));
 		
 		$this->addElement('Text', 'rt_weight', array(
@@ -1051,15 +1110,14 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Curb Weight',
 		'onkeydown' => 'return onlyDigits(event);',
-		'tabindex' => 52
+		'tabindex' => 55
 		));
 		
-		$this->addElement('Text', 'rt2_70_mph', array(
+		$this->addElement('Text', 'rt3_road_hp_30mph', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'rt2_70_mph',
-		'tabindex' => 117,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'label' => 'rt3_road_hp_30mph',
+		'tabindex' => 120,
 		));
 		
 		$this->addElement('Text', 'rt_percent_on_front', array(
@@ -1067,14 +1125,15 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Pct. Weight on Front',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 53
+		'tabindex' => 56
 		));
 		
-		$this->addElement('Text', 'rt3_et_factor', array(
+		
+		$this->addElement('Text', 'rt3_sp_factor', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'rt3_et_factor',
-		'tabindex' => 118,
+		'label' => 'rt3_sp_factor',
+		'tabindex' => 121,
 		));
 		
 		$this->addElement('Text', 'rt_percent_on_rear', array(
@@ -1082,15 +1141,29 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Pct. Weight on Rear',
 		'onkeydown' => 'return onlyFloat(event, this.value);',
-		'tabindex' => 54
+		'tabindex' => 57
 		));
 		
-		
-		$this->addElement('Text', 'rt3_road_hp_30mph', array(
+		$this->addElement('Text', 'rt3_peak_bmep', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'rt3_road_hp_30mph',
-		'tabindex' => 119,
+		'label' => 'rt3_peak_bmep',
+		'tabindex' => 122,
+		));
+		
+		$this->addElement('Text', 'center_of_gravity_height', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Center of Gravity Height',
+		'tabindex' => 58,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
+		));
+		
+		$this->addElement('Text', 'rt3_peal_bmep', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar',
+		'label' => 'rt3_peal_bmep',
+		'tabindex' => 123,
 		));
 		
 		$select = $db->select()
@@ -1115,32 +1188,38 @@ class Application_Form_Add extends Application_Form_MainForm
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => '<a href="/app/public/index/manageconrolledlist/rt_types/6">Airbags</a>',
-		'tabindex' => 55,
+		'tabindex' => 59,
 		'MultiOptions' => $rt_controlled_airbags_prepared
 		));
 		
-		$this->rt2_controlled_airbags->getDecorator('Label')->setOption('escape', false);
 		
 		
-		$this->addElement('Text', 'rt3_sp_factor', array(
+		
+		$bg_controlled_make_ids_prepared[0]= "Select from list";
+		$this->addElement('Text', 'bg_controlled_make_id', array(
 		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'rt3_sp_factor',
-		'tabindex' => 120,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'bg_controlled_make_id',
+		'tabindex' => 124,
+		//'MultiOptions' => $bg_controlled_make_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt2_int_vol_front', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Interior Volume Front',
-		'tabindex' => 56
+		'tabindex' => 60
 		));
 		
-		$this->addElement('Text', 'rt3_peak_bmep', array(
+		$this->rt2_controlled_airbags->getDecorator('Label')->setOption('escape', false);
+		
+		$bg_controlled_model_ids_prepared[0]= "Select from list";
+		$this->addElement('Text', 'bg_controlled_model_id', array(
 		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'rt3_peak_bmep',
-		'tabindex' => 121,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'bg_controlled_model_id',
+		'tabindex' => 125,
+		//'MultiOptions' => $bg_controlled_model_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt2_mid', array(
@@ -1148,113 +1227,82 @@ class Application_Form_Add extends Application_Form_MainForm
 		'style' => 'class:inputbar',
 		'label' => 'Vol Behind Mid Row',
 		'onkeydown' => 'return onlyDigits(event);',
-		'tabindex' => 57
+		'tabindex' => 61
 		));
 		
-		$this->addElement('Text', 'rt3_peal_bmep', array(
+		
+		$this->addElement('Text', 'rt_original_table_id', array(
 		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'rt3_peal_bmep',
-		'tabindex' => 122,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'rt_original_table_id',
+		'tabindex' => 126,
+		//'MultiOptions' => $rt_original_table_ids_prepared
 		));
 		
 		$this->addElement('Text', 'rt2_rear', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Vol Behind Rear Row',
-		'tabindex' => 58
-		));
-		
-		$bg_controlled_make_ids_prepared[0]= "Select from list";
-		$this->addElement('Text', 'bg_controlled_make_id', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'bg_controlled_make_id',
-		'tabindex' => 123,
-		//'MultiOptions' => $bg_controlled_make_ids_prepared
-		));
-		
-		$this->addElement('Text', 'rt3_trunk', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Trunk Volume',
-		'tabindex' => 59
-		));
-		
-
-		$bg_controlled_model_ids_prepared[0]= "Select from list";
-		$this->addElement('Text', 'bg_controlled_model_id', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'bg_controlled_model_id',
-		'tabindex' => 124,
-		//'MultiOptions' => $bg_controlled_model_ids_prepared
-		));
-		
-		$this->addElement('Text', 'rt2_turning_cir', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Turning Radius',
-		'tabindex' => 60,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
-		
-		$this->addElement('Text', 'rt_original_table_id', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'rt_original_table_id',
-		'tabindex' => 125,
-		//'MultiOptions' => $rt_original_table_ids_prepared
-		));
-			
-		$this->addElement('Select', 'rt2_anti_lock', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Anti-Lock Brakes?',
-		'tabindex' => 61,
-		'MultiOptions' => array('0'=>'No','1'=>'Yes')
+		'tabindex' => 62
 		));
 		
 		$this->addElement('Text', 'first_stop_70', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'First stop 70',
-		'tabindex' => 126,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'tabindex' => 127,
+		'onkeydown' => 'return onlyDigits(event, this.value);'
 		));
 		
-		$this->addElement('Select', 'rt2_traction_control', array(
+		$this->addElement('Text', 'rt3_trunk', array(
 		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Trunk Volume',
+		'tabindex' => 63
+		));
+		
+		
+		$this->addElement('Select', 'rt2_traction_control', array(
+		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar; width:150px;',
 		'label' => 'Traction Control?',
-		'tabindex' => 127,
+		'tabindex' => 128,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
+		));
+		
+		$this->addElement('Text', 'rt2_turning_cir', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar',
+		'label' => 'Turning Radius',
+		'tabindex' => 64,
+		'onkeydown' => 'return onlyFloat(event, this.value);'
 		));
 		
 		$this->addElement('Text', 'longest_stop_70', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Longest stop 70',
-		'tabindex' => 128,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		'tabindex' => 129,
+		'onkeydown' => 'return onlyDigits(event, this.value);'
 		));
 		
-		$this->addElement('Select', 'rt2_trac_defeatable', array(
+		$this->addElement('Select', 'rt2_anti_lock', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Tc Defeatable?',
-		'tabindex' => 129,
+		'label' => 'Anti-Lock Brakes?',
+		'tabindex' => 65,
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
 		));
 		
-		$this->addElement('Text', 'shortest_stop_70', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'Shortest stop 70',
-		'tabindex' => 130,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
 		
+		$this->addElement('Select', 'rt2_trac_defeatable', array(
+		'decorators' => $this->elementDecoratorsTr,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Tc Defeatable?',
+		'tabindex' => 130,
+		'MultiOptions' => array('0'=>'No','1'=>'Yes')
+		));
+			
 		$this->addElement('Select', 'rt2_stability_control', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar; width:150px;',
@@ -1263,13 +1311,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		'MultiOptions' => array('0'=>'No','1'=>'Yes')
 		));
 		
-		$this->addElement('Text', 'transaction_off', array(
+		$this->addElement('checkbox', 'transaction_off', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
-		'label' => 'Transaction off',
+		'label' => 'Traction off',
 		'tabindex' => 132
 		));
-		
 		
 		$this->addElement('Text', 'rt2_stab_defeatable', array(
 		'decorators' => $this->elementDecoratorsTd,
@@ -1278,114 +1325,79 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 133,
 		));
 		
-		$this->addElement('Text', 'partially_defeatable', array(
+		$this->addElement('checkbox', 'partially_defeatable', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Partially defeatable',
 		'tabindex' => 134
 		));
 		
-		$this->addElement('Text', 'fully_defeatable', array(
+		$this->addElement('checkbox', 'fully_defeatable', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
-		'label' => 'Pully defeatable',
+		'label' => 'Fully defeatable',
 		'tabindex' => 135,
 		));
 		
-		$this->addElement('Text', 'competition_mode', array(
+		
+		$this->addElement('checkbox', 'competition_mode', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Competition mode',
 		'tabindex' => 136,
 		));
 		
-		$this->addElement('Text', 'launch_control', array(
+		$this->addElement('checkbox', 'launch_control', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Launch control',
 		'tabindex' => 137
 		));
 		
-		
-		$this->addElement('Text', 'permanent', array(
+		$this->addElement('checkbox', 'permanent', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Permanent',
 		'tabindex' => 138,
 		));
 		
-		$this->addElement('Text', 'center_of_gravity_height', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Center of Gravity Height',
-		'tabindex' => 139,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
-		));
 		
-		$this->addElement('Text', 'skidpad_diameter', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'Skidpad diameter',
-		'tabindex' => 140,
-		'onkeydown' => 'return onlyFloat(event, this.value);'
+		$this->addElement('Select', 'test_location', array(
+		'decorators' => $this->elementDecoratorsTd,
+		'style' => 'class:inputbar; width:150px;',
+		'label' => 'Test location',
+		'tabindex' => 139,
+		'MultiOptions' => array(''=>'','willow'=>'willow','Milan'=>'Milan','Chelsea'=>'Chelsea')
 		));
 		
 		$this->addElement('Text', 'test_notes', array(
-		'decorators' => $this->elementDecoratorsTd,
+		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
 		'label' => 'Test notes',
-		'tabindex' => 141,
-		));
-		
-		$this->addElement('Select', 'test_location', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar; width:150px;',
-		'label' => 'Test location',
-		'tabindex' => 142,
-		'MultiOptions' => array(''=>'','willow'=>'willow','Milan'=>'Milan','Chelsea'=>'Chelsea')
+		'tabindex' => 140,
 		));
 		
 		$this->addElement('Text', 'test_location_detail', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'Test location detail',
-		'tabindex' => 143,
+		'tabindex' => 141,
 		));
 		
 		$this->addElement('Text', 'tester', array(
 		'decorators' => $this->elementDecoratorsTr,
 		'style' => 'class:inputbar',
+		'maxlength' => 255,
 		'label' => 'Tester',
-		'tabindex' => 144,
+		'tabindex' => 142,
 		));
 		
-		$this->addElement('Text', 'image', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'Image',
-		'tabindex' => 145,
+		$this->addElement('file', 'image', array(
+    	'label'         => 'image',
+    	'style' => 'class:inputbar',
+		'tabindex' => 143,
 		));
 		
-		$this->addElement('Text', 'url_for_story_relationship', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'URL for story relationship',
-		'tabindex' => 146,
-		));
-		
-		$this->addElement('Text', 'ez_id', array(
-		'decorators' => $this->elementDecoratorsTd,
-		'style' => 'class:inputbar',
-		'label' => 'EZ ID',
-		'tabindex' => 147,
-		));
-		
-		$this->addElement('Text', 'suppress_public_display', array(
-		'decorators' => $this->elementDecoratorsTr,
-		'style' => 'class:inputbar',
-		'label' => 'Suppress public display',
-		'tabindex' => 148,
-		));
 		$review_changes = new Zend_Form_Element_Submit('review_cganges');
 		$review_changes->setLabel('Review');
 		
