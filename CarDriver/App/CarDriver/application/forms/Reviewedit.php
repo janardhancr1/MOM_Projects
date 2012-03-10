@@ -3951,11 +3951,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 	if($form1_Values['transaction_off'] != $rt_results_level_3[0]['transaction_off'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$transaction_off = new Zend_Form_Element_Text('transaction_off',array('style'=>'width:150px;'));
+			$transaction_off = new Zend_Form_Element_Checkbox('transaction_off',array('style'=>'width:150px;'));
 			$transaction_off->setValue($form1_Values['transaction_off']);
 						
-			$before_transaction_off = new Zend_Form_Element_Text('before_transaction_off',array("readonly" => "readonly"));
-			$before_transaction_off->setLabel('Transaction off');
+			$before_transaction_off = new Zend_Form_Element_Checkbox('before_transaction_off',array("readonly" => "readonly"));
+			$before_transaction_off->setLabel('Traction off');
 			
 			if($rt_results_level_3)
 								$before_transaction_off->setValue($rt_results_level_3[0]['transaction_off']);
@@ -3979,10 +3979,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 	if($form1_Values['partially_defeatable'] != $rt_results_level_3[0]['partially_defeatable'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$partially_defeatable = new Zend_Form_Element_Text('partially_defeatable',array('style'=>'width:150px;'));
+			$partially_defeatable = new Zend_Form_Element_Checkbox('partially_defeatable',array('style'=>'width:150px;'));
 			$partially_defeatable->setValue($form1_Values['partially_defeatable']);
 						
-			$before_partially_defeatable = new Zend_Form_Element_Text('before_partially_defeatable',array("readonly" => "readonly"));
+			$before_partially_defeatable = new Zend_Form_Element_Checkbox('before_partially_defeatable',array("readonly" => "readonly"));
 			$before_partially_defeatable->setLabel('Partially defeatable');
 			
 			if($rt_results_level_3)
@@ -4007,10 +4007,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['fully_defeatable'] != $rt_results_level_3[0]['fully_defeatable'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$fully_defeatable = new Zend_Form_Element_Text('fully_defeatable',array('style'=>'width:150px;'));
+			$fully_defeatable = new Zend_Form_Element_Checkbox('fully_defeatable',array('style'=>'width:150px;'));
 			$fully_defeatable->setValue($form1_Values['fully_defeatable']);
 						
-			$before_fully_defeatable = new Zend_Form_Element_Text('before_fully_defeatable',array("readonly" => "readonly"));
+			$before_fully_defeatable = new Zend_Form_Element_Checkbox('before_fully_defeatable',array("readonly" => "readonly"));
 			$before_fully_defeatable->setLabel('Fully defeatable');
 			
 			if($rt_results_level_3)
@@ -4035,10 +4035,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		if($form1_Values['competition_mode'] != $rt_results_level_3[0]['competition_mode'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$competition_mode = new Zend_Form_Element_Text('competition_mode',array('style'=>'width:150px;'));
+			$competition_mode = new Zend_Form_Element_Checkbox('competition_mode',array('style'=>'width:150px;'));
 			$competition_mode->setValue($form1_Values['competition_mode']);
 						
-			$before_competition_mode = new Zend_Form_Element_Text('before_competition_mode',array("readonly" => "readonly"));
+			$before_competition_mode = new Zend_Form_Element_Checkbox('before_competition_mode',array("readonly" => "readonly"));
 			$before_competition_mode->setLabel('Competition mode');
 			
 			if($rt_results_level_3)
@@ -4063,10 +4063,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 	if($form1_Values['launch_control'] != $rt_results_level_3[0]['launch_control'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$launch_control = new Zend_Form_Element_Text('launch_control',array('style'=>'width:150px;'));
+			$launch_control = new Zend_Form_Element_checkbox('launch_control',array('style'=>'width:150px;'));
 			$launch_control->setValue($form1_Values['launch_control']);
 						
-			$before_launch_control = new Zend_Form_Element_Text('before_launch_control',array("readonly" => "readonly"));
+			$before_launch_control = new Zend_Form_Element_Checkbox('before_launch_control',array("readonly" => "readonly"));
 			$before_launch_control->setLabel('Launch control');
 			
 			if($rt_results_level_3)
@@ -4091,10 +4091,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 	if($form1_Values['permanent'] != $rt_results_level_3[0]['permanent'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$permanent = new Zend_Form_Element_Text('permanent',array('style'=>'width:150px;'));
+			$permanent = new Zend_Form_Element_Checkbox('permanent',array('style'=>'width:150px;'));
 			$permanent->setValue($form1_Values['permanent']);
 						
-			$before_permanent = new Zend_Form_Element_Text('before_permanent',array("readonly" => "readonly"));
+			$before_permanent = new Zend_Form_Element_Checkbox('before_permanent',array("readonly" => "readonly"));
 			$before_permanent->setLabel('Permanent');
 			
 			if($rt_results_level_3)
@@ -4405,7 +4405,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$suppress_public_display = new Zend_Form_Element_Checkbox('suppress_public_display',array('style'=>'width:150px;'));
 			$suppress_public_display->setValue($form1_Values['suppress_public_display']);
 						
-			$before_suppress_public_display = new Zend_Form_Element_Text('suppress_public_display',array("readonly" => "readonly"));
+			$before_suppress_public_display = new Zend_Form_Element_Checkbox('before_suppress_public_display',array("readonly" => "readonly"));
 			$before_suppress_public_display->setLabel('Suppress public display');
 			
 			if($rt_results_level_3)
