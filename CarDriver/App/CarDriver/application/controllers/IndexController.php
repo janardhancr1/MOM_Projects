@@ -242,6 +242,7 @@ class IndexController extends Zend_Controller_Action
 			
 			$review_values = $this->view->form->getValues();
 			
+			
 			$rt_results_main['rt_model_year'] = $review_values['rt_model_year'];
 			$rt_results_main['bg_make_id'] = $review_values['bg_make_id'];
 			$rt_results_main['rt_published'] = $review_values['rt_published'];
@@ -362,6 +363,7 @@ class IndexController extends Zend_Controller_Action
 		    	
 		    }
 		    
+			
 		    $rt_results_level_3['id'] = $res[0]['maxId'];
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
 		    $rt_results_level_3['rt3_bore_mm'] = $review_values['rt3_bore_mm'];
@@ -425,7 +427,7 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['test_location'] = $review_values['test_location'];
 		    $rt_results_level_3['test_location_detail'] = $review_values['test_location_detail'];
 		    $rt_results_level_3['tester'] = $review_values['tester'];
-		    $rt_results_level_3['image'] = $review_values['image'];
+		    $rt_results_level_3['image'] = $filename."_".$res[0]['maxId'];
 		    $rt_results_level_3['url_for_story_relationship'] = $review_values['url_for_story_relationship'];
 		    $rt_results_level_3['ez_id'] = $review_values['ez_id'];
 		    $rt_results_level_3['suppress_public_display'] = $review_values['suppress_public_display'];
@@ -447,7 +449,17 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-			
+			    $ext = end(explode('.', $review->image->getFileName()));
+				$filename = $review->image->getFileName();
+				$path = $filename;
+				$review->image->addFilter('Rename',
+		                                          array('target' => $path,
+		                                          'overwrite' => true));
+                // upload the picture
+                $review->image->receive(); 
+				move_uploaded_file($filename, $path);
+                                          
+		    
 		    $session_makeid = new Zend_Session_Namespace('makeid');
 			unset($session_makeid->make_id);
 			$session_yearid = new Zend_Session_Namespace('yearid');
@@ -1059,7 +1071,20 @@ class IndexController extends Zend_Controller_Action
 	      			throw $e;
 			    	
 			    }
+			   
 		    }
+		        $ext = end(explode('.', $review->image->getFileName()));
+				$filename = $review->image->getFileName();
+				$path = $filename;
+				$review->image->addFilter('Rename',
+		                                          array('target' => $path,
+		                                          'overwrite' => true));
+                // upload the picture
+                $review->image->receive(); 
+				move_uploaded_file($filename, $path);
+                
+ 
+                $review->reset();
 		        $session_makeid = new Zend_Session_Namespace('makeid');
 				unset($session_makeid->make_id);
 				$session_yearid = new Zend_Session_Namespace('yearid');
