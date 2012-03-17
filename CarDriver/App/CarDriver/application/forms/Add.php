@@ -1391,12 +1391,27 @@ class Application_Form_Add extends Application_Form_MainForm
 		'label' => 'Tester',
 		'tabindex' => 142,
 		));
+
+		$file_one = new Zend_Form_Element_File('file');
+        $file_one->setLabel('image : ')
+        ->addValidator('Count', false, 1);    
 		
-		$this->addElement('file', 'image', array(
+		$file_one->setDecorators(array(
+		 'File',
+		 'Description',
+		 'Errors',
+		 array(array('data'=>'HtmlTag'), array('tag' => 'td')),
+		 array('Label', array('tag' => 'td')),
+		 array(array('row'=>'HtmlTag'),array('tag'=>'tr'))
+		 ));
+		
+ 		$this->addElement($file_one);
+		/*$this->addElement('file', 'image', array(
+		//'decorators' => $this->elementDecoratorsTr,
     	'label'         => 'image',
     	'style' => 'class:inputbar',
 		'tabindex' => 143,
-		));
+		));*/
 		
 		$review_changes = new Zend_Form_Element_Submit('review_cganges');
 		$review_changes->setLabel('Review');
