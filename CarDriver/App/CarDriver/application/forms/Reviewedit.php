@@ -4319,7 +4319,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
 			$image = new Zend_Form_Element_File('image',array('style'=>'width:150px;'));
-			$image->setValue($form1_Values['image']);
+			$image->setValue($form1_Values['image'])
+			->addValidator('Count', false, 1);;
 						
 			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
 			$before_image->setLabel('Image');
@@ -4327,19 +4328,20 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			if($rt_results_level_3)
 								$before_image->setValue($rt_results_level_3[0]['image']);
 			
-			/*$image->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));
+			$image->setDecorators(array(
+			 'File',
+			 'Description',
+			 'Errors',
+			 array(array('data'=>'HtmlTag'), array('tag' => 'td','align' => 'center')),
+			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			 ));
 			
 			$before_image->setDecorators(array(
 			'ViewHelper',
 			'Description',
 			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
 			array('Label', array('tag' => 'td','style' => 'float:right;')),
-			));*/
+			));
 			
 			$this->addElements(array($before_image,$image));
 		}

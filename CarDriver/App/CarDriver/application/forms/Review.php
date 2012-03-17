@@ -3731,17 +3731,19 @@ class Application_Form_Review extends Application_Form_MainForm
 		if(!empty($form1_Values['image']))
 		{
 			$image = new Zend_Form_Element_File('image');
-			$image->setValue($form1_Values['image']);
+			$image->setValue($form1_Values['image'])
+			->addValidator('Count', false, 1);    
+		
+			$image->setDecorators(array(
+			 'File',
+			 'Description',
+			 'Errors',
+			 array(array('data'=>'HtmlTag'), array('tag' => 'td','align' => 'center')),
+			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			 ));
 			
 			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
 			$before_image->setLabel('Image');
-		
-			/*$image->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));*/
 			
 			$before_image->setDecorators(array(
 			'ViewHelper',

@@ -362,13 +362,10 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-		    
-				$ext = end(explode('.', $review->image->getFileName()));
 				$filename = $review->image->getFileName();
 				$path = $filename;
-				$review->image->addFilter('Rename',
-		                                          array('target' => $path,
-		                                          'overwrite' => true));
+				$review->image->addFilter('Rename', array('target' => $path,
+		                                                  'overwrite' => true));
                 // upload the picture
                 $review->image->receive(); 
 				move_uploaded_file($filename, $path);
@@ -865,14 +862,12 @@ class IndexController extends Zend_Controller_Action
 			    	
 			    }
 		    }
-		    $ext = end(explode('.', $review->image->getFileName()));
 			$filename = $review->image->getFileName();
 			$path = $filename;
-			$review->image->addFilter('Rename',
-	                                          array('target' => $path,
-	                                          'overwrite' => true));
-                // upload the picture
-                $review->image->receive(); 
+			$review->image->addFilter('Rename', array('target' => $path,
+	                                         		  'overwrite' => true));
+            // upload the picture
+            $review->image->receive(); 
 			move_uploaded_file($filename, $path);
             $review->reset();
                 
