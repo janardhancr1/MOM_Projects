@@ -362,14 +362,16 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
-				$filename = $review->image->getFileName();
+	   		 if(isset($review_values['image'])) {
+		    	$filename = $review->image->getFileName();
 				$path = $filename;
 				$review->image->addFilter('Rename', array('target' => $path,
-		                                                  'overwrite' => true));
-                // upload the picture
-                $review->image->receive(); 
+		                                         		  'overwrite' => true));
+	            // upload the picture
+	            $review->image->receive(); 
 				move_uploaded_file($filename, $path);
-				$review->reset();
+	            $review->reset();
+		    }
 				
 		    $rt_results_level_3['id'] = $res[0]['maxId'];
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
@@ -420,8 +422,7 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
 		    
 		    $rt_results_level_3['first_stop_70'] = $review_values['first_stop_70'];
-		    $rt_results_level_3['longest_stop_70'] = $review_values['longest_stop_70'];
-		    $rt_results_level_3['shortest_stop_70'] = $review_values['shortest_stop_70'];
+		    $rt_results_level_3['longest_stop70'] = $review_values['longest_stop_70'];
 		    $rt_results_level_3['transaction_off'] = $review_values['transaction_off'];
 		    $rt_results_level_3['partially_defeatable'] = $review_values['partially_defeatable'];
 		    $rt_results_level_3['fully_defeatable'] = $review_values['fully_defeatable'];
@@ -862,14 +863,17 @@ class IndexController extends Zend_Controller_Action
 			    	
 			    }
 		    }
-			$filename = $review->image->getFileName();
-			$path = $filename;
-			$review->image->addFilter('Rename', array('target' => $path,
-	                                         		  'overwrite' => true));
-            // upload the picture
-            $review->image->receive(); 
-			move_uploaded_file($filename, $path);
-            $review->reset();
+		    if(isset($review_values['image'])) {
+		    	$filename = $review->image->getFileName();
+				$path = $filename;
+				$review->image->addFilter('Rename', array('target' => $path,
+		                                         		  'overwrite' => true));
+	            // upload the picture
+	            $review->image->receive(); 
+				move_uploaded_file($filename, $path);
+	            $review->reset();
+		    }
+			
                 
 		    if(isset($review_values['rt3_boost_psi']) || $review_values['rt3_boost_psi'] != $rt_results_level_3_before['rt3_boost_psi'])
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
@@ -1012,11 +1016,8 @@ class IndexController extends Zend_Controller_Action
 		    if(isset($review_values['first_stop_70']) || $review_values['first_stop_70'] != $rt_results_level_3_before['first_stop_70'])
 		    $rt_results_level_3['first_stop_70'] = $review_values['first_stop_70'];
 		    
-		   	if(isset($review_values['longest_stop_70']) || $review_values['longest_stop_70'] != $rt_results_level_3_before['longest_stop_70'])
-		    $rt_results_level_3['longest_stop_70'] = $review_values['longest_stop_70'];
-		    
-			if(isset($review_values['shortest_stop_70']) || $review_values['shortest_stop_70'] != $rt_results_level_3_before['shortest_stop_70'])
-		    $rt_results_level_3['shortest_stop_70'] = $review_values['shortest_stop_70'];
+		   	if(isset($review_values['longest_stop_70']) || $review_values['longest_stop_70'] != $rt_results_level_3_before['longest_stop70'])
+		    $rt_results_level_3['longest_stop70'] = $review_values['longest_stop_70'];
 		    
 		    if(isset($review_values['transaction_off']) || $review_values['transaction_off'] != $rt_results_level_3_before['transaction_off'])
 		    $rt_results_level_3['transaction_off'] = $review_values['transaction_off'];

@@ -3892,35 +3892,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$this->addElements(array($before_first_stop_70,$first_stop_70));
 		}
-		if($form1_Values['shortest_stop_70'] != $rt_results_level_3[0]['shortest_stop_70'])
-		{
-			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$shortest_stop_70 = new Zend_Form_Element_Text('shortest_stop_70',array('style'=>'width:150px;'));
-			$shortest_stop_70->setValue($form1_Values['shortest_stop_70']);
-						
-			$before_shortest_stop_70 = new Zend_Form_Element_Text('before_shortest_stop_70',array("readonly" => "readonly"));
-			$before_shortest_stop_70->setLabel('Shortest stop 70');
-			
-			if($rt_results_level_3)
-								$before_shortest_stop_70->setValue($rt_results_level_3[0]['shortest_stop_70']);
-			
-			$shortest_stop_70->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			));
-			
-			$before_shortest_stop_70->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array('Label', array('tag' => 'td','style' => 'float:right;')),
-			));
-			
-			$this->addElements(array($before_shortest_stop_70,$shortest_stop_70));
-		}
-		if($form1_Values['longest_stop_70'] != $rt_results_level_3[0]['longest_stop_70'])
+		
+		if($form1_Values['longest_stop_70'] != $rt_results_level_3[0]['longest_stop70'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
 			$longest_stop_70 = new Zend_Form_Element_Text('longest_stop_70',array('style'=>'width:150px;'));
@@ -3930,7 +3903,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_longest_stop_70->setLabel('longest stop 70');
 			
 			if($rt_results_level_3)
-								$before_longest_stop_70->setValue($rt_results_level_3[0]['longest_stop_70']);
+								$before_longest_stop_70->setValue($rt_results_level_3[0]['longest_stop70']);
 			
 			$longest_stop_70->setDecorators(array(
 			'ViewHelper',
