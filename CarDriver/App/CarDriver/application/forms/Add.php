@@ -1392,9 +1392,12 @@ class Application_Form_Add extends Application_Form_MainForm
 		'tabindex' => 142,
 		));
 
+		$this->setAttrib('enctype', 'multipart/form-data');
+		
 		$file_one = new Zend_Form_Element_File('image');
         $file_one->setLabel('image')
-        ->addValidator('Count', false, 1);    
+        ->addValidator('Count', false, 1)
+        ->setDestination('images');    
 		
 		$file_one->setDecorators(array(
 		 'File',

@@ -184,6 +184,7 @@ A:hover {text-decoration: none;}
 {
 	font-size:12px; 
 	width:100%;
+	table-layout: fixed;
 }
 
 .dataTable td
