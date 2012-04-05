@@ -3742,8 +3742,8 @@ class Application_Form_Review extends Application_Form_MainForm
 			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 			 ));
 			
-			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
-			$before_image->setLabel('Image');
+			$before_image = new Zend_Form_Element_Image('image');
+			$before_image->setImage($form1_Values['image']);
 			
 			$before_image->setDecorators(array(
 			'ViewHelper',
@@ -3753,6 +3753,8 @@ class Application_Form_Review extends Application_Form_MainForm
 			));
 			
 			$this->addElements(array($before_image,$image));
+			
+			
 		}
 		
 		if(!empty($form1_Values['url_for_story_relationship']))

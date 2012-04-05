@@ -4288,7 +4288,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$this->addElements(array($before_tester,$tester));
 		}
-	if($form1_Values['image'] != $rt_results_level_3[0]['image'])
+		if($form1_Values['image'] != $rt_results_level_3[0]['image'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
 			$image = new Zend_Form_Element_File('image',array('style'=>'width:150px;'));
@@ -4298,8 +4298,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
 			$before_image->setLabel('Image');
 			
+			$before_image = new Zend_Form_Element_Image('image');
 			if($rt_results_level_3)
-								$before_image->setValue($rt_results_level_3[0]['image']);
+				$before_image->setImage($rt_results_level_3[0]['image']);
+			
 			
 			$image->setDecorators(array(
 			 'File',
