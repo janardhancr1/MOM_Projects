@@ -364,6 +364,7 @@ class IndexController extends Zend_Controller_Action
 		    }
 	   		 if(isset($review_values['image'])) {
 		    	$filename = $review->image->getFileName();
+		    	$filename = $res[0]['maxId'].$filename;
 				$path = $filename;
 				$review->image->addFilter('Rename', array('target' => $path,
 		                                         		  'overwrite' => true));
@@ -866,6 +867,7 @@ class IndexController extends Zend_Controller_Action
 		    if(isset($review_values['image'])) {
 		    	$filename = $review->image->getFileName();
 				$path = $filename;
+				$filename = $res[0]['maxId'].$filename;
 				$review->image->addFilter('Rename', array('target' => $path,
 		                                         		  'overwrite' => true));
 	            // upload the picture

@@ -4300,7 +4300,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$before_image = new Zend_Form_Element_Image('image');
 			if($rt_results_level_3)
-				$before_image->setImage('C:\wamp\tmp/')
+				$before_image->setImage('C:\wamp\tmp')
 						 ->setImageValue($rt_results_level_3[0]['image']);
 			
 			

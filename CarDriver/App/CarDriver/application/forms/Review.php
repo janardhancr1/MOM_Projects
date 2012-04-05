@@ -3743,7 +3743,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			 ));
 			
 			$before_image = new Zend_Form_Element_Image('image');
-			$before_image->setImage('C:\wamp\tmp/')
+			$before_image->setImage('C:\wamp\tmp')
 						 ->setImageValue($form1_Values['image']);
 			
 			$before_image->setDecorators(array(
