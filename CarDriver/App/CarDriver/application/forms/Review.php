@@ -3742,9 +3742,11 @@ class Application_Form_Review extends Application_Form_MainForm
 			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
 			 ));
 			
-			$before_image = new Zend_Form_Element_Image('image');
-			$before_image->setImage('C:\wamp\tmp')
-						 ->setImageValue($form1_Values['image']);
+			$before_image = new Zend_Form_Element_Image('beforeimage');
+			$before_image->setImage("/images/" . $form1_Values['image'])
+						->setLabel("Image")
+						->setAttrib("width", "200px")
+						->setAttrib("height", "100px");
 			
 			$before_image->setDecorators(array(
 			'ViewHelper',

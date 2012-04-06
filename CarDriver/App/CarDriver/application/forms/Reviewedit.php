@@ -4295,14 +4295,17 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$image->setValue($form1_Values['image'])
 			->addValidator('Count', false, 1);;
 						
-			$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
-			$before_image->setLabel('Image');
+			//$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
+			//$before_image->setLabel('Image');
 			
-			$before_image = new Zend_Form_Element_Image('image');
+			$before_image = new Zend_Form_Element_Image('beforeimage');
+			$before_image->setLabel("image")
+						->setAttrib("width", "200px")
+						->setAttrib("height", "100px");
 			if($rt_results_level_3)
-				$before_image->setImage('C:\wamp\tmp')
-						 ->setImageValue($rt_results_level_3[0]['image']);
-			
+			{
+				$before_image->setImage("/images/".$rt_results_level_3[0]['image']);
+			}
 			
 			$image->setDecorators(array(
 			 'File',
@@ -4319,7 +4322,7 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			array('Label', array('tag' => 'td','style' => 'float:right;')),
 			));
 			
-			$this->addElements(array($before_image,$image));
+			$this->addElements(array($before_image, $image));
 		}
 	if($form1_Values['url_for_story_relationship'] != $rt_results_level_3[0]['url_for_story_relationship'])
 		{

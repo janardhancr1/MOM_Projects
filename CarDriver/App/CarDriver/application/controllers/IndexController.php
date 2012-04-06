@@ -203,6 +203,10 @@ class IndexController extends Zend_Controller_Action
     	    require_once('Zend/Session.php');
     	 	$session_formvalues = new Zend_Session_Namespace('FormValues');
     	    $session_formvalues->FormValues = $form_values;
+    	    
+    	    //print_r($form_values);
+    	 	//exit;
+    	 	
     	 	$this->_redirect("index/review/");
     	 	
     	 }
@@ -241,7 +245,10 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_level_3 = array();
 			
 			$review_values = $this->view->form->getValues();
-			
+			$session_formvalues = new Zend_Session_Namespace('FormValues');
+			//print_r($session_formvalues->FormValues);
+			//print_r($review_values);
+			//exit;
 			
 			$rt_results_main['rt_model_year'] = $review_values['rt_model_year'];
 			$rt_results_main['bg_make_id'] = $review_values['bg_make_id'];
@@ -364,7 +371,7 @@ class IndexController extends Zend_Controller_Action
 		    }
 	   		 if(isset($review_values['image'])) {
 		    	$filename = $review->image->getFileName();
-		    	$filename = $res[0]['maxId'].$filename;
+		    	$filename = $filename;
 				$path = $filename;
 				$review->image->addFilter('Rename', array('target' => $path,
 		                                         		  'overwrite' => true));
@@ -372,6 +379,10 @@ class IndexController extends Zend_Controller_Action
 	            $review->image->receive(); 
 				move_uploaded_file($filename, $path);
 	            $review->reset();
+		    }
+		    else
+		    {
+		    	$filename = $session_formvalues->FormValues["image"];
 		    }
 				
 		    $rt_results_level_3['id'] = $res[0]['maxId'];
