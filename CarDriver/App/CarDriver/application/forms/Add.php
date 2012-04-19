@@ -1394,7 +1394,9 @@ class Application_Form_Add extends Application_Form_MainForm
 
 		$this->setAttrib('enctype', 'multipart/form-data');
 		
-		$file_one = new Zend_Form_Element_File('image');
+		$this->addElement("Hidden", "image");
+		
+		$file_one = new Zend_Form_Element_File('image1');
         $file_one->setLabel('image')
         ->addValidator('Count', false, 1)
         ->setDestination('images');    
@@ -1410,6 +1412,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		
  		$this->addElement($file_one);
 		
+ 		
 		$review_changes = new Zend_Form_Element_Submit('review_cganges');
 		$review_changes->setLabel('Review');
 		

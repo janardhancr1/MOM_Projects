@@ -10,6 +10,7 @@ class IndexController extends Zend_Controller_Action
       
     }
 
+    
     public function loginAction()
     {
     	 $form = new Application_Form_Login();
@@ -38,6 +39,7 @@ class IndexController extends Zend_Controller_Action
 	    }
     }
     
+    
     private function verifyLogin()
     {
     	$session_login = new Zend_Session_Namespace('Login');
@@ -63,6 +65,7 @@ class IndexController extends Zend_Controller_Action
         	return false;
     }
     
+    
     public function signoutAction()
     {
     	$session_login = new Zend_Session_Namespace('Login');
@@ -70,6 +73,7 @@ class IndexController extends Zend_Controller_Action
 		unset($session_login->password);
      	$this->_redirect("index/login");
     }
+    
     
     public function indexAction()
     {
@@ -187,6 +191,7 @@ class IndexController extends Zend_Controller_Action
         $this->view->paginator->setPageRange(5);
     }
     
+    
     public function addAction()
     {
     	$result = $this->verifyLogin();
@@ -212,6 +217,7 @@ class IndexController extends Zend_Controller_Action
     	 }
     	
     }
+    
     
     public function reviewAction()
     {
@@ -369,20 +375,15 @@ class IndexController extends Zend_Controller_Action
       			throw $e;
 		    	
 		    }
+		    $filename ="";
 	   		 if(isset($review_values['image'])) {
-		    	$filename = $review->image->getFileName();
-		    	$filename = $filename;
-				$path = $filename;
-				$review->image->addFilter('Rename', array('target' => $path,
-		                                         		  'overwrite' => true));
 	            // upload the picture
-	            $review->image->receive(); 
-				move_uploaded_file($filename, $path);
-	            $review->reset();
+	            $review->image->receive();
+	            $filename = $review_values['image']; 
 		    }
 		    else
 		    {
-		    	$filename = $session_formvalues->FormValues["image"];
+		    	$filename = $session_formvalues->FormValues["image1"];
 		    }
 				
 		    $rt_results_level_3['id'] = $res[0]['maxId'];
@@ -481,6 +482,7 @@ class IndexController extends Zend_Controller_Action
 	    }
     }
     
+    
     public function editAction()
     {
     	$result = $this->verifyLogin();
@@ -564,6 +566,22 @@ class IndexController extends Zend_Controller_Action
         
     }
     
+	
+    public function deleteAction()
+    {
+    	$result = $this->verifyLogin();
+    	    
+        if(!$result)
+        	$this->_redirect("index/login");
+        	
+    	$db = Zend_Db_Table::getDefaultAdapter();
+    	$db->delete("rt_results_main", "id=" .$this->_getParam('id'));
+    	$db->delete("rt_results_level_2", "id=" .$this->_getParam('id'));
+    	$db->delete("rt_results_level_3", "id=" .$this->_getParam('id'));
+        	
+        $this->_redirect("index/");
+    }
+    
     
     public function revieweditAction()
     {
@@ -612,6 +630,9 @@ class IndexController extends Zend_Controller_Action
 			
 			$review_values = $this->view->form->getValues();
 	
+			//print_r($review_values);
+			//print_r($rt_results_level_3_before);
+			
 			if($review_values['rt_model_year'] != $rt_results_main_before['rt_model_year'])
 			$rt_results_main['rt_model_year'] = $review_values['rt_model_year'];
 			
@@ -875,18 +896,16 @@ class IndexController extends Zend_Controller_Action
 			    	
 			    }
 		    }
+		    $filename = "";
 		    if(isset($review_values['image'])) {
-		    	$filename = $review->image->getFileName();
-				$path = $filename;
-				$filename = $res[0]['maxId'].$filename;
-				$review->image->addFilter('Rename', array('target' => $path,
-		                                         		  'overwrite' => true));
-	            // upload the picture
+		    	$filename = $review_values['image'];
 	            $review->image->receive(); 
-				move_uploaded_file($filename, $path);
-	            $review->reset();
 		    }
-			
+    		else
+		    {
+		    	$filename = $review_values["image1"];
+		    }
+			//echo "uploaded file name -". $filename;
                 
 		    if(isset($review_values['rt3_boost_psi']) || $review_values['rt3_boost_psi'] != $rt_results_level_3_before['rt3_boost_psi'])
 		    $rt_results_level_3['rt3_boost_psi'] = $review_values['rt3_boost_psi'];
@@ -1069,7 +1088,9 @@ class IndexController extends Zend_Controller_Action
 		    $rt_results_level_3['tester'] = $review_values['tester'];
 		    
 		    if(isset($review_values['image']) || $review_values['image'] != $rt_results_level_3_before['image'])
-		    $rt_results_level_3['image'] = $filename;
+		    	$rt_results_level_3['image'] = $filename;
+		    else
+		    	$rt_results_level_3['image'] = $filename;
 		    
 		    if(isset($review_values['url_for_story_relationship']) || $review_values['url_for_story_relationship'] != $rt_results_level_3_before['url_for_story_relationship'])
 		    $rt_results_level_3['url_for_story_relationship'] = $review_values['url_for_story_relationship'];
@@ -1094,7 +1115,6 @@ class IndexController extends Zend_Controller_Action
 			    }
 			   
 		    }
-		        
 		        $session_makeid = new Zend_Session_Namespace('makeid');
 				unset($session_makeid->make_id);
 				$session_yearid = new Zend_Session_Namespace('yearid');
@@ -1102,6 +1122,7 @@ class IndexController extends Zend_Controller_Action
 		    	$this->_redirect("index/");
     	}
     }
+    
     
     public function manageconrolledlistAction()
     {
@@ -1188,6 +1209,7 @@ class IndexController extends Zend_Controller_Action
         
     }
     
+    
     private function gatLastInseredId()
     {
     	$db = Zend_Db_Table::getDefaultAdapter(); 
@@ -1198,6 +1220,7 @@ class IndexController extends Zend_Controller_Action
 		$id = $res[0]['maxId'];
 		return $id;
     }
+    
     
     public function populatemodelAction()
     {
@@ -1312,7 +1335,8 @@ class IndexController extends Zend_Controller_Action
 		echo $return;
     }
     
-	public function csvexportAction()
+	
+    public function csvexportAction()
 	{
 		$result = $this->verifyLogin();
     	    

@@ -5,6 +5,15 @@
 		<div>
 			<?php echo $this->form?>
 		</div>
+		<div style="padding-left:200px">
+		<?php if($this->form->image->getValue()) {?>
+			<image src="/app/public/images/<?php echo $this->form->image->getValue(); ?>" alt="" width="200px" height="100px"></image>
+			<br />
+			<br />
+			<br />
+		<?php }?>
+			<br />
+		</div>
 	</div>
-
+   
 <?php include 'footer.phtml' ?> 

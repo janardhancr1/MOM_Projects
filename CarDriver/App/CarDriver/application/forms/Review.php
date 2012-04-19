@@ -3728,11 +3728,13 @@ class Application_Form_Review extends Application_Form_MainForm
 			$this->addElements(array($before_tester,$tester));
 		}
 		
-		if(!empty($form1_Values['image']))
+		if(!empty($form1_Values['image1']))
 		{
+			$this->setAttrib('enctype', 'multipart/form-data');
+			
 			$image = new Zend_Form_Element_File('image');
-			$image->setValue($form1_Values['image'])
-			->addValidator('Count', false, 1);    
+			$image->addValidator('Count', false, 1)
+			->setDestination('images');     
 		
 			$image->setDecorators(array(
 			 'File',
@@ -3743,7 +3745,7 @@ class Application_Form_Review extends Application_Form_MainForm
 			 ));
 			
 			$before_image = new Zend_Form_Element_Image('beforeimage');
-			$before_image->setImage("/images/" . $form1_Values['image'])
+			$before_image->setImage("/app/public/images/" . $form1_Values['image1'])
 						->setLabel("Image")
 						->setAttrib("width", "200px")
 						->setAttrib("height", "100px");

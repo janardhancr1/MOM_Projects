@@ -4288,42 +4288,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$this->addElements(array($before_tester,$tester));
 		}
-		if($form1_Values['image'] != $rt_results_level_3[0]['image'])
-		{
-			//$rt_original_table_ids_prepared[0]= "Select from list";
-			$image = new Zend_Form_Element_File('image',array('style'=>'width:150px;'));
-			$image->setValue($form1_Values['image'])
-			->addValidator('Count', false, 1);;
-						
-			//$before_image = new Zend_Form_Element_Text('before_image',array("readonly" => "readonly"));
-			//$before_image->setLabel('Image');
-			
-			$before_image = new Zend_Form_Element_Image('beforeimage');
-			$before_image->setLabel("image")
-						->setAttrib("width", "200px")
-						->setAttrib("height", "100px");
-			if($rt_results_level_3)
-			{
-				$before_image->setImage("/images/".$rt_results_level_3[0]['image']);
-			}
-			
-			$image->setDecorators(array(
-			 'File',
-			 'Description',
-			 'Errors',
-			 array(array('data'=>'HtmlTag'), array('tag' => 'td','align' => 'center')),
-			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
-			 ));
-			
-			$before_image->setDecorators(array(
-			'ViewHelper',
-			'Description',
-			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
-			array('Label', array('tag' => 'td','style' => 'float:right;')),
-			));
-			
-			$this->addElements(array($before_image, $image));
-		}
+ 
+		
 	if($form1_Values['url_for_story_relationship'] != $rt_results_level_3[0]['url_for_story_relationship'])
 		{
 			//$rt_original_table_ids_prepared[0]= "Select from list";
@@ -4408,13 +4374,58 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			
 			$this->addElements(array($before_suppress_public_display,$suppress_public_display));
 		}
+		
+	if($form1_Values['image1'] != $rt_results_level_3[0]['image'])
+		{
+			$this->setAttrib('enctype', 'multipart/form-data');
+			//$rt_original_table_ids_prepared[0]= "Select from list";
+			$image = new Zend_Form_Element_File('image',array('style'=>'width:150px;'));
+			$image->addValidator('Count', false, 1)
+			->setDestination('images');   
+
+			$before_image = new Zend_Form_Element_Image('beforeimage');
+			$before_image->setLabel("Image")
+						->setAttrib("width", "200px")
+						->setAttrib("height", "100px");
+			$before_image->setImage("/app/public/images/".$form1_Values['image1']);
+			
+			$image->setDecorators(array(
+			 'File',
+			 'Description',
+			 'Errors',
+			 array(array('data'=>'HtmlTag'), array('tag' => 'td','align' => 'center')),
+			 array(array('row'=>'HtmlTag'), array('tag'=>'tr', 'closeOnly' => true))
+			 ));
+			
+			$before_image->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			array('Label', array('tag' => 'td','style' => 'float:right;')),
+			));
+			
+			$this->addElements(array($before_image, $image));
+		}
+		
+	    if($form1_Values['image1'] != $rt_results_level_3[0]['image'])
+		{
+		$oldImage = new Zend_Form_Element_Text('image1', array("readonly" => "readonly" , "style" => "display:none"));
+			$oldImage->setValue($form1_Values['image1']);
+			$oldImage->setDecorators(array(
+			'ViewHelper',
+			'Description',
+			array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'center')),
+			));
+			$this->addElement($oldImage);
+		}
+		
 		$save_changes = new Zend_Form_Element_Submit('save_changes');
 		$save_changes->setLabel('Save');
 		
 		$save_changes->setDecorators(array(
 		'ViewHelper',
 		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'right','border' => '0', 'colspan' => '2')),
+		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'right','border' => '0')),
 		));
 		
 		$cancel = new Zend_Form_Element_Submit('cancel');
@@ -4428,6 +4439,8 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		
 		$this->addElement($save_changes);
 		$this->addElement($cancel);
+		
+	
 		
 		$this->setDecorators(array(
 		'FormElements',
