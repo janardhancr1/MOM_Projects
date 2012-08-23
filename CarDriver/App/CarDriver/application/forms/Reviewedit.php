@@ -4387,7 +4387,10 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 			$before_image->setLabel("Image")
 						->setAttrib("width", "200px")
 						->setAttrib("height", "100px");
-			$before_image->setImage("/app/public/images/".$form1_Values['image1']);
+			if(isset($form1_Values['image1']))
+				$before_image->setImage("/app/public/images/".$form1_Values['image1']);
+			else
+				$before_image->setImage("/app/public/images/".$form1_Values['image']);
 			
 			$image->setDecorators(array(
 			 'File',
@@ -4423,9 +4426,18 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		$save_changes->setLabel('Save');
 		
 		$save_changes->setDecorators(array(
+		array(array('open' => 'HtmlTag'), array('tag' => 'td', 'openOnly' => true, 'colspan'=>'2', 'align' => 'center')), 
 		'ViewHelper',
 		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'right','border' => '0')),
+		
+		));
+		
+		$clearImage = new Zend_Form_Element_Submit('ClearImage');
+		$clearImage->setLabel('Clear Image');
+		
+		$clearImage->setDecorators(array(
+		'ViewHelper',
+		'Description',
 		));
 		
 		$cancel = new Zend_Form_Element_Submit('cancel');
@@ -4434,10 +4446,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 		$cancel->setDecorators(array(
 		'ViewHelper',
 		'Description',
-		array(array('data'=>'HtmlTag'), array('tag' => 'td', 'align' => 'left','border' => '0')),
+		array(array('close' => 'HtmlTag'), array('tag' => 'td', 'closeOnly' => true)), 
 		));
 		
 		$this->addElement($save_changes);
+		$this->addElement($clearImage);
 		$this->addElement($cancel);
 		
 	
