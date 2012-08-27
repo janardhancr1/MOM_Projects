@@ -13,7 +13,7 @@
 }
 
 #logo {
-    background: url("/app/public/images/cdlogo.png") no-repeat scroll 0 0 transparent;
+    background: url("/images/cdlogo.png") no-repeat scroll 0 0 transparent;
     margin: 10px 10px 10px 0;
     padding-bottom: 10px;
     height: 56px;

@@ -56,11 +56,40 @@ class IndexController extends Zend_Controller_Action
 		->from('user')
 		->where('user_name = ?', $username)
 		->where('password = ?', $password);
-
+		
 		$res = $db->query($select)->fetchAll();
 
 		if($res)
 		return true;
+		else
+		return false;
+	}
+
+	private function getUser()
+	{
+		$session_login = new Zend_Session_Namespace('Login');
+		$username = $session_login->user;
+		$password = md5($session_login->password);
+			
+		if(!$username)
+		$username= '';
+		if(!$password)
+		$password= '';
+		$db = Zend_Db_Table::getDefaultAdapter();
+			
+		$select = $db->select()
+		->from('user')
+		->where('user_name = ?', $username)
+		->where('password = ?', $password);
+
+		$res = $db->query($select)->fetchAll();
+
+		if($res)
+		{
+			$this->view->loggedIn = true;
+			$this->view->loggedInUser = $res[0]["user_name"];
+			$this->view->loggedInUserRole = $res[0]["role"];
+		}
 		else
 		return false;
 	}
@@ -78,10 +107,11 @@ class IndexController extends Zend_Controller_Action
 	public function indexAction()
 	{
 		$result = $this->verifyLogin();
-			
+
 		if(!$result)
 		$this->_redirect("index/login");
 
+		$this->getUser();
 		$form = new Application_Form_Search();
 		$this->view->form = $form;
 			
@@ -198,11 +228,23 @@ class IndexController extends Zend_Controller_Action
 			
 		if(!$result)
 		$this->_redirect("index/login");
-			
+
+		$this->getUser();
 		$form = new Application_Form_Add();
 		$this->view->form = $form;
+
+		if($this->view->loggedInUserRole == 2)
+		{
+			$form->removeElement("review_cganges");
+			$form->removeElement("cancel");
+		}
+
 		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
 		{
+			if(isset($_POST['cancel']))
+			{
+				$this->_redirect("index/");
+			}
 			$form_values = $this->view->form->getValues();
 
 			require_once('Zend/Session.php');
@@ -224,7 +266,12 @@ class IndexController extends Zend_Controller_Action
 		$result = $this->verifyLogin();
 			
 		if(!$result)
-		$this->_redirect("index/login");
+			$this->_redirect("index/login");
+
+		$this->getUser();
+		
+		if($this->view->loggedInUserRole == 2)
+			$this->_redirect("index");
 			
 		$db = Zend_Db_Table::getDefaultAdapter();
 
@@ -435,7 +482,7 @@ class IndexController extends Zend_Controller_Action
 			$rt_results_level_3['rt3_peal_bmep'] = $review_values['rt3_peal_bmep'];
 
 			$rt_results_level_3['first_stop_70'] = $review_values['first_stop_70'];
-			$rt_results_level_3['longest_stop70'] = $review_values['longest_stop_70'];
+			$rt_results_level_3['longest_stop70'] = $review_values['longest_stop70'];
 			$rt_results_level_3['transaction_off'] = $review_values['transaction_off'];
 			$rt_results_level_3['partially_defeatable'] = $review_values['partially_defeatable'];
 			$rt_results_level_3['fully_defeatable'] = $review_values['fully_defeatable'];
@@ -489,7 +536,8 @@ class IndexController extends Zend_Controller_Action
 			
 		if(!$result)
 		$this->_redirect("index/login");
-			
+
+		$this->getUser();
 		$db = Zend_Db_Table::getDefaultAdapter();
 			
 		$select = $db->select()
@@ -546,7 +594,13 @@ class IndexController extends Zend_Controller_Action
 
 		// Prepare form
 		$form = new Application_Form_Edit();
-
+		$this->view->label = "Edit";
+		if($this->view->loggedInUserRole == 2)
+		{
+			$form->removeElement("review_cganges");
+			$form->removeElement("cancel");
+			$this->view->label = "View";
+		}
 		// Populate form
 		$form->populate($results);
 			
@@ -554,6 +608,10 @@ class IndexController extends Zend_Controller_Action
 			
 		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
 		{
+			if(isset($_POST['cancel']))
+			{
+				$this->_redirect("index/");
+			}
 			$form_values = $this->view->form->getValues();
 
 			require_once('Zend/Session.php');
@@ -573,6 +631,8 @@ class IndexController extends Zend_Controller_Action
 			
 		if(!$result)
 		$this->_redirect("index/login");
+		if($this->view->loggedInUserRole == 2 || $this->view->loggedInUserRole == 1)
+			$this->_redirect("index");
 			
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$db->delete("rt_results_main", "id=" .$this->_getParam('id'));
@@ -589,7 +649,11 @@ class IndexController extends Zend_Controller_Action
 			
 		if(!$result)
 		$this->_redirect("index/login");
-			
+
+		$this->getUser();
+		if($this->view->loggedInUserRole == 2)
+			$this->_redirect("index");
+		
 		$db = Zend_Db_Table::getDefaultAdapter();
 
 		$this->view->id = $this->_getParam('id');
@@ -1058,8 +1122,8 @@ class IndexController extends Zend_Controller_Action
 			if(isset($review_values['first_stop_70']) || $review_values['first_stop_70'] != $rt_results_level_3_before['first_stop_70'])
 			$rt_results_level_3['first_stop_70'] = $review_values['first_stop_70'];
 
-			if(isset($review_values['longest_stop_70']) || $review_values['longest_stop_70'] != $rt_results_level_3_before['longest_stop70'])
-			$rt_results_level_3['longest_stop70'] = $review_values['longest_stop_70'];
+			if(isset($review_values['longest_stop70']) || $review_values['longest_stop70'] != $rt_results_level_3_before['longest_stop70'])
+			$rt_results_level_3['longest_stop70'] = $review_values['longest_stop70'];
 
 			if(isset($review_values['transaction_off']) || $review_values['transaction_off'] != $rt_results_level_3_before['transaction_off'])
 			$rt_results_level_3['transaction_off'] = $review_values['transaction_off'];
@@ -1142,7 +1206,8 @@ class IndexController extends Zend_Controller_Action
 			
 		if(!$result)
 		$this->_redirect("index/login");
-			
+
+		$this->getUser();
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$db1 = Zend_Db_Table::getDefaultAdapter();
 		$form = new Application_Form_DropdownDescriptions();
@@ -1358,6 +1423,8 @@ class IndexController extends Zend_Controller_Action
 		$session_export = new Zend_Session_Namespace('export');
 		$export_array = $session_export->export;
 
+		set_time_limit(600);
+
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$select = $db->select()
 		->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id',
@@ -1421,9 +1488,9 @@ class IndexController extends Zend_Controller_Action
 		'rr2.rt2_30_50TG As Top-Gear_Accel_30-50',
 		'rr2.rt2_30_mph As 0-30_Accel',
 		'rr2.rt2_50_70TG As Top-Gear_Accel_50-70',
-		'rr2.rt2_50_mph As 0-50_Accel',
+		'rr2.rt2_50_mph As rt2_0-50_Accel',
 		'rr2.rt2_70cr As DB_at_70_MPH_Cruise',
-		'rr2.rt2_70_mph As 0-70_Accel',
+		'rr2.rt2_70_mph As rt2_0-70_Accel',
 		'rr2.rt2_controlled_airbags As Airbags',
 		'rr2.rt2_anti_lock As Anti-Lock_Brakes',
 		'rr2.rt2_epa_city_fe As EPA_Citys',
@@ -1454,6 +1521,8 @@ class IndexController extends Zend_Controller_Action
          'rr3.rt3_fuel_cap As Fual_capacity',
          'rr3.rt3_height As Height',
          'rr3.rt3_length As Length',
+         'rr3.rt3_wheelbase As rt3_wheelbase',
+         'rr3.center_of_gravity_height As center_of_gravity_height',
          'rr3.rt3_lt_oil As Long_tem_oil_used',
          'rr3.rt3_lt_repair As Costs_for_lt_repair',
          'rr3.rt3_lt_serv As Costs_for_lt_service',
@@ -1469,17 +1538,32 @@ class IndexController extends Zend_Controller_Action
          'rr3.rt3_stroke_mm As Cylinder_stroke',
          'rr3.rt3_trunk As Trunk_volume',
          'rr3.rt3_valve_gear As Valve_setup',
-         'rr3.rt3_valves_per_cyl As Valves Per Cylinder',
-         'rr3.rt3_wheelbase As Valves_per_cylinder',
+         'rr3.rt3_valves_per_cyl As Valves_per_cylinder',
          'rr3.rt3_width As Width',
          'rr3.rt3_70co As DB_at_70_coast',
+         'rr3.url_for_story_relationship As url_for_story_relationship',
+         'rr3.ez_id As ez_id',
+         'rr3.suppress_public_display As suppress_public_display',
+         'rr3.skidpad_diameter As skidpad_diameter',
+         'rr3.first_stop_70 As first_stop_70',
+         'rr3.longest_stop70 As longest_stop70',
+         'rr3.transaction_off As transaction_off',
+         'rr3.partially_defeatable As partially_defeatable',
+         'rr3.fully_defeatable As fully_defeatable',
+         'rr3.competition_mode As competition_mode',
+         'rr3.launch_control As launch_control',
+         'rr3.permanent As permanent',
+         'rr3.test_location As test_location',
+         'rr3.test_location_detail As test_location_detail',
+         'rr3.test_notes As test_notes',
+         'rr3.tester As tester',
          'rr3.rt3_10mph As 0-10_Accel',
          'rr3.rt3_20mph As 0-20_Accel',
          'rr3.rt3_40mph As 0-40_Accel',
          'rr3.rt3_50mph As 0-50_Accel',
          'rr3.rt3_70mph As 0-70_Accel',
          'rr3.rt3_80mph As 0-80_Accel',
-         'rr3.rt3_90mph As 0-90_Accel' ,
+         'rr3.rt3_90mph As 0-90_Accel',
          'rr3.rt3_110mph As 0-110_Accel',
          'rr3.rt3_120mph As 0-120_Accel',
          'rr3.rt3_140mph As 0-140_Accel',
@@ -1539,7 +1623,7 @@ class IndexController extends Zend_Controller_Action
 
 		header("Content-type:text/octect-stream");
 		header("Content-Disposition:attachment;filename=data.csv");
-		print "\"ID\",\"Publish Date\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\", \"Body Style\",\"Peak Horsepower\",\"Make(BG)\",\"Model(BG)\",\"Sub-Model(BG)\",\"Year(BG)\",\"bg_controlled_make_id\",\"bg_controlled_model_id\",\"rt_original_table_id\",\"Engine Location\",\"Fuel Type\",\"Transmission Type\",\"Driven Wheels\",\"Top Speed Limit\",\"Forced Induction\",\"Engine Type\",\"Pct. weight on Rear\",\"Pct. Weight on Front\",\"0-60 Accel\",\"Breaking from 70\",\"Top Speed\",\"Top Speed otes\",\"Base Price\",\"Base Price Notes\",\"Quarter Trap Speed\",\"Quarter Mile Time\",\"CD Observed Economy\",\"Number of Cylinders\",\"Peak Horsepower Notes\",\"Peak Torque\",\"Peak Torque notes\",\"Power Weight hp lb\",\"Price as Tested\",\"Price as Tested Notes\",\"Read Linr\",\"Engine Disp\",\"Peak Horsepower RMP\",\"Peak Torque RMP\",\"Salalom Speed\",\"5-60 as accel\",\"Curb Weight\,\"MPH in Lane Change\",\"\Skidpad Grip\",\"0-100 Accel\",\"0-130 Accel\",\"\Top Gear Accel 30-50\",\"0-30 Accel\",\"\Top Gear Accel 50-70\",\"0-50 Accel\",\"DB at 70 MPH Cruise\",\"0-70 Accel\",\"Airbags\",\"Anti Lock Breaks\",\"EPA Citys\",\"EPA City Notes\",\"Fuel system\",\"EPA Highway\",\"EPA Highway Notes\",\"Interior Voume Front\",\"Vol Behind Mid Row\",\"Number of Passwngers\",\"Vol Behind Rear Row\",\"Sound Level Idel\",\"ESC Defeatable\",\"Stability Control\",\"Sum Of 2\",\"TC Defeatable\",\"Trancaction control\",\"Turning Radius\",\"DB at Wot\",\"Boost in psi\",\"Cylinder Bore\",\"Coefficient of Drag\",\"Compression Ratio\",\"rt3_et_factor\",\"Final Drive\",\"Frontal Area\",\"Frontal Area Notes\",\"Fual Capacity\",\"height\",\"Length\",\"Long Term Used\",\"Costs for lt Repair\",\"costs for lt service\",\"Lt Scheduled Stops\",\"Lt Unscheduled Stops\",\"Costs for lt ware\",\"Top Gear MPH 1000rmp\",\"rt3_peak_bmep\",\"rt3_peal_bmep\",\"rt3_road_hp_30mph\",\"rt3_sp_factor\",\"Spec Pow hp Liter\",\"Cylinder Stroke\",\"Trunk Volume\",\"Valve Setup\",\"Valves Per Cylinder\",\"Width\",\" DB at 70 coast\",\"0-10 Accel\",\"0-20 Accel\",\"0-40 Accel\",\"0-50 Accel\",\"0-70 Accel\",\"0-80 Accel\",\"0-90 Accel\",\"0-110 Accel\",\"0-120 Accel\",\"0-140 Accel\",\"0-150 Accel\",\"0-160 Accel\",\"0-170 Accel\",\"0-180 Accel\",\"0-190 Accel\",\"0-200 Accel\"\n";
+		print "\"ID\",\"Web or Print\",\"Year\",\"Make\",\"Model\",\"Mag Issue Year\",\"Mag Issue Month\",\"Production Type\",\"Number of Doors\",\"Body Style\",\"Peak Horsepower\",\"Make(BG)\",\"Model(BG)\",\"Sub-Model(BG)\",\"Year(BG)\",\"bg_controlled_make_id\",\"bg_controlled_model_id\",\"rt_original_table_id\",\"Engine Location\",\"Fuel Type\",\"Transmission Type\",\"Driven Wheels\",\"Top Speed Limit\",\"Forced Induction\",\"Engine Type\",\"Pct. weight on Rear\",\"Pct. Weight on Front\",\"0-60 Accel\",\"Shortest 70\",\"Top Speed\",\"Top Speed Notes\",\"Base Price\",\"Base Price Notes\",\"Quarter Trap Speed\",\"Quarter Mile Time\",\"CD Observed Economy\",\"Number of Cylinders\",\"Peak Horsepower Notes\",\"Peak Torque\",\"Peak Torque notes\",\"Power Weight hp lb\",\"Price as Tested\",\"Price as Tested Notes\",\"Redline\",\"Engine Disp\",\"Peak Horsepower RPM\",\"Peak Torque RPM\",\"Slalom Speed\",\"5-60 as accel\",\"Curb Weight\",\"MPH in Lane Change\",\"Skidpad Grip\",\"0-100 Accel\",\"0-130 Accel\",\"Top Gear Accel 30-50\",\"0-30 Accel\",\"Top Gear Accel 50-70\",\"rt2_50_mph\",\"DB at 70 MPH Cruise\",\"rt2_70_mph\",\"Airbags\",\"Anti Lock Brakes\",\"EPA City\",\"EPA City Notes\",\"Fuel system\",\"EPA Highway\",\"EPA Highway Notes\",\"Interior Volume Front\",\"Vol Behind Mid Row\",\"Number of Passengers\",\"Vol Behind Rear Row\",\"Sound Level Idle\",\"ESC Defeatable\",\"Stability Control\",\"Sum Of 2\",\"TC Defeatable\",\"Traction Control\",\"Turning Radius\",\"DB at Wot\",\"Boost in psi\",\"Cylinder Bore\",\"Coefficient of Drag\",\"Compression Ratio\",\"rt3_et_factor\",\"Final Drive\",\"Frontal Area\",\"Frontal Area Notes\",\"Fuel Capacity\",\"height\",\"Length\",\"Wheelbase\",\"Center of Gravity Height\",\"Long Term Oil Used\",\"Costs for lt Repair\",\"costs for lt service\",\"Lt Scheduled Stops\",\"Lt Unscheduled Stops\",\"Costs for LT Wear\",\"Top Gear MPH 1000rmp\",\"rt3_peak_bmep\",\"rt3_peal_bmep\",\"rt3_road_hp_30mph\",\"rt3_sp_factor\",\"Spec Pow hp Liter\",\"Cylinder Stroke\",\"Trunk Volume\",\"Valve Setup\",\"Valves Per Cylinder\",\"Width\",\" DB at 70 coast\",\"URL for story relationship\",\"EZ ID\",\"Suppress public display\",\"Skidpad diameter\",\"First stop 70\",\"Longest stop 70\",\"Traction off\",\"Partially defeatable\",\"Fully defeatable\",\"Competition mode\",\"Launch control\",\"Permanent\",\"Test location\",\"Test location detail\",\"Test notes\",\"Tester\",\"0-10 Accel\",\"0-20 Accel\",\"0-40 Accel\",\"0-50 Accel\",\"0-70 Accel\",\"0-80 Accel\",\"0-90 Accel\",\"0-110 Accel\",\"0-120 Accel\",\"0-140 Accel\",\"0-150 Accel\",\"0-160 Accel\",\"0-170 Accel\",\"0-180 Accel\",\"0-190 Accel\",\"0-200 Accel\"\n";
 		foreach ($export_result as $row) {
 			$row['make'] = $this->getData($row['make']);
 			$row['body_style'] = $this->getData($row['body_style']);
@@ -1556,7 +1640,18 @@ class IndexController extends Zend_Controller_Action
 			$row['Model(BG)'] = $this->getBGData("bg_model", $row['Model(BG)']);
 			$row['Sub-Model(BG)'] = $this->getBGData("bg_submodel", $row['Sub-Model(BG)']);
 			$row['Year(BG)'] = $this->getBGData("bg_year", $row['Year(BG)']);
-			
+			$row['Anti-Lock_Brakes'] = $this->toYesNo($row['Anti-Lock_Brakes']);
+			$row['Stability_Control'] = $this->toYesNo($row['Stability_Control']);
+			$row['Traction_Control'] = $this->toYesNo($row['Traction_Control']);
+			$row['Tc_Defeatable'] = $this->toYesNo($row['Tc_Defeatable']);
+			$row['issue_month'] = $this->toMonthString($row['issue_month']);
+			$row['fully_defeatable'] = $this->toYesNo($row['fully_defeatable']);
+			$row['launch_control'] = $this->toYesNo($row['launch_control']);
+			$row['transaction_off'] = $this->toYesNo($row['transaction_off']);
+			$row['partially_defeatable'] = $this->toYesNo($row['partially_defeatable']);
+			$row['competition_mode'] = $this->toYesNo($row['competition_mode']);
+			$row['permanent'] = $this->toYesNo($row['permanent']);
+			$row['suppress_public_display'] = $this->toYesNo($row['suppress_public_display']);
 			/*$bgMakes = $db_remote->select()
 			 ->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
 			 ->where('bgmk.name=?', $row['Make(BG)']);
@@ -1598,92 +1693,94 @@ class IndexController extends Zend_Controller_Action
 		$session_export = new Zend_Session_Namespace('export');
 		$export_array = $session_export->export;
 
+		set_time_limit(600);
+
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$select = $db->select()
 		->from(array('rrm'=>'rt_results_main'),array('rrm.id As main_results_id',
          'rrm.rt_published As publish', 
-'rrm.rt_model_year As year', 
-'rrm.rt_controlled_make As make', 
-'rrm.rt_model As model',
-'rrm.rt_issue_year As issue_year',
-'rrm.rt_issue As issue_month', 
-'rrm.rt_controlled_sort As production_type', 
-'rrm.rt_doors As doors', 
-'rrm.rt_controlled_body As body_style',
-'rrm.rt_peak_hp As peak_horse_power',
-'rrm.bg_make_id As Make(BG)',
-'rrm.bg_model_id As Model(BG)',
-'rrm.bg_submodel_id As Sub-Model(BG)',
-'rrm.bg_year_id AS Year(BG)',
-'rrm.bg_controlled_make_id AS bg_controlled_make_id ',
-'rrm.bg_controlled_model_id AS bg_controlled_model_id',
-'rrm.rt_original_table_id As rt_original_table_id',
-'rrm.rt_controlled_engine AS Engine_Location',
-'rrm.rt_controlled_fuel As Fuel_Type',
-'rrm.rt_controlled_transmission As Transmission_Type',
-'rrm.rt_controlled_drive As Driven_Wheels',
-'rrm.rt_controlled_ts_limit As Top_Speed_Limit',
-'rrm.rt_controlled_turbo_superchg As Forced_Induction',
-'rrm.rt_controlled_type As Engine_Type',
-'rrm.rt_percent_on_rear As Pct_Weight_on_Rear',
-'rrm.rt_percent_on_front As Pct_Weight_on_Front',
-'rrm.rt_60_mph As 0-60_Accel',
-'rrm.rt_70_mph_braking As Braking_from_70',
-'rrm.rt_top_speed As Top_Speed',
-'rrm.rt_top_speed_notes As Top_Speed_Notes',
-'rrm.rt_base_price As Base_Price',
-'rrm.rt_base_price_notes As Base_Price_Notes',
-'rrm.rt_speed_qtr_mile_speed_trap As Quarter_Trap_Speed',
-'rrm.rt_quarter_time As Quarter_Mile_Time',
-'rrm.rt_cd_observed_fe As CD_Observed_Economy',
-'rrm.rt_no_cyl As Number_of_Cylinders',
-'rrm.rt_peak_hp_notes As Peak_Horsepower_Notes',
-'rrm.rt_peak_torque As Peak_Torque',
-'rrm.rt_peak_torque_notes As Peak_Torque_Notes',
-'rrm.rt_power_to_weight As Power_Weight_hp_lb',
-'rrm.rt_price_as_tested As Price_as_Tested',
-'rrm.rt_price_as_tested_notes As Price_as_Tested_Notes',
-'rrm.rt_redline As Readline',
-'rrm.rt_disp_cc As Engine_Disp',
-'rrm.rt_rpm As Peak_Horsepower_RPM',
-'rrm.rt_rpmt As Peak_Torque_RPM',
-'rrm.rt_slalom As Slalom_Speed',
-'rrm.rt_ss60 As 5-60_ss_accel',
-'rrm.rt_weight As Curb_Weight'
-
-         
-))
-
-->join(array('rr2' => 'rt_results_level_2'), 'rr2.id = rrm.id', array('rr2.rt2_emergency_lane_change As MPH_in_Lane_Change',
-'rr2.rt2_skidpad As Skidpad_Grip',
-'rr2.rt2_100_mph As 0-100_Accel',
-'rr2.rt2_130_mph As 0-130_Accel',
-'rr2.rt2_30_50TG As Top-Gear_Accel_30-50',
-'rr2.rt2_30_mph As 0-30_Accel',
-'rr2.rt2_50_70TG As Top-Gear_Accel_50-70',
-'rr2.rt2_50_mph As 0-50_Accel',
-'rr2.rt2_70cr As DB_at_70_MPH_Cruise',
-'rr2.rt2_70_mph As 0-70_Accel',
-'rr2.rt2_controlled_airbags As Airbags',
-'rr2.rt2_anti_lock As Anti-Lock_Brakes',
-'rr2.rt2_epa_city_fe As EPA_Citys',
-'rr2.rt2_epa_city_fe_notes As EPA_City_Notes',
-'rr2.rt2_fuel_sys As Fuel_System',
-'rr2.rt2_highway_fe As EPA_Highway',
-'rr2.rt2_highway_fe_notes As EPA_Highway_Notes',
-'rr2.rt2_int_vol_front As Interior_Volume_Front',
-'rr2.rt2_mid As Vol_Behind_Mid_Row',
-'rr2.rt2_passengers As Number_of_Passengers',
-'rr2.rt2_rear As Vol_Behind_Rear_Row',
-'rr2.rt2_sound_level_idle As Sound_Level_Idle',
-'rr2.rt2_stab_defeatable As Esc_Defeatable',
-'rr2.rt2_stability_control As Stability_Control',
-'rr2.rt2_sum_of_tg_times As Sum_of_the_above_2',
-'rr2.rt2_trac_defeatable As Tc_Defeatable',
-'rr2.rt2_traction_control As Traction_Control',
-'rr2.rt2_turning_cir As Turning_Radius',
-'rr2.rt2_wot As DB_at_Wot'))
-->joininner(array('rr3' => 'rt_results_level_3'), 'rr3.id = rr2.id', array('rr3.rt3_boost_psi As Boost_in_psi',
+		'rrm.rt_model_year As year', 
+		'rrm.rt_controlled_make As make', 
+		'rrm.rt_model As model',
+		'rrm.rt_issue_year As issue_year',
+		'rrm.rt_issue As issue_month', 
+		'rrm.rt_controlled_sort As production_type', 
+		'rrm.rt_doors As doors', 
+		'rrm.rt_controlled_body As body_style',
+		'rrm.rt_peak_hp As peak_horse_power',
+		'rrm.bg_make_id As Make(BG)',
+		'rrm.bg_model_id As Model(BG)',
+		'rrm.bg_submodel_id As Sub-Model(BG)',
+		'rrm.bg_year_id AS Year(BG)',
+		'rrm.bg_controlled_make_id AS bg_controlled_make_id ',
+		'rrm.bg_controlled_model_id AS bg_controlled_model_id',
+		'rrm.rt_original_table_id As rt_original_table_id',
+		'rrm.rt_controlled_engine AS Engine_Location',
+		'rrm.rt_controlled_fuel As Fuel_Type',
+		'rrm.rt_controlled_transmission As Transmission_Type',
+		'rrm.rt_controlled_drive As Driven_Wheels',
+		'rrm.rt_controlled_ts_limit As Top_Speed_Limit',
+		'rrm.rt_controlled_turbo_superchg As Forced_Induction',
+		'rrm.rt_controlled_type As Engine_Type',
+		'rrm.rt_percent_on_rear As Pct_Weight_on_Rear',
+		'rrm.rt_percent_on_front As Pct_Weight_on_Front',
+		'rrm.rt_60_mph As 0-60_Accel',
+		'rrm.rt_70_mph_braking As Braking_from_70',
+		'rrm.rt_top_speed As Top_Speed',
+		'rrm.rt_top_speed_notes As Top_Speed_Notes',
+		'rrm.rt_base_price As Base_Price',
+		'rrm.rt_base_price_notes As Base_Price_Notes',
+		'rrm.rt_speed_qtr_mile_speed_trap As Quarter_Trap_Speed',
+		'rrm.rt_quarter_time As Quarter_Mile_Time',
+		'rrm.rt_cd_observed_fe As CD_Observed_Economy',
+		'rrm.rt_no_cyl As Number_of_Cylinders',
+		'rrm.rt_peak_hp_notes As Peak_Horsepower_Notes',
+		'rrm.rt_peak_torque As Peak_Torque',
+		'rrm.rt_peak_torque_notes As Peak_Torque_Notes',
+		'rrm.rt_power_to_weight As Power_Weight_hp_lb',
+		'rrm.rt_price_as_tested As Price_as_Tested',
+		'rrm.rt_price_as_tested_notes As Price_as_Tested_Notes',
+		'rrm.rt_redline As Readline',
+		'rrm.rt_disp_cc As Engine_Disp',
+		'rrm.rt_rpm As Peak_Horsepower_RPM',
+		'rrm.rt_rpmt As Peak_Torque_RPM',
+		'rrm.rt_slalom As Slalom_Speed',
+		'rrm.rt_ss60 As 5-60_ss_accel',
+		'rrm.rt_weight As Curb_Weight'
+		
+		         
+		))
+		
+		->join(array('rr2' => 'rt_results_level_2'), 'rr2.id = rrm.id', array('rr2.rt2_emergency_lane_change As MPH_in_Lane_Change',
+		'rr2.rt2_skidpad As Skidpad_Grip',
+		'rr2.rt2_100_mph As 0-100_Accel',
+		'rr2.rt2_130_mph As 0-130_Accel',
+		'rr2.rt2_30_50TG As Top-Gear_Accel_30-50',
+		'rr2.rt2_30_mph As 0-30_Accel',
+		'rr2.rt2_50_70TG As Top-Gear_Accel_50-70',
+		'rr2.rt2_50_mph As rt2_0-50_Accel',
+		'rr2.rt2_70cr As DB_at_70_MPH_Cruise',
+		'rr2.rt2_70_mph As rt2_0-70_Accel',
+		'rr2.rt2_controlled_airbags As Airbags',
+		'rr2.rt2_anti_lock As Anti-Lock_Brakes',
+		'rr2.rt2_epa_city_fe As EPA_Citys',
+		'rr2.rt2_epa_city_fe_notes As EPA_City_Notes',
+		'rr2.rt2_fuel_sys As Fuel_System',
+		'rr2.rt2_highway_fe As EPA_Highway',
+		'rr2.rt2_highway_fe_notes As EPA_Highway_Notes',
+		'rr2.rt2_int_vol_front As Interior_Volume_Front',
+		'rr2.rt2_mid As Vol_Behind_Mid_Row',
+		'rr2.rt2_passengers As Number_of_Passengers',
+		'rr2.rt2_rear As Vol_Behind_Rear_Row',
+		'rr2.rt2_sound_level_idle As Sound_Level_Idle',
+		'rr2.rt2_stab_defeatable As Esc_Defeatable',
+		'rr2.rt2_stability_control As Stability_Control',
+		'rr2.rt2_sum_of_tg_times As Sum_of_the_above_2',
+		'rr2.rt2_trac_defeatable As Tc_Defeatable',
+		'rr2.rt2_traction_control As Traction_Control',
+		'rr2.rt2_turning_cir As Turning_Radius',
+		'rr2.rt2_wot As DB_at_Wot'))
+		->joininner(array('rr3' => 'rt_results_level_3'), 'rr3.id = rr2.id', array('rr3.rt3_boost_psi As Boost_in_psi',
          'rr3.rt3_bore_mm As Cylinder_bore',
          'rr3.rt3_cd As Coefficient_of_drag',
          'rr3.rt3_comp_ratio As Compression_ratio',
@@ -1694,6 +1791,8 @@ class IndexController extends Zend_Controller_Action
          'rr3.rt3_fuel_cap As Fual_capacity',
          'rr3.rt3_height As Height',
          'rr3.rt3_length As Length',
+         'rr3.rt3_wheelbase As rt3_wheelbase',
+         'rr3.center_of_gravity_height As center_of_gravity_height',
          'rr3.rt3_lt_oil As Long_tem_oil_used',
          'rr3.rt3_lt_repair As Costs_for_lt_repair',
          'rr3.rt3_lt_serv As Costs_for_lt_service',
@@ -1709,17 +1808,32 @@ class IndexController extends Zend_Controller_Action
          'rr3.rt3_stroke_mm As Cylinder_stroke',
          'rr3.rt3_trunk As Trunk_volume',
          'rr3.rt3_valve_gear As Valve_setup',
-         'rr3.rt3_valves_per_cyl As Valves Per Cylinder',
-         'rr3.rt3_wheelbase As Valves_per_cylinder',
+         'rr3.rt3_valves_per_cyl As Valves_per_cylinder',
          'rr3.rt3_width As Width',
          'rr3.rt3_70co As DB_at_70_coast',
+         'rr3.url_for_story_relationship As url_for_story_relationship',
+         'rr3.ez_id As ez_id',
+         'rr3.suppress_public_display As suppress_public_display',
+         'rr3.skidpad_diameter As skidpad_diameter',
+         'rr3.first_stop_70 As first_stop_70',
+         'rr3.longest_stop70 As longest_stop70',
+         'rr3.transaction_off As transaction_off',
+         'rr3.partially_defeatable As partially_defeatable',
+         'rr3.fully_defeatable As fully_defeatable',
+         'rr3.competition_mode As competition_mode',
+         'rr3.launch_control As launch_control',
+         'rr3.permanent As permanent',
+         'rr3.test_location As test_location',
+         'rr3.test_location_detail As test_location_detail',
+         'rr3.test_notes As test_notes',
+         'rr3.tester As tester',
          'rr3.rt3_10mph As 0-10_Accel',
          'rr3.rt3_20mph As 0-20_Accel',
          'rr3.rt3_40mph As 0-40_Accel',
          'rr3.rt3_50mph As 0-50_Accel',
          'rr3.rt3_70mph As 0-70_Accel',
          'rr3.rt3_80mph As 0-80_Accel',
-         'rr3.rt3_90mph As 0-90_Accel' ,
+         'rr3.rt3_90mph As 0-90_Accel',
          'rr3.rt3_110mph As 0-110_Accel',
          'rr3.rt3_120mph As 0-120_Accel',
          'rr3.rt3_140mph As 0-140_Accel',
@@ -1779,7 +1893,7 @@ header("Content-type: application/x-msdownload");
 header("Content-Disposition: attachment; filename=data.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-print "\"ID\"\t\"Publish Date\"\t\"Year\"\t\"Make\"\t\"Model\"\t\"Mag Issue Year\"\t\"Mag Issue Month\"\t\"Production Type\"\t\"Number of Doors\"\t \"Body Style\"\t\"Peak Horsepower\"\t\"Make(BG)\"\t\"Model(BG)\"\t\"Sub-Model(BG)\"\t\"Year(BG)\"\t\"bg_controlled_make_id\"\t\"bg_controlled_model_id\"\t\"rt_original_table_id\"\t\"Engine Location\"\t\"Fuel Type\"\t\"Transmission Type\"\t\"Driven Wheels\"\t\"Top Speed Limit\"\t\"Forced Induction\"\t\"Engine Type\"\t\"Pct. weight on Rear\"\t\"Pct. Weight on Front\"\t\"0-60 Accel\"\t\"Breaking from 70\"\t\"Top Speed\"\t\"Top Speed otes\"\t\"Base Price\"\t\"Base Price Notes\"\t\"Quarter Trap Speed\"\t\"Quarter Mile Time\"\t\"CD Observed Economy\"\t\"Number of Cylinders\"\t\"Peak Horsepower Notes\"\t\"Peak Torque\"\t\"Peak Torque notes\"\t\"Power Weight hp lb\"\t\"Price as Tested\"\t\"Price as Tested Notes\"\t\"Read Linr\"\t\"Engine Disp\"\t\"Peak Horsepower RMP\"\t\"Peak Torque RMP\"\t\"Salalom Speed\"\t\"5-60 as accel\"\t\"Curb Weight\"\t\"MPH in Lane Change\"\t\"\Skidpad Grip\"\t\"0-100 Accel\"\t\"0-130 Accel\"\t\"\Top Gear Accel 30-50\"\t\"0-30 Accel\"\t\"\Top Gear Accel 50-70\"\t\"0-50 Accel\"\t\"DB at 70 MPH Cruise\"\t\"0-70 Accel\"\t\"Airbags\"\t\"Anti Lock Breaks\"\t\"EPA Citys\"\t\"EPA City Notes\"\t\"Fuel system\"\t\"EPA Highway\"\t\"EPA Highway Notes\"\t\"Interior Voume Front\"\t\"Vol Behind Mid Row\"\t\"Number of Passwngers\"\t\"Vol Behind Rear Row\"\t\"Sound Level Idel\"\t\"ESC Defeatable\"\t\"Stability Control\"\t\"Sum Of 2\"\t\"TC Defeatable\"\t\"Trancaction control\"\t\"Turning Radius\"\t\"DB at Wot\"\t\"Boost in psi\"\t\"Cylinder Bore\"\t\"Coefficient of Drag\"\t\"Compression Ratio\"\t\"rt3_et_factor\"\t\"Final Drive\"\t\"Frontal Area\"\t\"Frontal Area Notes\"\t\"Fual Capacity\"\t\"height\"\t\"Length\"\t\"Long Term Used\"\t\"Costs for lt Repair\"\t\"costs for lt service\"\t\"Lt Scheduled Stops\"\t\"Lt Unscheduled Stops\"\t\"Costs for lt ware\"\t\"Top Gear MPH 1000rmp\"\t\"rt3_peak_bmep\"\t\"rt3_peal_bmep\"\t\"rt3_road_hp_30mph\"\t\"rt3_sp_factor\"\t\"Spec Pow hp Liter\"\t\"Cylinder Stroke\"\t\"Trunk Volume\"\t\"Valve Setup\"\t\"Valves Per Cylinder\"\t\"Width\"\t\" DB at 70 coast\"\t\"0-10 Accel\"\t\"0-20 Accel\"\t\"0-40 Accel\"\t\"0-50 Accel\"\t\"0-70 Accel\"\t\"0-80 Accel\"\t\"0-90 Accel\"\t\"0-110 Accel\"\t\"0-120 Accel\"\t\"0-140 Accel\"\t\"0-150 Accel\"\t\"0-160 Accel\"\t\"0-170 Accel\"\t\"0-180 Accel\"\t\"0-190 Accel\"\t\"0-200 Accel\"\n";
+print "\"ID\"\t\"Web or Print\"\t\"Year\"\t\"Make\"\t\"Model\"\t\"Mag Issue Year\"\t\"Mag Issue Month\"\t\"Production Type\"\t\"Number of Doors\"\t\"Body Style\"\t\"Peak Horsepower\"\t\"Make(BG)\"\t\"Model(BG)\"\t\"Sub-Model(BG)\"\t\"Year(BG)\"\t\"bg_controlled_make_id\"\t\"bg_controlled_model_id\"\t\"rt_original_table_id\"\t\"Engine Location\"\t\"Fuel Type\"\t\"Transmission Type\"\t\"Driven Wheels\"\t\"Top Speed Limit\"\t\"Forced Induction\"\t\"Engine Type\"\t\"Pct. weight on Rear\"\t\"Pct. Weight on Front\"\t\"0-60 Accel\"\t\"Shortest 70\"\t\"Top Speed\"\t\"Top Speed Notes\"\t\"Base Price\"\t\"Base Price Notes\"\t\"Quarter Trap Speed\"\t\"Quarter Mile Time\"\t\"CD Observed Economy\"\t\"Number of Cylinders\"\t\"Peak Horsepower Notes\"\t\"Peak Torque\"\t\"Peak Torque notes\"\t\"Power Weight hp lb\"\t\"Price as Tested\"\t\"Price as Tested Notes\"\t\"Redline\"\t\"Engine Disp\"\t\"Peak Horsepower RPM\"\t\"Peak Torque RPM\"\t\"Slalom Speed\"\t\"5-60 as accel\"\t\"Curb Weight\"\t\"MPH in Lane Change\"\t\"Skidpad Grip\"\t\"0-100 Accel\"\t\"0-130 Accel\"\t\"Top Gear Accel 30-50\"\t\"0-30 Accel\"\t\"Top Gear Accel 50-70\"\t\"rt2_50_mph\"\t\"DB at 70 MPH Cruise\"\t\"rt2_70_mph\"\t\"Airbags\"\t\"Anti Lock Brakes\"\t\"EPA City\"\t\"EPA City Notes\"\t\"Fuel system\"\t\"EPA Highway\"\t\"EPA Highway Notes\"\t\"Interior Volume Front\"\t\"Vol Behind Mid Row\"\t\"Number of Passengers\"\t\"Vol Behind Rear Row\"\t\"Sound Level Idle\"\t\"ESC Defeatable\"\t\"Stability Control\"\t\"Sum Of 2\"\t\"TC Defeatable\"\t\"Traction Control\"\t\"Turning Radius\"\t\"DB at Wot\"\t\"Boost in psi\"\t\"Cylinder Bore\"\t\"Coefficient of Drag\"\t\"Compression Ratio\"\t\"rt3_et_factor\"\t\"Final Drive\"\t\"Frontal Area\"\t\"Frontal Area Notes\"\t\"Fuel Capacity\"\t\"height\"\t\"Length\"\t\"Wheelbase\"\t\"Center of Gravity Height\"\t\"Long Term Oil Used\"\t\"Costs for lt Repair\"\t\"costs for lt service\"\t\"Lt Scheduled Stops\"\t\"Lt Unscheduled Stops\"\t\"Costs for LT Wear\"\t\"Top Gear MPH 1000rmp\"\t\"rt3_peak_bmep\"\t\"rt3_peal_bmep\"\t\"rt3_road_hp_30mph\"\t\"rt3_sp_factor\"\t\"Spec Pow hp Liter\"\t\"Cylinder Stroke\"\t\"Trunk Volume\"\t\"Valve Setup\"\t\"Valves Per Cylinder\"\t\"Width\"\t\" DB at 70 coast\"\t\"URL for story relationship\"\t\"EZ ID\"\t\"Suppress public display\"\t\"Skidpad diameter\"\t\"First stop 70\"\t\"Longest stop 70\"\t\"Traction off\"\t\"Partially defeatable\"\t\"Fully defeatable\"\t\"Competition mode\"\t\"Launch control\"\t\"Permanent\"\t\"Test location\"\t\"Test location detail\"\t\"Test notes\"\t\"Tester\"\t\"0-10 Accel\"\t\"0-20 Accel\"\t\"0-40 Accel\"\t\"0-50 Accel\"\t\"0-70 Accel\"\t\"0-80 Accel\"\t\"0-90 Accel\"\t\"0-110 Accel\"\t\"0-120 Accel\"\t\"0-140 Accel\"\t\"0-150 Accel\"\t\"0-160 Accel\"\t\"0-170 Accel\"\t\"0-180 Accel\"\t\"0-190 Accel\"\t\"0-200 Accel\"\n";
 foreach ($export_result as $row) {
 	$row['make'] = $this->getData($row['make']);
 	$row['body_style'] = $this->getData($row['body_style']);
@@ -1796,6 +1910,18 @@ foreach ($export_result as $row) {
 	$row['Model(BG)'] = $this->getBGData("bg_model", $row['Model(BG)']);
 	$row['Sub-Model(BG)'] = $this->getBGData("bg_submodel", $row['Sub-Model(BG)']);
 	$row['Year(BG)'] = $this->getBGData("bg_year", $row['Year(BG)']);
+	$row['Anti-Lock_Brakes'] = $this->toYesNo($row['Anti-Lock_Brakes']);
+	$row['Stability_Control'] = $this->toYesNo($row['Stability_Control']);
+	$row['Traction_Control'] = $this->toYesNo($row['Traction_Control']);
+	$row['Tc_Defeatable'] = $this->toYesNo($row['Tc_Defeatable']);
+	$row['issue_month'] = $this->toMonthString($row['issue_month']);
+	$row['fully_defeatable'] = $this->toYesNo($row['fully_defeatable']);
+	$row['launch_control'] = $this->toYesNo($row['launch_control']);
+	$row['transaction_off'] = $this->toYesNo($row['transaction_off']);
+	$row['partially_defeatable'] = $this->toYesNo($row['partially_defeatable']);
+	$row['competition_mode'] = $this->toYesNo($row['competition_mode']);
+	$row['permanent'] = $this->toYesNo($row['permanent']);
+	$row['suppress_public_display'] = $this->toYesNo($row['suppress_public_display']);
 	/*$bgMakes = $db_remote->select()
 	 ->from(array('bgmk' => 'bg_make'), array('bgmk.name As bg_make'))
 	 ->where('bgmk.name=?', $row['Make(BG)']);
@@ -1860,6 +1986,88 @@ exit;
 		return $retval;
 	}
 
+		public function usersAction()
+		{
+			$result = $this->verifyLogin();
+			$this->view->message = "";
+			if(!$result)
+			$this->_redirect("index/login");
+	
+			$this->getUser();
+			
+			if($this->view->loggedInUserRole != 0)
+				$this->_redirect("index");
+				
+			$db = Zend_Db_Table::getDefaultAdapter();
+			$select = $db->select()
+				->from("user")
+				->order('user_name ASC');
+				$res = $db->query($select)->fetchAll();
+				$this->view->results = $res;
+			$form = new Application_Form_User();
+			$this->view->form = $form;
+			if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
+			{
+				$form_values = $this->view->form->getValues();
+				
+				if($this->validateuser($form_values["user_name"]))
+				{
+					$this->view->message = "User Name alread exists";
+				}
+				else
+				{
+					$form_values["password"] = md5($form_values["password"]);
+					$table = new Application_Model_User();
+					$db = $table->getAdapter();
+					$db->beginTransaction();
+					try
+					{
+						$results1 = $table->createRow();
+						$results1->setFromArray($form_values);
+						$results1->save();
+						$db->commit();
+					}
+					catch(Exception $e)
+					{
+						$db->rollBack();
+						throw $e;
+							
+					}
+					$this->_redirect("index/users");
+				}
+			}
+	}
+	
+	private function validateuser($name)
+	{
+		$db = Zend_Db_Table::getDefaultAdapter();
+		$select = $db->select()
+		->from('user')
+		->where('user_name = ?', $name);
+
+		$res = $db->query($select)->fetchAll();
+
+		if($res)
+			return true;
+		else
+			return false;
+	}
+	
+	public function deleteuserAction()
+	{
+		$result = $this->verifyLogin();
+			
+		if(!$result)
+		$this->_redirect("index/login");
+		if($this->view->loggedInUserRole != 0)
+			$this->_redirect("index");
+			
+		$db = Zend_Db_Table::getDefaultAdapter();
+		$db->delete("user", "id=" .$this->_getParam('id'));
+			
+		$this->_redirect("index/users");
+	}
+	
 	public function getData($id)
 	{
 		$db = Zend_Db_Table::getDefaultAdapter();
@@ -1867,7 +2075,8 @@ exit;
 		{
 		 $select = $db->select()
 		 ->from(array('rdd'=>'rt_dropdown_descriptions'),array('rdd.description As desp'))
-		 ->where('rdd.id_descriptions =?', $id);
+		 ->joininner(array('rdl' => 'rt_dropdown_lookup'), 'rdl.id_descriptions = rdd.id_descriptions')
+		 ->where('rdl.id =?', $id);
 		 $result = $db->query($select)->fetchAll();
 		 if(isset($result[0]))
 		 return $result[0]['desp'];
@@ -1876,6 +2085,59 @@ exit;
 		}
 		else
 		return "-";
+	}
+
+	public function toYesNo($value)
+	{
+		if($value==1)
+		{
+		 return "Yes";
+		}
+		else
+		return "No";
+	}
+
+	public function toMonthString($value)
+	{
+
+		switch ($value) {
+			case 1:
+				return "January";
+				break;
+			case 2:
+				return "February";
+				break;
+			case 3:
+				return "March";
+				break;
+			case 4:
+				return "April";
+				break;
+			case 5:
+				return "May";
+				break;
+			case 6:
+				return "June";
+				break;
+			case 7:
+				return "July";
+				break;
+			case 8:
+				return "August";
+				break;
+			case 9:
+				return "September";
+				break;
+			case 10:
+				return "October";
+				break;
+			case 11:
+				return "November";
+				break;
+			case 12:
+				return "December";
+				break;
+		}
 	}
 
 
@@ -2007,4 +2269,5 @@ exit;
 	}
 
 }
+
 

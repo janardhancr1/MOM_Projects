@@ -1,5 +1,5 @@
-<link href="/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/prototype.js">
+<link href="/app/public/css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/app/public/js/prototype.js">
 </script> 
 
 
@@ -21,7 +21,7 @@ function AutoFillModel(value)
 	$('bg_submodel_id').options[0] = new Option("Select or Leave blank", "");
 	$('bg_model_id').options[0] = new Option("Loading...", "");
         new Ajax.Request(
-        "/index/populatemodel",
+        "/app/public/index/populatemodel",
             {
                 method:'get',
                 parameters: {id: value},
@@ -48,7 +48,7 @@ function AutoFillModelSearch(value)
   	
 	$('model').options[0] = new Option("Loading...", "");
         new Ajax.Request(
-        "/index/populatemodel",
+        "/app/public/index/populatemodel",
             {
                 method:'get',
                 parameters: {id: value},
@@ -89,7 +89,7 @@ function AutoFillSubModel(value)
 	
 	$('bg_submodel_id').options[0] = new Option("Loading...", "");
         new Ajax.Request(
-        "/index/populatesubmodel",
+        "/app/public/index/populatesubmodel",
             {
                 method:'get',
                 parameters: {yearid: year_id, modelid: value},
@@ -121,7 +121,7 @@ function AutoFillSubModelSearch(value)
 	
 	$('submodel').options[0] = new Option("Loading...", "");
         new Ajax.Request(
-        "/index/populatesubmodel",
+        "/app/public/index/populatesubmodel",
             {
                 method:'get',
                 parameters: {yearid: year_id, modelid: value},
@@ -191,14 +191,9 @@ function onlyFloat(e, val)
 		</div>
 		<div class="headTitle">Road Test Adminstration Interface</div>
 		<div class="headRight">
-		<?php if($this->loggedIn) {?>
-				<div class="headLink">User: <a href="#"><?php echo $this->loggedInUser; ?></a>&nbsp;|&nbsp;<a href="/index/signout/">Signout</a></div>
-					<div class="headLink">
-						<a href="/index/">Find Vehicle</a>&nbsp;|&nbsp;
-						<?php if ($this->loggedInUserRole == 0 || $this->loggedInUserRole == 1) { ?><a href="/index/add/">Add Vehicle</a>&nbsp;|&nbsp; <?php }?>
-						<?php if ($this->loggedInUserRole == 0) { ?><a href="/index/manageconrolledlist/">Manage Controlled List</a>&nbsp;|&nbsp;
-						<a href="/index/users/">Users</a> <?php }?>
+				<div class="headLink">User: <a href="#">Admin</a>&nbsp;|&nbsp;<a href="/app/public/index/signout/">Signout</a></div>
+				<div class="headLink"><a href="/app/public/index/">Find Vehicle</a>&nbsp;|&nbsp;<a href="/app/public/index/add/">Add Vehicle</a>
+				&nbsp;|&nbsp;<a href="/app/public/index/manageconrolledlist/">Manage Controlled List</a>
 				</div>
 			</div>
-			<?php }?>
 	</div>

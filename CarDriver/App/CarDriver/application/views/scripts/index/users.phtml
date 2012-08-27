@@ -1,0 +1,39 @@
+<?php include 'header.phtml' ?> 
+<div id="middle">
+		<div class="middletitle">Add New Users</div>
+		<div class="middletitle" style='height:100px'>
+			<?php echo $this->form?>
+		<table width="90%"><tr><td style="text-align:center; color:red"><?php echo $this->message?></td></tr></table>
+		</div>
+		<br />
+		<br />
+		<br />
+		<div class="middletitle">Manage Users</div>
+		<table cellpadding="2" cellspacing="0" width="50%" class="manageTable">
+			<tr bgcolor="#9E9A9A" class="tableHeader">
+				<td>UserName</td>
+				<td>Role</td>
+				<td>&nbsp;</td>
+			</tr>
+		<?php foreach ($this->results as $row): ?>
+		<tr>
+			<td>
+				<?php echo $row['user_name'];?>
+			</td>
+			<td>
+			<?php if($row['role'] == 0)
+					echo "Admin";
+				  elseif($row['role'] == 1)
+					echo "Editor";
+				  else
+				  	echo "Viewer";
+			?>
+			</td>
+			<td><a href="<?php echo $this->url(array('action' => 'deleteuser','id' => $row['id']));?>" onclick="javascript:return confirm('Are you sure to Delete?');">Delete</a>&nbsp;</td>
+		</tr>
+		<?php endforeach; ?>
+		</table>
+		
+			
+		</div>
+<?php include 'footer.phtml' ?> 

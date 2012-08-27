@@ -150,7 +150,7 @@ function onlyDigits(e)
 
     if(e.keyCode == 8 || e.keyCode == 9)
         	return true;
-    if ( (e.keyCode < 48 || e.keyCode > 57) && !(e.keyCode > 95 && e.keyCode < 106) ){
+    if (e.keyCode < 48 || e.keyCode > 57 ) {
     _ret = false;
     }
    
@@ -170,7 +170,7 @@ function onlyFloat(e, val)
 			break;
 		}
 	}
-	if(e.keyCode == 190 || e.keyCode == 110)
+	if(e.keyCode == 190)
 	{
 		if(floatPoint == false)
 			return true;
@@ -179,7 +179,7 @@ function onlyFloat(e, val)
 	}
 	if(e.keyCode == 8 || e.keyCode == 9)
         	return true;
-	if ( (e.keyCode < 48 || e.keyCode > 57) && !(e.keyCode > 95 && e.keyCode < 106) ) {
+	if (e.keyCode < 48 || e.keyCode > 57) {
 	    return false;
 	 }
 } 
@@ -191,14 +191,9 @@ function onlyFloat(e, val)
 		</div>
 		<div class="headTitle">Road Test Adminstration Interface</div>
 		<div class="headRight">
-		<?php if($this->loggedIn) {?>
-				<div class="headLink">User: <a href="#"><?php echo $this->loggedInUser; ?></a>&nbsp;|&nbsp;<a href="/index/signout/">Signout</a></div>
-					<div class="headLink">
-						<a href="/index/">Find Vehicle</a>&nbsp;|&nbsp;
-						<?php if ($this->loggedInUserRole == 0 || $this->loggedInUserRole == 1) { ?><a href="/index/add/">Add Vehicle</a>&nbsp;|&nbsp; <?php }?>
-						<?php if ($this->loggedInUserRole == 0) { ?><a href="/index/manageconrolledlist/">Manage Controlled List</a>&nbsp;|&nbsp;
-						<a href="/index/users/">Users</a> <?php }?>
+				<div class="headLink">User: <a href="#">Admin</a>&nbsp;|&nbsp;<a href="/index/signout/">Signout</a></div>
+				<div class="headLink"><a href="/index/">Find Vehicle</a>&nbsp;|&nbsp;<a href="/index/add/">Add Vehicle</a>
+				&nbsp;|&nbsp;<a href="/index/manageconrolledlist/">Manage Controlled List</a>
 				</div>
 			</div>
-			<?php }?>
 	</div>

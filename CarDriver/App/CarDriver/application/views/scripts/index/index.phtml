@@ -22,7 +22,7 @@ function getData($id)
 			//alert(ans);
 			if(ans)
 			{
-				window.location="/app/public/index/delete/id/" + id;
+				window.location="/index/delete/id/" + id;
 			}
 		}
 	</script>
@@ -41,7 +41,7 @@ function getData($id)
 		<br/>
 		<br/>
 		<div class="headRight" style="padding-top:0px;">
-			<div class="headLink" style="padding-bottom:10px; padding-right:5px;">Export: <a href="/app/public/index/csvexport">CSV</a>&nbsp;|&nbsp;<a href="/app/public/index/excelexport">Excel</a></div>
+			<div class="headLink" style="padding-bottom:10px; padding-right:5px;">Export: <a href="/index/csvexport">CSV</a>&nbsp;|&nbsp;<a href="/index/excelexport">Excel</a></div>
 		</div>
 		<div class="results">	
 		<table  cellpadding="5" cellspacing="0" class="dataTable">
@@ -57,7 +57,7 @@ function getData($id)
 				<td width="9%">Number of Doors</td>
 				<td width="9%">Body Style</td>
 				<td  width="8%" style="border-right:1px solid #9E9A9A;border-right:1px solid #9E9A9A">Peak Horse power</td>
-				<td width="4%">&nbsp;</td>
+				<?php if ($this->loggedInUserRole == 0) { ?><td width="4%">&nbsp;</td><?php }?>
 			</tr>
 			<?php foreach ($this->paginator as $row): ?>
 				<tr>
@@ -72,8 +72,8 @@ function getData($id)
 					<td><?php if(strlen($row['production_type']) > 0){$val = getData($row['production_type']);if(strlen($val) > 0) echo $val; else echo "-";}else echo "-";?></td>
 					<td><?php if(strlen($row['doors']) > 0)echo $row['doors']; else echo "-";?></td>
 					<td><?php if(strlen($row['body_style']) > 0){$val = getData($row['body_style']); if(strlen($val) > 0) echo $val; else echo "-";} else echo "-";?></td>
-					<td><?php if(strlen($row['peak_horse_power']) > 0)echo $row['peak_horse_power']; else echo "-";?></td>
-					<td style="border-right:1px solid #9E9A9A"><a href="javascript:void()" onclick="javascript:checkDelete('<?php echo $row['main_results_id']?>')">Delete</a></td>
+					<td <?php if ($this->loggedInUserRole != 0) { ?>style="border-right:1px solid #9E9A9A" <?php }?>><?php if(strlen($row['peak_horse_power']) > 0)echo $row['peak_horse_power']; else echo "-";?></td>
+					<?php if ($this->loggedInUserRole == 0) { ?><td style="border-right:1px solid #9E9A9A"><a href="javascript:void()" onclick="javascript:checkDelete('<?php echo $row['main_results_id']?>')">Delete</a></td> <?php }?> 
 					</tr>
 			<?php endforeach; ?>
 		</table>
