@@ -20,15 +20,13 @@ class Application_Form_Add extends Application_Form_MainForm
 	{
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$db_remote = $this->getDbConnection();
-		$select = $db->select()
-			->from('rt_results_main',array(new Zend_Db_Expr('max(id) as maxId')));
-		$res = $db->query($select)->fetchAll();
+		$res = $db->query("SHOW TABLE STATUS LIKE 'rt_results_main'")->fetchAll();
 
 		$this->addElement('Text', 'id', array(
 		'decorators' => $this->elementDecoratorsTd,
 		'style' => 'class:inputbar',
 		'label' => 'id',
-		'value' => $res[0]['maxId'] + 1,
+		'value' => $res[0]['Auto_increment'],
 		'tabindex' => 1,
 		"readonly" => "readonly"
 		));
