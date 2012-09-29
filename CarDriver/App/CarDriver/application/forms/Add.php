@@ -18,6 +18,7 @@ class Application_Form_Add extends Application_Form_MainForm
 
 	public function init()
 	{
+		require_once('Zend/Session.php');
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$db_remote = $this->getDbConnection();
 		$res = $db->query("SHOW TABLE STATUS LIKE 'rt_results_main'")->fetchAll();
@@ -181,7 +182,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		{
 			//$makeid = $_SESSION['makid'];
 			$makeid = $session_makeid->make_id;
-			$bg_model_ids_prepared[]= "Select from list";
+			//$bg_model_ids_prepared[]= "Select from list";
 			/*$objDOM = new DOMDocument();
 			$objDOM->load("http://buyersguide.caranddriver.com/api/models?mode=xml");
 			$xpath = new DOMXPath($objDOM);
@@ -242,7 +243,7 @@ class Application_Form_Add extends Application_Form_MainForm
 		{
 			$yearid =$session_yearid->year_id;
 			$modelid = $session_yearid->model_id;
-			$bg_submodel_ids_prepared[]= "Select from list";
+			//$bg_submodel_ids_prepared[]= "Select from list";
 			/*$objDOM = new DOMDocument();
 			$objDOM->load("http://buyersguide.caranddriver.com/api/submodels?mode=xml");
 			$xpath = new DOMXPath($objDOM);

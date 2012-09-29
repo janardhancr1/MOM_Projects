@@ -587,10 +587,13 @@ class IndexController extends Zend_Controller_Action
 
 		require_once('Zend/Session.php');
 		$session_makeid = new Zend_Session_Namespace('makeid');
-		$session_makeid->make_id = $results_main[0]['bg_make_id'];
+		if(!isset($session_makeid->make_id))
+			$session_makeid->make_id = $results_main[0]['bg_make_id'];
 		$session_yearid = new Zend_Session_Namespace('yearid');
-		$session_yearid->year_id = $results_main[0]['bg_year_id'];
-		$session_yearid->model_id = $results_main[0]['bg_model_id'];
+		if(!isset($session_makeid->year_id))
+			$session_yearid->year_id = $results_main[0]['bg_year_id'];
+		if(!isset($session_makeid->model_id))
+			$session_yearid->model_id = $results_main[0]['bg_model_id'];
 
 		// Prepare form
 		$form = new Application_Form_Edit();
@@ -605,7 +608,7 @@ class IndexController extends Zend_Controller_Action
 		$form->populate($results);
 			
 		$this->view->form = $form;
-			
+
 		if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost()))
 		{
 			if(isset($_POST['cancel']))
@@ -1208,6 +1211,9 @@ class IndexController extends Zend_Controller_Action
 		$this->_redirect("index/login");
 
 		$this->getUser();
+		if($this->view->loggedInUserRole == 2)
+			$this->_redirect("index");
+			
 		$db = Zend_Db_Table::getDefaultAdapter();
 		$db1 = Zend_Db_Table::getDefaultAdapter();
 		$form = new Application_Form_DropdownDescriptions();
