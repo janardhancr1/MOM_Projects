@@ -369,8 +369,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_make']);
-				$before_rt_controlled_make->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_make']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_make']);
+					$before_rt_controlled_make->setValue($val);
+				}
 			}
 
 			$rt_controlled_make->setDecorators(array(
@@ -527,8 +530,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_sort']);
-				$before_rt_controlled_sort->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_sort']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_sort']);
+					$before_rt_controlled_sort->setValue($val);
+				}
 			}
 
 			$rt_controlled_sort->setDecorators(array(
@@ -561,8 +567,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_engine']);
-				$before_rt_controlled_engine->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_engine']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_engine']);
+					$before_rt_controlled_engine->setValue($val);
+				}
 			}
 
 			$rt_controlled_engine->setDecorators(array(
@@ -595,8 +604,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_drive']);
-				$before_rt_controlled_drive->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_drive']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_drive']);
+					$before_rt_controlled_drive->setValue($val);
+				}
 			}
 
 			$rt_controlled_drive->setDecorators(array(
@@ -687,8 +699,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_body']);
-				$before_rt_controlled_body->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_body']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_body']);
+					$before_rt_controlled_body->setValue($val);
+				}
 			}
 
 			$rt_controlled_body->setDecorators(array(
@@ -838,8 +853,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_type']);
-				$before_rt_controlled_type->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_type']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_type']);
+					$before_rt_controlled_type->setValue($val);
+				}
 			}
 
 			$rt_controlled_type->setDecorators(array(
@@ -1103,8 +1121,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_turbo_superchg']);
-				$before_rt_controlled_turbo_superchg->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_turbo_superchg']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_turbo_superchg']);
+					$before_rt_controlled_turbo_superchg->setValue($val);
+				}
 			}
 
 			$rt_controlled_turbo_superchg->setDecorators(array(
@@ -1423,8 +1444,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_transmission']);
-				$before_rt_controlled_transmission->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_transmission']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_transmission']);
+					$before_rt_controlled_transmission->setValue($val);
+				}
 			}
 
 			$rt_controlled_transmission->setDecorators(array(
@@ -1801,8 +1825,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_level_2)
 			{
-				$val = $this->getData($rt_results_level_2[0]['rt2_controlled_airbags']);
-				$before_rt2_controlled_airbags->setValue($val);
+				if(isset($rt_results_main[0]['rt2_controlled_airbags']))
+				{
+					$val = $this->getData($rt_results_level_2[0]['rt2_controlled_airbags']);
+					$before_rt2_controlled_airbags->setValue($val);
+				}
 			}
 
 			$rt2_controlled_airbags->setDecorators(array(
@@ -2905,8 +2932,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_ts_limit']);
-				$before_rt_controlled_ts_limit->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_ts_limit']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_ts_limit']);
+					$before_rt_controlled_ts_limit->setValue($val);
+				}
 			}
 
 			$rt_controlled_ts_limit->setDecorators(array(
@@ -3083,8 +3113,11 @@ class Application_Form_Reviewedit extends Application_Form_MainForm
 
 			if($rt_results_main)
 			{
-				$val = $this->getData($rt_results_main[0]['rt_controlled_fuel']);
-				$before_rt_controlled_fuel->setValue($val);
+				if(isset($rt_results_main[0]['rt_controlled_fuel']))
+				{
+					$val = $this->getData($rt_results_main[0]['rt_controlled_fuel']);
+					$before_rt_controlled_fuel->setValue($val);
+				}
 			}
 
 			$rt_controlled_fuel->setDecorators(array(
