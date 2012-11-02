@@ -6,23 +6,23 @@
   RewriteEngine On
 
   # Get rid of index.php
-  RewriteCond %{REQUEST_URI} /index\.php
-  RewriteRule (.*) index.php?rewrite=2 [L,QSA]
+  #RewriteCond %{REQUEST_URI} /index\.php
+  #RewriteRule (.*) index.php?rewrite=2 [L,QSA]
 
   # Rewrite all directory-looking urls
-  RewriteCond %{REQUEST_URI} /$
-  RewriteRule (.*) index.php?rewrite=1 [L,QSA]
+  #RewriteCond %{REQUEST_URI} /$
+  #RewriteRule (.*) index.php?rewrite=1 [L,QSA]
 
   # Try to route missing files
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} public\/ [OR]
-  RewriteCond %{REQUEST_FILENAME} \.(jpg|gif|png|ico|flv|htm|html|php|css|js)$
-  RewriteRule . - [L]
+  #RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteCond %{REQUEST_FILENAME} public\/ [OR]
+  #RewriteCond %{REQUEST_FILENAME} \.(jpg|gif|png|ico|flv|htm|html|php|css|js)$
+  #RewriteRule . - [L]
   
   # If the file doesn't exist, rewrite to index
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ index.php?rewrite=1 [L,QSA]
+  #RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteCond %{REQUEST_FILENAME} !-d
+  #RewriteRule ^(.*)$ index.php?rewrite=1 [L,QSA]
 
 </IfModule>
 

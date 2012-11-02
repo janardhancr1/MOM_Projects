@@ -2,6 +2,6 @@
   'adapter' => 'system',
   'config' => 
   array (
-    'path' => 'E:\\try\\MOM\\SE405',
+    'path' => 'D:\\Others\\MOM\\SE405',
   ),
 )?>
